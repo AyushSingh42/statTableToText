@@ -1,0 +1,6 @@
+
+[ERROR] Script exited with code 1
+  File [35m"/home/ayushs13/Qwen/c.checking_statements/python_code_table_1.py"[0m, line [35m9[0m
+    2. Convert any numeric columns stored as strings to integers. Wait, the user mentioned converting numbers stored as strings. Which columns are numeric? Probably Number of Students, Average Class Size, Percentage Free Lunch, Average Math Score, Average Reading Score, Funding Per Student. So I need to check each of these columns and convert them to numeric types if they're strings. For example, pd.to_numeric with errors='coerce[1;31m'[0m maybe.
+                                                                                                                                                                                                                                                                                                                                                                                                                                                 [1;31m^[0m
+[1;35mSyntaxError[0m: [35munterminated string literal (detected at line 9)[0m
