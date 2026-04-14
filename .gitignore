@@ -1,0 +1,18 @@
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Jupyter and IPython system folders
+.cache/
+.ipython/
+.jupyter/
+.local/
+.bash_history
+
+# Python bytecode and caches
+__pycache__/
+*.py[cod]
+
+# Large Language Model Directories 
+# (Uncomment these if they contain large weights to avoid push errors)
+# LLAMA/
+# Qwen/
