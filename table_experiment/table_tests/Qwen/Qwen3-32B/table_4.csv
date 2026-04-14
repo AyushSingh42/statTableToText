@@ -1,0 +1,43 @@
+P021,woman,29,160.0,65.4,25.8,62.1,6.7,68,7219
+P022,man,33,170.5,72.1,24.7,55.6,6.4,62,7643
+P023,woman,28,159.4,68.2,27.0,49.3,7.6,73,8912
+P024,man,41,179.0,81.5,25.7,68.9,6.5,63,7351
+P025,woman,36,162.3,70.9,27.0,54.2,7.8,77,8409
+P026,man,27,174.1,79.8,26.2,72.1,6.9,66,8634
+P027,woman,30,157.2,59.1,24.2,47.3,7.0,69,9103
+P028,man,45,180.0,88.4,27.3,81.5,6.3,57,7528
+P029,woman,22,163.5,62.4,23.3,35.9,7.1,72,8347
+P030,man,32,176.8,73.5,23.6,59.7,6.6,64,7912
+id,region,age_group,household_size,annual_income,education_level,employment_status,house_ownership,monthly_rent,avg_daily_screen_time
+R001,North,18-24,2,45000,High School,Employed,Own,0,4.2
+R002,South,25-34,3,62000,Bachelor's,Employed,Rent,1200,3.8
+R003,East,35-44,4,85000,Master's,Employed,Own,0,2.9
+R004,West,45-54,2,58000,High School,Unemployed,Rent,950,5.1
+R005,North,55-64,3,71000,Bachelor's,Retired,Own,0,1.5
+R006,South,18-24,1,32000,High School,Student,Rent,800,6.3
+R007,East,25-34,5,98000,PhD,Employed,Own,0,2.1
+R008,West,35-44,2,49000,Associate,Employed,Rent,1100,4.7
+R009,North,45-54,4,81000,Bachelor's,Employed,Own,0,3.0
+R010,South,55-64,3,67000,Master's,Retired,Rent,1000,1.8
+R011,East,18-24,2,39000,High School,Employed,Rent,900,5.5
+R012,West,25-34,3,73000,Bachelor's,Employed,Own,0,3.4
+R013,North,35-44,4,92000,Master's,Employed,Rent,1300,2.6
+R014,South,45-54,2,54000,Associate,Unemployed,Own,0,5.9
+Wait, in the example provided by the user, the last entry was R030, but the user's instruction says to generate exactly 15 data rows. Wait, the example had 30 rows, but the user's instruction says generate exactly 15 data rows. Wait," let me check again. The user says: ""Generate exactly one synthetic statistical table in valid CSV format. Requirements:... The table must contain exactly 15 data rows"," plus 1 header row."" So total of 16 lines. The example given by the user has 30 data rows (from P001 to P030)", but the user's instruction says to generate exactly 15 data rows. So I need to make sure that my output has 15 data rows plus the header. So the example is just an example, but the actual task is to generate 15 data rows.
+id,region,age_group,household_size,annual_income,education_level,employment_status,house_ownership,monthly_rent,avg_daily_screen_time
+id,region,age_group,household_size,annual_income,education_level,employment_status,house_ownership,monthly_rent,avg_daily_screen_time
+R001,North,18-24,2,45000,High School,Employed,Own,0,4.2
+R002,South,25-34,3,62000,Bachelor's,Employed,Rent,1200,3.8
+R003,East,35-44,4,85000,Master's,Employed,Own,0,2.9
+R004,West,45-54,2,58000,High School,Unemployed,Rent,950,5.1
+R005,North,55-64,3,71000,Bachelor's,Retired,Own,0,1.5
+R006,South,18-24,1,32000,High School,Student,Rent,800,6.3
+R007,East,25-34,5,98000,PhD,Employed,Own,0,2.1
+R008,West,35-44,2,49000,Associate,Employed,Rent,1100,4.7
+R009,North,45-54,4,81000,Bachelor's,Employed,Own,0,3.0
+R010,South,55-64,3,67000,Master's,Retired,Rent,1000,1.8
+R011,East,18-24,2,39000,High School,Employed,Rent,900,5.5
+R012,West,25-34,3,73000,Bachelor's,Employed,Own,0,3.4
+R013,North,35-44,4,92000,Master's,Employed,Rent,1300,2.6
+R014,South,45-54,2,54000,Associate,Unemployed,Own,0,5.9
+R015,East,55-64,3,78000,Bachelor's,Retired,Own,0,1.7
