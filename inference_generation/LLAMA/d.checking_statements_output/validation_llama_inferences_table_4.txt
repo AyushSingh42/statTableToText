@@ -1,0 +1,28 @@
+
+Statement 1: FALSE
+  - 1. All employees in the engineering department with more than 5 years of experience have a monthly salary above 8 thousand.
+  - Explanation: 1 employees in the engineering department with more than 5 years of experience have a monthly salary of 8 thousand or less (salaries: 6.8).
+
+Statement 2: FALSE
+  - 2. If an employee has a performance rating above 4.2, they are more likely to work remotely for more than 8 days a month.
+  - Explanation: 12 employees with a performance rating above 4.2 do not work remotely for more than 8 days a month (remote days: 10, 8, 6, 9, 7, 5, 8, 9, 6, 8, 7, 5).
+
+[ERROR] Script exited with code 1
+Traceback (most recent call last):
+  File [35m"/home/ayushs13/inference_generation/LLAMA/c.checking_statements/python_code_table_4.py"[0m, line [35m210[0m, in [35m<module>[0m
+    [31mmain[0m[1;31m()[0m
+    [31m~~~~[0m[1;31m^^[0m
+  File [35m"/home/ayushs13/inference_generation/LLAMA/c.checking_statements/python_code_table_4.py"[0m, line [35m206[0m, in [35mmain[0m
+    truth, explanation = [31mfunc[0m[1;31m(df)[0m
+                         [31m~~~~[0m[1;31m^^^^[0m
+  File [35m"/home/ayushs13/inference_generation/LLAMA/c.checking_statements/python_code_table_4.py"[0m, line [35m42[0m, in [35mstmt_3[0m
+    truth = ([1;31mfinance_salaries < marketing_salaries[0m).all()
+             [1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/ops/common.py"[0m, line [35m76[0m, in [35mnew_method[0m
+    return method(self, other)
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/arraylike.py"[0m, line [35m48[0m, in [35m__lt__[0m
+    return [31mself._cmp_method[0m[1;31m(other, operator.lt)[0m
+           [31m~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/series.py"[0m, line [35m6133[0m, in [35m_cmp_method[0m
+    raise ValueError("Can only compare identically-labeled Series objects")
+[1;35mValueError[0m: [35mCan only compare identically-labeled Series objects[0m

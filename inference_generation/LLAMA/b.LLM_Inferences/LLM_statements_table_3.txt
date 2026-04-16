@@ -1,0 +1,15 @@
+1. All truck routes have higher average speeds than van routes.
+2. If the weather is clear, then the delay minutes are less than 15.
+3. Every bus route with a distance greater than 150 km has an average speed less than 50 kph.
+4. The maximum fuel used by a van is less than the minimum fuel used by a truck.
+5. All routes with a delay of more than 20 minutes have a weather condition of either rain or windy.
+6. If a route has a distance less than 100 km, then the fuel used is less than 15 liters.
+7. The average speed of truck routes is higher than the average speed of bus routes.
+8. All routes with a weather condition of cloudy have a delay of more than 10 minutes.
+9. Every route with an average speed greater than 60 kph has a distance greater than 150 km.
+10. If a route has a fuel used of more than 40 liters, then the vehicle type is a truck.
+11. The minimum distance traveled by a bus is greater than the maximum distance traveled by a van.
+12. All routes with a delay of less than 10 minutes have a weather condition of clear.
+13. Every truck route with a distance less than 200 km has an average speed greater than 60 kph.
+14. If a route has a weather condition of rain, then the delay minutes are greater than 5 minutes.
+15. All routes with an average speed less than 50 kph have a vehicle type of bus.

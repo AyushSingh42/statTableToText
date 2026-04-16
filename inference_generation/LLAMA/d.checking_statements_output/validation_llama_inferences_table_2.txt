@@ -1,0 +1,60 @@
+
+Statement 1: TRUE
+  - 1. All stores in the north region have higher average basket sizes than those in the west region.
+  - Explanation: The average basket size in the north region (62.45) is higher than in the west region (53.63).
+
+Statement 2: TRUE
+  - 2. If a store has a high customer satisfaction rating (above 4.4), then it also has a high staff count (above 18).
+  - Explanation: All 4 stores with high customer satisfaction also have high staff counts.
+
+Statement 3: TRUE
+  - 3. Every store with monthly sales above 150k is located in either the north or east region.
+  - Explanation: All 2 stores with high monthly sales are located in the north or east region.
+
+Statement 4: FALSE
+  - 4. Stores in the south region have a lower average basket size than those in the east region, but a higher staff count.
+  - Explanation: The average basket size in the south region (54.50) is not lower than in the east region (60.33), or the average staff count in the south region (14.75) is not higher than in the east region (18.50).
+
+Statement 5: TRUE
+  - 5. If a store has a high transaction count (above 2200), then it also has a high monthly sales figure (above 120k).
+  - Explanation: All 5 stores with high transaction counts also have high monthly sales.
+
+Statement 6: TRUE
+  - 6. All stores with a low customer satisfaction rating (below 4.0) are located in the west or south region.
+  - Explanation: All 3 stores with low customer satisfaction are located in the west or south region.
+
+Statement 7: FALSE
+  - 7. Stores in the east region have a higher average basket size than those in the south region, but a lower staff count.
+  - Explanation: The average basket size in the east region (60.33) is not higher than in the south region (54.50), or the average staff count in the east region (18.50) is not lower than in the south region (14.75).
+
+Statement 8: TRUE
+  - 8. Every store with a high staff count (above 20) is located in either the north or east region.
+  - Explanation: All 3 stores with high staff counts are located in the north or east region.
+
+Statement 9: FALSE
+  - 9. If a store has a low monthly sales figure (below 100k), then it also has a low transaction count (below 1800).
+  - Explanation: 2 stores with low monthly sales violate the rule (transaction counts: 1825, 1840).
+
+Statement 10: FALSE
+  - 10. Stores in the north region have a higher customer satisfaction rating than those in the west region, but a lower staff count.
+  - Explanation: The average customer satisfaction rating in the north region (4.52) is not higher than in the west region (3.80), or the average staff count in the north region (21.00) is not lower than in the west region (12.00).
+
+Statement 11: TRUE
+  - 11. All stores with a high average basket size (above 60) are located in either the north or east region.
+  - Explanation: All 5 stores with high average basket sizes are located in the north or east region.
+
+Statement 12: TRUE
+  - 12. If a store has a high customer satisfaction rating (above 4.5), then it also has a high monthly sales figure (above 140k).
+  - Explanation: All 2 stores with high customer satisfaction also have high monthly sales.
+
+Statement 13: FALSE
+  - 13. Stores in the south region have a lower monthly sales figure than those in the east region, but a higher transaction count.
+  - Explanation: The average monthly sales figure in the south region (102.75) is not lower than in the east region (132.40), or the average transaction count in the south region (1883.75) is not higher than in the east region (2193.00).
+
+Statement 14: TRUE
+  - 14. Every store with a low staff count (below 15) is located in either the west or south region.
+  - Explanation: All 5 stores with low staff counts are located in the west or south region.
+
+Statement 15: TRUE
+  - 15. If a store has a high transaction count (above 2400), then it also has a high average basket size (above 62).
+  - Explanation: All 2 stores with high transaction counts also have high average basket sizes.

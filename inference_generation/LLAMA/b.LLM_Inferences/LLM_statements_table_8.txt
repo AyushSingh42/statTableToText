@@ -1,0 +1,15 @@
+1. All players with age greater than 28 have rebounds per game greater than 7.
+2. If a player is a center, then their minutes per game are less than 35.
+3. Every player with points per game greater than 20 has assists per game greater than 3.
+4. All guards with age less than 25 have points per game less than 18.
+5. If a player has games played greater than 70, then their rebounds per game are greater than 6.
+6. All players with minutes per game greater than 32 have points per game greater than 16.
+7. Centers with age greater than 29 have rebounds per game greater than 10.
+8. If a player is a forward, then their assists per game are less than 5.
+9. Every player with rebounds per game greater than 9 has points per game less than 22.
+10. All players with age less than 24 have minutes per game less than 30.
+11. If a player has points per game greater than 19, then their assists per game are greater than 2.
+12. Guards with games played greater than 65 have points per game greater than 15.
+13. All players with rebounds per game less than 5 have minutes per game less than 28.
+14. If a player is a center, then their points per game are less than 19.
+15. Every player with assists per game greater than 6 has points per game greater than 18.

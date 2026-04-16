@@ -1,0 +1,41 @@
+
+Statement 1: TRUE
+  - 1. All students with study hours greater than 8 have a test score above 80.
+  - Explanation: All 5 students with study hours > 8 have a test score > 80.
+
+Statement 2: TRUE
+  - 2. If a student is in grade 9, then their attendance rate is always above 87.
+  - Explanation: All 4 students in grade 9 have an attendance rate > 87.
+
+Statement 3: TRUE
+  - 3. Every student with a test score above 90 is a club member.
+  - Explanation: All 3 students with a test score > 90 are club members.
+
+Statement 4: TRUE
+  - 4. Students in grade 12 with study hours less than 7 have a lower test score than those with more study hours.
+  - Explanation: Students in grade 12 with study hours < 7 have a lower test score than those with more study hours.
+
+Statement 5: FALSE
+  - 5. All students with an attendance rate above 96 are in either grade 10 or 12.
+  - Explanation: 2 students with an attendance rate > 96 violate the rule (grades: 11, 9).
+
+[ERROR] Script exited with code 1
+Traceback (most recent call last):
+  File [35m"/home/ayushs13/inference_generation/LLAMA/c.checking_statements/python_code_table_0.py"[0m, line [35m197[0m, in [35m<module>[0m
+    [31mmain[0m[1;31m()[0m
+    [31m~~~~[0m[1;31m^^[0m
+  File [35m"/home/ayushs13/inference_generation/LLAMA/c.checking_statements/python_code_table_0.py"[0m, line [35m193[0m, in [35mmain[0m
+    truth, explanation = [31mfunc[0m[1;31m(df)[0m
+                         [31m~~~~[0m[1;31m^^^^[0m
+  File [35m"/home/ayushs13/inference_generation/LLAMA/c.checking_statements/python_code_table_0.py"[0m, line [35m71[0m, in [35mstmt_6[0m
+    students = [31mdf[0m[1;31m[df["club_member"]][0m
+               [31m~~[0m[1;31m^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/frame.py"[0m, line [35m4119[0m, in [35m__getitem__[0m
+    indexer = [31mself.columns._get_indexer_strict[0m[1;31m(key, "columns")[0m[1]
+              [31m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/indexes/base.py"[0m, line [35m6212[0m, in [35m_get_indexer_strict[0m
+    [31mself._raise_if_missing[0m[1;31m(keyarr, indexer, axis_name)[0m
+    [31m~~~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/indexes/base.py"[0m, line [35m6261[0m, in [35m_raise_if_missing[0m
+    raise KeyError(f"None of [{key}] are in the [{axis_name}]")
+[1;35mKeyError[0m: [35m"None of [Index(['yes', 'no', 'yes', 'yes', 'no', 'no', 'yes', 'no', 'yes', 'no', 'yes',\n       'no', 'no', 'yes', 'yes'],\n      dtype='object')] are in the [columns]"[0m

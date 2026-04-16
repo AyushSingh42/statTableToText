@@ -1,0 +1,60 @@
+
+Statement 1: TRUE
+  - 1. All sensors in the downtown zone have an average temperature above 24 degrees Celsius.
+  - Explanation: All 4 downtown sensors have an average temperature above 24 degrees Celsius.
+
+Statement 2: TRUE
+  - 2. If a sensor is in the industrial zone, then its average humidity is below 56%.
+  - Explanation: All 4 industrial sensors have an average humidity below 56%.
+
+Statement 3: TRUE
+  - 3. Every sensor with a high foot traffic (above 1000) is located in either the downtown or industrial zone.
+  - Explanation: All 4 sensors with high foot traffic are located in either the downtown or industrial zone.
+
+Statement 4: TRUE
+  - 4. All sensors with a power use above 400 KWh are located in the downtown or industrial zone.
+  - Explanation: All 4 sensors with high power use are located in the downtown or industrial zone.
+
+Statement 5: TRUE
+  - 5. If a sensor is in the residential zone, then its average noise level is below 53 decibels.
+  - Explanation: All 4 residential sensors have an average noise level below 53 decibels.
+
+Statement 6: TRUE
+  - 6. All sensors with a PM2.5 level above 30 are located in the industrial zone.
+  - Explanation: All 4 sensors with high PM2.5 levels are located in the industrial zone.
+
+Statement 7: TRUE
+  - 7. Every sensor in the park zone has an average humidity above 64%.
+  - Explanation: All 3 park sensors have an average humidity above 64%.
+
+Statement 8: TRUE
+  - 8. If a sensor has a high average temperature (above 26 degrees Celsius), then it is located in either the industrial or downtown zone.
+  - Explanation: All 4 sensors with high average temperatures are located in either the industrial or downtown zone.
+
+Statement 9: TRUE
+  - 9. All sensors with a low foot traffic (below 600) are located in either the residential or park zone.
+  - Explanation: All 4 sensors with low foot traffic are located in either the residential or park zone.
+
+Statement 10: TRUE
+  - 10. Every sensor with a high power use (above 350 KWh) has a high average temperature (above 25 degrees Celsius).
+  - Explanation: All 4 sensors with high power use have a high average temperature.
+
+Statement 11: TRUE
+  - 11. If a sensor is in the downtown zone, then its average noise level is above 65 decibels.
+  - Explanation: All 4 downtown sensors have an average noise level above 65 decibels.
+
+Statement 12: TRUE
+  - 12. All sensors with a low PM2.5 level (below 15) are located in either the residential or park zone.
+  - Explanation: All 7 sensors with low PM2.5 levels are located in either the residential or park zone.
+
+Statement 13: TRUE
+  - 13. Every sensor in the industrial zone has a high average noise level (above 70 decibels).
+  - Explanation: All 4 industrial sensors have a high average noise level.
+
+Statement 14: TRUE
+  - 14. If a sensor has a high average humidity (above 62%), then it is located in either the residential or park zone.
+  - Explanation: All 4 sensors with high average humidity are located in either the residential or park zone.
+
+Statement 15: FALSE
+  - 15. All sensors with a low power use (below 200 KWh) are located in the park zone.
+  - Explanation: 2 sensors with low power use violate the rule (zones: residential, residential).

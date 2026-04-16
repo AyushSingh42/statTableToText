@@ -1,0 +1,60 @@
+
+Statement 1: TRUE
+  - 1. Cities with a Bachelor's degree as the Education Level have a lower Unemployment Rate than those with Some college or High school.
+  - Explanation: Cities with a Bachelor's degree have a lower average Unemployment Rate (4.12) than others (4.72).
+
+Statement 2: TRUE
+  - 2. If a city has a Median Income above 60000, then it is located in the West or Northeast region.
+  - Explanation: All cities with a Median Income above 60000 are located in the West or Northeast region.
+
+Statement 3: TRUE
+  - 3. All cities with a Job Type of Management have a higher Median Income than those with a Job Type of Service.
+  - Explanation: Cities with a Job Type of Management have a higher average Median Income (60500.00) than those with a Job Type of Service (47500.00).
+
+Statement 4: TRUE
+  - 4. Cities with a Commute Time of 45 have a higher Median Income than those with a Commute Time of 30 or 35.
+  - Explanation: Cities with a Commute Time of 45 have a higher average Median Income (73333.33) than those with a Commute Time of 30 or 35 (47500.00).
+
+Statement 5: TRUE
+  - 5. The South region has a higher proportion of cities with a Job Type of Service than the other regions.
+  - Explanation: The South region has a higher proportion (0.50) of cities with a Job Type of Service than the other regions (0.22).
+
+Statement 6: FALSE
+  - 6. Cities with a Population above 2000000 have a lower Unemployment Rate than those with a Population below 2000000.
+  - Explanation: Cities with a Population above 2000000 do not have a lower average Unemployment Rate (4.65) than those with a Population below 2000000 (4.42).
+
+Statement 7: TRUE
+  - 7. If a city has a Median Income above 70000, then it is located in the West region.
+  - Explanation: All cities with a Median Income above 70000 are located in the West region.
+
+Statement 8: TRUE
+  - 8. All cities with a Job Type of Sales have a Commute Time of 30.
+  - Explanation: All cities with a Job Type of Sales have a Commute Time of 30.
+
+Statement 9: TRUE
+  - 9. Cities with a Bachelor's degree as the Education Level have a higher Median Income than those with Some college or High school.
+  - Explanation: Cities with a Bachelor's degree have a higher average Median Income (62083.33) than others (46111.11).
+
+Statement 10: TRUE
+  - 10. The Northeast region has a higher proportion of cities with a Job Type of Management than the other regions.
+  - Explanation: The Northeast region has a higher proportion (0.50) of cities with a Job Type of Management than the other regions (0.31).
+
+Statement 11: TRUE
+  - 11. Cities with a Unemployment Rate below 4 have a higher Median Income than those with a Unemployment Rate above 4.
+  - Explanation: Cities with a Unemployment Rate below 4 have a higher average Median Income (70000.00) than those with a Unemployment Rate above 4 (48125.00).
+
+Statement 12: TRUE
+  - 12. If a city has a Population above 1500000 and a Job Type of Management, then it is located in the West or Northeast region.
+  - Explanation: All cities with a Population above 1500000 and a Job Type of Management are located in the West or Northeast region.
+
+Statement 13: TRUE
+  - 13. All cities with a Commute Time of 45 have a Job Type of Management.
+  - Explanation: All cities with a Commute Time of 45 have a Job Type of Management.
+
+Statement 14: TRUE
+  - 14. Cities with a Median Income above 50000 have a lower Unemployment Rate than those with a Median Income below 50000.
+  - Explanation: Cities with a Median Income above 50000 have a lower average Unemployment Rate (3.98) than those with a Median Income below 50000 (4.81).
+
+Statement 15: TRUE
+  - 15. The West region has a higher proportion of cities with a Job Type of Sales than the other regions.
+  - Explanation: The West region has a higher proportion (0.60) of cities with a Job Type of Sales than the other regions (0.20).

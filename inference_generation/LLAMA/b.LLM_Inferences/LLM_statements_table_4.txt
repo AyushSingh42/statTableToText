@@ -1,0 +1,15 @@
+1. All employees in the engineering department with more than 5 years of experience have a monthly salary above 8 thousand.
+2. If an employee has a performance rating above 4.2, they are more likely to work remotely for more than 8 days a month.
+3. Employees in the finance department with less than 5 years of experience have a lower monthly salary than those in the marketing department.
+4. All employees with more than 10 years of experience are in either the engineering or finance departments.
+5. If an employee is in the hr department, they are more likely to have a performance rating between 3.9 and 4.1.
+6. Employees with a monthly salary above 7 thousand are more likely to have more than 3 active projects.
+7. All employees in the marketing department with a performance rating above 4.0 have a monthly salary above 5.5 thousand.
+8. If an employee has more than 5 active projects, they are more likely to be in the engineering department.
+9. Employees in the finance department with more than 5 years of experience have a higher monthly salary than those in the hr department.
+10. All employees with a performance rating above 4.5 have more than 2 active projects.
+11. If an employee is in the engineering department, they are more likely to have a monthly salary above 6 thousand if they have more than 3 years of experience.
+12. Employees with a monthly salary above 8 thousand are more likely to work remotely for more than 10 days a month.
+13. All employees in the hr department with a performance rating above 4.0 have less than 5 years of experience.
+14. If an employee has more than 3 active projects, they are more likely to have a performance rating above 4.1.
+15. Employees in the marketing department with a monthly salary above 5.5 thousand are more likely to have a performance rating above 4.0.

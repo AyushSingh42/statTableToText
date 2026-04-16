@@ -1,0 +1,15 @@
+1. All hotels with a star level of 5 have an occupancy rate above 85%.
+2. If a hotel has an occupancy rate above 80%, then its average nightly rate is above 150.
+3. Every hotel with a staff count above 40 has a star level of 4 or 5.
+4. Hotels in cities with high occupancy rates (above 80%) tend to have higher average nightly rates (above 150).
+5. All hotels with a cancellation rate above 12% have an occupancy rate above 75%.
+6. If a hotel has a star level of 3, then its staff count is below 35.
+7. Hotels with a high occupancy rate (above 80%) and a low cancellation rate (below 10%) tend to have a high average nightly rate (above 180).
+8. Every hotel with a staff count below 30 has a star level of 3.
+9. If a hotel has an average nightly rate above 200, then its occupancy rate is above 80%.
+10. Hotels in cities with low occupancy rates (below 75%) tend to have lower average nightly rates (below 140).
+11. All hotels with a star level of 4 or 5 have an average nightly rate above 160.
+12. If a hotel has a cancellation rate below 10%, then its occupancy rate is above 75%.
+13. Every hotel with a staff count above 35 has a star level of 4 or 5.
+14. Hotels with a high occupancy rate (above 80%) and a high staff count (above 35) tend to have a high average nightly rate (above 180).
+15. If a hotel has an occupancy rate above 85%, then its cancellation rate is below 12%.

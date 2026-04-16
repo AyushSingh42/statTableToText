@@ -1,0 +1,60 @@
+
+Statement 1: TRUE
+  - 1. All players with age greater than 28 have rebounds per game greater than 7.
+  - Explanation: All 5 players with age > 28 have rebounds per game > 7.
+
+Statement 2: TRUE
+  - 2. If a player is a center, then their minutes per game are less than 35.
+  - Explanation: All 5 centers have minutes per game < 35.
+
+Statement 3: TRUE
+  - 3. Every player with points per game greater than 20 has assists per game greater than 3.
+  - Explanation: All 3 players with points per game > 20 have assists per game > 3.
+
+Statement 4: FALSE
+  - 4. All guards with age less than 25 have points per game less than 18.
+  - Explanation: 1 guards violate the rule (ages: 22, points per game: 18.7).
+
+Statement 5: FALSE
+  - 5. If a player has games played greater than 70, then their rebounds per game are greater than 6.
+  - Explanation: 2 players violate the rule (games played: 73, 71, rebounds per game: 4.5, 3.9).
+
+Statement 6: TRUE
+  - 6. All players with minutes per game greater than 32 have points per game greater than 16.
+  - Explanation: All 5 players with minutes per game > 32 have points per game > 16.
+
+Statement 7: FALSE
+  - 7. Centers with age greater than 29 have rebounds per game greater than 10.
+  - Explanation: 1 centers violate the rule (ages: 32, rebounds per game: 9.9).
+
+Statement 8: TRUE
+  - 8. If a player is a forward, then their assists per game are less than 5.
+  - Explanation: All 5 forwards have assists per game < 5.
+
+Statement 9: TRUE
+  - 9. Every player with rebounds per game greater than 9 has points per game less than 22.
+  - Explanation: All 5 players with rebounds per game > 9 have points per game < 22.
+
+Statement 10: FALSE
+  - 10. All players with age less than 24 have minutes per game less than 30.
+  - Explanation: 1 players violate the rule (ages: 22, minutes per game: 31.4).
+
+Statement 11: TRUE
+  - 11. If a player has points per game greater than 19, then their assists per game are greater than 2.
+  - Explanation: All 5 players with points per game > 19 have assists per game > 2.
+
+Statement 12: TRUE
+  - 12. Guards with games played greater than 65 have points per game greater than 15.
+  - Explanation: All 3 guards with games played > 65 have points per game > 15.
+
+Statement 13: FALSE
+  - 13. All players with rebounds per game less than 5 have minutes per game less than 28.
+  - Explanation: 4 players violate the rule (rebounds per game: 3.8, 4.1, 4.5, 3.9, minutes per game: 31.4, 28.7, 32.1, 30.9).
+
+Statement 14: FALSE
+  - 14. If a player is a center, then their points per game are less than 19.
+  - Explanation: 1 centers violate the rule (points per game: 19.1).
+
+Statement 15: FALSE
+  - 15. Every player with assists per game greater than 6 has points per game greater than 18.
+  - Explanation: 1 players violate the rule (assists per game: 7.1, points per game: 14.9).

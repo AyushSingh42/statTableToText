@@ -1,0 +1,15 @@
+1. All students with study hours greater than 8 have a test score above 80.
+2. If a student is in grade 9, then their attendance rate is always above 87.
+3. Every student with a test score above 90 is a club member.
+4. Students in grade 12 with study hours less than 7 have a lower test score than those with more study hours.
+5. All students with an attendance rate above 96 are in either grade 10 or 12.
+6. If a student is a club member, then their study hours are always above 4.
+7. Students in grade 11 with study hours above 6 have a higher test score than those with fewer study hours.
+8. All students with a test score below 75 have an attendance rate below 90.
+9. If a student has a study hours to test score ratio above 0.1, then they are a club member.
+10. Every student in grade 10 with an attendance rate above 95 is a club member.
+11. Students with study hours between 4 and 7 have a lower test score than those with more or fewer study hours.
+12. All students with an attendance rate above 98 are in grade 9 or 12.
+13. If a student is not a club member, then their test score is always below 90.
+14. Students in grade 11 with an attendance rate above 92 have a higher test score than those with a lower attendance rate.
+15. All students with a test score above 85 have study hours above 5, except for those in grade 10.

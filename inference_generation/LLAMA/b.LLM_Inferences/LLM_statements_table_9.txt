@@ -1,0 +1,15 @@
+1. All sensors in the downtown zone have an average temperature above 24 degrees Celsius.
+2. If a sensor is in the industrial zone, then its average humidity is below 56%.
+3. Every sensor with a high foot traffic (above 1000) is located in either the downtown or industrial zone.
+4. All sensors with a power use above 400 KWh are located in the downtown or industrial zone.
+5. If a sensor is in the residential zone, then its average noise level is below 53 decibels.
+6. All sensors with a PM2.5 level above 30 are located in the industrial zone.
+7. Every sensor in the park zone has an average humidity above 64%.
+8. If a sensor has a high average temperature (above 26 degrees Celsius), then it is located in either the industrial or downtown zone.
+9. All sensors with a low foot traffic (below 600) are located in either the residential or park zone.
+10. Every sensor with a high power use (above 350 KWh) has a high average temperature (above 25 degrees Celsius).
+11. If a sensor is in the downtown zone, then its average noise level is above 65 decibels.
+12. All sensors with a low PM2.5 level (below 15) are located in either the residential or park zone.
+13. Every sensor in the industrial zone has a high average noise level (above 70 decibels).
+14. If a sensor has a high average humidity (above 62%), then it is located in either the residential or park zone.
+15. All sensors with a low power use (below 200 KWh) are located in the park zone.

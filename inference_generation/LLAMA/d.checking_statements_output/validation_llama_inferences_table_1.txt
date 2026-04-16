@@ -1,0 +1,60 @@
+
+Statement 1: TRUE
+  - 1. All patients with hypertension have a bmi greater than 28.
+  - Explanation: All 4 hypertensive patients have a bmi greater than 28.
+
+Statement 2: TRUE
+  - 2. If a patient is a smoker, then their cholesterol_mg_dl is greater than 200.
+  - Explanation: All 6 smokers have a cholesterol_mg_dl greater than 200.
+
+Statement 3: TRUE
+  - 3. Every patient with diabetes has a bp_systolic greater than 130.
+  - Explanation: All 3 diabetic patients have a bp_systolic greater than 130.
+
+Statement 4: TRUE
+  - 4. Patients with asthma have a lower bmi compared to patients with arthritis.
+  - Explanation: Asthamtic patients have a lower bmi (23.40) compared to arthritic patients (29.85).
+
+Statement 5: TRUE
+  - 5. All patients with migraine have a bp_diastolic less than 80, unless they are also smokers.
+  - Explanation: All non-smoker migrainous patients have a bp_diastolic less than 80.
+
+Statement 6: TRUE
+  - 6. If a patient has a bmi greater than 30, then they are more likely to have hypertension or diabetes.
+  - Explanation: Patients with a bmi greater than 30 are more likely to have hypertension or diabetes (1.00).
+
+Statement 7: TRUE
+  - 7. Patients with hypertension have a higher bp_systolic compared to patients with diabetes.
+  - Explanation: Hypertensive patients have a higher bp_systolic (147.25) compared to diabetic patients (134.67).
+
+Statement 8: FALSE
+  - 8. All patients with arthritis have a cholesterol_mg_dl greater than 210.
+  - Explanation: 1 arthritic patients violate the rule (cholesterol_mg_dl: 210).
+
+Statement 9: TRUE
+  - 9. If a patient is a smoker and has hypertension, then their bp_systolic is greater than 140.
+  - Explanation: All 4 smoker hypertensive patients have a bp_systolic greater than 140.
+
+Statement 10: TRUE
+  - 10. Patients with asthma have a lower age compared to patients with arthritis.
+  - Explanation: Asthamtic patients have a lower age (27.67) compared to arthritic patients (60.00).
+
+Statement 11: TRUE
+  - 11. Every patient with a bmi greater than 32 has diabetes or hypertension.
+  - Explanation: All 0 patients with a bmi greater than 32 have diabetes or hypertension.
+
+Statement 12: TRUE
+  - 12. If a patient has a cholesterol_mg_dl greater than 220, then they are more likely to have hypertension or diabetes.
+  - Explanation: Patients with a cholesterol_mg_dl greater than 220 are more likely to have hypertension or diabetes (1.00).
+
+Statement 13: TRUE
+  - 13. Patients with migraine have a lower bp_systolic compared to patients with hypertension.
+  - Explanation: Migrainous patients have a lower bp_systolic (122.67) compared to hypertensive patients (147.25).
+
+Statement 14: TRUE
+  - 14. All patients with a bp_diastolic greater than 90 have hypertension.
+  - Explanation: All 3 patients with a bp_diastolic greater than 90 have hypertension.
+
+Statement 15: TRUE
+  - 15. If a patient has a bmi greater than 28 and is a smoker, then they are more likely to have hypertension.
+  - Explanation: Patients with a bmi greater than 28 and are smokers are more likely to have hypertension (0.67).

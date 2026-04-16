@@ -1,0 +1,60 @@
+
+Statement 1: TRUE
+  - 1. All hotels with a star level of 5 have an occupancy rate above 85%.
+  - Explanation: All 2 hotels with a star level of 5 have an occupancy rate above 85%.
+
+Statement 2: TRUE
+  - 2. If a hotel has an occupancy rate above 80%, then its average nightly rate is above 150.
+  - Explanation: All 5 hotels with an occupancy rate above 80% have an average nightly rate above 150.
+
+Statement 3: TRUE
+  - 3. Every hotel with a staff count above 40 has a star level of 4 or 5.
+  - Explanation: All 4 hotels with a staff count above 40 have a star level of 4 or 5.
+
+Statement 4: TRUE
+  - 4. Hotels in cities with high occupancy rates (above 80%) tend to have higher average nightly rates (above 150).
+  - Explanation: All 5 hotels in cities with high occupancy rates have an average nightly rate above 150.
+
+Statement 5: TRUE
+  - 5. All hotels with a cancellation rate above 12% have an occupancy rate above 75%.
+  - Explanation: All 6 hotels with a cancellation rate above 12% have an occupancy rate above 75%.
+
+Statement 6: TRUE
+  - 6. If a hotel has a star level of 3, then its staff count is below 35.
+  - Explanation: All 6 hotels with a star level of 3 have a staff count below 35.
+
+Statement 7: TRUE
+  - 7. Hotels with a high occupancy rate (above 80%) and a low cancellation rate (below 10%) tend to have a high average nightly rate (above 180).
+  - Explanation: All 0 hotels with a high occupancy rate and a low cancellation rate have an average nightly rate above 180.
+
+Statement 8: TRUE
+  - 8. Every hotel with a staff count below 30 has a star level of 3.
+  - Explanation: All 5 hotels with a staff count below 30 have a star level of 3.
+
+Statement 9: TRUE
+  - 9. If a hotel has an average nightly rate above 200, then its occupancy rate is above 80%.
+  - Explanation: All 2 hotels with an average nightly rate above 200 have an occupancy rate above 80%.
+
+Statement 10: TRUE
+  - 10. Hotels in cities with low occupancy rates (below 75%) tend to have lower average nightly rates (below 140).
+  - Explanation: All 7 hotels in cities with low occupancy rates have an average nightly rate below 140.
+
+Statement 11: FALSE
+  - 11. All hotels with a star level of 4 or 5 have an average nightly rate above 160.
+  - Explanation: 4 hotels with a star level of 4 or 5 violate the rule (average nightly rates: 149.2, 136.9, 142.3, 154.7).
+
+Statement 12: FALSE
+  - 12. If a hotel has a cancellation rate below 10%, then its occupancy rate is above 75%.
+  - Explanation: 3 hotels with a cancellation rate below 10% violate the rule (occupancy rates: 69.3, 68.8, 66.9).
+
+Statement 13: TRUE
+  - 13. Every hotel with a staff count above 35 has a star level of 4 or 5.
+  - Explanation: All 5 hotels with a staff count above 35 have a star level of 4 or 5.
+
+Statement 14: FALSE
+  - 14. Hotels with a high occupancy rate (above 80%) and a high staff count (above 35) tend to have a high average nightly rate (above 180).
+  - Explanation: 1 hotels with a high occupancy rate and a high staff count violate the rule (average nightly rates: 176.5).
+
+Statement 15: FALSE
+  - 15. If a hotel has an occupancy rate above 85%, then its cancellation rate is below 12%.
+  - Explanation: 2 hotels with an occupancy rate above 85% violate the rule (cancellation rates: 14.2, 13.8).

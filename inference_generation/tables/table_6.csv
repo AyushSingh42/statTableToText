@@ -1,0 +1,16 @@
+farm_id,crop_type,acreage,yield_tons,irrigation_hours_week,fertilizer_kg,soil_quality_index,organic
+F001,wheat,120,412.5,14.2,860,72.4,no
+F002,corn,95,388.1,16.5,910,75.8,no
+F003,soybean,140,365.4,11.3,620,78.1,yes
+F004,rice,80,341.6,20.1,980,69.7,no
+F005,wheat,110,401.2,13.7,845,73.5,no
+F006,corn,130,452.8,17.4,1015,76.9,no
+F007,soybean,100,271.9,10.6,590,80.3,yes
+F008,rice,76,326.7,19.2,950,68.9,no
+F009,wheat,125,420.3,14.8,872,74.2,no
+F010,corn,105,399.4,16.9,938,77.0,no
+F011,soybean,150,389.1,12.1,645,81.5,yes
+F012,rice,84,349.8,20.5,995,70.2,no
+F013,wheat,118,408.7,14.0,854,72.9,no
+F014,corn,112,417.6,17.1,947,76.1,no
+F015,soybean,136,358.2,11.7,628,79.4,yes

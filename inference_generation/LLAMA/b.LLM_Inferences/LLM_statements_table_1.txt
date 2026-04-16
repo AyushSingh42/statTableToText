@@ -1,0 +1,15 @@
+1. All patients with hypertension have a bmi greater than 28.
+2. If a patient is a smoker, then their cholesterol_mg_dl is greater than 200.
+3. Every patient with diabetes has a bp_systolic greater than 130.
+4. Patients with asthma have a lower bmi compared to patients with arthritis.
+5. All patients with migraine have a bp_diastolic less than 80, unless they are also smokers.
+6. If a patient has a bmi greater than 30, then they are more likely to have hypertension or diabetes.
+7. Patients with hypertension have a higher bp_systolic compared to patients with diabetes.
+8. All patients with arthritis have a cholesterol_mg_dl greater than 210.
+9. If a patient is a smoker and has hypertension, then their bp_systolic is greater than 140.
+10. Patients with asthma have a lower age compared to patients with arthritis.
+11. Every patient with a bmi greater than 32 has diabetes or hypertension.
+12. If a patient has a cholesterol_mg_dl greater than 220, then they are more likely to have hypertension or diabetes.
+13. Patients with migraine have a lower bp_systolic compared to patients with hypertension.
+14. All patients with a bp_diastolic greater than 90 have hypertension.
+15. If a patient has a bmi greater than 28 and is a smoker, then they are more likely to have hypertension.

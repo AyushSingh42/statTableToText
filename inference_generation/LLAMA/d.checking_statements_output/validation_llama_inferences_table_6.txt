@@ -1,0 +1,60 @@
+
+Statement 1: FALSE
+  - 1. If a farm grows soybean, then it is organic.
+  - Explanation: 4 soybean farms violate the rule (farm_ids: F003, F007, F011, F015).
+
+Statement 2: TRUE
+  - 2. All farms with high soil quality index (> 78) grow soybean.
+  - Explanation: All 4 farms with high soil quality index grow soybean.
+
+Statement 3: TRUE
+  - 3. If a farm has high irrigation hours per week (> 17), then it grows either corn or rice.
+  - Explanation: All 5 farms with high irrigation hours per week grow either corn or rice.
+
+Statement 4: TRUE
+  - 4. Every farm that grows wheat has a fertilizer usage between 800 and 900 kg.
+  - Explanation: All 4 wheat farms have a fertilizer usage between 800 and 900 kg.
+
+Statement 5: FALSE
+  - 5. If a farm has low acreage (< 100), then it grows either rice or soybean.
+  - Explanation: 1 farms with low acreage violate the rule (farm_ids: F002, crops: corn).
+
+Statement 6: TRUE
+  - 6. All farms with high yield tons (> 400) have a soil quality index above 70.
+  - Explanation: All 6 farms with high yield tons have a soil quality index above 70.
+
+Statement 7: TRUE
+  - 7. If a farm grows corn, then it has a higher fertilizer usage than if it grows soybean.
+  - Explanation: Corn farms have a higher fertilizer usage than soybean farms.
+
+Statement 8: TRUE
+  - 8. Every farm that grows rice has a high irrigation hours per week (> 19).
+  - Explanation: All 3 rice farms have a high irrigation hours per week.
+
+Statement 9: TRUE
+  - 9. If a farm has a high soil quality index (> 75) and grows wheat, then it has a high yield tons (> 400).
+  - Explanation: All 0 farms with high soil quality index and growing wheat have a high yield tons.
+
+Statement 10: FALSE
+  - 10. All organic farms have a lower fertilizer usage than non-organic farms.
+  - Explanation: Organic farms do not have a lower fertilizer usage than non-organic farms.
+
+Statement 11: TRUE
+  - 11. If a farm has a high yield tons (> 400) and grows soybean, then it has a high soil quality index (> 78).
+  - Explanation: All 0 farms with high yield tons and growing soybean have a high soil quality index.
+
+Statement 12: TRUE
+  - 12. Every farm that grows wheat has a lower irrigation hours per week than farms that grow corn or rice.
+  - Explanation: Wheat farms have a lower irrigation hours per week than corn or rice farms.
+
+Statement 13: TRUE
+  - 13. If a farm has a low soil quality index (< 72), then it grows either rice or wheat.
+  - Explanation: All 3 farms with low soil quality index grow either rice or wheat.
+
+Statement 14: TRUE
+  - 14. All farms with high fertilizer usage (> 900 kg) grow either corn or rice.
+  - Explanation: All 7 farms with high fertilizer usage grow either corn or rice.
+
+Statement 15: TRUE
+  - 15. If a farm has a high acreage (> 120) and grows soybean, then it has a high yield tons (> 350).
+  - Explanation: All 3 farms with high acreage and growing soybean have a high yield tons.
