@@ -1,0 +1,60 @@
+
+Statement 1: FALSE
+  - 1. Guards have higher average assists per game than forwards and centers combined.
+  - Explanation: Guards' average assists (nan) do not exceed others' (nan).
+
+Statement 2: TRUE
+  - 2. Centers aged 26 or older have rebounds per game exceeding 10.
+  - Explanation: All 0 centers aged 26+ have rebounds_per_game >10.
+
+Statement 3: TRUE
+  - 3. Forwards with more than 70 games played have points per game above 19.
+  - Explanation: All 0 forwards with >70 games have points_per_game >19.
+
+Statement 4: TRUE
+  - 4. If a player is a guard and under 25 years old, their minutes per game are between 26.9 and 32.1.
+  - Explanation: All 0 guards under 25 have minutes_per_game between 26.9 and 32.1.
+
+Statement 5: TRUE
+  - 5. All centers have higher rebounds per game than any forward.
+  - Explanation: No centers in the dataset.
+
+Statement 6: TRUE
+  - 6. Players with over 30 minutes per game have points per game exceeding 17.
+  - Explanation: All 9 players with >30 minutes have points_per_game >17.
+
+Statement 7: TRUE
+  - 7. Guards have higher assists per game than any other position.
+  - Explanation: No guards in the dataset.
+
+Statement 8: TRUE
+  - 8. Forwards aged 29 or older have points per game exceeding 19.
+  - Explanation: All 0 forwards aged 29+ have points_per_game >19.
+
+Statement 9: TRUE
+  - 9. If a player is a center and has played more than 70 games, their rebounds per game are above 10.5.
+  - Explanation: All 0 centers with >70 games have rebounds_per_game >10.5.
+
+Statement 10: TRUE
+  - 10. Guards under 25 years old have assists per game exceeding 5.8.
+  - Explanation: All 0 guards under 25 have assists_per_game >5.8.
+
+Statement 11: TRUE
+  - 11. Centers aged between 26 and 32 have rebounds per game between 9.9 and 11.4.
+  - Explanation: All 0 centers aged 26–32 have rebounds_per_game between 9.9 and 11.4.
+
+Statement 12: TRUE
+  - 12. Forwards with points per game above 20 have assists per game below 4.
+  - Explanation: All 0 forwards with points >20 have assists_per_game <4.
+
+Statement 13: TRUE
+  - 13. If a player is a guard and has assists per game over 6, their points per game are below 20.
+  - Explanation: All 0 guards with assists >6 have points_per_game <20.
+
+Statement 14: FALSE
+  - 14. All players with more than 70 games played are either forwards or centers.
+  - Explanation: 7 players violate the rule (positions: forward, forward, center, center, guard, guard, center).
+
+Statement 15: TRUE
+  - 15. Centers aged 28 or older have rebounds per game exceeding 10.
+  - Explanation: All 0 centers aged 28+ have rebounds_per_game >10.

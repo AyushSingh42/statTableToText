@@ -1,0 +1,60 @@
+
+Statement 1: TRUE
+  - 1. All urban households with monthly income exceeding 5.5 have rent costs above 1.8.
+  - Explanation: All 3 urban high-income households have rent above 1.8.
+
+Statement 2: FALSE
+  - 2. Suburban households with fiber internet have higher monthly incomes than those with cable internet.
+  - Explanation: Suburban fiber min income (7.90) is not higher than suburban cable max (8.70).
+
+Statement 3: TRUE
+  - 3. Rural households with satellite internet have utility costs exceeding 150, while those with DSL have utility costs below 120.
+  - Explanation: All rural satellite households have utility >150 and rural DSL households have utility <120.
+
+Statement 4: TRUE
+  - 4. Households with more than 2 vehicles exclusively use fiber or satellite internet.
+  - Explanation: All 2 households with >2 vehicles use fiber or satellite internet.
+
+Statement 5: FALSE
+  - 5. Urban households have higher rent-to-income ratios (≥29%) compared to suburban (≤28%) or rural (≤22%) households.
+  - Explanation: Violations: 1 urban households have rent-to-income ratio <29%.; 1 suburban households have ratio >28%.; 2 rural households have ratio >22%.
+
+Statement 6: TRUE
+  - 6. Suburban households with 5 or more members have monthly incomes exceeding 10.0.
+  - Explanation: All 1 suburban large households have income >10.0.
+
+Statement 7: TRUE
+  - 7. Households with utility costs above 190 are exclusively suburban or urban.
+  - Explanation: All 2 high-utility households are suburban or urban.
+
+Statement 8: TRUE
+  - 8. Rural households with DSL internet have fewer than 2 vehicles.
+  - Explanation: All 0 rural DSL households have <2 vehicles.
+
+Statement 9: TRUE
+  - 9. If a household has satellite internet, its utility cost exceeds 150 and its region is rural.
+  - Explanation: All 2 satellite internet households meet the conditions.
+
+Statement 10: TRUE
+  - 10. Suburban households with monthly incomes between 7.0 and 8.0 have rent costs between 1.7 and 2.2.
+  - Explanation: All 2 suburban households meet rent cost conditions.
+
+Statement 11: FALSE
+  - 11. Urban households with fiber internet have utility costs exceeding 130 but less than 195.
+  - Explanation: 1 households violate the rule (utility: 97.8).
+
+Statement 12: TRUE
+  - 12. Households with more than 3 members have utility costs exceeding 150, except rural households with DSL internet.
+  - Explanation: All 6 large households meet the utility cost condition.
+
+Statement 13: FALSE
+  - 13. All suburban households with cable internet have monthly incomes between 6.0 and 7.2.
+  - Explanation: 1 households violate the rule (incomes: 8.7).
+
+Statement 14: TRUE
+  - 14. Rural households with monthly incomes above 5.0 have vehicle counts ≥2.
+  - Explanation: All 2 rural high-income households have ≥2 vehicles.
+
+Statement 15: FALSE
+  - 15. Households with internet types other than fiber or satellite are exclusively rural or suburban.
+  - Explanation: 1 households are urban but have non-fiber/satellite internet.

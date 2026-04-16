@@ -1,0 +1,60 @@
+
+Statement 1: TRUE
+  - 1. All engineering employees with over 5 years of experience have a monthly salary exceeding 8.0k.
+  - Explanation: All 3 engineering employees with >5 years have salary >8.0k.
+
+Statement 2: TRUE
+  - 2. Employees in finance with more than 5 years of experience have higher monthly salaries than marketing employees with similar experience.
+  - Explanation: No applicable employees in one or both departments.
+
+Statement 3: TRUE
+  - 3. If an employee has a performance rating above 4.5, they must belong to engineering or finance departments.
+  - Explanation: All 3 high-performance employees are in engineering or finance.
+
+Statement 4: TRUE
+  - 4. Employees with 5 or more active projects have performance ratings above 4.5.
+  - Explanation: All 2 employees with >=5 projects have performance >4.5.
+
+Statement 5: TRUE
+  - 5. All hr department employees have fewer than 10 remote days per month.
+  - Explanation: All 3 HR employees have <10 remote days.
+
+Statement 6: TRUE
+  - 6. Marketing employees with over 3 years of experience have monthly salaries between 5.5k and 5.9k.
+  - Explanation: All 2 marketing employees with >3 years have salaries between 5.5k and 5.9k.
+
+Statement 7: FALSE
+  - 7. Employees with performance ratings above 4.3 must have at least 4 active projects.
+  - Explanation: 2 employees violate the rule (projects: 2, 3).
+
+Statement 8: TRUE
+  - 8. Finance employees with over 6 years of experience have higher salaries than hr employees with similar experience.
+  - Explanation: Finance min salary 7.4 > HR max salary 6.4.
+
+Statement 9: TRUE
+  - 9. Engineering employees with over 8 years of experience earn more than any marketing employee.
+  - Explanation: Engineering min salary 9.2 > Marketing max salary 5.9.
+
+Statement 10: TRUE
+  - 10. Employees with monthly salaries above 8.0k are exclusively in engineering or finance departments.
+  - Explanation: All 4 high-salary employees are in engineering or finance.
+
+Statement 11: TRUE
+  - 11. Hr employees with over 5 years of experience have higher performance ratings than those with under 3 years.
+  - Explanation: No applicable employees in one or both groups.
+
+Statement 12: TRUE
+  - 12. All employees with more than 10 remote days per month are in engineering.
+  - Explanation: All 3 employees with >10 remote days are in engineering.
+
+Statement 13: TRUE
+  - 13. Finance employees with over 6 years of experience have higher salaries than those with under 6 years.
+  - Explanation: Finance employees with >6 years have min salary 7.4 > max salary 7.0 of those with <6 years.
+
+Statement 14: FALSE
+  - 14. Employees with performance ratings above 4.4 must have at least 5 active projects.
+  - Explanation: 2 employees violate the rule (projects: 4, 3).
+
+Statement 15: FALSE
+  - 15. If an employee has a monthly salary above 7.0k, they must have at least 4 active projects or belong to engineering.
+  - Explanation: 3 employees violate the rule (projects: 2, 2, 3, departments: finance, finance, finance).

@@ -1,0 +1,17 @@
+
+
+1. All club members with attendance rates above 95% have test scores of at least 90.  
+2. Students who are not club members and study fewer than 5 hours per week have test scores below 75.  
+3. Every club member in grade 10 has a test score higher than any non-club member in the same grade.  
+4. If a student is in grade 11 and studies more than 7 hours per week, their test score is at least 82.  
+5. All club members have attendance rates above 89%.  
+6. Students who are club members and study more than 9 hours per week have test scores exceeding 90.  
+7. In grade 12, students who study more than 8 hours per week have test scores of at least 87.  
+8. Students in grade 9 who are club members have higher test scores than non-club members in the same grade.  
+9. If a student is in grade 10 and studies more than 8 hours per week, their test score is above 85.  
+10. All students who study more than 10 hours per week are club members.  
+11. Students who are club members and have study hours between 4–6 hours have test scores below 80.  
+12. Students in grade 12 with attendance rates above 95% are non-club members.  
+13. If a student is a club member and has an attendance rate above 95%, they must be in grade 9, 11, or 12.  
+14. All grade 10 students who study more than 8 hours per week are club members.  
+15. Students who are club members and have attendance rates between 90–95% have test scores above 80.

@@ -1,0 +1,61 @@
+
+Statement 1: TRUE
+  - 1. Trucks have higher fuel consumption per kilometer compared to vans and buses.
+  - Explanation: Truck's average fuel per km (0.21) is higher than van average fuel per km: 0.12, bus average fuel per km: 0.20.
+
+Statement 2: FALSE
+  - 2. Routes with windy weather conditions have higher average delays than routes with rainy or clear conditions.
+  - Explanation: Windy average delay (24.33) is not higher than rainy (nan) and clear (9.60).
+
+Statement 3: TRUE
+  - 3. For all vehicle types, fuel_used_l is approximately proportional to distance_km, with consistent fuel efficiency rates per category.
+  - Explanation: All vehicle types have high correlation (>=0.9) between distance_km and fuel_used_l.
+
+Statement 4: TRUE
+  - 4. If a route has vehicle type truck and weather is windy, then delay_minutes exceeds 24.
+  - Explanation: All 2 truck routes in windy weather have delay_minutes >24.
+
+Statement 5: TRUE
+  - 5. Van routes with average speeds above 55 kph have fuel_used_l less than or equal to 12 liters.
+  - Explanation: All 2 van routes with speed >55 have fuel_used_l <=12.
+
+Statement 6: TRUE
+  - 6. All routes with delay_minutes exceeding 20 are associated with windy weather conditions.
+  - Explanation: All 3 routes with delay >20 have windy weather.
+
+Statement 7: TRUE
+  - 7. Buses operating in cloudy weather have lower fuel_used_l compared to buses operating in windy weather.
+  - Explanation: Cloudy buses avg fuel: 29.20, windy buses avg fuel: 31.40. Lower.
+
+Statement 8: TRUE
+  - 8. For every vehicle type, routes with distance_km exceeding 150 km have fuel_used_l greater than 25 liters.
+  - Explanation: All vehicle types meet the condition.
+
+Statement 9: TRUE
+  - 9. If a route has vehicle type van and weather is clear, then delay_minutes is less than 7.
+  - Explanation: All 2 van routes in clear weather have delay <7.
+
+Statement 10: FALSE
+  - 10. Truck routes are the only ones with distance_km exceeding 200 km, and these routes have the highest fuel_used_l and delay_minutes among all vehicle types.
+  - Explanation: Only trucks have distance >200: True. Truck routes have highest fuel and delay: False. Truck routes have min fuel 43.2 > 31.4 and min delay 14 > 21.
+
+Statement 11: TRUE
+  - 11. In rainy weather conditions, bus routes experience higher delays than van routes.
+  - Explanation: No data for one or both vehicle types in rainy weather.
+
+Statement 12: FALSE
+  - 12. Routes with vehicle type bus and weather conditions other than clear have delay_minutes between 17 and 21.
+  - Explanation: 1 violations found: 16.
+
+[ERROR] Script exited with code 1
+Traceback (most recent call last):
+  File [35m"/home/ayushs13/inference_generation/Qwen/c.checking_statements/python_code_table_3.py"[0m, line [35m260[0m, in [35m<module>[0m
+    [31mmain[0m[1;31m()[0m
+    [31m~~~~[0m[1;31m^^[0m
+  File [35m"/home/ayushs13/inference_generation/Qwen/c.checking_statements/python_code_table_3.py"[0m, line [35m256[0m, in [35mmain[0m
+    truth, explanation = [31mfunc[0m[1;31m(df)[0m
+                         [31m~~~~[0m[1;31m^^^^[0m
+  File [35m"/home/ayushs13/inference_generation/Qwen/c.checking_statements/python_code_table_3.py"[0m, line [35m207[0m, in [35mstmt_13[0m
+    expl = f"Violations in groups {[31m', '.join[0m[1;31m(violations)[0m} have non-negative correlation."
+                                   [31m~~~~~~~~~[0m[1;31m^^^^^^^^^^^^[0m
+[1;35mTypeError[0m: [35msequence item 0: expected str instance, tuple found[0m

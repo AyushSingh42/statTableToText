@@ -1,0 +1,17 @@
+
+
+1. All organic farms are soybean farms, and all soybean farms are organic.  
+2. For non-organic corn farms, higher fertilizer usage correlates with higher yield per acre (r ≈ 0.98).  
+3. Rice farms require the most irrigation hours per week (≥19.2) compared to any other crop type.  
+4. If a farm uses more than 900 kg of fertilizer, it must be either corn or rice.  
+5. Soybean farms have the lowest yield per acre (≤2.72) among all crops.  
+6. All farms with soil quality index >80 are organic soybean farms.  
+7. For non-organic wheat farms, yield per acre decreases as irrigation hours drop below 14.  
+8. The highest fertilizer usage (1015 kg) occurs in a corn farm with the highest yield among its crop type.  
+9. Organic soybean farms have higher soil quality indices than non-organic corn farms.  
+10. If a farm’s irrigation hours exceed 18, it must be a rice farm.  
+11. Non-organic rice farms have the lowest soil quality indices (≤70.2) among all non-organic crops.  
+12. For soybean farms, yield per acre increases with irrigation hours (r ≈ 0.91).  
+13. All corn farms with fertilizer usage >940 kg have yields exceeding 415 tons.  
+14. The two highest-yielding farms (corn and rice) both use ≥17.1 irrigation hours/week.  
+15. Organic farms have lower yield per acre than non-organic farms across all crop types.

@@ -1,0 +1,20 @@
+
+[ERROR] Script exited with code 1
+Traceback (most recent call last):
+  File [35m"/home/ayushs13/inference_generation/Qwen/c.checking_statements/python_code_table_7.py"[0m, line [35m244[0m, in [35m<module>[0m
+    [31mmain[0m[1;31m()[0m
+    [31m~~~~[0m[1;31m^^[0m
+  File [35m"/home/ayushs13/inference_generation/Qwen/c.checking_statements/python_code_table_7.py"[0m, line [35m216[0m, in [35mmain[0m
+    df['occupancy_rate'] = pd.to_numeric([1;31mdf['occupancy_rate'].str[0m.replace('%', ''), errors='coerce')
+                                         [1;31m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/generic.py"[0m, line [35m6321[0m, in [35m__getattr__[0m
+    return [31mobject.__getattribute__[0m[1;31m(self, name)[0m
+           [31m~~~~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/accessor.py"[0m, line [35m224[0m, in [35m__get__[0m
+    accessor_obj = self._accessor(obj)
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/strings/accessor.py"[0m, line [35m194[0m, in [35m__init__[0m
+    self._inferred_dtype = [31mself._validate[0m[1;31m(data)[0m
+                           [31m~~~~~~~~~~~~~~[0m[1;31m^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/strings/accessor.py"[0m, line [35m248[0m, in [35m_validate[0m
+    raise AttributeError("Can only use .str accessor with string values!")
+[1;35mAttributeError[0m: [35mCan only use .str accessor with string values!. Did you mean: 'std'?[0m

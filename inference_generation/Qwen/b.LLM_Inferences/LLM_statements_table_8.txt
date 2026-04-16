@@ -1,0 +1,17 @@
+
+
+1. Guards have higher average assists per game than forwards and centers combined.  
+2. Centers aged 26 or older have rebounds per game exceeding 10.  
+3. Forwards with more than 70 games played have points per game above 19.  
+4. If a player is a guard and under 25 years old, their minutes per game are between 26.9 and 32.1.  
+5. All centers have higher rebounds per game than any forward.  
+6. Players with over 30 minutes per game have points per game exceeding 17.  
+7. Guards have higher assists per game than any other position.  
+8. Forwards aged 29 or older have points per game exceeding 19.  
+9. If a player is a center and has played more than 70 games, their rebounds per game are above 10.5.  
+10. Guards under 25 years old have assists per game exceeding 5.8.  
+11. Centers with age between 26 and 32 have rebounds per game between 9.9 and 11.4.  
+12. Forwards with points per game above 20 have assists per game below 4.  
+13. If a player is a guard and has assists per game over 6, their points per game are below 20.  
+14. All players with more than 70 games played are either forwards or centers.  
+15. Centers aged 28 or older have rebounds per game exceeding 10.

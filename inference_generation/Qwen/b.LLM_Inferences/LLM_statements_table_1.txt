@@ -1,0 +1,17 @@
+
+
+1. All hypertension patients are smokers.  
+2. Asthma patients have systolic blood pressure below 120 mmHg.  
+3. Patients with BMI ≥ 30 have higher systolic blood pressure than those with BMI < 30.  
+4. Among smokers, those with hypertension have higher systolic blood pressure than non-hypertensive smokers.  
+5. All patients with systolic blood pressure ≥ 140 mmHg have hypertension.  
+6. Migraine patients have diastolic blood pressure below 80 mmHg.  
+7. Hypertension patients with BMI ≥ 30 have higher cholesterol levels than non-hypertensive patients with BMI ≥ 30.  
+8. Patients with diabetes are older than those with asthma.  
+9. All asthma patients are non-smokers.  
+10. Hypertension patients have higher cholesterol levels than diabetes patients.  
+11. Patients with systolic blood pressure ≥ 140 mmHg and BMI ≥ 30 are all smokers.  
+12. Among patients aged ≥ 60, all have BMI ≥ 30.  
+13. If a patient has hypertension and BMI ≥ 30, their systolic blood pressure exceeds 140 mmHg.  
+14. Patients with diabetes who are smokers have higher BMI than non-smoking diabetes patients.  
+15. Hypertension patients have higher systolic blood pressure than diabetes patients.

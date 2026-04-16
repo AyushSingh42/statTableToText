@@ -1,0 +1,41 @@
+
+Statement 1: FALSE
+  - 1. All North region stores have higher monthly sales than any South or West region stores.
+  - Explanation: 0 North stores have sales <= max South/West sales (nan).
+
+Statement 2: TRUE
+  - 2. Stores with more than 20 staff members have higher average basket sizes than those with fewer staff.
+  - Explanation: Avg basket size for >20 staff: 63.33, <=20 staff: 56.67.
+
+Statement 3: TRUE
+  - 3. If a store's average basket size exceeds 60, its customer satisfaction score is at least 4.4.
+  - Explanation: 0 stores violate the condition (avg basket >60 but satisfaction <4.4).
+
+Statement 4: FALSE
+  - 4. In the East region, stores with over 2000 transactions have higher customer satisfaction than those with fewer transactions.
+  - Explanation: Avg satisfaction for >2000 transactions: nan, <=2000: nan.
+
+Statement 5: TRUE
+  - 5. Every store with a customer satisfaction score above 4.5 has more than 21 transactions per staff member.
+  - Explanation: 0 stores violate (satisfaction >4.5 but transactions/staff <=21).
+
+Statement 6: FALSE
+  - 6. Stores in the West region have the lowest monthly sales among all regions.
+  - Explanation: West max sales: nan, other min sales: 85.60.
+
+[ERROR] Script exited with code 1
+Traceback (most recent call last):
+  File [35m"/home/ayushs13/inference_generation/Qwen/c.checking_statements/python_code_table_2.py"[0m, line [35m166[0m, in [35m<module>[0m
+    [31mmain[0m[1;31m()[0m
+    [31m~~~~[0m[1;31m^^[0m
+  File [35m"/home/ayushs13/inference_generation/Qwen/c.checking_statements/python_code_table_2.py"[0m, line [35m162[0m, in [35mmain[0m
+    truth, explanation = [31mfunc[0m[1;31m(df)[0m
+                         [31m~~~~[0m[1;31m^^^^[0m
+  File [35m"/home/ayushs13/inference_generation/Qwen/c.checking_statements/python_code_table_2.py"[0m, line [35m67[0m, in [35mstmt_7[0m
+    viol = df[([31mdf['staff_count'].between[0m[1;31m(14, 16, inclusive=True)[0m) & (df['customer_satisfaction'] >= 4.3)]
+               [31m~~~~~~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/series.py"[0m, line [35m5669[0m, in [35mbetween[0m
+    raise ValueError(
+    ...<2 lines>...
+    )
+[1;35mValueError[0m: [35mInclusive has to be either string of 'both','left', 'right', or 'neither'.[0m

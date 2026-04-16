@@ -1,0 +1,17 @@
+
+
+1. All industrial zone sensors have PM25 levels exceeding 30 µg/m³ and noise levels above 72 dB.  
+2. In residential zones, PM25 levels are consistently below 14 µg/m³ and noise levels remain under 53 dB.  
+3. If a sensor is located in a downtown zone, its foot traffic exceeds 1200 people per hour.  
+4. Park zones exhibit the lowest power consumption (≤123.9 kWh) and the highest humidity levels (≥64.8%).  
+5. For industrial sensors, power use increases as PM25 levels rise (r = 0.98 between PM25 and power use).  
+6. Downtown sensors have both higher average temperatures (>24.6°C) and higher foot traffic (>1240) compared to residential zones.  
+7. All sensors with PM25 > 30 µg/m³ belong exclusively to industrial zones.  
+8. Residential zones have the lowest average temperatures (≤24.2°C) but the highest humidity levels (≥60.3%).  
+9. If a sensor’s noise level exceeds 70 dB, it must belong to an industrial or downtown zone.  
+10. In downtown zones, power use increases by approximately 0.1 kWh per additional foot traffic unit (r = 0.95).  
+11. Park sensors have the lowest PM25 levels (≤9.8 µg/m³) but higher foot traffic (≥689) than residential zones.  
+12. Industrial zones exhibit the highest power use (>428.9 kWh) and the lowest humidity levels (≤53.6%).  
+13. For residential sensors, higher humidity (>61%) correlates with lower PM25 levels (<12.9 µg/m³).  
+14. All downtown sensors have noise levels exceeding 66 dB, while residential sensors remain below 53 dB.  
+15. Sensors with foot traffic exceeding 1300 people/hour are exclusively located in downtown zones.

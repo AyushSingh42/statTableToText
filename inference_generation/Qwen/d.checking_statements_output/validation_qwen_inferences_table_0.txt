@@ -1,0 +1,57 @@
+
+Statement 1: FALSE
+  - 1. All club members with attendance rates above 95% have test scores of at least 90.
+  - Explanation: 2 violations found. Example scores: 88, 87
+
+Statement 2: TRUE
+  - 2. Students who are not club members and study fewer than 5 hours per week have test scores below 75.
+  - Explanation: All 0 non-club students with <5 study hours have scores <75.
+
+Statement 3: TRUE
+  - 3. Every club member in grade 10 has a test score higher than any non-club member in the same grade.
+  - Explanation: No club or non-club members in grade 10 to compare.
+
+Statement 4: TRUE
+  - 4. If a student is in grade 11 and studies more than 7 hours per week, their test score is at least 82.
+  - Explanation: All 2 grade 11 students with >7 study hours have scores >=82.
+
+Statement 5: FALSE
+  - 5. All club members have attendance rates above 89%.
+  - Explanation: 3 violations found. Example attendance rates: 87.4, 85.8, 88.9
+
+Statement 6: FALSE
+  - 6. Students who are club members and study more than 9 hours per week have test scores exceeding 90.
+  - Explanation: 1 violations found. Example scores: 90
+
+Statement 7: TRUE
+  - 7. In grade 12, students who study more than 8 hours per week have test scores of at least 87.
+  - Explanation: All 2 grade 12 students with >8 study hours have scores >=87.
+
+Statement 8: TRUE
+  - 8. Students in grade 9 who are club members have higher test scores than non-club members in the same grade.
+  - Explanation: No club or non-club members in grade 9 to compare.
+
+Statement 9: TRUE
+  - 9. If a student is in grade 10 and studies more than 8 hours per week, their test score is above 85.
+  - Explanation: All 1 grade 10 students with >8 study hours have scores >85.
+
+Statement 10: TRUE
+  - 10. All students who study more than 10 hours per week are club members.
+  - Explanation: All 2 students studying >10 hours are club members.
+
+[ERROR] Script exited with code 1
+Traceback (most recent call last):
+  File [35m"/home/ayushs13/inference_generation/Qwen/c.checking_statements/python_code_table_0.py"[0m, line [35m230[0m, in [35m<module>[0m
+    [31mmain[0m[1;31m()[0m
+    [31m~~~~[0m[1;31m^^[0m
+  File [35m"/home/ayushs13/inference_generation/Qwen/c.checking_statements/python_code_table_0.py"[0m, line [35m226[0m, in [35mmain[0m
+    truth, explanation = [31mfunc[0m[1;31m(df)[0m
+                         [31m~~~~[0m[1;31m^^^^[0m
+  File [35m"/home/ayushs13/inference_generation/Qwen/c.checking_statements/python_code_table_0.py"[0m, line [35m145[0m, in [35mstmt_11[0m
+    club_mid_study = df[(df['club_member']) & ([31mdf['study_hours_week'].between[0m[1;31m(4, 6, inclusive=True)[0m)]
+                                               [31m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/series.py"[0m, line [35m5669[0m, in [35mbetween[0m
+    raise ValueError(
+    ...<2 lines>...
+    )
+[1;35mValueError[0m: [35mInclusive has to be either string of 'both','left', 'right', or 'neither'.[0m

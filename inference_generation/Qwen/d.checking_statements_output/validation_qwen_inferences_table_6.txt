@@ -1,0 +1,60 @@
+
+Statement 1: FALSE
+  - 1. All organic farms are soybean farms, and all soybean farms are organic.
+  - Explanation: 4 soybean farms are not organic.
+
+Statement 2: TRUE
+  - 2. For non-organic corn farms, higher fertilizer usage correlates with higher yield per acre (r ≈ 0.98).
+  - Explanation: No non-organic corn farms exist.
+
+Statement 3: TRUE
+  - 3. Rice farms require the most irrigation hours per week (≥19.2) compared to any other crop type.
+  - Explanation: 
+
+Statement 4: TRUE
+  - 4. If a farm uses more than 900 kg of fertilizer, it must be either corn or rice.
+  - Explanation: All high-fertilizer farms are corn/rice.
+
+Statement 5: TRUE
+  - 5. Soybean farms have the lowest yield per acre (≤2.72) among all crops.
+  - Explanation: Soybean max yield per acre is ≤2.72 and others are higher.
+
+Statement 6: FALSE
+  - 6. All farms with soil quality index >80 are organic soybean farms.
+  - Explanation: 2 farms violate the condition.
+
+Statement 7: TRUE
+  - 7. For non-organic wheat farms, yield per acre decreases as irrigation hours drop below 14.
+  - Explanation: No non-organic wheat farms with irrigation <14.
+
+Statement 8: TRUE
+  - 8. The highest fertilizer usage (1015 kg) occurs in a corn farm with the highest yield among its crop type.
+  - Explanation: Highest fertilizer corn farm has highest yield.
+
+Statement 9: TRUE
+  - 9. Organic soybean farms have higher soil quality indices than non-organic corn farms.
+  - Explanation: No data to compare.
+
+Statement 10: TRUE
+  - 10. If a farm’s irrigation hours exceed 18, it must be a rice farm.
+  - Explanation: All high-irrigation farms are rice.
+
+Statement 11: TRUE
+  - 11. Non-organic rice farms have the lowest soil quality indices (≤70.2) among all non-organic crops.
+  - Explanation: 
+
+Statement 12: FALSE
+  - 12. For soybean farms, yield per acre increases with irrigation hours (r ≈ 0.91).
+  - Explanation: Correlation is -0.88, not ≈0.91.
+
+Statement 13: TRUE
+  - 13. All corn farms with fertilizer usage >940 kg have yields exceeding 415 tons.
+  - Explanation: All high-fertilizer corn farms exceed 415 tons.
+
+Statement 14: FALSE
+  - 14. The two highest-yielding farms (corn and rice) both use ≥17.1 irrigation hours/week.
+  - Explanation: Top two farms are not corn and rice.
+
+Statement 15: TRUE
+  - 15. Organic farms have lower yield per acre than non-organic farms across all crop types.
+  - Explanation: Organic farms have lower yield per acre than non-organic across all crops.

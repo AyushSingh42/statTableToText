@@ -1,0 +1,60 @@
+
+Statement 1: TRUE
+  - 1. All hypertension patients are smokers.
+  - Explanation: All 4 hypertension patients are smokers.
+
+Statement 2: TRUE
+  - 2. Asthma patients have systolic blood pressure below 120 mmHg.
+  - Explanation: All 3 asthma patients have systolic BP <120.
+
+Statement 3: TRUE
+  - 3. Patients with BMI ≥ 30 have higher systolic blood pressure than those with BMI < 30.
+  - Explanation: Mean systolic BP for BMI≥30: 139.83, BMI<30: 126.33.
+
+Statement 4: TRUE
+  - 4. Among smokers, those with hypertension have higher systolic blood pressure than non-hypertensive smokers.
+  - Explanation: Mean systolic BP for hypertensive smokers: 147.25, non-hypertensive smokers: 126.09.
+
+Statement 5: TRUE
+  - 5. All patients with systolic blood pressure ≥ 140 mmHg have hypertension.
+  - Explanation: All 4 patients with systolic BP ≥140 have hypertension.
+
+Statement 6: TRUE
+  - 6. Migraine patients have diastolic blood pressure below 80 mmHg.
+  - Explanation: All 3 migraine patients have diastolic BP <80.
+
+Statement 7: TRUE
+  - 7. Hypertension patients with BMI ≥ 30 have higher cholesterol levels than non-hypertensive patients with BMI ≥ 30.
+  - Explanation: Mean cholesterol for hypertensive BMI≥30: 227.00, non-hypertensive BMI≥30: 214.25.
+
+Statement 8: TRUE
+  - 8. Patients with diabetes are older than those with asthma.
+  - Explanation: Mean age for diabetes: 52.67, asthma: 27.67.
+
+Statement 9: FALSE
+  - 9. All asthma patients are non-smokers.
+  - Explanation: 3 asthma patients are smokers.
+
+Statement 10: TRUE
+  - 10. Hypertension patients have higher cholesterol levels than diabetes patients.
+  - Explanation: Mean cholesterol for hypertension: 222.00, diabetes: 210.00.
+
+Statement 11: TRUE
+  - 11. Patients with systolic blood pressure ≥ 140 mmHg and BMI ≥ 30 are all smokers.
+  - Explanation: All 2 patients with systolic ≥140 and BMI ≥30 are smokers.
+
+Statement 12: TRUE
+  - 12. Among patients aged ≥ 60, all have BMI ≥ 30.
+  - Explanation: All 3 patients aged ≥60 have BMI ≥30.
+
+Statement 13: TRUE
+  - 13. If a patient has hypertension and BMI ≥ 30, their systolic blood pressure exceeds 140 mmHg.
+  - Explanation: All 2 hypertension patients with BMI ≥30 have systolic BP >140.
+
+Statement 14: FALSE
+  - 14. Patients with diabetes who are smokers have higher BMI than non-smoking diabetes patients.
+  - Explanation: One or both diabetes groups are empty.
+
+Statement 15: TRUE
+  - 15. Hypertension patients have higher systolic blood pressure than diabetes patients.
+  - Explanation: Mean systolic BP for hypertension: 147.25, diabetes: 134.67.

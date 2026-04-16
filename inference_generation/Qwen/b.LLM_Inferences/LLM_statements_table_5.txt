@@ -1,0 +1,17 @@
+
+
+1. All urban households with monthly income exceeding 5.5 have rent costs above 1.8.  
+2. Suburban households with fiber internet have higher monthly incomes than those with cable internet.  
+3. Rural households with satellite internet have utility costs exceeding 150, while those with DSL have utility costs below 120.  
+4. Households with more than 2 vehicles exclusively use fiber or satellite internet.  
+5. Urban households have higher rent-to-income ratios (≥29%) compared to suburban (≤28%) or rural (≤22%) households.  
+6. Suburban households with 5 or more members have monthly incomes exceeding 10.0.  
+7. Households with utility costs above 190 are exclusively suburban or urban.  
+8. Rural households with DSL internet have fewer than 2 vehicles.  
+9. If a household has satellite internet, its utility cost exceeds 150 and its region is rural.  
+10. Suburban households with monthly incomes between 7.0 and 8.0 have rent costs between 1.7 and 2.2.  
+11. Urban households with fiber internet have utility costs exceeding 130 but less than 195.  
+12. Households with more than 3 members have utility costs exceeding 150, except rural households with DSL internet.  
+13. All suburban households with cable internet have monthly incomes between 6.0 and 7.2.  
+14. Rural households with monthly incomes above 5.0 have vehicle counts ≥2.  
+15. Households with internet types other than fiber or satellite are exclusively rural or suburban.

@@ -1,0 +1,17 @@
+
+
+1. Trucks have higher fuel consumption per kilometer compared to vans and buses.  
+2. Routes with windy weather conditions have higher average delays than routes with rainy or clear conditions.  
+3. For all vehicle types, fuel_used_l is approximately proportional to distance_km, with consistent fuel efficiency rates per category.  
+4. If a route has vehicle type truck and weather is windy, then delay_minutes exceeds 24.  
+5. Van routes with average speeds above 55 kph have fuel_used_l less than or equal to 12 liters.  
+6. All routes with delay_minutes exceeding 20 are associated with windy weather conditions.  
+7. Buses operating in cloudy weather have lower fuel_used_l compared to buses operating in windy weather.  
+8. For every vehicle type, routes with distance_km exceeding 150 km have fuel_used_l greater than 25 liters.  
+9. If a route has vehicle type van and weather is clear, then delay_minutes is less than 7.  
+10. Truck routes are the only ones with distance_km exceeding 200 km, and these routes have the highest fuel_used_l and delay_minutes among all vehicle types.  
+11. In rainy weather conditions, bus routes experience higher delays than van routes.  
+12. Routes with vehicle type bus and weather conditions other than clear have delay_minutes between 17 and 21.  
+13. For all vehicle types except trucks in clear weather, average speed decreases as delay_minutes increases.  
+14. Van routes with distance_km below 100 km have both the highest average speeds and the lowest fuel_used_l among all vehicle types.  
+15. If a route has vehicle type bus and weather is cloudy, then delay_minutes is between 18 and 19.

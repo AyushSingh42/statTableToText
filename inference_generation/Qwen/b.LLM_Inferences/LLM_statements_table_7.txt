@@ -1,0 +1,17 @@
+
+
+1. All hotels with a star level of 5 have an average nightly rate exceeding $190 and staff counts above 40.  
+2. If a hotel has an occupancy rate above 80%, its cancellation rate is strictly greater than 12%.  
+3. For star level 3 hotels, cancellation rates are consistently below 11%, with the highest being 10.8% in Denver.  
+4. Every hotel with an average nightly rate exceeding $180 has an occupancy rate above 80%, except Miami (HT006), which has 81.7%.  
+5. Hotels with both high occupancy (>80%) and high average nightly rates (>180) exhibit cancellation rates exceeding 13%.  
+6. If a hotel’s staff count exceeds 40, its star level is at least 4, and its average nightly rate is above $170.  
+7. All cities with average nightly rates above $190 belong to hotels with star levels of 5 and are located in Boston or Chicago.  
+8. For star level 4 hotels, occupancy rates above 80% correlate with staff counts exceeding 35.  
+9. The cancellation rate is inversely related to occupancy rate only in star level 3 hotels, where lower occupancy coincides with lower cancellation rates.  
+10. If a hotel’s cancellation rate is below 9.6%, its occupancy rate is strictly less than 70%, as seen in Detroit (HT014).  
+11. Among star level 4 hotels, those with occupancy rates above 80% have bookings per month exceeding 900, while those below 80% have fewer than 850 bookings.  
+12. Every hotel with a star level of 5 has a cancellation rate exceeding 13%, whereas star level 3 hotels have cancellation rates below 11%.  
+13. For hotels in cities with average nightly rates between $130–$140, cancellation rates are consistently between 10.5%–11.4%.  
+14. If a hotel’s staff count is below 30, its star level is strictly less than 4, and its average nightly rate is below $130.  
+15. The top three hotels by bookings per month (Boston, Chicago, Seattle) all have star levels of 4 or 5 and occupancy rates above 80%.

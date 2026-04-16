@@ -1,0 +1,17 @@
+
+
+1. All North region stores have higher monthly sales than any South or West region stores.  
+2. Stores with more than 20 staff members have higher average basket sizes than those with fewer staff.  
+3. If a store's average basket size exceeds 60, its customer satisfaction score is at least 4.4.  
+4. In the East region, stores with over 2000 transactions have higher customer satisfaction than those with fewer transactions.  
+5. Every store with a customer satisfaction score above 4.5 has more than 21 transactions per staff member.  
+6. Stores in the West region have the lowest monthly sales among all regions.  
+7. All stores with staff counts between 14-16 have customer satisfaction scores below 4.3.  
+8. If a store's monthly sales exceed 150k, it must be located in the North region.  
+9. All stores with customer satisfaction above 4.4 have an average basket size above 59.  
+10. In the South region, stores with higher staff counts have higher customer satisfaction scores.  
+11. Stores with more than 2300 transactions have monthly sales exceeding 140k.  
+12. The East region stores have higher average basket sizes than West region stores with similar staff counts.  
+13. No store with fewer than 12 staff members has a customer satisfaction score above 4.0.  
+14. Stores where transactions exceed 2400 are exclusively in the North region.  
+15. For stores with staff count between 17-20, customer satisfaction is always above 4.2.
