@@ -1,0 +1,65 @@
+analysisWe need to output JSON with key "statements": list of strings. Must be 5-10 statements, each factually true from the table, non-trivial, high-information, natural language. Must include universal, existential, majority/frequency claims. Use up to 2-3 attributes per condition.
+
+Let's examine data.
+
+List patients:
+
+PT001 hypertension age58 bp146/92 chol 218 bmi29.4 smoker yes
+PT002 diabetes age47 bp132/84 chol201 bmi31.1 smoker no
+PT003 asthma age29 bp118/76 chol176 bmi24.8 smoker no
+PT004 migraine age35 bp124/79 chol189 bmi22.7 smoker no
+PT005 hypertension age63 bp151/95 chol233 bmi30.5 smoker yes
+PT006 arthritis age54 bp129/82 chol210 bmi28.3 smoker no
+PT007 diabetes age61 bp138/88 chol224 bmi32.0 smoker yes
+PT008 asthma age23 bp115/73 chol168 bmi21.9 smoker no
+PT009 migraine age41 bp121/78 chol183 bmi25.6 smoker no
+PT010 hypertension age57 bp144/90 chol216 bmi29.8 smoker yes
+PT011 arthritis age66 bp136/85 chol227 bmi31.4 smoker no
+PT012 diabetes age50 bp134/86 chol205 bmi30.1 smoker yes
+PT013 asthma age31 bp117/74 chol171 bmi23.5 smoker no
+PT014 migraine age38 bp123/77 chol180 bmi24.3 smoker no
+PT015 hypertension age59 bp148/93 chol221 bmi30.0 smoker yes
+
+Observations:
+
+- All hypertension patients (PT001, PT005, PT010, PT015) are smokers (yes). That's universal claim.
+
+- All asthma patients are non-smokers. Check: PT003, PT008, PT013 are no. Yes.
+
+- Most diabetes patients are smokers? Diabetes patients: PT002 (no), PT007 (yes), PT012 (yes). 2 out of 3 are smokers, that's majority.
+
+- The highest systolic BP is 151 (PT005). The lowest is 115 (PT008). Could make statement: The patient with the lowest systolic BP is an asthma patient aged 23.
+
+- All migraine patients have systolic BP between 121 and 124 (PT009 121, PT004 124, PT014 123). So range.
+
+- The average BMI of hypertension patients is around (29.4+30.5+29.8+30.0)/4 = 29.925. Could say "Hypertension patients have BMI above 29". All hypertension patients have BMI >=29.4, yes all >29. So universal claim: All hypertension patients have BMI over 29.
+
+- The oldest patient is PT011 age66 arthritis. Could say "The oldest patient (66) has arthritis."
+
+- All patients with cholesterol above 220 are either hypertension or diabetes? Let's check >220: PT001 218 (no), PT005 233 (hypertension), PT007 224 (diabetes), PT010 216 (no), PT011 227 (arthritis), PT015 221 (hypertension). So not universal.
+
+- Most patients with BMI over 30 are smokers? BMI>30: PT002 31.1 no smoker, PT007 32.0 yes, PT011 31.4 no, PT012 30.1 yes. 2 smokers out of 4, not majority.
+
+- All arthritis patients are non-smokers? PT006 no, PT011 no. Yes universal.
+
+- All patients aged under 30 have asthma and are non-smokers. Under 30: PT003 age29 asthma no, PT008 age23 asthma no. Yes.
+
+- Most hypertension patients have systolic BP above 144? Values: 146,151,144,148. 3 out of 4 >=144 (including 144). So majority.
+
+We need 5-10 statements. Let's craft 7 statements covering universal, existential, majority.
+
+Make sure each statement is factually true.
+
+List statements:
+
+1. All hypertension patients (PT001, PT005, PT010, PT015) are smokers.
+2. All asthma patients (PT003, PT008, PT013) are non‑smokers.
+3. The majority of diabetes patients (2 out of 3) are smokers.
+4. All arthritis patients (PT006, PT011) are non‑smokers.
+5. The patient with the lowest systolic blood pressure is an asthma patient aged 23 (PT008 with 115 mmHg).
+6. All migraine patients have systolic blood pressure between 121 mmHg and 124 mmHg.
+7. Every hypertension patient has a body‑mass index greater than 29.
+
+That's 7 statements, each 2-3 attributes. Good.
+
+Return JSON.assistantfinal{"statements": ["All hypertension patients (PT001, PT005, PT010, PT015) are smokers.", "All asthma patients (PT003, PT008, PT013) are non-smokers.", "The majority of diabetes patients (2 out of 3) are smokers.", "All arthritis patients (PT006, PT011) are non-smokers.", "The patient with the lowest systolic blood pressure is an asthma patient aged 23 (PT008 with 115 mmHg).", "All migraine patients have systolic blood pressure between 121 mmHg and 124 mmHg.", "Every hypertension patient has a body-mass index greater than 29."]}

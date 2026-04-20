@@ -1,0 +1,6 @@
+
+[ERROR] Script exited with code 1
+  File [35m"/home/ayushs13/inference_generation/GPT/c.checking_statements/python_code_table_1.py"[0m, line [35m23[0m
+    expl = f"{len(viol)} hypertension patient(s) are non‑smokers (IDs: {', '.join(viol['patient_id'])[1;31m)[0m})."
+                                                                                                     [1;31m^[0m
+[1;35mSyntaxError[0m: [35mf-string: unmatched ')'[0m

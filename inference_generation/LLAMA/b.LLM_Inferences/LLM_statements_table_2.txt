@@ -1,15 +1,10 @@
-1. All stores in the north region have higher average basket sizes than those in the west region.
-2. If a store has a high customer satisfaction rating (above 4.4), then it also has a high staff count (above 18).
-3. Every store with monthly sales above 150k is located in either the north or east region.
-4. Stores in the south region have a lower average basket size than those in the east region, but a higher staff count.
-5. If a store has a high transaction count (above 2200), then it also has a high monthly sales figure (above 120k).
-6. All stores with a low customer satisfaction rating (below 4.0) are located in the west or south region.
-7. Stores in the east region have a higher average basket size than those in the south region, but a lower staff count.
-8. Every store with a high staff count (above 20) is located in either the north or east region.
-9. If a store has a low monthly sales figure (below 100k), then it also has a low transaction count (below 1800).
-10. Stores in the north region have a higher customer satisfaction rating than those in the west region, but a lower staff count.
-11. All stores with a high average basket size (above 60) are located in either the north or east region.
-12. If a store has a high customer satisfaction rating (above 4.5), then it also has a high monthly sales figure (above 140k).
-13. Stores in the south region have a lower monthly sales figure than those in the east region, but a higher transaction count.
-14. Every store with a low staff count (below 15) is located in either the west or south region.
-15. If a store has a high transaction count (above 2400), then it also has a high average basket size (above 62).
+All stores in the north region have higher average customer satisfaction ratings than those in the west region.
+There exists at least one store in each region with a monthly sales figure exceeding 100,000.
+Most stores with staff counts above 18 have average customer satisfaction ratings above 4.3.
+If a store is located in the east region, then it is likely to have a higher monthly sales figure than those in the south region.
+All stores with average basket sizes above 60 have customer satisfaction ratings above 4.2.
+There exists at least one store in the west region with a lower staff count than the average staff count of stores in the south region.
+Stores in the north region tend to have higher average basket sizes than those in the south region.
+All stores with monthly sales figures above 150,000 have staff counts above 20.
+Most stores with customer satisfaction ratings above 4.5 are located in the north region.
+If a store has a staff count above 19, then it is likely to have a higher average customer satisfaction rating than those with lower staff counts.

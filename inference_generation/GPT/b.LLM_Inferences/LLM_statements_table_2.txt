@@ -1,0 +1,68 @@
+analysisWe need to output JSON with key "statements": list of strings. 5-10 statements. Must be factual from table. Provide non-trivial observations.
+
+Let's analyze data.
+
+We have 15 stores, each with region, monthly_sales_k, transactions, avg_basket_size, staff_count, customer_satisfaction.
+
+We can compute some patterns.
+
+First, find highest monthly sales: B009 165.8 (north). Next B005 157.6 (north). B013 149.3 (north). So north region has top three sales.
+
+Lowest monthly sales: B012 85.6 (west), B004 88.9 (west), B008 92.3 (west). So west region lowest.
+
+Average basket size highest: B009 64.3, B005 63.3, B013 62.4, B003 62.0, B011 61.1. All north/east.
+
+Customer satisfaction highest: B009 4.7, B005 4.6, B003 4.5, B013 4.5, B011 4.4, B015 4.3 etc.
+
+Staff count highest: B009 23, B005 22, B013 21, B003 20, B011 19.
+
+Transactions highest: B009 2579, B005 2488, B013 2391, B003 2311, B011 2236.
+
+We can make statements like:
+
+- All north stores have monthly sales above 128.4? Let's check north stores: B001 128.4, B005 157.6, B009 165.8, B013 149.3. Yes all >=128.4. But is that a universal claim? "All north region stores have monthly sales exceeding 128k"? B001 exactly 128.4, so >128? Not strictly. Could say "All north region stores have monthly sales of at least 128.4k". That's true but trivial? It's just the minimum. Might be okay.
+
+Better: "All north region stores have customer satisfaction of at least 4.3". Check north: B001 4.3, B005 4.6, B009 4.7, B013 4.5. Yes.
+
+- Existential: "There exists a west region store with customer satisfaction below 4.0". West stores: B004 3.9, B008 3.8, B012 3.7. Yes.
+
+- Majority: "Most stores with staff count of 20 or more have monthly sales above 130k". Staff >=20: B003 (20, 143.2), B005 (22,157.6), B009 (23,165.8), B011 (19 not >=20), B013 (21,149.3). That's 4 stores, all >130k. So true.
+
+- Relationship: "Stores with average basket size above 62 have customer satisfaction of at least 4.5". Those: B009 64.3, 4.7; B005 63.3,4.6; B013 62.4,4.5; B003 62.0,4.5 (equal 62). So yes.
+
+- "The east region stores have average basket size between 58.3 and 62.0". East stores: B003 62.0, B007 58.3, B011 61.1, B015 59.9. Yes.
+
+- "The store with the highest staff count also has the highest monthly sales". Highest staff count is B009 (23) and highest sales also B009 (165.8). True.
+
+- "All south region stores have customer satisfaction of 4.0 or higher". South stores: B002 4.0, B006 4.1, B010 4.0, B014 4.2. Yes.
+
+- "The average basket size of west region stores is below 54". West: B004 53.7, B008 53.9, B012 53.3. Yes average below 54.
+
+- "There are more north stores (4) than any other region". Yes.
+
+We need 5-10 statements. Provide maybe 8.
+
+Make sure each statement is natural language, not too complex, max 2-3 attributes.
+
+Now produce JSON.
+
+Check each statement for factual accuracy.
+
+Let's list statements:
+
+1. All north region stores have customer satisfaction scores of at least 4.3.
+2. All south region stores have customer satisfaction of 4.0 or higher.
+3. The store with the highest staff count (B009) also records the highest monthly sales.
+4. Stores with an average basket size above 62 have customer satisfaction of at least 4.5.
+5. There exists a west region store with customer satisfaction below 4.0.
+6. Most stores with staff counts of 20 or more have monthly sales exceeding 130,000.
+7. East region stores have average basket sizes ranging from 58.3 to 62.0.
+8. The average basket size of west region stores is below 54.
+
+Check statement 6: staff >=20 stores: B003 (20, 143.2), B005 (22,157.6), B009 (23,165.8), B013 (21,149.3). That's 4 stores, all >130k. "Most" of them (i.e., more than half) have sales >130k, true. Could also say "All". But "Most" is okay.
+
+Statement 8: average basket size of west region stores is below 54. West basket sizes: 53.7,53.9,53.3 all below 54. So true.
+
+All good.
+
+Now output JSON.assistantfinal json{"statements": ["All north region stores have customer satisfaction scores of at least 4.3.", "All south region stores have customer satisfaction of 4.0 or higher.", "The store with the highest staff count (B009) also records the highest monthly sales.", "Stores with an average basket size above 62 have customer satisfaction of at least 4.5.", "There exists a west region store with customer satisfaction below 4.0.", "Most stores with staff counts of 20 or more have monthly sales exceeding 130,000.", "East region stores have average basket sizes ranging from 58.3 to 62.0.", "The average basket size of west region stores is below 54."]}

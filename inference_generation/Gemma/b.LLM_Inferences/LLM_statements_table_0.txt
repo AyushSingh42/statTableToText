@@ -1,0 +1,15 @@
+1. If a student is in grade 12 and has a study hours per week greater than 8, their test score is always above 85.
+2. Students with an attendance rate above 95% and who are club members have a test score of at least 88.
+3. If a student is in grade 9 or 10 and has a study hours per week less than 5, their test score is below 75.
+4. Students with a study hours per week greater than 7 and an attendance rate above 93% have a test score of at least 84.
+5. If a student is in grade 11 or 12 and is not a club member, their test score is below 90.
+6. Students with an attendance rate below 90% and who are not club members have a test score below 75.
+7. If a student is in grade 10 or 11 and has a study hours per week greater than 7, their test score is at least 82.
+8. Students with a study hours per week less than 5 and an attendance rate below 90% have a test score below 70.
+9. If a student is in grade 12 and is a club member, their test score is at least 90.
+10. Students with an attendance rate above 95% and who are not club members have a test score below 90.
+11. If a student is in grade 9 or 10 and has a study hours per week greater than 7, their test score is at least 84.
+12. Students with a study hours per week less than 5 and an attendance rate above 90% have a test score below 75.
+13. If a student is in grade 11 or 12 and is a club member, their test score is at least 85.
+14. Students with an attendance rate below 90% and who are club members have a test score below 80.
+15. If a student is in grade 12 and has a study hours per week less than 8, their test score is below 90.

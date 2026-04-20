@@ -1,0 +1,78 @@
+analysisWe need to output JSON with key "statements": list of strings. Must be 5-10 statements, each factually true, non-trivial, high-information, natural language. Use data given.
+
+Let's analyze data.
+
+Rows:
+
+S001: grade 9, study 6.5, attendance 94.2, test 81, club yes
+S002: 10, 8.0, 96.5, 88, no
+S003: 11, 4.5, 89.1, 74, yes
+S004: 12, 10.2, 98.3, 92, yes
+S005: 9, 3.8, 87.4, 69, no
+S006: 10, 7.1, 93.6, 84, no
+S007: 11, 9.4, 97.0, 90, yes
+S008: 12, 5.7, 91.2, 78, no
+S009: 9, 11.0, 99.1, 95, yes
+S010: 10, 2.9, 85.8, 66, no
+S011: 11, 6.8, 92.7, 82, yes
+S012: 12, 8.6, 95.4, 87, no
+S013: 9, 4.1, 88.9, 72, no
+S014: 10, 9.8, 97.6, 91, yes
+S015: 11, 7.5, 94.8, 85, yes
+
+Observations:
+
+- All club members have attendance >= 89? Let's check club yes: S001 94.2, S003 89.1, S004 98.3, S007 97.0, S009 99.1, S011 92.7, S014 97.6, S015 94.8. Minimum 89.1, yes all >=89. So statement: All students who are club members have attendance rates above 89%.
+
+- All grade 12 students have test scores >=78? Grade12: S004 92, S008 78, S012 87. Yes all >=78. Could say "All 12th graders scored at least 78 on the test."
+
+- Students with study hours >10 have test scores >=95? Only S009 has 11.0 hours, test 95. So universal claim holds but only one student; but rule says avoid overly specific conditions that apply to only 1-2 individuals. Might be okay but maybe better to use "Students who study more than 9 hours per week have test scores of at least 90." Let's check: study >9: S004 10.2 -> 92, S007 9.4 (not >9), S009 11.0 ->95, S014 9.8 (not >9). So >9 includes S004 and S009. Both have test >=90. So statement: All students who study more than 9 hours per week scored at least 90.
+
+- Majority of 10th graders are not club members? 10th graders: S002 no, S006 no, S010 no, S014 yes. So 3 out of 4 not members = 75% not members. So "Most 10th-grade students are not club members."
+
+- Highest attendance rate is 99.1 (S009). Could say "The student with the highest attendance rate (99.1%) also has the highest test score (95)." That's true.
+
+- Among students with attendance >=95, test scores are >=88? Let's list attendance >=95: S002 96.5 ->88, S004 98.3 ->92, S007 97.0 ->90, S009 99.1 ->95, S014 97.6 ->91. All test >=88. So statement: All students with attendance rates of 95% or higher scored at least 88 on the test.
+
+- There exists a 9th grader with study hours less than 5 and test score below 70? Check 9th graders: S001 6.5,81; S005 3.8,69; S009 11,95; S013 4.1,72. So S005 has study <5 and test 69 (<70). So existential claim.
+
+- Most club members have test scores above 80? Club members: S001 81, S003 74, S004 92, S007 90, S009 95, S011 82, S014 91, S015 85. Count above 80: S001, S004, S007, S009, S011, S014, S015 =7 out of 8 = 87.5% > majority. So statement.
+
+- Students in grade 11 have average study hours? Might be too numeric.
+
+We need 5-10 statements. Let's craft 8 statements.
+
+Make sure each statement is natural language, factual.
+
+List:
+
+1. All students who are club members have attendance rates above 89%.
+2. All 12th‑grade students scored at least 78 on the test.
+3. All students who study more than 9 hours per week scored 90 or higher on the test.
+4. Most 10th‑grade students are not members of a club.
+5. The student with the highest attendance rate (99.1%) also achieved the highest test score (95).
+6. All students with attendance rates of 95% or higher scored at least 88 on the test.
+7. There is at least one 9th‑grader who studied fewer than 5 hours per week and scored below 70 on the test.
+8. The majority of club members (7 out of 8) earned test scores above 80.
+
+Check each for truth.
+
+1: club members attendance min 89.1 >89, yes.
+
+2: grade12 scores: 92,78,87 all >=78, yes.
+
+3: study >9: S004 10.2 ->92, S009 11.0 ->95. Both >=90, yes.
+
+4: 10th graders: 4 total, 3 not members, majority not members, yes.
+
+5: highest attendance S009 99.1, highest test 95 also S009, yes.
+
+6: attendance >=95: S002 96.5 88, S004 98.3 92, S007 97.0 90, S009 99.1 95, S014 97.6 91. All >=88, yes.
+
+7: 9th grader with study <5 and test <70: S005 fits, yes.
+
+8: club members 8, those >80: S001 81, S003 74 (no), S004 92, S007 90, S009 95, S011 82, S014 91, S015 85. That's 7 out of 8 >80, majority, yes.
+
+All good.
+
+Now output JSON.assistantfinal{"statements": ["All students who are club members have attendance rates above 89%.", "All 12th‑grade students scored at least 78 on the test.", "All students who study more than 9 hours per week scored 90 or higher on the test.", "Most 10th‑grade students are not members of a club.", "The student with the highest attendance rate (99.1%) also achieved the highest test score (95).", "All students with attendance rates of 95% or higher scored at least 88 on the test.", "There is at least one 9th‑grader who studied fewer than 5 hours per week and scored below 70 on the test.", "The majority of club members (7 out of 8) earned test scores above 80."]}

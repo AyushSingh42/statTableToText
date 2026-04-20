@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. Most truck routes (4 out of 5) have an average speed above 60 kph, with only one truck route averaging 59.6 kph.
+  - Explanation: Exactly 5 truck routes: 4 >60 kph, 1 = 59.6 kph.
+
+Statement 2: TRUE
+  - 2. All bus routes have average speeds below 50 kph, ranging from 46.9 to 49.7 kph.
+  - Explanation: Bus speeds span 46.9–49.7 kph, all <50.
+
+Statement 3: TRUE
+  - 3. Every route that experienced rain recorded a delay of at least 7 minutes.
+  - Explanation: All 4 rainy routes have delay ≥7 min.
+
+Statement 4: TRUE
+  - 4. Vans consistently show the lowest fuel consumption per kilometer, with values between 0.11 and 0.12 L/km, lower than any bus or truck route.
+  - Explanation: Van consumption 0.11–0.12 L/km; next lowest (bus/truck) is 0.199 L/km.
+
+Statement 5: TRUE
+  - 5. Clear weather occurs only on truck and van routes; no bus route in the data was recorded under clear conditions.
+  - Explanation: All 5 clear routes are {'van', 'truck'}.
+
+Statement 6: TRUE
+  - 6. The longest route (R013, 231.4 km) is a truck route in windy weather and also has the highest fuel usage (49.5 L) and the greatest delay (27 minutes) among all records.
+  - Explanation: Record matches all specified attributes.
+
+Statement 7: TRUE
+  - 7. All truck routes use more than 39 L of fuel, which is higher than any van (≤12 L) or bus (≤31.4 L) route.
+  - Explanation: Truck min fuel 39.1>39; van max 12.0≤12; bus max 31.4≤31.4.
+
+Statement 8: TRUE
+  - 8. Most windy routes (2 out of 3) are truck routes, indicating trucks are more frequently affected by windy conditions in this dataset.
+  - Explanation: 3 windy routes, 2 are trucks.

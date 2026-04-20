@@ -1,20 +1,36 @@
 
-[ERROR] Script exited with code 1
-Traceback (most recent call last):
-  File [35m"/home/ayushs13/inference_generation/LLAMA/c.checking_statements/python_code_table_3.py"[0m, line [35m193[0m, in [35m<module>[0m
-    [31mmain[0m[1;31m()[0m
-    [31m~~~~[0m[1;31m^^[0m
-  File [35m"/home/ayushs13/inference_generation/LLAMA/c.checking_statements/python_code_table_3.py"[0m, line [35m189[0m, in [35mmain[0m
-    truth, explanation = [31mfunc[0m[1;31m(df)[0m
-                         [31m~~~~[0m[1;31m^^^^[0m
-  File [35m"/home/ayushs13/inference_generation/LLAMA/c.checking_statements/python_code_table_3.py"[0m, line [35m15[0m, in [35mstmt_1[0m
-    truth = ([1;31mtruck_avg_speeds > van_avg_speeds[0m).all()
-             [1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
-  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/ops/common.py"[0m, line [35m76[0m, in [35mnew_method[0m
-    return method(self, other)
-  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/arraylike.py"[0m, line [35m56[0m, in [35m__gt__[0m
-    return [31mself._cmp_method[0m[1;31m(other, operator.gt)[0m
-           [31m~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^[0m
-  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/series.py"[0m, line [35m6133[0m, in [35m_cmp_method[0m
-    raise ValueError("Can only compare identically-labeled Series objects")
-[1;35mValueError[0m: [35mCan only compare identically-labeled Series objects[0m
+Statement 1: FALSE
+  - 1. All trucks have an average speed of over 60 kph.
+  - Explanation: 1 trucks violate the rule (average speeds: 59.6).
+
+Statement 2: TRUE
+  - 2. There exists at least one van that traveled less than 100 km.
+  - Explanation: There are 4 vans that traveled less than 100 km.
+
+Statement 3: TRUE
+  - 3. Most buses experienced delays of over 15 minutes.
+  - Explanation: 5 buses experienced delays of over 15 minutes, which is more than half of all buses.
+
+Statement 4: FALSE
+  - 4. If the weather was clear, then the average delay was less than 12 minutes.
+  - Explanation: 2 vehicles with clear weather violate the rule (average delays: 12, 14).
+
+Statement 5: TRUE
+  - 5. All vehicles that traveled over 200 km were trucks.
+  - Explanation: All 3 vehicles that traveled over 200 km were trucks.
+
+Statement 6: TRUE
+  - 6. There exists at least one bus that used over 30 liters of fuel.
+  - Explanation: There are 1 buses that used over 30 liters of fuel.
+
+Statement 7: TRUE
+  - 7. Most vans had an average speed of over 53 kph.
+  - Explanation: 4 vans had an average speed of over 53 kph, which is more than half of all vans.
+
+Statement 8: FALSE
+  - 8. If the weather was windy, then the average fuel used was over 40 liters.
+  - Explanation: 1 vehicles with windy weather violate the rule (average fuel used: 31.4).
+
+Statement 9: TRUE
+  - 9. All vehicles that experienced delays of less than 10 minutes were vans.
+  - Explanation: All 5 vehicles that experienced delays of less than 10 minutes were vans.

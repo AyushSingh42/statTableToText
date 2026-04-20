@@ -1,0 +1,49 @@
+analysisWe need to output JSON with key "statements": list of strings. 5-10 statements. Must be factual from table. Provide non-trivial observations.
+
+Let's analyze data.
+
+Rows:
+
+R001 truck 184.5 km avg 62.4 kph fuel 39.1 delay 12 clear
+R002 van 96.2 54.8 11.5 8 rain
+R003 bus 141.7 48.3 28.6 19 cloudy
+R004 truck 220.9 60.1 47.8 25 windy
+R005 van 88.4 57.2 10.1 6 clear
+R006 bus 132.6 46.9 26.9 17 rain
+R007 truck 205.3 63.5 43.2 14 clear
+R008 van 74.1 52.0 8.4 9 cloudy
+R009 bus 156.8 49.7 31.4 21 windy
+R010 truck 193.6 61.8 40.7 11 clear
+R011 van 102.5 55.9 12.0 7 rain
+R012 bus 147.2 47.5 29.8 18 cloudy
+R013 truck 231.4 59.6 49.5 27 windy
+R014 van 81.3 53.4 9.1 5 clear
+R015 bus 138.9 48.8 27.7 16 rain
+
+Observations:
+
+- All trucks have avg speed >60? Check: truck speeds: 62.4,60.1,63.5,61.8,59.6. One is 59.6 (<60). So not all >60. But maybe "most trucks have avg speed above 60 kph" (4 out of 5). That's majority claim.
+
+- All clear weather routes have delay <=12? Clear rows: R001 delay12, R005 6, R007 14 (actually 14 >12), R010 11, R014 5. So not all <=12 because R007 14. So maybe "most clear routes have delay 12 minutes or less" (4 out of 5). That's majority.
+
+- Vans have the lowest average fuel usage per km? Compute fuel per km: For each van: R002 11.5/96.2=0.1196, R005 10.1/88.4=0.1143, R008 8.4/74.1=0.1134, R011 12.0/102.5=0.1171, R014 9.1/81.3=0.1120. Buses: compute roughly higher: R003 28.6/141.7=0.202, etc. Trucks: 39.1/184.5=0.212, etc. So statement: "Vans have the lowest fuel consumption per kilometer compared to trucks and buses." That's universal claim about all vans vs others.
+
+- The longest distance route is R013 (231.4 km) and it is a truck in windy weather with the highest fuel used (49.5 L) and highest delay (27 min). So statement: "The route with the greatest distance (R013) is a truck route, experienced windy weather, and has the highest fuel usage and delay among all records."
+
+- All rainy weather routes have delay at least 7 minutes. Rain rows: R002 delay8, R006 17, R011 7, R015 16. Yes all >=7. So universal claim.
+
+- Buses have average speed between 46.9 and 49.7 kph (range). Indeed bus speeds: 48.3,46.9,49.7,47.5,48.8. So statement: "All bus routes have average speeds below 50 kph."
+
+- Trucks have the highest average fuel usage per route (over 39 L) compared to vans (<12 L) and buses (<32 L). That's universal claim.
+
+- Clear weather appears only with trucks and vans, never with buses. Check clear rows: trucks R001,R007,R010; vans R005,R014. No bus clear. So statement.
+
+- Most windy routes are trucks (R004,R009,R013). Actually windy rows: R004 truck, R009 bus, R013 truck. So 2/3 trucks. Could say majority.
+
+We need 5-10 statements. Provide maybe 8.
+
+Make sure each statement is natural language, factual.
+
+Now produce JSON.
+
+assistantfinal{"statements":["Most truck routes (4 out of 5) have an average speed above 60 kph, with only one truck route averaging 59.6 kph.","All bus routes have average speeds below 50 kph, ranging from 46.9 to 49.7 kph.","Every route that experienced rain recorded a delay of at least 7 minutes.","Vans consistently show the lowest fuel consumption per kilometer, with values between 0.11 and 0.12 L/km, lower than any bus or truck route.","Clear weather occurs only on truck and van routes; no bus route in the data was recorded under clear conditions.","The longest route (R013, 231.4 km) is a truck route in windy weather and also has the highest fuel usage (49.5 L) and the greatest delay (27 minutes) among all records.","All truck routes use more than 39 L of fuel, which is higher than any van (≤12 L) or bus (≤31.4 L) route.","Most windy routes (2 out of 3) are truck routes, indicating trucks are more frequently affected by windy conditions in this dataset."]}
