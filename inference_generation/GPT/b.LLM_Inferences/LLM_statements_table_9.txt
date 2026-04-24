@@ -1,0 +1,89 @@
+analysisWe need to output JSON with key "statements": list of strings. Must be 5-10 statements. Must be factual, non-redundant, tightest bounds. Let's analyze data.
+
+We have 15 records, each with zone (downtown, industrial, residential, park). Variables: avg_temp_c, avg_humidity, pm25, noise_db, foot_traffic, power_use_kwh.
+
+We need statements about patterns.
+
+Let's compute per zone stats.
+
+Downtown sensors: SN001, SN005, SN009, SN013. Data:
+SN001: temp 24.8, hum 58.2, pm25 18.4, noise 67.1, foot 1240, power 312.5
+SN005: 25.4,57.1,20.2,68.5,1325,325.7
+SN009: 25.9,56.4,21.7,69.2,1388,333.9
+SN013: 24.6,58.9,19.1,66.8,1264,318.0
+
+Observations: avg_temp between 24.6-25.9. humidity 56.4-58.9. pm25 18.4-21.7. noise 66.8-69.2. foot traffic 1240-1388. power 312.5-333.9.
+
+Industrial sensors: SN002, SN006, SN010, SN014.
+SN002: 26.3,54.7,31.6,72.8,860,428.9
+SN006: 27.0,53.6,34.1,74.3,905,439.4
+SN010: 26.7,55.1,32.4,73.5,892,434.2
+SN014: 27.3,52.8,35.0,75.1,918,445.6
+
+Observations: temp 26.3-27.3, humidity 52.8-55.1, pm25 31.6-35.0, noise 72.8-75.1, foot 860-918, power 428.9-445.6.
+
+Residential sensors: SN003, SN007, SN011, SN015.
+SN003: 23.9,61.5,12.7,51.4,540,198.3
+SN007: 24.2,60.3,13.8,52.6,575,205.1
+SN011: 23.5,62.2,11.9,50.8,528,194.6
+SN015: 24.0,61.0,12.9,51.9,562,201.7
+
+Observations: temp 23.5-24.2, humidity 60.3-62.2, pm25 11.9-13.8, noise 50.8-52.6, foot 528-575, power 194.6-205.1.
+
+Park sensors: SN004, SN008, SN012.
+SN004: 22.1,64.8,9.5,43.2,710,121.6
+SN008: 21.8,66.0,8.9,41.7,689,118.4
+SN012: 22.4,65.5,9.8,42.5,734,123.9
+
+Observations: temp 21.8-22.4, humidity 64.8-66.0, pm25 8.9-9.8, noise 41.7-43.2, foot 689-734, power 118.4-123.9.
+
+Now statements.
+
+We need 5-10 statements, each non-redundant, tightest.
+
+Potential statements:
+
+1. For all sensors in the industrial zone, average noise level exceeds 72 dB. (Check: min noise 72.8 > 72). Could tighten to >72.8? Actually min is 72.8, so "noise > 72.8" would be false for 72.8 itself. So "noise >= 72.8". But we can say "noise is at least 72.8 dB". But we need a statement that is tightest: "noise >= 72.8 dB". Could also say "noise > 72 dB". That's less tight but still true. We want tightest bound: "noise >= 72.8 dB". However we need natural language: "All industrial sensors have an average noise level of at least 72.8 dB." That's fine.
+
+2. For all sensors in the park zone, average PM2.5 is less than 10 µg/m³. Check max pm25 9.8 <10. So "PM2.5 is below 10". Could tighten to "<=9.8". But "less than 10" is less tight but still true. The tightest bound is "<=9.8". But we can phrase "does not exceed 9.8". Let's produce "All park sensors have an average PM2.5 of no more than 9.8 µg/m³."
+
+3. For all sensors, higher zone temperature correlates with higher noise: but that's not a strict rule. Need conditional.
+
+Maybe: "If a sensor is in the downtown zone, its foot traffic exceeds 1200 per day." Check min foot 1240 >1200. So "foot traffic > 1200". Tightest bound: >=1240. So statement: "All downtown sensors record foot traffic of at least 1240."
+
+4. "All residential sensors have average power use below 210 kWh." Max power 205.1 <210. Tightest bound: <=205.1. So "All residential sensors use no more than 205.1 kWh."
+
+5. "All industrial sensors have average PM2.5 greater than 31 µg/m³." Min 31.6 >31. Tightest bound: >=31.6. So "All industrial sensors have PM2.5 of at least 31.6 µg/m³."
+
+6. "All park sensors have average temperature below 23°C." Max 22.4 <23. So "All park sensors have temperature under 23°C."
+
+7. "All downtown sensors have average humidity between 56% and 59%." That's a range. Could be "between 56.4% and 58.9%". That's precise. So statement: "All downtown sensors have average humidity between 56.4% and 58.9%."
+
+8. "All residential sensors have average noise level between 50.8 dB and 52.6 dB." That's precise.
+
+We need 5-10 statements, ensure non-redundant. Some may overlap (e.g., noise statements for residential vs industrial). That's okay as they refer to different zones.
+
+Check redundancy: Statement about industrial sensors noise >=72.8 and also about industrial sensors PM2.5 >=31.6 are distinct.
+
+Make sure not to include both "All industrial sensors have noise >=72.8" and "All industrial sensors have noise >72". We only include one.
+
+Now produce JSON with statements list.
+
+Let's craft 8 statements.
+
+List:
+
+1. All industrial sensors have an average noise level of at least 72.8 dB.
+2. All park sensors have an average PM2.5 concentration of no more than 9.8 µg/m³.
+3. All downtown sensors record foot traffic of at least 1240 persons per day.
+4. All residential sensors use no more than 205.1 kWh of power on average.
+5. All industrial sensors have an average PM2.5 concentration of at least 31.6 µg/m³.
+6. All park sensors have an average temperature below 23 °C.
+7. All downtown sensors have average humidity between 56.4 % and 58.9 %.
+8. All residential sensors have average noise levels between 50.8 dB and 52.6 dB.
+
+Check redundancy: none overlap.
+
+All statements are factual.
+
+Now output JSON.assistantfinal{"statements": ["All industrial sensors have an average noise level of at least 72.8 dB.", "All park sensors have an average PM2.5 concentration of no more than 9.8 µg/m³.", "All downtown sensors record foot traffic of at least 1240 persons per day.", "All residential sensors use no more than 205.1 kWh of power on average.", "All industrial sensors have an average PM2.5 concentration of at least 31.6 µg/m³.", "All park sensors have an average temperature below 23 °C.", "All downtown sensors have average humidity between 56.4 % and 58.9 %.", "All residential sensors have average noise levels between 50.8 dB and 52.6 dB."]}

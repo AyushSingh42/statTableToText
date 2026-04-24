@@ -1,0 +1,18 @@
+All farms with organic crops have a soil quality index greater than 70.
+If a farm grows soybean, then its yield is less than 450 tons.
+There exists at least one farm that grows rice with an acreage greater than 120.
+For all farms with irrigation hours per week greater than 15, their fertilizer usage is greater than 800 kg.
+All farms with wheat crops have an acreage greater than 70.
+If a farm grows corn, then its yield is less than 370 tons.
+For all farms with organic crops, their soil quality index is greater than 72.
+There exists at least one farm that grows soybean with an acreage less than 100 and yield greater than 280 tons.
+All farms with rice crops have a fertilizer usage greater than 890 kg.
+If a farm has an acreage greater than 140, then its crop type is either soybean or wheat.
+For all farms with irrigation hours per week less than 12, their yield is less than 300 tons.
+Most farms have a soil quality index between 70 and 80.
+If a farm grows wheat, then its yield is greater than 350 tons.
+There exists at least one farm that grows corn with an acreage greater than 140 and yield less than 300 tons.
+All farms with organic crops have an irrigation hours per week greater than 14.
+For all farms with fertilizer usage greater than 900 kg, their crop type is either rice or corn.
+If a farm has a soil quality index greater than 80, then its crop type is wheat.
+There exists at least one farm that grows soybean with a yield greater than 420 tons and acreage less than 120.

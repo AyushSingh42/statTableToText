@@ -1,6 +1,40 @@
 
-[ERROR] Script exited with code 1
-  File [35m"/home/ayushs13/inference_generation/GPT/c.checking_statements/python_code_table_1.py"[0m, line [35m23[0m
-    expl = f"{len(viol)} hypertension patient(s) are non‑smokers (IDs: {', '.join(viol['patient_id'])[1;31m)[0m})."
-                                                                                                     [1;31m^[0m
-[1;35mSyntaxError[0m: [35mf-string: unmatched ')'[0m
+Statement 1: TRUE
+  - 1. All hypertension patients are smokers.
+  - Explanation: All 4 hypertension patients are smokers.
+
+Statement 2: TRUE
+  - 2. All asthma patients are non-smokers.
+  - Explanation: All 3 asthma patients are non‑smokers.
+
+Statement 3: TRUE
+  - 3. All migraine patients are non-smokers.
+  - Explanation: All 3 migraine patients are non‑smokers.
+
+Statement 4: TRUE
+  - 4. For all hypertension patients, age is between 57 and 63 years.
+  - Explanation: All 4 hypertension patients have age 57–63.
+
+Statement 5: TRUE
+  - 5. All diabetes patients have a BMI between 30.1 and 32.0.
+  - Explanation: All 3 diabetes patients have BMI 30.1–32.0.
+
+Statement 6: TRUE
+  - 6. All asthma patients have a systolic blood pressure between 115 and 118 mmHg.
+  - Explanation: All 3 asthma patients have systolic BP 115–118.
+
+Statement 7: TRUE
+  - 7. All migraine patients have a diastolic blood pressure between 77 and 79 mmHg.
+  - Explanation: All 3 migraine patients have diastolic BP 77–79.
+
+Statement 8: TRUE
+  - 8. All arthritis patients have a cholesterol level between 210 and 227 mg/dL.
+  - Explanation: All 2 arthritis patients have cholesterol 210–227 mg/dL.
+
+Statement 9: TRUE
+  - 9. If a patient is a smoker, then they have either hypertension or diabetes.
+  - Explanation: All 6 smokers have hypertension or diabetes.
+
+Statement 10: TRUE
+  - 10. Most patients have a cholesterol level above 180 mg/dL.
+  - Explanation: 11 out of 15 patients (73.3%) have cholesterol > 180 mg/dL.

@@ -1,0 +1,13 @@
+All students with a test score greater than or equal to 90 have a study time greater than or equal to 9 hours per week.
+If a student is a club member, then their test score is less than or equal to 97.
+There exists at least one student in the 9th grade with a test score greater than 90.
+All students with an attendance rate greater than 94 have a test score greater than or equal to 84.
+If a student is in the 12th grade, then their study time is less than or equal to 8.4 hours per week.
+Most students have an attendance rate greater than 90.
+All students with a test score less than 80 have a study time less than 8 hours per week.
+If a student is in the 11th grade, then their test score is greater than or equal to 81.
+There exists at least one student with a study time less than 4 hours per week who is a club member.
+All students with a test score greater than or equal to 97 have a grade level less than or equal to 10.
+If a student has a study time greater than 10 hours per week, then they are not a club member.
+Most students have a study time less than 10 hours per week.
+All students with an attendance rate greater than 96 have a test score greater than or equal to 84.

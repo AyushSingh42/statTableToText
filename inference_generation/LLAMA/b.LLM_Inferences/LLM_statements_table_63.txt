@@ -1,0 +1,20 @@
+All vehicles with a distance greater than 200 km have an average speed less than 65 kph.
+If a vehicle is a truck, then its fuel used is less than 30 liters.
+There exists at least one van with a delay of less than 5 minutes.
+All buses have a distance less than 150 km.
+If a vehicle is a van, then its average speed is less than 60 kph.
+Most vehicles have a delay greater than 15 minutes.
+All vehicles with a distance less than 100 km have a fuel used greater than 10 liters.
+If a vehicle is a truck, then its average speed is less than 55 kph.
+There exists at least one bus with a fuel used less than 10 liters.
+All vehicles with a distance greater than 150 km have a delay greater than 10 minutes.
+If a vehicle is a van, then its distance is less than 250 km.
+Most trucks have a distance greater than 150 km.
+All vehicles with an average speed greater than 60 kph have a fuel used greater than 20 liters.
+If a vehicle is a bus, then its delay is greater than 15 minutes.
+There exists at least one truck with a delay less than 15 minutes.
+All vehicles with a distance less than 200 km have an average speed less than 65 kph.
+If a vehicle is a van, then its fuel used is greater than 20 liters.
+Most vehicles have an average speed less than 60 kph.
+All buses have a fuel used less than 40 liters.
+If a vehicle is a truck, then its distance is greater than 100 km.

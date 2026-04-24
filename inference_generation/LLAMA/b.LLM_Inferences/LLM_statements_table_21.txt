@@ -1,0 +1,17 @@
+All patients with a diagnosis of diabetes have a BMI greater than or equal to 24.8.
+If a patient is a smoker, then their age is less than 78 years.
+There exists at least one patient with a diagnosis of asthma whose cholesterol level is greater than 230 mg/dl.
+For all patients with a BMI greater than 30, their systolic blood pressure is greater than 118 mmHg.
+If a patient is a non-smoker, then their diastolic blood pressure is less than 98 mmHg.
+All patients with a diagnosis of arthritis have a BMI less than 30.
+Most patients in the table have a systolic blood pressure greater than 120 mmHg.
+If a patient's age is greater than 60, then their cholesterol level is less than 240 mg/dl.
+For all patients with a BMI between 20 and 25, their age is less than 62 years.
+There exists at least one patient with a diagnosis of hypertension whose systolic blood pressure is greater than 150 mmHg.
+All patients with a cholesterol level greater than 220 mg/dl have a BMI greater than 23.8.
+If a patient is a smoker and has a diagnosis of asthma, then their age is less than 77 years.
+For all patients with a diastolic blood pressure greater than 80 mmHg, their systolic blood pressure is greater than 140 mmHg.
+Most patients in the table have a BMI greater than 25.
+If a patient's age is less than 40, then their cholesterol level is greater than 200 mg/dl.
+There exists at least one patient with a diagnosis of diabetes whose BMI is greater than 32.
+All patients with a systolic blood pressure greater than 150 mmHg have a diagnosis of either diabetes or hypertension.

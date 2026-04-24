@@ -1,0 +1,17 @@
+All farms with crop type 'wheat' have an acreage greater than 90.
+If a farm has crop type 'rice', then its soil quality index is less than 82.
+There exists at least one farm with crop type'soybean' that has an organic status of 'yes'.
+For all farms with irrigation hours per week greater than 15, their yield tons are greater than 300.
+All farms with fertilizer kg greater than 900 have a crop type of'soybean' or 'wheat'.
+If a farm has an organic status of 'yes', then its soil quality index is greater than 68.
+Most farms have an acreage greater than 90.
+For all farms with crop type 'rice', if their irrigation hours per week are greater than 15, then their yield tons are greater than 300.
+There exists at least one farm with crop type 'wheat' that has an organic status of 'no'.
+All farms with soil quality index greater than 78 have a crop type of'soybean'.
+If a farm has a crop type of'soybean', then its yield tons are less than 400.
+For all farms with fertilizer kg greater than 700, their yield tons are greater than 250.
+All farms with irrigation hours per week less than 12 have a crop type of 'rice' or 'wheat'.
+There exists at least one farm with crop type 'rice' that has an acreage less than 100.
+For all farms with crop type 'wheat', if their fertilizer kg are greater than 800, then their yield tons are greater than 400.
+Most farms with crop type'soybean' have an organic status of 'yes'.
+All farms with soil quality index less than 70 have a crop type of'soybean' or 'rice'.

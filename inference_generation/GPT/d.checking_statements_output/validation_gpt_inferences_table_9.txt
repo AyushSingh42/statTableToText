@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All industrial sensors have an average noise level of at least 72.8 dB.
+  - Explanation: All 4 industrial sensors meet the noise threshold (min: 72.80 dB).
+
+Statement 2: TRUE
+  - 2. All park sensors have an average PM2.5 concentration of no more than 9.8 µg/m³.
+  - Explanation: All 3 park sensors meet the PM2.5 limit (max: 9.80 µg/m³).
+
+Statement 3: TRUE
+  - 3. All downtown sensors record foot traffic of at least 1240 persons per day.
+  - Explanation: All 4 downtown sensors meet the foot traffic requirement (min: 1240).
+
+Statement 4: TRUE
+  - 4. All residential sensors use no more than 205.1 kWh of power on average.
+  - Explanation: All 4 residential sensors stay within power limit (max: 205.10 kWh).
+
+Statement 5: TRUE
+  - 5. All industrial sensors have an average PM2.5 concentration of at least 31.6 µg/m³.
+  - Explanation: All 4 industrial sensors meet the PM2.5 minimum (min: 31.60 µg/m³).
+
+Statement 6: TRUE
+  - 6. All park sensors have an average temperature below 23 °C.
+  - Explanation: All 3 park sensors have temperature below 23 °C (max: 22.40 °C).
+
+Statement 7: TRUE
+  - 7. All downtown sensors have average humidity between 56.4 % and 58.9 %.
+  - Explanation: All 4 downtown sensors have humidity within the range (min: 56.40 %, max: 58.90 %).
+
+Statement 8: TRUE
+  - 8. All residential sensors have average noise levels between 50.8 dB and 52.6 dB.
+  - Explanation: All 4 residential sensors have noise within the range (min: 50.80 dB, max: 52.60 dB).

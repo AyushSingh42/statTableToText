@@ -1,0 +1,16 @@
+All vehicles with a distance greater than 200 km have an average speed greater than 60 kph.
+If a vehicle is a van, then its fuel used is less than 40 liters.
+There exists at least one truck with a delay of less than 10 minutes.
+All buses have a distance greater than 100 km.
+If the weather is clear, then the vehicle type is either a truck or a van.
+All vehicles with an average speed greater than 65 kph have a distance greater than 150 km.
+Most vehicles have a delay greater than 10 minutes.
+If a vehicle is a bus, then its average speed is greater than 55 kph.
+There exists at least one van with a distance less than 150 km and an average speed less than 55 kph.
+All trucks have a fuel used greater than 10 liters.
+If the weather is rainy, then the vehicle type is either a bus or a van.
+All vehicles with a distance less than 120 km have a delay less than 20 minutes.
+Most trucks have a distance greater than 120 km.
+If a vehicle is a truck, then its average speed is greater than 50 kph.
+There exists at least one bus with a fuel used greater than 20 liters and a distance greater than 200 km.
+All vehicles with an average speed less than 55 kph have a distance less than 180 km.

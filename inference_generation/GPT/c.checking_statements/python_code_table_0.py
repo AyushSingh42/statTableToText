@@ -6,128 +6,123 @@ def print_result(statement_no: int, description: str, truth: bool, explanation: 
     print(f"  - {description}")
     print(f"  - Explanation: {explanation}")
 
-def clean_dataframe(df: pd.DataFrame) -> pd.DataFrame:
-    # Convert possible numeric columns stored as strings to proper dtypes
-    numeric_cols = ["grade_level", "study_hours_week", "attendance_rate", "test_score"]
-    for col in numeric_cols:
+def _prepare_df(df: pd.DataFrame) -> pd.DataFrame:
+    # Convert numeric columns that may be stored as strings
+    for col in ["grade_level", "study_hours_week", "attendance_rate", "test_score"]:
         if col in df.columns:
             df[col] = pd.to_numeric(df[col], errors="coerce")
-    # Convert club_member to boolean (accept 0/1, True/False, yes/no)
+    # Normalise club_member to boolean
     if "club_member" in df.columns:
-        df["club_member"] = df["club_member"].map(
-            {"True": True, "true": True, "1": True, "yes": True, "Yes": True,
-             "False": False, "false": False, "0": False, "no": False, "No": False}
-        ).fillna(df["club_member"]).astype(bool)
+        df["club_member_bool"] = df["club_member"].astype(str).str.lower().isin(
+            {"true", "1", "yes", "y", "t"}
+        )
+    else:
+        df["club_member_bool"] = False
     return df
 
 def stmt_1(df: pd.DataFrame):
-    """All students who are club members have attendance rates above 89%."""
-    members = df[df["club_member"]]
-    condition = members["attendance_rate"] > 89
+    """All students with test scores of 90 or higher are club members."""
+    subset = df[df["test_score"] >= 90]
+    condition = subset["club_member_bool"]
     truth = condition.all()
     if truth:
-        expl = f"All {len(members)} club members have attendance > 89%."
+        expl = f"All {len(subset)} students with test_score ≥ 90 are club members."
     else:
-        viol = members[~condition]
-        expl = f"{len(viol)} club members violate the rule (attendance rates: {', '.join(map(str, viol['attendance_rate'].tolist()))})."
+        viol = subset[~condition]
+        ids = ", ".join(map(str, viol["student_id"].tolist()))
+        expl = f"{len(viol)} students violate the rule (student_id(s): {ids})."
     return truth, expl
 
 def stmt_2(df: pd.DataFrame):
-    """All 12th‑grade students scored at least 78 on the test."""
-    twelfth = df[df["grade_level"] == 12]
-    condition = twelfth["test_score"] >= 78
+    """All students who study less than 5 hours per week have test scores of at most 74."""
+    subset = df[df["study_hours_week"] < 5]
+    condition = subset["test_score"] <= 74
     truth = condition.all()
     if truth:
-        expl = f"All {len(twelfth)} 12th‑grade students scored ≥ 78."
+        expl = f"All {len(subset)} low‑study students have test_score ≤ 74."
     else:
-        viol = twelfth[~condition]
-        expl = f"{len(viol)} 12th‑graders scored below 78 (scores: {', '.join(map(str, viol['test_score'].tolist()))})."
+        viol = subset[~condition]
+        ids = ", ".join(map(str, viol["student_id"].tolist()))
+        expl = f"{len(viol)} students violate the rule (student_id(s): {ids})."
     return truth, expl
 
 def stmt_3(df: pd.DataFrame):
-    """All students who study more than 9 hours per week scored 90 or higher on the test."""
-    heavy = df[df["study_hours_week"] > 9]
-    condition = heavy["test_score"] >= 90
+    """All students who study at least 9 hours per week have attendance rates of at least 97%."""
+    subset = df[df["study_hours_week"] >= 9]
+    condition = subset["attendance_rate"] >= 97
     truth = condition.all()
     if truth:
-        expl = f"All {len(heavy)} students studying >9 hrs/week scored ≥ 90."
+        expl = f"All {len(subset)} high‑study students have attendance_rate ≥ 97%."
     else:
-        viol = heavy[~condition]
-        expl = f"{len(viol)} students studying >9 hrs/week scored below 90 (scores: {', '.join(map(str, viol['test_score'].tolist()))})."
+        viol = subset[~condition]
+        ids = ", ".join(map(str, viol["student_id"].tolist()))
+        expl = f"{len(viol)} students violate the rule (student_id(s): {ids})."
     return truth, expl
 
 def stmt_4(df: pd.DataFrame):
-    """Most 10th‑grade students are not members of a club."""
-    tenth = df[df["grade_level"] == 10]
-    total = len(tenth)
-    not_members = tenth[~tenth["club_member"]]
-    count_not = len(not_members)
-    truth = count_not > total / 2
-    if total == 0:
-        expl = "No 10th‑grade students in data; cannot evaluate."
-        truth = False
+    """All students with attendance rates of at least 95% study at least 8 hours per week."""
+    subset = df[df["attendance_rate"] >= 95]
+    condition = subset["study_hours_week"] >= 8
+    truth = condition.all()
+    if truth:
+        expl = f"All {len(subset)} well‑attending students study ≥ 8 hrs/week."
     else:
-        expl = f"{count_not} out of {total} (≈{count_not/total:.1%}) 10th‑graders are not club members."
+        viol = subset[~condition]
+        ids = ", ".join(map(str, viol["student_id"].tolist()))
+        expl = f"{len(viol)} students violate the rule (student_id(s): {ids})."
     return truth, expl
 
 def stmt_5(df: pd.DataFrame):
-    """The student with the highest attendance rate (99.1%) also achieved the highest test score (95)."""
-    max_att = df["attendance_rate"].max()
-    max_score = df["test_score"].max()
-    top_att_rows = df[df["attendance_rate"] == max_att]
-    same_student = top_att_rows["test_score"].eq(max_score).all()
-    truth = (abs(max_att - 99.1) < 1e-6) and (abs(max_score - 95) < 1e-6) and same_student
+    """All students with test scores of at least 85 have attendance rates of at least 94.8%."""
+    subset = df[df["test_score"] >= 85]
+    condition = subset["attendance_rate"] >= 94.8
+    truth = condition.all()
     if truth:
-        expl = f"Highest attendance is 99.1% and highest test score is 95, both belonging to the same student."
+        expl = f"All {len(subset)} high‑scoring students have attendance_rate ≥ 94.8%."
     else:
-        expl = (f"Highest attendance = {max_att} (expected 99.1). "
-                f"Highest test score = {max_score} (expected 95). "
-                f"Student(s) with max attendance have scores: {', '.join(map(str, top_att_rows['test_score'].tolist()))}.")
+        viol = subset[~condition]
+        ids = ", ".join(map(str, viol["student_id"].tolist()))
+        expl = f"{len(viol)} students violate the rule (student_id(s): {ids})."
     return truth, expl
 
 def stmt_6(df: pd.DataFrame):
-    """All students with attendance rates of 95% or higher scored at least 88 on the test."""
-    high_att = df[df["attendance_rate"] >= 95]
-    condition = high_att["test_score"] >= 88
+    """All 12th‑grade students have attendance rates of at least 91.2%."""
+    subset = df[df["grade_level"] == 12]
+    condition = subset["attendance_rate"] >= 91.2
     truth = condition.all()
     if truth:
-        expl = f"All {len(high_att)} students with attendance ≥95% scored ≥88."
+        expl = f"All {len(subset)} 12th‑grade students have attendance_rate ≥ 91.2%."
     else:
-        viol = high_att[~condition]
-        expl = f"{len(viol)} students with attendance ≥95% scored below 88 (scores: {', '.join(map(str, viol['test_score'].tolist()))})."
+        viol = subset[~condition]
+        ids = ", ".join(map(str, viol["student_id"].tolist()))
+        expl = f"{len(viol)} 12th‑grade students violate the rule (student_id(s): {ids})."
     return truth, expl
 
 def stmt_7(df: pd.DataFrame):
-    """There is at least one 9th‑grader who studied fewer than 5 hours per week and scored below 70 on the test."""
-    subset = df[
-        (df["grade_level"] == 9) &
-        (df["study_hours_week"] < 5) &
-        (df["test_score"] < 70)
-    ]
-    truth = not subset.empty
-    if truth:
-        expl = f"Found {len(subset)} matching 9th‑grader(s) (student_id(s): {', '.join(map(str, subset['student_id'].tolist()))})."
-    else:
-        expl = "No 9th‑grader meets all three conditions."
+    """Most students have attendance rates above 90%."""
+    total = len(df)
+    count = (df["attendance_rate"] > 90).sum()
+    proportion = count / total if total > 0 else 0
+    truth = proportion > 0.5
+    expl = f"{count}/{total} students ({proportion:.1%}) have attendance_rate > 90%."
     return truth, expl
 
 def stmt_8(df: pd.DataFrame):
-    """The majority of club members (7 out of 8) earned test scores above 80."""
-    members = df[df["club_member"]]
-    total = len(members)
-    above80 = members[members["test_score"] > 80]
-    count_above = len(above80)
-    truth = (total == 8) and (count_above >= 7)
-    if total == 0:
-        expl = "No club members in data; cannot evaluate."
-        truth = False
+    """All non‑club members have attendance rates of at most 96.5%."""
+    subset = df[~df["club_member_bool"]]
+    condition = subset["attendance_rate"] <= 96.5
+    truth = condition.all()
+    if truth:
+        expl = f"All {len(subset)} non‑club members have attendance_rate ≤ 96.5%."
     else:
-        expl = f"{count_above} out of {total} club members scored >80."
+        viol = subset[~condition]
+        ids = ", ".join(map(str, viol["student_id"].tolist()))
+        expl = f"{len(viol)} non‑club members violate the rule (student_id(s): {ids})."
     return truth, expl
 
 def main():
     df = pd.read_csv("tables/table_0.csv")
-    df = clean_dataframe(df)
+    df = _prepare_df(df)
 
     checks = [
         (1, stmt_1),

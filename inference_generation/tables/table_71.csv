@@ -1,0 +1,16 @@
+patient_id,diagnosis,age,bp_systolic,bp_diastolic,cholesterol_mg_dl,bmi,smoker
+PT071001,migraine,63,150,82,227,27.7,yes
+PT071002,migraine,27,119,78,227,27.5,yes
+PT071003,hypertension,27,115,96,173,27.5,yes
+PT071004,diabetes,45,150,91,206,22.6,yes
+PT071005,hypertension,63,145,94,228,31.6,yes
+PT071006,asthma,63,143,85,229,24.2,no
+PT071007,arthritis,55,113,94,169,34.4,yes
+PT071008,migraine,49,132,97,213,26.7,yes
+PT071009,hypertension,32,147,91,203,32.9,yes
+PT071010,migraine,48,120,79,214,27.3,yes
+PT071011,arthritis,64,143,91,235,30.1,no
+PT071012,migraine,56,122,86,172,26.0,no
+PT071013,arthritis,45,151,91,210,31.2,no
+PT071014,asthma,24,113,88,170,22.3,no
+PT071015,asthma,72,149,70,245,25.3,yes

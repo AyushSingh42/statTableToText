@@ -1,0 +1,20 @@
+All sensors in the industrial zone have an average temperature between 21.6 and 26.7 degrees Celsius.
+All sensors in the park zone have an average humidity between 53.9 and 61.8 percent.
+If a sensor is in the downtown zone, then its average PM2.5 level is greater than 10.9.
+There exists at least one sensor in the residential zone with an average noise level greater than 70 decibels.
+All sensors with foot traffic greater than 1200 have a power use greater than 250 kWh.
+If a sensor has an average humidity less than 55 percent, then it is in the park or residential zone.
+Most sensors in the industrial zone have an average temperature greater than 24 degrees Celsius.
+All sensors with an average temperature greater than 26 degrees Celsius are in the park or industrial zone.
+If a sensor is in the park zone, then its average noise level is less than 75 decibels.
+There exists at least one sensor in the downtown zone with an average PM2.5 level greater than 30.
+All sensors with foot traffic less than 600 have a power use less than 250 kWh.
+If a sensor has an average temperature less than 23 degrees Celsius, then it is in the residential or industrial zone.
+Most sensors in the residential zone have an average humidity greater than 55 percent.
+All sensors with an average noise level greater than 65 decibels are in the industrial or residential zone.
+If a sensor is in the industrial zone, then its average PM2.5 level is greater than 15.
+There exists at least one sensor in the park zone with an average temperature greater than 27 degrees Celsius.
+All sensors with foot traffic greater than 1000 have an average temperature greater than 24 degrees Celsius.
+If a sensor has an average humidity greater than 60 percent, then it is in the industrial or residential zone.
+Most sensors in the downtown zone have an average PM2.5 level greater than 15.
+All sensors with an average temperature less than 25 degrees Celsius are in the residential or downtown zone.

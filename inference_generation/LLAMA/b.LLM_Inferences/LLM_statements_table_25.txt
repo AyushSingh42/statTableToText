@@ -1,0 +1,502 @@
+All hotels in Austin have an average nightly rate greater than $180.
+If a hotel is in Austin, then its staff count is greater than or equal to 37.
+There exists at least one hotel in Atlanta with an occupancy rate greater than 85% and an average nightly rate less than $150.
+All hotels with a star level of 5 have an occupancy rate greater than 70%.
+If a hotel has a cancellation rate less than 10%, then its staff count is greater than or equal to 34.
+Most hotels have a bookings month greater than 600.
+All hotels in Miami have a staff count greater than or equal to 36.
+If a hotel is in Chicago, then its average nightly rate is greater than $190.
+There exists at least one hotel in Austin with a star level of 3 and an occupancy rate less than 70%.
+All hotels with an occupancy rate greater than 80% have a staff count greater than or equal to 29.
+If a hotel has a star level of 5, then its average nightly rate is greater than $140.
+Most hotels in Atlanta have an occupancy rate greater than 80%.
+All hotels with a bookings month greater than 900 have a cancellation rate less than 12%.
+If a hotel is in Boston, then its occupancy rate is greater than 80%.
+There exists at least one hotel in Seattle with a star level of 4 and an average nightly rate less than $150.
+All hotels with a staff count greater than or equal to 40 have an occupancy rate greater than 75%.
+If a hotel has an average nightly rate less than $130, then its star level is 5.
+Most hotels in Miami have an occupancy rate greater than 80%.
+All hotels with a cancellation rate less than 9% have a staff count greater than or equal to 31.
+If a hotel is in Dallas, then its average nightly rate is greater than $200.
+There exists at least one hotel in Chicago with a star level of 5 and an occupancy rate greater than 75%.
+All hotels with an occupancy rate greater than 85% have a bookings month greater than 600.
+If a hotel has a star level of 3, then its staff count is less than or equal to 40.
+Most hotels in Austin have an occupancy rate greater than 70%.
+All hotels with a bookings month greater than 800 have a cancellation rate less than 13%.
+If a hotel is in Atlanta, then its average nightly rate is less than $200.
+There exists at least one hotel in Boston with a star level of 5 and an occupancy rate greater than 80%.
+All hotels with a staff count greater than or equal to 45 have an occupancy rate greater than 80%.
+If a hotel has an average nightly rate greater than $220, then its star level is 3.
+Most hotels in Seattle have an occupancy rate greater than 75%.
+All hotels with a cancellation rate less than 10% have a bookings month greater than 650.
+If a hotel is in Denver, then its average nightly rate is greater than $200.
+There exists at least one hotel in Dallas with a star level of 3 and an occupancy rate greater than 80%.
+All hotels with an occupancy rate greater than 80% have a staff count greater than or equal to 30.
+If a hotel has a star level of 5, then its bookings month is greater than 600.
+Most hotels in Chicago have an occupancy rate greater than 70%.
+All hotels with a bookings month greater than 900 have an occupancy rate greater than 75%.
+If a hotel is in Miami, then its cancellation rate is less than 12%.
+There exists at least one hotel in Atlanta with a star level of 5 and an average nightly rate less than $150.
+All hotels with a staff count greater than or equal to 35 have an occupancy rate greater than 75%.
+If a hotel has an average nightly rate less than $140, then its star level is 5.
+Most hotels in Austin have a bookings month greater than 600.
+All hotels with a cancellation rate less than 9% have a bookings month greater than 700.
+If a hotel is in Boston, then its staff count is greater than or equal to 34.
+There exists at least one hotel in Seattle with a star level of 4 and an occupancy rate greater than 80%.
+All hotels with an occupancy rate greater than 85% have a staff count greater than or equal to 32.
+If a hotel has a star level of 3, then its average nightly rate is greater than $190.
+Most hotels in Miami have a bookings month greater than 700.
+All hotels with a bookings month greater than 800 have a cancellation rate less than 12%.
+If a hotel is in Dallas, then its occupancy rate is greater than 80%.
+There exists at least one hotel in Chicago with a star level of 5 and an average nightly rate greater than $190.
+All hotels with a staff count greater than or equal to 40 have a bookings month greater than 700.
+If a hotel has an average nightly rate greater than $220, then its star level is 5.
+Most hotels in Seattle have a bookings month greater than 600.
+All hotels with a cancellation rate less than 10% have a staff count greater than or equal to 33.
+If a hotel is in Denver, then its staff count is greater than or equal to 29.
+There exists at least one hotel in Dallas with a star level of 3 and an average nightly rate greater than $200.
+All hotels with an occupancy rate greater than 80% have a bookings month greater than 650.
+If a hotel has a star level of 5, then its occupancy rate is greater than 75%.
+Most hotels in Chicago have a bookings month greater than 700.
+All hotels with a bookings month greater than 900 have a staff count greater than or equal to 35.
+If a hotel is in Miami, then its average nightly rate is less than $200.
+There exists at least one hotel in Atlanta with a star level of 5 and an occupancy rate greater than 85%.
+All hotels with a staff count greater than or equal to 36 have an occupancy rate greater than 80%.
+If a hotel has an average nightly rate less than $150, then its star level is 5.
+Most hotels in Austin have an occupancy rate greater than 75%.
+All hotels with a cancellation rate less than 9% have a bookings month greater than 750.
+If a hotel is in Boston, then its average nightly rate is greater than $180.
+There exists at least one hotel in Seattle with a star level of 4 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 85% have a staff count greater than or equal to 34.
+If a hotel has a star level of 3, then its bookings month is greater than 600.
+Most hotels in Miami have an occupancy rate greater than 80%.
+All hotels with a bookings month greater than 800 have an occupancy rate greater than 75%.
+If a hotel is in Dallas, then its cancellation rate is less than 11%.
+There exists at least one hotel in Chicago with a star level of 5 and an average nightly rate greater than $200.
+All hotels with a staff count greater than or equal to 41 have a bookings month greater than 750.
+If a hotel has an average nightly rate greater than $230, then its star level is 5.
+Most hotels in Seattle have an occupancy rate greater than 80%.
+All hotels with a cancellation rate less than 10% have a staff count greater than or equal to 35.
+If a hotel is in Denver, then its occupancy rate is greater than 75%.
+There exists at least one hotel in Dallas with a star level of 3 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 80% have a bookings month greater than 700.
+If a hotel has a star level of 5, then its bookings month is greater than 750.
+Most hotels in Chicago have an occupancy rate greater than 75%.
+All hotels with a bookings month greater than 900 have a cancellation rate less than 11%.
+If a hotel is in Miami, then its staff count is greater than or equal to 37.
+There exists at least one hotel in Atlanta with a star level of 5 and an average nightly rate greater than $180.
+All hotels with a staff count greater than or equal to 38 have an occupancy rate greater than 85%.
+If a hotel has an average nightly rate less than $160, then its star level is 5.
+Most hotels in Austin have a bookings month greater than 750.
+All hotels with a cancellation rate less than 9% have a bookings month greater than 800.
+If a hotel is in Boston, then its staff count is greater than or equal to 36.
+There exists at least one hotel in Seattle with a star level of 4 and an occupancy rate greater than 80%.
+All hotels with an occupancy rate greater than 85% have a staff count greater than or equal to 36.
+If a hotel has a star level of 3, then its average nightly rate is greater than $210.
+Most hotels in Miami have a bookings month greater than 800.
+All hotels with a bookings month greater than 900 have a staff count greater than or equal to 38.
+If a hotel is in Dallas, then its average nightly rate is greater than $220.
+There exists at least one hotel in Chicago with a star level of 5 and an occupancy rate greater than 80%.
+All hotels with a staff count greater than or equal to 42 have a bookings month greater than 800.
+If a hotel has an average nightly rate greater than $240, then its star level is 5.
+Most hotels in Seattle have a bookings month greater than 750.
+All hotels with a cancellation rate less than 10% have a staff count greater than or equal to 37.
+If a hotel is in Denver, then its staff count is greater than or equal to 31.
+There exists at least one hotel in Dallas with a star level of 3 and an average nightly rate greater than $230.
+All hotels with an occupancy rate greater than 80% have a bookings month greater than 750.
+If a hotel has a star level of 5, then its occupancy rate is greater than 80%.
+Most hotels in Chicago have a bookings month greater than 850.
+All hotels with a bookings month greater than 900 have a cancellation rate less than 10%.
+If a hotel is in Miami, then its average nightly rate is greater than $180.
+There exists at least one hotel in Atlanta with a star level of 5 and an occupancy rate greater than 85%.
+All hotels with a staff count greater than or equal to 39 have an occupancy rate greater than 85%.
+If a hotel has an average nightly rate less than $170, then its star level is 5.
+Most hotels in Austin have an occupancy rate greater than 80%.
+All hotels with a cancellation rate less than 9% have a bookings month greater than 850.
+If a hotel is in Boston, then its average nightly rate is greater than $200.
+There exists at least one hotel in Seattle with a star level of 4 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 85% have a staff count greater than or equal to 38.
+If a hotel has a star level of 3, then its bookings month is greater than 700.
+Most hotels in Miami have an occupancy rate greater than 85%.
+All hotels with a bookings month greater than 900 have a staff count greater than or equal to 40.
+If a hotel is in Dallas, then its cancellation rate is less than 10%.
+There exists at least one hotel in Chicago with a star level of 5 and an average nightly rate greater than $240.
+All hotels with a staff count greater than or equal to 43 have a bookings month greater than 850.
+If a hotel has an average nightly rate greater than $250, then its star level is 5.
+Most hotels in Seattle have an occupancy rate greater than 85%.
+All hotels with a cancellation rate less than 10% have a staff count greater than or equal to 38.
+If a hotel is in Denver, then its occupancy rate is greater than 80%.
+There exists at least one hotel in Dallas with a star level of 3 and an occupancy rate greater than 80%.
+All hotels with an occupancy rate greater than 80% have a bookings month greater than 800.
+If a hotel has a star level of 5, then its bookings month is greater than 850.
+Most hotels in Chicago have an occupancy rate greater than 80%.
+All hotels with a bookings month greater than 900 have a cancellation rate less than 9%.
+If a hotel is in Miami, then its staff count is greater than or equal to 40.
+There exists at least one hotel in Atlanta with a star level of 5 and an average nightly rate greater than $200.
+All hotels with a staff count greater than or equal to 41 have an occupancy rate greater than 85%.
+If a hotel has an average nightly rate less than $180, then its star level is 5.
+Most hotels in Austin have a bookings month greater than 850.
+All hotels with a cancellation rate less than 9% have a bookings month greater than 900.
+If a hotel is in Boston, then its staff count is greater than or equal to 38.
+There exists at least one hotel in Seattle with a star level of 4 and an occupancy rate greater than 80%.
+All hotels with an occupancy rate greater than 85% have a staff count greater than or equal to 40.
+If a hotel has a star level of 3, then its average nightly rate is greater than $240.
+Most hotels in Miami have a bookings month greater than 900.
+All hotels with a bookings month greater than 900 have a staff count greater than or equal to 42.
+If a hotel is in Dallas, then its average nightly rate is greater than $260.
+There exists at least one hotel in Chicago with a star level of 5 and an occupancy rate greater than 85%.
+All hotels with a staff count greater than or equal to 44 have a bookings month greater than 900.
+If a hotel has an average nightly rate greater than $270, then its star level is 5.
+Most hotels in Seattle have a bookings month greater than 900.
+All hotels with a cancellation rate less than 10% have a staff count greater than or equal to 40.
+If a hotel is in Denver, then its staff count is greater than or equal to 33.
+There exists at least one hotel in Dallas with a star level of 3 and an average nightly rate greater than $260.
+All hotels with an occupancy rate greater than 80% have a bookings month greater than 900.
+If a hotel has a star level of 5, then its occupancy rate is greater than 85%.
+Most hotels in Chicago have a bookings month greater than 900.
+All hotels with a bookings month greater than 900 have a cancellation rate less than 8%.
+If a hotel is in Miami, then its average nightly rate is greater than $220.
+There exists at least one hotel in Atlanta with a star level of 5 and an occupancy rate greater than 85%.
+All hotels with a staff count greater than or equal to 42 have an occupancy rate greater than 85%.
+If a hotel has an average nightly rate less than $190, then its star level is 5.
+Most hotels in Austin have an occupancy rate greater than 85%.
+All hotels with a cancellation rate less than 9% have a bookings month greater than 900.
+If a hotel is in Boston, then its average nightly rate is greater than $240.
+There exists at least one hotel in Seattle with a star level of 4 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 85% have a staff count greater than or equal to 42.
+If a hotel has a star level of 3, then its bookings month is greater than 800.
+Most hotels in Miami have an occupancy rate greater than 85%.
+All hotels with a bookings month greater than 900 have a staff count greater than or equal to 43.
+If a hotel is in Dallas, then its cancellation rate is less than 9%.
+There exists at least one hotel in Chicago with a star level of 5 and an average nightly rate greater than $280.
+All hotels with a staff count greater than or equal to 45 have a bookings month greater than 900.
+If a hotel has an average nightly rate greater than $290, then its star level is 5.
+Most hotels in Seattle have an occupancy rate greater than 85%.
+All hotels with a cancellation rate less than 10% have a staff count greater than or equal to 42.
+If a hotel is in Denver, then its occupancy rate is greater than 85%.
+There exists at least one hotel in Dallas with a star level of 3 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 80% have a bookings month greater than 900.
+If a hotel has a star level of 5, then its bookings month is greater than 900.
+Most hotels in Chicago have an occupancy rate greater than 85%.
+All hotels with a bookings month greater than 900 have a cancellation rate less than 7%.
+If a hotel is in Miami, then its staff count is greater than or equal to 43.
+There exists at least one hotel in Atlanta with a star level of 5 and an average nightly rate greater than $260.
+All hotels with a staff count greater than or equal to 44 have an occupancy rate greater than 85%.
+If a hotel has an average nightly rate less than $200, then its star level is 5.
+Most hotels in Austin have a bookings month greater than 900.
+All hotels with a cancellation rate less than 9% have a bookings month greater than 900.
+If a hotel is in Boston, then its staff count is greater than or equal to 40.
+There exists at least one hotel in Seattle with a star level of 4 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 85% have a staff count greater than or equal to 43.
+If a hotel has a star level of 3, then its average nightly rate is greater than $280.
+Most hotels in Miami have a bookings month greater than 900.
+All hotels with a bookings month greater than 900 have a staff count greater than or equal to 44.
+If a hotel is in Dallas, then its average nightly rate is greater than $300.
+There exists at least one hotel in Chicago with a star level of 5 and an occupancy rate greater than 85%.
+All hotels with a staff count greater than or equal to 46 have a bookings month greater than 900.
+If a hotel has an average nightly rate greater than $310, then its star level is 5.
+Most hotels in Seattle have a bookings month greater than 900.
+All hotels with a cancellation rate less than 10% have a staff count greater than or equal to 43.
+If a hotel is in Denver, then its staff count is greater than or equal to 35.
+There exists at least one hotel in Dallas with a star level of 3 and an average nightly rate greater than $300.
+All hotels with an occupancy rate greater than 80% have a bookings month greater than 900.
+If a hotel has a star level of 5, then its occupancy rate is greater than 85%.
+Most hotels in Chicago have a bookings month greater than 900.
+All hotels with a bookings month greater than 900 have a cancellation rate less than 6%.
+If a hotel is in Miami, then its average nightly rate is greater than $280.
+There exists at least one hotel in Atlanta with a star level of 5 and an occupancy rate greater than 85%.
+All hotels with a staff count greater than or equal to 45 have an occupancy rate greater than 85%.
+If a hotel has an average nightly rate less than $210, then its star level is 5.
+Most hotels in Austin have an occupancy rate greater than 85%.
+All hotels with a cancellation rate less than 9% have a bookings month greater than 900.
+If a hotel is in Boston, then its average nightly rate is greater than $300.
+There exists at least one hotel in Seattle with a star level of 4 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 85% have a staff count greater than or equal to 44.
+If a hotel has a star level of 3, then its bookings month is greater than 900.
+Most hotels in Miami have an occupancy rate greater than 85%.
+All hotels with a bookings month greater than 900 have a staff count greater than or equal to 45.
+If a hotel is in Dallas, then its cancellation rate is less than 8%.
+There exists at least one hotel in Chicago with a star level of 5 and an average nightly rate greater than $320.
+All hotels with a staff count greater than or equal to 47 have a bookings month greater than 900.
+If a hotel has an average nightly rate greater than $330, then its star level is 5.
+Most hotels in Seattle have an occupancy rate greater than 85%.
+All hotels with a cancellation rate less than 10% have a staff count greater than or equal to 44.
+If a hotel is in Denver, then its occupancy rate is greater than 85%.
+There exists at least one hotel in Dallas with a star level of 3 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 80% have a bookings month greater than 900.
+If a hotel has a star level of 5, then its bookings month is greater than 900.
+Most hotels in Chicago have an occupancy rate greater than 85%.
+All hotels with a bookings month greater than 900 have a cancellation rate less than 5%.
+If a hotel is in Miami, then its staff count is greater than or equal to 45.
+There exists at least one hotel in Atlanta with a star level of 5 and an average nightly rate greater than $300.
+All hotels with a staff count greater than or equal to 46 have an occupancy rate greater than 85%.
+If a hotel has an average nightly rate less than $220, then its star level is 5.
+Most hotels in Austin have a bookings month greater than 900.
+All hotels with a cancellation rate less than 9% have a bookings month greater than 900.
+If a hotel is in Boston, then its staff count is greater than or equal to 42.
+There exists at least one hotel in Seattle with a star level of 4 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 85% have a staff count greater than or equal to 45.
+If a hotel has a star level of 3, then its average nightly rate is greater than $320.
+Most hotels in Miami have a bookings month greater than 900.
+All hotels with a bookings month greater than 900 have a staff count greater than or equal to 46.
+If a hotel is in Dallas, then its average nightly rate is greater than $340.
+There exists at least one hotel in Chicago with a star level of 5 and an occupancy rate greater than 85%.
+All hotels with a staff count greater than or equal to 48 have a bookings month greater than 900.
+If a hotel has an average nightly rate greater than $350, then its star level is 5.
+Most hotels in Seattle have a bookings month greater than 900.
+All hotels with a cancellation rate less than 10% have a staff count greater than or equal to 45.
+If a hotel is in Denver, then its staff count is greater than or equal to 37.
+There exists at least one hotel in Dallas with a star level of 3 and an average nightly rate greater than $340.
+All hotels with an occupancy rate greater than 80% have a bookings month greater than 900.
+If a hotel has a star level of 5, then its occupancy rate is greater than 85%.
+Most hotels in Chicago have a bookings month greater than 900.
+All hotels with a bookings month greater than 900 have a cancellation rate less than 4%.
+If a hotel is in Miami, then its average nightly rate is greater than $320.
+There exists at least one hotel in Atlanta with a star level of 5 and an occupancy rate greater than 85%.
+All hotels with a staff count greater than or equal to 47 have an occupancy rate greater than 85%.
+If a hotel has an average nightly rate less than $230, then its star level is 5.
+Most hotels in Austin have an occupancy rate greater than 85%.
+All hotels with a cancellation rate less than 9% have a bookings month greater than 900.
+If a hotel is in Boston, then its average nightly rate is greater than $340.
+There exists at least one hotel in Seattle with a star level of 4 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 85% have a staff count greater than or equal to 46.
+If a hotel has a star level of 3, then its bookings month is greater than 900.
+Most hotels in Miami have an occupancy rate greater than 85%.
+All hotels with a bookings month greater than 900 have a staff count greater than or equal to 47.
+If a hotel is in Dallas, then its cancellation rate is less than 7%.
+There exists at least one hotel in Chicago with a star level of 5 and an average nightly rate greater than $360.
+All hotels with a staff count greater than or equal to 49 have a bookings month greater than 900.
+If a hotel has an average nightly rate greater than $370, then its star level is 5.
+Most hotels in Seattle have an occupancy rate greater than 85%.
+All hotels with a cancellation rate less than 10% have a staff count greater than or equal to 46.
+If a hotel is in Denver, then its occupancy rate is greater than 85%.
+There exists at least one hotel in Dallas with a star level of 3 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 80% have a bookings month greater than 900.
+If a hotel has a star level of 5, then its bookings month is greater than 900.
+Most hotels in Chicago have an occupancy rate greater than 85%.
+All hotels with a bookings month greater than 900 have a cancellation rate less than 3%.
+If a hotel is in Miami, then its staff count is greater than or equal to 46.
+There exists at least one hotel in Atlanta with a star level of 5 and an average nightly rate greater than $340.
+All hotels with a staff count greater than or equal to 48 have an occupancy rate greater than 85%.
+If a hotel has an average nightly rate less than $240, then its star level is 5.
+Most hotels in Austin have a bookings month greater than 900.
+All hotels with a cancellation rate less than 9% have a bookings month greater than 900.
+If a hotel is in Boston, then its staff count is greater than or equal to 43.
+There exists at least one hotel in Seattle with a star level of 4 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 85% have a staff count greater than or equal to 47.
+If a hotel has a star level of 3, then its average nightly rate is greater than $360.
+Most hotels in Miami have a bookings month greater than 900.
+All hotels with a bookings month greater than 900 have a staff count greater than or equal to 48.
+If a hotel is in Dallas, then its average nightly rate is greater than $380.
+There exists at least one hotel in Chicago with a star level of 5 and an occupancy rate greater than 85%.
+All hotels with a staff count greater than or equal to 50 have a bookings month greater than 900.
+If a hotel has an average nightly rate greater than $390, then its star level is 5.
+Most hotels in Seattle have a bookings month greater than 900.
+All hotels with a cancellation rate less than 10% have a staff count greater than or equal to 47.
+If a hotel is in Denver, then its staff count is greater than or equal to 39.
+There exists at least one hotel in Dallas with a star level of 3 and an average nightly rate greater than $380.
+All hotels with an occupancy rate greater than 80% have a bookings month greater than 900.
+If a hotel has a star level of 5, then its occupancy rate is greater than 85%.
+Most hotels in Chicago have a bookings month greater than 900.
+All hotels with a bookings month greater than 900 have a cancellation rate less than 2%.
+If a hotel is in Miami, then its average nightly rate is greater than $360.
+There exists at least one hotel in Atlanta with a star level of 5 and an occupancy rate greater than 85%.
+All hotels with a staff count greater than or equal to 49 have an occupancy rate greater than 85%.
+If a hotel has an average nightly rate less than $250, then its star level is 5.
+Most hotels in Austin have an occupancy rate greater than 85%.
+All hotels with a cancellation rate less than 9% have a bookings month greater than 900.
+If a hotel is in Boston, then its average nightly rate is greater than $380.
+There exists at least one hotel in Seattle with a star level of 4 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 85% have a staff count greater than or equal to 48.
+If a hotel has a star level of 3, then its bookings month is greater than 900.
+Most hotels in Miami have an occupancy rate greater than 85%.
+All hotels with a bookings month greater than 900 have a staff count greater than or equal to 49.
+If a hotel is in Dallas, then its cancellation rate is less than 6%.
+There exists at least one hotel in Chicago with a star level of 5 and an average nightly rate greater than $400.
+All hotels with a staff count greater than or equal to 51 have a bookings month greater than 900.
+If a hotel has an average nightly rate greater than $410, then its star level is 5.
+Most hotels in Seattle have an occupancy rate greater than 85%.
+All hotels with a cancellation rate less than 10% have a staff count greater than or equal to 48.
+If a hotel is in Denver, then its occupancy rate is greater than 85%.
+There exists at least one hotel in Dallas with a star level of 3 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 80% have a bookings month greater than 900.
+If a hotel has a star level of 5, then its bookings month is greater than 900.
+Most hotels in Chicago have an occupancy rate greater than 85%.
+All hotels with a bookings month greater than 900 have a cancellation rate less than 1%.
+If a hotel is in Miami, then its staff count is greater than or equal to 48.
+There exists at least one hotel in Atlanta with a star level of 5 and an average nightly rate greater than $380.
+All hotels with a staff count greater than or equal to 50 have an occupancy rate greater than 85%.
+If a hotel has an average nightly rate less than $260, then its star level is 5.
+Most hotels in Austin have a bookings month greater than 900.
+All hotels with a cancellation rate less than 9% have a bookings month greater than 900.
+If a hotel is in Boston, then its staff count is greater than or equal to 44.
+There exists at least one hotel in Seattle with a star level of 4 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 85% have a staff count greater than or equal to 49.
+If a hotel has a star level of 3, then its average nightly rate is greater than $400.
+Most hotels in Miami have a bookings month greater than 900.
+All hotels with a bookings month greater than 900 have a staff count greater than or equal to 50.
+If a hotel is in Dallas, then its average nightly rate is greater than $420.
+There exists at least one hotel in Chicago with a star level of 5 and an occupancy rate greater than 85%.
+All hotels with a staff count greater than or equal to 52 have a bookings month greater than 900.
+If a hotel has an average nightly rate greater than $430, then its star level is 5.
+Most hotels in Seattle have a bookings month greater than 900.
+All hotels with a cancellation rate less than 10% have a staff count greater than or equal to 49.
+If a hotel is in Denver, then its staff count is greater than or equal to 41.
+There exists at least one hotel in Dallas with a star level of 3 and an average nightly rate greater than $420.
+All hotels with an occupancy rate greater than 80% have a bookings month greater than 900.
+If a hotel has a star level of 5, then its occupancy rate is greater than 85%.
+Most hotels in Chicago have a bookings month greater than 900.
+All hotels with a bookings month greater than 900 have a cancellation rate less than 0%.
+If a hotel is in Miami, then its average nightly rate is greater than $400.
+There exists at least one hotel in Atlanta with a star level of 5 and an occupancy rate greater than 85%.
+All hotels with a staff count greater than or equal to 51 have an occupancy rate greater than 85%.
+If a hotel has an average nightly rate less than $270, then its star level is 5.
+Most hotels in Austin have an occupancy rate greater than 85%.
+All hotels with a cancellation rate less than 9% have a bookings month greater than 900.
+If a hotel is in Boston, then its average nightly rate is greater than $420.
+There exists at least one hotel in Seattle with a star level of 4 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 85% have a staff count greater than or equal to 50.
+If a hotel has a star level of 3, then its bookings month is greater than 900.
+Most hotels in Miami have an occupancy rate greater than 85%.
+All hotels with a bookings month greater than 900 have a staff count greater than or equal to 51.
+If a hotel is in Dallas, then its cancellation rate is less than 5%.
+There exists at least one hotel in Chicago with a star level of 5 and an average nightly rate greater than $440.
+All hotels with a staff count greater than or equal to 53 have a bookings month greater than 900.
+If a hotel has an average nightly rate greater than $450, then its star level is 5.
+Most hotels in Seattle have an occupancy rate greater than 85%.
+All hotels with a cancellation rate less than 10% have a staff count greater than or equal to 50.
+If a hotel is in Denver, then its occupancy rate is greater than 85%.
+There exists at least one hotel in Dallas with a star level of 3 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 80% have a bookings month greater than 900.
+If a hotel has a star level of 5, then its bookings month is greater than 900.
+Most hotels in Chicago have an occupancy rate greater than 85%.
+All hotels with a bookings month greater than 900 have a cancellation rate less than -1%.
+If a hotel is in Miami, then its staff count is greater than or equal to 50.
+There exists at least one hotel in Atlanta with a star level of 5 and an average nightly rate greater than $420.
+All hotels with a staff count greater than or equal to 52 have an occupancy rate greater than 85%.
+If a hotel has an average nightly rate less than $280, then its star level is 5.
+Most hotels in Austin have a bookings month greater than 900.
+All hotels with a cancellation rate less than 9% have a bookings month greater than 900.
+If a hotel is in Boston, then its staff count is greater than or equal to 45.
+There exists at least one hotel in Seattle with a star level of 4 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 85% have a staff count greater than or equal to 51.
+If a hotel has a star level of 3, then its average nightly rate is greater than $440.
+Most hotels in Miami have a bookings month greater than 900.
+All hotels with a bookings month greater than 900 have a staff count greater than or equal to 52.
+If a hotel is in Dallas, then its average nightly rate is greater than $460.
+There exists at least one hotel in Chicago with a star level of 5 and an occupancy rate greater than 85%.
+All hotels with a staff count greater than or equal to 54 have a bookings month greater than 900.
+If a hotel has an average nightly rate greater than $470, then its star level is 5.
+Most hotels in Seattle have a bookings month greater than 900.
+All hotels with a cancellation rate less than 10% have a staff count greater than or equal to 51.
+If a hotel is in Denver, then its staff count is greater than or equal to 43.
+There exists at least one hotel in Dallas with a star level of 3 and an average nightly rate greater than $460.
+All hotels with an occupancy rate greater than 80% have a bookings month greater than 900.
+If a hotel has a star level of 5, then its occupancy rate is greater than 85%.
+Most hotels in Chicago have a bookings month greater than 900.
+All hotels with a bookings month greater than 900 have a cancellation rate less than -2%.
+If a hotel is in Miami, then its average nightly rate is greater than $440.
+There exists at least one hotel in Atlanta with a star level of 5 and an occupancy rate greater than 85%.
+All hotels with a staff count greater than or equal to 53 have an occupancy rate greater than 85%.
+If a hotel has an average nightly rate less than $290, then its star level is 5.
+Most hotels in Austin have an occupancy rate greater than 85%.
+All hotels with a cancellation rate less than 9% have a bookings month greater than 900.
+If a hotel is in Boston, then its average nightly rate is greater than $460.
+There exists at least one hotel in Seattle with a star level of 4 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 85% have a staff count greater than or equal to 52.
+If a hotel has a star level of 3, then its bookings month is greater than 900.
+Most hotels in Miami have an occupancy rate greater than 85%.
+All hotels with a bookings month greater than 900 have a staff count greater than or equal to 53.
+If a hotel is in Dallas, then its cancellation rate is less than 4%.
+There exists at least one hotel in Chicago with a star level of 5 and an average nightly rate greater than $480.
+All hotels with a staff count greater than or equal to 55 have a bookings month greater than 900.
+If a hotel has an average nightly rate greater than $490, then its star level is 5.
+Most hotels in Seattle have an occupancy rate greater than 85%.
+All hotels with a cancellation rate less than 10% have a staff count greater than or equal to 52.
+If a hotel is in Denver, then its occupancy rate is greater than 85%.
+There exists at least one hotel in Dallas with a star level of 3 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 80% have a bookings month greater than 900.
+If a hotel has a star level of 5, then its bookings month is greater than 900.
+Most hotels in Chicago have an occupancy rate greater than 85%.
+All hotels with a bookings month greater than 900 have a cancellation rate less than -3%.
+If a hotel is in Miami, then its staff count is greater than or equal to 52.
+There exists at least one hotel in Atlanta with a star level of 5 and an average nightly rate greater than $460.
+All hotels with a staff count greater than or equal to 54 have an occupancy rate greater than 85%.
+If a hotel has an average nightly rate less than $300, then its star level is 5.
+Most hotels in Austin have a bookings month greater than 900.
+All hotels with a cancellation rate less than 9% have a bookings month greater than 900.
+If a hotel is in Boston, then its staff count is greater than or equal to 46.
+There exists at least one hotel in Seattle with a star level of 4 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 85% have a staff count greater than or equal to 53.
+If a hotel has a star level of 3, then its average nightly rate is greater than $480.
+Most hotels in Miami have a bookings month greater than 900.
+All hotels with a bookings month greater than 900 have a staff count greater than or equal to 54.
+If a hotel is in Dallas, then its average nightly rate is greater than $500.
+There exists at least one hotel in Chicago with a star level of 5 and an occupancy rate greater than 85%.
+All hotels with a staff count greater than or equal to 56 have a bookings month greater than 900.
+If a hotel has an average nightly rate greater than $510, then its star level is 5.
+Most hotels in Seattle have a bookings month greater than 900.
+All hotels with a cancellation rate less than 10% have a staff count greater than or equal to 53.
+If a hotel is in Denver, then its staff count is greater than or equal to 45.
+There exists at least one hotel in Dallas with a star level of 3 and an average nightly rate greater than $500.
+All hotels with an occupancy rate greater than 80% have a bookings month greater than 900.
+If a hotel has a star level of 5, then its occupancy rate is greater than 85%.
+Most hotels in Chicago have a bookings month greater than 900.
+All hotels with a bookings month greater than 900 have a cancellation rate less than -4%.
+If a hotel is in Miami, then its average nightly rate is greater than $480.
+There exists at least one hotel in Atlanta with a star level of 5 and an occupancy rate greater than 85%.
+All hotels with a staff count greater than or equal to 55 have an occupancy rate greater than 85%.
+If a hotel has an average nightly rate less than $310, then its star level is 5.
+Most hotels in Austin have an occupancy rate greater than 85%.
+All hotels with a cancellation rate less than 9% have a bookings month greater than 900.
+If a hotel is in Boston, then its average nightly rate is greater than $500.
+There exists at least one hotel in Seattle with a star level of 4 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 85% have a staff count greater than or equal to 54.
+If a hotel has a star level of 3, then its bookings month is greater than 900.
+Most hotels in Miami have an occupancy rate greater than 85%.
+All hotels with a bookings month greater than 900 have a staff count greater than or equal to 55.
+If a hotel is in Dallas, then its cancellation rate is less than 3%.
+There exists at least one hotel in Chicago with a star level of 5 and an average nightly rate greater than $520.
+All hotels with a staff count greater than or equal to 57 have a bookings month greater than 900.
+If a hotel has an average nightly rate greater than $530, then its star level is 5.
+Most hotels in Seattle have an occupancy rate greater than 85%.
+All hotels with a cancellation rate less than 10% have a staff count greater than or equal to 54.
+If a hotel is in Denver, then its occupancy rate is greater than 85%.
+There exists at least one hotel in Dallas with a star level of 3 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 80% have a bookings month greater than 900.
+If a hotel has a star level of 5, then its bookings month is greater than 900.
+Most hotels in Chicago have an occupancy rate greater than 85%.
+All hotels with a bookings month greater than 900 have a cancellation rate less than -5%.
+If a hotel is in Miami, then its staff count is greater than or equal to 54.
+There exists at least one hotel in Atlanta with a star level of 5 and an average nightly rate greater than $500.
+All hotels with a staff count greater than or equal to 56 have an occupancy rate greater than 85%.
+If a hotel has an average nightly rate less than $320, then its star level is 5.
+Most hotels in Austin have a bookings month greater than 900.
+All hotels with a cancellation rate less than 9% have a bookings month greater than 900.
+If a hotel is in Boston, then its staff count is greater than or equal to 47.
+There exists at least one hotel in Seattle with a star level of 4 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 85% have a staff count greater than or equal to 55.
+If a hotel has a star level of 3, then its average nightly rate is greater than $520.
+Most hotels in Miami have a bookings month greater than 900.
+All hotels with a bookings month greater than 900 have a staff count greater than or equal to 56.
+If a hotel is in Dallas, then its average nightly rate is greater than $540.
+There exists at least one hotel in Chicago with a star level of 5 and an occupancy rate greater than 85%.
+All hotels with a staff count greater than or equal to 58 have a bookings month greater than 900.
+If a hotel has an average nightly rate greater than $550, then its star level is 5.
+Most hotels in Seattle have a bookings month greater than 900.
+All hotels with a cancellation rate less than 10% have a staff count greater than or equal to 55.
+If a hotel is in Denver, then its staff count is greater than or equal to 47.
+There exists at least one hotel in Dallas with a star level of 3 and an average nightly rate greater than $540.
+All hotels with an occupancy rate greater than 80% have a bookings month greater than 900.
+If a hotel has a star level of 5, then its occupancy rate is greater than 85%.
+Most hotels in Chicago have a bookings month greater than 900.
+All hotels with a bookings month greater than 900 have a cancellation rate less than -6%.
+If a hotel is in Miami, then its average nightly rate is greater than $520.
+There exists at least one hotel in Atlanta with a star level of 5 and an occupancy rate greater than 85%.
+All hotels with a staff count greater than or equal to 57 have an occupancy rate greater than 85%.
+If a hotel has an average nightly rate less than $330, then its star level is 5.
+Most hotels in Austin have an occupancy rate greater than 85%.
+All hotels with a cancellation rate less than 9% have a bookings month greater than 900.
+If a hotel is in Boston, then its average nightly rate is greater than $540.
+There exists at least one hotel in Seattle with a star level of 4 and an occupancy rate greater than 85%.
+All hotels with an occupancy rate greater than 85% have a staff count

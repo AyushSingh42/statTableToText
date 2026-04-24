@@ -1,0 +1,18 @@
+All vehicles that traveled in clear weather had an average speed greater than 45 kph.
+If a vehicle is a van, then its fuel used is less than 20 liters.
+There exists at least one bus that traveled a distance greater than 180 km.
+All trucks that traveled in windy weather had a delay of less than 17 minutes.
+If a vehicle is a bus, then its average speed is greater than 51 kph.
+Most vehicles that traveled in rain had a delay of less than 22 minutes.
+All vehicles with a distance traveled greater than 200 km had an average speed greater than 50 kph.
+If a vehicle is a truck, then its fuel used is greater than 13 liters.
+There exists at least one van that traveled a distance less than 70 km.
+All buses that traveled in clear weather had a fuel used greater than 20 liters.
+If a vehicle's average speed is greater than 60 kph, then its delay is less than 15 minutes.
+Most vehicles that traveled in clear weather had an average speed greater than 50 kph.
+All vehicles with a delay of less than 10 minutes had an average speed greater than 45 kph.
+If a vehicle is a bus, then its distance traveled is greater than 70 km.
+There exists at least one truck that traveled a distance greater than 220 km.
+All vans that traveled in rain had a fuel used less than 20 liters.
+If a vehicle's fuel used is greater than 30 liters, then its distance traveled is greater than 150 km.
+Most vehicles that traveled in rain had a fuel used greater than 15 liters.

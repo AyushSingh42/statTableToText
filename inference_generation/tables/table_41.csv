@@ -1,0 +1,16 @@
+patient_id,diagnosis,age,bp_systolic,bp_diastolic,cholesterol_mg_dl,bmi,smoker
+PT041001,migraine,63,149,86,182,34.0,yes
+PT041002,arthritis,68,115,87,220,32.2,no
+PT041003,arthritis,70,123,92,239,22.9,yes
+PT041004,hypertension,45,154,89,242,32.9,no
+PT041005,migraine,59,156,94,196,24.3,no
+PT041006,asthma,49,120,74,217,28.9,no
+PT041007,arthritis,76,132,92,235,29.4,yes
+PT041008,diabetes,60,130,91,209,33.4,yes
+PT041009,diabetes,53,146,92,206,30.4,no
+PT041010,arthritis,51,149,88,218,29.9,no
+PT041011,migraine,72,112,86,178,20.9,yes
+PT041012,hypertension,63,115,76,199,31.0,yes
+PT041013,asthma,64,128,74,172,30.2,no
+PT041014,diabetes,69,146,71,210,31.9,yes
+PT041015,arthritis,76,155,93,236,32.6,no

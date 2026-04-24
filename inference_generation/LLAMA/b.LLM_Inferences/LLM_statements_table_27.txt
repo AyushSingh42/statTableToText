@@ -1,0 +1,18 @@
+All sensors in the park zone have an average temperature between 21.6 and 24.2 degrees Celsius.
+All sensors in the residential zone have an average humidity between 52.9 and 67.3 percent.
+If a sensor is in the industrial zone, then its average noise level is between 47.7 and 59.9 decibels.
+There exists at least one sensor in the downtown zone with an average PM2.5 level greater than 25.
+All sensors with an average temperature greater than 25 degrees Celsius have a power usage greater than 263.6 kWh.
+If a sensor is in the park zone, then its foot traffic is between 470 and 1433.
+Most sensors in the residential zone have an average step count greater than 872.
+All sensors with an average humidity less than 55 percent have a power usage greater than 276.1 kWh.
+If a sensor is in the industrial zone, then its average temperature is between 24.1 and 27.9 degrees Celsius.
+There exists at least one sensor in the downtown zone with an average noise level greater than 69 decibels.
+All sensors with an average PM2.5 level greater than 30 have a foot traffic greater than 1122.
+If a sensor is in the park zone, then its average humidity is between 51.6 and 64.5 percent.
+All sensors with a power usage greater than 357.5 kWh have an average temperature greater than 23.8 degrees Celsius.
+Most sensors in the downtown zone have an average PM2.5 level greater than 14.3.
+There exists at least one sensor in the residential zone with an average noise level greater than 73.9 decibels.
+All sensors with an average temperature less than 25 degrees Celsius have a power usage less than 424.4 kWh.
+If a sensor is in the industrial zone, then its foot traffic is between 990 and 1097.
+All sensors with an average humidity greater than 64 percent have a power usage less than 357.5 kWh.

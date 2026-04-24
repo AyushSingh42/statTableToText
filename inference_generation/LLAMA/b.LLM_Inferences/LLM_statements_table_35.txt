@@ -1,0 +1,21 @@
+All hotels in Denver have an average nightly rate greater than $140.
+If a hotel is in Austin, then its occupancy rate is greater than 73%.
+There exists at least one hotel in Portland with a staff count less than 30.
+All hotels with a star level of 5 have an average nightly rate greater than $150.
+If a hotel has a cancellation rate less than 12%, then its occupancy rate is greater than 75%.
+Most hotels in the dataset have a staff count greater than 30.
+All hotels in Chicago with a star level of 3 have an occupancy rate greater than 72%.
+If a hotel is in Phoenix, then its average nightly rate is greater than $200.
+There exists at least one hotel in Dallas with a staff count less than 40 and a star level of 5.
+All hotels with an occupancy rate greater than 85% have a staff count less than 45.
+If a hotel has a star level of 3, then its average nightly rate is less than $170.
+Most hotels in the dataset have an occupancy rate greater than 70%.
+All hotels in Boston have a star level of 5.
+If a hotel is in Denver and has a star level of 3, then its occupancy rate is greater than 70%.
+There exists at least one hotel in Chicago with a staff count less than 25 and a star level of 5.
+All hotels with a cancellation rate greater than 14% have an occupancy rate less than 80%.
+If a hotel has an average nightly rate greater than $220, then its star level is 5 or 3.
+Most hotels in the dataset have a cancellation rate less than 15%.
+All hotels in Austin with a star level of 3 have an occupancy rate greater than 73%.
+If a hotel is in Dallas and has a star level of 5, then its occupancy rate is greater than 75%.
+There exists at least one hotel in Portland with a staff count greater than 40 and a star level of 3.

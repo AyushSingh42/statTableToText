@@ -1,0 +1,25 @@
+All students with a test score greater than or equal to 93 have an attendance rate greater than or equal to 90.
+
+If a student is a club member, then their test score is greater than or equal to 69.
+
+There exists at least one student in grade level 9 who has a study hours per week greater than or equal to 9.5.
+
+All students in grade level 12 have a study hours per week less than or equal to 11.5.
+
+If a student has a study hours per week less than 3, then their test score is greater than or equal to 97.
+
+Most students in the table have an attendance rate greater than 90.
+
+All students with a test score less than 70 have a grade level of 9.
+
+If a student is in grade level 10, then their test score is greater than or equal to 83.
+
+There exists at least one student in grade level 9 who has a test score greater than or equal to 97.
+
+All students who are club members have a test score greater than or equal to 69.
+
+If a student has a study hours per week greater than or equal to 9, then their attendance rate is greater than or equal to 89.
+
+All students in grade level 12 have a test score less than or equal to 92.
+
+Most students in the table have a study hours per week less than or equal to 7.

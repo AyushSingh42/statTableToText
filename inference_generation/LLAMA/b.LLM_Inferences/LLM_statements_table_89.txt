@@ -1,0 +1,17 @@
+All employees in the marketing department with more than 5 years of experience have a monthly salary greater than $6.1k.
+If an employee is in the finance department, then their monthly salary is greater than or equal to $5.9k.
+There exists at least one employee in the engineering department with a performance rating greater than 4.4.
+All employees with more than 8 years of experience have a monthly salary greater than $6.6k.
+If an employee is in the HR department, then their years of experience are less than 9 years.
+Most employees in the marketing department have a monthly salary greater than $6.0k.
+All employees with a performance rating greater than 4.5 have more than 3 projects active.
+If an employee has more than 10 remote days per month, then their monthly salary is greater than $6.0k.
+There exists at least one employee in the finance department with a monthly salary greater than $7.8k.
+All employees with more than 4 years of experience in the marketing department have a performance rating greater than 3.7.
+If an employee is in the engineering department, then their monthly salary is greater than or equal to $6.0k.
+Most employees with more than 5 years of experience have a monthly salary greater than $6.2k.
+All employees with a monthly salary greater than $7.0k have more than 2 projects active.
+If an employee has more than 5 years of experience in the HR department, then their monthly salary is less than $6.2k.
+There exists at least one employee in the marketing department with a monthly salary greater than $8.6k.
+All employees with a performance rating greater than 4.8 have more than 2 projects active.
+If an employee is in the finance department with more than 8 years of experience, then their monthly salary is greater than $7.0k.

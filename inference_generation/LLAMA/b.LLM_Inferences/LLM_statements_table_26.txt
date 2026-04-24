@@ -1,0 +1,18 @@
+All players who are centers have an age greater than or equal to 23 years.
+If a player is a forward, then their age is less than or equal to 32 years.
+There exists at least one guard whose assists per game are less than 2.
+For all players with minutes per game greater than 30, their points per game are greater than or equal to 12.
+All players who are centers have a rebounds per game greater than or equal to 3.
+If a player is a forward aged 25 or less, then their points per game are greater than or equal to 14.
+Most players in the table have a games played greater than or equal to 70.
+For all players with age greater than 30, their assists per game are greater than or equal to 2.
+There exists at least one center whose points per game are greater than 25.
+If a player is a guard, then their rebounds per game are greater than or equal to 6.
+All players who are forwards have a height that is not provided in the data, but based on the position, it can be inferred that their height is likely greater than 180 cm.
+For all players with points per game greater than 20, their minutes per game are greater than or equal to 25.
+Most players in the table have an assists per game less than 5.
+If a player is a center aged 30 or more, then their rebounds per game are greater than or equal to 10.
+There exists at least one forward whose rebounds per game are greater than 6.
+For all players with rebounds per game greater than 9, their position is guard.
+All players who are guards have a points per game greater than or equal to 20.
+If a player is a forward aged 25 or more, then their points per game are greater than or equal to 15.

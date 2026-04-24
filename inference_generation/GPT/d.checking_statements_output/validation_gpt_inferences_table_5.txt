@@ -1,0 +1,40 @@
+
+Statement 1: TRUE
+  - 1. For all urban households, the internet type is either fiber or cable.
+  - Explanation: All 5 urban households have internet type fiber or cable.
+
+Statement 2: TRUE
+  - 2. For all rural households, the internet type is either DSL or satellite.
+  - Explanation: All 5 rural households have internet type DSL or satellite.
+
+Statement 3: TRUE
+  - 3. If a household has zero vehicles, it is located in an urban region.
+  - Explanation: All 1 households with zero vehicles are urban.
+
+Statement 4: TRUE
+  - 4. If a household's internet type is satellite, then it is in a rural region.
+  - Explanation: All 2 satellite‑internet households are rural.
+
+Statement 5: TRUE
+  - 5. If household size is at least 5, then utility cost exceeds $150.
+  - Explanation: All 3 households with size ≥5 have utility cost > $150.
+
+Statement 6: TRUE
+  - 6. If rent cost is at most $1.0 k, then the household is in a rural region.
+  - Explanation: All 4 households with rent ≤ $1.0k are rural.
+
+Statement 7: TRUE
+  - 7. Most households have an internet type of fiber or cable.
+  - Explanation: 10 out of 15 households (66.7%) have fiber or cable.
+
+Statement 8: TRUE
+  - 8. Most households own at least one vehicle.
+  - Explanation: 14 out of 15 households (93.3%) own ≥1 vehicle.
+
+Statement 9: TRUE
+  - 9. If a household's monthly income exceeds $8 k, its internet type is fiber or cable.
+  - Explanation: All 3 households with income > $8k have fiber or cable internet.
+
+Statement 10: TRUE
+  - 10. If a household has three or more vehicles, it is located in a suburban or rural region.
+  - Explanation: All 2 households with ≥3 vehicles are in suburban or rural regions.

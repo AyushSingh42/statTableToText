@@ -7,116 +7,127 @@ def print_result(statement_no: int, description: str, truth: bool, explanation: 
     print(f"  - Explanation: {explanation}")
 
 def convert_numeric(df: pd.DataFrame) -> pd.DataFrame:
-    # Convert possible numeric columns stored as strings to proper numeric types
-    for col in ["monthly_sales_k", "transactions", "avg_basket_size", "staff_count", "customer_satisfaction"]:
+    # columns that should be numeric
+    num_cols = ["store_id", "monthly_sales_k", "transactions", "avg_basket_size", "staff_count", "customer_satisfaction"]
+    for col in num_cols:
         if col in df.columns:
             df[col] = pd.to_numeric(df[col], errors="coerce")
     return df
 
 def stmt_1(df: pd.DataFrame):
-    """All north region stores have customer satisfaction scores of at least 4.3."""
-    north = df[df["region"].str.lower() == "north"]
-    condition = north["customer_satisfaction"] >= 4.3
+    """All west region stores have customer satisfaction of 3.9 or lower."""
+    west = df[df["region"] == "west"]
+    condition = west["customer_satisfaction"] <= 3.9
     truth = condition.all()
     if truth:
-        expl = f"All {len(north)} north stores meet the threshold."
+        expl = f"All {len(west)} west stores satisfy the condition."
     else:
-        viol = north[~condition]
-        ids = viol["store_id"].tolist()
-        expl = f"{len(viol)} north stores violate (store_id: {', '.join(map(str, ids))})."
+        viol = west[~condition]
+        ids = ", ".join(map(str, viol["store_id"].tolist()))
+        expl = f"{len(viol)} west store(s) violate the rule (store_id(s): {ids})."
     return truth, expl
 
 def stmt_2(df: pd.DataFrame):
-    """All south region stores have customer satisfaction of 4.0 or higher."""
-    south = df[df["region"].str.lower() == "south"]
-    condition = south["customer_satisfaction"] >= 4.0
+    """All east region stores have an average basket size of at least 58.3."""
+    east = df[df["region"] == "east"]
+    condition = east["avg_basket_size"] >= 58.3
     truth = condition.all()
     if truth:
-        expl = f"All {len(south)} south stores meet the threshold."
+        expl = f"All {len(east)} east stores satisfy the condition."
     else:
-        viol = south[~condition]
-        ids = viol["store_id"].tolist()
-        expl = f"{len(viol)} south stores violate (store_id: {', '.join(map(str, ids))})."
+        viol = east[~condition]
+        ids = ", ".join(map(str, viol["store_id"].tolist()))
+        expl = f"{len(viol)} east store(s) violate the rule (store_id(s): {ids})."
     return truth, expl
 
 def stmt_3(df: pd.DataFrame):
-    """The store with the highest staff count (B009) also records the highest monthly sales."""
-    max_staff = df["staff_count"].max()
-    top_staff = df[df["staff_count"] == max_staff]
-    # Expect exactly one store and its id should be B009
-    correct_id = (top_staff["store_id"] == "B009").all()
-    max_sales = df["monthly_sales_k"].max()
-    top_sales = df[df["monthly_sales_k"] == max_sales]
-    same_store = (top_staff["store_id"].values[0] == top_sales["store_id"].values[0]) if not top_staff.empty and not top_sales.empty else False
-    truth = correct_id and same_store
+    """All south region stores have monthly sales of $110.8k or less."""
+    south = df[df["region"] == "south"]
+    condition = south["monthly_sales_k"] <= 110.8
+    truth = condition.all()
     if truth:
-        expl = f"Store B009 has the highest staff count ({max_staff}) and also the highest sales ({max_sales}k)."
+        expl = f"All {len(south)} south stores satisfy the condition."
     else:
-        expl = f"Highest staff count store(s): {', '.join(top_staff['store_id'].tolist())} (staff {max_staff}). Highest sales store(s): {', '.join(top_sales['store_id'].tolist())} (sales {max_sales}k)."
+        viol = south[~condition]
+        ids = ", ".join(map(str, viol["store_id"].tolist()))
+        expl = f"{len(viol)} south store(s) violate the rule (store_id(s): {ids})."
     return truth, expl
 
 def stmt_4(df: pd.DataFrame):
-    """Stores with an average basket size above 62 have customer satisfaction of at least 4.5."""
-    subset = df[df["avg_basket_size"] > 62]
-    condition = subset["customer_satisfaction"] >= 4.5
+    """Stores with at least 20 staff members have monthly sales of at least $143.2k."""
+    staff = df[df["staff_count"] >= 20]
+    condition = staff["monthly_sales_k"] >= 143.2
     truth = condition.all()
     if truth:
-        expl = f"All {len(subset)} stores with basket >62 meet the satisfaction threshold."
+        expl = f"All {len(staff)} stores with ≥20 staff meet the sales threshold."
     else:
-        viol = subset[~condition]
-        ids = viol["store_id"].tolist()
-        expl = f"{len(viol)} stores violate (store_id: {', '.join(map(str, ids))})."
+        viol = staff[~condition]
+        ids = ", ".join(map(str, viol["store_id"].tolist()))
+        expl = f"{len(viol)} store(s) with ≥20 staff violate the rule (store_id(s): {ids})."
     return truth, expl
 
 def stmt_5(df: pd.DataFrame):
-    """There exists a west region store with customer satisfaction below 4.0."""
-    west = df[df["region"].str.lower() == "west"]
-    condition = west["customer_satisfaction"] < 4.0
-    truth = condition.any()
+    """Stores with an average basket size greater than 60 have customer satisfaction of at least 4.4."""
+    basket = df[df["avg_basket_size"] > 60]
+    condition = basket["customer_satisfaction"] >= 4.4
+    truth = condition.all()
     if truth:
-        viol = west[condition]
-        ids = viol["store_id"].tolist()
-        expl = f"Found {len(viol)} west store(s) below 4.0 (store_id: {', '.join(map(str, ids))})."
+        expl = f"All {len(basket)} stores with basket size >60 satisfy the condition."
     else:
-        expl = "No west store has satisfaction below 4.0."
+        viol = basket[~condition]
+        ids = ", ".join(map(str, viol["store_id"].tolist()))
+        expl = f"{len(viol)} store(s) with basket size >60 violate the rule (store_id(s): {ids})."
     return truth, expl
 
 def stmt_6(df: pd.DataFrame):
-    """Most stores with staff counts of 20 or more have monthly sales exceeding 130,000."""
-    subset = df[df["staff_count"] >= 20]
-    if subset.empty:
-        truth = False
-        expl = "No stores have staff count >=20."
+    """Stores with more than 2400 transactions have monthly sales of at least $157.6k."""
+    trans = df[df["transactions"] > 2400]
+    condition = trans["monthly_sales_k"] >= 157.6
+    truth = condition.all()
+    if truth:
+        expl = f"All {len(trans)} stores with >2400 transactions meet the sales threshold."
     else:
-        condition = subset["monthly_sales_k"] > 130  # sales are in thousands
-        proportion = condition.mean()
-        truth = proportion > 0.5
-        expl = f"{condition.sum()} out of {len(subset)} stores ({proportion:.0%}) exceed 130k."
+        viol = trans[~condition]
+        ids = ", ".join(map(str, viol["store_id"].tolist()))
+        expl = f"{len(viol)} store(s) with >2400 transactions violate the rule (store_id(s): {ids})."
     return truth, expl
 
 def stmt_7(df: pd.DataFrame):
-    """East region stores have average basket sizes ranging from 58.3 to 62.0."""
-    east = df[df["region"].str.lower() == "east"]
-    if east.empty:
-        truth = False
-        expl = "No east region stores found."
+    """Most stores (12 of 15) have a customer satisfaction rating of 4.0 or higher."""
+    total = len(df)
+    high_sat = df[df["customer_satisfaction"] >= 4.0]
+    count = len(high_sat)
+    truth = count >= 12 and total == 15
+    if truth:
+        expl = f"{count} of {total} stores have satisfaction ≥4.0, meeting the 12‑of‑15 requirement."
     else:
-        min_val = east["avg_basket_size"].min()
-        max_val = east["avg_basket_size"].max()
-        truth = (min_val >= 58.3) and (max_val <= 62.0)
-        expl = f"East basket sizes range from {min_val:.2f} to {max_val:.2f}."
+        expl = f"Only {count} of {total} stores have satisfaction ≥4.0; requirement not met."
     return truth, expl
 
 def stmt_8(df: pd.DataFrame):
-    """The average basket size of west region stores is below 54."""
-    west = df[df["region"].str.lower() == "west"]
-    if west.empty:
-        truth = False
-        expl = "No west region stores found."
+    """If a store is in the north region, then its monthly sales are at least $128.4k."""
+    north = df[df["region"] == "north"]
+    condition = north["monthly_sales_k"] >= 128.4
+    truth = condition.all()
+    if truth:
+        expl = f"All {len(north)} north stores have sales ≥128.4k."
     else:
-        mean_val = west["avg_basket_size"].mean()
-        truth = mean_val < 54
-        expl = f"Mean basket size for west is {mean_val:.2f}."
+        viol = north[~condition]
+        ids = ", ".join(map(str, viol["store_id"].tolist()))
+        expl = f"{len(viol)} north store(s) violate the rule (store_id(s): {ids})."
+    return truth, expl
+
+def stmt_9(df: pd.DataFrame):
+    """If a store’s customer satisfaction is 4.5 or higher, then the store is located in the north or east region."""
+    high_sat = df[df["customer_satisfaction"] >= 4.5]
+    condition = high_sat["region"].isin(["north", "east"])
+    truth = condition.all()
+    if truth:
+        expl = f"All {len(high_sat)} high‑satisfaction stores are in north or east."
+    else:
+        viol = high_sat[~condition]
+        ids = ", ".join(map(str, viol["store_id"].tolist()))
+        expl = f"{len(viol)} high‑satisfaction store(s) violate the rule (store_id(s): {ids})."
     return truth, expl
 
 def main():
@@ -132,6 +143,7 @@ def main():
         (6, stmt_6),
         (7, stmt_7),
         (8, stmt_8),
+        (9, stmt_9),
     ]
 
     for num, func in checks:

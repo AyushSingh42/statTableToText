@@ -7,158 +7,122 @@ def print_result(statement_no: int, description: str, truth: bool, explanation: 
     print(f"  - Explanation: {explanation}")
 
 def stmt_1(df: pd.DataFrame):
-    """1. Most truck routes (4 out of 5) have an average speed above 60 kph, with only one truck route averaging 59.6 kph."""
+    """1. All trucks have an average speed of at least 59.6 kph."""
     trucks = df[df["vehicle_type"] == "truck"]
-    total = len(trucks)
-    high = trucks[trucks["avg_speed_kph"] > 60]
-    low = trucks[trucks["avg_speed_kph"] <= 60]
-    truth = (total == 5) and (len(high) == 4) and (len(low) == 1) and (abs(low["avg_speed_kph"].iloc[0] - 59.6) < 1e-3)
+    condition = trucks["avg_speed_kph"] >= 59.6
+    truth = condition.all()
     if truth:
-        expl = f"Exactly 5 truck routes: 4 >60 kph, 1 = {low['avg_speed_kph'].iloc[0]:.1f} kph."
+        expl = f"All {len(trucks)} trucks meet the speed requirement."
     else:
-        expl = f"Truck count={total}, >60 kph={len(high)}, ≤60 kph={len(low)} (values: {low['avg_speed_kph'].tolist()})."
+        viol = trucks[~condition]
+        ids = ", ".join(map(str, viol["route_id"].tolist()))
+        speeds = ", ".join(map(str, viol["avg_speed_kph"].tolist()))
+        expl = f"{len(viol)} trucks violate the rule (route_id: {ids}; speeds: {speeds})."
     return truth, expl
 
 def stmt_2(df: pd.DataFrame):
-    """2. All bus routes have average speeds below 50 kph, ranging from 46.9 to 49.7 kph."""
-    buses = df[df["vehicle_type"] == "bus"]
-    if buses.empty:
-        return False, "No bus records found."
-    min_speed = buses["avg_speed_kph"].min()
-    max_speed = buses["avg_speed_kph"].max()
-    truth = (max_speed < 50) and (min_speed >= 46.9) and (max_speed <= 49.7)
+    """2. All vans have an average speed between 52.0 kph and 57.2 kph."""
+    vans = df[df["vehicle_type"] == "van"]
+    condition = vans["avg_speed_kph"].between(52.0, 57.2, inclusive="both")
+    truth = condition.all()
     if truth:
-        expl = f"Bus speeds span {min_speed:.1f}–{max_speed:.1f} kph, all <50."
+        expl = f"All {len(vans)} vans are within the speed range."
     else:
-        expl = f"Bus speed range is {min_speed:.1f}–{max_speed:.1f} kph (expected 46.9–49.7 and <50)."
+        viol = vans[~condition]
+        ids = ", ".join(map(str, viol["route_id"].tolist()))
+        speeds = ", ".join(map(str, viol["avg_speed_kph"].tolist()))
+        expl = f"{len(viol)} vans violate the rule (route_id: {ids}; speeds: {speeds})."
     return truth, expl
 
 def stmt_3(df: pd.DataFrame):
-    """3. Every route that experienced rain recorded a delay of at least 7 minutes."""
-    rainy = df[df["weather"] == "rain"]
-    if rainy.empty:
-        return False, "No rainy records to evaluate."
-    truth = (rainy["delay_minutes"] >= 7).all()
+    """3. All buses have an average speed between 46.9 kph and 49.7 kph."""
+    buses = df[df["vehicle_type"] == "bus"]
+    condition = buses["avg_speed_kph"].between(46.9, 49.7, inclusive="both")
+    truth = condition.all()
     if truth:
-        expl = f"All {len(rainy)} rainy routes have delay ≥7 min."
+        expl = f"All {len(buses)} buses are within the speed range."
     else:
-        viol = rainy[rainy["delay_minutes"] < 7]
-        expl = f"{len(viol)} rainy routes violate (delays: {viol['delay_minutes'].tolist()})."
+        viol = buses[~condition]
+        ids = ", ".join(map(str, viol["route_id"].tolist()))
+        speeds = ", ".join(map(str, viol["avg_speed_kph"].tolist()))
+        expl = f"{len(viol)} buses violate the rule (route_id: {ids}; speeds: {speeds})."
     return truth, expl
 
 def stmt_4(df: pd.DataFrame):
-    """4. Vans consistently show the lowest fuel consumption per kilometer, with values between 0.11 and 0.12 L/km, lower than any bus or truck route."""
-    df = df.copy()
-    df["fuel_per_km"] = df["fuel_used_l"] / df["distance_km"]
-    vans = df[df["vehicle_type"] == "van"]
-    others = df[df["vehicle_type"].isin(["bus", "truck"])]
-    if vans.empty or others.empty:
-        return False, "Missing van or other vehicle records."
-    van_min, van_max = vans["fuel_per_km"].min(), vans["fuel_per_km"].max()
-    truth = (van_min >= 0.11) and (van_max <= 0.12) and (van_max < others["fuel_per_km"].min())
+    """4. All trucks consume at least 0.210 liters of fuel per kilometer."""
+    trucks = df[df["vehicle_type"] == "truck"]
+    condition = trucks["fuel_used_l"] >= 0.210
+    truth = condition.all()
     if truth:
-        expl = f"Van consumption 0.11–0.12 L/km; next lowest (bus/truck) is {others['fuel_per_km'].min():.3f} L/km."
+        expl = f"All {len(trucks)} trucks meet the fuel consumption minimum."
     else:
-        viol = vans[(vans["fuel_per_km"] < 0.11) | (vans["fuel_per_km"] > 0.12)]
-        expl = f"Van values out of range: {viol['fuel_per_km'].tolist()}, or not lowest (min others {others['fuel_per_km'].min():.3f})."
+        viol = trucks[~condition]
+        ids = ", ".join(map(str, viol["route_id"].tolist()))
+        fuels = ", ".join(map(str, viol["fuel_used_l"].tolist()))
+        expl = f"{len(viol)} trucks violate the rule (route_id: {ids}; fuel_used_l: {fuels})."
     return truth, expl
 
 def stmt_5(df: pd.DataFrame):
-    """5. Clear weather occurs only on truck and van routes; no bus route in the data was recorded under clear conditions."""
-    clear = df[df["weather"] == "clear"]
-    if clear.empty:
-        return False, "No clear‑weather records to evaluate."
-    allowed = set(["truck", "van"])
-    truth = clear["vehicle_type"].isin(list(allowed)).all() and (df[(df["weather"] == "clear") & (df["vehicle_type"] == "bus")].empty)
+    """5. All vans consume less than 0.13 liters of fuel per kilometer."""
+    vans = df[df["vehicle_type"] == "van"]
+    condition = vans["fuel_used_l"] < 0.13
+    truth = condition.all()
     if truth:
-        expl = f"All {len(clear)} clear routes are {set(clear['vehicle_type'].unique())}."
+        expl = f"All {len(vans)} vans satisfy the fuel consumption limit."
     else:
-        bad = clear[~clear["vehicle_type"].isin(list(allowed))]
-        expl = f"{len(bad)} clear routes have disallowed types: {bad['vehicle_type'].tolist()}."
+        viol = vans[~condition]
+        ids = ", ".join(map(str, viol["route_id"].tolist()))
+        fuels = ", ".join(map(str, viol["fuel_used_l"].tolist()))
+        expl = f"{len(viol)} vans violate the rule (route_id: {ids}; fuel_used_l: {fuels})."
     return truth, expl
 
 def stmt_6(df: pd.DataFrame):
-    """6. The longest route (R013, 231.4 km) is a truck route in windy weather and also has the highest fuel usage (49.5 L) and the greatest delay (27 minutes) among all records."""
-    longest = df.loc[df["distance_km"].idxmax()]
-    max_fuel = df["fuel_used_l"].max()
-    max_delay = df["delay_minutes"].max()
-    truth = (
-        longest["route_id"] == "R013"
-        and abs(longest["distance_km"] - 231.4) < 1e-3
-        and longest["vehicle_type"] == "truck"
-        and longest["weather"] == "windy"
-        and abs(longest["fuel_used_l"] - 49.5) < 1e-3
-        and longest["fuel_used_l"] == max_fuel
-        and longest["delay_minutes"] == max_delay
-        and max_delay == 27
-    )
+    """6. All buses have fuel consumption per kilometer between 0.199 L/km and 0.203 L/km."""
+    buses = df[df["vehicle_type"] == "bus"]
+    condition = buses["fuel_used_l"].between(0.199, 0.203, inclusive="both")
+    truth = condition.all()
     if truth:
-        expl = "Record matches all specified attributes."
+        expl = f"All {len(buses)} buses are within the fuel consumption range."
     else:
-        details = []
-        if longest["route_id"]!= "R013":
-            details.append(f"route_id={longest['route_id']}")
-        if abs(longest["distance_km"] - 231.4) >= 1e-3:
-            details.append(f"distance={longest['distance_km']}")
-        if longest["vehicle_type"]!= "truck":
-            details.append(f"vehicle_type={longest['vehicle_type']}")
-        if longest["weather"]!= "windy":
-            details.append(f"weather={longest['weather']}")
-        if abs(longest["fuel_used_l"] - 49.5) >= 1e-3:
-            details.append(f"fuel_used={longest['fuel_used_l']}")
-        if longest["delay_minutes"]!= 27:
-            details.append(f"delay={longest['delay_minutes']}")
-        expl = "Mismatches: " + "; ".join(details)
+        viol = buses[~condition]
+        ids = ", ".join(map(str, viol["route_id"].tolist()))
+        fuels = ", ".join(map(str, viol["fuel_used_l"].tolist()))
+        expl = f"{len(viol)} buses violate the rule (route_id: {ids}; fuel_used_l: {fuels})."
     return truth, expl
 
 def stmt_7(df: pd.DataFrame):
-    """7. All truck routes use more than 39 L of fuel, which is higher than any van (≤12 L) or bus (≤31.4 L) route."""
-    trucks = df[df["vehicle_type"] == "truck"]
-    vans = df[df["vehicle_type"] == "van"]
-    buses = df[df["vehicle_type"] == "bus"]
-    if trucks.empty or vans.empty or buses.empty:
-        return False, "Missing one of the vehicle categories."
-    truth = (
-        (trucks["fuel_used_l"] > 39).all()
-        and (vans["fuel_used_l"] <= 12).all()
-        and (buses["fuel_used_l"] <= 31.4).all()
-        and (trucks["fuel_used_l"].min() > vans["fuel_used_l"].max())
-        and (trucks["fuel_used_l"].min() > buses["fuel_used_l"].max())
-    )
+    """7. All routes in clear weather have a delay of at most 14 minutes."""
+    clear = df[df["weather"] == "clear"]
+    condition = clear["delay_minutes"] <= 14
+    truth = condition.all()
     if truth:
-        expl = f"Truck min fuel {trucks['fuel_used_l'].min():.1f}>39; van max {vans['fuel_used_l'].max():.1f}≤12; bus max {buses['fuel_used_l'].max():.1f}≤31.4."
+        expl = f"All {len(clear)} clear-weather routes meet the delay limit."
     else:
-        viol = []
-        if not (trucks["fuel_used_l"] > 39).all():
-            viol.append(f"truck fuel ≤39 ({trucks[trucks['fuel_used_l'] <= 39]['fuel_used_l'].tolist()})")
-        if not (vans["fuel_used_l"] <= 12).all():
-            viol.append(f"van fuel >12 ({vans[vans['fuel_used_l'] > 12]['fuel_used_l'].tolist()})")
-        if not (buses["fuel_used_l"] <= 31.4).all():
-            viol.append(f"bus fuel >31.4 ({buses[buses['fuel_used_l'] > 31.4]['fuel_used_l'].tolist()})")
-        expl = "; ".join(viol)
+        viol = clear[~condition]
+        ids = ", ".join(map(str, viol["route_id"].tolist()))
+        delays = ", ".join(map(str, viol["delay_minutes"].tolist()))
+        expl = f"{len(viol)} clear-weather routes violate the rule (route_id: {ids}; delays: {delays})."
     return truth, expl
 
 def stmt_8(df: pd.DataFrame):
-    """8. Most windy routes (2 out of 3) are truck routes, indicating trucks are more frequently affected by windy conditions in this dataset."""
+    """8. All windy routes have a delay of at least 21 minutes."""
     windy = df[df["weather"] == "windy"]
-    total = len(windy)
-    truck_windy = windy[windy["vehicle_type"] == "truck"]
-    truth = (total == 3) and (len(truck_windy) == 2)
+    condition = windy["delay_minutes"] >= 21
+    truth = condition.all()
     if truth:
-        expl = f"3 windy routes, 2 are trucks."
+        expl = f"All {len(windy)} windy routes meet the delay minimum."
     else:
-        expl = f"Windy total={total}, truck windy={len(truck_windy)}."
+        viol = windy[~condition]
+        ids = ", ".join(map(str, viol["route_id"].tolist()))
+        delays = ", ".join(map(str, viol["delay_minutes"].tolist()))
+        expl = f"{len(viol)} windy routes violate the rule (route_id: {ids}; delays: {delays})."
     return truth, expl
 
 def main():
     df = pd.read_csv("tables/table_3.csv")
-    # Convert any numeric columns stored as strings to proper numeric types
-    for col in ["distance_km", "avg_speed_kph", "fuel_used_l", "delay_minutes"]:
-        if df[col].dtype == object:
-            df[col] = pd.to_numeric(df[col], errors="coerce")
-    # Example of converting a turn/route number string to integer
-    if "route_id" in df.columns:
-        df["route_num"] = df["route_id"].str.extract(r"(\d+)").astype(int)
+    # Convert possible string identifiers to integers
+    if df["route_id"].dtype == object:
+        df["route_id"] = pd.to_numeric(df["route_id"], errors="coerce").astype("Int64")
     checks = [
         (1, stmt_1),
         (2, stmt_2),

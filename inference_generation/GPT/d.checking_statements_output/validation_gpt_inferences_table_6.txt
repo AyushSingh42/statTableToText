@@ -1,0 +1,40 @@
+
+Statement 1: TRUE
+  - 1. All organic farms grow soybean.
+  - Explanation: All 0 organic farms grow soybean.
+
+Statement 2: FALSE
+  - 2. All soybean farms are organic.
+  - Explanation: 4 soybean farms are not organic (farm IDs: F003, F007, F011, F015).
+
+Statement 3: TRUE
+  - 3. All wheat farms have irrigation between 13.7 and 14.8 hours per week.
+  - Explanation: All 4 wheat farms meet the irrigation range.
+
+Statement 4: TRUE
+  - 4. All corn farms have irrigation between 16.5 and 17.4 hours per week.
+  - Explanation: All 4 corn farms meet the irrigation range.
+
+Statement 5: TRUE
+  - 5. All rice farms have irrigation between 19.2 and 20.5 hours per week.
+  - Explanation: All 3 rice farms meet the irrigation range.
+
+Statement 6: TRUE
+  - 6. All organic farms have a soil quality index of at least 78.1.
+  - Explanation: All 0 organic farms have soil_quality_index ≥ 78.1.
+
+Statement 7: TRUE
+  - 7. All soybean farms have a yield per acre of at most 2.72 tons.
+  - Explanation: All 4 soybean farms have yield/acre ≤ 2.72 tons.
+
+Statement 8: FALSE
+  - 8. All rice farms have a yield per acre of at least 4.166 tons.
+  - Explanation: 1 rice farms fall below the threshold (yield/acre: 4.164).
+
+Statement 9: TRUE
+  - 9. All wheat farms have a yield per acre between 3.36 and 3.65 tons.
+  - Explanation: All 4 wheat farms have yield/acre within 3.36–3.65 tons.
+
+Statement 10: TRUE
+  - 10. All corn farms have a yield per acre between 3.48 and 4.09 tons.
+  - Explanation: All 4 corn farms have yield/acre within 3.48–4.09 tons.

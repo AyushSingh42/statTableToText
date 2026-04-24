@@ -1,0 +1,461 @@
+All players who are centers have an age between 20 and 32 years.
+If a player is a forward, then their age is between 23 and 32 years.
+There exists at least one guard who is 30 years old.
+All players who are 25 years old or younger have a height that is not provided in the data, but their position is either center or guard.
+If a player is a center, then their points per game is less than 25.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has played more than 75 games.
+If a player is a guard, then their rebounds per game is less than 8.
+All players who have an average of more than 7 assists per game have a position that is either forward or guard.
+Most players have an average of more than 15 points per game.
+If a player is a center, then their age is less than 33 years.
+All players who are 28 years old or older have a position that is either center or forward.
+There exists at least one player who is 32 years old and has played more than 60 games.
+If a player has an average of more than 18 points per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have a position that is either center or forward.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points per game is less than 20.
+All players who have played more than 70 games have an average of more than 25 minutes per game.
+There exists at least one forward who has an average of more than 18 points per game.
+If a player has an average of more than 7 assists per game, then their position is either forward or guard.
+All players who have an average of more than 6 rebounds per game have played more than 60 games.
+There exists at least one player who is 25 years old or younger and has an average of more than 24 points per game.
+If a player has an average of more than 5 assists per game, then their position is either forward or guard.
+All players who have played more than 65 games have an average of more than 14 points per game.
+There exists at least one center who has an average of more than 23 points per game.
+If a player is a forward, then their average minutes per game is less than 35.
+All players who have an average of more than 7 rebounds per game have played more than 60 games.
+There exists at least one guard who has an average of more than 17 points per game.
+If a player has an average of more than 6 assists per game, then their position is either forward or guard.
+All players who are 29 years old or younger have an average of more than 14 points per game.
+There exists at least one player who is 30 years old or older and has played more than 70 games.
+If a player has an average of more than 5 rebounds per game, then their position is either center or forward.
+All players who have an average of more than 16 points per game have played more than 60 games.
+There exists at least one center who has an average of more than 6 assists per game.
+If a player is a guard, then their average points

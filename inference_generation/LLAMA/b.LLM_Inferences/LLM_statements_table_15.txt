@@ -1,0 +1,19 @@
+All hotels in Atlanta have an average nightly rate greater than $110.
+If a hotel is in Seattle, then its occupancy rate is greater than 78%.
+All hotels with a star level of 5 have an occupancy rate greater than 72%.
+There exists at least one hotel in Dallas with an occupancy rate less than 85%.
+If a hotel has a staff count greater than 40, then its occupancy rate is greater than 83%.
+All hotels with a cancellation rate greater than 14% have a star level less than 5.
+If a hotel is in Portland, then its average nightly rate is less than $225.
+Most hotels in the dataset have an occupancy rate greater than 70%.
+All hotels with a bookings month greater than 800 have an occupancy rate greater than 75%.
+If a hotel has a star level of 4, then its average nightly rate is less than $215.
+There exists at least one hotel in Chicago with a staff count greater than 45.
+All hotels with an occupancy rate greater than 85% have a star level greater than 3.
+If a hotel is in Miami, then its occupancy rate is greater than 80%.
+All hotels with a cancellation rate less than 10% have a staff count less than 30.
+Most hotels in the dataset have a staff count less than 40.
+If a hotel has an average nightly rate greater than $200, then its star level is greater than 3.
+There exists at least one hotel in Boston with an occupancy rate greater than 80%.
+All hotels with a bookings month less than 700 have a star level less than 5.
+If a hotel has a staff count less than 25, then its occupancy rate is less than 85%.

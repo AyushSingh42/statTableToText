@@ -1,0 +1,16 @@
+route_id,vehicle_type,distance_km,avg_speed_kph,fuel_used_l,delay_minutes,weather
+R053001,van,213.7,51.8,18.2,20,rain
+R053002,van,202.8,64.4,18.8,17,windy
+R053003,van,65.0,45.7,20.2,3,rain
+R053004,van,66.2,65.7,17.1,13,clear
+R053005,bus,213.0,64.3,30.3,21,rain
+R053006,truck,71.8,52.5,13.7,14,rain
+R053007,truck,111.1,51.3,32.9,21,rain
+R053008,bus,78.9,51.8,29.0,18,clear
+R053009,bus,180.6,45.8,43.5,15,clear
+R053010,truck,230.9,52.0,46.7,16,windy
+R053011,truck,221.6,49.8,36.5,22,clear
+R053012,bus,204.9,53.0,21.1,4,cloudy
+R053013,bus,166.7,51.9,38.6,7,clear
+R053014,bus,196.7,53.3,27.3,22,clear
+R053015,truck,142.7,61.5,14.1,13,clear

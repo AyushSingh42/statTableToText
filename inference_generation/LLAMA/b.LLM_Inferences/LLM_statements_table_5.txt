@@ -1,0 +1,17 @@
+All hotels in Phoenix have an occupancy rate greater than 70%.
+If a hotel is in Atlanta, then its cancellation rate is greater than 10%.
+All hotels with a star level of 5 have an occupancy rate greater than 80%.
+There exists at least one hotel in Chicago with a staff count greater than 40.
+If a hotel has a star level of 4, then its average nightly rate is less than $220.
+All hotels with a bookings month greater than 900 have a staff count greater than 30.
+Most hotels in the dataset have an occupancy rate greater than 70%.
+If a hotel is in Denver, then its average nightly rate is greater than $140.
+All hotels with a star level of 3 have a staff count less than 45.
+There exists at least one hotel in Atlanta with a star level of 5 and an occupancy rate greater than 85%.
+If a hotel has a staff count greater than 40, then its star level is 5.
+All hotels in Boston have a star level of 4.
+If a hotel is in Phoenix, then its cancellation rate is less than 15%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+Most hotels in the dataset have a staff count greater than 30.
+If a hotel has a bookings month greater than 800, then its occupancy rate is greater than 70%.
+There exists at least one hotel in Chicago with a star level of 5 and an occupancy rate greater than 80%.

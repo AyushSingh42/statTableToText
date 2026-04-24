@@ -1,0 +1,17 @@
+All stores in the north region have a customer satisfaction rating of 4.3 or higher.
+If a store is in the south region, then its average basket size is between 50 and 57.
+There exists at least one store in the west region with a staff count of 24 and a customer satisfaction rating of 3.7.
+For all stores with monthly sales greater than 140k, their transactions are greater than 1900.
+All stores with a staff count of 21 or more have a customer satisfaction rating of 4.2 or higher.
+If a store is in the east region, then its average basket size is between 49 and 67.
+Most stores in the table have a monthly sales figure between 100k and 160k.
+There exists at least one store in the north region with a staff count of 18 and a customer satisfaction rating of 4.6.
+For all stores with transactions greater than 2200, their average basket size is between 56 and 67.
+All stores with a customer satisfaction rating of 4.5 or higher have a staff count of 11 or more.
+If a store is in the west region, then its monthly sales are between 80k and 150k.
+There exists at least one store in the south region with a staff count of 13 and a customer satisfaction rating of 4.0.
+For all stores with an average basket size greater than 60, their transactions are greater than 1500.
+Most stores in the table have a staff count of 18 or less.
+All stores with a customer satisfaction rating of 3.7 or lower have a staff count of 24 or more.
+If a store is in the east region, then its transactions are greater than 1500.
+There exists at least one store in the north region with a monthly sales figure of 82.5k and a customer satisfaction rating of 4.6.

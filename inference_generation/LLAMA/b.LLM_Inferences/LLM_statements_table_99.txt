@@ -1,0 +1,14 @@
+All employees in the HR department have a monthly salary between 5.5k and 8.0k.
+If an employee is in the marketing department, then their years of experience are less than 12.
+There exists at least one employee in the operations department with a performance rating greater than 4.0.
+All employees with more than 10 years of experience have a monthly salary greater than 6.0k.
+If an employee has a performance rating greater than 4.5, then they have more than 5 projects active.
+Most employees in the HR department have a remote workday count between 6 and 10 days per month.
+All employees in the finance department have a monthly salary greater than 7.0k.
+If an employee is in the engineering department, then their monthly salary is less than 10.6k.
+There exists at least one employee in the marketing department with a monthly salary greater than 10.0k.
+All employees with a performance rating less than 4.0 have more than 5 years of experience.
+If an employee has more than 5 projects active, then their performance rating is greater than 3.8.
+Most employees in the operations department have a monthly salary greater than 7.0k.
+All employees with a monthly salary greater than 9.0k have more than 3 projects active.
+If an employee is in the finance department, then their years of experience are greater than 8.

@@ -1,0 +1,57 @@
+
+[ERROR] Script exited with code 1
+Traceback (most recent call last):
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/arrays/integer.py"[0m, line [35m53[0m, in [35m_safe_cast[0m
+    return [31mvalues.astype[0m[1;31m(dtype, casting="safe", copy=copy)[0m
+           [31m~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[1;35mTypeError[0m: [35mCannot cast array data from dtype('O') to dtype('int64') according to the rule 'safe'[0m
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File [35m"/home/ayushs13/inference_generation/GPT/c.checking_statements/python_code_table_4.py"[0m, line [35m147[0m, in [35m<module>[0m
+    [31mmain[0m[1;31m()[0m
+    [31m~~~~[0m[1;31m^^[0m
+  File [35m"/home/ayushs13/inference_generation/GPT/c.checking_statements/python_code_table_4.py"[0m, line [35m128[0m, in [35mmain[0m
+    df[col] = [31mpd.to_numeric(df[col], errors="coerce").astype[0m[1;31m("Int64")[0m
+              [31m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/generic.py"[0m, line [35m6665[0m, in [35mastype[0m
+    new_data = self._mgr.astype(dtype=dtype, copy=copy, errors=errors)
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/internals/managers.py"[0m, line [35m449[0m, in [35mastype[0m
+    return [31mself.apply[0m[1;31m([0m
+           [31m~~~~~~~~~~[0m[1;31m^[0m
+        [1;31m"astype",[0m
+        [1;31m^^^^^^^^^[0m
+    ...<3 lines>...
+        [1;31musing_cow=using_copy_on_write(),[0m
+        [1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+    [1;31m)[0m
+    [1;31m^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/internals/managers.py"[0m, line [35m363[0m, in [35mapply[0m
+    applied = getattr(b, f)(**kwargs)
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/internals/blocks.py"[0m, line [35m784[0m, in [35mastype[0m
+    new_values = astype_array_safe(values, dtype, copy=copy, errors=errors)
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/dtypes/astype.py"[0m, line [35m237[0m, in [35mastype_array_safe[0m
+    new_values = astype_array(values, dtype, copy=copy)
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/dtypes/astype.py"[0m, line [35m182[0m, in [35mastype_array[0m
+    values = _astype_nansafe(values, dtype, copy=copy)
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/dtypes/astype.py"[0m, line [35m80[0m, in [35m_astype_nansafe[0m
+    return [31mdtype.construct_array_type()._from_sequence[0m[1;31m(arr, dtype=dtype, copy=copy)[0m
+           [31m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/arrays/masked.py"[0m, line [35m153[0m, in [35m_from_sequence[0m
+    values, mask = [31mcls._coerce_to_array[0m[1;31m(scalars, dtype=dtype, copy=copy)[0m
+                   [31m~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/arrays/numeric.py"[0m, line [35m272[0m, in [35m_coerce_to_array[0m
+    values, mask, _, _ = [31m_coerce_to_data_and_mask[0m[1;31m([0m
+                         [31m~~~~~~~~~~~~~~~~~~~~~~~~[0m[1;31m^[0m
+        [1;31mvalue, dtype, copy, dtype_cls, default_dtype[0m
+        [1;31m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+    [1;31m)[0m
+    [1;31m^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/arrays/numeric.py"[0m, line [35m229[0m, in [35m_coerce_to_data_and_mask[0m
+    values = dtype_cls._safe_cast(values, dtype, copy=False)
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/arrays/integer.py"[0m, line [35m59[0m, in [35m_safe_cast[0m
+    raise TypeError(
+        f"cannot safely cast non-equivalent {values.dtype} to {np.dtype(dtype)}"
+    ) from err
+[1;35mTypeError[0m: [35mcannot safely cast non-equivalent object to int64[0m

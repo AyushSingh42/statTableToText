@@ -1,0 +1,21 @@
+All players who are guards have an average of less than 6 assists per game.
+If a player is a forward, then their average points per game is greater than 14.
+All players who are centers have an average of more than 9 rebounds per game.
+There exists at least one player who is a guard and has an average of more than 20 points per game.
+If a player is a forward aged 28 or older, then their average minutes per game is greater than 29.
+All players who have played more than 70 games have an average of more than 5 assists per game.
+Most players have an average of more than 15 points per game.
+If a player is a center aged 26 or older, then their average rebounds per game is greater than 9.
+There exists at least one player who is a forward and has an average of more than 22 points per game.
+All players who have an average of more than 30 minutes per game have an average of more than 14 points per game.
+If a player is a guard aged 24 or younger, then their average assists per game is less than 6.
+Most players who are forwards have an average of more than 16 points per game.
+All players who have an average of more than 9 rebounds per game have an average of more than 14 points per game.
+If a player is a center aged 29 or older, then their average points per game is greater than 14.
+There exists at least one player who is a guard and has an average of more than 9 rebounds per game.
+All players who have played more than 60 games have an average of more than 5 rebounds per game.
+If a player is a forward aged 26 or older, then their average points per game is greater than 16.
+Most players who are guards have an average of less than 7 assists per game.
+All players who have an average of more than 25 minutes per game have an average of more than 13 points per game.
+If a player is a center aged 28 or older, then their average rebounds per game is greater than 10.
+There exists at least one player who is a forward and has an average of more than 10 rebounds per game.

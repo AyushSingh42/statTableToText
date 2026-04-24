@@ -1,0 +1,17 @@
+All households with a monthly income greater than 10k have a household size greater than 1.
+If a household is in a rural region, then their utility cost is greater than 100.
+All households with a vehicle count of 2 have a monthly income greater than 5k.
+There exists at least one household in a suburban region with a monthly income greater than 11k.
+If a household has a household size of 6, then their monthly income is less than 12k.
+All households with a monthly income less than 4k have a household size less than 6.
+Most households in the data have a household size of 3 or more.
+If a household has a vehicle count of 0, then their monthly income is greater than 5k.
+All households with a monthly income greater than 9k have a rent cost less than 3k.
+There exists at least one household in an urban region with a monthly income greater than 10k.
+If a household has a household size of 1, then their monthly income is greater than 10k.
+All households with a utility cost greater than 200 have a household size greater than 2.
+Most households in the data have a utility cost greater than 100.
+If a household is in a rural region, then their internet type is not fiber.
+All households with a monthly income less than 6k have a household size greater than 2.
+There exists at least one household in a suburban region with a vehicle count of 2.
+If a household has a household size of 5, then their monthly income is greater than 3k.

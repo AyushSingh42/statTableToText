@@ -1,0 +1,512 @@
+All employees in the engineering department with more than 8 years of experience have a monthly salary greater than $8k.
+If an employee is in the finance department, then their performance rating is greater than 4.0.
+There exists at least one employee in the hr department with a monthly salary greater than $10k.
+All employees with more than 10 years of experience have a performance rating greater than 4.0.
+If an employee has more than 5 active projects, then their monthly salary is greater than $7k.
+Most employees in the engineering department have a monthly salary greater than $6k.
+All employees with a performance rating greater than 4.5 have more than 2 active projects.
+If an employee is in the marketing department, then their years of experience are less than 5.
+There exists at least one employee in the operations department with more than 12 years of experience.
+All employees with a monthly salary greater than $9k have more than 3 active projects.
+If an employee has more than 4 active projects, then their performance rating is greater than 4.0.
+Most employees in the finance department have a monthly salary less than $8k.
+All employees with more than 6 years of experience have a performance rating greater than 4.0.
+If an employee is in the hr department, then their monthly salary is less than $8k.
+There exists at least one employee in the engineering department with a monthly salary less than $7k.
+All employees with a performance rating greater than 4.2 have more than 3 active projects.
+If an employee has more than 10 years of experience, then their monthly salary is greater than $7k.
+Most employees in the engineering department have more than 3 active projects.
+All employees with a monthly salary greater than $8k have more than 4 active projects.
+If an employee is in the finance department, then their years of experience are greater than 5.
+There exists at least one employee in the hr department with more than 5 active projects.
+All employees with more than 5 years of experience have a performance rating greater than 4.0.
+If an employee has more than 3 active projects, then their monthly salary is greater than $6k.
+Most employees in the finance department have more than 2 active projects.
+All employees with a performance rating greater than 4.5 have more than 4 active projects.
+If an employee is in the engineering department, then their monthly salary is greater than $6k.
+There exists at least one employee in the operations department with a monthly salary greater than $7k.
+All employees with more than 8 years of experience have a performance rating greater than 4.2.
+If an employee has more than 4 active projects, then their monthly salary is greater than $7k.
+Most employees in the hr department have a monthly salary less than $8k.
+All employees with a monthly salary greater than $9k have more than 5 active projects.
+If an employee is in the marketing department, then their monthly salary is greater than $9k.
+There exists at least one employee in the engineering department with more than 10 years of experience.
+All employees with more than 6 years of experience have a monthly salary greater than $6k.
+If an employee has more than 5 active projects, then their performance rating is greater than 4.2.
+Most employees in the finance department have a performance rating greater than 4.0.
+All employees with a performance rating greater than 4.5 have more than 5 active projects.
+If an employee is in the hr department, then their years of experience are greater than 5.
+There exists at least one employee in the operations department with a performance rating greater than 4.5.
+All employees with more than 10 years of experience have a monthly salary greater than $8k.
+If an employee has more than 3 active projects, then their performance rating is greater than 4.0.
+Most employees in the engineering department have a performance rating greater than 4.0.
+All employees with a monthly salary greater than $8k have more than 6 active projects.
+If an employee is in the finance department, then their monthly salary is less than $9k.
+There exists at least one employee in the hr department with a performance rating greater than 4.5.
+All employees with more than 5 years of experience have a monthly salary greater than $6k.
+If an employee has more than 4 active projects, then their monthly salary is greater than $8k.
+Most employees in the finance department have a monthly salary less than $9k.
+All employees with a performance rating greater than 4.2 have more than 6 active projects.
+If an employee is in the engineering department, then their years of experience are greater than 3.
+There exists at least one employee in the operations department with more than 5 active projects.
+All employees with more than 8 years of experience have a monthly salary greater than $9k.
+If an employee has more than 5 active projects, then their performance rating is greater than 4.5.
+Most employees in the hr department have a performance rating greater than 4.0.
+All employees with a monthly salary greater than $9k have more than 7 active projects.
+If an employee is in the marketing department, then their years of experience are less than 4.
+There exists at least one employee in the engineering department with a performance rating greater than 4.5.
+All employees with more than 6 years of experience have a performance rating greater than 4.2.
+If an employee has more than 3 active projects, then their monthly salary is greater than $7k.
+Most employees in the finance department have more than 3 active projects.
+All employees with a performance rating greater than 4.5 have more than 7 active projects.
+If an employee is in the hr department, then their monthly salary is less than $9k.
+There exists at least one employee in the operations department with a monthly salary greater than $8k.
+All employees with more than 10 years of experience have a performance rating greater than 4.5.
+If an employee has more than 4 active projects, then their monthly salary is greater than $9k.
+Most employees in the engineering department have more than 4 active projects.
+All employees with a monthly salary greater than $8k have more than 8 active projects.
+If an employee is in the finance department, then their years of experience are greater than 4.
+There exists at least one employee in the hr department with more than 6 active projects.
+All employees with more than 5 years of experience have a performance rating greater than 4.2.
+If an employee has more than 5 active projects, then their monthly salary is greater than $9k.
+Most employees in the finance department have a performance rating greater than 4.2.
+All employees with a performance rating greater than 4.5 have more than 8 active projects.
+If an employee is in the engineering department, then their monthly salary is greater than $7k.
+There exists at least one employee in the operations department with a performance rating greater than 4.6.
+All employees with more than 8 years of experience have a monthly salary greater than $10k.
+If an employee has more than 3 active projects, then their performance rating is greater than 4.2.
+Most employees in the hr department have a monthly salary less than $10k.
+All employees with a monthly salary greater than $9k have more than 9 active projects.
+If an employee is in the marketing department, then their monthly salary is greater than $10k.
+There exists at least one employee in the engineering department with more than 11 years of experience.
+All employees with more than 6 years of experience have a monthly salary greater than $8k.
+If an employee has more than 4 active projects, then their performance rating is greater than 4.5.
+Most employees in the finance department have more than 4 active projects.
+All employees with a performance rating greater than 4.5 have more than 9 active projects.
+If an employee is in the hr department, then their years of experience are greater than 6.
+There exists at least one employee in the operations department with more than 6 active projects.
+All employees with more than 10 years of experience have a monthly salary greater than $10k.
+If an employee has more than 5 active projects, then their performance rating is greater than 4.6.
+Most employees in the engineering department have a performance rating greater than 4.2.
+All employees with a monthly salary greater than $10k have more than 10 active projects.
+If an employee is in the finance department, then their monthly salary is less than $10k.
+There exists at least one employee in the hr department with a performance rating greater than 4.6.
+All employees with more than 5 years of experience have a monthly salary greater than $7k.
+If an employee has more than 3 active projects, then their monthly salary is greater than $8k.
+Most employees in the finance department have a monthly salary less than $10k.
+All employees with a performance rating greater than 4.6 have more than 10 active projects.
+If an employee is in the engineering department, then their years of experience are greater than 4.
+There exists at least one employee in the operations department with a monthly salary greater than $10k.
+All employees with more than 8 years of experience have a performance rating greater than 4.6.
+If an employee has more than 4 active projects, then their monthly salary is greater than $10k.
+Most employees in the hr department have a performance rating greater than 4.2.
+All employees with a monthly salary greater than $10k have more than 11 active projects.
+If an employee is in the marketing department, then their years of experience are less than 3.
+There exists at least one employee in the engineering department with a performance rating greater than 4.6.
+All employees with more than 6 years of experience have a performance rating greater than 4.5.
+If an employee has more than 5 active projects, then their monthly salary is greater than $10k.
+Most employees in the finance department have more than 5 active projects.
+All employees with a performance rating greater than 4.6 have more than 11 active projects.
+If an employee is in the hr department, then their monthly salary is less than $11k.
+There exists at least one employee in the operations department with a performance rating greater than 4.7.
+All employees with more than 10 years of experience have a monthly salary greater than $11k.
+If an employee has more than 3 active projects, then their performance rating is greater than 4.5.
+Most employees in the engineering department have more than 5 active projects.
+All employees with a monthly salary greater than $11k have more than 12 active projects.
+If an employee is in the finance department, then their years of experience are greater than 5.
+There exists at least one employee in the hr department with more than 7 active projects.
+All employees with more than 5 years of experience have a performance rating greater than 4.5.
+If an employee has more than 4 active projects, then their monthly salary is greater than $11k.
+Most employees in the finance department have a performance rating greater than 4.5.
+All employees with a performance rating greater than 4.7 have more than 12 active projects.
+If an employee is in the engineering department, then their monthly salary is greater than $8k.
+There exists at least one employee in the operations department with more than 7 active projects.
+All employees with more than 8 years of experience have a monthly salary greater than $11k.
+If an employee has more than 5 active projects, then their performance rating is greater than 4.7.
+Most employees in the hr department have a monthly salary less than $11k.
+All employees with a monthly salary greater than $11k have more than 13 active projects.
+If an employee is in the marketing department, then their monthly salary is greater than $11k.
+There exists at least one employee in the engineering department with more than 12 years of experience.
+All employees with more than 6 years of experience have a monthly salary greater than $9k.
+If an employee has more than 3 active projects, then their performance rating is greater than 4.6.
+Most employees in the finance department have more than 6 active projects.
+All employees with a performance rating greater than 4.7 have more than 13 active projects.
+If an employee is in the hr department, then their years of experience are greater than 7.
+There exists at least one employee in the operations department with a performance rating greater than 4.8.
+All employees with more than 10 years of experience have a monthly salary greater than $12k.
+If an employee has more than 4 active projects, then their monthly salary is greater than $12k.
+Most employees in the engineering department have a performance rating greater than 4.5.
+All employees with a monthly salary greater than $12k have more than 14 active projects.
+If an employee is in the finance department, then their monthly salary is less than $12k.
+There exists at least one employee in the hr department with more than 8 active projects.
+All employees with more than 5 years of experience have a monthly salary greater than $8k.
+If an employee has more than 5 active projects, then their performance rating is greater than 4.8.
+Most employees in the finance department have a performance rating greater than 4.6.
+All employees with a performance rating greater than 4.8 have more than 14 active projects.
+If an employee is in the engineering department, then their years of experience are greater than 5.
+There exists at least one employee in the operations department with more than 8 active projects.
+All employees with more than 8 years of experience have a monthly salary greater than $12k.
+If an employee has more than 3 active projects, then their monthly salary is greater than $9k.
+Most employees in the hr department have a performance rating greater than 4.5.
+All employees with a monthly salary greater than $12k have more than 15 active projects.
+If an employee is in the marketing department, then their years of experience are less than 2.
+There exists at least one employee in the engineering department with a performance rating greater than 4.8.
+All employees with more than 6 years of experience have a performance rating greater than 4.7.
+If an employee has more than 4 active projects, then their monthly salary is greater than $12k.
+Most employees in the finance department have more than 7 active projects.
+All employees with a performance rating greater than 4.8 have more than 15 active projects.
+If an employee is in the hr department, then their monthly salary is less than $13k.
+There exists at least one employee in the operations department with more than 9 active projects.
+All employees with more than 10 years of experience have a monthly salary greater than $13k.
+If an employee has more than 5 active projects, then their performance rating is greater than 4.9.
+Most employees in the engineering department have more than 6 active projects.
+All employees with a monthly salary greater than $13k have more than 16 active projects.
+If an employee is in the finance department, then their years of experience are greater than 6.
+There exists at least one employee in the hr department with more than 9 active projects.
+All employees with more than 5 years of experience have a performance rating greater than 4.7.
+If an employee has more than 3 active projects, then their monthly salary is greater than $10k.
+Most employees in the finance department have a performance rating greater than 4.7.
+All employees with a performance rating greater than 4.9 have more than 16 active projects.
+If an employee is in the engineering department, then their monthly salary is greater than $9k.
+There exists at least one employee in the operations department with a performance rating greater than 4.9.
+All employees with more than 8 years of experience have a monthly salary greater than $13k.
+If an employee has more than 4 active projects, then their monthly salary is greater than $13k.
+Most employees in the hr department have a monthly salary less than $13k.
+All employees with a monthly salary greater than $13k have more than 17 active projects.
+If an employee is in the marketing department, then their monthly salary is greater than $13k.
+There exists at least one employee in the engineering department with more than 13 years of experience.
+All employees with more than 6 years of experience have a monthly salary greater than $10k.
+If an employee has more than 5 active projects, then their performance rating is greater than 5.0.
+Most employees in the finance department have more than 8 active projects.
+All employees with a performance rating greater than 5.0 have more than 17 active projects.
+If an employee is in the hr department, then their years of experience are greater than 8.
+There exists at least one employee in the operations department with more than 10 active projects.
+All employees with more than 10 years of experience have a monthly salary greater than $14k.
+If an employee has more than 3 active projects, then their performance rating is greater than 4.9.
+Most employees in the engineering department have a performance rating greater than 4.7.
+All employees with a monthly salary greater than $14k have more than 18 active projects.
+If an employee is in the finance department, then their monthly salary is less than $14k.
+There exists at least one employee in the hr department with more than 10 active projects.
+All employees with more than 5 years of experience have a monthly salary greater than $9k.
+If an employee has more than 4 active projects, then their monthly salary is greater than $14k.
+Most employees in the finance department have a performance rating greater than 4.8.
+All employees with a performance rating greater than 5.0 have more than 18 active projects.
+If an employee is in the engineering department, then their years of experience are greater than 6.
+There exists at least one employee in the operations department with a performance rating greater than 5.0.
+All employees with more than 8 years of experience have a monthly salary greater than $14k.
+If an employee has more than 5 active projects, then their performance rating is greater than 5.1.
+Most employees in the hr department have a performance rating greater than 4.7.
+All employees with a monthly salary greater than $14k have more than 19 active projects.
+If an employee is in the marketing department, then their years of experience are less than 1.
+There exists at least one employee in the engineering department with a performance rating greater than 5.1.
+All employees with more than 6 years of experience have a performance rating greater than 4.9.
+If an employee has more than 3 active projects, then their monthly salary is greater than $11k.
+Most employees in the finance department have more than 9 active projects.
+All employees with a performance rating greater than 5.1 have more than 19 active projects.
+If an employee is in the hr department, then their monthly salary is less than $15k.
+There exists at least one employee in the operations department with more than 11 active projects.
+All employees with more than 10 years of experience have a monthly salary greater than $15k.
+If an employee has more than 4 active projects, then their monthly salary is greater than $15k.
+Most employees in the engineering department have more than 7 active projects.
+All employees with a monthly salary greater than $15k have more than 20 active projects.
+If an employee is in the finance department, then their years of experience are greater than 7.
+There exists at least one employee in the hr department with more than 11 active projects.
+All employees with more than 5 years of experience have a performance rating greater than 4.9.
+If an employee has more than 5 active projects, then their performance rating is greater than 5.2.
+Most employees in the finance department have a performance rating greater than 4.9.
+All employees with a performance rating greater than 5.2 have more than 20 active projects.
+If an employee is in the engineering department, then their monthly salary is greater than $10k.
+There exists at least one employee in the operations department with a performance rating greater than 5.2.
+All employees with more than 8 years of experience have a monthly salary greater than $15k.
+If an employee has more than 3 active projects, then their monthly salary is greater than $12k.
+Most employees in the hr department have a monthly salary less than $15k.
+All employees with a monthly salary greater than $15k have more than 21 active projects.
+If an employee is in the marketing department, then their monthly salary is greater than $15k.
+There exists at least one employee in the engineering department with more than 14 years of experience.
+All employees with more than 6 years of experience have a monthly salary greater than $11k.
+If an employee has more than 4 active projects, then their monthly salary is greater than $15k.
+Most employees in the finance department have more than 10 active projects.
+All employees with a performance rating greater than 5.2 have more than 21 active projects.
+If an employee is in the hr department, then their years of experience are greater than 9.
+There exists at least one employee in the operations department with more than 12 active projects.
+All employees with more than 10 years of experience have a monthly salary greater than $16k.
+If an employee has more than 5 active projects, then their performance rating is greater than 5.3.
+Most employees in the engineering department have a performance rating greater than 4.9.
+All employees with a monthly salary greater than $16k have more than 22 active projects.
+If an employee is in the finance department, then their monthly salary is less than $16k.
+There exists at least one employee in the hr department with more than 12 active projects.
+All employees with more than 5 years of experience have a monthly salary greater than $10k.
+If an employee has more than 3 active projects, then their performance rating is greater than 5.0.
+Most employees in the finance department have a performance rating greater than 5.0.
+All employees with a performance rating greater than 5.3 have more than 22 active projects.
+If an employee is in the engineering department, then their years of experience are greater than 7.
+There exists at least one employee in the operations department with a performance rating greater than 5.3.
+All employees with more than 8 years of experience have a monthly salary greater than $16k.
+If an employee has more than 4 active projects, then their monthly salary is greater than $16k.
+Most employees in the hr department have a performance rating greater than 4.9.
+All employees with a monthly salary greater than $16k have more than 23 active projects.
+If an employee is in the marketing department, then their years of experience are less than 0.
+There exists at least one employee in the engineering department with a performance rating greater than 5.3.
+All employees with more than 6 years of experience have a performance rating greater than 5.0.
+If an employee has more than 5 active projects, then their performance rating is greater than 5.4.
+Most employees in the finance department have more than 11 active projects.
+All employees with a performance rating greater than 5.4 have more than 23 active projects.
+If an employee is in the hr department, then their monthly salary is less than $17k.
+There exists at least one employee in the operations department with more than 13 active projects.
+All employees with more than 10 years of experience have a monthly salary greater than $17k.
+If an employee has more than 3 active projects, then their monthly salary is greater than $13k.
+Most employees in the engineering department have more than 8 active projects.
+All employees with a monthly salary greater than $17k have more than 24 active projects.
+If an employee is in the finance department, then their years of experience are greater than 8.
+There exists at least one employee in the hr department with more than 13 active projects.
+All employees with more than 5 years of experience have a performance rating greater than 5.0.
+If an employee has more than 4 active projects, then their monthly salary is greater than $17k.
+Most employees in the finance department have a performance rating greater than 5.1.
+All employees with a performance rating greater than 5.4 have more than 24 active projects.
+If an employee is in the engineering department, then their monthly salary is greater than $11k.
+There exists at least one employee in the operations department with a performance rating greater than 5.4.
+All employees with more than 8 years of experience have a monthly salary greater than $17k.
+If an employee has more than 5 active projects, then their performance rating is greater than 5.5.
+Most employees in the hr department have a monthly salary less than $17k.
+All employees with a monthly salary greater than $17k have more than 25 active projects.
+If an employee is in the marketing department, then their monthly salary is greater than $17k.
+There exists at least one employee in the engineering department with more than 15 years of experience.
+All employees with more than 6 years of experience have a monthly salary greater than $12k.
+If an employee has more than 3 active projects, then their performance rating is greater than 5.1.
+Most employees in the finance department have more than 12 active projects.
+All employees with a performance rating greater than 5.5 have more than 25 active projects.
+If an employee is in the hr department, then their years of experience are greater than 10.
+There exists at least one employee in the operations department with more than 14 active projects.
+All employees with more than 10 years of experience have a monthly salary greater than $18k.
+If an employee has more than 4 active projects, then their monthly salary is greater than $18k.
+Most employees in the engineering department have a performance rating greater than 5.0.
+All employees with a monthly salary greater than $18k have more than 26 active projects.
+If an employee is in the finance department, then their monthly salary is less than $18k.
+There exists at least one employee in the hr department with more than 14 active projects.
+All employees with more than 5 years of experience have a monthly salary greater than $11k.
+If an employee has more than 5 active projects, then their performance rating is greater than 5.6.
+Most employees in the finance department have a performance rating greater than 5.2.
+All employees with a performance rating greater than 5.6 have more than 26 active projects.
+If an employee is in the engineering department, then their years of experience are greater than 8.
+There exists at least one employee in the operations department with a performance rating greater than 5.6.
+All employees with more than 8 years of experience have a monthly salary greater than $18k.
+If an employee has more than 3 active projects, then their monthly salary is greater than $14k.
+Most employees in the hr department have a performance rating greater than 5.0.
+All employees with a monthly salary greater than $18k have more than 27 active projects.
+If an employee is in the marketing department, then their years of experience are less than -1.
+There exists at least one employee in the engineering department with a performance rating greater than 5.6.
+All employees with more than 6 years of experience have a performance rating greater than 5.2.
+If an employee has more than 4 active projects, then their monthly salary is greater than $18k.
+Most employees in the finance department have more than 13 active projects.
+All employees with a performance rating greater than 5.6 have more than 27 active projects.
+If an employee is in the hr department, then their monthly salary is less than $19k.
+There exists at least one employee in the operations department with more than 15 active projects.
+All employees with more than 10 years of experience have a monthly salary greater than $19k.
+If an employee has more than 5 active projects, then their performance rating is greater than 5.7.
+Most employees in the engineering department have more than 9 active projects.
+All employees with a monthly salary greater than $19k have more than 28 active projects.
+If an employee is in the finance department, then their years of experience are greater than 9.
+There exists at least one employee in the hr department with more than 15 active projects.
+All employees with more than 5 years of experience have a performance rating greater than 5.2.
+If an employee has more than 3 active projects, then their monthly salary is greater than $15k.
+Most employees in the finance department have a performance rating greater than 5.3.
+All employees with a performance rating greater than 5.7 have more than 28 active projects.
+If an employee is in the engineering department, then their monthly salary is greater than $12k.
+There exists at least one employee in the operations department with a performance rating greater than 5.7.
+All employees with more than 8 years of experience have a monthly salary greater than $19k.
+If an employee has more than 4 active projects, then their monthly salary is greater than $19k.
+Most employees in the hr department have a monthly salary less than $19k.
+All employees with a monthly salary greater than $19k have more than 29 active projects.
+If an employee is in the marketing department, then their monthly salary is greater than $19k.
+There exists at least one employee in the engineering department with more than 16 years of experience.
+All employees with more than 6 years of experience have a monthly salary greater than $13k.
+If an employee has more than 5 active projects, then their performance rating is greater than 5.8.
+Most employees in the finance department have more than 14 active projects.
+All employees with a performance rating greater than 5.8 have more than 29 active projects.
+If an employee is in the hr department, then their years of experience are greater than 11.
+There exists at least one employee in the operations department with more than 16 active projects.
+All employees with more than 10 years of experience have a monthly salary greater than $20k.
+If an employee has more than 3 active projects, then their monthly salary is greater than $16k.
+Most employees in the engineering department have a performance rating greater than 5.3.
+All employees with a monthly salary greater than $20k have more than 30 active projects.
+If an employee is in the finance department, then their monthly salary is less than $20k.
+There exists at least one employee in the hr department with more than 16 active projects.
+All employees with more than 5 years of experience have a monthly salary greater than $12k.
+If an employee has more than 4 active projects, then their monthly salary is greater than $20k.
+Most employees in the finance department have a performance rating greater than 5.4.
+All employees with a performance rating greater than 5.8 have more than 30 active projects.
+If an employee is in the engineering department, then their years of experience are greater than 9.
+There exists at least one employee in the operations department with a performance rating greater than 5.8.
+All employees with more than 8 years of experience have a monthly salary greater than $20k.
+If an employee has more than 5 active projects, then their performance rating is greater than 5.9.
+Most employees in the hr department have a performance rating greater than 5.3.
+All employees with a monthly salary greater than $20k have more than 31 active projects.
+If an employee is in the marketing department, then their years of experience are less than -2.
+There exists at least one employee in the engineering department with a performance rating greater than 5.9.
+All employees with more than 6 years of experience have a performance rating greater than 5.4.
+If an employee has more than 3 active projects, then their monthly salary is greater than $17k.
+Most employees in the finance department have more than 15 active projects.
+All employees with a performance rating greater than 5.9 have more than 31 active projects.
+If an employee is in the hr department, then their monthly salary is less than $21k.
+There exists at least one employee in the operations department with more than 17 active projects.
+All employees with more than 10 years of experience have a monthly salary greater than $21k.
+If an employee has more than 4 active projects, then their monthly salary is greater than $21k.
+Most employees in the engineering department have more than 10 active projects.
+All employees with a monthly salary greater than $21k have more than 32 active projects.
+If an employee is in the finance department, then their years of experience are greater than 10.
+There exists at least one employee in the hr department with more than 17 active projects.
+All employees with more than 5 years of experience have a performance rating greater than 5.4.
+If an employee has more than 5 active projects, then their performance rating is greater than 6.0.
+Most employees in the finance department have a performance rating greater than 5.5.
+All employees with a performance rating greater than 6.0 have more than 32 active projects.
+If an employee is in the engineering department, then their monthly salary is greater than $13k.
+There exists at least one employee in the operations department with a performance rating greater than 6.0.
+All employees with more than 8 years of experience have a monthly salary greater than $21k.
+If an employee has more than 3 active projects, then their monthly salary is greater than $18k.
+Most employees in the hr department have a monthly salary less than $21k.
+All employees with a monthly salary greater than $21k have more than 33 active projects.
+If an employee is in the marketing department, then their monthly salary is greater than $21k.
+There exists at least one employee in the engineering department with more than 17 years of experience.
+All employees with more than 6 years of experience have a monthly salary greater than $14k.
+If an employee has more than 4 active projects, then their monthly salary is greater than $21k.
+Most employees in the finance department have more than 16 active projects.
+All employees with a performance rating greater than 6.0 have more than 33 active projects.
+If an employee is in the hr department, then their years of experience are greater than 12.
+There exists at least one employee in the operations department with more than 18 active projects.
+All employees with more than 10 years of experience have a monthly salary greater than $22k.
+If an employee has more than 5 active projects, then their performance rating is greater than 6.1.
+Most employees in the engineering department have a performance rating greater than 5.5.
+All employees with a monthly salary greater than $22k have more than 34 active projects.
+If an employee is in the finance department, then their monthly salary is less than $22k.
+There exists at least one employee in the hr department with more than 18 active projects.
+All employees with more than 5 years of experience have a monthly salary greater than $13k.
+If an employee has more than 3 active projects, then their monthly salary is greater than $19k.
+Most employees in the finance department have a performance rating greater than 5.6.
+All employees with a performance rating greater than 6.1 have more than 34 active projects.
+If an employee is in the engineering department, then their years of experience are greater than 10.
+There exists at least one employee in the operations department with a performance rating greater than 6.1.
+All employees with more than 8 years of experience have a monthly salary greater than $22k.
+If an employee has more than 4 active projects, then their monthly salary is greater than $22k.
+Most employees in the hr department have a performance rating greater than 5.5.
+All employees with a monthly salary greater than $22k have more than 35 active projects.
+If an employee is in the marketing department, then their years of experience are less than -3.
+There exists at least one employee in the engineering department with a performance rating greater than 6.1.
+All employees with more than 6 years of experience have a performance rating greater than 5.6.
+If an employee has more than 5 active projects, then their performance rating is greater than 6.2.
+Most employees in the finance department have more than 17 active projects.
+All employees with a performance rating greater than 6.2 have more than 35 active projects.
+If an employee is in the hr department, then their monthly salary is less than $23k.
+There exists at least one employee in the operations department with more than 19 active projects.
+All employees with more than 10 years of experience have a monthly salary greater than $23k.
+If an employee has more than 3 active projects, then their monthly salary is greater than $20k.
+Most employees in the engineering department have more than 11 active projects.
+All employees with a monthly salary greater than $23k have more than 36 active projects.
+If an employee is in the finance department, then their years of experience are greater than 11.
+There exists at least one employee in the hr department with more than 19 active projects.
+All employees with more than 5 years of experience have a performance rating greater than 5.6.
+If an employee has more than 4 active projects, then their monthly salary is greater than $23k.
+Most employees in the finance department have a performance rating greater than 5.7.
+All employees with a performance rating greater than 6.2 have more than 36 active projects.
+If an employee is in the engineering department, then their monthly salary is greater than $14k.
+There exists at least one employee in the operations department with a performance rating greater than 6.2.
+All employees with more than 8 years of experience have a monthly salary greater than $23k.
+If an employee has more than 5 active projects, then their performance rating is greater than 6.3.
+Most employees in the hr department have a monthly salary less than $23k.
+All employees with a monthly salary greater than $23k have more than 37 active projects.
+If an employee is in the marketing department, then their monthly salary is greater than $23k.
+There exists at least one employee in the engineering department with more than 18 years of experience.
+All employees with more than 6 years of experience have a monthly salary greater than $15k.
+If an employee has more than 3 active projects, then their monthly salary is greater than $21k.
+Most employees in the finance department have more than 18 active projects.
+All employees with a performance rating greater than 6.3 have more than 37 active projects.
+If an employee is in the hr department, then their years of experience are greater than 13.
+There exists at least one employee in the operations department with more than 20 active projects.
+All employees with more than 10 years of experience have a monthly salary greater than $24k.
+If an employee has more than 4 active projects, then their monthly salary is greater than $24k.
+Most employees in the engineering department have a performance rating greater than 5.7.
+All employees with a monthly salary greater than $24k have more than 38 active projects.
+If an employee is in the finance department, then their monthly salary is less than $24k.
+There exists at least one employee in the hr department with more than 20 active projects.
+All employees with more than 5 years of experience have a monthly salary greater than $14k.
+If an employee has more than 5 active projects, then their performance rating is greater than 6.4.
+Most employees in the finance department have a performance rating greater than 5.8.
+All employees with a performance rating greater than 6.4 have more than 38 active projects.
+If an employee is in the engineering department, then their years of experience are greater than 11.
+There exists at least one employee in the operations department with a performance rating greater than 6.4.
+All employees with more than 8 years of experience have a monthly salary greater than $24k.
+If an employee has more than 3 active projects, then their monthly salary is greater than $22k.
+Most employees in the hr department have a performance rating greater than 5.7.
+All employees with a monthly salary greater than $24k have more than 39 active projects.
+If an employee is in the marketing department, then their years of experience are less than -4.
+There exists at least one employee in the engineering department with a performance rating greater than 6.4.
+All employees with more than 6 years of experience have a performance rating greater than 5.8.
+If an employee has more than 4 active projects, then their monthly salary is greater than $24k.
+Most employees in the finance department have more than 19 active projects.
+All employees with a performance rating greater than 6.4 have more than 39 active projects.
+If an employee is in the hr department, then their monthly salary is less than $25k.
+There exists at least one employee in the operations department with more than 21 active projects.
+All employees with more than 10 years of experience have a monthly salary greater than $25k.
+If an employee has more than 5 active projects, then their performance rating is greater than 6.5.
+Most employees in the engineering department have more than 12 active projects.
+All employees with a monthly salary greater than $25k have more than 40 active projects.
+If an employee is in the finance department, then their years of experience are greater than 12.
+There exists at least one employee in the hr department with more than 21 active projects.
+All employees with more than 5 years of experience have a performance rating greater than 5.8.
+If an employee has more than 3 active projects, then their monthly salary is greater than $23k.
+Most employees in the finance department have a performance rating greater than 5.9.
+All employees with a performance rating greater than 6.5 have more than 40 active projects.
+If an employee is in the engineering department, then their monthly salary is greater than $15k.
+There exists at least one employee in the operations department with a performance rating greater than 6.5.
+All employees with more than 8 years of experience have a monthly salary greater than $25k.
+If an employee has more than 4 active projects, then their monthly salary is greater than $25k.
+Most employees in the hr department have a monthly salary less than $25k.
+All employees with a monthly salary greater than $25k have more than 41 active projects.
+If an employee is in the marketing department, then their monthly salary is greater than $25k.
+There exists at least one employee in the engineering department with more than 19 years of experience.
+All employees with more than 6 years of experience have a monthly salary greater than $16k.
+If an employee has more than 5 active projects, then their performance rating is greater than 6.6.
+Most employees in the finance department have more than 20 active projects.
+All employees with a performance rating greater than 6.6 have more than 41 active projects.
+If an employee is in the hr department, then their years of experience are greater than 14.
+There exists at least one employee in the operations department with more than 22 active projects.
+All employees with more than 10 years of experience have a monthly salary greater than $26k.
+If an employee has more than 3 active projects, then their monthly salary is greater than $24k.
+Most employees in the engineering department have a performance rating greater than 5.9.
+All employees with a monthly salary greater than $26k have more than 42 active projects.
+If an employee is in the finance department, then their monthly salary is less than $26k.
+There exists at least one employee in the hr department with more than 22 active projects.
+All employees with more than 5 years of experience have a monthly salary greater than $15k.
+If an employee has more than 4 active projects, then their monthly salary is greater than $26k.
+Most employees in the finance department have a performance rating greater than 6.0.
+All employees with a performance rating greater than 6.6 have more than 42 active projects.
+If an employee is in the engineering department, then their years of experience are greater than 12.
+There exists at least one employee in the operations department with a performance rating greater than 6.6.
+All employees with more than 8 years of experience have a monthly salary greater than $26k.
+If an employee has more than 5 active projects, then their performance rating is greater than 6.7.
+Most employees in the hr department have a performance rating greater than 5.9.
+All employees with a monthly salary greater than $26k have more than 43 active projects.
+If an employee is in the marketing department, then their years of experience are less than -5.
+There exists at least one employee in the engineering department with a performance rating greater than 6.7.
+All employees with more than 6 years of experience have a performance rating greater than 6.0.
+If an employee has more than 3 active projects, then their monthly salary is greater than $25k.
+Most employees in the finance department have more than 21 active projects.
+All employees with a performance rating greater than 6.7 have more than 43 active projects.
+If an employee is in the hr department, then their monthly salary is less than $27k.
+There exists at least one employee in the operations department with more than 23 active projects.
+All employees with more than 10 years of experience have a monthly salary greater than $27k.
+If an employee has more than 4 active projects, then their monthly salary is greater than $27k.
+Most employees in the engineering department have more than 13 active projects.
+All employees with a monthly salary greater than $27k have more than 44 active projects.
+If an employee is in the finance department, then their years of experience are greater than 13.
+There exists at least one employee in the hr department with more than 23 active projects.
+All employees with more than 5 years of experience have a performance rating greater than 6.0.
+If an employee has more than 5 active projects, then their performance rating is greater than 6.8.
+Most employees in the finance department have a performance rating greater than 6.1.
+All employees with a performance rating greater than 6.8 have more than 44 active projects.
+If an employee is in the engineering department, then their monthly salary is greater than $16k.
+There exists at least one employee in the operations department with a performance rating greater than 6.8.
+All employees with more than 8 years of experience have a monthly salary greater than $27k.
+If an employee has more than 3 active projects, then their monthly salary is greater than $26k.
+Most employees in the hr department have a monthly salary less than $27k.
+All employees with a monthly salary greater than $27k have more than 45 active projects.
+If an employee is in the

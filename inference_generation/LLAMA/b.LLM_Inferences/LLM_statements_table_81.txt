@@ -1,0 +1,22 @@
+All patients with a diagnosis of arthritis have a BMI less than 33.
+If a patient is a smoker, then their age is less than 65.
+There exists at least one patient with a diagnosis of diabetes whose cholesterol level is less than 200 mg/dl.
+All patients with a systolic blood pressure greater than 140 have a diastolic blood pressure greater than 70.
+If a patient has a BMI greater than 30, then they are a smoker.
+Most patients have a cholesterol level greater than 180 mg/dl.
+All patients with a diagnosis of asthma have a BMI greater than 28.
+If a patient is older than 50, then their systolic blood pressure is greater than 120.
+There exists at least one patient with a diagnosis of migraine whose BMI is less than 22.
+All patients with a diastolic blood pressure less than 90 have a systolic blood pressure less than 130.
+If a patient has a cholesterol level greater than 220 mg/dl, then they are a smoker.
+Most patients have a BMI less than 30.
+All patients with a diagnosis of hypertension have a systolic blood pressure greater than 140.
+If a patient is younger than 40, then their diastolic blood pressure is greater than 80.
+There exists at least one patient with a diagnosis of arthritis whose cholesterol level is greater than 230 mg/dl.
+All patients with a BMI greater than 25 have a systolic blood pressure greater than 110.
+If a patient has a cholesterol level less than 190 mg/dl, then they are not a smoker.
+Most patients have a systolic blood pressure greater than 120.
+All patients with a diagnosis of diabetes have a BMI greater than 25.
+If a patient is older than 60, then their BMI is less than 29.
+There exists at least one patient with a diagnosis of migraine whose systolic blood pressure is greater than 145.
+All patients with a diastolic blood pressure greater than 95 have a systolic blood pressure greater than 125.

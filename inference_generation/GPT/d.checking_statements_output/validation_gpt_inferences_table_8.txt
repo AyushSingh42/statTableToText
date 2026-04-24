@@ -1,0 +1,36 @@
+
+Statement 1: TRUE
+  - 1. For all guards, assists per game are at least 5.0.
+  - Explanation: All 5 guards have assists_per_game ≥ 5.0.
+
+Statement 2: TRUE
+  - 2. All centers have rebounds per game of at least 9.9.
+  - Explanation: All 5 centers have rebounds_per_game ≥ 9.9.
+
+Statement 3: TRUE
+  - 3. All forwards have points per game of at least 15.6.
+  - Explanation: All 5 forwards have points_per_game ≥ 15.6.
+
+Statement 4: TRUE
+  - 4. For all players who played at least 74 games, points per game exceed 18.
+  - Explanation: All 4 players with ≥74 games have points_per_game > 18.
+
+Statement 5: TRUE
+  - 5. Most players have points per game greater than 15.
+  - Explanation: 12 out of 15 players (80.0%) have points_per_game > 15.
+
+Statement 6: TRUE
+  - 6. All centers have assists per game below 2.5.
+  - Explanation: All 5 centers have assists_per_game < 2.5.
+
+Statement 7: TRUE
+  - 7. All forwards have rebounds per game at least 6.8.
+  - Explanation: All 5 forwards have rebounds_per_game ≥ 6.8.
+
+Statement 8: TRUE
+  - 8. If a player is younger than 25, their points per game do not exceed 18.7.
+  - Explanation: All 5 players younger than 25 have points_per_game ≤ 18.7.
+
+Statement 9: TRUE
+  - 9. For all players with minutes per game greater than 33, points per game exceed 20.
+  - Explanation: All 2 players with minutes_per_game > 33 have points_per_game > 20.

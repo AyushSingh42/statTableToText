@@ -1,0 +1,17 @@
+All stores in the east region have monthly sales greater than $119k.
+If a store is in the north region, then its average basket size is less than $67.
+There exists at least one store in the west region with a staff count greater than 19.
+All stores with customer satisfaction greater than 4.5 have monthly sales greater than $90k.
+If a store is in the south region, then its transactions are less than 2574.
+Most stores have an average basket size greater than $56.
+All stores with staff count greater than 16 have customer satisfaction greater than 4.3.
+If a store is in the east region, then its staff count is less than 25.
+There exists at least one store in the west region with a monthly sales less than $100k and customer satisfaction greater than 4.1.
+All stores with transactions greater than 2495 have an average basket size less than $67.
+If a store is in the south region and has a staff count greater than 20, then its customer satisfaction is greater than 4.2.
+Most stores in the west region have a staff count less than 19.
+All stores with monthly sales greater than $151k have customer satisfaction greater than 4.5.
+If a store is in the east region and has a staff count less than 16, then its monthly sales are greater than $119k.
+There exists at least one store in the south region with a staff count greater than 22 and customer satisfaction greater than 4.3.
+All stores with average basket size greater than $62 have transactions greater than 1898.
+If a store is in the west region and has a staff count greater than 14, then its customer satisfaction is greater than 4.1.

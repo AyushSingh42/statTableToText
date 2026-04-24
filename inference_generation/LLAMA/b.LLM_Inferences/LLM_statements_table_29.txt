@@ -1,0 +1,403 @@
+All employees in the marketing department have a monthly salary less than or equal to $10.3k.
+If an employee is in the engineering department, then their years of experience are less than or equal to 11.3 years.
+There exists at least one employee in the finance department whose performance rating is less than 4.0.
+All employees with more than 10 years of experience have a monthly salary greater than or equal to $8.6k.
+If an employee is in the hr department, then their monthly salary is less than or equal to $9.0k.
+Most employees in the table have a performance rating greater than 4.0.
+All employees with a monthly salary greater than $9.4k have a performance rating greater than 3.8.
+If an employee is in the operations department, then their years of experience are greater than or equal to 9.4 years.
+There exists at least one employee in the engineering department whose remote days per month are greater than or equal to 12 days.
+All employees with a monthly salary less than or equal to $6.3k have a performance rating greater than or equal to 4.5.
+If an employee is in the marketing department, then their projects active are less than or equal to 6 projects.
+Most employees in the table have a monthly salary less than or equal to $9.9k.
+All employees with more than 5 years of experience have a monthly salary greater than or equal to $6.2k.
+If an employee is in the finance department, then their years of experience are greater than or equal to 9.3 years.
+There exists at least one employee in the hr department whose years of experience are greater than or equal to 10.9 years.
+All employees with a performance rating greater than 4.2 have a monthly salary greater than or equal to $7.7k.
+If an employee is in the engineering department, then their monthly salary is greater than or equal to $6.3k.
+Most employees in the table have a monthly salary greater than or equal to $6.2k.
+All employees with a monthly salary less than or equal to $8.2k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their years of experience are less than or equal to 12.5 years.
+There exists at least one employee in the finance department whose remote days per month are greater than or equal to 11 days.
+All employees with more than 4 years of experience have a monthly salary greater than or equal to $5.3k.
+If an employee is in the operations department, then their monthly salary is greater than or equal to $5.3k.
+Most employees in the table have a monthly salary less than or equal to $8.9k.
+All employees with a performance rating greater than 3.9 have a monthly salary greater than or equal to $6.9k.
+If an employee is in the hr department, then their projects active are less than or equal to 2 projects.
+There exists at least one employee in the engineering department whose years of experience are less than or equal to 1.0 year.
+All employees with a monthly salary less than or equal to $7.7k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their monthly salary is greater than or equal to $5.3k.
+Most employees in the table have a monthly salary greater than or equal to $5.3k.
+All employees with more than 1 year of experience have a monthly salary greater than or equal to $5.3k.
+If an employee is in the finance department, then their projects active are less than or equal to 4 projects.
+There exists at least one employee in the hr department whose monthly salary is less than or equal to $5.3k.
+All employees with a performance rating greater than 4.1 have a monthly salary greater than or equal to $6.2k.
+If an employee is in the operations department, then their performance rating is greater than or equal to 4.1.
+Most employees in the table have a monthly salary less than or equal to $6.9k.
+All employees with a monthly salary less than or equal to $6.2k have a performance rating greater than or equal to 4.5.
+If an employee is in the marketing department, then their remote days per month are less than or equal to 13 days.
+There exists at least one employee in the finance department whose years of experience are less than or equal to 10.0 years.
+All employees with more than 6 years of experience have a monthly salary greater than or equal to $6.3k.
+If an employee is in the engineering department, then their monthly salary is less than or equal to $10.1k.
+Most employees in the table have a monthly salary greater than or equal to $6.3k.
+All employees with a performance rating greater than 4.2 have a monthly salary greater than or equal to $7.7k.
+If an employee is in the hr department, then their years of experience are less than or equal to 1.1 years.
+There exists at least one employee in the operations department whose remote days per month are less than or equal to 6 days.
+All employees with a monthly salary less than or equal to $8.6k have a performance rating greater than or equal to 4.2.
+If an employee is in the marketing department, then their monthly salary is less than or equal to $10.3k.
+Most employees in the table have a monthly salary less than or equal to $8.6k.
+All employees with more than 8 years of experience have a monthly salary greater than or equal to $6.9k.
+If an employee is in the finance department, then their projects active are less than or equal to 3 projects.
+There exists at least one employee in the engineering department whose performance rating is greater than or equal to 4.5.
+All employees with a performance rating greater than 3.8 have a monthly salary greater than or equal to $7.7k.
+If an employee is in the operations department, then their monthly salary is less than or equal to $6.9k.
+Most employees in the table have a monthly salary greater than or equal to $6.9k.
+All employees with a monthly salary less than or equal to $7.7k have a performance rating greater than or equal to 4.4.
+If an employee is in the hr department, then their remote days per month are less than or equal to 10 days.
+There exists at least one employee in the marketing department whose years of experience are less than or equal to 1.6 years.
+All employees with more than 9 years of experience have a monthly salary greater than or equal to $8.6k.
+If an employee is in the finance department, then their monthly salary is greater than or equal to $8.6k.
+Most employees in the table have a monthly salary less than or equal to $8.9k.
+All employees with a performance rating greater than 4.1 have a monthly salary greater than or equal to $6.9k.
+If an employee is in the operations department, then their years of experience are less than or equal to 9.4 years.
+There exists at least one employee in the engineering department whose monthly salary is greater than or equal to $9.9k.
+All employees with a monthly salary less than or equal to $6.3k have a performance rating greater than or equal to 4.5.
+If an employee is in the marketing department, then their monthly salary is greater than or equal to $8.2k.
+Most employees in the table have a monthly salary greater than or equal to $8.2k.
+All employees with more than 4 years of experience have a monthly salary greater than or equal to $6.2k.
+If an employee is in the hr department, then their projects active are less than or equal to 2 projects.
+There exists at least one employee in the finance department whose performance rating is greater than or equal to 4.8.
+All employees with a performance rating greater than 4.2 have a monthly salary greater than or equal to $8.6k.
+If an employee is in the operations department, then their monthly salary is greater than or equal to $5.3k.
+Most employees in the table have a monthly salary less than or equal to $9.4k.
+All employees with a monthly salary less than or equal to $8.2k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their years of experience are less than or equal to 12.5 years.
+There exists at least one employee in the engineering department whose remote days per month are greater than or equal to 14 days.
+All employees with more than 1 year of experience have a monthly salary greater than or equal to $5.3k.
+If an employee is in the finance department, then their years of experience are greater than or equal to 9.3 years.
+Most employees in the table have a monthly salary greater than or equal to $5.3k.
+All employees with a performance rating greater than 3.9 have a monthly salary greater than or equal to $6.9k.
+If an employee is in the hr department, then their monthly salary is less than or equal to $9.0k.
+There exists at least one employee in the operations department whose performance rating is greater than or equal to 4.1.
+All employees with a monthly salary less than or equal to $7.7k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their monthly salary is less than or equal to $10.3k.
+Most employees in the table have a monthly salary less than or equal to $9.9k.
+All employees with more than 6 years of experience have a monthly salary greater than or equal to $6.3k.
+If an employee is in the engineering department, then their monthly salary is less than or equal to $10.1k.
+There exists at least one employee in the finance department whose remote days per month are greater than or equal to 13 days.
+All employees with a performance rating greater than 4.2 have a monthly salary greater than or equal to $7.7k.
+If an employee is in the operations department, then their monthly salary is less than or equal to $6.9k.
+Most employees in the table have a monthly salary greater than or equal to $6.3k.
+All employees with a monthly salary less than or equal to $6.2k have a performance rating greater than or equal to 4.5.
+If an employee is in the marketing department, then their remote days per month are less than or equal to 13 days.
+There exists at least one employee in the hr department whose years of experience are less than or equal to 1.1 years.
+All employees with more than 8 years of experience have a monthly salary greater than or equal to $6.9k.
+If an employee is in the finance department, then their projects active are less than or equal to 3 projects.
+Most employees in the table have a monthly salary less than or equal to $8.6k.
+All employees with a performance rating greater than 3.8 have a monthly salary greater than or equal to $7.7k.
+If an employee is in the operations department, then their monthly salary is greater than or equal to $5.3k.
+There exists at least one employee in the engineering department whose performance rating is greater than or equal to 4.5.
+All employees with a monthly salary less than or equal to $7.7k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their monthly salary is greater than or equal to $8.2k.
+Most employees in the table have a monthly salary greater than or equal to $8.2k.
+All employees with more than 9 years of experience have a monthly salary greater than or equal to $8.6k.
+If an employee is in the finance department, then their monthly salary is greater than or equal to $8.6k.
+There exists at least one employee in the hr department whose monthly salary is less than or equal to $5.3k.
+All employees with a performance rating greater than 4.1 have a monthly salary greater than or equal to $6.9k.
+If an employee is in the operations department, then their years of experience are less than or equal to 9.4 years.
+Most employees in the table have a monthly salary less than or equal to $8.9k.
+All employees with a monthly salary less than or equal to $6.3k have a performance rating greater than or equal to 4.5.
+If an employee is in the marketing department, then their monthly salary is less than or equal to $10.3k.
+There exists at least one employee in the engineering department whose monthly salary is greater than or equal to $9.9k.
+All employees with more than 4 years of experience have a monthly salary greater than or equal to $6.2k.
+If an employee is in the hr department, then their projects active are less than or equal to 2 projects.
+Most employees in the table have a monthly salary greater than or equal to $6.2k.
+All employees with a performance rating greater than 4.2 have a monthly salary greater than or equal to $8.6k.
+If an employee is in the operations department, then their monthly salary is greater than or equal to $5.3k.
+There exists at least one employee in the finance department whose performance rating is greater than or equal to 4.8.
+All employees with a monthly salary less than or equal to $8.2k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their years of experience are less than or equal to 12.5 years.
+Most employees in the table have a monthly salary less than or equal to $9.4k.
+All employees with more than 1 year of experience have a monthly salary greater than or equal to $5.3k.
+If an employee is in the finance department, then their years of experience are greater than or equal to 9.3 years.
+There exists at least one employee in the engineering department whose remote days per month are greater than or equal to 14 days.
+All employees with a performance rating greater than 3.9 have a monthly salary greater than or equal to $6.9k.
+If an employee is in the hr department, then their monthly salary is less than or equal to $9.0k.
+Most employees in the table have a monthly salary greater than or equal to $5.3k.
+All employees with a monthly salary less than or equal to $7.7k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their monthly salary is less than or equal to $10.3k.
+There exists at least one employee in the operations department whose performance rating is greater than or equal to 4.1.
+All employees with more than 6 years of experience have a monthly salary greater than or equal to $6.3k.
+If an employee is in the engineering department, then their monthly salary is less than or equal to $10.1k.
+Most employees in the table have a monthly salary less than or equal to $9.9k.
+All employees with a performance rating greater than 4.2 have a monthly salary greater than or equal to $7.7k.
+If an employee is in the operations department, then their monthly salary is less than or equal to $6.9k.
+There exists at least one employee in the finance department whose remote days per month are greater than or equal to 13 days.
+All employees with a monthly salary less than or equal to $6.2k have a performance rating greater than or equal to 4.5.
+If an employee is in the marketing department, then their remote days per month are less than or equal to 13 days.
+Most employees in the table have a monthly salary greater than or equal to $6.3k.
+All employees with more than 8 years of experience have a monthly salary greater than or equal to $6.9k.
+If an employee is in the hr department, then their years of experience are less than or equal to 1.1 years.
+There exists at least one employee in the engineering department whose performance rating is greater than or equal to 4.5.
+All employees with a performance rating greater than 3.8 have a monthly salary greater than or equal to $7.7k.
+If an employee is in the operations department, then their monthly salary is greater than or equal to $5.3k.
+Most employees in the table have a monthly salary less than or equal to $8.6k.
+All employees with a monthly salary less than or equal to $7.7k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their monthly salary is greater than or equal to $8.2k.
+There exists at least one employee in the finance department whose monthly salary is greater than or equal to $8.6k.
+All employees with more than 9 years of experience have a monthly salary greater than or equal to $8.6k.
+If an employee is in the hr department, then their monthly salary is less than or equal to $5.3k.
+Most employees in the table have a monthly salary greater than or equal to $8.2k.
+All employees with a performance rating greater than 4.1 have a monthly salary greater than or equal to $6.9k.
+If an employee is in the operations department, then their years of experience are less than or equal to 9.4 years.
+There exists at least one employee in the engineering department whose monthly salary is greater than or equal to $9.9k.
+All employees with a monthly salary less than or equal to $6.3k have a performance rating greater than or equal to 4.5.
+If an employee is in the marketing department, then their monthly salary is less than or equal to $10.3k.
+Most employees in the table have a monthly salary less than or equal to $8.9k.
+All employees with more than 4 years of experience have a monthly salary greater than or equal to $6.2k.
+If an employee is in the hr department, then their projects active are less than or equal to 2 projects.
+There exists at least one employee in the finance department whose performance rating is greater than or equal to 4.8.
+All employees with a performance rating greater than 4.2 have a monthly salary greater than or equal to $8.6k.
+If an employee is in the operations department, then their monthly salary is greater than or equal to $5.3k.
+Most employees in the table have a monthly salary greater than or equal to $6.2k.
+All employees with a monthly salary less than or equal to $8.2k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their years of experience are less than or equal to 12.5 years.
+There exists at least one employee in the engineering department whose remote days per month are greater than or equal to 14 days.
+All employees with more than 1 year of experience have a monthly salary greater than or equal to $5.3k.
+If an employee is in the finance department, then their years of experience are greater than or equal to 9.3 years.
+Most employees in the table have a monthly salary less than or equal to $9.4k.
+All employees with a performance rating greater than 3.9 have a monthly salary greater than or equal to $6.9k.
+If an employee is in the hr department, then their monthly salary is less than or equal to $9.0k.
+There exists at least one employee in the operations department whose performance rating is greater than or equal to 4.1.
+All employees with a monthly salary less than or equal to $7.7k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their monthly salary is less than or equal to $10.3k.
+Most employees in the table have a monthly salary greater than or equal to $5.3k.
+All employees with more than 6 years of experience have a monthly salary greater than or equal to $6.3k.
+If an employee is in the engineering department, then their monthly salary is less than or equal to $10.1k.
+There exists at least one employee in the finance department whose remote days per month are greater than or equal to 13 days.
+All employees with a performance rating greater than 4.2 have a monthly salary greater than or equal to $7.7k.
+If an employee is in the operations department, then their monthly salary is less than or equal to $6.9k.
+Most employees in the table have a monthly salary less than or equal to $9.9k.
+All employees with a monthly salary less than or equal to $6.2k have a performance rating greater than or equal to 4.5.
+If an employee is in the marketing department, then their remote days per month are less than or equal to 13 days.
+There exists at least one employee in the hr department whose years of experience are less than or equal to 1.1 years.
+All employees with more than 8 years of experience have a monthly salary greater than or equal to $6.9k.
+If an employee is in the finance department, then their projects active are less than or equal to 3 projects.
+Most employees in the table have a monthly salary greater than or equal to $6.3k.
+All employees with a performance rating greater than 3.8 have a monthly salary greater than or equal to $7.7k.
+If an employee is in the operations department, then their monthly salary is greater than or equal to $5.3k.
+There exists at least one employee in the engineering department whose performance rating is greater than or equal to 4.5.
+All employees with a monthly salary less than or equal to $7.7k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their monthly salary is greater than or equal to $8.2k.
+Most employees in the table have a monthly salary less than or equal to $8.6k.
+All employees with more than 9 years of experience have a monthly salary greater than or equal to $8.6k.
+If an employee is in the hr department, then their monthly salary is less than or equal to $5.3k.
+There exists at least one employee in the finance department whose monthly salary is greater than or equal to $8.6k.
+All employees with a performance rating greater than 4.1 have a monthly salary greater than or equal to $6.9k.
+If an employee is in the operations department, then their years of experience are less than or equal to 9.4 years.
+Most employees in the table have a monthly salary greater than or equal to $8.2k.
+All employees with a monthly salary less than or equal to $6.3k have a performance rating greater than or equal to 4.5.
+If an employee is in the marketing department, then their monthly salary is less than or equal to $10.3k.
+There exists at least one employee in the engineering department whose monthly salary is greater than or equal to $9.9k.
+All employees with more than 4 years of experience have a monthly salary greater than or equal to $6.2k.
+If an employee is in the hr department, then their projects active are less than or equal to 2 projects.
+Most employees in the table have a monthly salary less than or equal to $8.9k.
+All employees with a performance rating greater than 4.2 have a monthly salary greater than or equal to $8.6k.
+If an employee is in the operations department, then their monthly salary is greater than or equal to $5.3k.
+There exists at least one employee in the finance department whose performance rating is greater than or equal to 4.8.
+All employees with a monthly salary less than or equal to $8.2k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their years of experience are less than or equal to 12.5 years.
+Most employees in the table have a monthly salary greater than or equal to $6.2k.
+All employees with more than 1 year of experience have a monthly salary greater than or equal to $5.3k.
+If an employee is in the finance department, then their years of experience are greater than or equal to 9.3 years.
+There exists at least one employee in the engineering department whose remote days per month are greater than or equal to 14 days.
+All employees with a performance rating greater than 3.9 have a monthly salary greater than or equal to $6.9k.
+If an employee is in the hr department, then their monthly salary is less than or equal to $9.0k.
+Most employees in the table have a monthly salary less than or equal to $9.4k.
+All employees with a monthly salary less than or equal to $7.7k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their monthly salary is less than or equal to $10.3k.
+There exists at least one employee in the operations department whose performance rating is greater than or equal to 4.1.
+All employees with more than 6 years of experience have a monthly salary greater than or equal to $6.3k.
+If an employee is in the engineering department, then their monthly salary is less than or equal to $10.1k.
+Most employees in the table have a monthly salary greater than or equal to $5.3k.
+All employees with a performance rating greater than 4.2 have a monthly salary greater than or equal to $7.7k.
+If an employee is in the operations department, then their monthly salary is less than or equal to $6.9k.
+There exists at least one employee in the finance department whose remote days per month are greater than or equal to 13 days.
+All employees with a monthly salary less than or equal to $6.2k have a performance rating greater than or equal to 4.5.
+If an employee is in the marketing department, then their remote days per month are less than or equal to 13 days.
+Most employees in the table have a monthly salary less than or equal to $9.9k.
+All employees with more than 8 years of experience have a monthly salary greater than or equal to $6.9k.
+If an employee is in the hr department, then their years of experience are less than or equal to 1.1 years.
+There exists at least one employee in the engineering department whose performance rating is greater than or equal to 4.5.
+All employees with a performance rating greater than 3.8 have a monthly salary greater than or equal to $7.7k.
+If an employee is in the operations department, then their monthly salary is greater than or equal to $5.3k.
+Most employees in the table have a monthly salary less than or equal to $8.6k.
+All employees with a monthly salary less than or equal to $7.7k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their monthly salary is greater than or equal to $8.2k.
+There exists at least one employee in the finance department whose monthly salary is greater than or equal to $8.6k.
+All employees with more than 9 years of experience have a monthly salary greater than or equal to $8.6k.
+If an employee is in the hr department, then their monthly salary is less than or equal to $5.3k.
+Most employees in the table have a monthly salary greater than or equal to $8.2k.
+All employees with a performance rating greater than 4.1 have a monthly salary greater than or equal to $6.9k.
+If an employee is in the operations department, then their years of experience are less than or equal to 9.4 years.
+There exists at least one employee in the engineering department whose monthly salary is greater than or equal to $9.9k.
+All employees with a monthly salary less than or equal to $6.3k have a performance rating greater than or equal to 4.5.
+If an employee is in the marketing department, then their monthly salary is less than or equal to $10.3k.
+Most employees in the table have a monthly salary less than or equal to $8.9k.
+All employees with more than 4 years of experience have a monthly salary greater than or equal to $6.2k.
+If an employee is in the hr department, then their projects active are less than or equal to 2 projects.
+There exists at least one employee in the finance department whose performance rating is greater than or equal to 4.8.
+All employees with a performance rating greater than 4.2 have a monthly salary greater than or equal to $8.6k.
+If an employee is in the operations department, then their monthly salary is greater than or equal to $5.3k.
+Most employees in the table have a monthly salary greater than or equal to $6.2k.
+All employees with a monthly salary less than or equal to $8.2k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their years of experience are less than or equal to 12.5 years.
+There exists at least one employee in the engineering department whose remote days per month are greater than or equal to 14 days.
+All employees with more than 1 year of experience have a monthly salary greater than or equal to $5.3k.
+If an employee is in the finance department, then their years of experience are greater than or equal to 9.3 years.
+Most employees in the table have a monthly salary less than or equal to $9.4k.
+All employees with a performance rating greater than 3.9 have a monthly salary greater than or equal to $6.9k.
+If an employee is in the hr department, then their monthly salary is less than or equal to $9.0k.
+There exists at least one employee in the operations department whose performance rating is greater than or equal to 4.1.
+All employees with a monthly salary less than or equal to $7.7k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their monthly salary is less than or equal to $10.3k.
+Most employees in the table have a monthly salary greater than or equal to $5.3k.
+All employees with more than 6 years of experience have a monthly salary greater than or equal to $6.3k.
+If an employee is in the engineering department, then their monthly salary is less than or equal to $10.1k.
+There exists at least one employee in the finance department whose remote days per month are greater than or equal to 13 days.
+All employees with a performance rating greater than 4.2 have a monthly salary greater than or equal to $7.7k.
+If an employee is in the operations department, then their monthly salary is less than or equal to $6.9k.
+Most employees in the table have a monthly salary less than or equal to $9.9k.
+All employees with a monthly salary less than or equal to $6.2k have a performance rating greater than or equal to 4.5.
+If an employee is in the marketing department, then their remote days per month are less than or equal to 13 days.
+There exists at least one employee in the hr department whose years of experience are less than or equal to 1.1 years.
+All employees with more than 8 years of experience have a monthly salary greater than or equal to $6.9k.
+If an employee is in the finance department, then their projects active are less than or equal to 3 projects.
+Most employees in the table have a monthly salary greater than or equal to $6.3k.
+All employees with a performance rating greater than 3.8 have a monthly salary greater than or equal to $7.7k.
+If an employee is in the operations department, then their monthly salary is greater than or equal to $5.3k.
+There exists at least one employee in the engineering department whose performance rating is greater than or equal to 4.5.
+All employees with a monthly salary less than or equal to $7.7k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their monthly salary is greater than or equal to $8.2k.
+Most employees in the table have a monthly salary less than or equal to $8.6k.
+All employees with more than 9 years of experience have a monthly salary greater than or equal to $8.6k.
+If an employee is in the hr department, then their monthly salary is less than or equal to $5.3k.
+There exists at least one employee in the finance department whose monthly salary is greater than or equal to $8.6k.
+All employees with a performance rating greater than 4.1 have a monthly salary greater than or equal to $6.9k.
+If an employee is in the operations department, then their years of experience are less than or equal to 9.4 years.
+Most employees in the table have a monthly salary greater than or equal to $8.2k.
+All employees with a monthly salary less than or equal to $6.3k have a performance rating greater than or equal to 4.5.
+If an employee is in the marketing department, then their monthly salary is less than or equal to $10.3k.
+There exists at least one employee in the engineering department whose monthly salary is greater than or equal to $9.9k.
+All employees with more than 4 years of experience have a monthly salary greater than or equal to $6.2k.
+If an employee is in the hr department, then their projects active are less than or equal to 2 projects.
+Most employees in the table have a monthly salary less than or equal to $8.9k.
+All employees with a performance rating greater than 4.2 have a monthly salary greater than or equal to $8.6k.
+If an employee is in the operations department, then their monthly salary is greater than or equal to $5.3k.
+There exists at least one employee in the finance department whose performance rating is greater than or equal to 4.8.
+All employees with a monthly salary less than or equal to $8.2k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their years of experience are less than or equal to 12.5 years.
+Most employees in the table have a monthly salary greater than or equal to $6.2k.
+All employees with more than 1 year of experience have a monthly salary greater than or equal to $5.3k.
+If an employee is in the finance department, then their years of experience are greater than or equal to 9.3 years.
+There exists at least one employee in the engineering department whose remote days per month are greater than or equal to 14 days.
+All employees with a performance rating greater than 3.9 have a monthly salary greater than or equal to $6.9k.
+If an employee is in the hr department, then their monthly salary is less than or equal to $9.0k.
+Most employees in the table have a monthly salary less than or equal to $9.4k.
+All employees with a monthly salary less than or equal to $7.7k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their monthly salary is less than or equal to $10.3k.
+There exists at least one employee in the operations department whose performance rating is greater than or equal to 4.1.
+All employees with more than 6 years of experience have a monthly salary greater than or equal to $6.3k.
+If an employee is in the engineering department, then their monthly salary is less than or equal to $10.1k.
+Most employees in the table have a monthly salary greater than or equal to $5.3k.
+All employees with a performance rating greater than 4.2 have a monthly salary greater than or equal to $7.7k.
+If an employee is in the operations department, then their monthly salary is less than or equal to $6.9k.
+There exists at least one employee in the finance department whose remote days per month are greater than or equal to 13 days.
+All employees with a monthly salary less than or equal to $6.2k have a performance rating greater than or equal to 4.5.
+If an employee is in the marketing department, then their remote days per month are less than or equal to 13 days.
+Most employees in the table have a monthly salary less than or equal to $9.9k.
+All employees with more than 8 years of experience have a monthly salary greater than or equal to $6.9k.
+If an employee is in the hr department, then their years of experience are less than or equal to 1.1 years.
+There exists at least one employee in the engineering department whose performance rating is greater than or equal to 4.5.
+All employees with a performance rating greater than 3.8 have a monthly salary greater than or equal to $7.7k.
+If an employee is in the operations department, then their monthly salary is greater than or equal to $5.3k.
+Most employees in the table have a monthly salary less than or equal to $8.6k.
+All employees with a monthly salary less than or equal to $7.7k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their monthly salary is greater than or equal to $8.2k.
+There exists at least one employee in the finance department whose monthly salary is greater than or equal to $8.6k.
+All employees with more than 9 years of experience have a monthly salary greater than or equal to $8.6k.
+If an employee is in the hr department, then their monthly salary is less than or equal to $5.3k.
+Most employees in the table have a monthly salary greater than or equal to $8.2k.
+All employees with a performance rating greater than 4.1 have a monthly salary greater than or equal to $6.9k.
+If an employee is in the operations department, then their years of experience are less than or equal to 9.4 years.
+There exists at least one employee in the engineering department whose monthly salary is greater than or equal to $9.9k.
+All employees with a monthly salary less than or equal to $6.3k have a performance rating greater than or equal to 4.5.
+If an employee is in the marketing department, then their monthly salary is less than or equal to $10.3k.
+Most employees in the table have a monthly salary less than or equal to $8.9k.
+All employees with more than 4 years of experience have a monthly salary greater than or equal to $6.2k.
+If an employee is in the hr department, then their projects active are less than or equal to 2 projects.
+There exists at least one employee in the finance department whose performance rating is greater than or equal to 4.8.
+All employees with a performance rating greater than 4.2 have a monthly salary greater than or equal to $8.6k.
+If an employee is in the operations department, then their monthly salary is greater than or equal to $5.3k.
+Most employees in the table have a monthly salary greater than or equal to $6.2k.
+All employees with a monthly salary less than or equal to $8.2k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their years of experience are less than or equal to 12.5 years.
+There exists at least one employee in the engineering department whose remote days per month are greater than or equal to 14 days.
+All employees with more than 1 year of experience have a monthly salary greater than or equal to $5.3k.
+If an employee is in the finance department, then their years of experience are greater than or equal to 9.3 years.
+Most employees in the table have a monthly salary less than or equal to $9.4k.
+All employees with a performance rating greater than 3.9 have a monthly salary greater than or equal to $6.9k.
+If an employee is in the hr department, then their monthly salary is less than or equal to $9.0k.
+There exists at least one employee in the operations department whose performance rating is greater than or equal to 4.1.
+All employees with a monthly salary less than or equal to $7.7k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their monthly salary is less than or equal to $10.3k.
+Most employees in the table have a monthly salary greater than or equal to $5.3k.
+All employees with more than 6 years of experience have a monthly salary greater than or equal to $6.3k.
+If an employee is in the engineering department, then their monthly salary is less than or equal to $10.1k.
+There exists at least one employee in the finance department whose remote days per month are greater than or equal to 13 days.
+All employees with a performance rating greater than 4.2 have a monthly salary greater than or equal to $7.7k.
+If an employee is in the operations department, then their monthly salary is less than or equal to $6.9k.
+Most employees in the table have a monthly salary less than or equal to $9.9k.
+All employees with a monthly salary less than or equal to $6.2k have a performance rating greater than or equal to 4.5.
+If an employee is in the marketing department, then their remote days per month are less than or equal to 13 days.
+There exists at least one employee in the hr department whose years of experience are less than or equal to 1.1 years.
+All employees with more than 8 years of experience have a monthly salary greater than or equal to $6.9k.
+If an employee is in the finance department, then their projects active are less than or equal to 3 projects.
+Most employees in the table have a monthly salary greater than or equal to $6.3k.
+All employees with a performance rating greater than 3.8 have a monthly salary greater than or equal to $7.7k.
+If an employee is in the operations department, then their monthly salary is greater than or equal to $5.3k.
+There exists at least one employee in the engineering department whose performance rating is greater than or equal to 4.5.
+All employees with a monthly salary less than or equal to $7.7k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their monthly salary is greater than or equal to $8.2k.
+Most employees in the table have a monthly salary less than or equal to $8.6k.
+All employees with more than 9 years of experience have a monthly salary greater than or equal to $8.6k.
+If an employee is in the hr department, then their monthly salary is less than or equal to $5.3k.
+There exists at least one employee in the finance department whose monthly salary is greater than or equal to $8.6k.
+All employees with a performance rating greater than 4.1 have a monthly salary greater than or equal to $6.9k.
+If an employee is in the operations department, then their years of experience are less than or equal to 9.4 years.
+Most employees in the table have a monthly salary greater than or equal to $8.2k.
+All employees with a monthly salary less than or equal to $6.3k have a performance rating greater than or equal to 4.5.
+If an employee is in the marketing department, then their monthly salary is less than or equal to $10.3k.
+There exists at least one employee in the engineering department whose monthly salary is greater than or equal to $9.9k.
+All employees with more than 4 years of experience have a monthly salary greater than or equal to $6.2k.
+If an employee is in the hr department, then their projects active are less than or equal to 2 projects.
+Most employees in the table have a monthly salary less than or equal to $8.9k.
+All employees with a performance rating greater than 4.2 have a monthly salary greater than or equal to $8.6k.
+If an employee is in the operations department, then their monthly salary is greater than or equal to $5.3k.
+There exists at least one employee in the finance department whose performance rating is greater than or equal to 4.8.
+All employees with a monthly salary less than or equal to $8.2k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their years of experience are less than or equal to 12.5 years.
+Most employees in the table have a monthly salary greater than or equal to $6.2k.
+All employees with more than 1 year of experience have a monthly salary greater than or equal to $5.3k.
+If an employee is in the finance department, then their years of experience are greater than or equal to 9.3 years.
+There exists at least one employee in the engineering department whose remote days per month are greater than or equal to 14 days.
+All employees with a performance rating greater than 3.9 have a monthly salary greater than or equal to $6.9k.
+If an employee is in the hr department, then their monthly salary is less than or equal to $9.0k.
+Most employees in the table have a monthly salary less than or equal to $9.4k.
+All employees with a monthly salary less than or equal to $7.7k have a performance rating greater than or equal to 4.4.
+If an employee is in the marketing department, then their monthly salary is less than or equal to $10.3k.
+There exists at least one employee in the operations department whose performance rating is greater than or equal to 4.1.
+All employees with more than 6 years of experience have a monthly salary greater than or equal to $6.3k.
+If an employee is in the engineering department, then their monthly salary is less than or equal to $10.1k.
+Most employees in the table have a monthly salary greater than or equal to $5.3k.
+All employees with a performance rating greater than 

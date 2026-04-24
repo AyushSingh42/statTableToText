@@ -1,0 +1,20 @@
+All vehicles that traveled in the rain had a delay of 10 minutes or more, except for one bus that had a delay of 6 minutes.
+All buses that traveled in the wind had an average speed of 55 kph or more.
+If a vehicle traveled in the clear weather, then its fuel used was 12.5 liters or less.
+There exists at least one truck that traveled in the rain and had a delay of 11 minutes.
+All vans had a distance traveled of 200 km or less.
+If a vehicle had a delay of 15 minutes or more, then it was a bus.
+Most vehicles that traveled in the rain had a fuel used of 30 liters or more.
+All buses that had a distance traveled of 180 km or more had an average speed of 56 kph or more.
+If a vehicle had an average speed of 60 kph or more, then it was a van.
+There exists at least one bus that traveled in the wind and had a fuel used of 12.2 liters.
+All trucks that traveled in the clear weather had a distance traveled of 200 km or less.
+If a vehicle had a delay of 10 minutes or less, then it was a bus.
+All vehicles that had a fuel used of 40 liters or more had a distance traveled of 200 km or less.
+Most vehicles that traveled in the wind had a delay of 15 minutes or less.
+If a vehicle had a distance traveled of 150 km or less, then it was a van.
+There exists at least one truck that traveled in the rain and had a fuel used of 24.6 liters.
+All buses that had a delay of 10 minutes or less had a distance traveled of 200 km or more.
+If a vehicle had an average speed of 50 kph or less, then it was a truck.
+All vehicles that traveled in the rain had a fuel used of 10 liters or more.
+Most vehicles that had a distance traveled of 200 km or more had an average speed of 55 kph or more.

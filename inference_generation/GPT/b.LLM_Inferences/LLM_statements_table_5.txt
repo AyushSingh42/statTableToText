@@ -1,0 +1,103 @@
+analysisWe need to produce JSON with "statements": list of 5-10 statements. Must be factual from table. Need non-redundant, tightest bounds. Let's analyze data.
+
+We have 15 households with attributes: region (urban/suburban/rural), household_size, monthly_income_k (in thousands), rent_k, utility_cost, vehicle_count, internet_type.
+
+We need statements about patterns relationships.
+
+Let's compute some observations.
+
+First, maybe universal claims:
+
+- All urban households have internet_type fiber or cable? Let's check: urban rows: H001 fiber, H004 fiber, H007 cable, H010 fiber, H013 fiber. So all urban have either fiber or cable, none DSL or satellite. Could state: For all urban households, internet_type is either fiber or cable. That's a universal claim.
+
+- All rural households have internet_type either dsl or satellite. Rural rows: H003 dsl, H006 dsl, H009 satellite, H012 dsl, H015 satellite. Yes only dsl or satellite. So statement.
+
+- All suburban households have internet_type fiber, cable, or fiber? Let's see: H002 cable, H005 fiber, H008 fiber, H011 cable, H014 cable. So only cable or fiber. Could state but maybe redundant with previous.
+
+- All households with vehicle_count =0 are urban? Only H004 has 0 vehicles, region urban. So universal: If vehicle_count =0 then region is urban. That's a conditional.
+
+- All households with rent_k >=2.0 are suburban or urban? Let's see rent_k values: H001 1.9, H002 2.3, H003 1.1, H004 1.5, H005 2.7, H006 0.9, H007 2.1, H008 2.2, H009 1.0, H010 1.8, H011 2.0, H012 0.7, H013 2.4, H014 1.7, H015 0.8. Those >=2.0: H002 (suburban), H005 (suburban), H007 (urban), H008 (suburban), H011 (suburban), H013 (urban). So both urban and suburban. Not universal.
+
+- All households with monthly_income_k >8 have vehicle_count >=2? Let's check incomes >8: H002 8.7 vehicle 2, H005 10.4 vehicle 3, H008 7.9 not >8, H011 7.2 not >8, H013 8.3 vehicle 1 (only 1). So not true.
+
+- All households with household_size >=5 have utility_cost >150? Let's check size >=5: H005 size5 utility 214.5 >150 yes, H009 size6 utility 165.1 >150 yes, H015 size5 utility 158.7 >150 yes. So universal: If household_size >=5 then utility_cost >150. Check any other size >=5? H005, H009, H015 only. All satisfy >150. Good.
+
+- All households with utility_cost >200 have rent_k >=2.3? Utility >200: H005 214.5 rent 2.7 >=2.3 yes. Only that one. So universal but maybe trivial.
+
+- All households with internet_type satellite have region rural. Satellite rows: H009 rural, H015 rural. Yes. So universal: If internet_type is satellite then region is rural.
+
+- All households with internet_type fiber have region urban or suburban? Fiber rows: H001 urban, H004 urban, H005 suburban, H008 suburban, H010 urban, H013 urban. So yes only urban/suburban. So statement.
+
+- All households with vehicle_count >=3 are suburban or rural? Vehicle >=3: H005 (suburban), H009 (rural), H015 (rural). So yes.
+
+- All households with rent_k <=1.0 are rural? Let's see rent <=1.0: H003 1.1 not <=1, H006 0.9 rural, H009 1.0 rural, H012 0.7 rural, H015 0.8 rural. Also H001 1.9 not, H004 1.5 not. So all <=1 are rural. Check H003 1.1 >1, not included. So statement: If rent_k <=1.0 then region is rural.
+
+- All households with monthly_income_k <=4 have region rural? incomes <=4: H004 3.6 urban, H012 3.1 rural. So not universal.
+
+- All households with household_size =1 have region urban or rural? H004 urban size1, H012 rural size1. So both.
+
+- All households with vehicle_count =1 have internet_type fiber? Let's see vehicle=1 rows: H001 fiber, H004 fiber, H006 dsl, H007 cable, H010 fiber, H012 dsl, H013 fiber. So not universal.
+
+- All households with rent_k >=2.4 are urban? rent >=2.4: H005 2.7 suburban, H013 2.4 urban. So not universal.
+
+- All households with utility_cost <100 are rural? Utility <100: H004 97.8 urban, H012 88.5 rural. So not universal.
+
+- All households with household_size =2 have monthly_income_k between 5 and 6? Let's see size2 rows: H001 income5.8, H004 3.6, H010 5.1, H014 6.0. So not.
+
+- Majority statements: "Most households have internet_type fiber or cable." Count: fiber rows: H001, H004, H005, H008, H010, H013 =6. Cable rows: H002, H007, H011, H014 =4. Total 10 out of 15 have fiber/cable. That's majority (66%). Could state.
+
+- Most households are in urban/suburban? Count urban: H001, H004, H007, H010, H013 =5. Suburban: H002, H005, H008, H011, H014 =5. Rural: H003, H006, H009, H012, H015 =5. Equal. So not majority.
+
+- Most households have vehicle_count >=1? Vehicle counts: zeros: only H004. So 14 have >=1, that's majority. Could state.
+
+- Most households have household_size <=4? Sizes: 2,4,3,1,5,2,3,4,6,2,3,1,4,2,5. Count >4: size5 (H005, H015) size6 (H009) =>3. So 12 <=4, majority.
+
+- Most households have monthly_income_k >5? incomes: list: 5.8,8.7,4.9,3.6,10.4,4.2,6.5,7.9,6.1,5.1,7.2,3.1,8.3,6.0,5.4. >5: many: 5.8,8.7,10.4,6.5,7.9,6.1,5.1,7.2,8.3,6.0,5.4 =11. So majority.
+
+Now need 5-10 statements, non-redundant, tightest bounds.
+
+Let's craft statements:
+
+1. For all urban households, the internet type is either fiber or cable. (tight)
+
+2. For all rural households, the internet type is either DSL or satellite. (tight)
+
+3. If a household has zero vehicles, it is located in an urban region. (tight)
+
+4. If a household's internet type is satellite, then it is in a rural region. (tight)
+
+5. If household size is at least 5, then utility cost exceeds $150. (tight)
+
+6. If rent cost is at most $1.0k, then the household is in a rural region. (tight)
+
+7. Most households have an internet type of fiber or cable. (majority)
+
+8. Most households own at least one vehicle. (majority)
+
+9. If a household's monthly income exceeds $8k, its internet type is fiber or cable. Let's verify: incomes >8: H002 8.7 cable, H005 10.4 fiber, H013 8.3 fiber (8.3 >8). All fiber/cable. Yes. So statement.
+
+10. If a household has vehicle count of three or more, it is located in a suburban or rural region. (tight)
+
+We have 10 statements, within 5-10 inclusive. Ensure no redundancy: each distinct.
+
+Check redundancy: Statement 2 and 4 overlap: 4 is a subset of 2 (satellite implies rural, but 2 says rural internet is DSL or satellite, not same. Not redundant.
+
+Statement 1 and 9: 9 about high income >8 leads to fiber/cable, which is consistent with 1 (urban fiber/cable) but 9 includes suburban also. Not redundant.
+
+All good.
+
+Now produce JSON with statements array.
+
+Need natural language statements. Ensure they are factual.
+
+Let's write them.
+
+Check statement 5: "utility cost exceeds $150" actual values >150. Yes.
+
+Statement 6: rent <=1.0 leads to rural. Check rent <=1.0: H006 0.9 rural, H009 1.0 rural, H012 0.7 rural, H015 0.8 rural. All rural. Good.
+
+Statement 9: monthly income >8k leads to fiber or cable. Verified.
+
+Statement 10: vehicle count >=3 leads to suburban or rural. Verified: H005 suburban, H009 rural, H015 rural. Good.
+
+Now produce JSON.assistantfinal JSON{"statements":["For all urban households, the internet type is either fiber or cable.","For all rural households, the internet type is either DSL or satellite.","If a household has zero vehicles, it is located in an urban region.","If a household's internet type is satellite, then it is in a rural region.","If household size is at least 5, then utility cost exceeds $150.","If rent cost is at most $1.0 k, then the household is in a rural region.","Most households have an internet type of fiber or cable.","Most households own at least one vehicle.","If a household's monthly income exceeds $8 k, its internet type is fiber or cable.","If a household has three or more vehicles, it is located in a suburban or rural region."]}

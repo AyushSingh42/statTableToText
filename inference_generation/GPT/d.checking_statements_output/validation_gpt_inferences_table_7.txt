@@ -1,0 +1,36 @@
+
+Statement 1: TRUE
+  - 1. All 5-star hotels have an occupancy rate greater than 85%.
+  - Explanation: All 2 5‑star hotels satisfy occupancy_rate > 85%.
+
+Statement 2: TRUE
+  - 2. All 3-star hotels have an average nightly rate of at most $133.4.
+  - Explanation: All 6 3‑star hotels satisfy avg_nightly_rate ≤ 133.4.
+
+Statement 3: TRUE
+  - 3. All hotels with an occupancy rate above 80% have an average nightly rate of at least $176.5.
+  - Explanation: All 5 hotels with occupancy_rate > 80% satisfy avg_nightly_rate ≥ 176.5.
+
+Statement 4: TRUE
+  - 4. All hotels with a cancellation rate greater than 14% have an average nightly rate of at least $185.
+  - Explanation: All 2 hotels with cancellation_rate > 14% satisfy avg_nightly_rate ≥ 185.
+
+Statement 5: TRUE
+  - 5. Most hotels have an occupancy rate above 70%.
+  - Explanation: 12 out of 15 hotels (80.0%) have occupancy_rate > 70%.
+
+Statement 6: TRUE
+  - 6. All 5-star hotels have a cancellation rate greater than 13%.
+  - Explanation: All 2 5‑star hotels satisfy cancellation_rate > 13%.
+
+Statement 7: TRUE
+  - 7. All hotels with an average nightly rate of at most $128.8 have a staff count less than 30.
+  - Explanation: All 4 hotels with avg_nightly_rate ≤ 128.8 have staff_count < 30.
+
+Statement 8: TRUE
+  - 8. All 4-star hotels have a cancellation rate between 10.7% and 15%.
+  - Explanation: All 7 4‑star hotels satisfy 10.7% ≤ cancellation_rate ≤ 15%.
+
+Statement 9: TRUE
+  - 9. All hotels with fewer than 700 bookings per month have an occupancy rate below 70%.
+  - Explanation: All 2 hotels with bookings_month < 700 satisfy occupancy_rate < 70%.

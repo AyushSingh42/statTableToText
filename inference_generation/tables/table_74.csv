@@ -1,0 +1,16 @@
+household_id,region,household_size,monthly_income_k,rent_k,utility_cost,vehicle_count,internet_type
+H074001,suburban,4,9.0,2.5,85.1,0,fiber
+H074002,rural,6,4.9,1.9,127.2,2,fiber
+H074003,rural,2,10.3,1.6,214.8,3,dsl
+H074004,suburban,1,10.9,2.4,125.4,1,satellite
+H074005,rural,3,10.5,2.4,141.3,0,dsl
+H074006,urban,4,6.9,1.6,204.8,3,fiber
+H074007,urban,6,5.1,0.8,143.4,2,satellite
+H074008,rural,1,9.4,2.1,108.8,3,cable
+H074009,urban,4,4.5,1.4,166.1,0,cable
+H074010,urban,5,9.0,2.4,176.8,1,satellite
+H074011,suburban,4,7.0,2.3,120.1,2,dsl
+H074012,urban,1,6.4,1.1,210.0,1,fiber
+H074013,urban,5,8.4,2.1,214.4,3,cable
+H074014,suburban,6,10.2,0.8,172.2,2,cable
+H074015,urban,3,4.3,1.9,84.1,3,satellite

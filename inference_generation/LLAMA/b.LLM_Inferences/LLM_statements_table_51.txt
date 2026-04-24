@@ -1,0 +1,17 @@
+All patients with asthma have a BMI greater than or equal to 20.6.
+All patients with diabetes have a cholesterol level greater than or equal to 191 mg/dl.
+If a patient is a smoker, then their BMI is greater than or equal to 22.7.
+There exists at least one patient with arthritis whose systolic blood pressure is greater than 150 mmHg.
+All patients with hypertension have a diastolic blood pressure greater than or equal to 74 mmHg.
+If a patient's age is greater than 50, then their systolic blood pressure is less than or equal to 156 mmHg.
+Most patients have a cholesterol level greater than 200 mg/dl.
+All patients with migraine have a BMI greater than or equal to 26.9.
+If a patient's BMI is greater than 30, then they are a smoker.
+There exists at least one patient with diabetes whose age is less than 30.
+All patients with asthma have a systolic blood pressure greater than or equal to 119 mmHg.
+If a patient is a non-smoker, then their BMI is less than or equal to 31.8.
+All patients with hypertension have an age greater than or equal to 43.
+Most patients are smokers.
+If a patient's cholesterol level is greater than 230 mg/dl, then they are a smoker.
+All patients with arthritis have a systolic blood pressure greater than or equal to 156 mmHg.
+There exists at least one patient with migraine whose diastolic blood pressure is less than 90 mmHg.

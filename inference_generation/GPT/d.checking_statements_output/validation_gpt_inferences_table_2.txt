@@ -1,32 +1,36 @@
 
 Statement 1: TRUE
-  - All north region stores have customer satisfaction scores of at least 4.3.
-  - Explanation: All 4 north stores meet the threshold.
+  - All west region stores have customer satisfaction of 3.9 or lower.
+  - Explanation: All 3 west stores satisfy the condition.
 
 Statement 2: TRUE
-  - All south region stores have customer satisfaction of 4.0 or higher.
-  - Explanation: All 4 south stores meet the threshold.
+  - All east region stores have an average basket size of at least 58.3.
+  - Explanation: All 4 east stores satisfy the condition.
 
 Statement 3: TRUE
-  - The store with the highest staff count (B009) also records the highest monthly sales.
-  - Explanation: Store B009 has the highest staff count (23) and also the highest sales (165.8k).
+  - All south region stores have monthly sales of $110.8k or less.
+  - Explanation: All 4 south stores satisfy the condition.
 
 Statement 4: TRUE
-  - Stores with an average basket size above 62 have customer satisfaction of at least 4.5.
-  - Explanation: All 3 stores with basket >62 meet the satisfaction threshold.
+  - Stores with at least 20 staff members have monthly sales of at least $143.2k.
+  - Explanation: All 4 stores with ≥20 staff meet the sales threshold.
 
 Statement 5: TRUE
-  - There exists a west region store with customer satisfaction below 4.0.
-  - Explanation: Found 3 west store(s) below 4.0 (store_id: B004, B008, B012).
+  - Stores with an average basket size greater than 60 have customer satisfaction of at least 4.4.
+  - Explanation: All 5 stores with basket size >60 satisfy the condition.
 
 Statement 6: TRUE
-  - Most stores with staff counts of 20 or more have monthly sales exceeding 130,000.
-  - Explanation: 4 out of 4 stores (100%) exceed 130k.
+  - Stores with more than 2400 transactions have monthly sales of at least $157.6k.
+  - Explanation: All 2 stores with >2400 transactions meet the sales threshold.
 
 Statement 7: TRUE
-  - East region stores have average basket sizes ranging from 58.3 to 62.0.
-  - Explanation: East basket sizes range from 58.30 to 62.00.
+  - Most stores (12 of 15) have a customer satisfaction rating of 4.0 or higher.
+  - Explanation: 12 of 15 stores have satisfaction ≥4.0, meeting the 12‑of‑15 requirement.
 
 Statement 8: TRUE
-  - The average basket size of west region stores is below 54.
-  - Explanation: Mean basket size for west is 53.63.
+  - If a store is in the north region, then its monthly sales are at least $128.4k.
+  - Explanation: All 4 north stores have sales ≥128.4k.
+
+Statement 9: TRUE
+  - If a store’s customer satisfaction is 4.5 or higher, then the store is located in the north or east region.
+  - Explanation: All 4 high‑satisfaction stores are in north or east.

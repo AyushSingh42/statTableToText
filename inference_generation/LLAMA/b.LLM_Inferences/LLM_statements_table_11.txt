@@ -1,0 +1,15 @@
+All patients with a diagnosis of arthritis have a cholesterol level greater than 215 mg/dl.
+All patients with a diagnosis of asthma have a BMI less than 34.
+If a patient is a smoker, then their age is greater than 35.
+All patients with a systolic blood pressure greater than 150 have a diagnosis of migraine.
+There exists at least one patient with a diagnosis of hypertension who is a smoker.
+All patients with a BMI greater than 30 have a diagnosis of either arthritis or hypertension.
+If a patient has a diastolic blood pressure less than 80, then their age is less than 40.
+All patients with a cholesterol level greater than 230 mg/dl have a BMI greater than 25.
+Most patients with a diagnosis of hypertension have a systolic blood pressure greater than 125.
+All patients with a BMI less than 25 have a diagnosis of either asthma or migraine.
+If a patient is older than 60, then their diagnosis is either hypertension or asthma.
+All patients with a systolic blood pressure less than 130 have a diagnosis of either hypertension or migraine.
+There exists at least one patient with a diagnosis of arthritis who is a smoker.
+All patients with a cholesterol level less than 200 mg/dl have a BMI less than 30.
+If a patient has a BMI greater than 32, then their diagnosis is either arthritis or hypertension.

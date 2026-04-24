@@ -1,65 +1,124 @@
-analysisWe need to output JSON with key "statements": list of strings. Must be 5-10 statements, each factually true from the table, non-trivial, high-information, natural language. Must include universal, existential, majority/frequency claims. Use up to 2-3 attributes per condition.
+analysisWe need to produce JSON with "statements": [list]. Must be 5-10 statements. Must be factual, non-redundant, tightest bounds. Let's analyze data.
 
-Let's examine data.
+We have 15 patients. Variables: diagnosis, age, bp_systolic, bp_diastolic, cholesterol, bmi, smoker.
 
-List patients:
+We need statements about patterns.
 
-PT001 hypertension age58 bp146/92 chol 218 bmi29.4 smoker yes
-PT002 diabetes age47 bp132/84 chol201 bmi31.1 smoker no
-PT003 asthma age29 bp118/76 chol176 bmi24.8 smoker no
-PT004 migraine age35 bp124/79 chol189 bmi22.7 smoker no
-PT005 hypertension age63 bp151/95 chol233 bmi30.5 smoker yes
-PT006 arthritis age54 bp129/82 chol210 bmi28.3 smoker no
-PT007 diabetes age61 bp138/88 chol224 bmi32.0 smoker yes
-PT008 asthma age23 bp115/73 chol168 bmi21.9 smoker no
-PT009 migraine age41 bp121/78 chol183 bmi25.6 smoker no
-PT010 hypertension age57 bp144/90 chol216 bmi29.8 smoker yes
-PT011 arthritis age66 bp136/85 chol227 bmi31.4 smoker no
-PT012 diabetes age50 bp134/86 chol205 bmi30.1 smoker yes
-PT013 asthma age31 bp117/74 chol171 bmi23.5 smoker no
-PT014 migraine age38 bp123/77 chol180 bmi24.3 smoker no
-PT015 hypertension age59 bp148/93 chol221 bmi30.0 smoker yes
+Let's compute some observations.
+
+List data:
+
+PT001: hypertension, age58, sys146, dia92, chol218, bmi29.4, smoker yes
+PT002: diabetes, age47, sys132, dia84, chol201, bmi31.1, smoker no
+PT003: asthma, age29, sys118, dia76, chol176, bmi24.8, smoker no
+PT004: migraine, age35, sys124, dia79, chol189, bmi22.7, smoker no
+PT005: hypertension, age63, sys151, dia95, chol233, bmi30.5, smoker yes
+PT006: arthritis, age54, sys129, dia82, chol210, bmi28.3, smoker no
+PT007: diabetes, age61, sys138, dia88, chol224, bmi32.0, smoker yes
+PT008: asthma, age23, sys115, dia73, chol168, bmi21.9, smoker no
+PT009: migraine, age41, sys121, dia78, chol183, bmi25.6, smoker no
+PT010: hypertension, age57, sys144, dia90, chol216, bmi29.8, smoker yes
+PT011: arthritis, age66, sys136, dia85, chol227, bmi31.4, smoker no
+PT012: diabetes, age50, sys134, dia86, chol205, bmi30.1, smoker yes
+PT013: asthma, age31, sys117, dia74, chol171, bmi23.5, smoker no
+PT014: migraine, age38, sys123, dia77, chol180, bmi24.3, smoker no
+PT015: hypertension, age59, sys148, dia93, chol221, bmi30.0, smoker yes
 
 Observations:
 
-- All hypertension patients (PT001, PT005, PT010, PT015) are smokers (yes). That's universal claim.
+- All hypertension patients are smokers? Let's check: hypertension IDs PT001, PT005, PT010, PT015. All have smoker yes. Yes, all hypertension patients are smokers. That's a universal claim.
 
-- All asthma patients are non-smokers. Check: PT003, PT008, PT013 are no. Yes.
+- All asthma patients are non-smokers. Asthma IDs PT003, PT008, PT013. All smoker no. Yes.
 
-- Most diabetes patients are smokers? Diabetes patients: PT002 (no), PT007 (yes), PT012 (yes). 2 out of 3 are smokers, that's majority.
+- All migraine patients are non-smokers. Migraine IDs PT004, PT009, PT014. All smoker no. Yes.
 
-- The highest systolic BP is 151 (PT005). The lowest is 115 (PT008). Could make statement: The patient with the lowest systolic BP is an asthma patient aged 23.
+- All arthritis patients: PT006 smoker no, PT011 smoker no. So arthritis also non-smokers. So all non-hypertension diagnoses are non-smokers. Indeed diabetes patients: PT002 no, PT007 yes, PT012 yes. Wait diabetes includes smokers yes for PT007 and PT012. So not all non-hypertension are non-smokers. So we have specific.
 
-- All migraine patients have systolic BP between 121 and 124 (PT009 121, PT004 124, PT014 123). So range.
+- All smokers have hypertension or diabetes? Let's see smokers: PT001 (HTN), PT005 (HTN), PT007 (diabetes), PT010 (HTN), PT012 (diabetes), PT015 (HTN). So smokers are either hypertension or diabetes. Yes.
 
-- The average BMI of hypertension patients is around (29.4+30.5+29.8+30.0)/4 = 29.925. Could say "Hypertension patients have BMI above 29". All hypertension patients have BMI >=29.4, yes all >29. So universal claim: All hypertension patients have BMI over 29.
+- All non-smokers have diagnoses other than hypertension (i.e., asthma, migraine, arthritis, diabetes). Non-smokers include diabetes PT002 (non-smoker). So not exclusive.
 
-- The oldest patient is PT011 age66 arthritis. Could say "The oldest patient (66) has arthritis."
+- Age ranges per diagnosis: Hypertension ages 57-63? Actually ages: 58,63,57,59 => 57-63. So all hypertension patients are aged 57-63 inclusive. That's a tight range.
 
-- All patients with cholesterol above 220 are either hypertension or diabetes? Let's check >220: PT001 218 (no), PT005 233 (hypertension), PT007 224 (diabetes), PT010 216 (no), PT011 227 (arthritis), PT015 221 (hypertension). So not universal.
+- Diabetes ages: 47,61,50 => 47-61. So diabetes ages 47-61.
 
-- Most patients with BMI over 30 are smokers? BMI>30: PT002 31.1 no smoker, PT007 32.0 yes, PT011 31.4 no, PT012 30.1 yes. 2 smokers out of 4, not majority.
+- Asthma ages: 29,23,31 => 23-31.
 
-- All arthritis patients are non-smokers? PT006 no, PT011 no. Yes universal.
+- Migraine ages: 35,41,38 => 35-41.
 
-- All patients aged under 30 have asthma and are non-smokers. Under 30: PT003 age29 asthma no, PT008 age23 asthma no. Yes.
+- Arthritis ages: 54,66 => 54-66.
 
-- Most hypertension patients have systolic BP above 144? Values: 146,151,144,148. 3 out of 4 >=144 (including 144). So majority.
+- BMI ranges per diagnosis: Hypertension BMI: 29.4,30.5,29.8,30.0 => 29.4-30.5 (tight). Diabetes BMI: 31.1,32.0,30.1 => 30.1-32.0. Asthma BMI: 24.8,21.9,23.5 => 21.9-24.8. Migraine BMI: 22.7,25.6,24.3 => 22.7-25.6. Arthritis BMI: 28.3,31.4 => 28.3-31.4.
 
-We need 5-10 statements. Let's craft 7 statements covering universal, existential, majority.
+- Systolic BP per diagnosis: Hypertension: 146,151,144,148 => 144-151. Diabetes: 132,138,134 => 132-138. Asthma: 118,115,117 => 115-118. Migraine:124,121,123 => 121-124. Arthritis:129,136 => 129-136.
 
-Make sure each statement is factually true.
+- Diastolic BP per diagnosis: Hypertension: 92,95,90,93 => 90-95. Diabetes:84,88,86 => 84-88. Asthma:76,73,74 => 73-76. Migraine:79,78,77 => 77-79. Arthritis:82,85 => 82-85.
 
-List statements:
+- Cholesterol per diagnosis: Hypertension: 218,233,216,221 => 216-233. Diabetes:201,224,205 => 201-224. Asthma:176,168,171 => 168-176. Migraine:189,183,180 => 180-189. Arthritis:210,227 => 210-227.
 
-1. All hypertension patients (PT001, PT005, PT010, PT015) are smokers.
-2. All asthma patients (PT003, PT008, PT013) are non‑smokers.
-3. The majority of diabetes patients (2 out of 3) are smokers.
-4. All arthritis patients (PT006, PT011) are non‑smokers.
-5. The patient with the lowest systolic blood pressure is an asthma patient aged 23 (PT008 with 115 mmHg).
-6. All migraine patients have systolic blood pressure between 121 mmHg and 124 mmHg.
-7. Every hypertension patient has a body‑mass index greater than 29.
+We need 5-10 statements, each non-redundant, tightest.
 
-That's 7 statements, each 2-3 attributes. Good.
+Potential statements:
 
-Return JSON.assistantfinal{"statements": ["All hypertension patients (PT001, PT005, PT010, PT015) are smokers.", "All asthma patients (PT003, PT008, PT013) are non-smokers.", "The majority of diabetes patients (2 out of 3) are smokers.", "All arthritis patients (PT006, PT011) are non-smokers.", "The patient with the lowest systolic blood pressure is an asthma patient aged 23 (PT008 with 115 mmHg).", "All migraine patients have systolic blood pressure between 121 mmHg and 124 mmHg.", "Every hypertension patient has a body-mass index greater than 29."]}
+1. All hypertension patients are smokers. (Universal claim)
+
+2. All asthma patients are non-smokers. (Universal claim)
+
+3. All migraine patients are non-smokers. (Universal claim) Might be redundant with asthma? Not same condition, keep.
+
+4. For all hypertension patients, age is between 57 and 63 years. (Universal claim with tight range)
+
+5. For all diabetes patients, BMI is at least 30.1 and at most 32.0. Could phrase: "All diabetes patients have a BMI between 30.1 and 32.0." That's tight.
+
+6. For all asthma patients, systolic blood pressure is at most 118 mmHg. Actually range 115-118, so "at most 118". Could also say "between 115 and 118". Use tight range.
+
+7. For all migraine patients, diastolic blood pressure is between 77 and 79 mmHg. (tight)
+
+8. For all arthritis patients, cholesterol is at least 210 mg/dL. Actually range 210-227, so "at least 210". But also "between 210 and 227". Use tight.
+
+9. If a patient is a smoker, then they have hypertension or diabetes. (Conditional claim)
+
+10. Most patients (maybe >50%) have cholesterol above 180? Let's compute: cholesterol values: list: 218,201,176,189,233,210,224,168,183,216,227,205,171,180,221. Count >180: 218,189,233,210,224,183,216,227,205,180? 180 is not >180, equal. So >180 count = 9? Let's count: 218(1),189(2),233(3),210(4),224(5),183(6),216(7),227(8),205(9). That's 9 out of 15 = 60%. So "Most patients have cholesterol above 180 mg/dL." That's a majority claim.
+
+But need to ensure non-redundancy: we already have statements about cholesterol per diagnosis, but this is a broader majority claim, not redundant.
+
+We have 10 statements now, within 5-10 limit. Ensure each is tightest.
+
+Check redundancy: Statement 1 (All hypertension patients are smokers) and statement 9 (If a patient is a smoker, then they have hypertension or diabetes) are not redundant; they are different directions.
+
+Statement 2 and 3 both about non-smokers for asthma and migraine; they are distinct.
+
+Statement 4 about age range for hypertension is tight.
+
+Statement 5 about BMI range for diabetes is tight.
+
+Statement 6 about systolic BP for asthma is tight.
+
+Statement 7 about diastolic BP for migraine is tight.
+
+Statement 8 about cholesterol for arthritis is tight.
+
+Statement 10 about majority cholesterol >180 is not overlapping.
+
+All good.
+
+Now produce JSON with statements array.
+
+Make sure each statement is a string, natural language, no markdown.
+
+Let's craft statements:
+
+- All hypertension patients are smokers.
+- All asthma patients are non-smokers.
+- All migraine patients are non-smokers.
+- For all hypertension patients, age is between 57 and 63 years.
+- All diabetes patients have a BMI between 30.1 and 32.0.
+- All asthma patients have a systolic blood pressure between 115 and 118 mmHg.
+- All migraine patients have a diastolic blood pressure between 77 and 79 mmHg.
+- All arthritis patients have a cholesterol level between 210 and 227 mg/dL.
+- If a patient is a smoker, then they have either hypertension or diabetes.
+- Most patients have a cholesterol level above 180 mg/dL.
+
+Check redundancy: Statement 8 about arthritis cholesterol range includes "between 210 and 227". That's tight. Good.
+
+Now produce JSON.assistantfinal{"statements":["All hypertension patients are smokers.","All asthma patients are non-smokers.","All migraine patients are non-smokers.","For all hypertension patients, age is between 57 and 63 years.","All diabetes patients have a BMI between 30.1 and 32.0.","All asthma patients have a systolic blood pressure between 115 and 118 mmHg.","All migraine patients have a diastolic blood pressure between 77 and 79 mmHg.","All arthritis patients have a cholesterol level between 210 and 227 mg/dL.","If a patient is a smoker, then they have either hypertension or diabetes.","Most patients have a cholesterol level above 180 mg/dL."]}

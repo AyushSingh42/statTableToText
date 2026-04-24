@@ -1,0 +1,11 @@
+All employees in the engineering department with more than 10 years of experience have a monthly salary less than or equal to $6.9k.
+All employees in the finance department have a monthly salary greater than or equal to $7.0k.
+If an employee is in the operations department, then their years of experience are greater than 8.
+All employees with a performance rating greater than 4.5 have a monthly salary less than or equal to $7.8k.
+There exists at least one employee in the marketing department with a monthly salary greater than $9.0k.
+All employees with more than 10 years of experience have a performance rating less than or equal to 4.8.
+If an employee is in the hr department, then their monthly salary is less than or equal to $5.4k.
+All employees with a monthly salary greater than $9.0k have less than or equal to 3 projects active.
+Most employees have a remote days per month greater than or equal to 5.
+All employees with a performance rating greater than 4.0 have a monthly salary greater than or equal to $5.1k.
+If an employee is in the engineering department, then their years of experience are greater than or equal to 2.

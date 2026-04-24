@@ -1,0 +1,17 @@
+All hotels in Austin have an average nightly rate greater than $150.
+If a hotel is in Seattle, then its staff count is less than 40.
+There exists at least one hotel in Dallas with an occupancy rate greater than 85%.
+All hotels with a star level of 5 have an average nightly rate greater than $200.
+If a hotel has a cancellation rate less than 10%, then its occupancy rate is greater than 70%.
+Most hotels in the dataset have a staff count greater than 30.
+All hotels in Boston have a star level of either 3 or 5.
+If a hotel is in Miami, then its occupancy rate is less than 70%.
+There exists at least one hotel in Austin with a bookings per month count greater than 800.
+All hotels with a star level of 4 have an average nightly rate greater than $180.
+If a hotel has an occupancy rate greater than 80%, then its cancellation rate is less than 12%.
+All hotels in Dallas have an average nightly rate greater than $170.
+There exists at least one hotel in Seattle with a staff count greater than 40.
+If a hotel has a star level of 3, then its average nightly rate is less than $220.
+Most hotels in the dataset have an occupancy rate greater than 70%.
+All hotels with a bookings per month count greater than 700 have a staff count greater than 25.
+If a hotel is in Austin, then its star level is either 3, 4, or 5.

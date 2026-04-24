@@ -1,0 +1,16 @@
+patient_id,diagnosis,age,bp_systolic,bp_diastolic,cholesterol_mg_dl,bmi,smoker
+PT031001,asthma,66,148,90,174,27.4,no
+PT031002,hypertension,52,148,75,212,22.7,yes
+PT031003,arthritis,64,119,77,230,20.5,yes
+PT031004,diabetes,23,142,81,214,33.4,yes
+PT031005,hypertension,56,153,83,193,25.0,no
+PT031006,asthma,38,116,88,212,22.2,yes
+PT031007,diabetes,35,145,71,216,21.5,no
+PT031008,asthma,70,131,80,176,28.2,yes
+PT031009,asthma,33,130,88,203,30.9,yes
+PT031010,migraine,44,149,85,190,30.8,yes
+PT031011,diabetes,21,138,70,194,28.1,yes
+PT031012,asthma,21,154,82,204,22.0,yes
+PT031013,migraine,52,115,74,200,21.8,yes
+PT031014,arthritis,47,156,98,212,26.9,yes
+PT031015,arthritis,27,144,74,215,21.5,yes

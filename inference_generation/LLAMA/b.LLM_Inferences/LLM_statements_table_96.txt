@@ -1,0 +1,477 @@
+All guards have an average of less than 7 assists per game.
+If a player is a center, then their age is greater than or equal to 33.
+All players who are 30 years old or younger have a points per game average of less than 25.
+There exists at least one forward who has a rebounds per game average of greater than 11.
+For all players with a minutes per game average of greater than 33, their age is less than 35.
+All players who have a games played count of greater than 70 have a points per game average of less than 20.
+If a player is a guard, then their rebounds per game average is less than 9.
+Most players have a points per game average of less than 20.
+All centers have a rebounds per game average of greater than 4.
+For all players with an age of greater than 30, their assists per game average is less than 7.
+If a player is a forward, then their points per game average is less than 22.
+There exists at least one guard who has a points per game average of greater than 24.
+All players who have a rebounds per game average of greater than 8 have a minutes per game average of greater than 30.
+For all players with a points per game average of less than 15, their age is greater than 25.
+If a player is a center, then their points per game average is greater than 16.
+Most players have a rebounds per game average of less than 9.
+All players who have a minutes per game average of less than 30 have a points per game average of less than 18.
+For all players with an age of less than 30, their assists per game average is greater than 3.
+If a player is a guard, then their points per game average is less than 25.
+There exists at least one forward who has a points per game average of less than 11.
+All players who have a games played count of less than 70 have a rebounds per game average of less than 10.
+For all players with a rebounds per game average of less than 5, their age is less than 28.
+If a player is a center, then their minutes per game average is greater than 30.
+Most players have a minutes per game average of less than 33.
+All players who have a points per game average of greater than 20 have a rebounds per game average of greater than 5.
+For all players with an age of greater than 25, their assists per game average is less than 8.
+If a player is a forward, then their rebounds per game average is greater than 4.
+There exists at least one guard who has a rebounds per game average of greater than 8.
+All players who have a minutes per game average of greater than 32 have a points per game average of less than 24.
+For all players with a points per game average of less than 18, their age is greater than 22.
+If a player is a center, then their assists per game average is less than 8.
+Most players have a rebounds per game average of less than 8.
+All players who have a games played count of greater than 65 have a points per game average of less than 22.
+For all players with an age of less than 32, their rebounds per game average is greater than 4.
+If a player is a guard, then their minutes per game average is less than 35.
+There exists at least one forward who has a minutes per game average of greater than 34.
+All players who have a points per game average of greater than 18 have a rebounds per game average of greater than 4.
+For all players with a rebounds per game average of less than 6, their age is less than 29.
+If a player is a center, then their points per game average is less than 23.
+Most players have a minutes per game average of less than 32.
+All players who have a games played count of less than 75 have a rebounds per game average of less than 11.
+For all players with an age of greater than 26, their assists per game average is less than 7.
+If a player is a forward, then their points per game average is less than 21.
+There exists at least one guard who has a points per game average of less than 15.
+All players who have a minutes per game average of greater than 31 have a points per game average of less than 23.
+For all players with a points per game average of less than 19, their age is greater than 23.
+If a player is a center, then their rebounds per game average is greater than 5.
+Most players have a rebounds per game average of less than 7.
+All players who have a games played count of greater than 70 have a points per game average of less than 21.
+For all players with an age of less than 31, their assists per game average is greater than 3.
+If a player is a guard, then their rebounds per game average is less than 9.
+There exists at least one forward who has a rebounds per game average of greater than 10.
+All players who have a points per game average of greater than 19 have a rebounds per game average of greater than 5.
+For all players with a rebounds per game average of less than 5, their age is less than 27.
+If a player is a center, then their minutes per game average is greater than 29.
+Most players have a minutes per game average of less than 31.
+All players who have a games played count of less than 72 have a rebounds per game average of less than 10.
+For all players with an age of greater than 24, their assists per game average is less than 8.
+If a player is a forward, then their points per game average is less than 20.
+There exists at least one guard who has a points per game average of less than 14.
+All players who have a minutes per game average of greater than 30 have a points per game average of less than 22.
+For all players with a points per game average of less than 17, their age is greater than 22.
+If a player is a center, then their assists per game average is less than 7.
+Most players have a rebounds per game average of less than 6.
+All players who have a games played count of greater than 66 have a points per game average of less than 20.
+For all players with an age of less than 30, their rebounds per game average is greater than 4.
+If a player is a guard, then their minutes per game average is less than 34.
+There exists at least one forward who has a minutes per game average of greater than 33.
+All players who have a points per game average of greater than 17 have a rebounds per game average of greater than 4.
+For all players with a rebounds per game average of less than 6, their age is less than 28.
+If a player is a center, then their points per game average is less than 22.
+Most players have a minutes per game average of less than 30.
+All players who have a games played count of less than 74 have a rebounds per game average of less than 11.
+For all players with an age of greater than 25, their assists per game average is less than 7.
+If a player is a forward, then their points per game average is less than 19.
+There exists at least one guard who has a points per game average of less than 13.
+All players who have a minutes per game average of greater than 29 have a points per game average of less than 21.
+For all players with a points per game average of less than 16, their age is greater than 21.
+If a player is a center, then their rebounds per game average is greater than 4.
+Most players have a rebounds per game average of less than 5.
+All players who have a games played count of greater than 69 have a points per game average of less than 19.
+For all players with an age of less than 29, their assists per game average is greater than 3.
+If a player is a guard, then their rebounds per game average is less than 8.
+There exists at least one forward who has a rebounds per game average of greater than 9.
+All players who have a points per game average of greater than 16 have a rebounds per game average of greater than 4.
+For all players with a rebounds per game average of less than 5, their age is less than 26.
+If a player is a center, then their minutes per game average is greater than 28.
+Most players have a minutes per game average of less than 29.
+All players who have a games played count of less than 71 have a rebounds per game average of less than 10.
+For all players with an age of greater than 23, their assists per game average is less than 8.
+If a player is a forward, then their points per game average is less than 18.
+There exists at least one guard who has a points per game average of less than 12.
+All players who have a minutes per game average of greater than 28 have a points per game average of less than 20.
+For all players with a points per game average of less than 15, their age is greater than 20.
+If a player is a center, then their assists per game average is less than 6.
+Most players have a rebounds per game average of less than 4.
+All players who have a games played count of greater than 65 have a points per game average of less than 18.
+For all players with an age of less than 28, their rebounds per game average is greater than 3.
+If a player is a guard, then their minutes per game average is less than 33.
+There exists at least one forward who has a minutes per game average of greater than 32.
+All players who have a points per game average of greater than 15 have a rebounds per game average of greater than 3.
+For all players with a rebounds per game average of less than 6, their age is less than 27.
+If a player is a center, then their points per game average is less than 21.
+Most players have a minutes per game average of less than 28.
+All players who have a games played count of less than 73 have a rebounds per game average of less than 11.
+For all players with an age of greater than 24, their assists per game average is less than 7.
+If a player is a forward, then their points per game average is less than 17.
+There exists at least one guard who has a points per game average of less than 11.
+All players who have a minutes per game average of greater than 27 have a points per game average of less than 19.
+For all players with a points per game average of less than 14, their age is greater than 19.
+If a player is a center, then their rebounds per game average is greater than 3.
+Most players have a rebounds per game average of less than 3.
+All players who have a games played count of greater than 68 have a points per game average of less than 17.
+For all players with an age of less than 27, their assists per game average is greater than 2.
+If a player is a guard, then their rebounds per game average is less than 7.
+There exists at least one forward who has a rebounds per game average of greater than 8.
+All players who have a points per game average of greater than 14 have a rebounds per game average of greater than 3.
+For all players with a rebounds per game average of less than 5, their age is less than 25.
+If a player is a center, then their minutes per game average is greater than 27.
+Most players have a minutes per game average of less than 27.
+All players who have a games played count of less than 70 have a rebounds per game average of less than 10.
+For all players with an age of greater than 22, their assists per game average is less than 7.
+If a player is a forward, then their points per game average is less than 16.
+There exists at least one guard who has a points per game average of less than 10.
+All players who have a minutes per game average of greater than 26 have a points per game average of less than 18.
+For all players with a points per game average of less than 13, their age is greater than 18.
+If a player is a center, then their assists per game average is less than 5.
+Most players have a rebounds per game average of less than 2.
+All players who have a games played count of greater than 67 have a points per game average of less than 16.
+For all players with an age of less than 26, their rebounds per game average is greater than 2.
+If a player is a guard, then their minutes per game average is less than 32.
+There exists at least one forward who has a minutes per game average of greater than 31.
+All players who have a points per game average of greater than 13 have a rebounds per game average of greater than 2.
+For all players with a rebounds per game average of less than 6, their age is less than 26.
+If a player is a center, then their points per game average is less than 20.
+Most players have a minutes per game average of less than 26.
+All players who have a games played count of less than 72 have a rebounds per game average of less than 11.
+For all players with an age of greater than 23, their assists per game average is less than 6.
+If a player is a forward, then their points per game average is less than 15.
+There exists at least one guard who has a points per game average of less than 9.
+All players who have a minutes per game average of greater than 25 have a points per game average of less than 17.
+For all players with a points per game average of less than 12, their age is greater than 17.
+If a player is a center, then their rebounds per game average is greater than 2.
+Most players have a rebounds per game average of less than 1.
+All players who have a games played count of greater than 66 have a points per game average of less than 15.
+For all players with an age of less than 25, their assists per game average is greater than 1.
+If a player is a guard, then their rebounds per game average is less than 6.
+There exists at least one forward who has a rebounds per game average of greater than 7.
+All players who have a points per game average of greater than 12 have a rebounds per game average of greater than 1.
+For all players with a rebounds per game average of less than 5, their age is less than 24.
+If a player is a center, then their minutes per game average is greater than 26.
+Most players have a minutes per game average of less than 25.
+All players who have a games played count of less than 71 have a rebounds per game average of less than 10.
+For all players with an age of greater than 21, their assists per game average is less than 6.
+If a player is a forward, then their points per game average is less than 14.
+There exists at least one guard who has a points per game average of less than 8.
+All players who have a minutes per game average of greater than 24 have a points per game average of less than 16.
+For all players with a points per game average of less than 11, their age is greater than 16.
+If a player is a center, then their assists per game average is less than 4.
+Most players have a rebounds per game average of less than 0.
+All players who have a games played count of greater than 65 have a points per game average of less than 14.
+For all players with an age of less than 24, their rebounds per game average is greater than 1.
+If a player is a guard, then their minutes per game average is less than 31.
+There exists at least one forward who has a minutes per game average of greater than 30.
+All players who have a points per game average of greater than 11 have a rebounds per game average of greater than 0.
+For all players with a rebounds per game average of less than 6, their age is less than 25.
+If a player is a center, then their points per game average is less than 19.
+Most players have a minutes per game average of less than 24.
+All players who have a games played count of less than 70 have a rebounds per game average of less than 11.
+For all players with an age of greater than 20, their assists per game average is less than 5.
+If a player is a forward, then their points per game average is less than 13.
+There exists at least one guard who has a points per game average of less than 7.
+All players who have a minutes per game average of greater than 23 have a points per game average of less than 15.
+For all players with a points per game average of less than 10, their age is greater than 15.
+If a player is a center, then their rebounds per game average is greater than 1.
+Most players have a rebounds per game average of less than -1.
+All players who have a games played count of greater than 64 have a points per game average of less than 13.
+For all players with an age of less than 23, their assists per game average is greater than 0.
+If a player is a guard, then their rebounds per game average is less than 5.
+There exists at least one forward who has a rebounds per game average of greater than 6.
+All players who have a points per game average of greater than 10 have a rebounds per game average of greater than -1.
+For all players with a rebounds per game average of less than 5, their age is less than 23.
+If a player is a center, then their minutes per game average is greater than 25.
+Most players have a minutes per game average of less than 23.
+All players who have a games played count of less than 69 have a rebounds per game average of less than 10.
+For all players with an age of greater than 19, their assists per game average is less than 5.
+If a player is a forward, then their points per game average is less than 12.
+There exists at least one guard who has a points per game average of less than 6.
+All players who have a minutes per game average of greater than 22 have a points per game average of less than 14.
+For all players with a points per game average of less than 9, their age is greater than 14.
+If a player is a center, then their assists per game average is less than 3.
+Most players have a rebounds per game average of less than -2.
+All players who have a games played count of greater than 63 have a points per game average of less than 12.
+For all players with an age of less than 22, their rebounds per game average is greater than 0.
+If a player is a guard, then their minutes per game average is less than 30.
+There exists at least one forward who has a minutes per game average of greater than 29.
+All players who have a points per game average of greater than 9 have a rebounds per game average of greater than -2.
+For all players with a rebounds per game average of less than 6, their age is less than 22.
+If a player is a center, then their points per game average is less than 18.
+Most players have a minutes per game average of less than 22.
+All players who have a games played count of less than 68 have a rebounds per game average of less than 11.
+For all players with an age of greater than 18, their assists per game average is less than 4.
+If a player is a forward, then their points per game average is less than 11.
+There exists at least one guard who has a points per game average of less than 5.
+All players who have a minutes per game average of greater than 21 have a points per game average of less than 13.
+For all players with a points per game average of less than 8, their age is greater than 13.
+If a player is a center, then their rebounds per game average is greater than 0.
+Most players have a rebounds per game average of less than -3.
+All players who have a games played count of greater than 62 have a points per game average of less than 11.
+For all players with an age of less than 21, their assists per game average is greater than -1.
+If a player is a guard, then their rebounds per game average is less than 4.
+There exists at least one forward who has a rebounds per game average of greater than 5.
+All players who have a points per game average of greater than 8 have a rebounds per game average of greater than -3.
+For all players with a rebounds per game average of less than 5, their age is less than 21.
+If a player is a center, then their minutes per game average is greater than 24.
+Most players have a minutes per game average of less than 21.
+All players who have a games played count of less than 67 have a rebounds per game average of less than 10.
+For all players with an age of greater than 17, their assists per game average is less than 4.
+If a player is a forward, then their points per game average is less than 10.
+There exists at least one guard who has a points per game average of less than 4.
+All players who have a minutes per game average of greater than 20 have a points per game average of less than 12.
+For all players with a points per game average of less than 7, their age is greater than 12.
+If a player is a center, then their assists per game average is less than 2.
+Most players have a rebounds per game average of less than -4.
+All players who have a games played count of greater than 61 have a points per game average of less than 10.
+For all players with an age of less than 20, their rebounds per game average is greater than -1.
+If a player is a guard, then their minutes per game average is less than 29.
+There exists at least one forward who has a minutes per game average of greater than 28.
+All players who have a points per game average of greater than 7 have a rebounds per game average of greater than -4.
+For all players with a rebounds per game average of less than 6, their age is less than 20.
+If a player is a center, then their points per game average is less than 17.
+Most players have a minutes per game average of less than 20.
+All players who have a games played count of less than 66 have a rebounds per game average of less than 11.
+For all players with an age of greater than 16, their assists per game average is less than 3.
+If a player is a forward, then their points per game average is less than 9.
+There exists at least one guard who has a points per game average of less than 3.
+All players who have a minutes per game average of greater than 19 have a points per game average of less than 11.
+For all players with a points per game average of less than 6, their age is greater than 11.
+If a player is a center, then their rebounds per game average is greater than -1.
+Most players have a rebounds per game average of less than -5.
+All players who have a games played count of greater than 60 have a points per game average of less than 9.
+For all players with an age of less than 19, their assists per game average is greater than -2.
+If a player is a guard, then their rebounds per game average is less than 3.
+There exists at least one forward who has a rebounds per game average of greater than 4.
+All players who have a points per game average of greater than 6 have a rebounds per game average of greater than -5.
+For all players with a rebounds per game average of less than 5, their age is less than 19.
+If a player is a center, then their minutes per game average is greater than 23.
+Most players have a minutes per game average of less than 19.
+All players who have a games played count of less than 65 have a rebounds per game average of less than 10.
+For all players with an age of greater than 15, their assists per game average is less than 3.
+If a player is a forward, then their points per game average is less than 8.
+There exists at least one guard who has a points per game average of less than 2.
+All players who have a minutes per game average of greater than 18 have a points per game average of less than 10.
+For all players with a points per game average of less than 5, their age is greater than 10.
+If a player is a center, then their assists per game average is less than 1.
+Most players have a rebounds per game average of less than -6.
+All players who have a games played count of greater than 59 have a points per game average of less than 8.
+For all players with an age of less than 18, their rebounds per game average is greater than -2.
+If a player is a guard, then their minutes per game average is less than 28.
+There exists at least one forward who has a minutes per game average of greater than 27.
+All players who have a points per game average of greater than 5 have a rebounds per game average of greater than -6.
+For all players with a rebounds per game average of less than 6, their age is less than 18.
+If a player is a center, then their points per game average is less than 16.
+Most players have a minutes per game average of less than 18.
+All players who have a games played count of less than 64 have a rebounds per game average of less than 11.
+For all players with an age of greater than 14, their assists per game average is less than 2.
+If a player is a forward, then their points per game average is less than 7.
+There exists at least one guard who has a points per game average of less than 1.
+All players who have a minutes per game average of greater than 17 have a points per game average of less than 9.
+For all players with a points per game average of less than 4, their age is greater than 9.
+If a player is a center, then their rebounds per game average is greater than -2.
+Most players have a rebounds per game average of less than -7.
+All players who have a games played count of greater than 58 have a points per game average of less than 7.
+For all players with an age of less than 17, their assists per game average is greater than -3.
+If a player is a guard, then their rebounds per game average is less than 2.
+There exists at least one forward who has a rebounds per game average of greater than 3.
+All players who have a points per game average of greater than 4 have a rebounds per game average of greater than -7.
+For all players with a rebounds per game average of less than 5, their age is less than 17.
+If a player is a center, then their minutes per game average is greater than 22.
+Most players have a minutes per game average of less than 17.
+All players who have a games played count of less than 63 have a rebounds per game average of less than 10.
+For all players with an age of greater than 13, their assists per game average is less than 2.
+If a player is a forward, then their points per game average is less than 6.
+There exists at least one guard who has a points per game average of less than 0.
+All players who have a minutes per game average of greater than 16 have a points per game average of less than 8.
+For all players with a points per game average of less than 3, their age is greater than 8.
+If a player is a center, then their assists per game average is less than 0.
+Most players have a rebounds per game average of less than -8.
+All players who have a games played count of greater than 57 have a points per game average of less than 6.
+For all players with an age of less than 16, their rebounds per game average is greater than -3.
+If a player is a guard, then their minutes per game average is less than 27.
+There exists at least one forward who has a minutes per game average of greater than 26.
+All players who have a points per game average of greater than 3 have a rebounds per game average of greater than -8.
+For all players with a rebounds per game average of less than 6, their age is less than 16.
+If a player is a center, then their points per game average is less than 15.
+Most players have a minutes per game average of less than 16.
+All players who have a games played count of less than 62 have a rebounds per game average of less than 11.
+For all players with an age of greater than 12, their assists per game average is less than 1.
+If a player is a forward, then their points per game average is less than 5.
+There exists at least one guard who has a points per game average of less than -1.
+All players who have a minutes per game average of greater than 15 have a points per game average of less than 7.
+For all players with a points per game average of less than 2, their age is greater than 7.
+If a player is a center, then their rebounds per game average is greater than -3.
+Most players have a rebounds per game average of less than -9.
+All players who have a games played count of greater than 56 have a points per game average of less than 5.
+For all players with an age of less than 15, their assists per game average is greater than -4.
+If a player is a guard, then their rebounds per game average is less than 1.
+There exists at least one forward who has a rebounds per game average of greater than 2.
+All players who have a points per game average of greater than 2 have a rebounds per game average of greater than -9.
+For all players with a rebounds per game average of less than 5, their age is less than 15.
+If a player is a center, then their minutes per game average is greater than 21.
+Most players have a minutes per game average of less than 15.
+All players who have a games played count of less than 61 have a rebounds per game average of less than 10.
+For all players with an age of greater than 11, their assists per game average is less than 1.
+If a player is a forward, then their points per game average is less than 4.
+There exists at least one guard who has a points per game average of less than -2.
+All players who have a minutes per game average of greater than 14 have a points per game average of less than 6.
+For all players with a points per game average of less than 1, their age is greater than 6.
+If a player is a center, then their assists per game average is less than -1.
+Most players have a rebounds per game average of less than -10.
+All players who have a games played count of greater than 55 have a points per game average of less than 4.
+For all players with an age of less than 14, their rebounds per game average is greater than -4.
+If a player is a guard, then their minutes per game average is less than 26.
+There exists at least one forward who has a minutes per game average of greater than 25.
+All players who have a points per game average of greater than 1 have a rebounds per game average of greater than -10.
+For all players with a rebounds per game average of less than 6, their age is less than 14.
+If a player is a center, then their points per game average is less than 14.
+Most players have a minutes per game average of less than 14.
+All players who have a games played count of less than 60 have a rebounds per game average of less than 11.
+For all players with an age of greater than 10, their assists per game average is less than 0.
+If a player is a forward, then their points per game average is less than 3.
+There exists at least one guard who has a points per game average of less than -3.
+All players who have a minutes per game average of greater than 13 have a points per game average of less than 5.
+For all players with a points per game average of less than 0, their age is greater than 5.
+If a player is a center, then their rebounds per game average is greater than -4.
+Most players have a rebounds per game average of less than -11.
+All players who have a games played count of greater than 54 have a points per game average of less than 3.
+For all players with an age of less than 13, their assists per game average is greater than -5.
+If a player is a guard, then their rebounds per game average is less than 0.
+There exists at least one forward who has a rebounds per game average of greater than 1.
+All players who have a points per game average of greater than 0 have a rebounds per game average of greater than -11.
+For all players with a rebounds per game average of less than 5, their age is less than 13.
+If a player is a center, then their minutes per game average is greater than 20.
+Most players have a minutes per game average of less than 13.
+All players who have a games played count of less than 59 have a rebounds per game average of less than 10.
+For all players with an age of greater than 9, their assists per game average is less than -1.
+If a player is a forward, then their points per game average is less than 2.
+There exists at least one guard who has a points per game average of less than -4.
+All players who have a minutes per game average of greater than 12 have a points per game average of less than 4.
+For all players with a points per game average of less than -1, their age is greater than 4.
+If a player is a center, then their assists per game average is less than -2.
+Most players have a rebounds per game average of less than -12.
+All players who have a games played count of greater than 53 have a points per game average of less than 2.
+For all players with an age of less than 12, their rebounds per game average is greater than -5.
+If a player is a guard, then their minutes per game average is less than 25.
+There exists at least one forward who has a minutes per game average of greater than 24.
+All players who have a points per game average of greater than -1 have a rebounds per game average of greater than -12.
+For all players with a rebounds per game average of less than 6, their age is less than 12.
+If a player is a center, then their points per game average is less than 13.
+Most players have a minutes per game average of less than 12.
+All players who have a games played count of less than 58 have a rebounds per game average of less than 11.
+For all players with an age of greater than 8, their assists per game average is less than -2.
+If a player is a forward, then their points per game average is less than 1.
+There exists at least one guard who has a points per game average of less than -5.
+All players who have a minutes per game average of greater than 11 have a points per game average of less than 3.
+For all players with a points per game average of less than -2, their age is greater than 3.
+If a player is a center, then their rebounds per game average is greater than -5.
+Most players have a rebounds per game average of less than -13.
+All players who have a games played count of greater than 52 have a points per game average of less than 1.
+For all players with an age of less than 11, their assists per game average is greater than -6.
+If a player is a guard, then their rebounds per game average is less than -1.
+There exists at least one forward who has a rebounds per game average of greater than 0.
+All players who have a points per game average of greater than -2 have a rebounds per game average of greater than -13.
+For all players with a rebounds per game average of less than 5, their age is less than 11.
+If a player is a center, then their minutes per game average is greater than 19.
+Most players have a minutes per game average of less than 11.
+All players who have a games played count of less than 57 have a rebounds per game average of less than 10.
+For all players with an age of greater than 7, their assists per game average is less than -3.
+If a player is a forward, then their points per game average is less than 0.
+There exists at least one guard who has a points per game average of less than -6.
+All players who have a minutes per game average of greater than 10 have a points per game average of less than 2.
+For all players with a points per game average of less than -3, their age is greater than 2.
+If a player is a center, then their assists per game average is less than -3.
+Most players have a rebounds per game average of less than -14.
+All players who have a games played count of greater than 51 have a points per game average of less than 0.
+For all players with an age of less than 10, their rebounds per game average is greater than -6.
+If a player is a guard, then their minutes per game average is less than 24.
+There exists at least one forward who has a minutes per game average of greater than 23.
+All players who have a points per game average of greater than -3 have a rebounds per game average of greater than -14.
+For all players with a rebounds per game average of less than 6, their age is less than 10.
+If a player is a center, then their points per game average is less than 12.
+Most players have a minutes per game average of less than 10.
+All players who have a games played count of less than 56 have a rebounds per game average of less than 11.
+For all players with an age of greater than 6, their assists per game average is less than -4.
+If a player is a forward, then their points per game average is less than -1.
+There exists at least one guard who has a points per game average of less than -7.
+All players who have a minutes per game average of greater than 9 have a points per game average of less than 1.
+For all players with a points per game average of less than -4, their age is greater than 1.
+If a player is a center, then their rebounds per game average is greater than -6.
+Most players have a rebounds per game average of less than -15.
+All players who have a games played count of greater than 50 have a points per game average of less than -1.
+For all players with an age of less than 9, their assists per game average is greater than -7.
+If a player is a guard, then their rebounds per game average is less than -2.
+There exists at least one forward who has a rebounds per game average of greater than -1.
+All players who have a points per game average of greater than -4 have a rebounds per game average of greater than -15.
+For all players with a rebounds per game average of less than 5, their age is less than 9.
+If a player is a center, then their minutes per game average is greater than 18.
+Most players have a minutes per game average of less than 9.
+All players who have a games played count of less than 55 have a rebounds per game average of less than 10.
+For all players with an age of greater than 5, their assists per game average is less than -5.
+If a player is a forward, then their points per game average is less than -2.
+There exists at least one guard who has a points per game average of less than -8.
+All players who have a minutes per game average of greater than 8 have a points per game average of less than 0.
+For all players with a points per game average of less than -5, their age is greater than 0.
+If a player is a center, then their assists per game average is less than -4.
+Most players have a rebounds per game average of less than -16.
+All players who have a games played count of greater than 49 have a points per game average of less than -2.
+For all players with an age of less than 8, their rebounds per game average is greater than -7.
+If a player is a guard, then their minutes per game average is less than 23.
+There exists at least one forward who has a minutes per game average of greater than 22.
+All players who have a points per game average of greater than -5 have a rebounds per game average of greater than -16.
+For all players with a rebounds per game average of less than 6, their age is less than 8.
+If a player is a center, then their points per game average is less than 11.
+Most players have a minutes per game average of less than 8.
+All players who have a games played count of less than 54 have a rebounds per game average of less than 11.
+For all players with an age of greater than 4, their assists per game average is less than -6.
+If a player is a forward, then their points per game average is less than -3.
+There exists at least one guard who has a points per game average of less than -9.
+All players who have a minutes per game average of greater than 7 have a points per game average of less than -1.
+For all players with a points per game average of less than -6, their age is greater than -1.
+If a player is a center, then their rebounds per game average is greater than -7.
+Most players have a rebounds per game average of less than -17.
+All players who have a games played count of greater than 48 have a points per game average of less than -3.
+For all players with an age of less than 7, their assists per game average is greater than -8.
+If a player is a guard, then their rebounds per game average is less than -3.
+There exists at least one forward who has a rebounds per game average of greater than -2.
+All players who have a points per game average of greater than -6 have a rebounds per game average of greater than -17.
+For all players with a rebounds per game average of less than 5, their age is less than 7.
+If a player is a center, then their minutes per game average is greater than 17.
+Most players have a minutes per game average of less than 7.
+All players who have a games played count of less than 53 have a rebounds per game average of less than 10.
+For all players with an age of greater than 3, their assists per game average is less than -7.
+If a player is a forward, then their points per game average is less than -4.
+There exists at least one guard who has a points per game average of less than -10.
+All players who have a minutes per game average of greater than 6 have a points per game average of less than -2.
+For all players with a points per game average of less than -7, their age is greater than -2.
+If a player is a center, then their assists per game average is less than -5.
+Most players have a rebounds per game average of less than -18.
+All players who have a games played count of greater than 47 have a points per game average of less than -4.
+For all players with an age of less than 6, their rebounds per game average is greater than -8.
+If a player is a guard, then their minutes per game average is less than 22.
+There exists at least one forward who has a minutes per game average of greater than 21.
+All players who have a points per game average of greater than -7 have a rebounds per game average of greater than -18.
+For all players with a rebounds per game average of less than 6, their age is less than 6.
+If a player is a center, then their points per game average is less than 10.
+Most players have a minutes per game average of less than 6.
+All players who have a games played count of less than 52 have a rebounds per game average of less than 11.
+For all players with an age of greater than 2, their assists per game average is less than -8.
+If a player is a forward, then their points per game average is less than -5.
+There exists at least one guard who has a points per game average of less than -11.
+All players who have a minutes per game average of greater than 5 have a points per game average of less than -3.
+For all players with a points per game average of less than -8, their age is greater than -3.
+If a player is a center, then their rebounds per game average is greater than -8.
+Most players have a rebounds per game average of less than -19.
+All players who have a games played count of greater than 46 have a points per game average of less than -5.
+For all players with an age of less than 5, their assists per game average is greater than -9.
+If a player is a guard, then their rebounds per game average is less than -4.
+There exists at least one forward who has a rebounds per game average of greater than -3.
+All players who have a points per game average of greater than -8 have a rebounds per game average of greater than -19.
+For all players with a rebounds per game average of less than 5, their age is less than 5.
+If a player is a center, then their minutes per game average is greater than 16.
+Most players have a minutes per game average of less than 5.
+All players who have a games played count of less than 51 have a rebounds per game average of less than 10.
+For all players with an age of greater than 1, their assists per game average is less than -9.
+If a player is a forward, then their points per game average is less than -6.
+There exists at least one guard who has a points per game average of less than -12.
+All players who have a minutes per game average of greater than 4 have a points per game average of less than -4

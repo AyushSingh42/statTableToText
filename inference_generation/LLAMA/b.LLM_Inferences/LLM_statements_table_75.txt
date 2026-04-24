@@ -1,0 +1,471 @@
+All hotels in Austin have a star level of 5.
+If a hotel is in Phoenix, then its star level is 3.
+All hotels with an occupancy rate greater than 80% have a staff count greater than 30.
+If a hotel is in Chicago, then its average nightly rate is less than $200.
+There exists at least one hotel in Boston with a cancellation rate greater than 14%.
+All hotels with a staff count greater than 35 have an occupancy rate greater than 70%.
+If a hotel is in Austin and has a staff count greater than 30, then its occupancy rate is greater than 70%.
+Most hotels in the dataset have an occupancy rate greater than 70%.
+All hotels with an average nightly rate greater than $200 have a star level of 5.
+If a hotel is in Dallas, then its staff count is greater than 35.
+There exists at least one hotel in Chicago with a staff count less than 30.
+All hotels with a cancellation rate less than 10% have a staff count greater than 30.
+If a hotel is in Boston and has a star level of 5, then its occupancy rate is greater than 80%.
+All hotels with a staff count greater than 40 have an occupancy rate greater than 80%.
+If a hotel is in Miami, then its star level is 3.
+There exists at least one hotel in Austin with a cancellation rate greater than 15%.
+All hotels with an occupancy rate greater than 85% have a staff count less than 30.
+If a hotel is in Chicago and has a staff count less than 30, then its occupancy rate is greater than 75%.
+All hotels with a star level of 3 have an average nightly rate less than $170.
+If a hotel is in Phoenix and has a staff count greater than 30, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Boston with a staff count greater than 35.
+All hotels with a cancellation rate greater than 12% have a staff count greater than 30.
+If a hotel is in Dallas and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an occupancy rate greater than 80% have a star level of 5 or 3.
+If a hotel is in Austin and has a star level of 5, then its occupancy rate is greater than 70%.
+There exists at least one hotel in Chicago with a cancellation rate less than 10%.
+All hotels with a staff count greater than 35 have a star level of 5 or 3.
+If a hotel is in Boston and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an average nightly rate greater than $190 have a star level of 5.
+If a hotel is in Miami and has a staff count greater than 30, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a staff count greater than 40.
+All hotels with a cancellation rate greater than 13% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its staff count is greater than 35.
+There exists at least one hotel in Phoenix with a cancellation rate greater than 12%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Dallas and has a star level of 3, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 35 have an average nightly rate greater than $140.
+If a hotel is in Austin and has a staff count greater than 35, then its occupancy rate is greater than 70%.
+There exists at least one hotel in Chicago with a staff count greater than 35.
+All hotels with a cancellation rate less than 11% have a staff count greater than 30.
+If a hotel is in Boston and has a staff count greater than 35, then its average nightly rate is greater than $150.
+All hotels with a star level of 5 have a staff count greater than 30.
+If a hotel is in Miami and has a star level of 3, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a cancellation rate greater than 14%.
+All hotels with an occupancy rate greater than 80% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its staff count is greater than 30.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its occupancy rate is greater than 80%.
+There exists at least one hotel in Phoenix with a staff count greater than 35.
+All hotels with a cancellation rate greater than 12% have a staff count greater than 30.
+If a hotel is in Dallas and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an average nightly rate greater than $200 have a star level of 5.
+If a hotel is in Austin and has a star level of 5, then its staff count is greater than 30.
+There exists at least one hotel in Chicago with a cancellation rate less than 10%.
+All hotels with a staff count greater than 35 have a star level of 5 or 3.
+If a hotel is in Boston and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Miami and has a staff count greater than 30, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a staff count greater than 40.
+All hotels with a cancellation rate greater than 13% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its staff count is greater than 35.
+There exists at least one hotel in Phoenix with a cancellation rate greater than 12%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Dallas and has a star level of 3, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 35 have an average nightly rate greater than $140.
+If a hotel is in Austin and has a staff count greater than 35, then its occupancy rate is greater than 70%.
+There exists at least one hotel in Chicago with a staff count greater than 35.
+All hotels with a cancellation rate less than 11% have a staff count greater than 30.
+If a hotel is in Boston and has a staff count greater than 35, then its average nightly rate is greater than $150.
+All hotels with a star level of 5 have a staff count greater than 30.
+If a hotel is in Miami and has a star level of 3, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a cancellation rate greater than 14%.
+All hotels with an occupancy rate greater than 80% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its staff count is greater than 30.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its occupancy rate is greater than 80%.
+There exists at least one hotel in Phoenix with a staff count greater than 35.
+All hotels with a cancellation rate greater than 12% have a staff count greater than 30.
+If a hotel is in Dallas and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an average nightly rate greater than $200 have a star level of 5.
+If a hotel is in Austin and has a star level of 5, then its staff count is greater than 30.
+There exists at least one hotel in Chicago with a cancellation rate less than 10%.
+All hotels with a staff count greater than 35 have a star level of 5 or 3.
+If a hotel is in Boston and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Miami and has a staff count greater than 30, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a staff count greater than 40.
+All hotels with a cancellation rate greater than 13% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its staff count is greater than 35.
+There exists at least one hotel in Phoenix with a cancellation rate greater than 12%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Dallas and has a star level of 3, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 35 have an average nightly rate greater than $140.
+If a hotel is in Austin and has a staff count greater than 35, then its occupancy rate is greater than 70%.
+There exists at least one hotel in Chicago with a staff count greater than 35.
+All hotels with a cancellation rate less than 11% have a staff count greater than 30.
+If a hotel is in Boston and has a staff count greater than 35, then its average nightly rate is greater than $150.
+All hotels with a star level of 5 have a staff count greater than 30.
+If a hotel is in Miami and has a star level of 3, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a cancellation rate greater than 14%.
+All hotels with an occupancy rate greater than 80% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its staff count is greater than 30.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its occupancy rate is greater than 80%.
+There exists at least one hotel in Phoenix with a staff count greater than 35.
+All hotels with a cancellation rate greater than 12% have a staff count greater than 30.
+If a hotel is in Dallas and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an average nightly rate greater than $200 have a star level of 5.
+If a hotel is in Austin and has a star level of 5, then its staff count is greater than 30.
+There exists at least one hotel in Chicago with a cancellation rate less than 10%.
+All hotels with a staff count greater than 35 have a star level of 5 or 3.
+If a hotel is in Boston and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Miami and has a staff count greater than 30, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a staff count greater than 40.
+All hotels with a cancellation rate greater than 13% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its staff count is greater than 35.
+There exists at least one hotel in Phoenix with a cancellation rate greater than 12%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Dallas and has a star level of 3, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 35 have an average nightly rate greater than $140.
+If a hotel is in Austin and has a staff count greater than 35, then its occupancy rate is greater than 70%.
+There exists at least one hotel in Chicago with a staff count greater than 35.
+All hotels with a cancellation rate less than 11% have a staff count greater than 30.
+If a hotel is in Boston and has a staff count greater than 35, then its average nightly rate is greater than $150.
+All hotels with a star level of 5 have a staff count greater than 30.
+If a hotel is in Miami and has a star level of 3, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a cancellation rate greater than 14%.
+All hotels with an occupancy rate greater than 80% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its staff count is greater than 30.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its occupancy rate is greater than 80%.
+There exists at least one hotel in Phoenix with a staff count greater than 35.
+All hotels with a cancellation rate greater than 12% have a staff count greater than 30.
+If a hotel is in Dallas and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an average nightly rate greater than $200 have a star level of 5.
+If a hotel is in Austin and has a star level of 5, then its staff count is greater than 30.
+There exists at least one hotel in Chicago with a cancellation rate less than 10%.
+All hotels with a staff count greater than 35 have a star level of 5 or 3.
+If a hotel is in Boston and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Miami and has a staff count greater than 30, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a staff count greater than 40.
+All hotels with a cancellation rate greater than 13% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its staff count is greater than 35.
+There exists at least one hotel in Phoenix with a cancellation rate greater than 12%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Dallas and has a star level of 3, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 35 have an average nightly rate greater than $140.
+If a hotel is in Austin and has a staff count greater than 35, then its occupancy rate is greater than 70%.
+There exists at least one hotel in Chicago with a staff count greater than 35.
+All hotels with a cancellation rate less than 11% have a staff count greater than 30.
+If a hotel is in Boston and has a staff count greater than 35, then its average nightly rate is greater than $150.
+All hotels with a star level of 5 have a staff count greater than 30.
+If a hotel is in Miami and has a star level of 3, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a cancellation rate greater than 14%.
+All hotels with an occupancy rate greater than 80% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its staff count is greater than 30.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its occupancy rate is greater than 80%.
+There exists at least one hotel in Phoenix with a staff count greater than 35.
+All hotels with a cancellation rate greater than 12% have a staff count greater than 30.
+If a hotel is in Dallas and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an average nightly rate greater than $200 have a star level of 5.
+If a hotel is in Austin and has a star level of 5, then its staff count is greater than 30.
+There exists at least one hotel in Chicago with a cancellation rate less than 10%.
+All hotels with a staff count greater than 35 have a star level of 5 or 3.
+If a hotel is in Boston and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Miami and has a staff count greater than 30, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a staff count greater than 40.
+All hotels with a cancellation rate greater than 13% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its staff count is greater than 35.
+There exists at least one hotel in Phoenix with a cancellation rate greater than 12%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Dallas and has a star level of 3, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 35 have an average nightly rate greater than $140.
+If a hotel is in Austin and has a staff count greater than 35, then its occupancy rate is greater than 70%.
+There exists at least one hotel in Chicago with a staff count greater than 35.
+All hotels with a cancellation rate less than 11% have a staff count greater than 30.
+If a hotel is in Boston and has a staff count greater than 35, then its average nightly rate is greater than $150.
+All hotels with a star level of 5 have a staff count greater than 30.
+If a hotel is in Miami and has a star level of 3, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a cancellation rate greater than 14%.
+All hotels with an occupancy rate greater than 80% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its staff count is greater than 30.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its occupancy rate is greater than 80%.
+There exists at least one hotel in Phoenix with a staff count greater than 35.
+All hotels with a cancellation rate greater than 12% have a staff count greater than 30.
+If a hotel is in Dallas and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an average nightly rate greater than $200 have a star level of 5.
+If a hotel is in Austin and has a star level of 5, then its staff count is greater than 30.
+There exists at least one hotel in Chicago with a cancellation rate less than 10%.
+All hotels with a staff count greater than 35 have a star level of 5 or 3.
+If a hotel is in Boston and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Miami and has a staff count greater than 30, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a staff count greater than 40.
+All hotels with a cancellation rate greater than 13% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its staff count is greater than 35.
+There exists at least one hotel in Phoenix with a cancellation rate greater than 12%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Dallas and has a star level of 3, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 35 have an average nightly rate greater than $140.
+If a hotel is in Austin and has a staff count greater than 35, then its occupancy rate is greater than 70%.
+There exists at least one hotel in Chicago with a staff count greater than 35.
+All hotels with a cancellation rate less than 11% have a staff count greater than 30.
+If a hotel is in Boston and has a staff count greater than 35, then its average nightly rate is greater than $150.
+All hotels with a star level of 5 have a staff count greater than 30.
+If a hotel is in Miami and has a star level of 3, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a cancellation rate greater than 14%.
+All hotels with an occupancy rate greater than 80% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its staff count is greater than 30.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its occupancy rate is greater than 80%.
+There exists at least one hotel in Phoenix with a staff count greater than 35.
+All hotels with a cancellation rate greater than 12% have a staff count greater than 30.
+If a hotel is in Dallas and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an average nightly rate greater than $200 have a star level of 5.
+If a hotel is in Austin and has a star level of 5, then its staff count is greater than 30.
+There exists at least one hotel in Chicago with a cancellation rate less than 10%.
+All hotels with a staff count greater than 35 have a star level of 5 or 3.
+If a hotel is in Boston and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Miami and has a staff count greater than 30, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a staff count greater than 40.
+All hotels with a cancellation rate greater than 13% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its staff count is greater than 35.
+There exists at least one hotel in Phoenix with a cancellation rate greater than 12%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Dallas and has a star level of 3, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 35 have an average nightly rate greater than $140.
+If a hotel is in Austin and has a staff count greater than 35, then its occupancy rate is greater than 70%.
+There exists at least one hotel in Chicago with a staff count greater than 35.
+All hotels with a cancellation rate less than 11% have a staff count greater than 30.
+If a hotel is in Boston and has a staff count greater than 35, then its average nightly rate is greater than $150.
+All hotels with a star level of 5 have a staff count greater than 30.
+If a hotel is in Miami and has a star level of 3, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a cancellation rate greater than 14%.
+All hotels with an occupancy rate greater than 80% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its staff count is greater than 30.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its occupancy rate is greater than 80%.
+There exists at least one hotel in Phoenix with a staff count greater than 35.
+All hotels with a cancellation rate greater than 12% have a staff count greater than 30.
+If a hotel is in Dallas and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an average nightly rate greater than $200 have a star level of 5.
+If a hotel is in Austin and has a star level of 5, then its staff count is greater than 30.
+There exists at least one hotel in Chicago with a cancellation rate less than 10%.
+All hotels with a staff count greater than 35 have a star level of 5 or 3.
+If a hotel is in Boston and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Miami and has a staff count greater than 30, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a staff count greater than 40.
+All hotels with a cancellation rate greater than 13% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its staff count is greater than 35.
+There exists at least one hotel in Phoenix with a cancellation rate greater than 12%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Dallas and has a star level of 3, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 35 have an average nightly rate greater than $140.
+If a hotel is in Austin and has a staff count greater than 35, then its occupancy rate is greater than 70%.
+There exists at least one hotel in Chicago with a staff count greater than 35.
+All hotels with a cancellation rate less than 11% have a staff count greater than 30.
+If a hotel is in Boston and has a staff count greater than 35, then its average nightly rate is greater than $150.
+All hotels with a star level of 5 have a staff count greater than 30.
+If a hotel is in Miami and has a star level of 3, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a cancellation rate greater than 14%.
+All hotels with an occupancy rate greater than 80% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its staff count is greater than 30.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its occupancy rate is greater than 80%.
+There exists at least one hotel in Phoenix with a staff count greater than 35.
+All hotels with a cancellation rate greater than 12% have a staff count greater than 30.
+If a hotel is in Dallas and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an average nightly rate greater than $200 have a star level of 5.
+If a hotel is in Austin and has a star level of 5, then its staff count is greater than 30.
+There exists at least one hotel in Chicago with a cancellation rate less than 10%.
+All hotels with a staff count greater than 35 have a star level of 5 or 3.
+If a hotel is in Boston and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Miami and has a staff count greater than 30, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a staff count greater than 40.
+All hotels with a cancellation rate greater than 13% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its staff count is greater than 35.
+There exists at least one hotel in Phoenix with a cancellation rate greater than 12%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Dallas and has a star level of 3, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 35 have an average nightly rate greater than $140.
+If a hotel is in Austin and has a staff count greater than 35, then its occupancy rate is greater than 70%.
+There exists at least one hotel in Chicago with a staff count greater than 35.
+All hotels with a cancellation rate less than 11% have a staff count greater than 30.
+If a hotel is in Boston and has a staff count greater than 35, then its average nightly rate is greater than $150.
+All hotels with a star level of 5 have a staff count greater than 30.
+If a hotel is in Miami and has a star level of 3, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a cancellation rate greater than 14%.
+All hotels with an occupancy rate greater than 80% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its staff count is greater than 30.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its occupancy rate is greater than 80%.
+There exists at least one hotel in Phoenix with a staff count greater than 35.
+All hotels with a cancellation rate greater than 12% have a staff count greater than 30.
+If a hotel is in Dallas and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an average nightly rate greater than $200 have a star level of 5.
+If a hotel is in Austin and has a star level of 5, then its staff count is greater than 30.
+There exists at least one hotel in Chicago with a cancellation rate less than 10%.
+All hotels with a staff count greater than 35 have a star level of 5 or 3.
+If a hotel is in Boston and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Miami and has a staff count greater than 30, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a staff count greater than 40.
+All hotels with a cancellation rate greater than 13% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its staff count is greater than 35.
+There exists at least one hotel in Phoenix with a cancellation rate greater than 12%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Dallas and has a star level of 3, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 35 have an average nightly rate greater than $140.
+If a hotel is in Austin and has a staff count greater than 35, then its occupancy rate is greater than 70%.
+There exists at least one hotel in Chicago with a staff count greater than 35.
+All hotels with a cancellation rate less than 11% have a staff count greater than 30.
+If a hotel is in Boston and has a staff count greater than 35, then its average nightly rate is greater than $150.
+All hotels with a star level of 5 have a staff count greater than 30.
+If a hotel is in Miami and has a star level of 3, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a cancellation rate greater than 14%.
+All hotels with an occupancy rate greater than 80% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its staff count is greater than 30.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its occupancy rate is greater than 80%.
+There exists at least one hotel in Phoenix with a staff count greater than 35.
+All hotels with a cancellation rate greater than 12% have a staff count greater than 30.
+If a hotel is in Dallas and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an average nightly rate greater than $200 have a star level of 5.
+If a hotel is in Austin and has a star level of 5, then its staff count is greater than 30.
+There exists at least one hotel in Chicago with a cancellation rate less than 10%.
+All hotels with a staff count greater than 35 have a star level of 5 or 3.
+If a hotel is in Boston and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Miami and has a staff count greater than 30, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a staff count greater than 40.
+All hotels with a cancellation rate greater than 13% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its staff count is greater than 35.
+There exists at least one hotel in Phoenix with a cancellation rate greater than 12%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Dallas and has a star level of 3, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 35 have an average nightly rate greater than $140.
+If a hotel is in Austin and has a staff count greater than 35, then its occupancy rate is greater than 70%.
+There exists at least one hotel in Chicago with a staff count greater than 35.
+All hotels with a cancellation rate less than 11% have a staff count greater than 30.
+If a hotel is in Boston and has a staff count greater than 35, then its average nightly rate is greater than $150.
+All hotels with a star level of 5 have a staff count greater than 30.
+If a hotel is in Miami and has a star level of 3, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a cancellation rate greater than 14%.
+All hotels with an occupancy rate greater than 80% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its staff count is greater than 30.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its occupancy rate is greater than 80%.
+There exists at least one hotel in Phoenix with a staff count greater than 35.
+All hotels with a cancellation rate greater than 12% have a staff count greater than 30.
+If a hotel is in Dallas and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an average nightly rate greater than $200 have a star level of 5.
+If a hotel is in Austin and has a star level of 5, then its staff count is greater than 30.
+There exists at least one hotel in Chicago with a cancellation rate less than 10%.
+All hotels with a staff count greater than 35 have a star level of 5 or 3.
+If a hotel is in Boston and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Miami and has a staff count greater than 30, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a staff count greater than 40.
+All hotels with a cancellation rate greater than 13% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its staff count is greater than 35.
+There exists at least one hotel in Phoenix with a cancellation rate greater than 12%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Dallas and has a star level of 3, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 35 have an average nightly rate greater than $140.
+If a hotel is in Austin and has a staff count greater than 35, then its occupancy rate is greater than 70%.
+There exists at least one hotel in Chicago with a staff count greater than 35.
+All hotels with a cancellation rate less than 11% have a staff count greater than 30.
+If a hotel is in Boston and has a staff count greater than 35, then its average nightly rate is greater than $150.
+All hotels with a star level of 5 have a staff count greater than 30.
+If a hotel is in Miami and has a star level of 3, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a cancellation rate greater than 14%.
+All hotels with an occupancy rate greater than 80% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its staff count is greater than 30.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its occupancy rate is greater than 80%.
+There exists at least one hotel in Phoenix with a staff count greater than 35.
+All hotels with a cancellation rate greater than 12% have a staff count greater than 30.
+If a hotel is in Dallas and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an average nightly rate greater than $200 have a star level of 5.
+If a hotel is in Austin and has a star level of 5, then its staff count is greater than 30.
+There exists at least one hotel in Chicago with a cancellation rate less than 10%.
+All hotels with a staff count greater than 35 have a star level of 5 or 3.
+If a hotel is in Boston and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Miami and has a staff count greater than 30, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a staff count greater than 40.
+All hotels with a cancellation rate greater than 13% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its staff count is greater than 35.
+There exists at least one hotel in Phoenix with a cancellation rate greater than 12%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Dallas and has a star level of 3, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 35 have an average nightly rate greater than $140.
+If a hotel is in Austin and has a staff count greater than 35, then its occupancy rate is greater than 70%.
+There exists at least one hotel in Chicago with a staff count greater than 35.
+All hotels with a cancellation rate less than 11% have a staff count greater than 30.
+If a hotel is in Boston and has a staff count greater than 35, then its average nightly rate is greater than $150.
+All hotels with a star level of 5 have a staff count greater than 30.
+If a hotel is in Miami and has a star level of 3, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a cancellation rate greater than 14%.
+All hotels with an occupancy rate greater than 80% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its staff count is greater than 30.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its occupancy rate is greater than 80%.
+There exists at least one hotel in Phoenix with a staff count greater than 35.
+All hotels with a cancellation rate greater than 12% have a staff count greater than 30.
+If a hotel is in Dallas and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an average nightly rate greater than $200 have a star level of 5.
+If a hotel is in Austin and has a star level of 5, then its staff count is greater than 30.
+There exists at least one hotel in Chicago with a cancellation rate less than 10%.
+All hotels with a staff count greater than 35 have a star level of 5 or 3.
+If a hotel is in Boston and has a staff count greater than 35, then its occupancy rate is greater than 75%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Miami and has a staff count greater than 30, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a staff count greater than 40.
+All hotels with a cancellation rate greater than 13% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its staff count is greater than 35.
+There exists at least one hotel in Phoenix with a cancellation rate greater than 12%.
+All hotels with an occupancy rate greater than 85% have a star level of 5.
+If a hotel is in Dallas and has a star level of 3, then its occupancy rate is greater than 75%.
+All hotels with a staff count greater than 35 have an average nightly rate greater than $140.
+If a hotel is in Austin and has a staff count greater than 35, then its occupancy rate is greater than 70%.
+There exists at least one hotel in Chicago with a staff count greater than 35.
+All hotels with a cancellation rate less than 11% have a staff count greater than 30.
+If a hotel is in Boston and has a staff count greater than 35, then its average nightly rate is greater than $150.
+All hotels with a star level of 5 have a staff count greater than 30.
+If a hotel is in Miami and has a star level of 3, then its occupancy rate is greater than 65%.
+There exists at least one hotel in Austin with a cancellation rate greater than 14%.
+All hotels with an occupancy rate greater than 80% have a staff count greater than 30.
+If a hotel is in Chicago and has a star level of 5, then its staff count is greater than 30.
+All hotels with a staff count greater than 40 have a star level of 5.
+If a hotel is in Boston and has a star level of 5, then its occupancy rate is greater than 80%.
+There exists at least one hotel in Phoenix with a staff count greater than 35

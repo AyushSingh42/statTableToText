@@ -1,0 +1,473 @@
+All students with a test score greater than 90 have a study time of 4 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 84%.
+There exists at least one student in the 9th grade with a test score greater than 95.
+For all students with a study time of 8 hours or more per week, their test score is greater than 78.
+Most students in the 10th grade have an attendance rate greater than 90%.
+If a student is in the 12th grade, then their test score is greater than 62.
+All students with a test score less than 80 have a study time of 5 hours or less per week.
+There exists at least one student in the 11th grade with a study time of 2 hours or less per week.
+For all students with an attendance rate greater than 95%, their test score is greater than 80.
+If a student is a club member, then their test score is greater than 80.
+Most students have a study time of 5 hours or more per week.
+All students with a test score greater than 95 have an attendance rate greater than 86%.
+There exists at least one student in the 10th grade with a study time of 11 hours or more per week.
+For all students with a study time of 4 hours or less per week, their test score is greater than 77.
+If a student is in the 9th grade, then their test score is greater than 62.
+All students with an attendance rate greater than 90% have a test score greater than 70.
+There exists at least one student in the 12th grade with a study time of 9 hours or more per week.
+Most students in the 11th grade have a study time of 6 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 88%.
+For all students with a test score less than 85, their study time is 5 hours or less per week.
+All students with a study time of 10 hours or more per week have a test score greater than 70.
+There exists at least one student in the 10th grade with a test score greater than 95.
+Most students have an attendance rate greater than 85%.
+If a student is in the 12th grade, then their study time is 8 hours or more per week.
+All students with an attendance rate greater than 96% have a test score greater than 93.
+There exists at least one student in the 9th grade with a study time of 7 hours or more per week.
+For all students with a study time of 3 hours or less per week, their test score is greater than 86.
+If a student is a club member, then their study time is 4 hours or more per week.
+Most students in the 10th grade have a study time of 5 hours or more per week.
+All students with a test score greater than 96 have a study time of 4 hours or more per week.
+There exists at least one student in the 11th grade with a test score greater than 96.
+For all students with an attendance rate greater than 90%, their study time is 4 hours or more per week.
+If a student is in the 9th grade, then their attendance rate is greater than 84%.
+All students with a study time of 11 hours or more per week have a test score greater than 70.
+There exists at least one student in the 12th grade with a test score greater than 93.
+Most students have a study time of 4 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 90%.
+For all students with a test score less than 80, their attendance rate is greater than 90%.
+All students with an attendance rate greater than 97% have a test score greater than 86.
+There exists at least one student in the 10th grade with a study time of 4 hours or less per week.
+Most students in the 12th grade have a study time of 8 hours or more per week.
+If a student is in the 11th grade, then their test score is greater than 78.
+All students with a study time of 9 hours or more per week have a test score greater than 67.
+There exists at least one student in the 9th grade with a test score greater than 93.
+For all students with an attendance rate greater than 95%, their study time is 5 hours or more per week.
+If a student is a club member, then their test score is greater than 93.
+Most students have an attendance rate greater than 90%.
+All students with a test score greater than 97 have a study time of 7 hours or more per week.
+There exists at least one student in the 11th grade with a study time of 8 hours or more per week.
+For all students with a study time of 10 hours or more per week, their attendance rate is greater than 88%.
+If a student is in the 10th grade, then their test score is greater than 62.
+All students with an attendance rate greater than 92% have a test score greater than 79.
+There exists at least one student in the 12th grade with a test score greater than 80.
+Most students in the 9th grade have a study time of 5 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 91%.
+For all students with a test score less than 85, their study time is 4 hours or less per week.
+All students with a study time of 11 hours or more per week have a test score greater than 70.
+There exists at least one student in the 10th grade with a test score greater than 86.
+Most students have a study time of 5 hours or more per week.
+If a student is in the 11th grade, then their attendance rate is greater than 84%.
+All students with an attendance rate greater than 96% have a test score greater than 93.
+There exists at least one student in the 9th grade with a study time of 4 hours or less per week.
+For all students with a study time of 3 hours or less per week, their test score is greater than 96.
+If a student is a club member, then their study time is 5 hours or more per week.
+Most students in the 12th grade have a study time of 9 hours or more per week.
+All students with a test score greater than 96 have a study time of 6 hours or more per week.
+There exists at least one student in the 11th grade with a test score greater than 96.
+For all students with an attendance rate greater than 90%, their study time is 5 hours or more per week.
+If a student is in the 9th grade, then their attendance rate is greater than 86%.
+All students with a study time of 10 hours or more per week have a test score greater than 80.
+There exists at least one student in the 12th grade with a test score greater than 93.
+Most students have a study time of 6 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 92%.
+For all students with a test score less than 80, their attendance rate is greater than 91%.
+All students with an attendance rate greater than 97% have a test score greater than 93.
+There exists at least one student in the 10th grade with a study time of 11 hours or more per week.
+Most students in the 11th grade have a study time of 8 hours or more per week.
+If a student is in the 12th grade, then their test score is greater than 67.
+All students with a study time of 9 hours or more per week have a test score greater than 80.
+There exists at least one student in the 9th grade with a test score greater than 97.
+For all students with an attendance rate greater than 95%, their study time is 6 hours or more per week.
+If a student is a club member, then their test score is greater than 97.
+Most students have an attendance rate greater than 92%.
+All students with a test score greater than 97 have a study time of 8 hours or more per week.
+There exists at least one student in the 11th grade with a study time of 10 hours or more per week.
+For all students with a study time of 11 hours or more per week, their attendance rate is greater than 90%.
+If a student is in the 10th grade, then their test score is greater than 77.
+All students with an attendance rate greater than 92% have a test score greater than 93.
+There exists at least one student in the 12th grade with a test score greater than 86.
+Most students in the 9th grade have a study time of 6 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 93%.
+For all students with a test score less than 85, their study time is 5 hours or less per week.
+All students with a study time of 10 hours or more per week have a test score greater than 93.
+There exists at least one student in the 10th grade with a test score greater than 97.
+Most students have a study time of 7 hours or more per week.
+If a student is in the 11th grade, then their attendance rate is greater than 90%.
+All students with an attendance rate greater than 96% have a test score greater than 96.
+There exists at least one student in the 9th grade with a study time of 7 hours or more per week.
+For all students with a study time of 4 hours or less per week, their test score is greater than 97.
+If a student is a club member, then their study time is 7 hours or more per week.
+Most students in the 12th grade have a study time of 10 hours or more per week.
+All students with a test score greater than 97 have a study time of 9 hours or more per week.
+There exists at least one student in the 11th grade with a test score greater than 97.
+For all students with an attendance rate greater than 90%, their study time is 7 hours or more per week.
+If a student is in the 9th grade, then their attendance rate is greater than 90%.
+All students with a study time of 11 hours or more per week have a test score greater than 97.
+There exists at least one student in the 12th grade with a test score greater than 97.
+Most students have a study time of 8 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 94%.
+For all students with a test score less than 80, their attendance rate is greater than 93%.
+All students with an attendance rate greater than 97% have a test score greater than 97.
+There exists at least one student in the 10th grade with a study time of 10 hours or more per week.
+Most students in the 11th grade have a study time of 9 hours or more per week.
+If a student is in the 12th grade, then their test score is greater than 80.
+All students with a study time of 10 hours or more per week have a test score greater than 97.
+There exists at least one student in the 9th grade with a test score greater than 97.
+For all students with an attendance rate greater than 95%, their study time is 8 hours or more per week.
+If a student is a club member, then their test score is greater than 97.
+Most students have an attendance rate greater than 93%.
+All students with a test score greater than 97 have a study time of 10 hours or more per week.
+There exists at least one student in the 11th grade with a study time of 11 hours or more per week.
+For all students with a study time of 11 hours or more per week, their attendance rate is greater than 91%.
+If a student is in the 10th grade, then their test score is greater than 86.
+All students with an attendance rate greater than 92% have a test score greater than 97.
+There exists at least one student in the 12th grade with a test score greater than 97.
+Most students in the 9th grade have a study time of 7 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 95%.
+For all students with a test score less than 85, their study time is 6 hours or less per week.
+All students with a study time of 10 hours or more per week have a test score greater than 97.
+There exists at least one student in the 10th grade with a test score greater than 97.
+Most students have a study time of 9 hours or more per week.
+If a student is in the 11th grade, then their attendance rate is greater than 91%.
+All students with an attendance rate greater than 96% have a test score greater than 97.
+There exists at least one student in the 9th grade with a study time of 8 hours or more per week.
+For all students with a study time of 5 hours or less per week, their test score is greater than 97.
+If a student is a club member, then their study time is 8 hours or more per week.
+Most students in the 12th grade have a study time of 11 hours or more per week.
+All students with a test score greater than 97 have a study time of 11 hours or more per week.
+There exists at least one student in the 11th grade with a test score greater than 97.
+For all students with an attendance rate greater than 90%, their study time is 8 hours or more per week.
+If a student is in the 9th grade, then their attendance rate is greater than 91%.
+All students with a study time of 11 hours or more per week have a test score greater than 97.
+There exists at least one student in the 12th grade with a test score greater than 97.
+Most students have a study time of 10 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 96%.
+For all students with a test score less than 80, their attendance rate is greater than 94%.
+All students with an attendance rate greater than 97% have a test score greater than 97.
+There exists at least one student in the 10th grade with a study time of 11 hours or more per week.
+Most students in the 11th grade have a study time of 10 hours or more per week.
+If a student is in the 12th grade, then their test score is greater than 93.
+All students with a study time of 10 hours or more per week have a test score greater than 97.
+There exists at least one student in the 9th grade with a test score greater than 97.
+For all students with an attendance rate greater than 95%, their study time is 9 hours or more per week.
+If a student is a club member, then their test score is greater than 97.
+Most students have an attendance rate greater than 94%.
+All students with a test score greater than 97 have a study time of 11 hours or more per week.
+There exists at least one student in the 11th grade with a study time of 11 hours or more per week.
+For all students with a study time of 11 hours or more per week, their attendance rate is greater than 92%.
+If a student is in the 10th grade, then their test score is greater than 97.
+All students with an attendance rate greater than 92% have a test score greater than 97.
+There exists at least one student in the 12th grade with a test score greater than 97.
+Most students in the 9th grade have a study time of 8 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 97%.
+For all students with a test score less than 85, their study time is 7 hours or less per week.
+All students with a study time of 10 hours or more per week have a test score greater than 97.
+There exists at least one student in the 10th grade with a test score greater than 97.
+Most students have a study time of 10 hours or more per week.
+If a student is in the 11th grade, then their attendance rate is greater than 92%.
+All students with an attendance rate greater than 96% have a test score greater than 97.
+There exists at least one student in the 9th grade with a study time of 9 hours or more per week.
+For all students with a study time of 6 hours or less per week, their test score is greater than 97.
+If a student is a club member, then their study time is 9 hours or more per week.
+Most students in the 12th grade have a study time of 11 hours or more per week.
+All students with a test score greater than 97 have a study time of 11 hours or more per week.
+There exists at least one student in the 11th grade with a test score greater than 97.
+For all students with an attendance rate greater than 90%, their study time is 9 hours or more per week.
+If a student is in the 9th grade, then their attendance rate is greater than 92%.
+All students with a study time of 11 hours or more per week have a test score greater than 97.
+There exists at least one student in the 12th grade with a test score greater than 97.
+Most students have a study time of 11 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 97%.
+For all students with a test score less than 80, their attendance rate is greater than 95%.
+All students with an attendance rate greater than 97% have a test score greater than 97.
+There exists at least one student in the 10th grade with a study time of 11 hours or more per week.
+Most students in the 11th grade have a study time of 11 hours or more per week.
+If a student is in the 12th grade, then their test score is greater than 97.
+All students with a study time of 10 hours or more per week have a test score greater than 97.
+There exists at least one student in the 9th grade with a test score greater than 97.
+For all students with an attendance rate greater than 95%, their study time is 10 hours or more per week.
+If a student is a club member, then their test score is greater than 97.
+Most students have an attendance rate greater than 95%.
+All students with a test score greater than 97 have a study time of 11 hours or more per week.
+There exists at least one student in the 11th grade with a study time of 11 hours or more per week.
+For all students with a study time of 11 hours or more per week, their attendance rate is greater than 93%.
+If a student is in the 10th grade, then their test score is greater than 97.
+All students with an attendance rate greater than 92% have a test score greater than 97.
+There exists at least one student in the 12th grade with a test score greater than 97.
+Most students in the 9th grade have a study time of 9 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 97%.
+For all students with a test score less than 85, their study time is 8 hours or less per week.
+All students with a study time of 10 hours or more per week have a test score greater than 97.
+There exists at least one student in the 10th grade with a test score greater than 97.
+Most students have a study time of 11 hours or more per week.
+If a student is in the 11th grade, then their attendance rate is greater than 93%.
+All students with an attendance rate greater than 96% have a test score greater than 97.
+There exists at least one student in the 9th grade with a study time of 10 hours or more per week.
+For all students with a study time of 7 hours or less per week, their test score is greater than 97.
+If a student is a club member, then their study time is 10 hours or more per week.
+Most students in the 12th grade have a study time of 11 hours or more per week.
+All students with a test score greater than 97 have a study time of 11 hours or more per week.
+There exists at least one student in the 11th grade with a test score greater than 97.
+For all students with an attendance rate greater than 90%, their study time is 10 hours or more per week.
+If a student is in the 9th grade, then their attendance rate is greater than 93%.
+All students with a study time of 11 hours or more per week have a test score greater than 97.
+There exists at least one student in the 12th grade with a test score greater than 97.
+Most students have a study time of 11 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 97%.
+For all students with a test score less than 80, their attendance rate is greater than 96%.
+All students with an attendance rate greater than 97% have a test score greater than 97.
+There exists at least one student in the 10th grade with a study time of 11 hours or more per week.
+Most students in the 11th grade have a study time of 11 hours or more per week.
+If a student is in the 12th grade, then their test score is greater than 97.
+All students with a study time of 10 hours or more per week have a test score greater than 97.
+There exists at least one student in the 9th grade with a test score greater than 97.
+For all students with an attendance rate greater than 95%, their study time is 11 hours or more per week.
+If a student is a club member, then their test score is greater than 97.
+Most students have an attendance rate greater than 96%.
+All students with a test score greater than 97 have a study time of 11 hours or more per week.
+There exists at least one student in the 11th grade with a study time of 11 hours or more per week.
+For all students with a study time of 11 hours or more per week, their attendance rate is greater than 94%.
+If a student is in the 10th grade, then their test score is greater than 97.
+All students with an attendance rate greater than 92% have a test score greater than 97.
+There exists at least one student in the 12th grade with a test score greater than 97.
+Most students in the 9th grade have a study time of 10 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 97%.
+For all students with a test score less than 85, their study time is 9 hours or less per week.
+All students with a study time of 10 hours or more per week have a test score greater than 97.
+There exists at least one student in the 10th grade with a test score greater than 97.
+Most students have a study time of 11 hours or more per week.
+If a student is in the 11th grade, then their attendance rate is greater than 94%.
+All students with an attendance rate greater than 96% have a test score greater than 97.
+There exists at least one student in the 9th grade with a study time of 11 hours or more per week.
+For all students with a study time of 8 hours or less per week, their test score is greater than 97.
+If a student is a club member, then their study time is 11 hours or more per week.
+Most students in the 12th grade have a study time of 11 hours or more per week.
+All students with a test score greater than 97 have a study time of 11 hours or more per week.
+There exists at least one student in the 11th grade with a test score greater than 97.
+For all students with an attendance rate greater than 90%, their study time is 11 hours or more per week.
+If a student is in the 9th grade, then their attendance rate is greater than 94%.
+All students with a study time of 11 hours or more per week have a test score greater than 97.
+There exists at least one student in the 12th grade with a test score greater than 97.
+Most students have a study time of 11 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 97%.
+For all students with a test score less than 80, their attendance rate is greater than 97%.
+All students with an attendance rate greater than 97% have a test score greater than 97.
+There exists at least one student in the 10th grade with a study time of 11 hours or more per week.
+Most students in the 11th grade have a study time of 11 hours or more per week.
+If a student is in the 12th grade, then their test score is greater than 97.
+All students with a study time of 10 hours or more per week have a test score greater than 97.
+There exists at least one student in the 9th grade with a test score greater than 97.
+For all students with an attendance rate greater than 95%, their study time is 11 hours or more per week.
+If a student is a club member, then their test score is greater than 97.
+Most students have an attendance rate greater than 97%.
+All students with a test score greater than 97 have a study time of 11 hours or more per week.
+There exists at least one student in the 11th grade with a study time of 11 hours or more per week.
+For all students with a study time of 11 hours or more per week, their attendance rate is greater than 95%.
+If a student is in the 10th grade, then their test score is greater than 97.
+All students with an attendance rate greater than 92% have a test score greater than 97.
+There exists at least one student in the 12th grade with a test score greater than 97.
+Most students in the 9th grade have a study time of 11 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 97%.
+For all students with a test score less than 85, their study time is 10 hours or less per week.
+All students with a study time of 10 hours or more per week have a test score greater than 97.
+There exists at least one student in the 10th grade with a test score greater than 97.
+Most students have a study time of 11 hours or more per week.
+If a student is in the 11th grade, then their attendance rate is greater than 95%.
+All students with an attendance rate greater than 96% have a test score greater than 97.
+There exists at least one student in the 9th grade with a study time of 11 hours or more per week.
+For all students with a study time of 9 hours or less per week, their test score is greater than 97.
+If a student is a club member, then their study time is 11 hours or more per week.
+Most students in the 12th grade have a study time of 11 hours or more per week.
+All students with a test score greater than 97 have a study time of 11 hours or more per week.
+There exists at least one student in the 11th grade with a test score greater than 97.
+For all students with an attendance rate greater than 90%, their study time is 11 hours or more per week.
+If a student is in the 9th grade, then their attendance rate is greater than 95%.
+All students with a study time of 11 hours or more per week have a test score greater than 97.
+There exists at least one student in the 12th grade with a test score greater than 97.
+Most students have a study time of 11 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 97%.
+For all students with a test score less than 80, their attendance rate is greater than 97%.
+All students with an attendance rate greater than 97% have a test score greater than 97.
+There exists at least one student in the 10th grade with a study time of 11 hours or more per week.
+Most students in the 11th grade have a study time of 11 hours or more per week.
+If a student is in the 12th grade, then their test score is greater than 97.
+All students with a study time of 10 hours or more per week have a test score greater than 97.
+There exists at least one student in the 9th grade with a test score greater than 97.
+For all students with an attendance rate greater than 95%, their study time is 11 hours or more per week.
+If a student is a club member, then their test score is greater than 97.
+Most students have an attendance rate greater than 97%.
+All students with a test score greater than 97 have a study time of 11 hours or more per week.
+There exists at least one student in the 11th grade with a study time of 11 hours or more per week.
+For all students with a study time of 11 hours or more per week, their attendance rate is greater than 96%.
+If a student is in the 10th grade, then their test score is greater than 97.
+All students with an attendance rate greater than 92% have a test score greater than 97.
+There exists at least one student in the 12th grade with a test score greater than 97.
+Most students in the 9th grade have a study time of 11 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 97%.
+For all students with a test score less than 85, their study time is 11 hours or less per week.
+All students with a study time of 10 hours or more per week have a test score greater than 97.
+There exists at least one student in the 10th grade with a test score greater than 97.
+Most students have a study time of 11 hours or more per week.
+If a student is in the 11th grade, then their attendance rate is greater than 96%.
+All students with an attendance rate greater than 96% have a test score greater than 97.
+There exists at least one student in the 9th grade with a study time of 11 hours or more per week.
+For all students with a study time of 10 hours or less per week, their test score is greater than 97.
+If a student is a club member, then their study time is 11 hours or more per week.
+Most students in the 12th grade have a study time of 11 hours or more per week.
+All students with a test score greater than 97 have a study time of 11 hours or more per week.
+There exists at least one student in the 11th grade with a test score greater than 97.
+For all students with an attendance rate greater than 90%, their study time is 11 hours or more per week.
+If a student is in the 9th grade, then their attendance rate is greater than 96%.
+All students with a study time of 11 hours or more per week have a test score greater than 97.
+There exists at least one student in the 12th grade with a test score greater than 97.
+Most students have a study time of 11 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 97%.
+For all students with a test score less than 80, their attendance rate is greater than 97%.
+All students with an attendance rate greater than 97% have a test score greater than 97.
+There exists at least one student in the 10th grade with a study time of 11 hours or more per week.
+Most students in the 11th grade have a study time of 11 hours or more per week.
+If a student is in the 12th grade, then their test score is greater than 97.
+All students with a study time of 10 hours or more per week have a test score greater than 97.
+There exists at least one student in the 9th grade with a test score greater than 97.
+For all students with an attendance rate greater than 95%, their study time is 11 hours or more per week.
+If a student is a club member, then their test score is greater than 97.
+Most students have an attendance rate greater than 97%.
+All students with a test score greater than 97 have a study time of 11 hours or more per week.
+There exists at least one student in the 11th grade with a study time of 11 hours or more per week.
+For all students with a study time of 11 hours or more per week, their attendance rate is greater than 97%.
+If a student is in the 10th grade, then their test score is greater than 97.
+All students with an attendance rate greater than 92% have a test score greater than 97.
+There exists at least one student in the 12th grade with a test score greater than 97.
+Most students in the 9th grade have a study time of 11 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 97%.
+For all students with a test score less than 85, their study time is 11 hours or less per week.
+All students with a study time of 10 hours or more per week have a test score greater than 97.
+There exists at least one student in the 10th grade with a test score greater than 97.
+Most students have a study time of 11 hours or more per week.
+If a student is in the 11th grade, then their attendance rate is greater than 97%.
+All students with an attendance rate greater than 96% have a test score greater than 97.
+There exists at least one student in the 9th grade with a study time of 11 hours or more per week.
+For all students with a study time of 11 hours or less per week, their test score is greater than 97.
+If a student is a club member, then their study time is 11 hours or more per week.
+Most students in the 12th grade have a study time of 11 hours or more per week.
+All students with a test score greater than 97 have a study time of 11 hours or more per week.
+There exists at least one student in the 11th grade with a test score greater than 97.
+For all students with an attendance rate greater than 90%, their study time is 11 hours or more per week.
+If a student is in the 9th grade, then their attendance rate is greater than 97%.
+All students with a study time of 11 hours or more per week have a test score greater than 97.
+There exists at least one student in the 12th grade with a test score greater than 97.
+Most students have a study time of 11 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 97%.
+For all students with a test score less than 80, their attendance rate is greater than 97%.
+All students with an attendance rate greater than 97% have a test score greater than 97.
+There exists at least one student in the 10th grade with a study time of 11 hours or more per week.
+Most students in the 11th grade have a study time of 11 hours or more per week.
+If a student is in the 12th grade, then their test score is greater than 97.
+All students with a study time of 10 hours or more per week have a test score greater than 97.
+There exists at least one student in the 9th grade with a test score greater than 97.
+For all students with an attendance rate greater than 95%, their study time is 11 hours or more per week.
+If a student is a club member, then their test score is greater than 97.
+Most students have an attendance rate greater than 97%.
+All students with a test score greater than 97 have a study time of 11 hours or more per week.
+There exists at least one student in the 11th grade with a study time of 11 hours or more per week.
+For all students with a study time of 11 hours or more per week, their attendance rate is greater than 97%.
+If a student is in the 10th grade, then their test score is greater than 97.
+All students with an attendance rate greater than 92% have a test score greater than 97.
+There exists at least one student in the 12th grade with a test score greater than 97.
+Most students in the 9th grade have a study time of 11 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 97%.
+For all students with a test score less than 85, their study time is 11 hours or less per week.
+All students with a study time of 10 hours or more per week have a test score greater than 97.
+There exists at least one student in the 10th grade with a test score greater than 97.
+Most students have a study time of 11 hours or more per week.
+If a student is in the 11th grade, then their attendance rate is greater than 97%.
+All students with an attendance rate greater than 96% have a test score greater than 97.
+There exists at least one student in the 9th grade with a study time of 11 hours or more per week.
+For all students with a study time of 11 hours or less per week, their test score is greater than 97.
+If a student is a club member, then their study time is 11 hours or more per week.
+Most students in the 12th grade have a study time of 11 hours or more per week.
+All students with a test score greater than 97 have a study time of 11 hours or more per week.
+There exists at least one student in the 11th grade with a test score greater than 97.
+For all students with an attendance rate greater than 90%, their study time is 11 hours or more per week.
+If a student is in the 9th grade, then their attendance rate is greater than 97%.
+All students with a study time of 11 hours or more per week have a test score greater than 97.
+There exists at least one student in the 12th grade with a test score greater than 97.
+Most students have a study time of 11 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 97%.
+For all students with a test score less than 80, their attendance rate is greater than 97%.
+All students with an attendance rate greater than 97% have a test score greater than 97.
+There exists at least one student in the 10th grade with a study time of 11 hours or more per week.
+Most students in the 11th grade have a study time of 11 hours or more per week.
+If a student is in the 12th grade, then their test score is greater than 97.
+All students with a study time of 10 hours or more per week have a test score greater than 97.
+There exists at least one student in the 9th grade with a test score greater than 97.
+For all students with an attendance rate greater than 95%, their study time is 11 hours or more per week.
+If a student is a club member, then their test score is greater than 97.
+Most students have an attendance rate greater than 97%.
+All students with a test score greater than 97 have a study time of 11 hours or more per week.
+There exists at least one student in the 11th grade with a study time of 11 hours or more per week.
+For all students with a study time of 11 hours or more per week, their attendance rate is greater than 97%.
+If a student is in the 10th grade, then their test score is greater than 97.
+All students with an attendance rate greater than 92% have a test score greater than 97.
+There exists at least one student in the 12th grade with a test score greater than 97.
+Most students in the 9th grade have a study time of 11 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 97%.
+For all students with a test score less than 85, their study time is 11 hours or less per week.
+All students with a study time of 10 hours or more per week have a test score greater than 97.
+There exists at least one student in the 10th grade with a test score greater than 97.
+Most students have a study time of 11 hours or more per week.
+If a student is in the 11th grade, then their attendance rate is greater than 97%.
+All students with an attendance rate greater than 96% have a test score greater than 97.
+There exists at least one student in the 9th grade with a study time of 11 hours or more per week.
+For all students with a study time of 11 hours or less per week, their test score is greater than 97.
+If a student is a club member, then their study time is 11 hours or more per week.
+Most students in the 12th grade have a study time of 11 hours or more per week.
+All students with a test score greater than 97 have a study time of 11 hours or more per week.
+There exists at least one student in the 11th grade with a test score greater than 97.
+For all students with an attendance rate greater than 90%, their study time is 11 hours or more per week.
+If a student is in the 9th grade, then their attendance rate is greater than 97%.
+All students with a study time of 11 hours or more per week have a test score greater than 97.
+There exists at least one student in the 12th grade with a test score greater than 97.
+Most students have a study time of 11 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 97%.
+For all students with a test score less than 80, their attendance rate is greater than 97%.
+All students with an attendance rate greater than 97% have a test score greater than 97.
+There exists at least one student in the 10th grade with a study time of 11 hours or more per week.
+Most students in the 11th grade have a study time of 11 hours or more per week.
+If a student is in the 12th grade, then their test score is greater than 97.
+All students with a study time of 10 hours or more per week have a test score greater than 97.
+There exists at least one student in the 9th grade with a test score greater than 97.
+For all students with an attendance rate greater than 95%, their study time is 11 hours or more per week.
+If a student is a club member, then their test score is greater than 97.
+Most students have an attendance rate greater than 97%.
+All students with a test score greater than 97 have a study time of 11 hours or more per week.
+There exists at least one student in the 11th grade with a study time of 11 hours or more per week.
+For all students with a study time of 11 hours or more per week, their attendance rate is greater than 97%.
+If a student is in the 10th grade, then their test score is greater than 97.
+All students with an attendance rate greater than 92% have a test score greater than 97.
+There exists at least one student in the 12th grade with a test score greater than 97.
+Most students in the 9th grade have a study time of 11 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 97%.
+For all students with a test score less than 85, their study time is 11 hours or less per week.
+All students with a study time of 10 hours or more per week have a test score greater than 97.
+There exists at least one student in the 10th grade with a test score greater than 97.
+Most students have a study time of 11 hours or more per week.
+If a student is in the 11th grade, then their attendance rate is greater than 97%.
+All students with an attendance rate greater than 96% have a test score greater than 97.
+There exists at least one student in the 9th grade with a study time of 11 hours or more per week.
+For all students with a study time of 11 hours or less per week, their test score is greater than 97.
+If a student is a club member, then their study time is 11 hours or more per week.
+Most students in the 12th grade have a study time of 11 hours or more per week.
+All students with a test score greater than 97 have a study time of 11 hours or more per week.
+There exists at least one student in the 11th grade with a test score greater than 97.
+For all students with an attendance rate greater than 90%, their study time is 11 hours or more per week.
+If a student is in the 9th grade, then their attendance rate is greater than 97%.
+All students with a study time of 11 hours or more per week have a test score greater than 97.
+There exists at least one student in the 12th grade with a test score greater than 97.
+Most students have a study time of 11 hours or more per week.
+If a student is a club member, then their attendance rate is greater than 97%.
+For all students with a test score less than 80, their attendance rate is greater than 97%.
+All students with an attendance rate greater than 97% have a test score greater than 97.
+There exists at least one student in the 10th grade with a study time of 11 hours or more per week.
+Most students in the 11th grade have a study time of 11 hours or more per week

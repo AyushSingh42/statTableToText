@@ -1,0 +1,17 @@
+All players who are centers have an age between 20 and 33 years.
+If a player is a forward, then their age is between 20 and 33 years.
+All players who are guards have an age between 24 and 29 years.
+For all players with minutes per game greater than 30, their points per game is greater than 13.
+If a player has games played greater than 70, then their assists per game is greater than 4.
+All players who have rebounds per game greater than 10 are forwards.
+For all players with age greater than 25, their points per game is greater than 17.
+If a player is a center, then their rebounds per game is greater than 3.
+All players who have assists per game greater than 5 are guards or forwards.
+For all players with minutes per game greater than 35, their rebounds per game is greater than 4.
+Most players in the table have a points per game greater than 15.
+If a player has age less than 25, then their rebounds per game is less than 8.
+All players who have games played greater than 60 have a minutes per game greater than 24.
+For all players with points per game greater than 20, their age is greater than 20.
+If a player is a forward, then their points per game is greater than 14.
+All players who have rebounds per game greater than 6 are forwards or centers.
+For all players with assists per game greater than 4, their minutes per game is greater than 25.

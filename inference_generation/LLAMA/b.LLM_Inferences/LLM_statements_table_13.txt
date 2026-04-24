@@ -1,0 +1,16 @@
+All vehicles with an average speed greater than 62 kph have a fuel usage less than 25 liters.
+If a vehicle is a truck, then its average speed is greater than 52 kph.
+All buses with a distance greater than 200 km have an average speed greater than 53 kph.
+There exists at least one van with a fuel usage greater than 32 liters.
+If a vehicle is a bus, then its delay is less than 27 minutes.
+All vehicles with a distance less than 150 km have a fuel usage greater than 30 liters.
+Most vehicles have a delay less than 10 minutes.
+If a vehicle is a truck, then its distance is greater than 90 km.
+All vehicles with an average speed greater than 60 kph have a fuel usage less than 40 liters.
+There exists at least one bus with an average speed greater than 64 kph.
+If a vehicle is a van, then its average speed is greater than 48 kph.
+All vehicles with a fuel usage less than 20 liters have an average speed greater than 60 kph.
+Most vehicles have an average speed greater than 50 kph.
+If a vehicle is a bus, then its distance is greater than 100 km.
+All vehicles with a delay greater than 20 minutes have a weather condition of rain.
+There exists at least one truck with a fuel usage less than 10 liters.

@@ -1,0 +1,16 @@
+patient_id,diagnosis,age,bp_systolic,bp_diastolic,cholesterol_mg_dl,bmi,smoker
+PT081001,arthritis,39,114,86,184,22.1,no
+PT081002,asthma,40,130,85,168,31.6,yes
+PT081003,arthritis,47,115,98,204,32.9,yes
+PT081004,diabetes,73,143,70,180,28.2,yes
+PT081005,hypertension,47,142,88,204,28.4,no
+PT081006,migraine,51,150,74,182,27.6,no
+PT081007,migraine,63,140,74,206,21.8,no
+PT081008,migraine,35,137,80,234,21.1,no
+PT081009,asthma,62,117,97,186,30.4,no
+PT081010,arthritis,62,119,90,236,21.7,yes
+PT081011,arthritis,54,124,94,225,27.5,yes
+PT081012,hypertension,63,146,75,167,24.3,yes
+PT081013,diabetes,74,149,84,175,31.8,no
+PT081014,migraine,58,114,85,167,25.3,yes
+PT081015,migraine,22,145,80,213,24.1,yes

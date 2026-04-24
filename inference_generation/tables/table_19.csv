@@ -1,0 +1,16 @@
+employee_id,department,years_experience,monthly_salary_k,projects_active,performance_rating,remote_days_month
+E019001,operations,9.3,5.9,3,4.3,12
+E019002,hr,6.7,6.7,2,3.8,10
+E019003,operations,6.3,6.2,6,4.1,4
+E019004,finance,6.7,10.1,5,4.0,4
+E019005,engineering,6.0,10.1,4,4.6,9
+E019006,engineering,5.6,8.2,3,4.1,8
+E019007,engineering,5.4,7.5,6,4.0,13
+E019008,operations,2.4,10.7,5,4.1,9
+E019009,operations,11.8,9.3,3,4.4,10
+E019010,operations,1.5,5.0,4,4.7,12
+E019011,hr,2.7,10.2,3,4.1,13
+E019012,finance,2.9,10.7,4,4.4,12
+E019013,operations,7.1,9.1,4,4.3,4
+E019014,finance,4.8,5.5,5,4.4,14
+E019015,engineering,7.9,6.4,6,4.4,4

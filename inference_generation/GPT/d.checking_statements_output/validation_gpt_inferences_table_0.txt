@@ -1,32 +1,32 @@
 
 Statement 1: TRUE
-  - All students who are club members have attendance rates above 89%.
-  - Explanation: All 8 club members have attendance > 89%.
+  - All students with test scores of 90 or higher are club members.
+  - Explanation: All 4 students with test_score ≥ 90 are club members.
 
 Statement 2: TRUE
-  - All 12th‑grade students scored at least 78 on the test.
-  - Explanation: All 3 12th‑grade students scored ≥ 78.
+  - All students who study less than 5 hours per week have test scores of at most 74.
+  - Explanation: All 4 low‑study students have test_score ≤ 74.
 
 Statement 3: TRUE
-  - All students who study more than 9 hours per week scored 90 or higher on the test.
-  - Explanation: All 4 students studying >9 hrs/week scored ≥ 90.
+  - All students who study at least 9 hours per week have attendance rates of at least 97%.
+  - Explanation: All 4 high‑study students have attendance_rate ≥ 97%.
 
 Statement 4: TRUE
-  - Most 10th‑grade students are not members of a club.
-  - Explanation: 3 out of 4 (≈75.0%) 10th‑graders are not club members.
+  - All students with attendance rates of at least 95% study at least 8 hours per week.
+  - Explanation: All 6 well‑attending students study ≥ 8 hrs/week.
 
 Statement 5: TRUE
-  - The student with the highest attendance rate (99.1%) also achieved the highest test score (95).
-  - Explanation: Highest attendance is 99.1% and highest test score is 95, both belonging to the same student.
+  - All students with test scores of at least 85 have attendance rates of at least 94.8%.
+  - Explanation: All 7 high‑scoring students have attendance_rate ≥ 94.8%.
 
-Statement 6: FALSE
-  - All students with attendance rates of 95% or higher scored at least 88 on the test.
-  - Explanation: 1 students with attendance ≥95% scored below 88 (scores: 87).
+Statement 6: TRUE
+  - All 12th‑grade students have attendance rates of at least 91.2%.
+  - Explanation: All 3 12th‑grade students have attendance_rate ≥ 91.2%.
 
 Statement 7: TRUE
-  - There is at least one 9th‑grader who studied fewer than 5 hours per week and scored below 70 on the test.
-  - Explanation: Found 1 matching 9th‑grader(s) (student_id(s): S005).
+  - Most students have attendance rates above 90%.
+  - Explanation: 11/15 students (73.3%) have attendance_rate > 90%.
 
 Statement 8: TRUE
-  - The majority of club members (7 out of 8) earned test scores above 80.
-  - Explanation: 7 out of 8 club members scored >80.
+  - All non‑club members have attendance rates of at most 96.5%.
+  - Explanation: All 7 non‑club members have attendance_rate ≤ 96.5%.

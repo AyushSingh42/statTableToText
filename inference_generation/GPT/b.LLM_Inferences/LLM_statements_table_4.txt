@@ -1,0 +1,99 @@
+analysisWe need to produce JSON with "statements": [list]. Must be 5-10 statements. Must be factual, non-redundant, tightest bounds. Let's analyze data.
+
+We have 15 employees with attributes: department, years_experience, monthly_salary_k, projects_active, performance_rating, remote_days_month.
+
+We need statements about patterns.
+
+Let's compute some observations.
+
+First, per department:
+
+Engineering: E001 (2.1 yr, 6.8k, 3 proj, 4.1 rating, 10 remote), E005 (9.1,9.2,5,4.7,12), E009 (11.4,10.1,6,4.8,13), E013 (6.7,8.3,4,4.5,11). So 4 engineers.
+
+Marketing: E002 (4.5,5.9,4,4.0,8), E006 (1.8,5.1,2,3.8,7), E010 (2.7,5.5,3,3.9,9), E014 (3.4,5.7,3,4.1,7). 4 marketing.
+
+Finance: E003 (7.2,7.4,2,4.3,6), E007 (5.6,7.0,3,4.2,5), E011 (8.0,7.8,2,4.4,6), E015 (10.2,8.6,3,4.6,5). 4 finance.
+
+HR: E004 (3.0,5.4,3,3.9,9), E008 (6.3,6.4,4,4.1,8), E012 (4.2,5.8,3,4.0,8). 3 HR.
+
+Observations:
+
+- All finance employees have performance rating >=4.2? Let's check: 4.3,4.2,4.4,4.6. Yes minimum 4.2. So statement: For all finance employees, performance rating is at least 4.2.
+
+- All HR employees have monthly salary between 5.4 and 6.4 (i.e., <=6.4). Minimum 5.4, max 6.4. So "All HR employees have monthly salary ≤ $6.4k". Also they have years_experience between 3.0 and 6.3.
+
+- Engineering employees have the highest monthly salaries: all engineering salaries >=6.8, and the max is 10.1. Could say: All engineering employees have monthly salary > $6.5k. That's true. But also all engineering have performance rating >=4.1. Check: 4.1,4.7,4.8,4.5. Yes min 4.1. So statement: For all engineering employees, performance rating is at least 4.1.
+
+- Marketing employees have performance rating ranging 3.8 to 4.1. So all marketing have rating ≤4.1. Also all marketing have monthly salary ≤5.9? Actually max 5.9 (E002). So "All marketing employees have monthly salary ≤ $5.9k". Also they have remote days between 7 and 9.
+
+- Employees with years_experience >10 (E009 11.4, E015 10.2) have performance rating >=4.6? E009 rating 4.8, E015 4.6. So yes. Also they have remote days 13 and 5. Not consistent.
+
+- Employees with performance rating >=4.7 are only engineering (E005 4.7, E009 4.8). So "If performance rating is at least 4.7, then department is engineering". That's a conditional.
+
+- Employees with remote_days_month >=12 are only engineering (E005 12, E009 13). So "If remote days per month are at least 12, then department is engineering". Also they have high salary.
+
+- Employees with projects_active =2 are finance (E003, E011) and marketing (E006). So not unique.
+
+- All employees with monthly salary >8k are engineering (E005 9.2, E009 10.1, E013 8.3? Actually 8.3 is >8, also engineering). Also finance has 8.6 (E015) which is >8. So not exclusive.
+
+- All employees with years_experience <2 are marketing (E006 1.8) and engineering (E001 2.1 not <2). So only marketing.
+
+- Most employees (maybe majority) have performance rating >=4.0? Let's count: ratings: 4.1,4.0,4.3,3.9,4.7,3.8,4.2,4.1,4.8,3.9,4.4,4.0,4.5,4.1,4.6. Those >=4.0: all except 3.9? Actually 3.9 is <4.0, there are three 3.9 (E004, E010). Also 3.8 (E006). So 4 out of 15 are <4.0, so 11/15 have >=4.0, which is majority. So we can say "Most employees have performance rating of at least 4.0."
+
+- All employees with remote_days_month >=10 are engineering (E001 10, E005 12, E009 13, E013 11). Yes all engineering. So "If remote days per month are at least 10, then department is engineering."
+
+- All employees with projects_active >=5 are engineering (E005 5, E009 6, maybe others? No). So "If an employee is involved in five or more active projects, they are in engineering."
+
+- All employees with years_experience between 5 and 7 (inclusive) have performance rating at least 4.2? Let's check: years 5.6 (E007 rating 4.2), 6.3 (E008 rating 4.1), 6.7 (E013 rating 4.5), 7.2 (E003 rating 4.3). So min rating 4.1 (E008). So not >=4.2.
+
+- All finance employees have years_experience >=5.6 (true). But also all finance have remote days <=6. So "All finance employees have remote days per month of 6 or fewer."
+
+Check finance remote days: E003 6, E007 5, E011 6, E015 5. Yes max 6.
+
+- All HR employees have remote days >=8? Actually E004 9, E008 8, E012 8. So min 8. So "All HR employees have remote days per month at least 8."
+
+- All marketing employees have remote days <=9 and >=7. Yes values 8,7,9,7. So "All marketing employees have remote days per month between 7 and 9 inclusive."
+
+- All engineering employees have remote days >=10 (10,12,13,11). So "All engineering employees have remote days per month of at least 10."
+
+- All employees with performance rating >=4.5 are engineering (E005 4.7, E009 4.8, E013 4.5, also finance E015 4.6). Actually finance E015 rating 4.6, so not exclusive. So can't.
+
+- All employees with monthly salary >=9k are engineering (E005 9.2, E009 10.1). Yes only engineering.
+
+- All employees with years_experience >9 have monthly salary >8k? E009 11.4 ->10.1, E015 10.2 ->8.6, E005 9.1 ->9.2 (just >9). So yes.
+
+- All employees with performance rating >=4.4 are finance or engineering? Let's see: ratings >=4.4: E003 4.3 no, E005 4.7 eng, E007 4.2 no, E009 4.8 eng, E011 4.4 finance, E013 4.5 eng, E015 4.6 finance. So both.
+
+We need 5-10 statements, each distinct, non-redundant, tightest.
+
+Let's craft statements:
+
+1. For all finance employees, performance rating is at least 4.2. (tight bound, min 4.2)
+
+2. All HR employees have remote work days per month of at least 8. (min 8)
+
+3. All engineering employees have remote work days per month of at least 10. (tight bound)
+
+4. If an employee works remotely at least 12 days per month, then they are in engineering. (since only those have >=12)
+
+5. If an employee is involved in five or more active projects, they belong to the engineering department. (only engineering have >=5)
+
+6. All marketing employees have monthly salary of at most $5.9k. (max 5.9)
+
+7. All finance employees have remote work days per month of 6 or fewer. (max 6)
+
+8. Most employees have a performance rating of at least 4.0. (11/15)
+
+9. If performance rating is at least 4.7, then the employee works in engineering. (only two with >=4.7 are engineering)
+
+We have 9 statements, within 5-10.
+
+Check redundancy: statements 2 and 7 both about remote days but different departments, fine. Statement 3 about engineering remote >=10, statement 4 about remote >=12 implies engineering, but 4 is stricter condition; not redundant because 4 is a conditional with higher threshold. It's okay.
+
+Statement 5 about projects_active >=5 implies engineering, not overlapping.
+
+All good.
+
+Now produce JSON.
+
+assistantfinal JSON{"statements":["For all finance employees, performance rating is at least 4.2.","All HR employees have remote work days per month of at least 8.","All engineering employees have remote work days per month of at least 10.","If an employee works remotely at least 12 days per month, then they are in engineering.","If an employee is involved in five or more active projects, they belong to the engineering department.","All marketing employees have monthly salary of at most $5.9k.","All finance employees have remote work days per month of 6 or fewer.","Most employees have a performance rating of at least 4.0.","If performance rating is at least 4.7, then the employee works in engineering."]}

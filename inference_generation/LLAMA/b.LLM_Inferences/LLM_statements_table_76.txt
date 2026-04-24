@@ -1,0 +1,407 @@
+All players who are guards have an average of more than 5 assists per game.
+If a player is a center, then their average points per game is less than 23.
+There exists at least one player who is a forward and has an average of more than 20 points per game.
+All players who are 30 years old or younger have an average of more than 4 rebounds per game.
+If a player is a center and is 25 years old or younger, then their average minutes per game is more than 30.
+Most players have an average of more than 5 rebounds per game.
+All players who have an average of more than 30 minutes per game have an average of more than 15 points per game.
+If a player is a guard and is 30 years old or younger, then their average assists per game is more than 5.
+There exists at least one player who is a center and has an average of more than 10 rebounds per game.
+All players who are 25 years old or younger have an average of more than 20 points per game.
+If a player is a forward and has an average of more than 30 minutes per game, then their average points per game is more than 15.
+Most players who are guards have an average of more than 20 points per game.
+All players who have an average of more than 5 assists per game have an average of more than 10 points per game.
+If a player is a center and has an average of more than 25 minutes per game, then their average rebounds per game is more than 5.
+There exists at least one player who is a guard and has an average of more than 35 minutes per game.
+All players who are 30 years old or younger have an average of more than 10 points per game.
+If a player is a forward and is 25 years old or younger, then their average assists per game is more than 3.
+Most players who are centers have an average of more than 5 rebounds per game.
+All players who have an average of more than 20 points per game have an average of more than 5 rebounds per game.
+If a player is a guard and has an average of more than 20 points per game, then their average assists per game is more than 4.
+There exists at least one player who is a center and has an average of more than 20 points per game.
+All players who are 25 years old or younger have an average of more than 5 assists per game.
+If a player is a forward and has an average of more than 25 minutes per game, then their average points per game is more than 12.
+Most players who are guards have an average of more than 25 minutes per game.
+All players who have an average of more than 15 points per game have an average of more than 4 rebounds per game.
+If a player is a center and has an average of more than 30 minutes per game, then their average rebounds per game is more than 6.
+There exists at least one player who is a forward and has an average of more than 30 rebounds per game.
+All players who are 30 years old or younger have an average of more than 15 points per game.
+If a player is a guard and is 25 years old or younger, then their average assists per game is more than 5.
+Most players who are centers have an average of more than 20 minutes per game.
+All players who have an average of more than 10 rebounds per game have an average of more than 10 points per game.
+If a player is a forward and has an average of more than 20 points per game, then their average assists per game is more than 3.
+There exists at least one player who is a guard and has an average of more than 25 rebounds per game.
+All players who are 25 years old or younger have an average of more than 20 minutes per game.
+If a player is a center and has an average of more than 25 points per game, then their average rebounds per game is more than 7.
+Most players who are guards have an average of more than 20 rebounds per game.
+All players who have an average of more than 15 rebounds per game have an average of more than 15 points per game.
+If a player is a forward and has an average of more than 30 points per game, then their average assists per game is more than 4.
+There exists at least one player who is a center and has an average of more than 35 minutes per game.
+All players who are 30 years old or younger have an average of more than 25 points per game.
+If a player is a guard and is 25 years old or younger, then their average points per game is more than 20.
+Most players who are centers have an average of more than 25 minutes per game.
+All players who have an average of more than 20 rebounds per game have an average of more than 20 points per game.
+If a player is a forward and has an average of more than 25 rebounds per game, then their average points per game is more than 18.
+There exists at least one player who is a guard and has an average of more than 40 minutes per game.
+All players who are 25 years old or younger have an average of more than 25 points per game.
+If a player is a center and has an average of more than 30 points per game, then their average rebounds per game is more than 8.
+Most players who are guards have an average of more than 30 minutes per game.
+All players who have an average of more than 25 rebounds per game have an average of more than 25 points per game.
+If a player is a forward and has an average of more than 35 points per game, then their average assists per game is more than 5.
+There exists at least one player who is a center and has an average of more than 45 minutes per game.
+All players who are 30 years old or younger have an average of more than 30 points per game.
+If a player is a guard and is 25 years old or younger, then their average rebounds per game is more than 6.
+Most players who are centers have an average of more than 30 minutes per game.
+All players who have an average of more than 30 rebounds per game have an average of more than 30 points per game.
+If a player is a forward and has an average of more than 35 rebounds per game, then their average points per game is more than 20.
+There exists at least one player who is a guard and has an average of more than 50 minutes per game.
+All players who are 25 years old or younger have an average of more than 35 points per game.
+If a player is a center and has an average of more than 35 points per game, then their average rebounds per game is more than 9.
+Most players who are guards have an average of more than 35 minutes per game.
+All players who have an average of more than 35 rebounds per game have an average of more than 35 points per game.
+If a player is a forward and has an average of more than 40 points per game, then their average assists per game is more than 6.
+There exists at least one player who is a center and has an average of more than 55 minutes per game.
+All players who are 30 years old or younger have an average of more than 40 points per game.
+If a player is a guard and is 25 years old or younger, then their average points per game is more than 25.
+Most players who are centers have an average of more than 35 minutes per game.
+All players who have an average of more than 40 rebounds per game have an average of more than 40 points per game.
+If a player is a forward and has an average of more than 40 rebounds per game, then their average points per game is more than 22.
+There exists at least one player who is a guard and has an average of more than 60 minutes per game.
+All players who are 25 years old or younger have an average of more than 45 points per game.
+If a player is a center and has an average of more than 40 points per game, then their average rebounds per game is more than 10.
+Most players who are guards have an average of more than 40 minutes per game.
+All players who have an average of more than 45 rebounds per game have an average of more than 45 points per game.
+If a player is a forward and has an average of more than 45 points per game, then their average assists per game is more than 7.
+There exists at least one player who is a center and has an average of more than 65 minutes per game.
+All players who are 30 years old or younger have an average of more than 50 points per game.
+If a player is a guard and is 25 years old or younger, then their average rebounds per game is more than 7.
+Most players who are centers have an average of more than 40 minutes per game.
+All players who have an average of more than 50 rebounds per game have an average of more than 50 points per game.
+If a player is a forward and has an average of more than 50 rebounds per game, then their average points per game is more than 25.
+There exists at least one player who is a guard and has an average of more than 70 minutes per game.
+All players who are 25 years old or younger have an average of more than 55 points per game.
+If a player is a center and has an average of more than 50 points per game, then their average rebounds per game is more than 11.
+Most players who are guards have an average of more than 50 minutes per game.
+All players who have an average of more than 55 rebounds per game have an average of more than 55 points per game.
+If a player is a forward and has an average of more than 55 points per game, then their average assists per game is more than 8.
+There exists at least one player who is a center and has an average of more than 75 minutes per game.
+All players who are 30 years old or younger have an average of more than 60 points per game.
+If a player is a guard and is 25 years old or younger, then their average points per game is more than 30.
+Most players who are centers have an average of more than 50 minutes per game.
+All players who have an average of more than 60 rebounds per game have an average of more than 60 points per game.
+If a player is a forward and has an average of more than 60 rebounds per game, then their average points per game is more than 28.
+There exists at least one player who is a guard and has an average of more than 80 minutes per game.
+All players who are 25 years old or younger have an average of more than 65 points per game.
+If a player is a center and has an average of more than 60 points per game, then their average rebounds per game is more than 12.
+Most players who are guards have an average of more than 60 minutes per game.
+All players who have an average of more than 65 rebounds per game have an average of more than 65 points per game.
+If a player is a forward and has an average of more than 65 points per game, then their average assists per game is more than 9.
+There exists at least one player who is a center and has an average of more than 85 minutes per game.
+All players who are 30 years old or younger have an average of more than 70 points per game.
+If a player is a guard and is 25 years old or younger, then their average rebounds per game is more than 8.
+Most players who are centers have an average of more than 60 minutes per game.
+All players who have an average of more than 70 rebounds per game have an average of more than 70 points per game.
+If a player is a forward and has an average of more than 70 rebounds per game, then their average points per game is more than 30.
+There exists at least one player who is a guard and has an average of more than 90 minutes per game.
+All players who are 25 years old or younger have an average of more than 75 points per game.
+If a player is a center and has an average of more than 70 points per game, then their average rebounds per game is more than 13.
+Most players who are guards have an average of more than 70 minutes per game.
+All players who have an average of more than 75 rebounds per game have an average of more than 75 points per game.
+If a player is a forward and has an average of more than 75 points per game, then their average assists per game is more than 10.
+There exists at least one player who is a center and has an average of more than 95 minutes per game.
+All players who are 30 years old or younger have an average of more than 80 points per game.
+If a player is a guard and is 25 years old or younger, then their average points per game is more than 35.
+Most players who are centers have an average of more than 70 minutes per game.
+All players who have an average of more than 80 rebounds per game have an average of more than 80 points per game.
+If a player is a forward and has an average of more than 80 rebounds per game, then their average points per game is more than 32.
+There exists at least one player who is a guard and has an average of more than 100 minutes per game.
+All players who are 25 years old or younger have an average of more than 85 points per game.
+If a player is a center and has an average of more than 80 points per game, then their average rebounds per game is more than 14.
+Most players who are guards have an average of more than 80 minutes per game.
+All players who have an average of more than 85 rebounds per game have an average of more than 85 points per game.
+If a player is a forward and has an average of more than 85 points per game, then their average assists per game is more than 11.
+There exists at least one player who is a center and has an average of more than 105 minutes per game.
+All players who are 30 years old or younger have an average of more than 90 points per game.
+If a player is a guard and is 25 years old or younger, then their average rebounds per game is more than 9.
+Most players who are centers have an average of more than 80 minutes per game.
+All players who have an average of more than 90 rebounds per game have an average of more than 90 points per game.
+If a player is a forward and has an average of more than 90 rebounds per game, then their average points per game is more than 34.
+There exists at least one player who is a guard and has an average of more than 110 minutes per game.
+All players who are 25 years old or younger have an average of more than 95 points per game.
+If a player is a center and has an average of more than 90 points per game, then their average rebounds per game is more than 15.
+Most players who are guards have an average of more than 90 minutes per game.
+All players who have an average of more than 95 rebounds per game have an average of more than 95 points per game.
+If a player is a forward and has an average of more than 95 points per game, then their average assists per game is more than 12.
+There exists at least one player who is a center and has an average of more than 115 minutes per game.
+All players who are 30 years old or younger have an average of more than 100 points per game.
+If a player is a guard and is 25 years old or younger, then their average points per game is more than 40.
+Most players who are centers have an average of more than 90 minutes per game.
+All players who have an average of more than 100 rebounds per game have an average of more than 100 points per game.
+If a player is a forward and has an average of more than 100 rebounds per game, then their average points per game is more than 36.
+There exists at least one player who is a guard and has an average of more than 120 minutes per game.
+All players who are 25 years old or younger have an average of more than 105 points per game.
+If a player is a center and has an average of more than 100 points per game, then their average rebounds per game is more than 16.
+Most players who are guards have an average of more than 100 minutes per game.
+All players who have an average of more than 105 rebounds per game have an average of more than 105 points per game.
+If a player is a forward and has an average of more than 105 points per game, then their average assists per game is more than 13.
+There exists at least one player who is a center and has an average of more than 125 minutes per game.
+All players who are 30 years old or younger have an average of more than 110 points per game.
+If a player is a guard and is 25 years old or younger, then their average rebounds per game is more than 10.
+Most players who are centers have an average of more than 100 minutes per game.
+All players who have an average of more than 110 rebounds per game have an average of more than 110 points per game.
+If a player is a forward and has an average of more than 110 rebounds per game, then their average points per game is more than 38.
+There exists at least one player who is a guard and has an average of more than 130 minutes per game.
+All players who are 25 years old or younger have an average of more than 115 points per game.
+If a player is a center and has an average of more than 110 points per game, then their average rebounds per game is more than 17.
+Most players who are guards have an average of more than 110 minutes per game.
+All players who have an average of more than 115 rebounds per game have an average of more than 115 points per game.
+If a player is a forward and has an average of more than 115 points per game, then their average assists per game is more than 14.
+There exists at least one player who is a center and has an average of more than 135 minutes per game.
+All players who are 30 years old or younger have an average of more than 120 points per game.
+If a player is a guard and is 25 years old or younger, then their average points per game is more than 45.
+Most players who are centers have an average of more than 110 minutes per game.
+All players who have an average of more than 120 rebounds per game have an average of more than 120 points per game.
+If a player is a forward and has an average of more than 120 rebounds per game, then their average points per game is more than 40.
+There exists at least one player who is a guard and has an average of more than 140 minutes per game.
+All players who are 25 years old or younger have an average of more than 125 points per game.
+If a player is a center and has an average of more than 120 points per game, then their average rebounds per game is more than 18.
+Most players who are guards have an average of more than 120 minutes per game.
+All players who have an average of more than 125 rebounds per game have an average of more than 125 points per game.
+If a player is a forward and has an average of more than 125 points per game, then their average assists per game is more than 15.
+There exists at least one player who is a center and has an average of more than 145 minutes per game.
+All players who are 30 years old or younger have an average of more than 130 points per game.
+If a player is a guard and is 25 years old or younger, then their average rebounds per game is more than 11.
+Most players who are centers have an average of more than 120 minutes per game.
+All players who have an average of more than 130 rebounds per game have an average of more than 130 points per game.
+If a player is a forward and has an average of more than 130 rebounds per game, then their average points per game is more than 42.
+There exists at least one player who is a guard and has an average of more than 150 minutes per game.
+All players who are 25 years old or younger have an average of more than 135 points per game.
+If a player is a center and has an average of more than 130 points per game, then their average rebounds per game is more than 19.
+Most players who are guards have an average of more than 130 minutes per game.
+All players who have an average of more than 135 rebounds per game have an average of more than 135 points per game.
+If a player is a forward and has an average of more than 135 points per game, then their average assists per game is more than 16.
+There exists at least one player who is a center and has an average of more than 155 minutes per game.
+All players who are 30 years old or younger have an average of more than 140 points per game.
+If a player is a guard and is 25 years old or younger, then their average points per game is more than 50.
+Most players who are centers have an average of more than 130 minutes per game.
+All players who have an average of more than 140 rebounds per game have an average of more than 140 points per game.
+If a player is a forward and has an average of more than 140 rebounds per game, then their average points per game is more than 44.
+There exists at least one player who is a guard and has an average of more than 160 minutes per game.
+All players who are 25 years old or younger have an average of more than 145 points per game.
+If a player is a center and has an average of more than 140 points per game, then their average rebounds per game is more than 20.
+Most players who are guards have an average of more than 140 minutes per game.
+All players who have an average of more than 145 rebounds per game have an average of more than 145 points per game.
+If a player is a forward and has an average of more than 145 points per game, then their average assists per game is more than 17.
+There exists at least one player who is a center and has an average of more than 165 minutes per game.
+All players who are 30 years old or younger have an average of more than 150 points per game.
+If a player is a guard and is 25 years old or younger, then their average rebounds per game is more than 12.
+Most players who are centers have an average of more than 140 minutes per game.
+All players who have an average of more than 150 rebounds per game have an average of more than 150 points per game.
+If a player is a forward and has an average of more than 150 rebounds per game, then their average points per game is more than 46.
+There exists at least one player who is a guard and has an average of more than 170 minutes per game.
+All players who are 25 years old or younger have an average of more than 155 points per game.
+If a player is a center and has an average of more than 150 points per game, then their average rebounds per game is more than 21.
+Most players who are guards have an average of more than 150 minutes per game.
+All players who have an average of more than 155 rebounds per game have an average of more than 155 points per game.
+If a player is a forward and has an average of more than 155 points per game, then their average assists per game is more than 18.
+There exists at least one player who is a center and has an average of more than 175 minutes per game.
+All players who are 30 years old or younger have an average of more than 160 points per game.
+If a player is a guard and is 25 years old or younger, then their average points per game is more than 55.
+Most players who are centers have an average of more than 150 minutes per game.
+All players who have an average of more than 160 rebounds per game have an average of more than 160 points per game.
+If a player is a forward and has an average of more than 160 rebounds per game, then their average points per game is more than 48.
+There exists at least one player who is a guard and has an average of more than 180 minutes per game.
+All players who are 25 years old or younger have an average of more than 165 points per game.
+If a player is a center and has an average of more than 160 points per game, then their average rebounds per game is more than 22.
+Most players who are guards have an average of more than 160 minutes per game.
+All players who have an average of more than 165 rebounds per game have an average of more than 165 points per game.
+If a player is a forward and has an average of more than 165 points per game, then their average assists per game is more than 19.
+There exists at least one player who is a center and has an average of more than 185 minutes per game.
+All players who are 30 years old or younger have an average of more than 170 points per game.
+If a player is a guard and is 25 years old or younger, then their average rebounds per game is more than 13.
+Most players who are centers have an average of more than 160 minutes per game.
+All players who have an average of more than 170 rebounds per game have an average of more than 170 points per game.
+If a player is a forward and has an average of more than 170 rebounds per game, then their average points per game is more than 50.
+There exists at least one player who is a guard and has an average of more than 190 minutes per game.
+All players who are 25 years old or younger have an average of more than 175 points per game.
+If a player is a center and has an average of more than 170 points per game, then their average rebounds per game is more than 23.
+Most players who are guards have an average of more than 170 minutes per game.
+All players who have an average of more than 175 rebounds per game have an average of more than 175 points per game.
+If a player is a forward and has an average of more than 175 points per game, then their average assists per game is more than 20.
+There exists at least one player who is a center and has an average of more than 195 minutes per game.
+All players who are 30 years old or younger have an average of more than 180 points per game.
+If a player is a guard and is 25 years old or younger, then their average points per game is more than 60.
+Most players who are centers have an average of more than 170 minutes per game.
+All players who have an average of more than 180 rebounds per game have an average of more than 180 points per game.
+If a player is a forward and has an average of more than 180 rebounds per game, then their average points per game is more than 52.
+There exists at least one player who is a guard and has an average of more than 200 minutes per game.
+All players who are 25 years old or younger have an average of more than 185 points per game.
+If a player is a center and has an average of more than 180 points per game, then their average rebounds per game is more than 24.
+Most players who are guards have an average of more than 180 minutes per game.
+All players who have an average of more than 185 rebounds per game have an average of more than 185 points per game.
+If a player is a forward and has an average of more than 185 points per game, then their average assists per game is more than 21.
+There exists at least one player who is a center and has an average of more than 205 minutes per game.
+All players who are 30 years old or younger have an average of more than 190 points per game.
+If a player is a guard and is 25 years old or younger, then their average rebounds per game is more than 14.
+Most players who are centers have an average of more than 180 minutes per game.
+All players who have an average of more than 190 rebounds per game have an average of more than 190 points per game.
+If a player is a forward and has an average of more than 190 rebounds per game, then their average points per game is more than 54.
+There exists at least one player who is a guard and has an average of more than 210 minutes per game.
+All players who are 25 years old or younger have an average of more than 195 points per game.
+If a player is a center and has an average of more than 190 points per game, then their average rebounds per game is more than 25.
+Most players who are guards have an average of more than 190 minutes per game.
+All players who have an average of more than 195 rebounds per game have an average of more than 195 points per game.
+If a player is a forward and has an average of more than 195 points per game, then their average assists per game is more than 22.
+There exists at least one player who is a center and has an average of more than 215 minutes per game.
+All players who are 30 years old or younger have an average of more than 200 points per game.
+If a player is a guard and is 25 years old or younger, then their average points per game is more than 65.
+Most players who are centers have an average of more than 190 minutes per game.
+All players who have an average of more than 200 rebounds per game have an average of more than 200 points per game.
+If a player is a forward and has an average of more than 200 rebounds per game, then their average points per game is more than 56.
+There exists at least one player who is a guard and has an average of more than 220 minutes per game.
+All players who are 25 years old or younger have an average of more than 205 points per game.
+If a player is a center and has an average of more than 200 points per game, then their average rebounds per game is more than 26.
+Most players who are guards have an average of more than 200 minutes per game.
+All players who have an average of more than 205 rebounds per game have an average of more than 205 points per game.
+If a player is a forward and has an average of more than 205 points per game, then their average assists per game is more than 23.
+There exists at least one player who is a center and has an average of more than 225 minutes per game.
+All players who are 30 years old or younger have an average of more than 210 points per game.
+If a player is a guard and is 25 years old or younger, then their average rebounds per game is more than 15.
+Most players who are centers have an average of more than 200 minutes per game.
+All players who have an average of more than 210 rebounds per game have an average of more than 210 points per game.
+If a player is a forward and has an average of more than 210 rebounds per game, then their average points per game is more than 58.
+There exists at least one player who is a guard and has an average of more than 230 minutes per game.
+All players who are 25 years old or younger have an average of more than 215 points per game.
+If a player is a center and has an average of more than 210 points per game, then their average rebounds per game is more than 27.
+Most players who are guards have an average of more than 210 minutes per game.
+All players who have an average of more than 215 rebounds per game have an average of more than 215 points per game.
+If a player is a forward and has an average of more than 215 points per game, then their average assists per game is more than 24.
+There exists at least one player who is a center and has an average of more than 235 minutes per game.
+All players who are 30 years old or younger have an average of more than 220 points per game.
+If a player is a guard and is 25 years old or younger, then their average points per game is more than 70.
+Most players who are centers have an average of more than 210 minutes per game.
+All players who have an average of more than 220 rebounds per game have an average of more than 220 points per game.
+If a player is a forward and has an average of more than 220 rebounds per game, then their average points per game is more than 60.
+There exists at least one player who is a guard and has an average of more than 240 minutes per game.
+All players who are 25 years old or younger have an average of more than 225 points per game.
+If a player is a center and has an average of more than 220 points per game, then their average rebounds per game is more than 28.
+Most players who are guards have an average of more than 220 minutes per game.
+All players who have an average of more than 225 rebounds per game have an average of more than 225 points per game.
+If a player is a forward and has an average of more than 225 points per game, then their average assists per game is more than 25.
+There exists at least one player who is a center and has an average of more than 245 minutes per game.
+All players who are 30 years old or younger have an average of more than 230 points per game.
+If a player is a guard and is 25 years old or younger, then their average rebounds per game is more than 16.
+Most players who are centers have an average of more than 220 minutes per game.
+All players who have an average of more than 230 rebounds per game have an average of more than 230 points per game.
+If a player is a forward and has an average of more than 230 rebounds per game, then their average points per game is more than 62.
+There exists at least one player who is a guard and has an average of more than 250 minutes per game.
+All players who are 25 years old or younger have an average of more than 235 points per game.
+If a player is a center and has an average of more than 230 points per game, then their average rebounds per game is more than 29.
+Most players who are guards have an average of more than 230 minutes per game.
+All players who have an average of more than 235 rebounds per game have an average of more than 235 points per game.
+If a player is a forward and has an average of more than 235 points per game, then their average assists per game is more than 26.
+There exists at least one player who is a center and has an average of more than 255 minutes per game.
+All players who are 30 years old or younger have an average of more than 240 points per game.
+If a player is a guard and is 25 years old or younger, then their average points per game is more than 75.
+Most players who are centers have an average of more than 230 minutes per game.
+All players who have an average of more than 240 rebounds per game have an average of more than 240 points per game.
+If a player is a forward and has an average of more than 240 rebounds per game, then their average points per game is more than 64.
+There exists at least one player who is a guard and has an average of more than 260 minutes per game.
+All players who are 25 years old or younger have an average of more than 245 points per game.
+If a player is a center and has an average of more than 240 points per game, then their average rebounds per game is more than 30.
+Most players who are guards have an average of more than 240 minutes per game.
+All players who have an average of more than 245 rebounds per game have an average of more than 245 points per game.
+If a player is a forward and has an average of more than 245 points per game, then their average assists per game is more than 27.
+There exists at least one player who is a center and has an average of more than 265 minutes per game.
+All players who are 30 years old or younger have an average of more than 250 points per game.
+If a player is a guard and is 25 years old or younger, then their average rebounds per game is more than 17.
+Most players who are centers have an average of more than 240 minutes per game.
+All players who have an average of more than 250 rebounds per game have an average of more than 250 points per game.
+If a player is a forward and has an average of more than 250 rebounds per game, then their average points per game is more than 66.
+There exists at least one player who is a guard and has an average of more than 270 minutes per game.
+All players who are 25 years old or younger have an average of more than 255 points per game.
+If a player is a center and has an average of more than 250 points per game, then their average rebounds per game is more than 31.
+Most players who are guards have an average of more than 250 minutes per game.
+All players who have an average of more than 255 rebounds per game have an average of more than 255 points per game.
+If a player is a forward and has an average of more than 255 points per game, then their average assists per game is more than 28.
+There exists at least one player who is a center and has an average of more than 275 minutes per game.
+All players who are 30 years old or younger have an average of more than 260 points per game.
+If a player is a guard and is 25 years old or younger, then their average points per game is more than 80.
+Most players who are centers have an average of more than 250 minutes per game.
+All players who have an average of more than 260 rebounds per game have an average of more than 260 points per game.
+If a player is a forward and has an average of more than 260 rebounds per game, then their average points per game is more than 68.
+There exists at least one player who is a guard and has an average of more than 280 minutes per game.
+All players who are 25 years old or younger have an average of more than 265 points per game.
+If a player is a center and has an average of more than 260 points per game, then their average rebounds per game is more than 32.
+Most players who are guards have an average of more than 260 minutes per game.
+All players who have an average of more than 265 rebounds per game have an average of more than 265 points per game.
+If a player is a forward and has an average of more than 265 points per game, then their average assists per game is more than 29.
+There exists at least one player who is a center and has an average of more than 285 minutes per game.
+All players who are 30 years old or younger have an average of more than 270 points per game.
+If a player is a guard and is 25 years old or younger, then their average rebounds per game is more than 18.
+Most players who are centers have an average of more than 260 minutes per game.
+All players who have an average of more than 270 rebounds per game have an average of more than 270 points per game.
+If a player is a forward and has an average of more than 270 rebounds per game, then their average points per game is more than 70.
+There exists at least one player who is a guard and has an average of more than 290 minutes per game.
+All players who are 25 years old or younger have an average of more than 275 points per game.
+If a player is a center and has an average of more than 270 points per game, then their average rebounds per game is more than 33.
+Most players who are guards have an average of more than 270 minutes per game.
+All players who have an average of more than 275 rebounds per game have an average of more than 275 points per game.
+If a player is a forward and has an average of more than 275 points per game, then their average assists per game is more than 30.
+There exists at least one player who is a center and has an average of more than 295 minutes per game.
+All players who are 30 years old or younger have an average of more than 280 points per game.
+If a player is a guard and is 25 years old or younger, then their average points per game is more than 85.
+Most players who are centers have an average of more than 270 minutes per game.
+All players who have an average of more than 280 rebounds per game have an average of more than 280 points per game.
+If a player is a forward and has an average of more than 280 rebounds per game, then their average points per game is more than 72.
+There exists at least one player who is a guard and has an average of more than 300 minutes per game.
+All players who are 25 years old or younger have an average of more than 285 points per game.
+If a player is a center and has an average of more than 280 points per game, then their average rebounds per game is more than 34.
+Most players who are guards have an average of more than 280 minutes per game.
+All players who have an average of more than 285 rebounds per game have an average of more than 285 points per game.
+If a player is a forward and has an average of more than 285 points per game, then their average assists per game is more than 31.
+There exists at least one player who is a center and has an average of more than 305 minutes per game.
+All players who are 30 years old or younger have an average of more than 290 points per game.
+If a player is a guard and is 25 years old or younger, then their average rebounds per game is more than 19.
+Most players who are centers have an average of more than 280 minutes per game.
+All players who have an average of more than 290 rebounds per game have an average of more than 290 points per game.
+If a player is a forward and has an average of more than 290 rebounds per game, then their average points per game is more than 74.
+There exists at least one player who is a guard and has an average of more than 310 minutes per game.
+All players who are 25 years old or younger have an average of more than 295 points per game.
+If a player is a center and has an average of more than 290 points per game, then their average rebounds per game is more than 35.
+Most players who are guards have an average of more than 290 minutes per game.
+All players who have an average of more than 295 rebounds per game have an average of more than 295 points per game.
+If a player is a forward and has an average of more than 295 points per game, then their average assists per game is more than 32.
+There exists at least one player who is a center and has an average of more than 315 minutes per game.
+All players who are 30 years old or younger have an average of more than 300 points per game.
+If a player is a guard and is 25 years old or younger, then their average points per game is more than 90.
+Most players who are centers have an average of more than 290 minutes per game.
+All players who have an average of more than 300 rebounds per game have an average of more than 300 points per game.
+If a player is a forward and has an average of more than 300 rebounds per game, then their average points per game is more than 76.
+There exists at least one player who is a guard and has an average of more than 320 minutes per game.
+All players who are 25 years old or younger have an average of more than 305 points per game.
+If a player is a center and has an average of more than 300 points per game, then their average rebounds per game is more than 36.
+Most players who are guards have an average of more than 300 minutes per game.
+All players who have an average of more than 305 rebounds per game have an average of more than 305 points per game.
+If a player is a forward and has an average of more than 305 points per game, then their average assists per game is more than 33.
+There exists at least one player who is a center and has an average of more than 325 minutes per game.
+All players who are 30 years old or younger have an average of more than 310 points per game.
+If a player is a guard and is 25 years old or younger, then their average rebounds per game is more than 20.
+Most players who are centers have an average of more than 300 minutes per game.
+All players who have an average of more than 310 rebounds per game have an average of more than 310 points per game.
+If a player is a forward and has an average of more than 310 rebounds per game, then their average points per game is more than 78.
+There exists at least one player who is a guard and has an average of more than 330 minutes per game.
+All players who are 25 years old or younger have an average of more than 315 points per game.
+If a player is a center and has an average of more than 310 points per game, then their average rebounds per game is more than 37.
+Most players who are guards have an average of more than 310 minutes per game.
+All players who have an average of more than 315 rebounds per game have an average of more than 315 points per game.
+If a player is a forward and has an average of more than 315 points per game, then their average assists per game is more than 34.
+There exists at least one player who is a center and has an average of more than 335 minutes per game.
+All players who are 30 years old or younger have an average of more than 320 points per game.
+If a player is a guard and is 25 years old or younger, then their average points per game is more than 95.
+Most players who are centers have an average of more than 310 minutes per game.
+All players who have an average of more than 320 rebounds per game have an average of more than 320 points per game.
+If a player is a forward and has an average of more than 320 rebounds per game, then their average points per game is more than 80.
+There exists at least one player who is a guard and has an average of more than 340 minutes per game.
+All players who are 25 years old or younger have an average of more than 325 points per game.
+If a player is a center and has an average of more

@@ -1,0 +1,16 @@
+patient_id,diagnosis,age,bp_systolic,bp_diastolic,cholesterol_mg_dl,bmi,smoker
+PT061001,migraine,43,126,75,219,29.0,no
+PT061002,diabetes,66,144,78,217,33.5,no
+PT061003,hypertension,23,148,85,212,22.1,no
+PT061004,hypertension,30,145,97,200,27.0,yes
+PT061005,arthritis,77,151,72,196,27.1,yes
+PT061006,arthritis,72,149,79,243,21.2,no
+PT061007,arthritis,70,112,85,223,27.7,no
+PT061008,arthritis,67,133,83,210,33.9,no
+PT061009,asthma,31,114,92,241,31.0,no
+PT061010,hypertension,61,142,88,186,28.5,no
+PT061011,arthritis,22,130,85,175,22.3,yes
+PT061012,asthma,37,120,89,200,24.4,no
+PT061013,hypertension,68,119,89,187,33.2,yes
+PT061014,migraine,44,123,78,195,27.3,yes
+PT061015,asthma,26,121,89,184,32.2,no

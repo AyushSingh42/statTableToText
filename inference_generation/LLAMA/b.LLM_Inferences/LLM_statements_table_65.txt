@@ -1,0 +1,19 @@
+All hotels in Denver have an occupancy rate greater than 70%.
+If a hotel is in Seattle, then its staff count is less than 35.
+All hotels with an average nightly rate greater than $200 have a star level of 4.
+There exists at least one hotel in Austin with a star level of 5.
+If a hotel is in Chicago, then its occupancy rate is greater than 68%.
+All hotels with a cancellation rate less than 10% have a staff count greater than 35.
+Most hotels have an occupancy rate greater than 65%.
+If a hotel is in Portland, then its average nightly rate is less than $200.
+All hotels with a bookings month greater than 850 have a star level of 4.
+There exists at least one hotel in Dallas with an occupancy rate greater than 85%.
+If a hotel is in Miami, then its staff count is less than 30.
+All hotels with a star level of 3 have an average nightly rate less than $220.
+Most hotels have a staff count less than 40.
+If a hotel is in Austin, then its occupancy rate is greater than 65%.
+All hotels with an occupancy rate greater than 80% have a star level of 4 or 5.
+There exists at least one hotel in Phoenix with an occupancy rate greater than 85%.
+If a hotel is in Boston, then its staff count is greater than 35.
+All hotels with a bookings month less than 700 have a star level of 3.
+Most hotels have an average nightly rate less than $250.
