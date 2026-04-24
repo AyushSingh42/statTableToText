@@ -1,0 +1,16 @@
+player_id,position,age,games_played,minutes_per_game,points_per_game,assists_per_game,rebounds_per_game
+PL001,guard,22,68,31.4,18.7,6.2,3.8
+PL002,forward,27,74,34.1,21.3,3.1,7.9
+PL003,center,30,70,29.5,16.4,1.8,10.6
+PL004,guard,24,65,28.7,14.9,7.1,4.1
+PL005,forward,29,76,35.2,23.5,4.0,8.4
+PL006,center,26,72,30.3,17.8,2.2,11.1
+PL007,guard,21,61,26.9,12.6,5.8,3.2
+PL008,forward,31,69,33.0,19.7,3.5,7.2
+PL009,center,28,75,31.6,18.2,2.0,10.8
+PL010,guard,25,73,32.1,20.1,6.5,4.5
+PL011,forward,23,67,29.8,15.6,2.9,6.8
+PL012,center,32,66,27.4,14.7,1.5,9.9
+PL013,guard,27,71,30.9,17.4,5.9,3.9
+PL014,forward,24,64,28.5,16.2,3.3,7.0
+PL015,center,29,74,32.8,19.1,2.4,11.4

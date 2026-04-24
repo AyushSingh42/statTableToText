@@ -1,0 +1,16 @@
+employee_id,department,years_experience,monthly_salary_k,projects_active,performance_rating,remote_days_month
+E001,engineering,2.1,6.8,3,4.1,10
+E002,marketing,4.5,5.9,4,4.0,8
+E003,finance,7.2,7.4,2,4.3,6
+E004,hr,3.0,5.4,3,3.9,9
+E005,engineering,9.1,9.2,5,4.7,12
+E006,marketing,1.8,5.1,2,3.8,7
+E007,finance,5.6,7.0,3,4.2,5
+E008,hr,6.3,6.4,4,4.1,8
+E009,engineering,11.4,10.1,6,4.8,13
+E010,marketing,2.7,5.5,3,3.9,9
+E011,finance,8.0,7.8,2,4.4,6
+E012,hr,4.2,5.8,3,4.0,8
+E013,engineering,6.7,8.3,4,4.5,11
+E014,marketing,3.4,5.7,3,4.1,7
+E015,finance,10.2,8.6,3,4.6,5

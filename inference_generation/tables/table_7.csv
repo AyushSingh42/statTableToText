@@ -1,0 +1,16 @@
+hotel_id,city,occupancy_rate,avg_nightly_rate,bookings_month,cancellation_rate,staff_count,star_level
+HT001,austin,78.4,149.2,842,12.1,34,4
+HT002,denver,72.9,131.7,765,10.8,29,3
+HT003,seattle,84.6,176.5,901,13.5,41,4
+HT004,phoenix,69.3,118.4,702,9.6,26,3
+HT005,boston,87.1,209.8,955,14.2,45,5
+HT006,miami,81.7,189.3,918,15.0,43,4
+HT007,atlanta,74.5,136.9,788,11.4,31,4
+HT008,portland,68.8,124.6,689,9.9,25,3
+HT009,chicago,85.4,194.2,932,13.8,44,5
+HT010,dallas,76.2,142.3,810,10.7,32,4
+HT011,san_diego,83.0,201.5,887,12.9,40,4
+HT012,nashville,71.6,128.8,744,10.2,28,3
+HT013,orlando,79.8,154.7,856,11.9,35,4
+HT014,detroit,66.9,112.5,661,8.7,24,3
+HT015,charlotte,73.7,133.4,776,10.5,30,3
