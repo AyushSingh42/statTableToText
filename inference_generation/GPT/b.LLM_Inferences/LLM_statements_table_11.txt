@@ -1,0 +1,85 @@
+analysisWe need to output JSON with key "statements": list of strings. Must be 5-10 statements. Must be factual, non-redundant, tightest bounds.
+
+We have data: 15 patients with fields: patient_id, diagnosis, age, bp_systolic, bp_diastolic, cholesterol_mg_dl, bmi, smoker.
+
+We need to derive statements about patterns.
+
+Let's list data:
+
+1 PT011001: diabetes, age37, sys142, dia95, chol202, bmi31.0, smoker no
+2 PT011002: hypertension, age50, sys116, dia74, chol193, bmi32.5, no
+3 PT011003: arthritis, age44, sys117, dia95, chol215, bmi20.7, smoker yes
+4 PT011004: migraine, age44, sys155, dia93, chol198, bmi28.7, no
+5 PT011005: hypertension, age64, sys126, dia85, chol168, bmi29.2, no
+6 PT011006: arthritis, age35, sys153, dia72, chol224, bmi33.2, no
+7 PT011007: migraine, age28, sys120, dia71, chol169, bmi24.8, no
+8 PT011008: hypertension, age27, sys127, dia98, chol233, bmi22.4, no
+9 PT011009: asthma, age63, sys156, dia87, chol218, bmi28.7, yes
+10 PT011010: migraine, age62, sys118, dia96, chol227, bmi29.1, no
+11 PT011011: hypertension, age65, sys135, dia76, chol221, bmi26.7, yes
+12 PT011012: asthma, age27, sys155, dia81, chol234, bmi33.1, no
+13 PT011013: hypertension, age46, sys129, dia76, chol180, bmi33.8, no
+14 PT011014: hypertension, age63, sys125, dia90, chol241, bmi34.1, yes
+15 PT011015: asthma, age36, sys120, dia95, chol237, bmi23.4, yes
+
+Now derive statements.
+
+Potential statements:
+
+- All patients with diagnosis hypertension have systolic BP <= 155? Let's check max systolic among hypertension: values: 116,126,127,135,129,125. Max 135? Wait also 155? No hypertension patient with sys155? No, only asthma and migraine have 155. So all hypertension have systolic <=135. Actually check: PT011002 116, PT011005 126, PT011008 127, PT011011 135, PT011013 129, PT011014 125. Max 135. So statement: For all individuals diagnosed with hypertension, systolic blood pressure is at most 135 mmHg. That's tight.
+
+- All patients with systolic >=150 have diagnosis either migraine, asthma, or arthritis? Let's see systolic >=150: PT011001 142 (not >=150), PT011004 155 migraine, PT011006 153 arthritis, PT011009 156 asthma, PT011012 155 asthma. Also PT011014? 125 no. So all >=150 are migraine, arthritis, asthma. Could be a statement: If systolic BP is at least 150 mmHg, then the diagnosis is not hypertension. That's true. But maybe more precise: All patients with systolic BP >=150 have a diagnosis other than hypertension. That's fine.
+
+- All smokers have cholesterol >=215? Check smokers: PT011003 chol215, PT011009 chol218, PT011011 chol221, PT011014 chol241, PT011015 chol237. Minimum 215. So yes. So statement: Every smoker has cholesterol level of at least 215 mg/dL.
+
+- All non-smokers have cholesterol <= 234? Non-smokers: many values: 202,193,198,168,224,169,233,180, etc. Max among non-smokers is 233 (PT011008). So yes, all non-smokers have cholesterol <=233. But note PT011012 is non-smoker with chol234? Wait PT011012 smoker=no, chol234. Actually PT011012 is asthma, smoker no, chol234. So max non-smoker is 234. So statement: Every non-smoker has cholesterol at most 234 mg/dL. That's true but not very interesting maybe.
+
+- All patients with BMI >33 have diagnosis either arthritis, hypertension, or asthma? Let's see BMI >33: PT011006 33.2 arthritis, PT011012 33.1 asthma, PT011013 33.8 hypertension, PT011014 34.1 hypertension. So all >33 are arthritis, asthma, hypertension. Could be statement: If BMI exceeds 33, the patient does not have migraine or diabetes. That's true.
+
+- All patients with diagnosis migraine have diastolic BP >=71? Check migraine: PT011004 dia93, PT011007 dia71, PT011010 dia96. Minimum 71. So yes. So statement: Every migraine patient has diastolic blood pressure of at least 71 mmHg.
+
+- All patients with age <=30 have systolic BP <=127? Ages <=30: PT011007 age28 sys120, PT011008 age27 sys127, PT011012 age27 sys155 (oops 155 >127). So not true. So can't.
+
+- All patients with cholesterol >=240 have diagnosis hypertension? Check chol >=240: PT011014 241 hypertension, any other? No. So yes, only hypertension. So statement: If cholesterol is at least 240 mg/dL, the diagnosis is hypertension.
+
+- All patients with diagnosis asthma have systolic >=120? Asthma patients: PT011009 156, PT011012 155, PT011015 120. Minimum 120, so yes. So statement: Every asthma patient has systolic blood pressure of at least 120 mmHg.
+
+- All patients with diastolic <=72 have diagnosis either hypertension or arthritis? Check diastolic <=72: PT011002 74 no, PT011006 72 arthritis, PT011007 71 migraine, PT011008 98 no, PT011011 76 no. So not.
+
+- All patients with cholesterol between 180 and 200 have diagnosis either hypertension or migraine? Let's see chol 180-200 inclusive: PT011002 193 hypertension, PT011004 198 migraine, PT011005 168 no, PT011001 202 no, PT011003 215 no, PT011006 224 no, PT011007 169 no, PT011008 233 no, PT011009 218 no, PT011010 227 no, PT011011 221 no, PT011012 234 no, PT011013 180 hypertension, PT011014 241 no, PT011015 237 no. So only PT011002, PT011004, PT011013. So all those are hypertension or migraine. Could be statement.
+
+- All patients with BMI between 20 and 25 have diagnosis either arthritis or asthma? Check BMI 20-25: PT011003 20.7 arthritis, PT011007 24.8 migraine (actually migraine), PT011015 23.4 asthma. So includes migraine, so not.
+
+- All patients with age >60 have cholesterol >= 215? Ages >60: PT011005 64 chol168 (fails). So not.
+
+- All patients with diagnosis diabetes have BMI >30? Diabetes patient PT011001 BMI31 >30 yes. Only one diabetes.
+
+- All patients with diagnosis hypertension have diastolic <= 90? Check diastolic values: 74,85,98,76,76,90. Max 98 (PT011008). So not.
+
+- All patients with diagnosis hypertension have cholesterol <=241? Yes all less than or equal 241 (max 241). That's trivial.
+
+- All patients with smoker=yes have BMI >=20.7? Yes all smokers have BMI: 20.7,28.7,26.7,34.1,23.4. Minimum 20.7. Not interesting.
+
+- All patients with systolic >=155 have diagnosis either migraine, asthma? Systolic >=155: PT011004 155 migraine, PT011009 156 asthma, PT011012 155 asthma. So yes, not hypertension. So statement: If systolic BP is at least 155 mmHg, the diagnosis is not hypertension.
+
+- All patients with diastolic >=95 have diagnosis either diabetes, arthritis, migraine, asthma? Let's see diastolic >=95: PT011001 95 diabetes, PT011003 95 arthritis, PT011004 93 no, PT011009 87 no, PT011010 96 migraine, PT011015 95 asthma. So includes diabetes, arthritis, migraine, asthma. Not a single diagnosis.
+
+- All patients with BMI <=22 have diagnosis either hypertension? BMI <=22: PT011008 22.4 >22, PT011003 20.7 arthritis, PT011012 33.1 no, PT011015 23.4 no. So only PT011003 arthritis. So statement: The only patient with BMI below 21 is diagnosed with arthritis. But that's single case maybe too specific.
+
+We need 5-10 statements. Choose diverse.
+
+Let's craft 7 statements:
+
+1. For all individuals diagnosed with hypertension, systolic blood pressure does not exceed 135 mmHg.
+2. Every patient who is a smoker has a cholesterol level of at least 215 mg/dL.
+3. If a patient’s cholesterol is 240 mg/dL or higher, the diagnosis is hypertension.
+4. All migraine patients have a diastolic blood pressure of at least 71 mmHg.
+5. Every asthma patient has a systolic blood pressure of at least 120 mmHg.
+6. If a patient’s systolic blood pressure is 150 mmHg or higher, the diagnosis is not hypertension.
+7. Patients with a BMI greater than 33 kg/m² are never diagnosed with migraine or diabetes.
+
+Check statement 7: BMI >33 includes PT011006 (33.2) arthritis, PT011012 (33.1) asthma, PT011013 (33.8) hypertension, PT011014 (34.1) hypertension. None are migraine or diabetes. True.
+
+All statements are non-redundant, tight.
+
+Now output JSON.assistantfinal{"statements": ["For all individuals diagnosed with hypertension, systolic blood pressure does not exceed 135 mmHg.", "Every patient who is a smoker has a cholesterol level of at least 215 mg/dL.", "If a patient’s cholesterol is 240 mg/dL or higher, the diagnosis is hypertension.", "All migraine patients have a diastolic blood pressure of at least 71 mmHg.", "Every asthma patient has a systolic blood pressure of at least 120 mmHg.", "If a patient’s systolic blood pressure is 150 mmHg or higher, the diagnosis is not hypertension.", "Patients with a BMI greater than 33 kg/m² are never diagnosed with migraine or diabetes."]}

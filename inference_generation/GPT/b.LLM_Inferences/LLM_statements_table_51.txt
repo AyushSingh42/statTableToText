@@ -1,0 +1,100 @@
+analysisWe need to produce JSON with "statements": list of 5-10 statements. Must be factual, non-redundant, tightest bounds. Let's analyze data.
+
+We have 15 records. Fields: diagnosis, age, bp_systolic, bp_diastolic, cholesterol, bmi, smoker.
+
+Let's list each:
+
+1 PT051001: hypertension, age70, sys127, dia82, chol221, bmi24.0, smoker yes
+2 PT051002: diabetes, age50, sys118, dia86, chol191, bmi27.1, smoker no
+3 PT051003: asthma, age31, sys152, dia93, chol170, bmi30.9, smoker yes
+4 PT051004: asthma, age51, sys152, dia79, chol190, bmi25.5, smoker yes
+5 PT051005: diabetes, age28, sys127, dia90, chol220, bmi25.0, smoker yes
+6 PT051006: asthma, age58, sys119, dia82, chol196, bmi20.6, smoker yes
+7 PT051007: arthritis, age71, sys156, dia85, chol241, bmi22.7, smoker yes
+8 PT051008: diabetes, age31, sys143, dia72, chol244, bmi25.2, smoker yes
+9 PT051009: hypertension, age43, sys153, dia74, chol233, bmi31.6, smoker yes
+10 PT051010: migraine, age35, sys132, dia87, chol209, bmi31.8, smoker no
+11 PT051011: diabetes, age22, sys156, dia82, chol210, bmi30.6, smoker no
+12 PT051012: hypertension, age52, sys140, dia87, chol202, bmi28.1, smoker no
+13 PT051013: diabetes, age57, sys123, dia87, chol209, bmi25.0, smoker no
+14 PT051014: asthma, age76, sys150, dia97, chol235, bmi22.7, smoker yes
+15 PT051015: migraine, age39, sys128, dia87, chol211, bmi26.9, smoker no
+
+Now derive statements.
+
+We need 5-10 statements. Let's think of interesting patterns.
+
+Potential universal claims:
+
+- All smokers have systolic <= 156? Actually max systolic among smokers: check smokers yes list: IDs 1 (127),3 (152),4 (152),5 (127),6 (119),7 (156),8 (143),9 (153),14 (150). Max 156. So "All smokers have systolic blood pressure ≤ 156 mmHg." Could we tighten? Is there any smoker with 156? Yes PT051007. So ≤156 is tight. Could we say ≤155? No because 156 exists. So statement is valid.
+
+- All non-smokers have diastolic = 87? Let's check non-smokers: IDs 2 (86),10 (87),11 (82),12 (87),13 (87),15 (87). Not all same. So not universal.
+
+- All patients with BMI >=30 have cholesterol >= 209? Let's check BMI >=30: IDs 3 (30.9, chol170),9 (31.6, 233),10 (31.8,209),11 (30.6,210). Chol values: 170,233,209,210. Minimum 170, not >=209. So not.
+
+- All patients with diagnosis asthma have smoker = yes. Check asthma rows: IDs 3,4,6,14. All have smoker yes. So universal: "All individuals diagnosed with asthma are smokers."
+
+- All patients with diagnosis hypertension have systolic >=127? Hypertension rows: IDs 1 (127),9 (153),12 (140). Minimum 127, so yes. Could we tighten to >127? No because 127 present. So "All hypertension patients have systolic ≥ 127 mmHg."
+
+- All patients with diagnosis diabetes have cholesterol between 191 and 244? Let's see diabetes rows: IDs 2 (191),5 (220),8 (244),11 (210),13 (209). Range 191-244 inclusive. So universal: "All diabetes patients have cholesterol between 191 and 244 mg/dL." Could we tighten lower bound? Minimum 191, so >=191. Upper bound max 244, so ≤244. That's tight.
+
+- All patients aged over 70 have diagnosis arthritis? Age >70: IDs 1 age70 (not >),7 age71 arthritis,14 age76 asthma. So not universal.
+
+Conditional claims:
+
+- If age >= 70, then systolic >= 127? Age >=70 includes 70,71,76. Systolic values: 127,156,150. Minimum 127, so true. Could we tighten lower bound? 127 is min, so "If age ≥ 70 then systolic ≥ 127." But that's not very insightful maybe.
+
+- If smoker = no, then diastolic = 87? Non-smokers diastolic values: 86,87,82,87,87,87. Not all 87. So not.
+
+- If diagnosis is migraine, then BMI > 26? Migraine rows: IDs 10 BMI31.8, 15 BMI26.9. Both >26, yes. Minimum 26.9 >26. Could we tighten to >26.5? 26.9 >26.5, but 31.8 >26.5. Could we say BMI ≥ 26.9? That's exact min. So "All migraine patients have BMI ≥ 26.9." That's tight.
+
+- If diagnosis is hypertension, then diastolic ≤ 87? Hypertension diastolic values: 82,74,87. Max 87, so ≤87 holds. Could we tighten to ≤82? No because 87 present. So statement.
+
+- If BMI > 30, then diagnosis is either asthma, hypertension, or migraine? Let's see BMI >30: IDs 3 (asthma),9 (hypertension),10 (migraine),11 (diabetes). So includes diabetes, so not.
+
+- If cholesterol > 240, then diagnosis is asthma or hypertension? Chol >240: IDs 7 (241 arthritis),8 (244 diabetes),14 (235 not >240),9 (233 not >240). Actually >240 includes 241,244. IDs 7 arthritis,8 diabetes. So not.
+
+- If smoker = yes, then diastolic >= 79? Check smokers diastolic: 82,93,79,90,82,85,72,74,97. Minimum 72, so not.
+
+- If age <=30, then diagnosis is diabetes or asthma? Age <=30: IDs 5 (diabetes),10? age35 no, 11 age22 diabetes, 2 age50 no, 3 age31 no, 4 age51 no, 5 age28 diabetes, 8 age31 no, 15 age39 no. Also maybe others: age22 diabetes, age28 diabetes. So only diabetes. So "All patients aged 30 or younger have diabetes." Check age 30 exactly none, but <=30 includes 22,28. Both diabetes. So true. Could we tighten to <=28? Age 28 diabetes, age22 diabetes, still both diabetes. Could we say <=28? still same. But we need tightest bound: maybe <=28 still holds, but we want most specific condition? The rule: avoid redundant statements; we can choose one. Let's pick "All patients aged 30 or younger have diabetes." That's fine.
+
+- If diagnosis is asthma, then systolic = 152 or 119 or 150? Not a single value.
+
+Majority/frequency claims: "Most patients have cholesterol >200"? Let's count: cholesterol >200: values >200: 221,191 no,170 no,190 no,220 yes,196 no,241 yes,244 yes,233 yes,209 yes,210 yes,202 yes,209 yes,235 yes,211 yes. Count >200: IDs 1,5,7,8,9,10,11,12,13,14,15 = 11 out of 15 = 73%. So majority. Could state: "Most patients have cholesterol above 200 mg/dL." That's valid.
+
+But need 5-10 statements. Let's compile list:
+
+1. All individuals diagnosed with asthma are smokers.
+2. All diabetes patients have cholesterol between 191 and 244 mg/dL.
+3. All migraine patients have BMI ≥ 26.9.
+4. All hypertension patients have systolic ≥ 127 mmHg.
+5. If a patient is aged 30 or younger, then they have diabetes.
+6. All smokers have systolic blood pressure ≤ 156 mmHg.
+7. All hypertension patients have diastolic ≤ 87 mmHg.
+8. Most patients have cholesterol above 200 mg/dL.
+
+Check redundancy: Statement 4 (hypertension systolic ≥127) and statement 7 (hypertension diastolic ≤87) are distinct. Statement 6 (smokers systolic ≤156) not overlapping. Statement 1 (asthma smokers) distinct. Statement 2 (diabetes cholesterol range) distinct. Statement 3 (migraine BMI) distinct. Statement5 (age <=30 diabetes) distinct. Statement8 majority cholesterol >200 distinct.
+
+All are factual.
+
+Check tightness:
+
+- Statement6: All smokers have systolic ≤156. Is there any smoker with systolic 156? Yes. Could we tighten to ≤150? No because 156 exists. So tight.
+
+- Statement4: Hypertension systolic ≥127. Minimum 127 present, so tight.
+
+- Statement7: Hypertension diastolic ≤87. Max 87 present, tight.
+
+- Statement2: Diabetes cholesterol between 191 and 244 inclusive. Minimum 191 present, max 244 present, tight.
+
+- Statement3: Migraine BMI ≥26.9. Minimum 26.9 present, tight.
+
+- Statement5: Age ≤30 => diabetes. Could we tighten to age <30? Age <30 includes 22,28 both diabetes, still holds. But age ≤30 includes same set plus maybe age 30 none. Both are true. Which is tighter? Age <30 is stricter (excludes 30). Since no 30, both hold. The rule: keep the tightest bound that still holds. So we should use age <30 rather than ≤30. So statement: "If a patient is younger than 30, then they have diabetes." That's tighter. Let's adopt that.
+
+- Statement8: Most patients have cholesterol above 200 mg/dL. Could we say "All patients have cholesterol above 170"? Not true because some 170,191 etc. But majority >200 is fine.
+
+Now ensure 5-10 statements: we have 8 statements.
+
+Return JSON.
+
+assistantfinal json{"statements": ["All individuals diagnosed with asthma are smokers.", "All diabetes patients have cholesterol between 191 and 244 mg/dL.", "All migraine patients have BMI ≥ 26.9.", "All hypertension patients have systolic ≥ 127 mmHg.", "If a patient is younger than 30, then they have diabetes.", "All smokers have systolic blood pressure ≤ 156 mmHg.", "All hypertension patients have diastolic ≤ 87 mmHg.", "Most patients have cholesterol above 200 mg/dL."]}

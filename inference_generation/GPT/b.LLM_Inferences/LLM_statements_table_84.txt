@@ -1,0 +1,153 @@
+analysisWe need to produce JSON with "statements": list of 5-10 statements. Must be factual, non-redundant, high-information. Need to analyze data.
+
+Let's parse data rows:
+
+Columns: household_id, region, household_size, monthly_income_k, rent_k, utility_cost, vehicle_count, internet_type
+
+Rows:
+
+1 H084001 rural 5 10.5 0.7 144.4 0 dsl
+2 H084002 suburban 4 5.2 2.2 150.1 2 fiber
+3 H084003 rural 2 3.2 2.7 159.7 2 fiber
+4 H084004 suburban 2 5.7 2.6 199.9 1 satellite
+5 H084005 urban 2 4.5 1.4 91.2 0 fiber
+6 H084006 suburban 4 9.8 2.0 173.4 2 dsl
+7 H084007 urban 1 6.9 2.8 203.5 2 cable
+8 H084008 urban 5 8.2 2.4 173.3 0 fiber
+9 H084009 urban 1 6.1 2.7 183.2 1 fiber
+10 H084010 suburban 1 5.4 2.1 91.6 0 fiber
+11 H084011 suburban 4 6.3 2.1 142.0 0 satellite
+12 H084012 suburban 4 9.7 2.6 172.4 2 fiber
+13 H084013 suburban 5 5.7 1.1 97.0 0 cable
+14 H084014 rural 2 8.3 1.3 143.5 3 cable
+15 H084015 urban 2 9.7 0.8 127.5 3 dsl
+
+We need statements about patterns.
+
+Let's compute some observations.
+
+Region distribution: rural rows: 1,3,14 (3). suburban rows: 2,4,6,10,11,12,13 (7). urban rows:5,7,8,9,15 (5). total 15.
+
+Household size ranges: min 1, max 5.
+
+Monthly income (k): values: 10.5,5.2,3.2,5.7,4.5,9.8,6.9,8.2,6.1,5.4,6.3,9.7,5.7,8.3,9.7. So range 3.2 to 10.5.
+
+Rent_k: values: 0.7,2.2,2.7,2.6,1.4,2.0,2.8,2.4,2.7,2.1,2.1,2.6,1.1,1.3,0.8. Range 0.7 to 2.8.
+
+Utility cost: values: 144.4,150.1,159.7,199.9,91.2,173.4,203.5,173.3,183.2,91.6,142.0,172.4,97.0,143.5,127.5. Range 91.2 to 203.5.
+
+Vehicle count: values:0,2,2,1,0,2,2,0,1,0,0,2,0,3,3. So 0-3.
+
+Internet type categories: dsl, fiber, satellite, cable.
+
+Now derive statements.
+
+We need 5-10 statements, each non-redundant, tightest bounds.
+
+Potential statements:
+
+1. All households with monthly income >=9.7k have vehicle count >=2? Let's check: income 9.7 appears rows 12 and 15. Row12 vehicle 2, row15 vehicle 3. Also income 9.8 row6 vehicle 2. Income 10.5 row1 vehicle 0 (but 10.5 >9.7). So not true. So can't.
+
+Maybe: All households with vehicle count 3 have monthly income >=8.3k. Vehicle 3 rows: 14 (income 8.3), 15 (9.7). Yes both >=8.3. Is there any other vehicle 3? No. So statement: If vehicle count is 3, then monthly income is at least $8.3k. That's tight? Could we raise lower bound to 8.3? Yes both are >=8.3. Could we raise to 8.5? No because 8.3 is exact. So statement: All households with three vehicles have monthly income of at least $8.3k.
+
+2. All households with rent_k <=1.0 have utility cost <=127.5? Let's see rent <=1.0 rows: row1 rent0.7 utility144.4 ( >127.5) fails. So not.
+
+Maybe: All households with rent_k <=0.8 have utility cost <=127.5? rent <=0.8 rows: row1 0.7 utility144.4 (fails), row15 0.8 utility127.5 (ok). So not.
+
+Maybe: All households with rent_k >=2.6 have utility cost >=172.4? Let's check rows with rent >=2.6: row3 2.7 utility159.7 (<172.4) fails. So not.
+
+Consider internet type relationships.
+
+3. All households with cable internet have vehicle count >=2? Cable rows: row7 vehicle2, row13 vehicle0, row14 vehicle3. So not.
+
+Maybe: All households with satellite internet have household size <=2? Satellite rows: row4 size2, row11 size4. So not.
+
+Maybe: All households with fiber internet have utility cost <=183.2? Fiber rows: rows2 150.1,3 159.7,5 91.2,8 173.3,9 183.2,10 91.6,12 172.4,13 97.0. All <=183.2 yes max 183.2. So statement: Every household with fiber internet has utility cost no more than $183.2. Could we tighten to 183.2? That's max. Could we say less than 184? but we need tightest bound: 183.2 is exact max. So statement: All fiber internet households have utility cost ≤ $183.2.
+
+4. All rural households have monthly income >=3.2k? Rural rows: row1 10.5, row3 3.2, row14 8.3. Minimum 3.2. So statement: Every rural household has monthly income of at least $3.2k.
+
+Could we tighten to >3.2? No because row3 exactly 3.2. So that's fine.
+
+5. All suburban households have vehicle count <=2? Suburban rows: vehicle counts: row2 2, row4 1, row6 2, row10 0, row11 0, row12 2, row13 0. Max 2. So statement: All suburban households have at most two vehicles.
+
+6. All urban households have rent_k >=0.8? Urban rows: row5 1.4, row7 2.8, row8 2.4, row9 2.7, row15 0.8. Minimum 0.8. So statement: Every urban household pays at least $0.8k in rent.
+
+Could we tighten to >0.8? No because row15 exactly 0.8.
+
+7. Households with household_size =1 have monthly income between 5.4k and 6.9k? Let's see size1 rows: row7 income6.9, row9 6.1, row10 5.4. So min5.4 max6.9. So statement: All one-person households have monthly income between $5.4k and $6.9k.
+
+8. Households with vehicle count 0 have utility cost <=150.1? Vehicle0 rows: row1 144.4, row5 91.2, row8 173.3 (oops >150.1), row10 91.6, row11 142.0, row13 97.0. So max 173.3, not.
+
+Maybe: All households with vehicle count 0 have rent_k <=2.4? Vehicle0 rows rent: 0.7,1.4,2.4,2.1,2.1,1.1. Max 2.4 yes. Could we tighten to 2.4? Yes. So statement: Every household with no vehicles pays rent of at most $2.4k.
+
+9. All households with internet type DSL have monthly income >=5.2k? DSL rows: row1 10.5, row6 9.8, row15 9.7. All >=5.2 yes. Minimum 9.7? Actually 9.7 is min. So we could say at least $9.7k. But row1 10.5, row6 9.8, row15 9.7. So min 9.7. So statement: All DSL households have monthly income of at least $9.7k.
+
+10. All households with utility cost >200k have rent_k >=2.4? Utility >200 rows: row7 203.5 rent2.8, row4 199.9 not >200, row9 183.2 not, row3 159.7 not. So only row7. Rent2.8 >=2.4 yes. So statement: Any household with utility cost exceeding $200k pays rent of at least $2.4k. That's a conditional existential universal? It's universal for those >200. That's fine.
+
+But we need 5-10 statements. We have 10 statements. Need ensure non-redundant and tightest.
+
+Check redundancy:
+
+- Statement 5 (suburban vehicle <=2) and statement 2 (vehicle 3 income >=8.3) are distinct.
+
+- Statement 3 (fiber utility <=183.2) distinct.
+
+- Statement 4 (rural income >=3.2) distinct.
+
+- Statement 6 (urban rent >=0.8) distinct.
+
+- Statement 7 (size1 income between 5.4 and 6.9) distinct.
+
+- Statement 8 (vehicle0 rent <=2.4) distinct.
+
+- Statement 9 (DSL income >=9.7) distinct.
+
+- Statement 10 (utility >200 rent >=2.4) distinct.
+
+Check for any tighter bound possible:
+
+Statement 5: suburban vehicle <=2. Is there any suburban with vehicle 2? yes. So bound is tight. Could we say "at most two vehicles" is correct.
+
+Statement 8: vehicle0 rent <=2.4. Check max rent among vehicle0: row8 rent2.4, row1 0.7, row5 1.4, row10 2.1, row11 2.1, row13 1.1. So max 2.4. So tight.
+
+Statement 6: urban rent >=0.8. Minimum rent among urban: row15 0.8, others higher. So tight.
+
+Statement 7: one-person income between 5.4 and 6.9. Minimum 5.4, max 6.9. Tight.
+
+Statement 3: fiber utility <=183.2. Max fiber utility is 183.2 (row9). So tight.
+
+Statement 4: rural income >=3.2. Minimum 3.2. Tight.
+
+Statement 9: DSL income >=9.7. Minimum 9.7. Tight.
+
+Statement 10: utility >200 rent >=2.4. Only row7 with utility 203.5 rent 2.8. So rent >=2.4 holds, but could we tighten to >=2.8? Since only one case, but condition is >200, we could say rent >=2.8 is also true for that case. That would be tighter. Should we use tightest bound? Yes we should use the tightest bound that still holds. Since only row7, rent is 2.8, so we can say rent >=2.8. That is tighter. So statement: Any household with utility cost exceeding $200k pays rent of at least $2.8k.
+
+Check if any other utility >200? row4 199.9 not >200. So only row7. So we can set bound 2.8.
+
+Now check redundancy: Statement 6 says urban rent >=0.8, which includes row7 rent 2.8. Not redundant.
+
+Now ensure each statement is 5-10 statements. We have 10 statements. Good.
+
+Now produce JSON with array of statements strings.
+
+Make sure natural language, no markdown.
+
+Let's craft statements:
+
+1. All households with three vehicles have a monthly income of at least $8.3 k.
+2. Every household that uses fiber internet has a utility cost no greater than $183.2.
+3. Every rural household has a monthly income of at least $3.2 k.
+4. All suburban households have at most two vehicles.
+5. Every urban household pays rent of at least $0.8 k.
+6. All one‑person households have a monthly income between $5.4 k and $6.9 k.
+7. Every household with no vehicles pays rent of at most $2.4 k.
+8. All DSL households have a monthly income of at least $9.7 k.
+9. Any household with a utility cost exceeding $200 k pays rent of at least $2.8 k.
+
+We have 9 statements, within 5-10. Good.
+
+Check redundancy: Statement 5 (urban rent >=0.8) and statement 9 (utility >200 rent >=2.8) not redundant.
+
+All good.
+
+Now output JSON.assistantfinal{"statements": ["All households with three vehicles have a monthly income of at least $8.3 k.", "Every household that uses fiber internet has a utility cost no greater than $183.2.", "Every rural household has a monthly income of at least $3.2 k.", "All suburban households have at most two vehicles.", "Every urban household pays rent of at least $0.8 k.", "All one‑person households have a monthly income between $5.4 k and $6.9 k.", "Every household with no vehicles pays rent of at most $2.4 k.", "All DSL households have a monthly income of at least $9.7 k.", "Any household with a utility cost exceeding $200 k pays rent of at least $2.8 k."]}

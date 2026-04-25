@@ -1,89 +1,104 @@
-analysisWe need to output JSON with key "statements": list of strings. Must be 5-10 statements. Must be factual, non-redundant, tightest bounds. Let's analyze data.
+analysisWe need to produce JSON with "statements": list of 5-10 statements. Must be factual, non-redundant, tightest bounds. Need to analyze data.
 
-We have 15 records, each with zone (downtown, industrial, residential, park). Variables: avg_temp_c, avg_humidity, pm25, noise_db, foot_traffic, power_use_kwh.
+Let's parse data rows:
 
-We need statements about patterns.
+Columns: employee_id, department, years_experience, monthly_salary_k, projects_active, performance_rating, remote_days_month
 
-Let's compute per zone stats.
+Rows:
 
-Downtown sensors: SN001, SN005, SN009, SN013. Data:
-SN001: temp 24.8, hum 58.2, pm25 18.4, noise 67.1, foot 1240, power 312.5
-SN005: 25.4,57.1,20.2,68.5,1325,325.7
-SN009: 25.9,56.4,21.7,69.2,1388,333.9
-SN013: 24.6,58.9,19.1,66.8,1264,318.0
+1. E009001, engineering, 8.4, 5.7, 4, 4.3, 8
+2. E009002, hr, 10.6, 10.7, 3, 4.2, 6
+3. E009003, hr, 3.2, 8.4, 3, 4.7, 8
+4. E009004, hr, 4.9, 9.5, 4, 4.7, 8
+5. E009005, finance, 10.6, 8.3, 5, 4.7, 11
+6. E009006, operations, 6.6, 6.8, 6, 4.2, 9
+7. E009007, marketing, 12.3, 6.2, 5, 4.0, 10
+8. E009008, engineering, 4.7, 7.6, 5, 4.2, 14
+9. E009009, marketing, 6.7, 5.0, 6, 4.9, 9
+10. E009010, engineering, 11.1, 7.4, 6, 4.8, 4
+11. E009011, marketing, 5.7, 8.7, 3, 3.8, 8
+12. E009012, finance, 8.2, 7.2, 2, 4.7, 14
+13. E009013, operations, 5.4, 6.7, 5, 4.7, 4
+14. E009014, operations, 1.8, 8.6, 4, 4.9, 5
+15. E009015, hr, 12.3, 9.4, 2, 4.2, 8
 
-Observations: avg_temp between 24.6-25.9. humidity 56.4-58.9. pm25 18.4-21.7. noise 66.8-69.2. foot traffic 1240-1388. power 312.5-333.9.
+Now we need statements 5-10.
 
-Industrial sensors: SN002, SN006, SN010, SN014.
-SN002: 26.3,54.7,31.6,72.8,860,428.9
-SN006: 27.0,53.6,34.1,74.3,905,439.4
-SN010: 26.7,55.1,32.4,73.5,892,434.2
-SN014: 27.3,52.8,35.0,75.1,918,445.6
-
-Observations: temp 26.3-27.3, humidity 52.8-55.1, pm25 31.6-35.0, noise 72.8-75.1, foot 860-918, power 428.9-445.6.
-
-Residential sensors: SN003, SN007, SN011, SN015.
-SN003: 23.9,61.5,12.7,51.4,540,198.3
-SN007: 24.2,60.3,13.8,52.6,575,205.1
-SN011: 23.5,62.2,11.9,50.8,528,194.6
-SN015: 24.0,61.0,12.9,51.9,562,201.7
-
-Observations: temp 23.5-24.2, humidity 60.3-62.2, pm25 11.9-13.8, noise 50.8-52.6, foot 528-575, power 194.6-205.1.
-
-Park sensors: SN004, SN008, SN012.
-SN004: 22.1,64.8,9.5,43.2,710,121.6
-SN008: 21.8,66.0,8.9,41.7,689,118.4
-SN012: 22.4,65.5,9.8,42.5,734,123.9
-
-Observations: temp 21.8-22.4, humidity 64.8-66.0, pm25 8.9-9.8, noise 41.7-43.2, foot 689-734, power 118.4-123.9.
-
-Now statements.
-
-We need 5-10 statements, each non-redundant, tightest.
+We need to find patterns.
 
 Potential statements:
 
-1. For all sensors in the industrial zone, average noise level exceeds 72 dB. (Check: min noise 72.8 > 72). Could tighten to >72.8? Actually min is 72.8, so "noise > 72.8" would be false for 72.8 itself. So "noise >= 72.8". But we can say "noise is at least 72.8 dB". But we need a statement that is tightest: "noise >= 72.8 dB". Could also say "noise > 72 dB". That's less tight but still true. We want tightest bound: "noise >= 72.8 dB". However we need natural language: "All industrial sensors have an average noise level of at least 72.8 dB." That's fine.
+- All engineering employees have monthly salary <= 7.6? Let's check: engineering rows: E009001 salary 5.7, E009008 7.6, E009010 7.4. Max 7.6. So statement: For all engineering employees, monthly salary is at most $7.6k. That's true. Could we tighten? The max is 7.6, so "at most 7.6k" is tight. Could we say "at most 7.4k"? No because 7.6 > 7.4, so not true. So statement is fine.
 
-2. For all sensors in the park zone, average PM2.5 is less than 10 µg/m³. Check max pm25 9.8 <10. So "PM2.5 is below 10". Could tighten to "<=9.8". But "less than 10" is less tight but still true. The tightest bound is "<=9.8". But we can phrase "does not exceed 9.8". Let's produce "All park sensors have an average PM2.5 of no more than 9.8 µg/m³."
+- All employees with performance rating 4.9 have remote days <=9? Let's see rating 4.9 rows: E009009 (rating 4.9, remote 9), E009014 (rating 4.9, remote 5). Both remote <=9, max 9. Could we say "remote days <=5"? No because 9 >5. So "remote days <=9" is true. But also there are other rating 4.9? Only those two. So statement: For all employees with performance rating 4.9, remote days per month are at most 9. That's fine.
 
-3. For all sensors, higher zone temperature correlates with higher noise: but that's not a strict rule. Need conditional.
+- All employees with years_experience > 10 have performance rating >=4.2? Let's check >10: rows: E009002 (10.6, rating 4.2), E009005 (10.6, rating 4.7), E009007 (12.3, rating 4.0), E009010 (11.1, rating 4.8), E009015 (12.3, rating 4.2). Ratings: 4.2,4.7,4.0,4.8,4.2. Minimum is 4.0 (E009007). So statement ">=4.2" false. Could say ">=4.0" true. But is that tight? Minimum rating among >10 is 4.0, so ">=4.0" is true but trivial because rating scale maybe 1-5. Might be okay but maybe not interesting. Could do "If years_experience > 10, then performance rating is at least 4.0". That's a universal claim.
 
-Maybe: "If a sensor is in the downtown zone, its foot traffic exceeds 1200 per day." Check min foot 1240 >1200. So "foot traffic > 1200". Tightest bound: >=1240. So statement: "All downtown sensors record foot traffic of at least 1240."
+- All HR employees have performance rating >=4.2? HR rows: E009002 rating 4.2, E009003 4.7, E009004 4.7, E009015 4.2. Minimum 4.2. So statement: All HR employees have performance rating at least 4.2. That's tight.
 
-4. "All residential sensors have average power use below 210 kWh." Max power 205.1 <210. Tightest bound: <=205.1. So "All residential sensors use no more than 205.1 kWh."
+- All finance employees have projects_active >=2? Finance rows: E009005 projects 5, E009012 projects 2. Minimum 2, so "at least 2". Could we say "at least 3"? No because 2 is lower. So statement: All finance employees are involved in at least 2 active projects.
 
-5. "All industrial sensors have average PM2.5 greater than 31 µg/m³." Min 31.6 >31. Tightest bound: >=31.6. So "All industrial sensors have PM2.5 of at least 31.6 µg/m³."
+- All employees with monthly salary >8k have years_experience >=10? Let's check salary >8k: rows: E009002 10.7, years 10.6; E009003 8.4 (not >8), E009004 9.5 years 4.9; E009005 8.3 (not >8), E009007 6.2 (no), E009009 5.0 (no), E009011 8.7 years 5.7; E009014 8.6 years 1.8; E009015 9.4 years 12.3. So >8k includes: E009002 (10.6), E009004 (4.9), E009011 (5.7), E009014 (1.8), E009015 (12.3). Not all have >=10 years. So false.
 
-6. "All park sensors have average temperature below 23°C." Max 22.4 <23. So "All park sensors have temperature under 23°C."
+- All employees with remote_days_month >=14 have performance rating >=4.2? Remote >=14 rows: E009008 (rating 4.2), E009012 (4.7). Both >=4.2. Could we tighten to >=4.7? No because 4.2 lower. So statement: All employees who work remotely 14 or more days per month have performance rating at least 4.2.
 
-7. "All downtown sensors have average humidity between 56% and 59%." That's a range. Could be "between 56.4% and 58.9%". That's precise. So statement: "All downtown sensors have average humidity between 56.4% and 58.9%."
+- All marketing employees have performance rating <=4.9? That's trivial because max rating 4.9. Could be "at most 4.9" but that's always true for any rating scale. Not interesting.
 
-8. "All residential sensors have average noise level between 50.8 dB and 52.6 dB." That's precise.
+- All employees with projects_active =6 have monthly salary <=7.4? Projects_active=6 rows: E009006 salary 6.8, E009009 salary 5.0, E009010 salary 7.4. Max 7.4, so statement: All employees with six active projects have monthly salary at most $7.4k. Tight.
 
-We need 5-10 statements, ensure non-redundant. Some may overlap (e.g., noise statements for residential vs industrial). That's okay as they refer to different zones.
+- All employees with years_experience <=2 have performance rating >=4.9? Only one with <=2: E009014 years 1.8 rating 4.9. So true, but condition applies to only one employee, maybe too specific (overly specific). Avoid statements that apply to 1-2 individuals. So skip.
 
-Check redundancy: Statement about industrial sensors noise >=72.8 and also about industrial sensors PM2.5 >=31.6 are distinct.
+- Most employees have performance rating >=4.0? Let's count: ratings: 4.3,4.2,4.7,4.7,4.7,4.2,4.0,4.2,4.9,4.8,3.8,4.7,4.7,4.9,4.2. Only one rating below 4.0 is 3.8 (E009011). So 14 out of 15 >=4.0. That's "most". Could include majority claim. Statement: Most employees have a performance rating of at least 4.0. That's valid.
 
-Make sure not to include both "All industrial sensors have noise >=72.8" and "All industrial sensors have noise >72". We only include one.
+- All employees in operations have remote days <=9? Operations rows: E009006 remote 9, E009013 remote 4, E009014 remote 5. Max 9, so "at most 9". Could we tighten to <=5? No because 9 >5. So statement: All operations employees work remotely no more than 9 days per month.
 
-Now produce JSON with statements list.
+- All employees with performance rating >=4.8 have years_experience >=11? Ratings >=4.8 rows: E009009 rating 4.9 years 6.7 (not >=11), E009010 rating 4.8 years 11.1 (>=11), E009014 rating 4.9 years 1.8 (not >=11). So false.
 
-Let's craft 8 statements.
+- All employees with monthly salary <=6k have projects_active >=5? Salary <=6k rows: E009001 5.7 projects 4 (not >=5), E009007 6.2 ( >6), E009009 5.0 projects 6 (>=5), E009013 6.7 (>6). So false.
 
-List:
+- All employees with years_experience between 4 and 6 have remote days <=9? Let's see rows with years 4-6 inclusive: E009003 3.2 (no), E009004 4.9 remote 8, E009006 6.6 remote 9, E009008 4.7 remote 14 (outside), E009011 5.7 remote 8, E009013 5.4 remote 4. So some have remote 14 (E009008) which violates <=9. So false.
 
-1. All industrial sensors have an average noise level of at least 72.8 dB.
-2. All park sensors have an average PM2.5 concentration of no more than 9.8 µg/m³.
-3. All downtown sensors record foot traffic of at least 1240 persons per day.
-4. All residential sensors use no more than 205.1 kWh of power on average.
-5. All industrial sensors have an average PM2.5 concentration of at least 31.6 µg/m³.
-6. All park sensors have an average temperature below 23 °C.
-7. All downtown sensors have average humidity between 56.4 % and 58.9 %.
-8. All residential sensors have average noise levels between 50.8 dB and 52.6 dB.
+- All employees with projects_active >=5 have performance rating >=4.2? Projects >=5 rows: E009001 rating 4.3, E009005 4.7, E009006 4.2, E009007 4.0 (fails), E009008 4.2, E009009 4.9, E009010 4.8, E009012 4.7, E009013 4.7. One rating 4.0 (E009007) violates >=4.2. So false.
 
-Check redundancy: none overlap.
+- All employees with remote_days_month <=5 have performance rating >=4.7? Remote <=5 rows: E009002 remote 6 (no), E009014 remote 5 rating 4.9 (>=4.7), E009013 remote 4 rating 4.7, maybe others: none. So both satisfy >=4.7. Could be statement: All employees who work remotely five or fewer days per month have performance rating at least 4.7. That's true (two employees). But condition applies to only 2 employees, maybe too specific? It's okay but maybe borderline. Might be okay.
 
-All statements are factual.
+- All employees with years_experience >=12 have performance rating >=4.0? Years >=12 rows: E009007 (12.3 rating 4.0), E009015 (12.3 rating 4.2). Both >=4.0. Could tighten to >=4.2? No because 4.0 lower. So statement: All employees with at least 12 years of experience have performance rating of at least 4.0.
 
-Now output JSON.assistantfinal{"statements": ["All industrial sensors have an average noise level of at least 72.8 dB.", "All park sensors have an average PM2.5 concentration of no more than 9.8 µg/m³.", "All downtown sensors record foot traffic of at least 1240 persons per day.", "All residential sensors use no more than 205.1 kWh of power on average.", "All industrial sensors have an average PM2.5 concentration of at least 31.6 µg/m³.", "All park sensors have an average temperature below 23 °C.", "All downtown sensors have average humidity between 56.4 % and 58.9 %.", "All residential sensors have average noise levels between 50.8 dB and 52.6 dB."]}
+- All employees with monthly salary >9k have remote days <=8? Salary >9k rows: E009002 10.7 remote 6, E009004 9.5 (not >9), E009005 8.3 (no), E009011 8.7 (no), E009014 8.6 (no), E009015 9.4 remote 8. So rows: E009002 remote6, E009015 remote8. Both <=8. So statement: All employees earning more than $9k per month work remotely no more than 8 days per month. Tight? Could we say <=6? No because 8 >6. So okay.
+
+- All employees in marketing have projects_active >=3? Marketing rows: E009007 projects5, E009009 6, E009011 3. Minimum 3, so "at least 3". Could tighten to >=5? No because 3 is lower. So statement: All marketing employees are involved in at least three active projects.
+
+- All employees with performance rating 4.0 have years_experience >=12? Rating 4.0 row: E009007 years 12.3, yes. Only one employee, too specific.
+
+- All employees with remote_days_month >=10 have monthly salary <=8.6? Remote >=10 rows: E009005 remote11 salary8.3, E009007 remote10 salary6.2, E009008 remote14 salary7.6, E009012 remote14 salary7.2. All salaries <=8.6, true. Could we tighten to <=7.6? No because 8.3 >7.6. So statement: All employees who work remotely ten or more days per month have monthly salary at most $8.6k.
+
+Now need 5-10 statements, non-redundant, tightest.
+
+Let's select a diverse set:
+
+1. For all engineering employees, monthly salary is at most $7.6k. (tight)
+2. All HR employees have a performance rating of at least 4.2. (tight)
+3. All finance employees are involved in at least two active projects. (tight)
+4. All employees with six active projects have monthly salary at most $7.4k. (tight)
+5. All employees who work remotely fourteen or more days per month have a performance rating of at least 4.2. (tight)
+6. All operations employees work remotely no more than nine days per month. (tight)
+7. Most employees have a performance rating of at least 4.0. (majority)
+8. All employees earning more than $9k per month work remotely no more than eight days per month. (tight)
+9. All marketing employees are involved in at least three active projects. (tight)
+10. All employees with at least twelve years of experience have a performance rating of at least 4.0. (tight)
+
+Check redundancy: none overlap. Ensure each is factual.
+
+Check statement 4: employees with six active projects: rows: E009006 salary6.8, E009009 salary5.0, E009010 salary7.4. Max 7.4, so at most 7.4 true. Could there be any other with six projects? Those three only. Good.
+
+Statement 5: remote >=14 rows: E009008 rating4.2, E009012 rating4.7. Both >=4.2. Good.
+
+Statement 6: operations rows remote days: 9,4,5 max 9, so at most 9 true.
+
+Statement 8: salary >9k rows: E009002 (10.7, remote6), E009015 (9.4, remote8). Both <=8 remote days. Good.
+
+Statement 10: years_experience >=12 rows: E009007 rating4.0, E009015 rating4.2. Both >=4.0 true.
+
+All good.
+
+Now produce JSON with statements array. Ensure 5-10 statements, we have 10. Provide as JSON without markdown.assistantfinal{"statements": ["For all engineering employees, monthly salary is at most $7.6k.", "All HR employees have a performance rating of at least 4.2.", "All finance employees are involved in at least two active projects.", "All employees with six active projects have monthly salary at most $7.4k.", "All employees who work remotely fourteen or more days per month have a performance rating of at least 4.2.", "All operations employees work remotely no more than nine days per month.", "Most employees have a performance rating of at least 4.0.", "All employees earning more than $9k per month work remotely no more than eight days per month.", "All marketing employees are involved in at least three active projects.", "All employees with at least twelve years of experience have a performance rating of at least 4.0."]}

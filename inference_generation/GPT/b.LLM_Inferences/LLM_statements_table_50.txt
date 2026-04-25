@@ -1,0 +1,95 @@
+analysisWe need to output JSON with "statements": list of 5-10 statements. Must be factual, non-redundant, tightest bounds. Need to analyze data.
+
+Let's parse data.
+
+Columns: student_id, grade_level, study_hours_week, attendance_rate, test_score, club_member (yes/no)
+
+List rows:
+
+1 S050001: grade 10, study 5.4, attendance 91.3, test 62, club no
+2 S050002: grade 12, study 5.0, attendance 95.9, test 80, club yes
+3 S050003: grade 9, study 7.5, attendance 86.9, test 97, club no
+4 S050004: grade 12, study 4.5, attendance 95.1, test 86, club no
+5 S050005: grade 10, study 4.6, attendance 90.5, test 77, club no
+6 S050006: grade 11, study 8.5, attendance 92.2, test 79, club no
+7 S050007: grade 10, study 10.5, attendance 86.8, test 80, club yes
+8 S050008: grade 12, study 8.2, attendance 88.2, test 93, club yes
+9 S050009: grade 11, study 2.2, attendance 84.8, test 96, club yes
+10 S050010: grade 10, study 11.7, attendance 88.4, test 70, club no
+11 S050011: grade 9, study 4.3, attendance 86.3, test 93, club yes
+12 S050012: grade 11, study 6.2, attendance 96.2, test 93, club no
+13 S050013: grade 12, study 9.0, attendance 84.5, test 67, club yes
+14 S050014: grade 9, study 4.7, attendance 90.1, test 96, club no
+15 S050015: grade 10, study 3.9, attendance 97.0, test 86, club yes
+
+We need statements about patterns.
+
+Let's compute some stats.
+
+Grade levels: 9,10,11,12.
+
+Club membership distribution: yes: rows 2,7,8,9,11,13,15 = 7 yes. No: 8 no.
+
+Study hours range: min 2.2 (S009), max 11.7 (S010). Many values.
+
+Attendance rates: min 84.5 (S013), max 97.0 (S015). Good.
+
+Test scores: min 62 (S001), max 97 (S003, S009, S014). Several high.
+
+We need statements like: All students with attendance >= 95 have test score >=? Let's see.
+
+Students with attendance >=95: S002 (95.9, test 80), S004 (95.1, test 86), S012 (96.2, test 93), S015 (97.0, test 86). All have test >=80. Minimum test among them is 80. So we can say: For all students with attendance rate at least 95%, test score is at least 80. That's tight? Could we raise threshold? Attendance >=96? Those are S012 (96.2, test 93) and S015 (97.0, test 86). Minimum test 86. So we could also say: For all students with attendance >=96%, test >=86. That's tighter. But we need only one statement, the tightest. Could include both? Might be redundant. We'll choose the tighter: attendance >=96 => test >=86. That's true.
+
+Check if any student with attendance >=96 and test <86? No. So statement holds.
+
+Now maybe about club members: All club members have test score >=80? Let's list club yes rows: S002 test 80, S007 test 80, S008 test 93, S009 test 96, S011 test 93, S013 test 67, S015 test 86. There's a 67 (S013). So not all >=80.
+
+Maybe: Club members have average study hours higher than non-members? Compute average.
+
+Club yes study hours: S002 5.0, S007 10.5, S008 8.2, S009 2.2, S011 4.3, S013 9.0, S015 3.9. Sum =5+10.5+8.2+2.2+4.3+9+3.9=43.1. Count 7 => avg 6.157.
+
+Non-members study hours: S001 5.4, S003 7.5, S004 4.5, S005 4.6, S006 8.5, S010 11.7, S012 6.2, S014 4.7. Sum =5.4+7.5+4.5+4.6+8.5+11.7+6.2+4.7=53.1. Count 8 => avg 6.6375. So non-members slightly higher. Not a clear statement.
+
+Maybe about grade level and test scores: All grade 9 students have test score >= 93? Let's see grade 9 rows: S003 test 97, S011 test 93, S014 test 96. All >=93. Yes. So statement: All 9th-grade students scored at least 93 on the test. That's tight? Minimum is 93. Could we say >=94? No because S011 is 93. So keep >=93.
+
+Grade 12 students test scores: S002 80, S004 86, S008 93, S013 67. So not uniform.
+
+Grade 10 students test scores: S001 62, S005 77, S007 80, S010 70, S015 86. So varied.
+
+Maybe about study hours and test scores: Students who studied at least 10 hours have test score >=70? Let's see study >=10: S007 10.5 test 80, S010 11.7 test 70. Both >=70. So statement: All students who studied at least 10 hours per week scored at least 70. Could we raise threshold to 11? Only S010 (11.7) test 70, still >=70. So same. Could we raise test bound? Minimum is 70. So statement holds.
+
+Maybe about low study hours: Students who studied less than 4 hours have test score? Those: S009 2.2 test 96, S015 3.9 test 86. Both high. So we could say: All students who studied less than 4 hours per week scored at least 86. Minimum is 86. That's interesting. Check any other <4? Only those two. So statement holds.
+
+Now about attendance and club membership: All club members have attendance >=84.5? Let's see club yes attendance: S002 95.9, S007 86.8, S008 88.2, S009 84.8, S011 86.3, S013 84.5, S015 97.0. Minimum 84.5. So statement: All club members have attendance rate at least 84.5%. Could we raise to 85? Minimum would be 84.8 (S009) and 84.5 (S013) is below 85, so cannot. So keep 84.5.
+
+But maybe we can say: All students with attendance below 85% are not club members? Let's see attendance <85: Which rows? S013 84.5 club yes (contradiction). So not true.
+
+Maybe about grade 11 and test scores: All grade 11 students have test score >=79? Grade 11 rows: S006 79, S009 96, S012 93. Minimum 79. So statement: All 11th-grade students scored at least 79. Could we raise to 80? No because S006 is 79. So keep 79.
+
+Now about grade 10 and attendance: All grade 10 students have attendance >=86.8? Let's list grade 10 rows: S001 91.3, S005 90.5, S007 86.8, S010 88.4, S015 97.0. Minimum 86.8. So statement: All 10th-grade students have attendance rate at least 86.8%.
+
+Now about grade 12 and attendance: Minimum attendance among grade 12: S002 95.9, S004 95.1, S008 88.2, S013 84.5. So not uniform.
+
+Maybe about test score >=90 and club membership? Students with test >=90: S003 (97) club no, S008 93 yes, S009 96 yes, S011 93 yes, S012 93 no, S014 96 no. So among high test, club membership mixed. Not a clear pattern.
+
+Maybe about attendance >=90 and test >=80? Let's see attendance >=90: S001 91.3 test 62 (fails). So not.
+
+Maybe about grade 9 and club membership: Among grade 9, club yes? S011 yes, others no. So not uniform.
+
+Now we need 5-10 statements. Let's compile distinct ones:
+
+1. All 9th‑grade students scored at least 93 on the test. (tight)
+2. All 11th‑grade students scored at least 79 on the test. (tight)
+3. All 10th‑grade students have an attendance rate of at least 86.8 %. (tight)
+4. For every student whose attendance rate is at least 96 %, the test score is at least 86. (tight)
+5. All students who studied at least 10 hours per week scored at least 70 on the test. (tight)
+6. All students who studied less than 4 hours per week scored at least 86 on the test. (tight)
+7. All club members have an attendance rate of at least 84.5 %. (tight)
+
+We have 7 statements, within 5-10.
+
+Check redundancy: None overlap. Good.
+
+Now output JSON with statements array.
+
+Make sure no extra text.assistantfinal{"statements": ["All 9th‑grade students scored at least 93 on the test.", "All 11th‑grade students scored at least 79 on the test.", "All 10th‑grade students have an attendance rate of at least 86.8 %.", "For every student whose attendance rate is at least 96 %, the test score is at least 86.", "All students who studied at least 10 hours per week scored at least 70 on the test.", "All students who studied less than 4 hours per week scored at least 86 on the test.", "All club members have an attendance rate of at least 84.5 %."]}

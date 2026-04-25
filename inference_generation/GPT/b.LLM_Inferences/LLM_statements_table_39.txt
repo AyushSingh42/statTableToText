@@ -1,0 +1,80 @@
+analysisWe need to output JSON with key "statements": list of strings. Must be 5-10 statements. Must be factual, non-redundant, tightest bounds. Let's analyze data.
+
+We have 15 rows. Columns: employee_id, department, years_experience, monthly_salary_k, projects_active, performance_rating, remote_days_month.
+
+Let's list each row:
+
+1. E039001: marketing, years 11.9, salary 9.5k, projects 2, rating 4.6, remote 5
+2. E039002: finance, 8.4, 7.5, 4, 4.0, 4
+3. E039003: engineering, 10.4, 10.0, 4, 4.1, 14
+4. E039004: finance, 5.9, 5.5, 2, 3.7, 6
+5. E039005: marketing, 4.8, 10.2, 6, 4.0, 5
+6. E039006: finance, 10.4, 5.9, 5, 4.2, 11
+7. E039007: finance, 10.6, 8.9, 5, 4.7, 14
+8. E039008: marketing, 2.3, 9.0, 2, 4.9, 6
+9. E039009: engineering, 5.8, 8.3, 6, 4.5, 6
+10. E039010: operations,5.4,7.0,2,4.7,6
+11. E039011: hr,11.6,5.5,5,4.2,5
+12. E039012: finance,8.5,4.9,6,4.6,13
+13. E039013: operations,3.6,10.5,4,4.3,13
+14. E039014: engineering,6.0,9.2,5,4.1,14
+15. E039015: hr,2.7,9.8,6,3.8,14
+
+Now generate statements.
+
+We need 5-10 statements, each non-redundant, tightest.
+
+Potential statements:
+
+- All employees in finance have monthly salary <= 10.5? Let's check finance rows: salaries: 7.5,5.5,5.9,8.9,4.9. Max 8.9. So we could say: All finance employees have monthly salary less than 9k. That's true (max 8.9). Could we tighten to <=8.9? All finance salaries <=8.9, yes. Could we say <=8.9? That's exact max. That's tight. So statement: All finance employees have monthly salary ≤ $8.9k.
+
+- For all employees with performance rating ≥4.7, remote days per month are at least 6? Let's see rating >=4.7: rows: E039001 rating 4.6 no; E039002 4.0; E039003 4.1; E039004 3.7; E039005 4.0; E039006 4.2; E039007 4.7 remote 14; E039008 4.9 remote 6; E039009 4.5; E039010 4.7 remote 6; E039011 4.2; E039012 4.6; E039013 4.3; E039014 4.1; E039015 3.8. So rating >=4.7 includes E039007 (14), E039008 (6), E039010 (6). Minimum remote days =6. So statement: All employees with performance rating at least 4.7 work remotely at least 6 days per month.
+
+- Employees with years_experience >10 have monthly salary >=5.5? Let's check >10: rows: E039001 (11.9, salary 9.5), E039006 (10.4 not >10), actually >10 includes 11.9, 10.4? No 10.4 not >10. So only 11.9 (marketing) salary 9.5. Also maybe 11.6 (hr) salary 5.5. That's >10? 11.6 >10, salary 5.5. So min salary among >10 is 5.5. So statement: All employees with more than 10 years of experience have monthly salary at least $5.5k. Could we tighten to >=5.5? Yes. Could we say >5.5? No because one has exactly 5.5. So that's tight.
+
+- For all employees in engineering, projects_active >=4? Let's check engineering rows: E039003 projects 4, E039009 projects 6, E039014 projects 5. Minimum 4. So statement: All engineering employees are assigned to at least 4 active projects.
+
+- Employees with monthly salary >10k have performance rating at least 4.0? Salary >10k: rows: E039005 10.2 rating 4.0, E039013 10.5 rating 4.3. Both >=4.0. Minimum rating 4.0. So statement: All employees earning more than $10k per month have performance rating of at least 4.0.
+
+- Most employees (maybe majority) have remote days >=5? Let's count remote days: values: 5,4,14,6,5,11,14,6,6,6,5,13,13,14,14. Count >=5: all except the one with 4 (E039002). So 14 out of 15 = most. So statement: Most employees work remotely at least 5 days per month.
+
+- All HR employees have performance rating at least 3.8? HR rows: E039011 rating 4.2, E039015 rating 3.8. Minimum 3.8. So statement: All HR employees have performance rating of at least 3.8.
+
+- Employees with projects_active =2 have monthly salary between 7.0 and 9.5? Let's see rows with 2 projects: E039001 salary 9.5, E039004 salary 5.5, E039008 salary 9.0, E039010 salary 7.0. So range 5.5 to 9.5. Not tight. Maybe not.
+
+- For all employees in marketing, years_experience >=2.3? That's trivial. Could we find something more interesting: Marketing employees have remote days <=6? Marketing rows remote: 5,5,6. Max 6. So statement: All marketing employees work remotely no more than 6 days per month.
+
+- Employees with performance rating >=4.5 have years_experience <=11? Let's check rating >=4.5: rows: E039001 rating 4.6 years 11.9 (that's >11). So fails. So not.
+
+- Employees with years_experience <=3 have monthly salary >=9.0? Rows with <=3: E039008 (2.3, salary 9.0), E039015 (2.7, salary 9.8). Both >=9.0. So statement: All employees with three or fewer years of experience earn at least $9.0k per month.
+
+- All employees with remote days >=13 have performance rating >=4.3? Remote >=13 rows: E039003 rating 4.1 (fails). So not.
+
+- For all employees in operations, monthly salary is between 7.0 and 10.5? Operations rows: E039010 salary 7.0, E039013 salary 10.5. So yes between inclusive. Could be statement: All operations employees have monthly salary between $7.0k and $10.5k.
+
+- Employees with performance rating >=4.6 have remote days >=5? rating >=4.6 rows: E039001 remote5, E039007 remote14, E039008 remote6, E039012 remote13. Minimum 5. So statement: All employees with performance rating at least 4.6 work remotely at least 5 days per month.
+
+We need 5-10 statements, ensure non-redundant. Let's pick 8 statements.
+
+Check redundancy: Ensure not overlapping same condition with looser bound.
+
+List statements:
+
+1. All finance employees have monthly salary ≤ $8.9k. (tight max)
+2. All employees with performance rating at least 4.7 work remotely at least 6 days per month.
+3. All employees with more than 10 years of experience have monthly salary at least $5.5k.
+4. All engineering employees are assigned to at least 4 active projects.
+5. All employees earning more than $10k per month have performance rating of at least 4.0.
+6. Most employees work remotely at least 5 days per month.
+7. All HR employees have performance rating of at least 3.8.
+8. All marketing employees work remotely no more than 6 days per month.
+
+Check redundancy: Statement 2 and 5 both about rating and remote, but different. Not redundant.
+
+Statement 6 is majority claim, not overlapping.
+
+All good.
+
+Now produce JSON.
+
+assistantfinal{"statements": ["All finance employees have monthly salary ≤ $8.9k.", "All employees with performance rating at least 4.7 work remotely at least 6 days per month.", "All employees with more than 10 years of experience have monthly salary at least $5.5k.", "All engineering employees are assigned to at least 4 active projects.", "All employees earning more than $10k per month have performance rating of at least 4.0.", "Most employees work remotely at least 5 days per month.", "All HR employees have performance rating of at least 3.8.", "All marketing employees work remotely no more than 6 days per month."]}

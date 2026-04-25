@@ -1,0 +1,130 @@
+analysisWe need to produce JSON with "statements": list of 5-10 statements. Must be factual, non-redundant, tightest bounds. Need to analyze data.
+
+Let's parse data.
+
+Columns: employee_id, department, years_experience, monthly_salary_k, projects_active, performance_rating, remote_days_month
+
+Rows:
+
+1. E059001, marketing, 1.3, 10.2, 2, 3.8, 4
+2. E059002, engineering, 5.9, 5.9, 6, 4.8, 14
+3. E059003, hr, 8.1, 6.7, 3, 4.6, 14
+4. E059004, operations, 1.9, 10.3,5,4.4,5
+5. E059005, hr, 2.1, 6.7,5,4.3,7
+6. E059006, marketing,10.9,8.5,4,4.2,14
+7. E059007, finance,10.1,10.1,5,4.3,5
+8. E059008, hr,2.3,7.7,3,4.0,9
+9. E059009, operations,7.6,7.8,5,4.7,5
+10. E059010, finance,7.4,5.2,4,4.3,10
+11. E059011, operations,5.8,8.5,6,3.9,11
+12. E059012, hr,1.8,6.0,6,4.2,10
+13. E059013, operations,10.1,8.1,3,3.9,14
+14. E059014, engineering,9.5,9.1,5,3.8,13
+15. E059015, hr,4.7,5.4,5,3.9,10
+
+We need statements 5-10.
+
+Let's find patterns.
+
+Consider departments.
+
+Marketing: rows 1 and 6.
+- years_experience: 1.3, 10.9
+- monthly_salary_k: 10.2, 8.5
+- projects_active:2,4
+- performance_rating:3.8,4.2
+- remote_days_month:4,14
+
+Engineering: rows 2 and 14.
+- years_experience:5.9,9.5
+- salary:5.9,9.1
+- projects:6,5
+- rating:4.8,3.8
+- remote:14,13
+
+HR: rows 3,5,8,12,15.
+- years:8.1,2.1,2.3,1.8,4.7
+- salary:6.7,6.7,7.7,6.0,5.4
+- projects:3,5,3,6,5
+- rating:4.6,4.3,4.0,4.2,3.9
+- remote:14,7,9,10,10
+
+Operations: rows 4,9,11,13.
+- years:1.9,7.6,5.8,10.1
+- salary:10.3,7.8,8.5,8.1
+- projects:5,5,6,3
+- rating:4.4,4.7,3.9,3.9
+- remote:5,5,11,14
+
+Finance: rows 7,10.
+- years:10.1,7.4
+- salary:10.1,5.2
+- projects:5,4
+- rating:4.3,4.3
+- remote:5,10
+
+Now generate statements.
+
+We need universal claims (for all individuals with condition). Conditional claims.
+
+Let's compute some thresholds.
+
+Observation: All employees with remote_days_month >=14 have performance_rating >=4.0? Let's check remote >=14 rows: E059002 (14, rating 4.8), E059003 (14, 4.6), E059006 (14,4.2), E059008? remote 9 not, E059009 remote5, E059011 remote11, E059012 remote10, E059013 remote14 rating3.9, E059014 remote13 rating3.8, E059001 remote4, E059004 remote5, E059005 remote7, E059007 remote5, E059010 remote10, E059015 remote10. So remote >=14 includes rows 2,3,6,13,14. Ratings: 4.8,4.6,4.2,3.9,3.8. So not all >=4.0. So can't claim.
+
+All HR employees have salary <=7.7? HR salaries: 6.7,6.7,7.7,6.0,5.4. Max 7.7, yes. So statement: All HR employees have monthly salary ≤ $7.7k. That's factual.
+
+All finance employees have performance rating =4.3 (both). So "All finance employees have performance rating 4.3". That's precise.
+
+All marketing employees have remote days either 4 or 14, but that's not a pattern maybe "All marketing employees have remote days ≤14" trivial. Could do "All marketing employees have performance rating ≥3.8" (ratings 3.8,4.2). That's true but maybe less interesting.
+
+All operations employees with years_experience >7 have salary ≤8.5? Let's check operations with years>7: rows 9 (7.6 not >7), 13 (10.1), maybe 9 is 7.6 >7? Yes >7. So rows 9 (salary7.8), 13 (salary8.1). Both ≤8.5, true. Also row 4 years1.9 not >7. So statement: For all operations employees with more than 7 years experience, monthly salary is at most $8.5k. That's true.
+
+All employees with performance rating ≥4.5 have years_experience ≥5? Let's see rating >=4.5 rows: E059002 rating4.8 years5.9, E059003 rating4.6 years8.1, E059009 rating4.7 years7.6. All have years >=5. So statement: All employees with performance rating of at least 4.5 have at least 5 years of experience.
+
+All employees with projects_active =5 have remote_days_month ≤10? Let's list projects=5 rows: E059004 (remote5), E059005 (7), E059007 (5), E059009 (5), E059010 (10), E059014 (13), E059015 (10). Remote values:5,7,5,5,10,13,10. Not all ≤10 because 13 >10. So not.
+
+All employees with monthly salary >9k have performance rating ≤4.4? Salary >9k rows: E059001 10.2 rating3.8, E059004 10.3 rating4.4, E059006 8.5 not >9, E059007 10.1 rating4.3, E059014 9.1 rating3.8 (9.1 >9). So ratings: 3.8,4.4,4.3,3.8. All ≤4.4 yes. So statement: All employees earning more than $9k per month have performance rating no higher than 4.4.
+
+All employees with years_experience <2 have remote_days_month ≤7? Years<2 rows: E059001 (1.3, remote4), E059004 (1.9, remote5), E059012 (1.8, remote10). Remote10 >7, so false.
+
+All employees with years_experience >=10 have projects_active <=5? Let's check years>=10 rows: E059006 (10.9, projects4), E059007 (10.1,5), E059013 (10.1,3), E059014 (9.5 not >=10), E059015 not. So projects:4,5,3 all <=5 true. So statement: All employees with at least 10 years of experience are active on at most five projects.
+
+All employees in engineering have remote days >=13? Engineering rows remote 14 and 13, yes both >=13. So statement: All engineering employees work remotely at least 13 days per month.
+
+All HR employees have performance rating ≥3.9? HR ratings: 4.6,4.3,4.0,4.2,3.9. Minimum 3.9, yes. So statement: All HR employees have performance rating of at least 3.9.
+
+All finance employees have monthly salary ≥5.2k? Finance salaries 10.1,5.2, yes both >=5.2. That's trivial but okay.
+
+Now need 5-10 statements, non-redundant, tightest.
+
+Check redundancy: we have statements about HR salary ≤7.7k, HR rating ≥3.9, finance rating =4.3, engineering remote >=13, operations with >7 years salary ≤8.5k, high rating >=4.5 years >=5, high salary >9k rating ≤4.4, experience >=10 projects <=5.
+
+Make sure none are redundant or can be tightened.
+
+HR salary ≤7.7k: is that tightest? Max salary among HR is 7.7, so yes.
+
+Could we say "All HR employees have monthly salary ≤ $7.7k" is fine.
+
+Finance rating =4.3: both have exactly 4.3, so universal claim.
+
+Engineering remote >=13 days: both have 14 and 13, so min 13. Could we tighten to "All engineering employees work remotely at least 13 days per month" is tight.
+
+Operations with >7 years salary ≤8.5k: check operations with >7 years: rows 9 (7.6 not >7), 13 (10.1 salary8.1), maybe also row 11 years5.8 not >7. So only row13 qualifies, salary8.1 ≤8.5. Could we tighten to "All operations employees with at least 10 years experience have salary ≤8.5k"? But we have only one with 10+ years (10.1). Salary8.1 ≤8.5. That's also true but less general. The current statement is okay.
+
+All employees with performance rating >=4.5 have years >=5: rating >=4.5 rows: 2,3,9. Years 5.9,8.1,7.6 all >=5. Could we tighten to "All employees with performance rating >=4.5 have years_experience >5"? Check years: 5.9 >5, 8.1 >5, 7.6 >5. So >5 holds. Could we tighten to >=6? 5.9 <6, so not. So >5 is tighter than >=5. So we should use >5. Statement: All employees with performance rating at least 4.5 have more than 5 years of experience.
+
+All employees earning >9k have rating ≤4.4: check salaries >9k rows: 1 (10.2 rating3.8),4 (10.3 rating4.4),7 (10.1 rating4.3),14 (9.1 rating3.8) (9.1 >9). All ratings ≤4.4, max 4.4. Could we tighten to rating ≤4.3? But row4 rating4.4 violates, so 4.4 is tight.
+
+All employees with at least 10 years experience have projects <=5: rows 6 (10.9,4),7 (10.1,5),13 (10.1,3). All <=5, max 5. Could we tighten to <=4? row7 has 5, so no. So statement as is.
+
+All HR employees have rating ≥3.9: min rating 3.9, so tight.
+
+Now count statements: we have 9 statements.
+
+List them.
+
+Make sure each is natural language.
+
+Now produce JSON.
+
+assistantfinal{"statements": ["All HR employees have a monthly salary of at most $7.7k.", "All HR employees have a performance rating of at least 3.9.", "All finance employees have a performance rating of exactly 4.3.", "All engineering employees work remotely at least 13 days per month.", "All operations employees with more than 7 years of experience have a monthly salary of at most $8.5k.", "All employees with a performance rating of at least 4.5 have more than 5 years of experience.", "All employees earning more than $9k per month have a performance rating of no higher than 4.4.", "All employees with at least 10 years of experience are active on at most five projects.", "All employees with a performance rating of at least 4.5 have more than 5 years of experience."]}

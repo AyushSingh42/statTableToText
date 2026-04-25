@@ -1,0 +1,109 @@
+analysisWe need to produce JSON with "statements": list of 5-10 statements. Must be factual, non-redundant, tightest bounds. Need to analyze data.
+
+Let's parse data.
+
+Columns: store_id, region, monthly_sales_k, transactions, avg_basket_size, staff_count, customer_satisfaction.
+
+We have 15 rows.
+
+Let's list each row:
+
+1. B092001, south, 94.7, 1824, 64.2, 16, 3.9
+2. B092002, west, 121.8, 2728, 50.2, 15, 3.7
+3. B092003, north, 114.7, 2016, 49.3, 10, 4.3
+4. B092004, west, 126.8, 1656, 48.2, 18, 4.5
+5. B092005, north, 147.2, 1535, 49.9, 26, 4.6
+6. B092006, west, 140.1, 1994, 66.6, 25, 4.5
+7. B092007, west, 110.0, 2152, 68.0, 17, 4.7
+8. B092008, west, 114.8, 1567, 67.5, 20, 4.6
+9. B092009, north, 123.6, 2272, 62.5, 14, 3.6
+10. B092010, north, 170.2, 2022, 67.0, 17, 4.0
+11. B092011, west, 130.2, 1834, 48.1, 20, 3.6
+12. B092012, east, 170.7, 2116, 61.6, 17, 4.3
+13. B092013, west, 155.5, 1616, 55.0, 25, 4.8
+14. B092014, north, 155.0, 2051, 60.1, 14, 4.6
+15. B092015, north, 86.4, 1628, 54.0, 24, 3.8
+
+Now we need to generate statements about patterns.
+
+We need 5-10 statements. Let's think of interesting relationships.
+
+Potential statements:
+
+- All west region stores have average basket size >= 48.1? Let's check: West rows: B092002 (50.2), B092004 (48.2), B092006 (66.6), B092007 (68.0), B092008 (67.5), B092011 (48.1), B092013 (55.0). Minimum is 48.1 (B092011). So statement: For all stores in the west region, avg_basket_size is at least 48.1. Could we tighten? The next higher min is 48.2 (B092004). But B092011 is 48.1, so 48.1 is tight. So statement: All west stores have avg basket size >= 48.1.
+
+- All north region stores have customer satisfaction >= 3.6? Let's check north rows: B092003 4.3, B092005 4.6, B092009 3.6, B092010 4.0, B092014 4.6, B092015 3.8. Minimum 3.6 (B092009). So statement: All north stores have customer satisfaction at least 3.6.
+
+- For stores with monthly_sales_k greater than 150, average basket size is at least 55? Let's check rows with sales >150: B092010 170.2 avg 67.0, B092012 170.7 avg 61.6, B092013 155.5 avg 55.0, B092014 155.0 avg 60.1. Minimum avg basket size among these is 55.0 (B092013). So statement: All stores with monthly sales over $150k have avg basket size at least 55.0.
+
+- For stores with staff_count >= 25, customer satisfaction is at least 4.5? Let's check staff >=25: B092005 staff 26, satisfaction 4.6; B092006 staff 25, sat 4.5; B092013 staff 25, sat 4.8. Minimum satisfaction 4.5. So statement: All stores with staff count of at least 25 have customer satisfaction of at least 4.5.
+
+- For stores with avg_basket_size > 65, monthly_sales_k is at least 110? Let's check avg >65: B092006 66.6 sales 140.1; B092007 68.0 sales 110.0; B092008 67.5 sales 114.8. Minimum sales 110.0. So statement: All stores with avg basket size greater than 65 have monthly sales of at least $110k.
+
+- For stores in south region, monthly_sales_k is less than 100? Only one south store: B092001 sales 94.7 (<100). So universal claim for south region: All south stores have monthly sales under 100k. That's true but only one store; but rule says avoid overly specific conditions that apply to only 1-2 individuals. South region only one store, so maybe avoid.
+
+- For stores with transactions over 2200, customer satisfaction is at most 4.0? Let's check transactions >2200: B092002 2728 sat 3.7; B092009 2272 sat 3.6; B092010 2022 not >2200; B092012 2116 not >2200; B092007 2152 not >2200; So only two: sat 3.7 and 3.6, both <=4.0. So statement: All stores with more than 2200 transactions have customer satisfaction no greater than 4.0. Could we tighten bound? Max satisfaction among them is 3.7, so "at most 3.7". So statement: All stores with transactions >2200 have customer satisfaction ≤ 3.7.
+
+- For stores with customer satisfaction >=4.6, monthly sales are at least 147.2? Let's check satisfaction >=4.6: B092005 sat 4.6 sales 147.2; B092007 sat 4.7 sales 110.0; B092008 sat 4.6 sales 114.8; B092013 sat 4.8 sales 155.5; B092014 sat 4.6 sales 155.0. Minimum sales among these is 110.0 (B092007). So statement: All stores with satisfaction at least 4.6 have monthly sales of at least $110k. Could we tighten to 110? That's already min. So okay.
+
+- For stores with avg_basket_size <= 50, staff count is at most 20? Let's check avg <=50: B092002 50.2 >50 not; B092003 49.3 staff 10 <=20; B092004 48.2 staff 18 <=20; B092005 49.9 staff 26 >20 (violates). So not true.
+
+- For stores with staff count <=15, monthly sales are at most 122? Let's check staff <=15: B092001 staff16 not; B092002 staff15 sales121.8 <=122 yes; B092003 staff10 sales114.7 <=122; B092004 staff18 not; B092009 staff14 sales123.6 >122 violates. So not.
+
+- Majority statements: "Most stores have avg basket size > 48"? Let's count: avg basket size values: 64.2,50.2,49.3,48.2,49.9,66.6,68.0,67.5,62.5,67.0,48.1,61.6,55.0,60.1,54.0. How many >48? All except maybe 48.1? 48.1 >48 yes. So all 15 >48? Actually 48.2 >48, 48.1 >48, 50.2 >48, etc. So all >48. So statement: All stores have avg basket size greater than 48. That's true and tight? Minimum is 48.1, so >48 is true but could be >=48.1. The tightest universal lower bound is >=48.1. So we could say: All stores have avg basket size at least 48.1. That is same as earlier for west region but now for all stores. Check min across all: 48.1 (west). So statement: All stores have avg basket size >= 48.1. That's a universal claim.
+
+But we already have a statement about west region min 48.1. This universal statement is stronger (applies to all). It would make the earlier west-specific redundant (since universal covers it). So we should not include both. Choose universal.
+
+Now we have statements list:
+
+1. All stores have average basket size at least 48.1.
+2. All north region stores have customer satisfaction at least 3.6.
+3. All stores with monthly sales over 150k have average basket size at least 55.0.
+4. All stores with staff count of at least 25 have customer satisfaction of at least 4.5.
+5. All stores with average basket size greater than 65 have monthly sales of at least $110k.
+6. All stores with transactions greater than 2200 have customer satisfaction at most 3.7.
+7. All stores with customer satisfaction at least 4.6 have monthly sales of at least $110k.
+
+Check redundancy: Statement 5 and 7 both involve avg basket size >65 and satisfaction >=4.6 leading to sales >=110k. Not redundant.
+
+Check statement 3: sales >150 => avg basket >=55. This includes stores with avg >65 also, but not redundant.
+
+Now ensure each statement is tightest bound.
+
+Statement 1: min avg basket size is 48.1, so "at least 48.1" is tight. Good.
+
+Statement 2: north satisfaction min 3.6, so "at least 3.6" tight.
+
+Statement 3: sales >150 includes four stores with avg basket sizes 67.0,61.6,55.0,60.1. Minimum 55.0, so "at least 55.0" tight.
+
+Statement 4: staff >=25 includes three stores with satisfaction 4.6,4.5,4.8. Minimum 4.5, so "at least 4.5" tight.
+
+Statement 5: avg basket >65 includes three stores with sales 140.1,110.0,114.8. Minimum 110.0, so "at least $110k" tight.
+
+Statement 6: transactions >2200 includes B092002 (2728, sat 3.7), B092009 (2272, sat 3.6). Max satisfaction 3.7, so "at most 3.7" tight.
+
+Statement 7: satisfaction >=4.6 includes five stores with sales 147.2,110.0,114.8,155.5,155.0. Minimum 110.0, so "at least $110k" tight.
+
+Now check for redundancy: Statement 5 and 7 both give lower bound 110k for different conditions; not redundant.
+
+All good.
+
+We have 7 statements, within 5-10.
+
+Now output JSON with statements array.
+
+Need natural language statements.
+
+Let's phrase them:
+
+1. All stores have an average basket size of at least 48.1 items.
+2. Every north‑region store has a customer‑satisfaction rating of at least 3.6.
+3. For all stores with monthly sales greater than $150 k, the average basket size is at least 55.0 items.
+4. All stores with a staff count of 25 or more have a customer‑satisfaction rating of at least 4.5.
+5. Any store whose average basket size exceeds 65 items records monthly sales of at least $110 k.
+6. All stores with more than 2,200 transactions have a customer‑satisfaction rating of no more than 3.7.
+7. Every store with a customer‑satisfaction rating of 4.6 or higher achieves monthly sales of at least $110 k.
+
+Check phrasing: fine.
+
+Now produce JSON.assistantfinal{"statements": ["All stores have an average basket size of at least 48.1 items.", "Every north‑region store has a customer‑satisfaction rating of at least 3.6.", "For all stores with monthly sales greater than $150 k, the average basket size is at least 55.0 items.", "All stores with a staff count of 25 or more have a customer‑satisfaction rating of at least 4.5.", "Any store whose average basket size exceeds 65 items records monthly sales of at least $110 k.", "All stores with more than 2,200 transactions have a customer‑satisfaction rating of no more than 3.7.", "Every store with a customer‑satisfaction rating of 4.6 or higher achieves monthly sales of at least $110 k."]}

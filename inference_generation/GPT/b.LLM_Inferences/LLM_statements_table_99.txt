@@ -1,0 +1,73 @@
+analysisWe need to produce JSON with "statements": list of 5-10 statements. Must be factual, non-redundant, tightest bounds. Let's analyze data.
+
+We have 15 rows.
+
+Columns: employee_id, department, years_experience, monthly_salary_k (k = thousand?), projects_active, performance_rating, remote_days_month.
+
+Let's list rows:
+
+1 E099001 hr 12.4 6.0 3 3.8 7
+2 E099002 hr 7.3 6.3 6 4.9 9
+3 E099003 hr 8.2 5.5 5 3.8 10
+4 E099004 operations 11.7 7.8 2 3.9 8
+5 E099005 marketing 4.3 10.5 2 4.7 7
+6 E099006 hr 6.7 8.0 6 4.9 6
+7 E099007 hr 9.6 7.1 5 4.2 8
+8 E099008 marketing 3.1 5.8 3 4.4 4
+9 E099009 operations 6.2 9.0 6 4.0 7
+10 E099010 finance 9.1 8.1 3 4.0 12
+11 E099011 marketing 4.4 8.6 4 4.8 8
+12 E099012 engineering 8.4 6.3 3 4.3 4
+13 E099013 finance 8.3 10.6 4 3.8 12
+14 E099014 finance 9.3 7.3 6 4.1 4
+15 E099015 engineering 10.5 6.1 4 3.9 4
+
+We need statements 5-10. Let's derive interesting patterns.
+
+Potential statements:
+
+- All HR employees have performance rating at least 3.8? Let's check HR rows: IDs 001 (3.8), 002 (4.9), 003 (3.8), 006 (4.9), 007 (4.2). Minimum 3.8. So "All HR employees have performance rating >= 3.8". Could we tighten? Minimum is 3.8, so can't raise bound. So statement is tight.
+
+- All employees with monthly salary >= 10k have years_experience <=? Let's see salary >=10: rows: 005 marketing salary 10.5 years 4.3; 013 finance salary 10.6 years 8.3. So years_experience max 8.3. Could we say "All employees with monthly salary >10k have years_experience <=8.3"? That's tight. But maybe we can phrase: "All employees earning at least $10k per month have less than 9 years of experience." Since max 8.3 <9. That's true and tighter bound? Actually "less than 9 years" is equivalent to <=8.999, but we can say "less than 9 years". That's tight because there is no employee with >=9 years and salary >=10k. So statement.
+
+- For all employees with performance rating >=4.8, remote_days_month is at least? Let's see rating >=4.8: rows: 002 rating 4.9 remote 9; 006 rating 4.9 remote 6; 011 rating 4.8 remote 8. So min remote days =6. So "All employees with performance rating of at least 4.8 work remotely at least 6 days per month." Could we tighten to 6? Yes min is 6. So statement.
+
+- All employees in finance have remote_days_month either 4 or 12? Let's list finance rows: 010 remote 12, 013 remote 12, 014 remote 4. So remote days are either 4 or 12. That's a pattern. Could phrase: "Every finance employee works remotely either 4 or 12 days per month." That's precise.
+
+- Employees with projects_active =6 have performance rating >=4.0? Let's check rows with 6 projects: 002 rating 4.9, 006 rating 4.9, 009 rating 4.0, 014 rating 4.1. All >=4.0. Minimum 4.0. So statement: "All employees handling six active projects have performance rating of at least 4.0."
+
+- Employees with years_experience >10 have monthly salary <=8.1? Let's see >10: rows: 001 (12.4, salary 6.0), 004 (11.7, 7.8), 015 (10.5 not >10? it's 10.5 >10, salary 6.1). Also maybe others? That's it. Max salary among them is 7.8. So "All employees with more than 10 years of experience earn no more than $7.8k per month." Could tighten to 7.8. Good.
+
+- All marketing employees have performance rating >=4.4? Let's check marketing rows: 005 rating 4.7, 008 rating 4.4, 011 rating 4.8. Minimum 4.4. So statement: "All marketing staff have performance rating of at least 4.4."
+
+- Employees with remote_days_month >=10 have performance rating <=4.0? Let's see remote >=10: rows: 003 remote 10 rating 3.8; 010 remote 12 rating 4.0; 013 remote 12 rating 3.8. All <=4.0. Max rating 4.0. So statement: "All employees who work remotely ten or more days per month have performance rating no higher than 4.0."
+
+- All engineering employees have years_experience between 8.4 and 10.5? Actually two rows: 012 years 8.4, 015 years 10.5. So range 8.4-10.5. Could say "Engineering staff have between 8.4 and 10.5 years of experience." That's factual.
+
+- Most employees have performance rating >=4.0? Let's count: ratings: 3.8 (001),4.9,3.8,3.9,4.7,4.9,4.2,4.4,4.0,4.0,4.8,4.3,3.8,4.1,3.9. Count >=4.0: those with rating >=4.0: rows 2,4? Actually 4 is 3.9 <4, so not. Let's count: 2 (4.9),5 (4.7),6 (4.9),7 (4.2),8 (4.4),9 (4.0),10 (4.0),11 (4.8),12 (4.3),14 (4.1). That's 10 out of 15 = 66.7% >50% so "Most employees have performance rating of at least 4.0." That's a majority claim.
+
+We have many statements; need 5-10. Ensure non-redundant and tightest.
+
+Check redundancy: we have statements about HR rating >=3.8, marketing rating >=4.4, finance remote days 4 or 12, etc. They are distinct.
+
+Make sure each statement is natural language.
+
+Now produce JSON with statements array.
+
+Select maybe 9 statements.
+
+List them:
+
+1. All HR employees have a performance rating of at least 3.8.
+2. All employees earning at least $10 k per month have less than 9 years of experience.
+3. All employees with a performance rating of 4.8 or higher work remotely at least 6 days per month.
+4. Every finance employee works remotely either 4 or 12 days per month.
+5. All employees handling six active projects have a performance rating of at least 4.0.
+6. All employees with more than 10 years of experience earn no more than $7.8 k per month.
+7. All marketing staff have a performance rating of at least 4.4.
+8. All employees who work remotely ten or more days per month have a performance rating no higher than 4.0.
+9. Most employees have a performance rating of at least 4.0.
+
+Check redundancy: statement 5 about six projects rating >=4.0 is distinct. Statement 8 about remote >=10 rating <=4.0 distinct. Statement 6 about >10 years salary <=7.8 distinct. Good.
+
+Now produce JSON.assistantfinal JSON{"statements": ["All HR employees have a performance rating of at least 3.8.", "All employees earning at least $10 k per month have less than 9 years of experience.", "All employees with a performance rating of 4.8 or higher work remotely at least 6 days per month.", "Every finance employee works remotely either 4 or 12 days per month.", "All employees handling six active projects have a performance rating of at least 4.0.", "All employees with more than 10 years of experience earn no more than $7.8 k per month.", "All marketing staff have a performance rating of at least 4.4.", "All employees who work remotely ten or more days per month have a performance rating no higher than 4.0.", "Most employees have a performance rating of at least 4.0."]}

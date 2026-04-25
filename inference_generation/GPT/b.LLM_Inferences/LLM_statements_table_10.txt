@@ -1,0 +1,102 @@
+analysisWe need to produce JSON with "statements": [list]. Must be 5-10 statements. Must be factual, non-redundant, high-information. Need to analyze data.
+
+Let's parse data.
+
+Columns: student_id, grade_level, study_hours_week, attendance_rate, test_score, club_member (yes/no)
+
+Rows:
+
+1 S010001: grade 9, study 2.5, attendance 96.3, test 80, club no
+2 S010002: 11, 6.3, 87.8, 88, yes
+3 S010003: 10, 3.8, 93.4, 86, yes
+4 S010004: 12, 11.1, 86.2, 91, no
+5 S010005: 12, 4.6, 84.1, 91, no
+6 S010006: 10, 2.7, 98.7, 81, no
+7 S010007: 11, 6.6, 88.7, 86, no
+8 S010008: 9, 4.4, 92.9, 98, no
+9 S010009: 11, 2.2, 96.9, 87, no
+10 S010010: 9, 7.7, 94.6, 65, no
+11 S010011: 11, 9.8, 87.6, 84, yes
+12 S010012: 10, 8.2, 94.5, 70, yes
+13 S010013: 9, 5.1, 90.8, 85, yes
+14 S010014: 9, 11.1, 89.1, 88, yes
+15 S010015: 10, 3.3, 92.4, 85, no
+
+We need statements about patterns.
+
+Let's compute some observations.
+
+First, grade levels distribution: 9 (students: 1,8,10,13,14) = 5; 10 (3,6,12,15) = 4; 11 (2,7,9,11) = 4; 12 (4,5) = 2.
+
+Study hours: range 2.2 to 11.1.
+
+Attendance rates: range 84.1 to 98.7.
+
+Test scores: range 65 to 98.
+
+Club membership: yes for IDs 2,3,11,12,13,14 = 6; no for others = 9.
+
+Now derive statements.
+
+Potential universal claims: maybe "All students with attendance rate above 95% have test scores at least 80"? Let's check.
+
+Attendance >95%: which rows? S010001 96.3, test 80; S010006 98.7, test 81; S010009 96.9, test 87; S010010 94.6 (not >95); S010008 92.9; So those three have test >=80 yes. So statement holds. Could we tighten? Attendance >=96? Those three also. Attendance >=96.5? Only S010006 (98.7) test 81, still >=80. So universal claim "All students with attendance rate >=96.5 have test score >=80" holds but less general. We want most informative (tightest bound) but also not redundant. The tightest bound that still holds is maybe attendance >=96.9? Actually we need universal claim: For all with attendance >= X, test >= Y. To be most informative, we want highest X and highest Y? The rule: keep the tightest bound that still holds. So we could say "All students with attendance rate at least 96.9 have test scores of at least 87". Check: only S010009 has attendance 96.9, test 87. So holds. But that's essentially a single individual, which is too specific (overly specific). Avoid statements that apply to only 1-2 individuals. So we need broader.
+
+Maybe "All students with attendance rate above 95% have test scores of at least 80". That applies to 3 students, okay.
+
+Now conditional claim about club membership: "If a student is a club member, then their study hours per week are at least 5.1"? Let's check club members: IDs 2 (6.3),3 (3.8),11 (9.8),12 (8.2),13 (5.1),14 (11.1). Minimum is 3.8 (S010003). So not true for >=5.1. Maybe "If a student is a club member, then their test score is at least 84"? Check: club members test scores: 88,86,84,70,85,88. There's a 70 (S010012) so fails. Maybe "If a student is a club member, then attendance rate is at most 94.6"? Actually club members attendance: 87.8,93.4,87.6,94.5,90.8,89.1. Max 94.5. So statement: "All club members have attendance rate below 95%" holds. Could we tighten to <=94.5? Yes max is 94.5. So "All club members have attendance rate at most 94.5%" is true and more precise. That's okay.
+
+Now maybe "All 12th graders have test scores of 91". Indeed both grade 12 have test 91. So universal claim: "All 12th-grade students have a test score of 91". That's precise and applies to 2 individuals, but not overly specific? It's exactly same test score. Might be okay but it's a strong pattern. It's not trivial. Accept.
+
+Now "All 9th-grade students have attendance rate above 89%". Let's check 9th graders: IDs 1 (96.3),8 (92.9),10 (94.6),13 (90.8),14 (89.1). All >89? 89.1 is >89, yes. So holds. Could we tighten to >=90? 89.1 fails, so not. So statement: "All 9th-grade students have attendance rates greater than 89%."
+
+Now maybe "Students who study more than 9 hours per week have test scores of at most 91"? Let's check >9: IDs 4 (11.1, test 91),10 (7.7 not >9),11 (9.8 not >9),12 (8.2),14 (11.1 test 88). So >9 includes 4 (test 91) and 14 (test 88). Both <=91 holds. Could we tighten to >10? >10 includes 4 (11.1 test 91) and 14 (11.1 test 88). Still <=91. Could we claim "All students who study more than 10 hours per week have test scores of at most 91"? Yes holds. Could we claim "at most 90"? No because 91 exists. So statement: "All students who study more than 10 hours per week have test scores no higher than 91."
+
+Now maybe "Students with test scores above 90 are all either 12th graders or have attendance below 90%?" Let's examine test >90: IDs 4 (grade12, attendance86.2),5 (grade12, attendance84.1),8 (grade9, attendance92.9),14 (grade9, attendance89.1). So not all 12th graders; includes 9th graders. So not.
+
+Maybe "Students with study hours less than 3 have test scores at most 86"? Check <3: IDs 1 (2.5, test80),6 (2.7,81),9 (2.2,87). 87 >86, fails. So not.
+
+Maybe "Students with attendance rate below 90% have test scores of at least 84"? Attendance <90: IDs 4 (86.2, test91),5 (84.1,91),7 (88.7,86),2 (87.8,88). All test >=84 yes. Could we tighten attendance <88? Those with <88: IDs 4 (86.2,91),5 (84.1,91). Both >=84. So still holds. Could we tighten test >=86? For those, test scores are 91,91,86,88. Minimum 86. So statement: "All students with attendance rate below 88% have test scores of at least 86." That applies to 2 students (grade12). Might be okay.
+
+Now maybe "All club members have study hours at least 3.8"? That's true but not tight because min is 3.8. So "All club members study at least 3.8 hours per week." That's precise.
+
+Now majority/frequency claim: "Most students have attendance rate above 90%." Let's count: attendance >90: IDs 1,3,6,8,9,10,12,13,14,15? Let's list: 1 96.3, 2 87.8 no,3 93.4 yes,4 86.2 no,5 84.1 no,6 98.7 yes,7 88.7 no,8 92.9 yes,9 96.9 yes,10 94.6 yes,11 87.6 no,12 94.5 yes,13 90.8 yes (just above 90),14 89.1 no,15 92.4 yes. Count yes: 1,3,6,8,9,10,12,13,15 =9 out of 15 => 60% >50% so "Most students have attendance rate above 90%." That's a majority claim.
+
+Now maybe "Students in grade 11 have average test score of (88+86+87+84)/4 = 86.25". Could state "The average test score of 11th graders is 86.25." That's factual but maybe not a relational claim. It's okay.
+
+But we need 5-10 statements. Let's pick 8 statements covering various types.
+
+Make sure non-redundant.
+
+List statements:
+
+1. All 12th-grade students have a test score of 91.
+2. All 9th-grade students have attendance rates greater than 89%.
+3. All club members have attendance rates at most 94.5%.
+4. All students who study more than 10 hours per week have test scores no higher than 91.
+5. All students with attendance rates below 88% have test scores of at least 86.
+6. All club members study at least 3.8 hours per week.
+7. Most students have attendance rates above 90%.
+8. The average test score of 11th-grade students is 86.25.
+
+Check redundancy: Statement 6 (club members study at least 3.8) is not implied by statement 3 (attendance <=94.5) nor others. Good.
+
+Statement 3 (attendance <=94.5) and statement 2 (9th grade >89) are distinct.
+
+Statement 5 (attendance <88% => test >=86) is distinct.
+
+Statement 4 (study >10 => test <=91) distinct.
+
+Statement 1 (12th grade test 91) distinct.
+
+Statement 7 majority claim distinct.
+
+Statement 8 average test score distinct.
+
+All statements are factual.
+
+Now produce JSON with array of strings.
+
+Make sure 5-10 statements: we have 8.
+
+Return JSON only.assistantfinal{"statements": ["All 12th-grade students have a test score of 91.", "All 9th-grade students have attendance rates greater than 89%.", "All club members have attendance rates at most 94.5%.", "All students who study more than 10 hours per week have test scores no higher than 91.", "All students with attendance rates below 88% have test scores of at least 86.", "All club members study at least 3.8 hours per week.", "Most students have attendance rates above 90%.", "The average test score of 11th-grade students is 86.25."]}

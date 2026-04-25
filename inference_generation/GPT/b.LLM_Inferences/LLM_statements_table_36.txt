@@ -1,0 +1,128 @@
+analysisWe need to output JSON with "statements": list of 5-10 statements. Must be factual, non-redundant, tightest bounds. Need to analyze data.
+
+Let's parse data.
+
+Columns: player_id, position, age, games_played, minutes_per_game, points_per_game, assists_per_game, rebounds_per_game.
+
+List rows:
+
+1. PL036001, forward, 33, 75, 34.6, 23.7, 2.9, 8.9
+2. PL036002, center, 29, 73, 24.4, 14.6, 2.1, 8.5
+3. PL036003, center, 26, 59, 28.7, 23.7, 5.8, 3.4
+4. PL036004, forward, 34, 66, 34.8, 10.8, 6.6, 5.7
+5. PL036005, forward, 33, 73, 34.3, 20.8, 7.6, 5.1
+6. PL036006, forward, 31, 72, 33.3, 15.3, 6.0, 8.4
+7. PL036007, guard, 23, 72, 26.5, 22.9, 6.1, 9.8
+8. PL036008, forward, 33, 59, 30.2, 12.9, 3.3, 7.6
+9. PL036009, guard, 32, 74, 34.6, 10.9, 2.5, 10.5
+10. PL036010, guard, 23, 59, 29.5, 24.3, 5.9, 5.5
+11. PL036011, forward, 28, 70, 31.6, 12.4, 1.4, 6.4
+12. PL036012, center, 27, 63, 35.5, 17.6, 4.8, 6.1
+13. PL036013, forward, 31, 60, 27.4, 16.3, 2.3, 8.2
+14. PL036014, guard, 33, 65, 31.8, 20.7, 3.0, 6.7
+15. PL036015, guard, 33, 58, 29.7, 12.5, 2.3, 10.2
+
+We need 5-10 statements.
+
+Let's find patterns.
+
+Consider positions: forward, center, guard.
+
+Compute ranges.
+
+Forwards (rows 1,4,5,6,8,11,13): ages: 33,34,33,31,33,28,31 => min 28, max 34. Points per game: 23.7,10.8,20.8,15.3,12.9,12.4,16.3. Assists: 2.9,6.6,7.6,6.0,3.3,1.4,2.3. Rebounds: 8.9,5.7,5.1,8.4,7.6,6.4,8.2. Minutes per game: 34.6,34.8,34.3,33.3,30.2,31.6,27.4.
+
+Observations: All forwards have minutes per game >=27.4 (lowest). All forwards have rebounds per game >=5.1 (lowest). All forwards have points per game >=10.8 (lowest). Could we make a universal claim: For all forwards, minutes per game >27? That's true but maybe we can tighten: minimum minutes per game among forwards is 27.4, so claim "All forwards play at least 27.4 minutes per game". That's precise.
+
+But we need non-trivial. Maybe "All forwards have rebounds per game at least 5.1". That's also true.
+
+Now centers (rows 2,3,12): ages 29,26,27. Points: 14.6,23.7,17.6. Assists: 2.1,5.8,4.8. Rebounds: 8.5,3.4,6.1. Minutes: 24.4,28.7,35.5.
+
+Observations: Center with highest minutes 35.5, lowest 24.4. Rebounds: one center has low 3.4 (row3). So can't claim all centers have rebounds >=5.1.
+
+Guards (rows 7,9,10,14,15): ages 23,32,23,33,33. Points: 22.9,10.9,24.3,20.7,12.5. Assists: 6.1,2.5,5.9,3.0,2.3. Rebounds: 9.8,10.5,5.5,6.7,10.2. Minutes: 26.5,34.6,29.5,31.8,29.7.
+
+Observations: All guards have rebounds per game >=5.5 (lowest 5.5). All guards have minutes per game >=26.5 (lowest). All guards have points per game >=10.9 (lowest). Also all guards have assists per game >=2.3 (lowest). Could make claim about guards with age <=23 have points >22? Let's see: age 23 guards are rows 7 and 10. Points: 22.9 and 24.3. Both >22. So claim: "All guards aged 23 have points per game greater than 22". That's specific but maybe okay.
+
+Now cross-position relationships.
+
+Consider age vs minutes: maybe older players have higher minutes? Let's see ages and minutes.
+
+List all players:
+
+ID, age, minutes, points.
+
+1 33 34.6 23.7
+2 29 24.4 14.6
+3 26 28.7 23.7
+4 34 34.8 10.8
+5 33 34.3 20.8
+6 31 33.3 15.3
+7 23 26.5 22.9
+8 33 30.2 12.9
+9 32 34.6 10.9
+10 23 29.5 24.3
+11 28 31.6 12.4
+12 27 35.5 17.6
+13 31 27.4 16.3
+14 33 31.8 20.7
+15 33 29.7 12.5
+
+Observation: Players with minutes per game >=34 have ages 33,34,33,32,33,27? Actually 34+ minutes: rows 1 (34.6, age33), 4 (34.8, age34),5 (34.3,33),9 (34.6,32),12 (35.5,27). So not monotonic.
+
+Maybe claim about points per game >20 associated with minutes >30? Let's see points >20: rows 1 (23.7,34.6),3 (23.7,28.7),5 (20.8,34.3),7 (22.9,26.5),10 (24.3,29.5),14 (20.7,31.8). Some have minutes less than 30 (row3 28.7, row7 26.5, row10 29.5). So not universal.
+
+Maybe claim about assists: For players with assists >=6, points per game are at least 12? Let's see assists >=6: rows 4 (6.6,10.8),5 (7.6,20.8),6 (6.0,15.3),7 (6.1,22.9). Row4 has points 10.8 <12, so not.
+
+Maybe claim about rebounds: Players with rebounds per game >=9 have points per game between 10.9 and 24.3? Let's see rebounds >=9: rows 7 (9.8,22.9),9 (10.5,10.9),15 (10.2,12.5). Points range 10.9-22.9. Could claim "All players with rebounds per game at least 9 have points per game no more than 23". That's true (max 22.9). But is that interesting? Maybe.
+
+Check if any player with rebounds >=9 has points >23? No. So claim: "All players with rebounds per game of 9 or more score at most 23 points per game". That's precise.
+
+Now maybe claim about age >30 and minutes per game >30? Let's see age>30: rows 1 (34.6),4 (34.8),5 (34.3),6 (33.3),8 (30.2),9 (34.6),11 (31.6),13 (27.4),14 (31.8),15 (29.7). Among these, minutes per game: all >27 except row13 27.4, row15 29.7, row8 30.2. So all >27. Could claim "All players older than 30 play at least 27 minutes per game". That's true but maybe too generic.
+
+Better: "All players older than 30 have minutes per game greater than 30 except one (player 13) who plays 27.4". Not universal.
+
+Maybe claim about centers: All centers have rebounds per game less than 9? Centers rebounds: 8.5,3.4,6.1 all <9. That's true. But also forwards have rebounds up to 8.9 (<9). Guards have up to 10.5. So claim "All centers have rebounds per game below 9". That's specific.
+
+Now about points per game vs position: Forwards have max points 23.7, min 10.8. Centers have max 23.7, min 14.6. Guards have max 24.3, min 10.9. So highest points per game overall is 24.3 (guard). Could claim "The highest points per game (24.3) is achieved by a guard". That's existential but maybe okay.
+
+But need statements 5-10.
+
+Let's craft 8 statements.
+
+1. For all forwards, minutes per game are at least 27.4. (tight bound)
+2. For all centers, rebounds per game are less than 9. (since max 8.5)
+3. All guards have rebounds per game of at least 5.5. (tight bound)
+4. All players with rebounds per game of 9 or more score at most 23 points per game. (tight bound)
+5. All guards aged 23 have points per game greater than 22. (both 23-year-old guards have >22)
+6. The player with the highest points per game (24.3) is a guard. (existential)
+7. For all players older than 30, minutes per game are at least 27.4. (Check: oldest >30 includes forward 34.8, etc. Minimum minutes among >30 is 27.4 (player13). So claim "at least 27.4". Could we tighten to 27.4 exactly? Yes, that's the minimum. So statement: "All players older than 30 play at least 27.4 minutes per game."
+8. For all players with assists per game of at least 6, points per game are at most 23.7. Let's verify: assists >=6 rows: 4 (6.6,10.8),5 (7.6,20.8),6 (6.0,15.3),7 (6.1,22.9). Max points among them 22.9 <23.7. Could we tighten bound to 22.9? Since max is 22.9. So claim "All players with assists per game of at least 6 score at most 22.9 points per game." That's tighter. Check if any other player with assists >=6? No. So that's valid.
+
+Now ensure non-redundancy: statements are distinct.
+
+Check statement 1 vs 7: both about minutes per game. Statement1 is about forwards min 27.4. Statement7 about all >30 min >=27.4. Overlap but not redundant because different condition sets. Acceptable.
+
+Now ensure each statement is factually true and tightest bound.
+
+Statement1: forwards minutes per game values: 34.6,34.8,34.3,33.3,30.2,31.6,27.4. Minimum 27.4, so claim "at least 27.4". Could we claim "at least 27.4" is tight. Yes.
+
+Statement2: centers rebounds: 8.5,3.4,6.1. Max 8.5 <9. Could we claim "less than 8.6"? That's tighter. But we said less than 9. Could tighten to less than 8.6 (since max 8.5). The rule: use tightest bound that still holds. So we should use less than 8.6 (or <=8.5). Better: "All centers have rebounds per game at most 8.5". That's tighter. Let's use that.
+
+Statement3: guards rebounds min 5.5. Values: 9.8,10.5,5.5,6.7,10.2. Minimum 5.5. So claim "at least 5.5". Could we claim "at least 5.5" is tight. Yes.
+
+Statement4: players with rebounds >=9 have points <=23. Values: rows 7 (22.9),9 (10.9),15 (12.5). Max 22.9. So could claim "at most 22.9". Use that.
+
+Statement5: guards aged 23 have points >22. Both have 22.9 and 24.3 >22. Could we tighten to >22.8? Since min is 22.9, >22.8 holds. But we need simple. Use "greater than 22". That's okay but could be tightened to "greater than 22.8". But rule: use tightest bound. So we can say "greater than 22.8". But maybe better to say "at least 22.9". Since both are >=22.9. So claim "All guards aged 23 have points per game at least 22.9". That's tight.
+
+Statement6: highest points per game is 24.3 by a guard. That's factual.
+
+Statement7: all players older than 30 have minutes per game at least 27.4. Check ages >30 includes ages 31,32,33,34. Minimum minutes among those: row13 27.4, row15 29.7, row8 30.2, etc. So bound 27.4 is tight. Could we claim "at least 27.4". Good.
+
+Statement8: players with assists >=6 have points at most 22.9. Check max points among those is 22.9 (row7). So bound 22.9 is tight.
+
+Now we have 8 statements, within 5-10.
+
+Now produce JSON.
+
+assistantfinal{"statements": ["All forwards play at least 27.4 minutes per game.", "All centers have rebounds per game at most 8.5.", "All guards have rebounds per game of at least 5.5.", "All players with rebounds per game of 9 or more score at most 22.9 points per game.", "All guards aged 23 have points per game of at least 22.9.", "The highest points per game (24.3) is achieved by a guard.", "All players older than 30 play at least 27.4 minutes per game.", "All players with assists per game of at least 6 score at most 22.9 points per game."]}

@@ -1,0 +1,101 @@
+analysisWe need to output JSON with "statements": list of 5-10 statements. Must be factual, non-redundant, tightest bounds. Need to analyze data.
+
+Let's parse data.
+
+Columns: student_id, grade_level, study_hours_week, attendance_rate, test_score, club_member (yes/no)
+
+List rows:
+
+1 S080001: grade 10, study 2.2, attendance 97.8, test 96, club no
+2 S080002: 10, 10.3, 88.7, 89, yes
+3 S080003: 9, 10.4, 88.0, 94, no
+4 S080004: 9, 2.5, 94.1, 69, no
+5 S080005: 11, 7.7, 84.1, 83, yes
+6 S080006: 10, 5.5, 88.4, 98, yes
+7 S080007: 12, 7.2, 87.8, 82, yes
+8 S080008: 11, 6.5, 86.3, 89, no
+9 S080009: 9, 2.9, 90.6, 70, no
+10 S080010: 10, 6.5, 89.7, 95, no
+11 S080011: 12, 10.7, 93.1, 89, no
+12 S080012: 12, 9.3, 90.5, 72, yes
+13 S080013: 10, 6.8, 91.1, 94, yes
+14 S080014: 10, 6.6, 84.5, 72, no
+15 S080015: 9, 8.0, 90.3, 69, no
+
+We need statements about patterns.
+
+Let's compute some stats.
+
+Grade levels: 9,10,11,12.
+
+Study hours: range 2.2 to 10.7.
+
+Attendance rate: range 84.1 to 97.8.
+
+Test scores: range 69 to 98.
+
+Club membership yes/no.
+
+We need statements like "All students with study hours >=10 have test scores >=89" maybe.
+
+Let's list students with study >=10:
+
+- S080002: 10.3, test 89, club yes
+- S080003: 10.4, test 94, club no
+- S080011: 10.7, test 89, club no
+
+All have test scores >=89 (actually 89,94,89). So we can say: For all students who study at least 10 hours per week, test score is at least 89. That's tight? Could we increase lower bound to 90? No because two have 89. So 89 is tight.
+
+Also maybe attendance >=93? Let's see those with study >=10: attendance 88.7,88.0,93.1. Not all >=93. So not.
+
+What about club members? Let's see club yes: rows 2,5,6,7,12,13. That's 6.
+
+Check if all club members have test score >=83? Let's list test scores: 89,83,98,82,72,94. Minimum 72 (student 12). So not.
+
+Maybe all club members have study hours >=5.5? Let's list study: 10.3,7.7,5.5,7.2,9.3,6.8. Minimum 5.5. So yes, all club members study at least 5.5 hours per week. Could we tighten to 6? Minimum is 5.5, so 5.5 is tight.
+
+Statement: All club members study at least 5.5 hours per week.
+
+Now maybe relationship between attendance and test score: For all students with attendance >=95, test score >=95? Let's see attendance >=95: only S080001 (97.8, test 96). That's one. Not enough maybe but still true. But rule says avoid overly specific conditions that apply to only 1-2 individuals. So avoid.
+
+Maybe "All students with test score >=95 have attendance >=89.7"? Let's list test >=95: S080001 (96, attendance 97.8), S080006 (98, 88.4), S080010 (95, 89.7). Attendance values: 97.8,88.4,89.7. Minimum 88.4. So statement: All students with test score at least 95 have attendance at least 88.4%. Could we tighten to 89? No because 88.4 is lower. So 88.4.
+
+But is that interesting? Maybe.
+
+Now grade level relationships: For all grade 12 students, study hours >=7.2? Let's list grade 12: S080007 (7.2), S080011 (10.7), S080012 (9.3). Minimum 7.2. So yes, all grade 12 study at least 7.2 hours. Could we tighten to 7.3? No because 7.2 is min. So statement.
+
+Similarly grade 9 students have test scores <=94? Let's list grade 9: S080003 (94), S080004 (69), S080009 (70), S080015 (69). Max 94. So all grade 9 have test score at most 94. Could we tighten to 94? That's max, so statement: All grade 9 students have test scores no higher than 94. That's fine.
+
+Maybe "All grade 9 students have attendance >=88.0"? Let's list attendance: 88.0,94.1,90.6,90.3. Minimum 88.0. So yes, all grade 9 have attendance at least 88.0%. Could tighten? No.
+
+Now maybe "Students who are not club members have study hours <=8.0"? Let's list non-club: rows 1,3,4,8,9,10,11,14,15. Study hours: 2.2,10.4,2.5,6.5,2.9,6.5,10.7,6.6,8.0. Max 10.7, so not.
+
+Maybe "All students with attendance >=94 have test score >=89"? Let's list attendance >=94: S080001 (97.8,96), S080003 (88.0? no), S080004 (94.1,69), S080011 (93.1 not >=94), S080012 (90.5), S080013 (91.1). Actually only S080001 and S080004 have attendance >=94. Their test scores 96 and 69. So not.
+
+Maybe "All students with study hours <=3 have test scores <=96"? That's trivial.
+
+Better to produce 7 statements.
+
+Let's craft statements:
+
+1. All students who study at least 10 hours per week have test scores of at least 89.
+2. All club members study at least 5.5 hours per week.
+3. All grade 12 students study at least 7.2 hours per week.
+4. All grade 9 students have test scores no higher than 94.
+5. All grade 9 students have attendance rates of at least 88.0%.
+6. All students with test scores of at least 95 have attendance rates of at least 88.4%.
+7. Most students (specify majority) have attendance rate above 85%? Let's compute: attendance values: 97.8,88.7,88.0,94.1,84.1,88.4,87.8,86.3,90.6,89.7,93.1,90.5,91.1,84.5,90.3. Count >85: all except maybe 84.1 and 84.5? Those two are below 85. So 13 out of 15 >85 => majority. So statement: Most students have attendance rates above 85%.
+
+But need to ensure not redundant. It's okay.
+
+Check redundancy: Statement 5 (grade 9 attendance >=88) is not covered elsewhere. Good.
+
+Now ensure each statement is non-trivial and high-information.
+
+Now produce JSON with statements array.
+
+Make sure 5-10 statements. We have 7.
+
+Return JSON only.
+
+assistantfinal{"statements": ["All students who study at least 10 hours per week have test scores of at least 89.", "All club members study at least 5.5 hours per week.", "All grade 12 students study at least 7.2 hours per week.", "All grade 9 students have test scores no higher than 94.", "All grade 9 students have attendance rates of at least 88.0%.", "All students with test scores of at least 95 have attendance rates of at least 88.4%.", "Most students have attendance rates above 85%."]}

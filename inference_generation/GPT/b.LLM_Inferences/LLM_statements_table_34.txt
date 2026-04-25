@@ -1,0 +1,91 @@
+analysisWe need to output JSON with key "statements": list of strings. Must be 5-10 statements. Must be factual, non-redundant, tight bounds. Need to analyze data.
+
+Let's parse data.
+
+Columns: household_id, region, household_size, monthly_income_k, rent_k, utility_cost, vehicle_count, internet_type
+
+Rows:
+
+1 H034001: suburban, size3, income4.0, rent1.0, utility220.5, vehicles3, internet dsl
+2 H034002: urban, size6, income11.2, rent2.2, utility217.6, vehicles2, cable
+3 H034003: rural, size5, income9.9, rent1.5, utility189.2, vehicles2, cable
+4 H034004: urban, size6, income2.8, rent2.2, utility165.6, vehicles0, cable
+5 H034005: rural, size3, income10.8, rent2.8, utility114.3, vehicles0, satellite
+6 H034006: urban, size3, income9.3, rent1.2, utility225.4, vehicles1, fiber
+7 H034007: rural, size6, income8.4, rent2.7, utility147.2, vehicles2, cable
+8 H034008: urban, size6, income3.4, rent1.3, utility97.8, vehicles0, fiber
+9 H034009: suburban, size4, income9.2, rent2.8, utility211.1, vehicles3, satellite
+10 H034010: suburban, size5, income6.1, rent2.5, utility197.2, vehicles1, cable
+11 H034011: suburban, size1, income9.8, rent0.8, utility84.9, vehicles2, fiber
+12 H034012: urban, size3, income4.3, rent1.5, utility188.9, vehicles0, dsl
+13 H034013: rural, size5, income10.6, rent2.2, utility145.0, vehicles1, satellite
+14 H034014: urban, size1, income3.7, rent1.2, utility109.7, vehicles2, dsl
+15 H034015: suburban, size2, income3.6, rent1.6, utility162.3, vehicles3, cable
+
+We need statements about patterns.
+
+Let's compute some observations.
+
+Region categories: urban (rows 2,4,6,8,12,14) = 6 rows. suburban (1,9,10,11,15) =5 rows. rural (3,5,7,13) =4 rows.
+
+Vehicle counts: values 0-3.
+
+Internet types: dsl, cable, fiber, satellite.
+
+We can find relationships like: All households with utility_cost > 200 have vehicle_count >=1? Let's check.
+
+Utility >200: rows 1 (220.5, vehicles3), 2 (217.6, vehicles2), 6 (225.4, vehicles1). Also maybe others? 9 is 211.1 vehicles3. So rows 1,2,6,9 have utility >200. All have vehicles >=1 yes. Is there any with utility >200 and vehicles 0? No. So statement: For all households with utility cost greater than 200, vehicle count is at least 1. That's tight? Could we raise threshold to 210? Let's see >210: rows 1 (220.5),2 (217.6),6 (225.4),9 (211.1). All have vehicles >=1. Could we raise to >215? rows 1,2,6. All have vehicles >=1. >220? rows 1 (220.5) and 6 (225.4). Both have vehicles >=1. >225? only row6 (225.4) vehicles1. So we could say "For all households with utility cost greater than 220, vehicle count is at least 1." That's still true but less inclusive. We want tightest bound that still holds but also most informative. The statement with >200 includes more households, still true. But we need to avoid redundancy: we shouldn't also include >220 if we already have >200. So choose the most inclusive bound that still holds? The rule says avoid less informative statements if stricter version exists. So we should give the most inclusive bound that is true? Actually they say: If "All X with A >= 10 have B >= 5" is true, do NOT also include "All X with A >= 10 have B >= 4" — only keep the tightest bound that still holds. That means for B lower bound, we want the highest B that still holds. For condition A, we want the most specific? Not clear. But they want the tightest bound for property. So for vehicle count, we could say "at least 1" is the tightest lower bound (since all have >=1, but not all have >=2). So statement: For all households with utility cost >200, vehicle count is at least 1. That's fine.
+
+Next: All households with rent_k = 0.8 have utility cost 84.9 (only row11). That's too specific.
+
+Maybe relationship between region and internet type: All rural households have cable or satellite? Let's see rural rows: 3 cable,5 satellite,7 cable,13 satellite. So rural have either cable or satellite, none have fiber or dsl. So statement: Every rural household uses either cable or satellite internet. That's universal.
+
+Similarly, all suburban households have internet types: dsl, satellite, cable, fiber. Not uniform.
+
+All urban households have internet types: cable, fiber, dsl. No satellite. So statement: No urban household uses satellite internet. That's universal negative.
+
+Vehicle count vs household size: maybe households with size 1 have vehicle count 2? Row11 size1 vehicles2, row14 size1 vehicles2. Both have 2 vehicles. So statement: All households with a single member have exactly two vehicles. That's true (both size1 rows). That's interesting.
+
+Check if any other size1? Only those two. So it's not overly specific? It's exactly two households, but condition size=1 is specific but still maybe okay. They said avoid overly specific conditions that apply to only 1-2 individuals. This applies to 2 individuals, maybe borderline. Might be okay but could be considered too specific. Might skip.
+
+Another: All households with monthly_income_k >=10 have rent_k >=1.5? Let's see incomes >=10: rows 2 (11.2, rent2.2),3 (9.9 not >=10),5 (10.8, rent2.8),13 (10.6, rent2.2). Also maybe others? That's it. All have rent >=1.5 yes. Could we tighten rent lower bound? Minimum rent among those is 2.2? Actually row5 rent2.8, row2 2.2, row13 2.2. So min rent 2.2. So statement: For all households with monthly income of at least $10k, rent is at least $2.2k. That's tight.
+
+Check if any income >=10 with rent lower? No.
+
+Now relationship: All households with vehicle_count =0 have utility_cost <= 114.3? Let's see rows with 0 vehicles: rows4 utility165.6,8 utility97.8,5 utility114.3,12 utility188.9. So not true.
+
+Maybe: All households with internet type fiber have utility cost <= 225.4? That's trivial.
+
+Better: All households with internet type fiber have household size <=3? Let's see fiber rows: 6 size3,8 size6,11 size1. So not.
+
+Maybe: All households with internet type satellite have rent >=2.5? Satellite rows: 5 rent2.8,9 rent2.8,13 rent2.2,? also maybe others? Row5 2.8,9 2.8,13 2.2. Minimum 2.2. So statement: Every satellite internet household pays rent of at least $2.2k. That's true.
+
+Check if any satellite with rent lower? No.
+
+Now: All households with household_size >=6 have rent <=2.8? Let's see size6 rows: 2 rent2.2,4 rent2.2,7 rent2.7,8 rent1.3. All <=2.8 yes. Minimum? Not needed. Could we tighten rent upper bound? Max rent among size6 is 2.7? Actually row2 2.2, row4 2.2, row7 2.7, row8 1.3. So max 2.7. So statement: For all households with six members, rent does not exceed $2.7k. That's tight.
+
+Now: All households with rent <=1.0 have utility cost >200? Rent <=1.0 rows: row1 rent1.0 utility220.5, row11 rent0.8 utility84.9. So not.
+
+Maybe: All households with internet type dsl have utility cost >=165.6? dsl rows: 1 220.5,12 188.9,14 109.7. So not.
+
+Maybe: All urban households have utility cost <=225.4 (max). That's trivial.
+
+We need 5-10 statements. Let's compile distinct ones:
+
+1. For all households with utility cost greater than 200, vehicle count is at least 1.
+2. Every rural household uses either cable or satellite internet.
+3. No urban household uses satellite internet.
+4. For all households with monthly income of at least $10 k, rent is at least $2.2 k.
+5. Every satellite‑internet household pays rent of at least $2.2 k.
+6. For all households with six members, rent does not exceed $2.7 k.
+7. All households with internet type cable have utility cost at most 217.6? Let's check cable rows: many utilities: 217.6,189.2,165.6,147.2,97.8,197.2,145.0,162.3. Max 217.6. So statement: All cable‑internet households have utility cost no greater than $217.6. That's true and tight (since one equals). Good.
+
+That's 7 statements, within 5-10.
+
+Check redundancy: Statement 5 (satellite rent >=2.2) and statement 4 (income >=10 rent >=2.2) are different conditions. Not redundant.
+
+Statement 2 (rural internet cable or satellite) and statement 7 (cable utility <=217.6) not overlapping.
+
+All good.
+
+Now produce JSON.assistantfinal{"statements": ["For all households with utility cost greater than 200, vehicle count is at least 1.", "Every rural household uses either cable or satellite internet.", "No urban household uses satellite internet.", "For all households with monthly income of at least $10 k, rent is at least $2.2 k.", "Every satellite‑internet household pays rent of at least $2.2 k.", "For all households with six members, rent does not exceed $2.7 k.", "All cable‑internet households have utility cost no greater than $217.6."]}

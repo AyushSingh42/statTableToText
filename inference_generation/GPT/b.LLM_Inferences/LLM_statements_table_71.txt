@@ -1,0 +1,72 @@
+analysisWe need to produce JSON with "statements": list of 5-10 statements. Must be factual, non-redundant, tightest bounds. Let's analyze data.
+
+We have 15 patients.
+
+Columns: patient_id, diagnosis, age, bp_systolic, bp_diastolic, cholesterol_mg_dl, bmi, smoker (yes/no).
+
+Let's list each row:
+
+1 PT071001: migraine, age63, sys150, dia82, chol227, bmi27.7, smoker yes
+2 PT071002: migraine, age27, sys119, dia78, chol227, bmi27.5, smoker yes
+3 PT071003: hypertension, age27, sys115, dia96, chol173, bmi27.5, smoker yes
+4 PT071004: diabetes, age45, sys150, dia91, chol206, bmi22.6, smoker yes
+5 PT071005: hypertension, age63, sys145, dia94, chol228, bmi31.6, smoker yes
+6 PT071006: asthma, age63, sys143, dia85, chol229, bmi24.2, smoker no
+7 PT071007: arthritis, age55, sys113, dia94, chol169, bmi34.4, smoker yes
+8 PT071008: migraine, age49, sys132, dia97, chol213, bmi26.7, smoker yes
+9 PT071009: hypertension, age32, sys147, dia91, chol203, bmi32.9, smoker yes
+10 PT071010: migraine, age48, sys120, dia79, chol214, bmi27.3, smoker yes
+11 PT071011: arthritis, age64, sys143, dia91, chol235, bmi30.1, smoker no
+12 PT071012: migraine, age56, sys122, dia86, chol172, bmi26.0, smoker no
+13 PT071013: arthritis, age45, sys151, dia91, chol210, bmi31.2, smoker no
+14 PT071014: asthma, age24, sys113, dia88, chol170, bmi22.3, smoker no
+15 PT071015: asthma, age72, sys149, dia70, chol245, bmi25.3, smoker yes
+
+Now we need statements 5-10, each non-redundant, high-information.
+
+Potential statements:
+
+- All patients with diagnosis migraine have cholesterol >= 172? Let's check migraine rows: IDs 1,2,8,10,12. Chol values: 227,227,213,214,172. Minimum 172. So statement: For all individuals with migraine, cholesterol is at least 172 mg/dL. That's true. Could we tighten? Minimum is 172, so "at least 172" is tight. Could we say "cholesterol > 170"? That's less tight, so keep 172.
+
+- All patients with asthma are non-smokers except one? Actually asthma rows: IDs 6 (smoker no), 14 (no), 15 (yes). So not all non-smokers. So maybe "There exists at least one asthma patient who is a smoker." That's true, but existential maybe not interesting? Could be.
+
+- All patients with BMI > 30 have diagnosis either hypertension, arthritis, or asthma? Let's see BMI >30: IDs 5 (31.6, hypertension), 7 (34.4, arthritis), 9 (32.9, hypertension), 11 (30.1, arthritis), 13 (31.2, arthritis). All have diagnosis hypertension or arthritis. Asthma patient 15 has BMI 25.3, not >30. So statement: For all individuals with BMI greater than 30, the diagnosis is either hypertension or arthritis. That's a conditional claim.
+
+- All smokers have systolic BP >= 115? Let's check smokers: many. Minimum systolic among smokers: list smokers yes rows: IDs 1 (150),2 (119),3 (115),4 (150),5 (145),7 (113),8 (132),9 (147),10 (120),12? no (smoker no),13 no,14 no,15 yes (149). Also 6 no,11 no. Minimum is 113 (ID7). So statement "All smokers have systolic BP at least 113". Could we tighten to 115? No because 113 is lower. So 113 is tight.
+
+- All non-smokers have diastolic BP <= 91? Let's check non-smokers: IDs 6 (85),11 (91),12 (86),13 (91),14 (88). Max diastolic = 91. So statement: For all non-smokers, diastolic BP is at most 91 mmHg. Tight.
+
+- All patients aged over 60 have systolic BP at least 145? Ages >60: IDs 1 (63,150),5 (63,145),6 (63,143),11 (64,143),15 (72,149). Minimum systolic among them = 143 (ID6). So statement "All patients older than 60 have systolic BP at least 143". Could we tighten to 145? No because 143 lower. So 143.
+
+- All patients with diagnosis hypertension have diastolic BP at least 91? Hypertension rows: IDs 3 (96),5 (94),9 (91). Minimum 91. So statement: For all hypertension patients, diastolic BP is at least 91 mmHg. Tight.
+
+- All patients with cholesterol > 240 are smokers? Chol >240: only ID15 (245) smoker yes. So statement: There exists at least one smoker with cholesterol above 240 mg/dL. But also "All patients with cholesterol >240 are smokers" is true (since only one). That's universal but trivial because only one. Might be okay but maybe considered over-specific. Could still be okay.
+
+- Most patients have BMI between 22 and 35? That's majority but we need majority claim. Let's count: All BMI values: 27.7,27.5,27.5,22.6,31.6,24.2,34.4,26.7,32.9,27.3,30.1,26.0,31.2,22.3,25.3. All are between 22 and 35 indeed. So "All patients have BMI between 22 and 35". Minimum 22.3, max 34.4. So we can say "All patients have BMI between 22 and 35". That's universal.
+
+- All patients with diagnosis diabetes have BMI less than 23? Diabetes row: ID4 BMI 22.6 <23. So statement: For all diabetes patients, BMI is less than 23. That's universal for that diagnosis.
+
+- All patients with systolic BP >=150 have diagnosis either migraine, diabetes, hypertension, or arthritis? Let's see systolic >=150: IDs 1 (150, migraine),4 (150, diabetes),5 (145 not),7? 113,8 132,9 147,10 120,11 143,13 151 (arthritis),15 149 not, etc. Also ID13 151 arthritis. So diagnoses: migraine, diabetes, arthritis. So statement could be "All patients with systolic BP of at least 150 mmHg have diagnoses of migraine, diabetes, or arthritis." That's true. Could we tighten to >=151? Then only ID13 (151) arthritis. Not include migraine 150. So keep 150.
+
+- All patients with cholesterol between 170 and 230 have diagnosis migraine or asthma? Let's see cholesterol 170-230 inclusive: many. Might be messy.
+
+We need 5-10 statements. Let's pick 8 statements.
+
+Make sure non-redundant and tight.
+
+List statements:
+
+1. For all individuals with migraine, cholesterol is at least 172 mg/dL.
+2. For all individuals with BMI greater than 30, the diagnosis is either hypertension or arthritis.
+3. For all smokers, systolic blood pressure is at least 113 mmHg.
+4. For all non‑smokers, diastolic blood pressure is at most 91 mmHg.
+5. For all patients older than 60 years, systolic blood pressure is at least 143 mmHg.
+6. For all patients with hypertension, diastolic blood pressure is at least 91 mmHg.
+7. All patients have a body‑mass index between 22 and 35.
+8. For the sole patient with diabetes, the BMI is less than 23.
+
+Check redundancy: Statement 7 includes BMI range, which also covers statement 8 (BMI <23). But statement 8 is more specific to diabetes. Not redundant because 8 adds condition diagnosis. Acceptable.
+
+All statements are factual and tight.
+
+Now produce JSON.assistantfinal{"statements":["For all individuals with migraine, cholesterol is at least 172 mg/dL.","For all individuals with BMI greater than 30, the diagnosis is either hypertension or arthritis.","For all smokers, systolic blood pressure is at least 113 mmHg.","For all non-smokers, diastolic blood pressure is at most 91 mmHg.","For all patients older than 60 years, systolic blood pressure is at least 143 mmHg.","For all patients with hypertension, diastolic blood pressure is at least 91 mmHg.","All patients have a body-mass index between 22 and 35.","For the sole patient with diabetes, the BMI is less than 23."]}

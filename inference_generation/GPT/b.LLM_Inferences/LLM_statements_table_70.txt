@@ -1,0 +1,111 @@
+analysisWe need to output JSON with "statements": list of 5-10 statements. Must be factual, non-redundant, tight bounds. Let's analyze data.
+
+We have 15 records. Fields: grade_level (9-12), study_hours_week (float), attendance_rate (%), test_score (0-100), club_member (yes/no).
+
+We need statements about patterns.
+
+Let's compute some observations.
+
+List data:
+
+1 S070001: grade 11, study 3.7, attendance 95.7, score 62, club yes
+2 S070002: 10, 11.2, 97.2, 92, no
+3 S070003: 10, 6.4, 98.8, 73, no
+4 S070004: 12, 6.2, 92.0, 88, yes
+5 S070005: 11, 3.2, 85.7, 70, no
+6 S070006: 11, 9.0, 92.6, 64, yes
+7 S070007: 11, 6.9, 90.0, 91, no
+8 S070008: 12, 4.3, 90.3, 89, yes
+9 S070009: 9, 10.9, 96.4, 85, yes
+10 S070010:9,12.0,91.6,68,no
+11 S070011:12,7.2,94.5,69,yes
+12 S070012:12,6.0,93.2,68,yes
+13 S070013:9,5.6,87.1,74,no
+14 S070014:9,4.3,90.6,93,no
+15 S070015:11,9.6,96.4,87,no
+
+Now derive statements.
+
+Potential universal claims? Not many universal across all.
+
+Conditional claims.
+
+Let's compute for club members vs non.
+
+Club yes: IDs 1,4,6,8,9,11,12 => 7 members.
+
+Their scores: 62,88,64,89,85,69,68. Average maybe low? Not needed.
+
+Observation: All club members have attendance >=90? Check each: 95.7,92.0,92.6,90.3,96.4,94.5,93.2 => yes all >=90. Non-club members: attendance rates: 97.2,98.8,85.7,90.0,91.6,87.1,90.6,96.4 (some >=90, some lower). So statement: For all students who are club members, attendance rate is at least 90%.
+
+Is that tight? Minimum attendance among club members is 90.3? Actually 90.3 (S070008). So "at least 90%" is true, but could be "at least 90.3%" but we want integer maybe. Keep "at least 90%" is fine but maybe we can be more precise: "at least 90%" is not too loose? Could there be a tighter bound like 90.3? Since we need natural language, we can say "at least 90%" is okay. But is there any non-club member with attendance >=90? Yes many, but statement is about club members only.
+
+Now another: All students with study_hours_week >= 10 have test_score >= 85? Let's check: study >=10: IDs 2 (11.2, score 92), 9 (10.9,85), 10 (12.0,68). Score 68 fails. So not true.
+
+Maybe: All students with attendance_rate >= 98 have test_score >= 73? Attendance >=98: IDs 2 (97.2 not), 3 (98.8, score 73). Only ID3 meets. So universal claim trivial.
+
+Maybe: All students with grade level 9 have study_hours_week >=4.3? Let's see grade 9: IDs 9 (10.9),10 (12.0),13 (5.6),14 (4.3). Minimum 4.3 yes. So "All 9th graders study at least 4.3 hours per week." Could be "at least 4 hours" but we want tight bound maybe 4.3. But 4.3 is exact min. So statement: All 9th-grade students study at least 4.3 hours per week.
+
+Now grade 12: study hours range? IDs 4 (6.2),8 (4.3),11 (7.2),12 (6.0). Minimum 4.3. So "All 12th graders study at least 4.3 hours per week." That's same bound as 9th grade, but still distinct condition.
+
+But redundancy? Not overlapping.
+
+Now maybe: All students with test_score >= 90 are either grade 10 or 11? Let's see scores >=90: IDs 2 (92, grade10),7 (91, grade11),14 (93, grade9). Actually ID14 grade9 score 93. So not true.
+
+Maybe: All students with test_score >= 90 are not club members? Check: ID2 (score92, club no), ID7 (91, club no), ID14 (93, club no). Yes all high scores are non-club. So statement: No club member has a test score of 90 or above. Equivalent: All students with test score at least 90 are not club members. That's a universal claim.
+
+Now maybe: All students with attendance_rate below 90 have test_score <=70? Let's see attendance <90: IDs 5 (85.7, score70),13 (87.1,74) fails (74 >70). So not.
+
+Maybe: All students with study_hours_week <=4 have test_score <= 70? Check <=4: IDs 1 (3.7,62),5 (3.2,70),8 (4.3 >4),13 (5.6 >4),14 (4.3 >4). So only 1 and5 satisfy. Both <=70 yes. So statement: All students who study 4 hours or less per week have test scores of 70 or below. That's true (only two). But is it non-trivial? Might be okay.
+
+Now majority/frequency: Most students have attendance_rate >= 90? Count attendance >=90: let's count. Values: 95.7,97.2,98.8,92.0,85.7,92.6,90.0,90.3,96.4,91.6,94.5,93.2,87.1,90.6,96.4. Those >=90: all except 85.7,87.1? Also 90.0 counts as >=90. So 13 out of 15 have >=90. That's majority. So statement: Most students have attendance rates of at least 90%.
+
+Now maybe: Most club members have test scores below 90. Club members scores: 62,88,64,89,85,69,68. All below 90, yes. So "All club members have test scores below 90." That's universal, stronger than majority. Already we have universal about club members attendance. This is another universal.
+
+Now maybe: All students with grade level 11 have study_hours_week >=3.2? Minimum among grade 11: IDs 1 (3.7),5 (3.2),6 (9.0),7 (6.9),15 (9.6). Minimum 3.2. So statement: All 11th graders study at least 3.2 hours per week.
+
+Now maybe: All students with grade level 10 have attendance >= 92? Grade 10 IDs 2 (97.2),3 (98.8). Both >=92 yes. So statement: All 10th graders have attendance rates of at least 92%.
+
+Now maybe: All students with study_hours_week >=9 have test_score >=64? Let's check: study >=9: IDs 2 (11.2,92),6 (9.0,64),9 (10.9,85),10 (12.0,68),15 (9.6,87). All scores >=64 yes. Minimum 64. So statement: All students who study at least 9 hours per week achieve test scores of at least 64.
+
+Now maybe: All students with test_score <=68 have attendance >=90? Scores <=68: IDs 1 (62,95.7),6 (64,92.6),10 (68,91.6),11 (69 not),12 (68,93.2). Actually 11 is 69 >68. So check: 1 attendance 95.7 >=90, 6 92.6 >=90, 10 91.6 >=90, 12 93.2 >=90. So true. So statement: All students with test scores of 68 or lower have attendance rates of at least 90%.
+
+Now need 5-10 statements. Let's pick 9 statements, ensuring non-redundancy.
+
+List candidate statements:
+
+1. All club members have attendance rates of at least 90%.
+2. No club member has a test score of 90 or above. (or All students with test score at least 90 are not club members)
+3. All 9th-grade students study at least 4.3 hours per week.
+4. All 10th graders have attendance rates of at least 92%.
+5. All 11th graders study at least 3.2 hours per week.
+6. All 12th graders study at least 4.3 hours per week. (maybe redundant with 9th grade but different grade)
+7. Most students have attendance rates of at least 90%.
+8. All students who study at least 9 hours per week achieve test scores of at least 64.
+9. All students with test scores of 68 or lower have attendance rates of at least 90%.
+
+Check redundancy: Statement 1 and 9 both about attendance >=90 but different condition. Not redundant.
+
+Statement 7 is majority claim overlapping with universal statements but not redundant.
+
+Now ensure each is tight: For 9th grade min 4.3, yes. Could we tighten to 4.3 exactly? It's min, so "at least 4.3" is tight.
+
+For 10th grade attendance min 92? Values 97.2,98.8, so min 97.2 actually. Wait grade 10 attendance: IDs 2 97.2, 3 98.8. Minimum 97.2. So "at least 92%" is true but not tight. Could we say "at least 97%"? That would be tighter. Since both >=97.2, we could say "at least 97%" (or 97.2). Use 97% maybe. But we need natural language. Let's use "at least 97%". That's tighter.
+
+Check 11th graders study min 3.2, yes.
+
+12th graders study min 4.3, same as 9th grade. Could we tighten? Minimum 4.3, yes.
+
+Now statement 8: study >=9 leads to score >=64. Minimum score among those is 64 (student 6). So "at least 64" is tight.
+
+Statement 9: test <=68 leads to attendance >=90. Minimum attendance among those is 91.6? Actually 1:95.7,6:92.6,10:91.6,12:93.2. Minimum 91.6. So we could say "at least 91.6%" but maybe "at least 91%" is okay but not tight. Use "at least 91%"? But we want tightest bound that still holds. The minimum is 91.6, so "at least 91.6%" is precise. Use "at least 91.6%". Might be okay.
+
+Now ensure no redundancy: Statement 1 says club members attendance >=90. Statement 9 says low scores attendance >=91.6, not overlapping.
+
+Now produce JSON with statements list.
+
+Make sure 5-10 statements, we have 9.
+
+Return JSON only.
+
+assistantfinal{"statements": ["All club members have attendance rates of at least 90%.", "No club member has a test score of 90 or above.", "All 9th-grade students study at least 4.3 hours per week.", "All 10th graders have attendance rates of at least 97%.", "All 11th graders study at least 3.2 hours per week.", "All 12th graders study at least 4.3 hours per week.", "Most students have attendance rates of at least 90%.", "All students who study at least 9 hours per week achieve test scores of at least 64.", "All students with test scores of 68 or lower have attendance rates of at least 91.6%."]}

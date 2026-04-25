@@ -1,0 +1,103 @@
+analysisWe need to produce JSON with "statements": list of 5-10 statements. Must be factual, non-redundant, tight bounds. Need to analyze data.
+
+Let's parse data.
+
+Rows:
+
+1. R093001, van, distance 236.9 km, avg_speed 55.1 kph, fuel_used 31.6 L, delay 10 min, weather rain
+2. R093002, truck, 200.6, 58.9, 11.5, 16, clear
+3. R093003, truck, 232.2, 51.9, 24.6, 11, rain
+4. R093004, bus, 111.4, 55.0, 47.4, 6, rain
+5. R093005, bus, 179.0, 55.3, 42.9, 13, rain
+6. R093006, bus, 202.9, 57.6, 36.2, 15, windy
+7. R093007, bus, 180.6, 56.8, 45.6, 28, rain
+8. R093008, truck, 111.6, 51.1, 12.5, 13, rain
+9. R093009, bus, 234.6, 57.0, 13.2, 13, windy
+10. R093010, bus, 197.6, 51.5, 33.8, 9, windy
+11. R093011, van, 122.5, 52.7, 37.7, 28, rain
+12. R093012, bus, 184.5, 57.4, 12.2, 3, windy
+13. R093013, van, 91.0, 64.8, 44.8, 18, windy
+14. R093014, truck, 173.3, 48.1, 37.1, 28, clear
+15. R093015, bus, 122.6, 55.5, 38.1, 11, windy
+
+We need statements about patterns.
+
+Let's compute some stats.
+
+Vehicle types: van (rows 1,11,13) = 3 entries. truck (2,3,8,14) = 4 entries. bus (4,5,6,7,9,10,12,15) = 8 entries.
+
+Average speed per type:
+
+- Van speeds: 55.1, 52.7, 64.8 => min 52.7, max 64.8.
+- Truck speeds: 58.9, 51.9, 51.1, 48.1 => min 48.1, max 58.9.
+- Bus speeds: 55.0,55.3,57.6,56.8,57.0,51.5,57.4,55.5 => min 51.5, max 57.6.
+
+Fuel used per distance maybe.
+
+Compute fuel efficiency (fuel per km) maybe.
+
+But statements need relationships between variables.
+
+Potential statements:
+
+1. All vans have average speed at least 52.7 kph. That's trivial but maybe we can say "All vans have average speed greater than 52 kph". But need tight bound: min is 52.7, so we can say "All vans have average speed ≥ 52.7 kph". That's precise.
+
+2. All trucks have average speed ≤ 58.9 kph (max). Could also say "All trucks have average speed ≤ 58.9 kph". That's true.
+
+3. All buses have average speed ≤ 57.6 kph (max). Could also say "All buses have average speed ≤ 57.6 kph". But maybe we can combine: "If vehicle is a bus, then average speed is between 51.5 and 57.6 kph". That's two bounds.
+
+But need non-redundant statements. Could have universal claim: "All buses have average speed less than 58 kph". Since max 57.6, that's true. But we could also say "All buses have average speed greater than 51 kph". Since min 51.5, that's true. Both are separate statements but maybe redundant? Not exactly; they give lower and upper bound. Acceptable.
+
+4. Relationship between delay and weather: maybe "All routes with rain have delay at most 28 minutes". Let's see max delay in rain rows: rows with rain: 1 (10),3 (11),4 (6),5 (13),7 (28),8 (13),11 (28). Max 28. So statement: "All rain-weather routes have delay ≤ 28 minutes". Could also say "All clear-weather routes have delay ≥ 16 minutes"? Clear rows: 2 (16),14 (28). So min 16, max 28. So "All clear-weather routes have delay at least 16 minutes". That's true.
+
+5. Relationship between distance and fuel used: maybe "All routes longer than 200 km use at least 12.5 L fuel". Let's check rows >200 km: rows 1 (236.9,31.6),3 (232.2,24.6),6 (202.9,36.2),7 (180.6 not >200),9 (234.6,13.2),10 (197.6 not >200),14 (173.3 not >200). Actually >200: 1,3,6,9. Fuel used: 31.6,24.6,36.2,13.2. Minimum 13.2. So statement: "All routes with distance greater than 200 km use at least 13.2 L fuel". That's precise.
+
+6. Maybe "All vans have fuel usage per km greater than 0.13 L/km"? Compute each van fuel per km: 31.6/236.9=0.1335, 37.7/122.5=0.3078, 44.8/91.0=0.4923. Minimum 0.1335. So "All vans have fuel consumption ≥ 0.13 L per km". Could also compare to trucks.
+
+7. Trucks fuel per km: compute: 11.5/200.6=0.0573, 24.6/232.2=0.1059, 12.5/111.6=0.1120, 37.1/173.3=0.2141. Minimum 0.0573. So "All trucks have fuel consumption ≤ 0.215 L per km". Not very insightful.
+
+Maybe relationship: "If vehicle is a bus and weather is windy, then delay is at most 15 minutes"? Let's check windy bus rows: rows 6 (delay 15),9 (13),10 (9),12 (3),15 (11). Max 15. So statement: "All windy-weather bus routes have delay ≤ 15 minutes". Good.
+
+8. "If vehicle is a bus and weather is rain, then delay is at least 6 minutes". Rain bus rows: 4 (6),5 (13),7 (28). Minimum 6. So "All rain-weather bus routes have delay ≥ 6 minutes". Good.
+
+9. "All routes with average speed above 60 kph are vans". Check speeds >60: only van 13 (64.8). So statement: "If average speed exceeds 60 kph, the vehicle type is van". That's interesting.
+
+10. "All routes with fuel used less than 15 L are buses". Check fuel <15: rows: 8 (12.5) truck, 9 (13.2) bus, 10 (33.8) not, 12 (12.2) bus, 15 (38.1) not, 3 (24.6) not, 4 (47.4) not, 5 (42.9) not, 6 (36.2) not, 7 (45.6) not, 1 (31.6) not, 2 (11.5) truck, 11 (37.7) not, 13 (44.8) not, 14 (37.1) not. So fuel <15 includes trucks (2,8) and buses (9,12). So not exclusive.
+
+Maybe "All routes with delay 28 minutes are either bus or van". Delay 28 appears rows 7 (bus),11 (van),14 (truck). Actually 14 is truck with delay 28. So not exclusive.
+
+Maybe "All routes with distance less than 100 km are vans". Only distance <100: row 13 (91.0) van. So statement: "If distance is under 100 km, the vehicle type is van". Good.
+
+Check any other unique patterns.
+
+Weather clear routes: rows 2 (truck),14 (truck). Both trucks. So "All clear-weather routes use a truck". Good.
+
+Windy routes: rows 6 (bus),9 (bus),10 (bus),12 (bus),13 (van). So not exclusive.
+
+Rain routes: many types.
+
+Now need 5-10 statements. Let's pick 9 statements maybe.
+
+Make sure non-redundant and tight.
+
+List statements:
+
+1. All vans have an average speed of at least 52.7 kph. (tight lower bound)
+2. All trucks have an average speed of at most 58.9 kph. (tight upper bound)
+3. All bus routes have an average speed between 51.5 and 57.6 kph. (both bounds)
+4. All clear-weather routes use a truck. (unique)
+5. If a route’s distance is under 100 km, the vehicle type is van. (unique)
+6. If average speed exceeds 60 kph, the vehicle type is van. (unique)
+7. All windy-weather bus routes have a delay of 15 minutes or less. (tight max)
+8. All rain-weather bus routes have a delay of at least 6 minutes. (tight min)
+9. All routes with distance greater than 200 km use at least 13.2 L of fuel. (tight min)
+
+Check redundancy: statements 1 and 3 overlap? 1 is about vans only, 3 about buses only, fine. Statement 2 about trucks only. Statement 4 about clear weather routes (both trucks) not overlapping. Statement 5 about distance <100 km (van) not overlapping. Statement 6 about speed >60 (van) not overlapping. Statement 7 about windy bus delay ≤15, distinct. Statement 8 about rain bus delay ≥6, distinct. Statement 9 about distance >200 fuel ≥13.2, distinct.
+
+All good.
+
+Now produce JSON with statements array.
+
+Need 5-10 statements, we have 9.
+
+Return JSON only.assistantfinal{"statements": ["All vans have an average speed of at least 52.7 kph.", "All trucks have an average speed of at most 58.9 kph.", "All bus routes have an average speed between 51.5 and 57.6 kph.", "All clear-weather routes use a truck.", "If a route’s distance is under 100 km, the vehicle type is van.", "If average speed exceeds 60 kph, the vehicle type is van.", "All windy-weather bus routes have a delay of 15 minutes or less.", "All rain-weather bus routes have a delay of at least 6 minutes.", "All routes with distance greater than 200 km use at least 13.2 L of fuel."]}

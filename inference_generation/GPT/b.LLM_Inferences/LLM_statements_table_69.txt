@@ -1,0 +1,125 @@
+analysisWe need to produce JSON with "statements": list of 5-10 statements. Must be factual, non-redundant, tight bounds. Let's analyze data.
+
+We have columns: employee_id, department, years_experience, monthly_salary_k, projects_active, performance_rating, remote_days_month.
+
+Let's list rows:
+
+1 E069001 engineering 7.1 yrs, salary 6.9k, projects 3, rating 3.7, remote 12
+2 E069002 finance 5.3, salary 7.7, proj 4, rating 4.8, remote 6
+3 E069003 engineering 3.5, salary 7.8, proj 3, rating 4.7, remote 12
+4 E069004 operations 8.9, salary 10.5, proj 6, rating 4.6, remote 5
+5 E069005 hr 6.3, salary 5.3, proj 3, rating 4.8, remote 11
+6 E069006 finance 4.6, salary 7.0, proj 5, rating 4.8, remote 13
+7 E069007 operations 9.8, salary 6.9, proj 4, rating 3.7, remote 5
+8 E069008 marketing 2.5, salary 9.0, proj 3, rating 4.1, remote 7
+9 E069009 marketing 12.3, salary 7.3, proj 2, rating 3.8, remote 11
+10 E069010 hr 1.5, salary 5.4, proj 6, rating 4.4, remote 11
+11 E069011 engineering 11.4, salary 5.1, proj 4, rating 4.5, remote 5
+12 E069012 engineering 11.6, salary 6.0, proj 3, rating 3.9, remote 9
+13 E069013 engineering 2.0, salary 9.9, proj 4, rating 4.8, remote 9
+14 E069014 finance 2.8, salary 7.8, proj 6, rating 4.0, remote 13
+15 E069015 engineering 2.1, salary 8.3, proj 2, rating 4.3, remote 7
+
+Now derive statements.
+
+We need 5-10 statements. Let's think of interesting patterns.
+
+Potential statements:
+
+- All engineering employees with monthly salary <=6.0k have performance rating <=4.0? Let's check engineering rows:
+
+Engineering rows: IDs 001 (6.9, rating 3.7), 003 (7.8, 4.7), 011 (5.1, 4.5), 012 (6.0, 3.9), 013 (9.9, 4.8), 015 (8.3, 4.3). Those with salary <=6.0 are 011 (5.1, rating 4.5) and 012 (6.0, rating 3.9). Rating 4.5 >4.0, so not true.
+
+Maybe: All engineering employees with years_experience >11 have monthly salary <=6.0? Check engineering with >11: 011 (11.4, salary5.1), 012 (11.6, salary6.0). Both <=6.0 yes. So statement: For all engineering employees with more than 11 years of experience, monthly salary is at most $6.0k. That's tight? Could we tighten salary bound to 5.1? Not all have <=5.1 because 012 is 6.0. So 6.0 is tight.
+
+- All finance employees have performance rating >=4.0? Finance rows: 002 rating4.8, 006 rating4.8, 014 rating4.0. Yes all >=4.0. Could we say >4.0? No because 014 is exactly 4.0, so >=4.0 is tight.
+
+- All operations employees have remote days <=5? Operations rows: 004 remote5, 007 remote5. Both 5. So remote days =5 exactly. So statement: All operations employees work remotely exactly 5 days per month. That's precise.
+
+- For all employees with performance rating >=4.8, monthly salary is at least 5.3k? Let's list rating >=4.8: IDs 002 (salary7.7), 005 (5.3), 006 (7.0), 013 (9.9). All salaries >=5.3 yes. Minimum is 5.3. Could we tighten to >5.3? No because 005 is exactly 5.3. So statement.
+
+- For all employees with remote days >=12, performance rating <=4.1? Remote >=12 rows: 001 rating3.7, 003 rating4.7 (oops 4.7 >4.1), 006 rating4.8, 014 rating4.0. So not true.
+
+- For all employees with projects_active =6, monthly salary <=7.7? Projects=6 rows: 004 salary10.5 (fails). So not.
+
+- For all marketing employees, years_experience <=12.3? That's trivial because only two rows, one 2.5, other 12.3. Could we say "All marketing employees have performance rating <=4.1"? Ratings: 008 rating4.1, 009 rating3.8. Yes both <=4.1. Could we tighten to <=4.0? No because 4.1 present. So statement.
+
+- For all HR employees, monthly salary <=5.4? HR rows: 005 salary5.3, 010 salary5.4. Both <=5.4. Could we tighten to <=5.3? No because 010 is 5.4. So statement.
+
+- For all employees with years_experience <3, monthly salary >=8.3? Let's check rows with years<3: 013 (2.0, salary9.9), 015 (2.1, salary8.3). Both >=8.3 yes. Minimum salary 8.3. Could we tighten to >8.3? No because 015 exactly 8.3. So statement.
+
+- For all employees with years_experience >10, performance rating <=4.5? Years>10 rows: 011 rating4.5, 012 rating3.9. Both <=4.5 yes. Could we tighten to <4.5? No because 011 is exactly 4.5. So statement.
+
+- For all employees with monthly salary >=9.0, projects_active <=4? Salary >=9.0 rows: 003 salary7.8 no, 004 10.5 (proj6) fails, 008 9.0 (proj3) ok, 009 7.3 no, 013 9.9 (proj4) ok, 015 8.3 no. So not.
+
+- For all finance employees, remote days are either 6,13,13? Actually finance rows: 002 remote6, 006 remote13, 014 remote13. So remote days >=6. Could we say "All finance employees have remote days >=6"? Yes. Could we tighten to >6? No because 002 is 6. So statement.
+
+- For all engineering employees, projects_active is at most 4? Engineering rows: projects: 001 3, 003 3, 011 4, 012 3, 013 4, 015 2. Max 4. So statement: All engineering employees are assigned to no more than 4 active projects.
+
+- For all employees with performance rating >=4.5, years_experience >=3.5? Let's list rating >=4.5: IDs 002 (5.3), 003 (4.7, years3.5), 005 (4.8,6.3), 006 (4.8,4.6), 011 (4.5,11.4), 013 (4.8,2.0) -> 013 years 2.0 <3.5, so fails.
+
+- For all employees with projects_active =2, monthly salary >=7.3? Projects=2 rows: 009 salary7.3, 015 salary8.3. Both >=7.3 yes. Minimum 7.3. Could we tighten to >7.3? No because 009 exactly 7.3. So statement.
+
+- For all employees with remote_days_month <=5, performance rating >=4.5? Remote <=5 rows: 004 rating4.6, 007 rating3.7. So fails.
+
+- For all employees with years_experience between 5 and 8 inclusive, monthly salary between 6.0 and 7.9? Let's check: rows with years 5-8: 001 (7.1,6.9), 002 (5.3,7.7), 004 (8.9 >8 not), 005 (6.3,5.3) salary 5.3 not in range, 006 (4.6 not), 007 (9.8 not). So not.
+
+We need 5-10 statements. Let's pick distinct ones, ensure non-redundant.
+
+List candidate statements:
+
+1. For all engineering employees with more than 11 years of experience, monthly salary is at most $6.0k. (tight)
+
+2. All finance employees have a performance rating of at least 4.0. (tight)
+
+3. All operations employees work remotely exactly 5 days per month. (tight)
+
+4. Every employee with a performance rating of 4.8 or higher earns a monthly salary of at least $5.3k. (tight)
+
+5. All marketing employees have a performance rating of no more than 4.1. (tight)
+
+6. All HR employees receive a monthly salary of no more than $5.4k. (tight)
+
+7. All employees with less than 3 years of experience earn a monthly salary of at least $8.3k. (tight)
+
+8. All employees with more than 10 years of experience have a performance rating of at most 4.5. (tight)
+
+9. All engineering employees are assigned to no more than 4 active projects. (tight)
+
+10. All employees with exactly 2 active projects earn a monthly salary of at least $7.3k. (tight)
+
+Check redundancy: Are any statements overlapping? They are distinct.
+
+Now ensure each is factual.
+
+Check statement 7: less than 3 years experience rows: IDs 013 (2.0, salary9.9), 015 (2.1, salary8.3). Both >=8.3 yes. Good.
+
+Statement 10: exactly 2 active projects rows: IDs 009 (salary7.3), 015 (salary8.3). Both >=7.3 yes. Good.
+
+Now ensure no statement can be tightened further.
+
+1: engineering >11 years: salaries 5.1 and 6.0. Max 6.0, min 5.1. Could we say at most 5.1? No because 6.0 >5.1. So 6.0 is tight.
+
+2: finance rating >=4.0, min rating 4.0 (ID014). So >=4.0 is tight.
+
+3: operations remote exactly 5 days. Yes all have 5, cannot tighten further.
+
+4: rating >=4.8, salaries: 7.7,5.3,7.0,9.9. Minimum 5.3. Could we say at least 5.3? That's what we have. Could we tighten to >5.3? No because 5.3 present. So tight.
+
+5: marketing rating <=4.1, max rating 4.1 (ID008). So <=4.1 is tight.
+
+6: HR salary <=5.4, max salary 5.4 (ID010). So tight.
+
+7: less than 3 years salary >=8.3, min salary 8.3 (ID015). So tight.
+
+8: >10 years rating <=4.5, max rating 4.5 (ID011). So tight.
+
+9: engineering projects <=4, max 4 (IDs 011,013). So tight.
+
+10: projects=2 salary >=7.3, min salary 7.3 (ID009). So tight.
+
+All good.
+
+Now produce JSON with statements array. Ensure 5-10 statements, we have 10. Provide exactly JSON object.
+
+No extra text.assistantfinal{"statements": ["For all engineering employees with more than 11 years of experience, monthly salary is at most $6.0k.", "All finance employees have a performance rating of at least 4.0.", "All operations employees work remotely exactly 5 days per month.", "Every employee with a performance rating of 4.8 or higher earns a monthly salary of at least $5.3k.", "All marketing employees have a performance rating of no more than 4.1.", "All HR employees receive a monthly salary of no more than $5.4k.", "All employees with less than 3 years of experience earn a monthly salary of at least $8.3k.", "All employees with more than 10 years of experience have a performance rating of at most 4.5.", "All engineering employees are assigned to no more than 4 active projects.", "All employees with exactly 2 active projects earn a monthly salary of at least $7.3k."]}

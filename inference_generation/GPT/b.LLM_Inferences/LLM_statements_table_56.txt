@@ -1,0 +1,78 @@
+analysisWe need to output JSON with "statements": list of 5-10 statements. Must be factual, non-redundant, tightest bounds. Let's analyze data.
+
+We have 15 players.
+
+Fields: position, age, games_played, minutes_per_game, points_per_game, assists_per_game, rebounds_per_game.
+
+Let's list each row:
+
+1 PL056001 center age23 mpg24.8 pts24.4 ast7.7 reb10.8
+2 PL056002 forward age31 mpg34.4 pts23.8 ast4.0 reb10.0
+3 PL056003 center age31 mpg32.6 pts16.4 ast7.4 reb8.1
+4 PL056004 center age28 mpg34.5 pts22.3 ast4.6 reb7.1
+5 PL056005 guard age34 mpg30.2 pts16.4 ast6.1 reb8.0
+6 PL056006 center age32 mpg35.6 pts13.3 ast4.1 reb11.0
+7 PL056007 forward age27 mpg29.1 pts19.7 ast1.6 reb7.7
+8 PL056008 guard age27 mpg29.4 pts21.3 ast1.9 reb10.0
+9 PL056009 center age28 mpg28.7 pts15.4 ast1.4 reb7.1
+10 PL056010 center age34 mpg34.6 pts11.9 ast3.3 reb8.8
+11 PL056011 center age32 mpg32.6 pts12.4 ast2.0 reb7.0
+12 PL056012 forward age21 mpg32.5 pts21.4 ast7.6 reb8.5
+13 PL056013 guard age26 mpg28.6 pts22.0 ast7.2 reb8.1
+14 PL056014 center age33 mpg25.9 pts12.7 ast6.3 reb3.5
+15 PL056015 forward age24 mpg27.5 pts13.2 ast7.1 reb11.6
+
+Now derive statements.
+
+We need 5-10 statements.
+
+Potential statements:
+
+- All centers have rebounds per game at least 3.5 (lowest is 3.5). But that's trivial maybe. Could be "All centers have rebounds per game >= 3.5". But maybe we can be more specific: The minimum rebounds among centers is 3.5 (player 14). So statement: For all players with position center, rebounds per game are at least 3.5. That's true.
+
+- All forwards have assists per game at least 1.6? Let's check forwards: rows 2 (4.0), 7 (1.6), 12 (7.6), 15 (7.1). Minimum 1.6. So statement: For all forwards, assists per game >= 1.6.
+
+- All guards have points per game >=16.4? Guards: rows 5 (16.4), 8 (21.3), 13 (22.0). Minimum 16.4. So statement: For all guards, points per game >=16.4.
+
+- Players aged 30 or older have minutes per game at least 25.9? Let's check ages >=30: rows 2 age31 mpg34.4, 3 age31 mpg32.6, 4 age28 not, 5 age34 mpg30.2, 6 age32 mpg35.6, 10 age34 mpg34.6, 11 age32 mpg32.6, 14 age33 mpg25.9, 1 age23 not, 7 age27 not, 8 age27 not, 9 age28 not, 12 age21 not, 13 age26 not, 15 age24 not. Minimum mpg among >=30 is 25.9 (player 14). So statement: For all players aged 30 or older, minutes per game are at least 25.9.
+
+- All players with minutes per game >34 have points per game >=11.9? Let's see mpg >34: rows 2 (34.4) pts23.8, 4 (34.5) pts22.3, 6 (35.6) pts13.3, 10 (34.6) pts11.9. Minimum pts among those is 11.9. So statement: For all players with minutes per game greater than 34, points per game are at least 11.9.
+
+- All players with points per game >=22 have rebounds per game at least 7.1? Let's check pts >=22: rows 1 24.4 reb10.8, 2 23.8 reb10.0, 4 22.3 reb7.1, 8 21.3 not, 12 21.4 not, 13 22.0 reb8.1. So among >=22, minimum reb is 7.1 (player 4). So statement: For all players with points per game at least 22, rebounds per game are at least 7.1.
+
+- All players with assists per game >=7 have points per game at least 13.2? Let's check ast >=7: rows 1 7.7 pts24.4, 3 7.4 pts16.4, 5 6.1 not, 7 1.6 not, 8 1.9 not, 9 1.4 not, 10 3.3 not, 11 2.0 not, 12 7.6 pts21.4, 13 7.2 pts22.0, 14 6.3 not, 15 7.1 pts13.2. Minimum pts among ast>=7 is 13.2 (player 15). So statement: For all players with assists per game at least 7, points per game are at least 13.2.
+
+- Most players (maybe majority) have rebounds per game >=7? Let's count: rebounds >=7: list each: 1 10.8 yes,2 10.0 yes,3 8.1 yes,4 7.1 yes,5 8.0 yes,6 11.0 yes,7 7.7 yes,8 10.0 yes,9 7.1 yes,10 8.8 yes,11 7.0 yes,12 8.5 yes,13 8.1 yes,14 3.5 no,15 11.6 yes. So 14 out of 15 have >=7. So majority. Statement: Most players have rebounds per game of at least 7.
+
+- All players younger than 25 have points per game at least 21? Let's check age <25: rows 1 age23 pts24.4, 12 age21 pts21.4, 15 age24 not <25, 13 age26 not, etc. So only 1 and 12. Minimum pts is 21.4. So statement: For all players younger than 25, points per game are at least 21.4. But that's specific; maybe we can say "All players younger than 25 have points per game greater than 21". That's true. But is it non-redundant? Might be okay.
+
+- All players with games_played >=70 have minutes per game at least 32.5? Let's check games_played >=70: rows 2 68 not, 3 70 mpg32.6, 4 78 mpg34.5, 6 78 mpg35.6, 8 78 mpg29.4 (games 78), 12 74 mpg32.5, 13 75 mpg28.6. Minimum mpg among those is 28.6 (player 13). So statement: For all players with games played at least 70, minutes per game are at least 28.6. Could be.
+
+But need 5-10 statements, each distinct, non-redundant, tightest bound.
+
+Let's pick 8 statements.
+
+We must ensure no redundancy: e.g., "All centers have rebounds >=3.5" and "All players have rebounds >=3.5" would be redundant; we only have the first.
+
+Check each statement for tightness: For each condition, we use the minimum observed value as bound; ensure no looser bound already present.
+
+Now craft statements in natural language.
+
+List:
+
+1. For all players whose position is center, rebounds per game are at least 3.5.
+2. For all players whose position is forward, assists per game are at least 1.6.
+3. For all players whose position is guard, points per game are at least 16.4.
+4. For all players aged 30 years or older, minutes per game are at least 25.9.
+5. For all players with minutes per game greater than 34, points per game are at least 11.9.
+6. For all players with points per game of at least 22, rebounds per game are at least 7.1.
+7. For all players with assists per game of at least 7, points per game are at least 13.2.
+8. Most players have rebounds per game of at least 7.
+
+Check redundancy: Statement 1 and 6 both talk about rebounds but different conditions, fine. Statement 5 and 4 both about minutes but different conditions. Statement 8 is majority claim, not overlapping.
+
+All statements are factual.
+
+Now produce JSON.
+
+assistantfinal json{"statements":["For all players whose position is center, rebounds per game are at least 3.5.","For all players whose position is forward, assists per game are at least 1.6.","For all players whose position is guard, points per game are at least 16.4.","For all players aged 30 years or older, minutes per game are at least 25.9.","For all players with minutes per game greater than 34, points per game are at least 11.9.","For all players with points per game of at least 22, rebounds per game are at least 7.1.","For all players with assists per game of at least 7, points per game are at least 13.2.","Most players have rebounds per game of at least 7."]}

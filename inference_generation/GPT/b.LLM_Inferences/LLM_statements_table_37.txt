@@ -1,0 +1,109 @@
+analysisWe need to produce JSON with key "statements": list of strings. Must be 5-10 statements. Must be factual, non-redundant, tightest bounds. Need to analyze data.
+
+Let's parse rows:
+
+Columns: sensor_id, zone, avg_temp_c, avg_humidity, pm25, noise_db, foot_traffic, power_use_kwh
+
+Rows:
+
+1 SN037001 industrial 22.5 64.3 16.2 74.8 983 256.1
+2 SN037002 park 27.3 57.7 13.7 50.9 1233 310.7
+3 SN037003 downtown 24.6 61.6 31.5 53.5 998 213.5
+4 SN037004 downtown 24.4 55.4 15.4 51.7 987 200.8
+5 SN037005 residential 22.0 58.8 14.3 42.0 1247 336.6
+6 SN037006 industrial 26.3 61.5 35.9 49.3 1277 249.6
+7 SN037007 downtown 25.2 67.9 30.8 52.4 875 345.3
+8 SN037008 park 27.8 61.8 22.0 70.4 790 211.9
+9 SN037009 park 21.5 53.9 30.5 67.5 794 434.0
+10 SN037010 residential 25.7 53.2 13.9 71.4 1281 380.0
+11 SN037011 residential 23.5 60.1 20.7 44.2 529 406.6
+12 SN037012 downtown 24.3 52.7 10.9 64.5 1031 252.5
+13 SN037013 industrial 21.6 52.8 19.2 60.5 1358 160.7
+14 SN037014 industrial 26.7 58.3 25.5 46.4 538 113.6
+15 SN037015 residential 22.2 63.7 23.9 45.7 600 156.0
+
+We need statements about patterns.
+
+Let's compute per zone stats.
+
+Zones: industrial (rows 1,6,13,14) = 4 sensors.
+Park (2,8,9) = 3 sensors.
+Downtown (3,4,7,12) = 4 sensors.
+Residential (5,10,11,15) = 4 sensors.
+
+We can note relationships like: In industrial zones, average temperature ranges 21.6-26.7, humidity 52.8-64.3, pm25 16.2-35.9, noise 46.4-74.8, foot traffic 538-1358, power use 113.6-256.1.
+
+But need statements that are non-redundant and tight.
+
+Potential statements:
+
+1. All industrial sensors have average temperature at most 26.7°C. (tightest upper bound). Also lower bound 21.6. Could say "All industrial sensors have avg_temp_c between 21.6 and 26.7". That's a universal claim.
+
+2. All park sensors have avg_noise_db less than or equal to 71.4? Actually park rows: noise 50.9,70.4,67.5. Max 70.4? Wait 71.4 is residential. So max 70.4. So statement: All park sensors have noise <=70.4 dB. Also min 50.9.
+
+3. For downtown sensors, pm25 is at least 10.9 and at most 31.5. Could state "All downtown sensors have pm25 ≤31.5". But maybe more interesting: "If a sensor is downtown, its foot traffic is at most 1031". Actually foot traffic values: 998,987,875,1031. Max 1031. So statement: All downtown sensors have foot traffic ≤1031.
+
+4. Residential sensors have power_use_kwh at least 156.0 and at most 380.0. Could say "All residential sensors have power_use_kwh ≥156.0". But maybe more interesting: "All residential sensors have avg_noise_db ≤71.4". Actually residential noise values: 42.0,71.4,44.2,45.7. Max 71.4. So statement: All residential sensors have noise ≤71.4.
+
+But need non-redundant and high-information.
+
+Conditional statements:
+
+- If avg_temp_c > 26°C, then zone is either industrial or park. Let's check sensors with temp >26: rows 6 (26.3 industrial), 8 (27.8 park), 2 (27.3 park), 14 (26.7 industrial). All are industrial or park. No downtown or residential >26. So statement: All sensors with avg_temp_c >26°C are located in industrial or park zones.
+
+- If pm25 ≥30, then zone is either downtown or park. Check pm25 >=30: rows 3 (31.5 downtown), 7 (30.8 downtown), 9 (30.5 park), 6 (35.9 industrial) also >=30. So includes industrial. So not exclusive.
+
+Maybe: If noise_db ≥70, then zone is either park or residential. Noise >=70: rows 1 (74.8 industrial), 8 (70.4 park), 9 (67.5 not >=70), 10 (71.4 residential). Actually 1 is industrial with 74.8. So not exclusive.
+
+Better: If foot_traffic >1300, then zone is industrial or residential? Let's see foot traffic >1300: rows 2 (1233 not >1300), 5 (1247),6 (1277),8 (790),9 (794),10 (1281),13 (1358),14 (538),15 (600). >1300: rows 13 (1358 industrial), 10 (1281 residential) is not >1300, it's 1281 <1300. So only 13. Also maybe 6 is 1277 <1300. So only industrial sensor 13. So statement: There exists an industrial sensor with foot traffic exceeding 1300, and no other zone reaches that level. Could phrase: The only sensor with foot traffic above 1300 is in the industrial zone.
+
+That's an existential with insight.
+
+Majority/frequency: "Most sensors have avg_humidity between 52.8 and 64.3". Let's compute count: humidity values list: 64.3,57.7,61.6,55.4,58.8,61.5,67.9,61.8,53.9,53.2,60.1,52.7,52.8,58.3,63.7. Range 52.8-64.3 includes all except maybe 67.9 (row7) and maybe 64.3 inclusive. So 13 out of 15 are within 52.8-64.3. That's majority. So statement: Most sensors (13 of 15) have avg_humidity between 52.8% and 64.3%.
+
+But need 5-10 statements. Let's craft 8 statements.
+
+Need to ensure non-redundancy: each statement must be tightest bound.
+
+Let's list statements:
+
+1. All industrial sensors have average temperature between 21.6°C and 26.7°C.
+2. All park sensors have average noise level no greater than 70.4 dB.
+3. All downtown sensors have foot traffic of at most 1031 persons.
+4. All residential sensors have power consumption of at least 156.0 kWh.
+5. Any sensor with average temperature above 26°C is located in either the industrial or park zone.
+6. The only sensor with foot traffic exceeding 1300 is in the industrial zone (sensor SN037013 with 1358 foot traffic).
+7. Most sensors (13 out of 15) have average humidity between 52.8% and 64.3%.
+8. For sensors where pm25 is below 15, the zone is either industrial or residential. Let's verify: pm25 <15 rows: 1 (16.2 no), 2 (13.7 park),4 (15.4 no),5 (14.3 residential),8 (22.0 no),10 (13.9 residential),12 (10.9 downtown),13 (19.2 no),14 (25.5 no),15 (23.9 no). Actually pm25 <15 includes rows 2 (park),5 (residential),10 (residential),12 (downtown). So includes downtown. So not exclusive.
+
+Maybe another conditional: If avg_noise_db ≤45 dB, then zone is residential or industrial? Noise ≤45: rows 5 (42.0 residential),11 (44.2 residential),14 (46.4 >45),15 (45.7 >45). So only residential. Also row? 1 74.8,2 50.9,3 53.5,4 51.7,6 49.3,7 52.4,8 70.4,9 67.5,10 71.4,12 64.5,13 60.5. So only residential sensors have noise ≤45. So statement: All sensors with noise ≤45 dB are in the residential zone.
+
+That's a universal conditional.
+
+Let's ensure tightness: noise ≤45 dB max among residential is 45.7 >45, but we used ≤45, which includes only rows 5 and 11. That's still true but maybe not tightest because there is no residential sensor with noise between 45 and 45.7? Actually row15 has 45.7 >45, so not included. So statement is true but could be tightened to ≤44.2? Actually max noise among those ≤45 is 44.2 (row11). So we could say "All sensors with noise ≤44.2 dB are residential". That's tighter. But we need tightest bound that still holds. The maximum noise among residential sensors is 71.4, but we are focusing on low noise. The highest noise that still only appears in residential is 44.2 (row11). Row5 is 42.0 also residential. No other zone has noise ≤44.2. So statement: All sensors with noise ≤44.2 dB are in the residential zone. That's tight.
+
+Let's include that.
+
+Now we have 8 statements.
+
+Check redundancy: Statement 4 about residential power >=156.0 kWh. Is there any other statement about residential power? No.
+
+Statement 2 about park noise ≤70.4 dB. Could there be a tighter bound? Max park noise is 70.4, so that's tight.
+
+Statement 3 about downtown foot traffic ≤1031, max is 1031, tight.
+
+Statement 1 about industrial temperature range 21.6-26.7, tight.
+
+Statement 5 about temp >26°C zone industrial or park. That's derived from data; check any sensor with temp >26 not in those zones? Row6 26.3 industrial, row8 27.8 park, row2 27.3 park, row14 26.7 industrial. So true. Tight? Could we say >26.5? That would be only park sensors maybe. But we keep >26.
+
+Statement 6 about foot traffic >1300 only industrial. That's true; only row13. Tight.
+
+Statement 7 about humidity majority. That's fine.
+
+Statement 8 about noise ≤44.2 dB residential. That's tight.
+
+All good.
+
+Now produce JSON.
+
+assistantfinal JSON{"statements": ["All industrial sensors have average temperature between 21.6°C and 26.7°C.", "All park sensors have average noise level no greater than 70.4 dB.", "All downtown sensors have foot traffic of at most 1031 persons.", "All residential sensors have power consumption of at least 156.0 kWh.", "Any sensor with average temperature above 26°C is located in either the industrial or park zone.", "The only sensor with foot traffic exceeding 1300 is in the industrial zone (sensor SN037013 with 1358 foot traffic).", "Most sensors (13 out of 15) have average humidity between 52.8% and 64.3%.", "All sensors with noise ≤44.2 dB are in the residential zone."]}

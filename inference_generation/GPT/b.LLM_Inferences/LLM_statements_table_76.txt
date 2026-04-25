@@ -1,0 +1,101 @@
+analysisWe need to output JSON with "statements": list of 5-10 statements. Must be factual, non-redundant, tightest bounds. Let's analyze data.
+
+We have 15 players.
+
+Fields: position (forward, center, guard), age, games_played, minutes_per_game, points_per_game, assists_per_game, rebounds_per_game.
+
+We need statements about patterns.
+
+Let's compute some observations.
+
+First, list each player:
+
+1 PL076001 forward age20 mpg 28.3 pts21.1 ast4.4 reb7.4
+2 PL076002 center age33 mpg25.5 pts11.9 ast6.9 reb4.6
+3 PL076003 guard age31 mpg33.9 pts18.9 ast5.6 reb4.9
+4 PL076004 guard age28 mpg26.2 pts24.3 ast2.8 reb7.5
+5 PL076005 guard age34 mpg24.3 pts20.7 ast5.7 reb6.5
+6 PL076006 center age34 mpg34.0 pts12.8 ast1.7 reb10.5
+7 PL076007 center age27 mpg31.5 pts14.5 ast5.5 reb6.0
+8 PL076008 guard age30 mpg35.4 pts15.4 ast6.0 reb9.6
+9 PL076009 center age22 mpg34.4 pts22.5 ast3.1 reb10.2
+10 PL076010 center age21 mpg35.4 pts16.2 ast3.8 reb4.6
+11 PL076011 forward age21 mpg34.2 pts12.9 ast6.3 reb5.6
+12 PL076012 center age22 mpg27.6 pts22.5 ast6.1 reb11.3
+13 PL076013 center age29 mpg28.3 pts11.9 ast3.6 reb4.8
+14 PL076014 forward age34 mpg29.7 pts18.9 ast4.0 reb9.8
+15 PL076015 forward age29 mpg29.2 pts16.9 ast1.5 reb6.1
+
+Now derive statements.
+
+Potential universal claims:
+
+- All centers have rebounds per game >=4.6? Let's check centers: IDs 2 (4.6),6 (10.5),7 (6.0),9 (10.2),10 (4.6),12 (11.3),13 (4.8). Minimum 4.6. So "All centers have rebounds per game at least 4.6". Could we tighten to 4.8? No because two have 4.6. So 4.6 is tight.
+
+- All guards have minutes per game >=24.3? Guard minutes: 33.9,26.2,24.3,35.4. Minimum 24.3. So "All guards play at least 24.3 minutes per game". Could we tighten to 26.2? No because one guard has 24.3.
+
+- All forwards have points per game <=21.1? Forwards points: 21.1,12.9,18.9,16.9. Max 21.1. So "All forwards score at most 21.1 points per game". Could we tighten to 18.9? No because one forward has 21.1.
+
+- All players aged <=22 have rebounds per game >=9.6? Let's see ages <=22: players age20 (reb7.4), age22 (reb10.2), age21 (reb4.6), age21 (reb5.6), age22 (reb11.3). Not all >=9.6. So not.
+
+Conditional claims:
+
+- If a player is a center and age <=22, then rebounds per game >=10.2? Check centers age <=22: IDs 9 age22 reb10.2, 10 age21 reb4.6, 12 age22 reb11.3. Not all >=10.2 because 10 has 4.6. So not.
+
+- If a player is a guard and points per game >=24, then rebounds per game >=7.5? Guard with pts >=24: only PL076004 (pts24.3, reb7.5). So condition holds (7.5). Could we state "If a guard scores at least 24 points per game, they have at least 7.5 rebounds per game". That's true and interesting.
+
+- If a player is a forward and age >=34, then minutes per game >=29.7? Forwards age34: PL076001 age20 not, PL076014 age34 mpg29.7, PL076015 age29 not, PL076011 age21 not. So only forward age34 has mpg29.7. So condition holds but only one instance; maybe too specific? But condition is forward age >=34 includes ages 34 and 34 (two forwards age34? Actually PL076001 age20, PL076014 age34, PL076015 age29). So only one forward meets age>=34. That's not many but condition may be okay? Might be considered overly specific (applies to 1). Avoid statements that apply to 1-2 individuals. So skip.
+
+- If a player is a center and minutes per game >=34, then rebounds per game >=10.2? Centers with mpg >=34: PL076006 mpg34.0 reb10.5, PL076009 mpg34.4 reb10.2, PL076010 mpg35.4 reb4.6. The last fails (reb4.6). So not.
+
+- If a player is a guard and assists per game >=6, then minutes per game >=35.4? Guards with ast >=6: PL076003 ast5.6 no, PL076004 2.8, PL076005 5.7, PL076008 6.0. Only PL076008 meets ast>=6, minutes 35.4. So condition holds but only one guard. Might be okay but maybe too specific.
+
+- If a player is a center and rebounds per game >=10, then points per game <=12.8? Centers with reb >=10: PL076006 reb10.5 pts12.8, PL076009 reb10.2 pts22.5 (fails), PL076012 reb11.3 pts22.5 (fails). So not.
+
+- If a player is a forward and assists per game >=4, then points per game >=16.9? Forwards with ast >=4: PL076001 ast4.4 pts21.1, PL076011 ast6.3 pts12.9 (fails), PL076014 ast4.0 pts18.9 (>=16.9). So not universal.
+
+Majority/frequency claims: "Most players have minutes per game above 25". Let's count: minutes per game list: 28.3,25.5,33.9,26.2,24.3,34.0,31.5,35.4,34.4,35.4,34.2,27.6,28.3,29.7,29.2. How many >25? All except maybe 24.3 (player 5). So 14 out of 15 >25. So "Most players average more than 25 minutes per game". That's valid.
+
+Another: "Most centers have rebounds per game at least 4.6" but that's universal already.
+
+"Most players have points per game above 12". Let's count points >12: list: 21.1,11.9,18.9,24.3,20.7,12.8,14.5,15.4,22.5,16.2,12.9,22.5,11.9,18.9,16.9. Those <=12: none? Actually 11.9 two centers, 12.8 >12, 12.9 >12. So only two are <=12 (11.9). So 13/15 >12. So "Most players score more than 12 points per game". Good.
+
+Existential statements: "There exists at least one guard who averages at least 9.6 rebounds per game." Guard with reb 9.6 is PL076008 (9.6). Also PL076004 7.5, PL076005 6.5. So true.
+
+"There exists at least one center with assists per game greater than 6." Centers with ast >6: PL076002 ast6.9, PL076012 ast6.1. So yes.
+
+"There exists at least one forward with rebounds per game above 9." Forwards: PL076001 7.4, PL076011 5.6, PL076014 9.8, PL076015 6.1. So PL076014 has 9.8 >9. So statement.
+
+Now ensure non-redundancy and tightest bounds.
+
+List statements we can include (5-10). Let's craft 8 statements.
+
+1. All centers have at least 4.6 rebounds per game. (tight bound)
+
+2. All guards play at least 24.3 minutes per game. (tight)
+
+3. All forwards score at most 21.1 points per game. (tight)
+
+4. Most players average more than 25 minutes per game. (majority)
+
+5. Most players score more than 12 points per game. (majority)
+
+6. If a guard scores at least 24 points per game, then they have at least 7.5 rebounds per game. (conditional)
+
+7. There exists at least one guard who averages at least 9.6 rebounds per game. (existential)
+
+8. There exists at least one center with assists per game greater than 6. (existential)
+
+Check redundancy: statements 4 and 5 are distinct. Statement 1 universal about centers rebounds; statement 2 about guards minutes; statement 3 about forwards points. No overlap.
+
+Existential statements not covered by universals.
+
+All good.
+
+Now produce JSON with statements array.
+
+Make sure each statement is a string.
+
+Return exactly JSON object.
+
+assistantfinal{"statements": ["All centers have at least 4.6 rebounds per game.", "All guards play at least 24.3 minutes per game.", "All forwards score at most 21.1 points per game.", "Most players average more than 25 minutes per game.", "Most players score more than 12 points per game.", "If a guard scores at least 24 points per game, then they have at least 7.5 rebounds per game.", "There exists at least one guard who averages at least 9.6 rebounds per game.", "There exists at least one center with assists per game greater than 6."]}

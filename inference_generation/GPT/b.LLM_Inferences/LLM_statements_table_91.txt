@@ -1,0 +1,131 @@
+analysisWe need to output JSON with "statements": list of 5-10 statements. Must be factual, non-redundant, tight bounds. Let's analyze data.
+
+We have 15 patients.
+
+Fields: diagnosis, age, bp_systolic, bp_diastolic, cholesterol, bmi, smoker.
+
+Let's list each:
+
+1 PT091001 arthritis age67 bp_sys135 dia85 chol216 bmi33.5 smoker no
+2 PT091002 asthma age45 bp_sys143 dia79 chol240 bmi21.5 smoker yes
+3 PT091003 hypertension age45 bp_sys148 dia75 chol189 bmi31.2 smoker no
+4 PT091004 asthma age53 bp_sys143 dia90 chol212 bmi30.3 smoker no
+5 PT091005 migraine age68 bp_sys127 dia77 chol226 bmi21.0 smoker no
+6 PT091006 hypertension age65 bp_sys154 dia90 chol183 bmi24.2 smoker no
+7 PT091007 diabetes age37 bp_sys127 dia89 chol239 bmi33.8 smoker yes
+8 PT091008 hypertension age28 bp_sys117 dia90 chol214 bmi26.1 smoker yes
+9 PT091009 arthritis age33 bp_sys139 dia75 chol219 bmi24.0 smoker no
+10 PT091010 arthritis age55 bp_sys154 dia98 chol213 bmi28.7 smoker no
+11 PT091011 hypertension age27 bp_sys152 dia88 chol209 bmi31.9 smoker no
+12 PT091012 diabetes age68 bp_sys137 dia92 chol204 bmi20.6 smoker yes
+13 PT091013 migraine age21 bp_sys118 dia72 chol218 bmi27.8 smoker no
+14 PT091014 migraine age31 bp_sys123 dia81 chol188 bmi30.4 smoker yes
+15 PT091015 migraine age32 bp_sys144 dia73 chol222 bmi28.4 smoker yes
+
+Now derive statements.
+
+We need 5-10 statements. Let's think of interesting patterns.
+
+Potential statements:
+
+- All patients with diagnosis of arthritis have systolic BP ≤ 154? Let's check: arthritis ages 67 (135),33 (139),55 (154). Max 154, yes. But also hypertension patients have 154 as well. But statement about arthritis: "All arthritis patients have systolic blood pressure ≤ 154 mmHg." That's true. Could we tighten? The max is 154, but also 135,139. So bound 154 is tight because one has 154. So statement okay.
+
+- All patients with BMI > 30 have cholesterol ≥ 188? Let's check BMI >30: patient1 33.5 chol216, patient3 31.2 chol189, patient7 33.8 chol239, patient11 31.9 chol209. All >=188 yes. Minimum cholesterol among them is 189 (patient3). So we could say "All patients with BMI greater than 30 have cholesterol at least 189 mg/dL." That's tighter. Check if any BMI >30 with cholesterol 188? No. So statement.
+
+- All smokers have diagnosis either asthma, diabetes, or migraine? Let's list smokers: PT091002 asthma, PT091007 diabetes, PT091008 hypertension, PT091012 diabetes, PT091014 migraine, PT091015 migraine. So includes hypertension as well. So not true.
+
+- All patients with diastolic BP ≥ 90 have diagnosis hypertension or arthritis? Let's list diastolic >=90: patient4 asthma 90, patient6 hypertension 90, patient8 hypertension 90, patient10 arthritis 98, patient11 hypertension 88 (no), patient12 diabetes 92, patient7 diabetes 89 (no). So includes asthma, hypertension, arthritis, diabetes. So not a single diagnosis.
+
+- All patients aged ≤30 have cholesterol between 188 and 240? Let's list ages ≤30: patient8 age28 chol214, patient11 age27 chol209, patient13 age21 chol218, patient14 age31 (not ≤30), patient15 age32 (no). So ages ≤30: 28,27,21. Chol values 214,209,218 all between 188 and 240 yes. Could tighten lower bound? Minimum 209, but we need statement about all ≤30 have cholesterol ≥209? Check: 214,209,218 => min 209. So "All patients aged 27 or younger have cholesterol at least 209"? But we have age 21,27,28. So maybe "All patients aged 28 or younger have cholesterol at least 209". That's true. But we need condition up to 30 maybe. Let's keep simple: "All patients aged 30 or younger have cholesterol between 209 and 218"? Not all; we have only three patients, values 214,209,218. So range 209-218. That's true but maybe too specific. Let's maybe produce a statement about age and cholesterol: "All patients younger than 30 have cholesterol above 200 mg/dL." Check: ages 21,27,28 have chol 218,209,214 >200 yes. Tight bound: minimum 209, so could say "All patients younger than 30 have cholesterol at least 209 mg/dL." That's tighter.
+
+- All patients with diagnosis hypertension have systolic BP ≥ 148? Let's list hypertension patients: ages 45 (148),65 (154),28 (117),27 (152). One has 117, so not true.
+
+- All patients with diagnosis hypertension have diastolic BP ≥ 75? Values: 75,90,90,88 all >=75 yes. Minimum 75. So statement: "All hypertension patients have diastolic blood pressure at least 75 mmHg."
+
+- All patients with diagnosis migraine have BMI between 20.6 and 30.4? Let's list migraine patients: ages 68 bmi21.0,21 bmi27.8,31 bmi30.4,32 bmi28.4. Also patient14 age31 bmi30.4, patient15 28.4. So min 21.0, max 30.4. So statement: "All migraine patients have BMI between 21.0 and 30.4." Could tighten lower bound to 21.0 (exact). That's fine.
+
+- All patients who are smokers have systolic BP ≤ 144? Let's list smokers: systolic values: 143,127,117,137,123,144. Max 144, yes. Minimum 117. So statement: "All smokers have systolic blood pressure no greater than 144 mmHg."
+
+- All non-smokers have cholesterol ≥ 183? Non-smokers list: many. Minimum cholesterol among non-smokers: check each non-smoker: patient1 216,3 189,4 212,5 226,6 183,9 219,10 213,11 209,13 218. Minimum 183 (patient6). So statement: "All non-smokers have cholesterol at least 183 mg/dL."
+
+- All patients with BMI ≤ 24 have cholesterol ≤ 226? Let's check BMI ≤24: patient2 bmi21.5 chol240 ( >226) so false.
+
+- Most patients have cholesterol > 188? Let's count: all have cholesterol values: 216,240,189,212,226,183,239,214,219,213,209,204,218,188,222. Only one is 183 (patient6) and one 188 (patient14). So 13 out of 15 >188. That's majority. So we could make "Most patients have cholesterol greater than 188 mg/dL." That's allowed.
+
+- All patients with systolic BP ≥ 150 have diagnosis hypertension or arthritis? Let's list systolic >=150: patient6 154 hypertension, patient10 154 arthritis, patient11 152 hypertension, patient15 144 (no), patient3 148 (no). So only those three. All are hypertension or arthritis yes. Could state: "All patients with systolic blood pressure of at least 152 mmHg have either hypertension or arthritis." But we have 152 (patient11) hypertension, 154 hypertension, 154 arthritis. So condition >=152 works. Tight bound: 152 is min among those with >=152. Could we lower to 150? No patient with 150-151. So 152 is fine.
+
+- All patients with cholesterol > 230 have diagnosis asthma or diabetes? Let's check >230: patient2 240 asthma, patient7 239 diabetes, patient15 222 (no), patient5 226 (no). So only two >230, both asthma/diabetes. So statement: "All patients with cholesterol above 230 mg/dL have either asthma or diabetes." That's true.
+
+- All patients with age ≥ 65 have diagnosis arthritis, hypertension, or diabetes? Ages >=65: patient1 67 arthritis, patient6 65 hypertension, patient12 68 diabetes, patient5 68 migraine (age68 migraine). So includes migraine, so not true.
+
+- All patients with BMI >=33 have diagnosis arthritis, diabetes? Let's see BMI >=33: patient1 33.5 arthritis, patient7 33.8 diabetes. Both are arthritis or diabetes. So statement: "All patients with BMI of at least 33 have either arthritis or diabetes."
+
+- All patients with diastolic BP <= 75 have diagnosis hypertension? Let's list diastolic <=75: patient3 75 hypertension, maybe others? patient2 79 >75, patient1 85, etc. So only patient3. So statement would be trivial (only one). Avoid overly specific.
+
+- All patients with cholesterol <= 190 have diagnosis hypertension? Let's list cholesterol <=190: patient3 189 hypertension, patient6 183 hypertension, patient14 188 migraine. So includes migraine, so false.
+
+- All patients with systolic BP <= 120 have diagnosis migraine? Let's list systolic <=120: patient5 127 >120, patient8 117 hypertension, patient13 118 migraine, patient14 123 >120. So only patient8 117 hypertension, patient13 118 migraine. So not all same.
+
+- All patients with diagnosis asthma have cholesterol >= 212? Asthma patients: patient2 240, patient4 212. Both >=212 yes. Minimum 212. So statement: "All asthma patients have cholesterol at least 212 mg/dL."
+
+- All patients with diagnosis hypertension have cholesterol <= 214? Hypertension chol values: 189,183,214,209. Max 214, yes. Minimum 183. So statement: "All hypertension patients have cholesterol no greater than 214 mg/dL."
+
+- All patients with cholesterol between 188 and 190 have diagnosis hypertension? Chol 188 patient14 migraine, 189 patient3 hypertension, 190 none. So not true.
+
+- All patients with BMI between 20 and 22 have diagnosis asthma or migraine? BMI 21.5 asthma, 21.0 migraine, 20.6 diabetes. So includes diabetes, not true.
+
+- All patients with age > 60 have cholesterol > 210? Ages >60: patient1 216, patient5 226, patient6 183 (no), patient12 204 (no). So false.
+
+- All patients with systolic BP >= 140 have cholesterol >= 212? Let's list systolic >=140: patient2 143 chol240, patient3 148 chol189 (fails), patient4 143 chol212, patient6 154 chol183 (fails), patient9 139 (<140), patient10 154 chol213, patient11 152 chol209, patient15 144 chol222. So not all.
+
+- All patients with smoker = yes have cholesterol >= 188? Smokers chol values: 240,239,214,204,188,222. Minimum 188 (patient14). So statement: "All smokers have cholesterol at least 188 mg/dL."
+
+- All patients with BMI < 22 have cholesterol >= 204? BMI <22: patient2 21.5 chol240, patient5 21.0 chol226, patient12 20.6 chol204. All >=204 yes. Minimum 204. So statement: "All patients with BMI below 22 have cholesterol at least 204 mg/dL."
+
+Now need 5-10 statements, non-redundant, tightest bounds.
+
+Let's select a diverse set:
+
+1. All arthritis patients have systolic blood pressure no greater than 154 mmHg. (tight because one equals 154)
+
+2. All hypertension patients have diastolic blood pressure at least 75 mmHg. (minimum 75)
+
+3. All patients with BMI greater than 30 have cholesterol at least 189 mg/dL. (tight min 189)
+
+4. All smokers have systolic blood pressure no greater than 144 mmHg. (max 144)
+
+5. All asthma patients have cholesterol at least 212 mg/dL. (tight min 212)
+
+6. All migraine patients have BMI between 21.0 and 30.4. (range exact)
+
+7. Most patients have cholesterol greater than 188 mg/dL. (13/15)
+
+8. All patients with cholesterol above 230 mg/dL have either asthma or diabetes. (tight >230)
+
+9. All patients with BMI at least 33 have either arthritis or diabetes. (tight >=33)
+
+That's 9 statements, within 5-10.
+
+Check redundancy: none overlap. Ensure each is factually true and tight.
+
+Check statement 1: arthritis patients systolic values 135,139,154. So max 154, yes. Could we tighten to 139? No because one is 154, so 154 is tight.
+
+Statement 2: hypertension diastolic values 75,90,90,88. Minimum 75, so at least 75 is tight.
+
+Statement 3: BMI >30 includes patients with BMI 33.5,31.2,33.8,31.9. Their chol values 216,189,239,209. Minimum 189, so at least 189 is tight.
+
+Statement 4: smokers systolic values 143,127,117,137,123,144. Max 144, so no greater than 144 is tight.
+
+Statement 5: asthma patients chol 240,212. Minimum 212, so at least 212 is tight.
+
+Statement 6: migraine BMI values 21.0,27.8,30.4,28.4. Range 21.0-30.4 inclusive. That's exact.
+
+Statement 7: Most patients have cholesterol >188. Count >188: all except patient6 183 and patient14 188 (equal). So 13 >188, 2 not >188. So majority yes.
+
+Statement 8: cholesterol >230 includes 240 (asthma) and 239 (diabetes). Both are asthma or diabetes. Tight bound >230.
+
+Statement 9: BMI >=33 includes 33.5 arthritis, 33.8 diabetes. Both arthritis or diabetes. Tight bound >=33.
+
+All good.
+
+Now output JSON.assistantfinal JSON{"statements":["All arthritis patients have systolic blood pressure no greater than 154 mmHg.","All hypertension patients have diastolic blood pressure at least 75 mmHg.","All patients with BMI greater than 30 have cholesterol at least 189 mg/dL.","All smokers have systolic blood pressure no greater than 144 mmHg.","All asthma patients have cholesterol at least 212 mg/dL.","All migraine patients have BMI between 21.0 and 30.4.","Most patients have cholesterol greater than 188 mg/dL.","All patients with cholesterol above 230 mg/dL have either asthma or diabetes.","All patients with BMI at least 33 have either arthritis or diabetes."]}

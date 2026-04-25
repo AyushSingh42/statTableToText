@@ -1,0 +1,104 @@
+analysisWe need to output JSON with key "statements": list of strings. Must be 5-10 statements. Must be factual, non-redundant, tightest bounds. Need to analyze data.
+
+Let's parse data.
+
+Rows:
+
+1. F058001: rice, acreage 138, yield 442.1, irrigation 14.8, fertilizer 976, soil 73.7, organic yes
+2. F058002: soybean, 142, 404.5, 13.1, 834, 67.8, no
+3. F058003: soybean, 78, 458.3, 12.7, 575, 72.6, no
+4. F058004: corn, 143, 378.3, 11.7, 619, 80.5, no
+5. F058005: soybean, 74, 304.7, 10.5, 1009, 71.1, no
+6. F058006: soybean, 97, 360.5, 11.5, 751, 79.3, yes
+7. F058007: wheat, 126, 356.3, 18.7, 1023, 75.0, yes
+8. F058008: soybean, 131, 406.1, 15.5, 957, 72.4, yes
+9. F058009: corn, 96, 404.4, 14.8, 925, 80.5, yes
+10. F058010: wheat, 109, 450.1, 17.4, 864, 80.6, no
+11. F058011: rice, 75, 267.7, 18.3, 941, 72.2, no
+12. F058012: corn, 111, 289.1, 12.8, 832, 72.3, no
+13. F058013: wheat, 104, 277.9, 12.6, 567, 81.9, yes
+14. F058014: corn, 139, 322.1, 13.2, 632, 81.6, no
+15. F058015: corn, 91, 260.7, 16.6, 733, 75.6, yes
+
+We need statements about patterns.
+
+Potential observations:
+
+- All organic farms have soil_quality_index >= 72.4? Let's check organic rows: rows 1 (73.7), 6 (79.3),7 (75.0),8 (72.4),9 (80.5),13 (81.9),15 (75.6). Minimum is 72.4. So statement: For all organic farms, soil_quality_index is at least 72.4. That's tight bound.
+
+- All non-organic farms have soil_quality_index <= 81.9? Actually non-organic rows: 2 (67.8),3 (72.6),4 (80.5),5 (71.1),10 (80.6),11 (72.2),12 (72.3),14 (81.6). Max is 81.6. So we could say: For all non-organic farms, soil_quality_index is at most 81.6. But that's not very interesting maybe.
+
+- Highest yield per acre? Compute yield_tons / acreage.
+
+Let's compute quickly:
+
+1: 442.1/138 = 3.203
+2: 404.5/142 = 2.85
+3: 458.3/78 = 5.877
+4: 378.3/143 = 2.646
+5: 304.7/74 = 4.117
+6: 360.5/97 = 3.718
+7: 356.3/126 = 2.828
+8: 406.1/131 = 3.099
+9: 404.4/96 = 4.2125
+10: 450.1/109 = 4.129
+11: 267.7/75 = 3.569
+12: 289.1/111 = 2.605
+13: 277.9/104 = 2.671
+14: 322.1/139 = 2.317
+15: 260.7/91 = 2.864
+
+Highest is row 3 soybean with 5.877 tons/acre. Next high is row 9 corn 4.2125, row5 soybean 4.117, row10 wheat 4.129.
+
+We could make statement: The soybean farm with 78 acres has the highest yield per acre among all farms. That's specific but maybe okay.
+
+But need non-redundant and not overly specific (applies to one farm). Might be okay as notable observation.
+
+- All corn farms have soil_quality_index >= 72.3? Check corn rows: 4 (80.5),9 (80.5),12 (72.3),14 (81.6),15 (75.6). Minimum 72.3. So statement: For all corn farms, soil_quality_index is at least 72.3.
+
+- All wheat farms have irrigation_hours_week >= 12.6? Wheat rows: 7 (18.7),10 (17.4),13 (12.6). Minimum 12.6. So statement: For all wheat farms, irrigation hours per week are at least 12.6.
+
+- All rice farms have irrigation_hours_week <= 18.3? Rice rows: 1 (14.8),11 (18.3). Max 18.3. So statement: For all rice farms, irrigation hours per week do not exceed 18.3.
+
+- All farms with irrigation_hours_week >= 15 have yield_tons >= 260.7? Let's see rows with irrigation >=15: rows 7 (18.7, yield 356.3),9 (14.8 not >=15),10 (17.4, 450.1),11 (18.3, 267.7),15 (16.6, 260.7). Also row8 15.5 (406.1). So yields: 356.3, 450.1, 267.7, 260.7, 406.1. Minimum 260.7. So statement: For all farms irrigating at least 15 hours per week, yield is at least 260.7 tons. That's tight bound.
+
+- All farms with fertilizer_kg > 1000 have yield_tons >= 350? Let's check fertilizer >1000: rows 1 (976 no), 2 834,3 575,4 619,5 1009 (>1000),6 751,7 1023 (>1000),8 957,9 925,10 864,11 941,12 832,13 567,14 632,15 733. So >1000 rows: 7 (fert 1023, yield 356.3), maybe also 5 is 1009 >1000, yield 304.7. So yields: 356.3, 304.7. Minimum 304.7. So statement: For all farms using more than 1000 kg of fertilizer, yield is at least 304.7 tons.
+
+- All farms with soil_quality_index >= 80 have yield_tons <= 404.4? Let's check rows with soil >=80: rows 4 (80.5, yield 378.3),9 (80.5, 404.4),10 (80.6, 450.1) actually 450.1 > 404.4, so not true. So can't.
+
+- All organic farms have irrigation_hours_week >= 14.8? Check organic rows: 1 (14.8),6 (11.5) no, 7 (18.7),8 (15.5),9 (14.8),13 (12.6),15 (16.6). Minimum 11.5. So not.
+
+- All soybean farms have yield per acre > 2.8? Let's compute soybean rows: 2 (2.85),3 (5.877),5 (4.117),6 (3.718),8 (3.099). Minimum 2.85. So statement: For all soybean farms, yield per acre exceeds 2.8 tons. Tight bound maybe 2.85.
+
+- All corn farms have yield per acre <= 4.2125? Corn rows yields per acre: 4 (2.646),9 (4.2125),12 (2.605),14 (2.317),15 (2.864). Max 4.2125. So statement: For all corn farms, yield per acre does not exceed 4.2125 tons.
+
+- All wheat farms have soil_quality_index >= 75? Wheat rows: 7 (75.0),10 (80.6),13 (81.9). Minimum 75.0. So statement: For all wheat farms, soil_quality_index is at least 75.0.
+
+- All farms with acreage > 130 have soil_quality_index >= 73.7? Let's see >130: rows 1 (138, 73.7),2 (142, 67.8) fails,4 (143,80.5),8 (131 not >130),9 (96 no),14 (139,81.6). So not.
+
+- All farms with organic = yes have irrigation_hours_week >= 11.5? Minimum 11.5 (row6). So statement: For all organic farms, irrigation hours per week are at least 11.5.
+
+But we already have soil index bound for organic. Both okay.
+
+Need 5-10 statements. Choose diverse.
+
+Let's craft 8 statements:
+
+1. For all organic farms, soil_quality_index is at least 72.4.
+2. For all corn farms, soil_quality_index is at least 72.3.
+3. For all wheat farms, irrigation_hours_week is at least 12.6.
+4. For all rice farms, irrigation_hours_week does not exceed 18.3.
+5. For all farms irrigating at least 15 hours per week, yield_tons is at least 260.7.
+6. For all farms using more than 1000 kg of fertilizer, yield_tons is at least 304.7.
+7. The soybean farm with 78 acres has the highest yield per acre (approximately 5.9 tons per acre) among all farms.
+8. For all soybean farms, yield per acre exceeds 2.8 tons.
+
+Check redundancy: Statement 1 and 2 are different crops. Not redundant. Statement 5 and 6 different conditions. Statement 8 overlaps with soybean farms yield per acre >2.8, which is less specific than statement 7 (specific farm). That's okay because 7 is a specific existence, not a universal claim. Not redundant.
+
+All statements are factual.
+
+Make sure statements are natural language.
+
+Now produce JSON.
+
+assistantfinal json{"statements": ["For all organic farms, the soil quality index is at least 72.4.", "For all corn farms, the soil quality index is at least 72.3.", "For all wheat farms, irrigation hours per week are at least 12.6.", "For all rice farms, irrigation hours per week do not exceed 18.3.", "For all farms irrigating at least 15 hours per week, the yield is at least 260.7 tons.", "For all farms that use more than 1000 kg of fertilizer, the yield is at least 304.7 tons.", "The soybean farm with 78 acres has the highest yield per acre (about 5.9 tons per acre) among all farms.", "For all soybean farms, yield per acre exceeds 2.8 tons."]}

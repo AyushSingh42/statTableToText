@@ -1,0 +1,104 @@
+analysisWe need to output JSON with key "statements": list of strings, 5-10 statements. Must be factual, non-redundant, tightest bounds. Let's analyze data.
+
+We have 15 students. Fields: grade_level (9-12), study_hours_week (float), attendance_rate (%), test_score (0-100), club_member (yes/no).
+
+We need statements about patterns.
+
+Let's compute some observations.
+
+First, list data:
+
+S020001: grade12, hours3.7, attendance93.7, score86, club yes
+S020002: grade10, 2.3, 98.7, 69, yes
+S020003: grade9, 6.4, 90.5, 88, yes
+S020004: grade12, 7.0, 93.5, 92, yes
+S020005: grade10, 7.2, 92.7, 92, no
+S020006: grade11, 11.6, 91.1, 96, no
+S020007: grade11, 8.8, 97.4, 78, no
+S020008: grade10, 11.6, 88.3, 81, yes
+S020009: grade11, 9.7, 94.9, 93, no
+S020010: grade12, 5.5, 98.5, 79, no
+S020011: grade9, 7.7, 92.4, 87, no
+S020012: grade10, 4.9, 88.5, 67, no
+S020013: grade12, 8.6, 95.6, 75, yes
+S020014: grade11, 11.3, 94.8, 70, yes
+S020015: grade10, 4.4, 94.4, 95, yes
+
+Now derive statements.
+
+Potential universal claims? For all individuals? Not many universal.
+
+Check if all club members have attendance >90? Let's see club_member yes: S020001 93.7, S020002 98.7, S020003 90.5, S020004 93.5, S020008 88.3, S020013 95.6, S020014 94.8, S020015 94.4. One club member (S020008) attendance 88.3 <90. So not universal.
+
+All club members have study_hours >=? Minimum among yes: 2.3 (S020002). So not high.
+
+All grade 12 have test_score >=? grade12 scores: 86,92,79,75. Minimum 75. So not universal high.
+
+All grade 9 have attendance >90? grade9: S020003 90.5, S020011 92.4. Both >90? 90.5 >90 yes. So universal claim: For all grade 9 students, attendance_rate >90%. That's true. Check if any grade9 with <=90? No. So statement: All students in grade 9 have attendance rate above 90%.
+
+Now conditional: If study_hours_week >=11, then test_score >=? Let's see those with >=11: S020006 11.6 score96, S020008 11.6 score81, S020014 11.3 score70. Minimum score 70. So we can say: If a student studies at least 11 hours per week, their test score is at least 70. Check if any with >=11 and score <70? No. So that's valid. Could we tighten lower bound to 70? Yes that's tight because we have a 70. Could we raise to 71? No because 70 exists. So statement.
+
+If attendance_rate >=95, then test_score? Let's list attendance >=95: S020002 98.7 score69, S020007 97.4 score78, S020010 98.5 score79, S020013 95.6 score75, S020014 94.8 (not >=95), S020015 94.4 (no). So scores: 69,78,79,75. Minimum 69. So we could say: If attendance >=95%, test score at least 69. But that's not very interesting maybe.
+
+Maybe relationship between club membership and test_score: Club members have average test_score? Compute: club yes scores: 86,69,88,92,81,75,70,95 = sum? 86+69=155, +88=243, +92=335, +81=416, +75=491, +70=561, +95=656. Average = 656/8 = 82.0. Non-club members scores: 92,96,78,93,79,87,67,96? Wait check non-club: S020005 92, S020006 96, S020007 78, S020009 93, S020010 79, S020011 87, S020012 67, S020014? Actually S020014 is yes, so not. So also S020014 is yes. So non-club list: 92,96,78,93,79,87,67. That's 7 values sum = 92+96=188, +78=266, +93=359, +79=438, +87=525, +67=592. Average = 592/7 ≈84.57. So non-club slightly higher. Could make statement: Non-club members have higher average test score than club members. That's factual.
+
+Conditional: If grade level 12, then attendance_rate between? Grade12 attendance: 93.7,93.5,98.5,95.6. So range 93.5-98.5. Could say: All grade 12 students have attendance above 93%. True (minimum 93.5). Could we say above 94? Minimum 93.5, so not. So statement: All grade 12 students have attendance rate greater than 93%.
+
+Check grade 10 attendance: values: 98.7,92.7,88.3,88.5,94.4. Minimum 88.3. Not universal.
+
+Conditional: If test_score >=90, then study_hours_week >=? Let's list scores >=90: S020001 86 no, S020003 88 no, S020004 92 (hours7.0), S020005 92 (7.2), S020006 96 (11.6), S020009 93 (9.7), S020015 95 (4.4). Also S020014 70 not. So hours for >=90: 7.0,7.2,11.6,9.7,4.4. Minimum 4.4. So we could say: If test score at least 90, study hours at least 4.4. That's trivial.
+
+Maybe more interesting: If a student is in grade 11 and not a club member, then attendance_rate >=? Grade11 non-club: S020006 91.1, S020007 97.4, S020009 94.9. Minimum 91.1. So statement: All grade 11 students who are not club members have attendance rate above 91%.
+
+Check grade 11 club members: only S020014 (yes) attendance 94.8.
+
+Conditional: If study_hours_week <=4, then test_score? Hours <=4: S020002 2.3 score69, S020015 4.4 >4, so only S020002. So not enough.
+
+Maybe majority statements: Most students (>=8 out of 15) have attendance >90? Count attendance >90: list all: 93.7,98.7,90.5,93.5,92.7,91.1,97.4,94.9,98.5,92.4,88.5? that's 88.5 not >90, 95.6,94.8,94.4. Count: let's count >90: S020001 yes, 002 yes, 003 yes (90.5 >90), 004 yes, 005 yes, 006 yes, 007 yes, 008 88.3 no, 009 yes, 010 yes, 011 yes, 012 88.5 no, 013 yes, 014 yes, 015 yes. So 13 out of 15 >90. That's majority. So statement: Most students have attendance rate above 90%.
+
+Another: Most students study at least 5 hours per week? Count >=5: hours: 3.7 no,2.3 no,6.4 yes,7.0 yes,7.2 yes,11.6 yes,8.8 yes,11.6 yes,9.7 yes,5.5 yes,7.7 yes,4.9 no,8.6 yes,11.3 yes,4.4 no. So yes count =? Let's count: entries with >=5: S020003,004,005,006,007,008,009,010,011,013,014 = 11. So 11/15 > majority. So statement: Most students study at least 5 hours per week.
+
+Now universal: If grade level 9, then test_score >=87? Grade9 scores: 88,87. Minimum 87. So statement: All grade 9 students have test scores of at least 87.
+
+Check if any grade9 with lower? No. So that's tight.
+
+If grade level 12, then test_score >=75 (minimum 75). Could we tighten to 79? Minimum 75, so not.
+
+If club member yes, then attendance_rate >=88.3 (minimum). Could we tighten to 90? No because 88.3 is lower. So statement: All club members have attendance rate at least 88.3%.
+
+But that's maybe less interesting.
+
+Now ensure 5-10 statements, non-redundant, tightest.
+
+Let's compile list:
+
+1. All grade 9 students have attendance rates above 90%.
+2. All grade 9 students have test scores of at least 87.
+3. All grade 12 students have attendance rates greater than 93%.
+4. If a student studies at least 11 hours per week, their test score is at least 70.
+5. All grade 11 students who are not club members have attendance rates above 91%.
+6. Most students have attendance rates above 90%.
+7. Most students study at least 5 hours per week.
+8. Non‑club members have a higher average test score (≈84.6) than club members (≈82.0).
+
+We have 8 statements, within 5-10. Ensure no redundancy: statements 1 and 2 are different attributes. Statement 3 distinct. Statement 4 distinct. Statement5 distinct. Statements 6 and 1 overlap? 1 is about grade9 subset, 6 about overall majority. Not redundant. Statement7 distinct. Statement8 distinct.
+
+Check tightness: Statement1: attendance >90 for grade9. Minimum 90.5, so >90 is tight because >90. Could we say >=90.5? But we want natural. "above 90%" is fine. Could we say "at least 90.5%"? Might be too precise. It's okay.
+
+Statement2: test scores at least 87. Minimum 87, so tight.
+
+Statement3: attendance >93% for grade12. Minimum 93.5, so >93 is tight.
+
+Statement4: study >=11 => score >=70. Minimum score 70, so tight.
+
+Statement5: grade11 non-club attendance >91% (minimum 91.1). So >91 is tight.
+
+Statement6: Most students have attendance >90% (13/15). Good.
+
+Statement7: Most students study at least 5 hours per week (11/15). Good.
+
+Statement8: Non-club members have higher average test score than club members. That's factual.
+
+All good.
+
+Now output JSON.assistantfinal json{"statements": ["All grade 9 students have attendance rates above 90%.", "All grade 9 students have test scores of at least 87.", "All grade 12 students have attendance rates greater than 93%.", "If a student studies at least 11 hours per week, their test score is at least 70.", "All grade 11 students who are not club members have attendance rates above 91%.", "Most students have attendance rates above 90%.", "Most students study at least 5 hours per week.", "Non‑club members have a higher average test score (≈84.6) than club members (≈82.0)."]}

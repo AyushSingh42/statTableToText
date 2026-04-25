@@ -1,0 +1,79 @@
+analysisWe need to output JSON with "statements": list of 5-10 statements. Must be factual, non-redundant, tightest bounds. Need to analyze data.
+
+Let's parse data rows:
+
+Columns: employee_id, department, years_experience, monthly_salary_k, projects_active, performance_rating, remote_days_month
+
+Rows:
+
+1. E049001: hr, 8.1 yr, salary 7.6k, projects 3, rating 4.7, remote 14
+2. E049002: finance, 5.9, 8.5, 5, 4.7, 5
+3. E049003: engineering, 2.9, 6.2, 4, 4.5, 8
+4. E049004: operations, 8.4, 6.4,5,4.6,9
+5. E049005: operations,7.0,7.5,3,3.9,4
+6. E049006: marketing,9.4,8.8,2,4.0,10
+7. E049007: engineering,2.1,10.4,5,4.4,4
+8. E049008: hr,7.0,10.8,2,4.0,6
+9. E049009: engineering,8.5,10.1,4,4.0,8
+10. E049010: hr,8.2,5.6,3,3.7,14
+11. E049011: finance,10.9,6.8,5,4.3,12
+12. E049012: finance,7.3,5.6,6,3.9,13
+13. E049013: hr,8.3,8.6,6,4.2,14
+14. E049014: operations,4.6,6.9,6,4.0,5
+15. E049015: hr,4.5,7.3,3,4.1,4
+
+Now derive statements.
+
+We need 5-10 statements. Let's think of interesting patterns.
+
+Potential statements:
+
+- All HR employees have remote days >=4? Let's check HR rows: IDs 001 (14), 008 (6), 010 (14), 013 (14), 015 (4). Minimum remote days =4. So "All HR employees work remotely at least 4 days per month." That's true. Could we tighten to 6? No because 015 has 4. So 4 is tight.
+
+- All employees with performance rating >=4.5 have monthly salary >=6.2? Let's see rating >=4.5: rows: 001 rating 4.7 salary 7.6; 002 rating 4.7 salary 8.5; 003 rating 4.5 salary 6.2; 004 rating 4.6 salary 6.4; 007 rating 4.4 not >=4.5; 009 rating 4.0 not; 011 rating 4.3 not; 013 rating 4.2 not. So min salary among those is 6.2. Could we claim "All employees with rating >=4.5 have salary >=6.2k"? Yes. Could we tighten to >6.2? No because 003 exactly 6.2. So statement.
+
+- Employees with years_experience >9 have performance rating >=4.0? Let's check >9: rows: 006 (9.4 not >9), 009 (8.5 not), 011 (10.9 rating 4.3), maybe also 006 is 9.4 >9 yes rating 4.0. So both 006 rating 4.0, 011 rating 4.3. So all >9 have rating >=4.0. Could we tighten rating >=4.0 to >4.0? No because 006 exactly 4.0. So statement.
+
+- All employees with projects_active =6 have performance rating >=3.9? Let's see rows with 6 projects: 012 rating 3.9, 013 rating 4.2, 014 rating 4.0. Minimum rating 3.9. So statement: "All employees handling six active projects have a performance rating of at least 3.9."
+
+- For all employees in finance, monthly salary <=8.5k? Finance rows: 002 salary 8.5, 011 6.8, 012 5.6. Max 8.5. So statement: "All finance department employees earn no more than $8.5k per month."
+
+- All employees with remote_days_month >=12 have performance rating <=4.3? Let's check remote >=12: rows: 011 remote 12 rating 4.3; 012 remote 13 rating 3.9; 013 remote 14 rating 4.2; 001 remote 14 rating 4.7 (contradiction). So not true.
+
+- Employees with monthly salary >10k have years_experience <=9.4? Salary >10k rows: 007 salary 10.4 years 2.1; 008 salary 10.8 years 7.0; 009 salary 10.1 years 8.5. All <=9.4 yes. Could we tighten to <=8.5? 009 is 8.5, 008 7.0, 007 2.1. So max 8.5. So statement: "All employees earning more than $10k per month have 8.5 years of experience or less."
+
+- All employees with performance rating >=4.6 have monthly salary >=6.4? Ratings >=4.6: rows 001 rating 4.7 salary 7.6; 002 rating 4.7 salary 8.5; 004 rating 4.6 salary 6.4. Minimum salary 6.4. So statement.
+
+- All employees in operations with years_experience >=8 have performance rating >=4.6? Operations rows: 004 years 8.4 rating 4.6; 005 years 7.0 rating 3.9; 014 years 4.6 rating 4.0. So only one with >=8 is 004 rating 4.6. So statement "If an operations employee has at least 8 years of experience, their performance rating is at least 4.6." That's true.
+
+- Most employees (maybe majority) have performance rating >=4.0? Let's count: ratings: 4.7,4.7,4.5,4.6,3.9,4.0,4.4,4.0,4.0,3.7,4.3,3.9,4.2,4.0,4.1. Count >=4.0: all except 5 (3.9),10 (3.7),12 (3.9). That's 12 out of 15 = 80% > half. So "Most employees have a performance rating of at least 4.0." Acceptable.
+
+Need 5-10 statements. Let's pick 9 statements.
+
+Check redundancy: Ensure not overlapping.
+
+List statements:
+
+1. All HR employees work remotely at least 4 days per month.
+2. All employees with a performance rating of 4.5 or higher earn a monthly salary of at least $6.2k.
+3. Every employee with more than 9 years of experience has a performance rating of at least 4.0.
+4. All employees handling six active projects have a performance rating of at least 3.9.
+5. All finance department employees earn no more than $8.5k per month.
+6. All employees earning more than $10k per month have 8.5 years of experience or less.
+7. Every employee with a performance rating of 4.6 or higher receives a monthly salary of at least $6.4k.
+8. If an operations employee has at least 8 years of experience, their performance rating is at least 4.6.
+9. Most employees have a performance rating of at least 4.0.
+
+Check redundancy: Statement 2 and 7 overlap? 2 is rating >=4.5 => salary >=6.2. 7 is rating >=4.6 => salary >=6.4. 7 is stricter condition (higher rating) and higher salary bound. Both are true but not redundant because they convey different thresholds. Acceptable.
+
+Check statement 3: >9 years experience rating >=4.0. Could there be any employee with >9 years and rating <4.0? No. Good.
+
+Statement 6: salary >10k => experience <=8.5. Check rows: 007 (10.4,2.1), 008 (10.8,7.0), 009 (10.1,8.5). All <=8.5. Good.
+
+Statement 4: projects_active=6 => rating >=3.9. Check rows: 012 rating 3.9, 013 rating 4.2, 014 rating 4.0. Good.
+
+All statements are non-redundant.
+
+Now produce JSON.
+
+assistantfinal json{"statements":["All HR employees work remotely at least 4 days per month.","All employees with a performance rating of 4.5 or higher earn a monthly salary of at least $6.2k.","Every employee with more than 9 years of experience has a performance rating of at least 4.0.","All employees handling six active projects have a performance rating of at least 3.9.","All finance department employees earn no more than $8.5k per month.","All employees earning more than $10k per month have 8.5 years of experience or less.","Every employee with a performance rating of 4.6 or higher receives a monthly salary of at least $6.4k.","If an operations employee has at least 8 years of experience, their performance rating is at least 4.6.","Most employees have a performance rating of at least 4.0."]}

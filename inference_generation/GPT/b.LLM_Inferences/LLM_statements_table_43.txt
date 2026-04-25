@@ -1,0 +1,105 @@
+analysisWe need to produce JSON with "statements": list of 5-10 statements. Must be factual, non-redundant, tightest bounds. Need to analyze data.
+
+Let's parse data.
+
+Columns: route_id, vehicle_type, distance_km, avg_speed_kph, fuel_used_l, delay_minutes, weather.
+
+Rows:
+
+1 R043001 bus 161.0 58.2 16.9 23 rain
+2 R043002 bus 141.4 47.2 31.4 25 windy
+3 R043003 bus 212.0 46.5 38.0 3 windy
+4 R043004 bus 124.7 46.8 9.9 28 cloudy
+5 R043005 bus 77.7 62.3 48.0 16 windy
+6 R043006 van 178.4 54.1 8.3 24 clear
+7 R043007 bus 66.1 60.1 10.3 26 clear
+8 R043008 bus 217.7 52.5 29.9 12 cloudy
+9 R043009 bus 80.6 61.1 27.0 15 clear
+10 R043010 van 93.1 49.6 40.7 28 cloudy
+11 R043011 bus 90.9 59.2 48.2 28 cloudy
+12 R043012 truck 164.6 56.7 13.0 3 windy
+13 R043013 bus 163.6 46.8 16.8 26 cloudy
+14 R043014 truck 139.3 58.6 30.3 8 rain
+15 R043015 truck 176.0 50.3 12.6 24 clear
+
+We need statements about patterns.
+
+Let's compute some observations.
+
+Vehicle types: bus (most), van (2), truck (3). Count: bus 10? Let's count: rows with bus: 1,2,3,4,5,7,8,9,11,13 = 10 bus. Van: rows 6,10 =2. Truck: rows 12,14,15 =3.
+
+We can make statements like: All vans have avg_speed between 49.6 and 54.1 kph. That's true: 54.1 and 49.6. So we can say: For all vans, avg_speed_kph is between 49.6 and 54.1. That's a universal claim.
+
+Similarly, all trucks have delay <=8? Let's see delays: truck rows: 12 delay 3, 14 delay 8, 15 delay 24. So not all <=8. Maybe all trucks have fuel_used <=30.3? Values: 13.0,30.3,12.6 => all <=30.3 yes. But also <=13? No because 30.3 >13. So we can say: For all trucks, fuel_used_l is at most 30.3 liters. That's a universal claim.
+
+All buses have distance_km >=66.1? Minimum bus distance: check bus distances: 161,141.4,212,124.7,77.7,66.1,217.7,80.6,90.9,163.6. Minimum is 66.1. So we can say: All buses travel at least 66.1 km. That's universal.
+
+All buses have avg_speed_kph <=62.3? Max bus avg speed: values: 58.2,47.2,46.5,46.8,62.3,60.1,52.5,61.1,59.2,46.8. Max 62.3. So we can say: All buses have avg_speed_kph no more than 62.3 kph.
+
+But maybe we can make tighter: All buses have avg_speed_kph >=46.5? Minimum bus avg speed: 46.5 (R043003). So we can say: All buses have avg_speed_kph between 46.5 and 62.3.
+
+But we need to avoid redundancy: If we state both lower and upper bound separately, they are separate statements but maybe redundant? They are distinct. Could be okay.
+
+Conditional statements: If weather is rainy, then avg_speed_kph is at most? Rain rows: R043001 bus 58.2, R043014 truck 58.6. So both <=58.6. Could say: For all routes with rain, avg_speed_kph is at most 58.6 kph. That's true. Also could say: For all rainy routes, fuel_used_l is at most 30.3? Values: 16.9 and 30.3. So max 30.3. That's also true but maybe less interesting.
+
+If vehicle_type is bus and delay >20, then avg_speed_kph is less than? Let's see bus rows with delay >20: R043001 delay23 speed58.2, R043004 delay28 speed46.8, R043007 delay26 speed60.1, R043011 delay28 speed59.2, R043013 delay26 speed46.8. So speeds vary 46.8-60.1. Not a tight bound.
+
+Maybe: If vehicle_type is van, then fuel_used_l is less than 9? Van rows: 8.3 and 40.7. So not.
+
+If vehicle_type is truck, then avg_speed_kph is at least 50.3? Values: 56.7,58.6,50.3 => min 50.3. So we can say: All trucks have avg_speed_kph of at least 50.3 kph.
+
+If vehicle_type is truck, then delay_minutes is at most 24? Values: 3,8,24 => max 24. So yes.
+
+If weather is cloudy, then delay_minutes is at least 12? Cloudy rows: R043004 delay28, R043008 delay12, R043010 delay28, R043011 delay28, R043013 delay26. Minimum 12. So we can say: All cloudy routes have delay of at least 12 minutes.
+
+If weather is clear, then avg_speed_kph is at least 49.6? Clear rows: R043006 van 54.1, R043007 bus 60.1, R043009 bus 61.1, R043010 van 49.6, R043015 truck 50.3. Minimum 49.6. So yes.
+
+If vehicle_type is bus and distance_km >200, then avg_speed_kph is between? Bus >200: rows R043003 distance212 speed46.5, R043008 distance217.7 speed52.5. So speeds 46.5-52.5. Could say: All bus routes longer than 200 km have avg_speed_kph no more than 52.5 kph. Also at least 46.5. Might be okay.
+
+Existential statements: There exists at least one bus with fuel_used_l greater than 40? Yes bus R043005 fuel 48.0, R043011 48.2. So we can say: There exists a bus that used more than 40 liters of fuel.
+
+There exists a van with delay 28 minutes (yes). But maybe not interesting.
+
+Majority statements: Most buses have avg_speed_kph above 45? Let's count: bus speeds: 58.2,47.2,46.5,46.8,62.3,60.1,52.5,61.1,59.2,46.8. All are above 45, yes 100% >45. So we could say: All buses have avg_speed_kph greater than 45 kph. That's stronger than earlier bound.
+
+But we already have universal claim about bus speed between 46.5 and 62.3. That implies >45. So maybe redundant. Keep the tighter bound (46.5-62.3). So we won't add separate >45.
+
+We need 5-10 statements. Let's craft 8 statements.
+
+Make sure each is non-redundant and tightest.
+
+List statements:
+
+1. For all buses, the route distance is at least 66.1 km. (tight lower bound)
+
+2. For all buses, the average speed is between 46.5 and 62.3 kph. (both bounds, but maybe combine as range.)
+
+3. For all vans, the average speed is between 49.6 and 54.1 kph. (tight)
+
+4. For all trucks, the average speed is at least 50.3 kph. (tight lower bound)
+
+5. For all trucks, fuel consumption does not exceed 30.3 liters. (tight upper bound)
+
+6. For all routes experiencing rain, the average speed does not exceed 58.6 kph. (tight max)
+
+7. For all cloudy routes, the delay is at least 12 minutes. (tight min)
+
+8. There exists at least one bus that used more than 40 liters of fuel. (existential notable)
+
+Check redundancy: Statement 2 includes both lower and upper bound; statement 1 is separate lower bound on distance, not overlapping. Good.
+
+Statement 4: trucks avg speed >=50.3, that's tight because min is 50.3.
+
+Statement 5: trucks fuel <=30.3, tight because max is 30.3.
+
+Statement 6: rain avg speed <=58.6, tight because max is 58.6.
+
+Statement 7: cloudy delay >=12, tight because min is 12.
+
+Statement 8: existence of bus fuel >40, true.
+
+All statements are distinct.
+
+Now produce JSON.
+
+assistantfinal{"statements": ["For all buses, the route distance is at least 66.1 km.", "For all buses, the average speed is between 46.5 and 62.3 kph.", "For all vans, the average speed is between 49.6 and 54.1 kph.", "For all trucks, the average speed is at least 50.3 kph.", "For all trucks, fuel consumption does not exceed 30.3 liters.", "For all routes experiencing rain, the average speed does not exceed 58.6 kph.", "For all cloudy routes, the delay is at least 12 minutes.", "There exists at least one bus that used more than 40 liters of fuel."]}

@@ -1,0 +1,65 @@
+analysisWe need to output JSON with "statements": list of 5-10 statements. Must be factual from table. Need non-redundant, tight bounds. Let's parse data.
+
+Columns: household_id, region, household_size, monthly_income_k, rent_k, utility_cost, vehicle_count, internet_type.
+
+Data rows:
+
+1 H054001: suburban, size5, income9.3, rent1.9, utility120.3, vehicles3, internet satellite
+2 H054002: rural, size2, income9.4, rent1.8, utility110.9, vehicles3, cable
+3 H054003: rural, size5, income11.5, rent1.9, utility117.4, vehicles2, satellite
+4 H054004: suburban, size6, income10.8, rent0.9, utility180.1, vehicles3, dsl
+5 H054005: suburban, size2, income5.6, rent2.0, utility85.5, vehicles2, cable
+6 H054006: suburban, size5, income9.9, rent2.5, utility173.0, vehicles3, fiber
+7 H054007: urban, size2, income8.8, rent1.0, utility188.4, vehicles0, fiber
+8 H054008: rural, size1, income4.9, rent2.1, utility103.6, vehicles2, fiber
+9 H054009: suburban, size6, income9.8, rent1.4, utility150.8, vehicles2, cable
+10 H054010: rural, size5, income4.6, rent1.9, utility191.6, vehicles3, cable
+11 H054011: rural, size6, income8.6, rent1.5, utility214.3, vehicles0, dsl
+12 H054012: urban, size1, income5.3, rent2.4, utility172.2, vehicles0, satellite
+13 H054013: rural, size1, income3.4, rent2.2, utility178.8, vehicles2, fiber
+14 H054014: urban, size3, income10.3, rent2.1, utility115.8, vehicles3, fiber
+15 H054015: suburban, size4, income10.3, rent1.9, utility109.2, vehicles3, fiber
+
+We need statements 5-10. Let's think of interesting patterns.
+
+Possible universal claims: maybe "All households with rent <=1.0 have utility cost >= 180"? Let's check: rent <=1.0 rows: H054004 rent0.9 utility180.1; H054007 rent1.0 utility188.4. Both >=180. Yes. Any other with rent <=1.0? No. So statement: For all households with rent less than or equal to 1.0k, utility cost is at least 180.1? Actually minimum is 180.1. So "at least 180" is true. That's a universal claim.
+
+Check if any other universal: "All households with vehicle_count =0 have utility cost >=172.2"? rows with 0 vehicles: H054007 utility188.4, H054011 utility214.3, H054012 utility172.2. Minimum 172.2. So statement: For all households with no vehicles, utility cost is at least 172.2. That's true.
+
+Check "All households with internet_type = fiber have utility cost >= 109.2"? fiber rows: H054006 173.0, H054007 188.4, H054008 103.6, H054014 115.8, H054015 109.2. Minimum 103.6. So not >=109.2 because 103.6 lower. So maybe "All fiber households have utility cost >= 103.6". That's trivial because it's the minimum. Might be not interesting.
+
+Maybe conditional: "If household size >=6 then rent <=1.9"? Let's see size >=6 rows: H054004 size6 rent0.9; H054009 size6 rent1.4; H054010 size5? no; H054011 size6 rent1.5. All rent <=1.9 yes. Also H054001 size5 not included. So statement: For all households with size at least 6, rent is at most 1.9k. That's true.
+
+Check "If region = urban then internet_type is fiber or satellite"? urban rows: H054007 fiber, H054012 satellite, H054014 fiber. Yes only fiber or satellite. So statement: All urban households have internet type either fiber or satellite.
+
+Check "If region = rural then rent is at least 1.5"? Rural rows: rent values: 1.8,1.9,2.1,1.9,1.5,2.2. Minimum 1.5. So true: All rural households have rent >=1.5k.
+
+Check "If monthly_income_k >10 then utility_cost >115"? Income >10 rows: H054003 income11.5 utility117.4; H054014 income10.3 not >10; H054015 10.3 not >10; H054004 10.8 utility180.1. So two rows >10: utilities 117.4 and 180.1, both >115. So statement: All households with monthly income greater than $10k have utility cost exceeding $115.
+
+Check "If internet_type = cable then vehicle_count >=2"? Cable rows: H054002 vehicles3, H054005 vehicles2, H054009 vehicles2, H054010 vehicles3. All >=2 yes. So statement.
+
+Check "If household size =1 then monthly_income_k <=5.3"? size1 rows: H054008 income4.9, H054012 5.3, H054013 3.4. All <=5.3 yes. So statement.
+
+Check "If rent >2.0 then region is urban"? Any rent >2.0 rows: H054012 rent2.4 urban, H054013 rent2.2 rural (actually >2.0 and region rural). So false.
+
+Check "If vehicle_count =3 then internet_type is fiber or satellite or cable or dsl"? Actually all with 3 vehicles: rows: H054001 satellite, H054002 cable, H054004 dsl, H054006 fiber, H054009 cable, H054014 fiber, H054015 fiber. So they have various types, not a specific pattern.
+
+Maybe majority claim: "Most households have utility cost above 100". Count: utilities: 120.3,110.9,117.4,180.1,85.5,173.0,188.4,103.6,150.8,191.6,214.3,172.2,178.8,115.8,109.2. Those >100: all except 85.5 (H054005). So 14 out of 15 >100. So "Most households have utility cost greater than $100". That's valid.
+
+We need 5-10 statements, non-redundant, tightest bounds.
+
+Let's list candidate statements:
+
+1. For all households with rent ≤ 1.0 k, utility cost is at least 180 k. (tight: min 180.1)
+2. For all households with no vehicles, utility cost is at least 172.2 k. (tight)
+3. For all households with size ≥ 6, rent is at most 1.9 k. (tight: max rent among size≥6 is 1.9)
+4. All urban households have internet type either fiber or satellite. (tight)
+5. All rural households have rent of at least 1.5 k. (tight)
+6. All households with monthly income > 10 k have utility cost greater than 115 k. (tight: min utility among >10 is 117.4)
+7. All cable‑connected households have at least 2 vehicles. (tight: min vehicles 2)
+8. All households with size 1 have monthly income ≤ 5.3 k. (tight: max income among size1 is 5.3)
+9. Most households have utility cost greater than 100 k. (majority)
+
+We have 9 statements, within 5-10. Ensure no redundancy: each distinct. Good.
+
+Now output JSON with statements array. Ensure no extra text.assistantfinal{"statements": ["For all households with rent ≤ 1.0 k, utility cost is at least 180 k.", "For all households with no vehicles, utility cost is at least 172.2 k.", "For all households with size ≥ 6, rent is at most 1.9 k.", "All urban households have internet type either fiber or satellite.", "All rural households have rent of at least 1.5 k.", "All households with monthly income > 10 k have utility cost greater than 115 k.", "All cable‑connected households have at least 2 vehicles.", "All households with size 1 have monthly income ≤ 5.3 k.", "Most households have utility cost greater than 100 k."]}

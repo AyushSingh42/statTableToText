@@ -1,0 +1,120 @@
+analysisWe need to output JSON with key "statements": list of strings. Must be 5-10 statements. Must be factual, non-redundant, high-information. Data: 15 students with fields: grade_level (9-12), study_hours_week (float), attendance_rate (percentage), test_score (0-100), club_member (yes/no). Need statements about patterns.
+
+We must ensure each statement is true for all individuals meeting condition. Use universal, conditional, existential, majority. Must avoid redundancy: no looser bounds if tighter already present.
+
+Let's analyze data.
+
+List rows:
+
+1 S040001: grade 10, study 7.1, attendance 91.3, test 93, club yes
+2 S040002: 9, 9.5, 89.0, 83, no
+3 S040003: 9, 7.1, 92.5, 86, no
+4 S040004: 10, 2.8, 90.9, 98, no
+5 S040005: 9, 10.6, 90.9, 69, no
+6 S040006: 9, 3.0, 90.4, 97, yes
+7 S040007: 9, 9.9, 98.9, 81, yes
+8 S040008: 12, 11.5, 89.6, 65, yes
+9 S040009: 12, 5.3, 95.9, 92, no
+10 S040010:12, 3.1, 95.8, 76, yes
+11 S040011:11,5.6,93.8,80,no
+12 S040012:9,2.5,86.5,70,no
+13 S040013:9,4.5,87.0,69,no
+14 S040014:10,6.6,96.1,83,yes
+15 S040015:12,2.5,93.8,69,no
+
+Let's compute some stats.
+
+Study hours distribution: min 2.5 (students 12,15), max 11.5 (student 8). Many low study hours.
+
+Attendance rates: range 86.5 to 98.9. All above 86.5.
+
+Test scores: range 65 to 98.
+
+Club membership yes for IDs: 1,6,7,8,10,14 (6 yes). No for others (9 no). So 6 yes, 9 no.
+
+Potential statements:
+
+- All students with attendance rate >= 95% have test scores >= 81? Let's check: attendance >=95 includes IDs: 7 (98.9, test 81), 9 (95.9, test 92), 10 (95.8, test 76). Also 14 (96.1, test 83). So test scores: 81,92,76,83. Not all >=81 because 76 is lower. So not.
+
+- All students with attendance >= 96% have test scores >= 81? Attendance >=96 includes 7 (98.9,81) and 14 (96.1,83). Both >=81. So true. Check any other with >=96? No. So statement: If attendance rate is at least 96%, test score is at least 81. That's a universal conditional.
+
+- All club members have attendance rate >= 90%? Club yes IDs: 1 (91.3),6 (90.4),7 (98.9),8 (89.6),10 (95.8),14 (96.1). Wait 8 has 89.6 <90. So not all >=90. So maybe "All club members have attendance rate >= 89%"? Check: 1 91.3,6 90.4,7 98.9,8 89.6,10 95.8,14 96.1. Minimum 89.6, so >=89.5? 89.6 >=89.5 yes. So we can say >=89.5. But we need integer? Use 89.5. Could also say >=89.6 (tightest). Minimum is 89.6 exactly. So statement: All club members have attendance rate at least 89.6%. That's precise.
+
+- All students with study hours >= 10 have test scores <= 83? Let's see: study >=10 includes IDs: 5 (10.6, test 69), 8 (11.5,65). Both <=83. Also maybe 2? 9.5 not >=10. So true. Also maybe 7 9.9 not. So statement: If study hours per week are at least 10, test score is at most 69? Wait 5 has 69, 8 has 65. So max 69. So we can tighten: test score <=69. That's true for both. So statement: All students who study 10 or more hours per week have test scores no higher than 69. That's interesting (high study but low test). Check if any other with >=10? No. So fine.
+
+- All students with test score >= 95 are in grade 10 or 9? Let's see test >=95: IDs 1 (93 not), 4 (98 grade10),6 (97 grade9), maybe others? 4 grade10,6 grade9. So both grade 9 or 10. So statement: All students with test scores of 95 or higher are in grade 9 or 10. That's true. Could we tighten to grade 9 or 10? Already. Could we say grade <=10? That's same. Keep.
+
+- Most students (>= majority) have attendance rate above 90%? Let's count: attendance >90: IDs with >90: 1 91.3,3 92.5,4 90.9 (>=90?), 5 90.9,6 90.4,7 98.9,8 89.6 no,9 95.9,10 95.8,11 93.8,12 86.5 no,13 87.0 no,14 96.1,15 93.8. Count >90: 1,3,4,5,6,7,9,10,11,14,15 = 11 out of 15. That's majority. So statement: Most students have attendance rates above 90%.
+
+- All 12th graders have study hours <= 11.5 (obviously) but maybe something else: All 12th graders have test scores <= 92? 12th graders IDs: 8 (65),9 (92),10 (76),15 (69). Max 92. So statement: All 12th-grade students have test scores no higher than 92.
+
+- All 9th-grade students have attendance rate at least 86.5 (that's overall min). But maybe more specific: All 9th-grade students have study hours <= 10.6 (max). That's trivial. Maybe relationship: Among 9th graders, those who are club members have attendance >= 90.4? Club yes among 9th graders: IDs 6 (90.4),7 (98.9). Both >=90.4. Minimum 90.4. So statement: All 9th-grade club members have attendance rates of at least 90.4%.
+
+- There exists at least one student who studies less than 3 hours per week and still scores above 90? Check: study <3: IDs 4 (2.8, test 98),12 (2.5,70),15 (2.5,69). Only 4 has >90. So yes. So existential: There exists a student who studies less than 3 hours per week and achieves a test score above 95? Actually 4 has 98 >95. So we can say >95. So statement: There exists at least one student who studies fewer than 3 hours per week and scores at least 95.
+
+- All students with club membership "yes" have test scores at most 98? That's trivial because max 98 overall. Not interesting.
+
+- All students with grade level 10 have attendance >=90.4? Grade 10 IDs: 1 (91.3),4 (90.9),14 (96.1). Minimum 90.9. So statement: All 10th-grade students have attendance rates of at least 90.9%.
+
+- All students with attendance >= 95 have club membership? Attendance >=95 includes IDs 7 (yes),9 (no),10 (yes),14 (yes). Not all yes. So not.
+
+- Most club members have test scores above 80? Club yes IDs: 1 93,6 97,7 81,8 65,10 76,14 83. Count >80: 1,6,7,14 =4 out of 6. That's not majority? 4/6 = 66.7% >50, so majority. So statement: Most club members have test scores above 80.
+
+- All students with test score below 70 are in grade 9 or 12? Test <70: IDs 5 (69 grade9),8 (65 grade12),13 (69 grade9),15 (69 grade12). So grades 9 or 12. So statement: All students scoring below 70 are in grade 9 or 12.
+
+- All students with study hours >9 have attendance >= 89? Study >9 includes IDs 2 (9.5 not >9? Actually >9 includes 2 9.5,5 10.6,7 9.9? 9.9 >9,8 11.5). Check attendance: 2 89.0,5 90.9,7 98.9,8 89.6. Minimum 89.0. So statement: All students who study more than 9 hours per week have attendance rates of at least 89%.
+
+Now need 5-10 statements, non-redundant, tightest bounds.
+
+Let's pick 8 statements.
+
+Make sure no redundancy: e.g., we have both "All club members have attendance >=89.6%" and "All 9th-grade club members have attendance >=90.4%". The latter is stricter condition (subset) but not redundant because it's more specific; but rule says avoid including a statement whose information is fully contained in another statement you've already written. The 9th-grade club members condition is a subset of club members, but the bound is higher (90.4 vs 89.6). The broader statement says all club members >=89.6, which does not imply the stricter bound for 9th-grade club members. So both can coexist because they provide additional info. That's okay.
+
+Check other potential redundancy: "All students with attendance >=96 have test score >=81" and "All students with attendance >=95 have test score >=76"? Not included.
+
+We have "All students who study at least 10 hours have test scores <=69". That's fine.
+
+Make sure each statement is tight: For attendance >=96, test >=81 is true; could we tighten test >=81 to >=81 (tight). Could we tighten attendance bound to 96? Minimum attendance among those with test >=81? Actually we are stating condition: attendance >=96 => test >=81. Could we raise attendance bound to 96.1? That would still hold (only student 14 with 96.1 test 83). But then we lose student 7 (98.9). Actually 96.1 is lower than 98.9? Wait 96.1 is lower than 98.9, but raising bound to 96.1 would still include both 7 and 14 (since 7 98.9 >=96.1). So we could raise to 96.1? Minimum attendance among those meeting condition is 96.1 (student 14). So we can tighten to >=96.1. But then student 7 still qualifies (98.9). So statement becomes "If attendance rate is at least 96.1%, test score is at least 81". That's tighter. Could we raise test lower bound? Minimum test among those is 81 (student 7). So can't raise. So we use 96.1.
+
+Now "All club members have attendance >=89.6%" is tight because min is 89.6. Could we raise to 90? No because 8 is 89.6. So keep.
+
+"All 10th-grade students have attendance >=90.9%" tight because min is 90.9.
+
+"All 12th-grade students have test scores <=92" tight because max is 92.
+
+"All students with test <70 are in grade 9 or 12" that's exact.
+
+"Most club members have test scores above 80" check: club members with >80 are 1,6,7,14 (4). Those with <=80 are 8 (65) and 10 (76). So >80 count 4, total 6, majority yes. Could we tighten to >=81? Already >80 means >=81. Could we say "most club members have test scores of at least 81"? That's same. Keep.
+
+"All students who study more than 9 hours per week have attendance >=89%" tight? Minimum attendance among those is 89.0 (student 2). So bound 89% is tight.
+
+"All students who study at least 10 hours have test scores <=69" tight because max test among them is 69.
+
+"All students with attendance >=95 have test scores >=76"? Let's check: attendance >=95 includes 7 (81),9 (92),10 (76),14 (83). Minimum test 76. So statement could be "If attendance rate is at least 95%, test score is at least 76". That's true and maybe interesting. But we already have attendance >=96 => test >=81, which is stronger for subset. This new statement is not redundant because condition is broader. Could include but we already have 8 statements; we can choose 8.
+
+Let's list selected statements:
+
+1. If a student's attendance rate is at least 96.1%, their test score is at least 81.
+2. All club members have an attendance rate of at least 89.6%.
+3. All 10th‑grade students have an attendance rate of at least 90.9%.
+4. All 12th‑grade students have test scores no higher than 92.
+5. All students who study more than 9 hours per week have an attendance rate of at least 89%.
+6. All students who study at least 10 hours per week have test scores of at most 69.
+7. All students scoring below 70 are in grade 9 or grade 12.
+8. Most club members have test scores above 80.
+
+Check redundancy: statement 5 and 1 both about attendance but different conditions. fine.
+
+Now ensure each statement is factual.
+
+Check statement 5: study >9 includes IDs 2 (9.5, attendance 89.0),5 (10.6,90.9),7 (9.9,98.9),8 (11.5,89.6). Minimum attendance 89.0, so >=89% holds. Good.
+
+Statement 6: study >=10 includes IDs 5 (10.6, test 69),8 (11.5,65). Max test 69, so <=69 holds.
+
+Statement 7: test <70 includes IDs 5 (69 grade9),8 (65 grade12),13 (69 grade9),15 (69 grade12). Yes only grades 9 or 12.
+
+Statement 8: Most club members have test scores above 80 (>=81). Count 4/6 >50%. Good.
+
+All good.
+
+Now produce JSON.assistantfinal JSON{"statements": ["If a student's attendance rate is at least 96.1%, their test score is at least 81.", "All club members have an attendance rate of at least 89.6%.", "All 10th‑grade students have an attendance rate of at least 90.9%.", "All 12th‑grade students have test scores no higher than 92.", "All students who study more than 9 hours per week have an attendance rate of at least 89%.", "All students who study at least 10 hours per week have test scores of at most 69.", "All students scoring below 70 are in grade 9 or grade 12.", "Most club members have test scores above 80."]}
