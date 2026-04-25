@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All bus routes have a delay of 21 minutes or less.
+  - Explanation: All 6 bus routes have delays ≤ 21 minutes.
+
+Statement 2: TRUE
+  - 2. All truck routes have a delay between 11 and 19 minutes inclusive.
+  - Explanation: All 3 truck routes have delays between 11-19 minutes.
+
+Statement 3: TRUE
+  - 3. For routes longer than 200 km, fuel used does not exceed 44.6 liters.
+  - Explanation: All 4 long routes use ≤ 44.6 liters of fuel.
+
+Statement 4: TRUE
+  - 4. All rainy-weather routes have an average speed of at most 61.2 kph.
+  - Explanation: All 5 rainy routes have speeds ≤ 61.2 kph.
+
+Statement 5: TRUE
+  - 5. If a route is a truck and its distance is less than 70 km, then its fuel consumption per kilometer exceeds 0.5 L/km.
+  - Explanation: All 1 short truck routes have fuel consumption > 0.5 L/km.
+
+Statement 6: TRUE
+  - 6. For routes shorter than 100 km, the average speed is at least 51.5 kph.
+  - Explanation: All 3 short routes have speeds ≥ 51.5 kph.
+
+Statement 7: TRUE
+  - 7. Cloudy-weather routes have a delay of no more than 19 minutes.
+  - Explanation: All 4 cloudy routes have delays ≤ 19 minutes.
+
+Statement 8: TRUE
+  - 8. The route with the lowest fuel consumption per kilometer is a van covering 228.0 km with only 11.6 liters of fuel (≈0.051 L/km).
+  - Explanation: The route with lowest fuel consumption per km (0.051 L/km) is indeed the van with 228 km and 11.6 L fuel.

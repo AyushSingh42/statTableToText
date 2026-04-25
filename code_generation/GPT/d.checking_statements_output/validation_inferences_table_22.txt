@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All east region stores have an average basket size greater than 66.
+  - Explanation: All 3 east region stores have avg basket size > 66.
+
+Statement 2: TRUE
+  - 2. All west region stores have customer satisfaction of 4.5 or lower.
+  - Explanation: All 6 west region stores have customer satisfaction <= 4.5.
+
+Statement 3: TRUE
+  - 3. All north region stores have monthly sales below 135 thousand.
+  - Explanation: All 2 north region stores have monthly sales < 135k.
+
+Statement 4: TRUE
+  - 4. All south region stores have a staff count of at least 16.
+  - Explanation: All 4 south region stores have staff count >= 16.
+
+Statement 5: TRUE
+  - 5. All stores with an average basket size of at least 67 have monthly sales exceeding 140 thousand.
+  - Explanation: All 3 stores with avg basket size >= 67 have monthly sales > 140k.
+
+Statement 6: TRUE
+  - 6. All stores with a staff count of 24 or more have customer satisfaction of 4.4 or lower.
+  - Explanation: All 2 stores with staff count >= 24 have customer satisfaction <= 4.4.
+
+Statement 7: TRUE
+  - 7. All stores with 12 or fewer staff members have monthly sales of at most 151.1 thousand.
+  - Explanation: All 4 stores with staff count <= 12 have monthly sales <= 151.1k.
+
+Statement 8: TRUE
+  - 8. All stores with transactions fewer than 1500 have an average basket size greater than 59.
+  - Explanation: All 2 stores with transactions < 1500 have avg basket size > 59.

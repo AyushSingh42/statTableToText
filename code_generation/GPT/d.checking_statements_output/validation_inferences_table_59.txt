@@ -1,0 +1,36 @@
+
+Statement 1: TRUE
+  - 1. All HR employees have a monthly salary of at most $7.7k.
+  - Explanation: All 5 HR employees have salary <= $7.7k.
+
+Statement 2: TRUE
+  - 2. All HR employees have a performance rating of at least 3.9.
+  - Explanation: All 5 HR employees have performance rating >= 3.9.
+
+Statement 3: TRUE
+  - 3. All finance employees have a performance rating of exactly 4.3.
+  - Explanation: All 2 finance employees have performance rating = 4.3.
+
+Statement 4: TRUE
+  - 4. All engineering employees work remotely at least 13 days per month.
+  - Explanation: All 2 engineering employees work remotely >= 13 days/month.
+
+Statement 5: TRUE
+  - 5. All operations employees with more than 7 years of experience have a monthly salary of at most $8.5k.
+  - Explanation: All 2 operations employees with >7 years experience have salary <= $8.5k.
+
+Statement 6: TRUE
+  - 6. All employees with a performance rating of at least 4.5 have more than 5 years of experience.
+  - Explanation: All 3 employees with performance rating >= 4.5 have >5 years experience.
+
+Statement 7: TRUE
+  - 7. All employees earning more than $9k per month have a performance rating of no higher than 4.4.
+  - Explanation: All 4 employees earning >$9k have performance rating <= 4.4.
+
+Statement 8: TRUE
+  - 8. All employees with at least 10 years of experience are active on at most five projects.
+  - Explanation: All 3 employees with >=10 years experience are active on <=5 projects.
+
+Statement 9: TRUE
+  - 9. All employees with a performance rating of at least 4.5 have more than 5 years of experience.
+  - Explanation: All 3 employees with performance rating >= 4.5 have >5 years experience.

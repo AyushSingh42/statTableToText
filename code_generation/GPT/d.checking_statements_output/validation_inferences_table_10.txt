@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All 12th-grade students have a test score of 91.
+  - Explanation: All 2 12th-grade students have a test score of 91.
+
+Statement 2: TRUE
+  - 2. All 9th-grade students have attendance rates greater than 89%.
+  - Explanation: All 5 9th-grade students have attendance rates greater than 89%.
+
+Statement 3: TRUE
+  - 3. All club members have attendance rates at most 94.5%.
+  - Explanation: All 6 club members have attendance rates at most 94.5%.
+
+Statement 4: TRUE
+  - 4. All students who study more than 10 hours per week have test scores no higher than 91.
+  - Explanation: All 2 students studying more than 10 hours per week have test scores no higher than 91.
+
+Statement 5: FALSE
+  - 5. All students with attendance rates below 88% have test scores of at least 86.
+  - Explanation: 1 students with attendance rates below 88% have test scores < 86 (scores: 84).
+
+Statement 6: TRUE
+  - 6. All club members study at least 3.8 hours per week.
+  - Explanation: All 6 club members study at least 3.8 hours per week.
+
+Statement 7: TRUE
+  - 7. Most students have attendance rates above 90%.
+  - Explanation: 9 out of 15 students (60.00%) have attendance rates above 90%.
+
+Statement 8: TRUE
+  - 8. The average test score of 11th-grade students is 86.25.
+  - Explanation: Average test score of 4 11th-grade students is 86.25, not 86.25.

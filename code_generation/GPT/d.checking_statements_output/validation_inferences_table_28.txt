@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. For all organic farms, soil_quality_index is at least 68.7.
+  - Explanation: All 4 organic farms have soil quality index >= 68.7.
+
+Statement 2: TRUE
+  - 2. For all rice farms, yield_tons is at least 357.4.
+  - Explanation: All 4 rice farms have yield_tons >= 357.4.
+
+Statement 3: TRUE
+  - 3. For all corn farms, soil_quality_index is at least 70.0.
+  - Explanation: All 4 corn farms have soil quality index >= 70.0.
+
+Statement 4: FALSE
+  - 4. For all soybean farms, irrigation_hours_week is between 13.2 and 14.1 hours per week.
+  - Explanation: 0 soybean farms violate the rule (irrigation hours: ).
+
+Statement 5: TRUE
+  - 5. If a farm's fertilizer_kg exceeds 1000, the crop type is wheat.
+  - Explanation: No farm with fertilizer_kg > 1000 has crop type other than wheat.
+
+Statement 6: TRUE
+  - 6. All farms with soil_quality_index at least 80 are either corn or wheat.
+  - Explanation: All 2 farms with soil quality index >= 80 are corn or wheat.
+
+Statement 7: TRUE
+  - 7. For all farms with irrigation_hours_week at least 19, soil_quality_index equals 78.5.
+  - Explanation: All 2 farms with irrigation hours >= 19 have soil quality index = 78.5.
+
+Statement 8: TRUE
+  - 8. If acreage is between 70 and 80 acres inclusive, the crop is soybean.
+  - Explanation: No farm with acreage between 70 and 80 has crop type other than soybean.

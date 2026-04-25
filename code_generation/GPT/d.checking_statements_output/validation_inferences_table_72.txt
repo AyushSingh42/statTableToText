@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All west region stores have monthly sales of at least 111.0 k.
+  - Explanation: All 5 west region stores meet the minimum sales requirement.
+
+Statement 2: TRUE
+  - 2. All east region stores have customer satisfaction of at least 3.8.
+  - Explanation: All 3 east region stores meet the minimum satisfaction requirement.
+
+Statement 3: TRUE
+  - 3. All stores with a staff count of at least 25 have an average basket size no more than 54.7.
+  - Explanation: All 3 high-staff stores meet the maximum basket size limit.
+
+Statement 4: TRUE
+  - 4. All stores with an average basket size greater than 60 have customer satisfaction of at least 3.9.
+  - Explanation: All 3 large-basket stores meet the minimum satisfaction requirement.
+
+Statement 5: FALSE
+  - 5. All stores with monthly sales greater than 150 k have a staff count no more than 18.
+  - Explanation: 1 high-sales stores violate the rule (staff counts: 26).
+
+Statement 6: TRUE
+  - 6. All stores with at least 2600 transactions have monthly sales of at least 162.9 k.
+  - Explanation: All 2 high-transaction stores meet the minimum sales requirement.
+
+Statement 7: TRUE
+  - 7. All north region stores have monthly sales of at least 110.1 k.
+  - Explanation: All 4 north region stores meet the minimum sales requirement.
+
+Statement 8: TRUE
+  - 8. All south region stores have an average basket size of at least 59.9.
+  - Explanation: All 3 south region stores meet the minimum basket size requirement.

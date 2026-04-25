@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All rice fields have a soil quality index between 69.2 and 78.4.
+  - Explanation: All 4 rice fields have soil quality index between 69.2 and 78.4.
+
+Statement 2: FALSE
+  - 2. If a field’s yield exceeds 440 tons, the crop type is soybean.
+  - Explanation: 1 fields with yield > 440 tons are not soybean (crop types: corn).
+
+Statement 3: TRUE
+  - 3. For fields with acreage of at least 140 acres, the yield does not exceed 414.5 tons.
+  - Explanation: All 3 fields with acreage >= 140 acres have yield <= 414.5 tons.
+
+Statement 4: TRUE
+  - 4. All wheat fields receive no more than 13.2 irrigation hours per week.
+  - Explanation: All 2 wheat fields receive <= 13.2 irrigation hours/week.
+
+Statement 5: TRUE
+  - 5. If a field is organic, its soil quality index is at least 68.2.
+  - Explanation: All 9 organic fields have soil quality index >= 68.2.
+
+Statement 6: TRUE
+  - 6. Corn fields have a soil quality index ranging from 69.5 to 82.0.
+  - Explanation: All 5 corn fields have soil quality index between 69.5 and 82.0.
+
+Statement 7: TRUE
+  - 7. If a field uses more than 1000 kg of fertilizer, the crop is soybean.
+  - Explanation: All 1 fields with fertilizer > 1000 kg are soybean.
+
+Statement 8: TRUE
+  - 8. Most fields have a yield per acre below 4.0 tons.
+  - Explanation: 11 out of 15 fields have yield per acre < 4.0 tons (more than half).

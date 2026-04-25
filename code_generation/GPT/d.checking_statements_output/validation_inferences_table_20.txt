@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All grade 9 students have attendance rates above 90%.
+  - Explanation: All 2 grade 9 students have attendance rates above 90%.
+
+Statement 2: TRUE
+  - 2. All grade 9 students have test scores of at least 87.
+  - Explanation: All 2 grade 9 students have test scores of at least 87.
+
+Statement 3: TRUE
+  - 3. All grade 12 students have attendance rates greater than 93%.
+  - Explanation: All 4 grade 12 students have attendance rates > 93%.
+
+Statement 4: TRUE
+  - 4. If a student studies at least 11 hours per week, their test score is at least 70.
+  - Explanation: All 3 students studying >=11 hours/week have test scores >= 70.
+
+Statement 5: TRUE
+  - 5. All grade 11 students who are not club members have attendance rates above 91%.
+  - Explanation: All 3 grade 11 non-club members have attendance rates > 91%.
+
+Statement 6: TRUE
+  - 6. Most students have attendance rates above 90%.
+  - Explanation: 13 out of 15 students have attendance rates > 90%, which is more than half.
+
+Statement 7: TRUE
+  - 7. Most students study at least 5 hours per week.
+  - Explanation: 11 out of 15 students study >= 5 hours/week, which is more than half.
+
+Statement 8: TRUE
+  - 8. Non-club members have a higher average test score (≈84.6) than club members (≈82.0).
+  - Explanation: Non-club members average 84.6, club members average 82.0. Higher for non-club members.

@@ -1,0 +1,36 @@
+
+Statement 1: TRUE
+  - 1. All finance employees have a performance rating of at least 4.6.
+  - Explanation: All 3 finance employees have performance rating >= 4.6.
+
+Statement 2: TRUE
+  - 2. All finance employees work remotely at least 10 days per month.
+  - Explanation: All 3 finance employees work remotely at least 10 days/month.
+
+Statement 3: TRUE
+  - 3. All engineering employees receive a monthly salary of at least $6.0k.
+  - Explanation: All 3 engineering employees receive at least $6.0k/month.
+
+Statement 4: TRUE
+  - 4. All HR employees work remotely no more than 12 days per month.
+  - Explanation: All 3 HR employees work remotely no more than 12 days/month.
+
+Statement 5: TRUE
+  - 5. Every employee with a performance rating of 4.9 has exactly 4 active projects.
+  - Explanation: All 2 employees with performance rating 4.9 have exactly 4 active projects.
+
+Statement 6: TRUE
+  - 6. All marketing employees with 13 or more remote work days have a monthly salary of at least $6.6k.
+  - Explanation: All 3 marketing employees with 13+ remote days have at least $6.6k/month.
+
+Statement 7: TRUE
+  - 7. All marketing employees with more than 5 years of experience earn at least $5.1k per month.
+  - Explanation: All 4 marketing employees with >5 years experience earn at least $5.1k/month.
+
+Statement 8: FALSE
+  - 8. All employees with more than 8 years of experience earn at least $5.1k per month.
+  - Explanation: 1 employees with >8 years experience violate the rule (salaries: 4.9).
+
+Statement 9: TRUE
+  - 9. All employees who work remotely 14 or more days per month have a performance rating of at least 4.2.
+  - Explanation: All 2 employees working remotely 14+ days/month have performance rating >= 4.2.

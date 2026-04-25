@@ -1,0 +1,28 @@
+
+Statement 1: TRUE
+  - 1. All 5-star hotels in Phoenix have occupancy rates above 84%.
+  - Explanation: All 2 5-star Phoenix hotels have occupancy > 84%.
+
+Statement 2: TRUE
+  - 2. All hotels with an average nightly rate above $210 have occupancy rates at most 84.0%.
+  - Explanation: All 4 hotels with rate > $210 have occupancy <= 84%.
+
+Statement 3: TRUE
+  - 3. If a hotel is located in Phoenix, its average nightly rate is below $130.
+  - Explanation: All 3 Phoenix hotels have rate < $130.
+
+Statement 4: TRUE
+  - 4. There exists a 5-star hotel with a cancellation rate below 9%.
+  - Explanation: Found 5-star hotel HT005012 with cancellation rate 8.1%.
+
+Statement 5: TRUE
+  - 5. All hotels with occupancy rates above 85% are 5-star hotels located in Phoenix or Atlanta.
+  - Explanation: All 2 hotels with occupancy > 85% are 5-star Phoenix/Atlanta hotels.
+
+Statement 6: TRUE
+  - 6. All Atlanta hotels have cancellation rates below 14%.
+  - Explanation: All 4 Atlanta hotels have cancellation rate < 14%.
+
+Statement 7: TRUE
+  - 7. Among 3-star hotels, the Portland hotel has the lowest average nightly rate.
+  - Explanation: Portland 3-star hotel (125.3) has lower rate than minimum of others (125.6).

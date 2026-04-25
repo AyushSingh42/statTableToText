@@ -1,0 +1,36 @@
+
+Statement 1: TRUE
+  - 1. All arthritis patients have systolic blood pressure no greater than 154 mmHg.
+  - Explanation: All 3 arthritis patients have systolic BP <= 154.
+
+Statement 2: TRUE
+  - 2. All hypertension patients have diastolic blood pressure at least 75 mmHg.
+  - Explanation: All 4 hypertension patients have diastolic BP >= 75.
+
+Statement 3: FALSE
+  - 3. All patients with BMI greater than 30 have cholesterol at least 189 mg/dL.
+  - Explanation: 1 patients with BMI > 30 violate the rule (cholesterols: 188).
+
+Statement 4: TRUE
+  - 4. All smokers have systolic blood pressure no greater than 144 mmHg.
+  - Explanation: All 6 smokers have systolic BP <= 144.
+
+Statement 5: TRUE
+  - 5. All asthma patients have cholesterol at least 212 mg/dL.
+  - Explanation: All 2 asthma patients have cholesterol >= 212.
+
+Statement 6: TRUE
+  - 6. All migraine patients have BMI between 21.0 and 30.4.
+  - Explanation: All 4 migraine patients have BMI between 21.0 and 30.4.
+
+Statement 7: TRUE
+  - 7. Most patients have cholesterol greater than 188 mg/dL.
+  - Explanation: 13 out of 15 patients have cholesterol > 188 (86.67% of patients).
+
+Statement 8: TRUE
+  - 8. All patients with cholesterol above 230 mg/dL have either asthma or diabetes.
+  - Explanation: All 2 patients with cholesterol > 230 have asthma or diabetes.
+
+Statement 9: TRUE
+  - 9. All patients with BMI at least 33 have either arthritis or diabetes.
+  - Explanation: All 2 patients with BMI >= 33 have arthritis or diabetes.

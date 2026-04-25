@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All trucks have avg_speed_kph at least 45.6.
+  - Explanation: All 5 trucks have avg_speed_kph >= 45.6.
+
+Statement 2: TRUE
+  - 2. All buses have delay_minutes no more than 26.
+  - Explanation: All 2 buses have delay_minutes <= 26.
+
+Statement 3: TRUE
+  - 3. All vans have avg_speed_kph at least 47.2.
+  - Explanation: All 8 vans have avg_speed_kph >= 47.2.
+
+Statement 4: TRUE
+  - 4. All routes longer than 200 km are operated by vans or buses (no trucks).
+  - Explanation: All 4 long routes are operated by vans or buses.
+
+Statement 5: TRUE
+  - 5. All clear-weather routes have avg_speed_kph at least 57.4.
+  - Explanation: All 2 clear-weather routes have avg_speed_kph >= 57.4.
+
+Statement 6: TRUE
+  - 6. All windy routes have avg_speed_kph at most 60.7.
+  - Explanation: All 3 windy routes have avg_speed_kph <= 60.7.
+
+Statement 7: TRUE
+  - 7. All routes with fuel_used_l greater than 45 L are either a bus or a truck.
+  - Explanation: All 2 high-fuel routes are operated by buses or trucks.
+
+Statement 8: TRUE
+  - 8. All trucks travel a distance between 85.1 km and 121.5 km.
+  - Explanation: All 5 trucks travel between 85.1 km and 121.5 km.

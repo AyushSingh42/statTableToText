@@ -1,0 +1,36 @@
+
+Statement 1: TRUE
+  - 1. All HR employees have a performance rating of at least 3.8.
+  - Explanation: All 5 HR employees have performance rating >= 3.8.
+
+Statement 2: TRUE
+  - 2. All employees earning at least $10 k per month have less than 9 years of experience.
+  - Explanation: All 2 high earners have < 9 years experience.
+
+Statement 3: TRUE
+  - 3. All employees with a performance rating of 4.8 or higher work remotely at least 6 days per month.
+  - Explanation: All 3 high performers work remote >= 6 days/month.
+
+Statement 4: TRUE
+  - 4. Every finance employee works remotely either 4 or 12 days per month.
+  - Explanation: All 3 finance employees work 4 or 12 days/month.
+
+Statement 5: TRUE
+  - 5. All employees handling six active projects have a performance rating of at least 4.0.
+  - Explanation: All 4 employees with 6 projects have performance rating >= 4.0.
+
+Statement 6: TRUE
+  - 6. All employees with more than 10 years of experience earn no more than $7.8 k per month.
+  - Explanation: All 3 experienced employees earn <= $7.8k/month.
+
+Statement 7: TRUE
+  - 7. All marketing staff have a performance rating of at least 4.4.
+  - Explanation: All 3 marketing staff have performance rating >= 4.4.
+
+Statement 8: TRUE
+  - 8. All employees who work remotely ten or more days per month have a performance rating no higher than 4.0.
+  - Explanation: All 3 remote-heavy employees have performance rating <= 4.0.
+
+Statement 9: TRUE
+  - 9. Most employees have a performance rating of at least 4.0.
+  - Explanation: 10/15 employees (proportion: 66.67%) have performance rating >= 4.0.

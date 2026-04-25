@@ -1,0 +1,36 @@
+
+Statement 1: TRUE
+  - 1. All students with an attendance rate of at least 95% are club members.
+  - Explanation: All students with 95%+ attendance are club members.
+
+Statement 2: TRUE
+  - 2. All club members have an attendance rate of at least 84.2%.
+  - Explanation: All club members have 84.2%+ attendance.
+
+Statement 3: TRUE
+  - 3. All non-club members study at least 5.9 hours per week.
+  - Explanation: All non-club members study 5.9+ hours/week.
+
+Statement 4: TRUE
+  - 4. All grade 12 students have an attendance rate of at least 85.3%.
+  - Explanation: All grade 12 students have 85.3%+ attendance.
+
+Statement 5: TRUE
+  - 5. All grade 9 students study at least 5.4 hours per week.
+  - Explanation: All grade 9 students study 5.4+ hours/week.
+
+Statement 6: TRUE
+  - 6. All grade 10 students have test scores no higher than 65.
+  - Explanation: All grade 10 students have test scores ≤ 65.
+
+Statement 7: TRUE
+  - 7. All students who study at least 9 hours per week have an attendance rate of at least 85.3%.
+  - Explanation: All students studying 9+ hours/week have 85.3%+ attendance.
+
+Statement 8: TRUE
+  - 8. Most students have an attendance rate above 85%.
+  - Explanation: 14 out of 15 students (>50%) have >85% attendance.
+
+Statement 9: TRUE
+  - 9. Most students study at least 5 hours per week.
+  - Explanation: 12 out of 15 students (>50%) study ≥5 hours/week.

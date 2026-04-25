@@ -1,0 +1,36 @@
+
+Statement 1: TRUE
+  - 1. All vans have an average speed of at least 52.7 kph.
+  - Explanation: All 3 vans have average speed >= 52.7 kph.
+
+Statement 2: TRUE
+  - 2. All trucks have an average speed of at most 58.9 kph.
+  - Explanation: All 4 trucks have average speed <= 58.9 kph.
+
+Statement 3: TRUE
+  - 3. All bus routes have an average speed between 51.5 and 57.6 kph.
+  - Explanation: All 8 buses have average speed between 51.5 and 57.6 kph.
+
+Statement 4: TRUE
+  - 4. All clear-weather routes use a truck.
+  - Explanation: All 2 clear-weather routes use a truck.
+
+Statement 5: TRUE
+  - 5. If a route’s distance is under 100 km, the vehicle type is van.
+  - Explanation: All 1 short routes use a van.
+
+Statement 6: TRUE
+  - 6. If average speed exceeds 60 kph, the vehicle type is van.
+  - Explanation: All 1 fast routes use a van.
+
+Statement 7: TRUE
+  - 7. All windy-weather bus routes have a delay of 15 minutes or less.
+  - Explanation: All 5 windy bus routes have delay <= 15 minutes.
+
+Statement 8: TRUE
+  - 8. All rain-weather bus routes have a delay of at least 6 minutes.
+  - Explanation: All 3 rain bus routes have delay >= 6 minutes.
+
+Statement 9: FALSE
+  - 9. All routes with distance greater than 200 km use at least 13.2 L of fuel.
+  - Explanation: 1 long routes use less than 13.2 L fuel (used: 11.5).

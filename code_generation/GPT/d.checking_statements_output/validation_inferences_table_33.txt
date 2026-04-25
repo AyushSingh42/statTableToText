@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. For all vans, average speed is at least 48.7 kph.
+  - Explanation: All 4 vans have average speed >= 48.7 kph.
+
+Statement 2: TRUE
+  - 2. All buses have delay of at least 13 minutes.
+  - Explanation: All 5 buses have delay >= 13 minutes.
+
+Statement 3: TRUE
+  - 3. All trucks use at least 10.1 liters of fuel.
+  - Explanation: All 6 trucks use fuel >= 10.1 liters.
+
+Statement 4: TRUE
+  - 4. All rainy routes have average speed of at least 48.7 kph.
+  - Explanation: All 0 rainy routes have average speed >= 48.7 kph.
+
+Statement 5: TRUE
+  - 5. All routes longer than 200 km have average speed of at least 52.5 kph.
+  - Explanation: All 4 long routes have average speed >= 52.5 kph.
+
+Statement 6: TRUE
+  - 6. All clear-weather routes have delay of no more than 14 minutes.
+  - Explanation: All 3 clear-weather routes have delay <= 14 minutes.
+
+Statement 7: TRUE
+  - 7. All routes with average speed greater than 60 kph use at most 40.3 liters of fuel.
+  - Explanation: All 6 fast routes use fuel <= 40.3 liters.
+
+Statement 8: FALSE
+  - 8. All routes with delay of at least 24 minutes occur under rainy weather.
+  - Explanation: 3 delayed routes do not occur under rainy weather (weathers: rain, rain, rain).

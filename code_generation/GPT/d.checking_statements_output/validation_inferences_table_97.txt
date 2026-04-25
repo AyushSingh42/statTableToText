@@ -1,0 +1,28 @@
+
+Statement 1: TRUE
+  - 1. All industrial sensors have average humidity of at least 65.8%.
+  - Explanation: All 2 industrial sensors have humidity >= 65.8%.
+
+Statement 2: TRUE
+  - 2. All residential sensors have noise levels of at least 64.5 dB.
+  - Explanation: All 4 residential sensors have noise >= 64.5 dB.
+
+Statement 3: TRUE
+  - 3. If a sensor is in the downtown zone, its foot traffic is at least 432.
+  - Explanation: All 5 downtown sensors have foot traffic >= 432.
+
+Statement 4: TRUE
+  - 4. If a sensor is in the industrial zone, its average temperature is between 24.6°C and 25.9°C.
+  - Explanation: All 2 industrial sensors have temp between 24.6°C and 25.9°C.
+
+Statement 5: TRUE
+  - 5. All park sensors have average humidity of at most 66.5%.
+  - Explanation: All 4 park sensors have humidity <= 66.5%.
+
+Statement 6: FALSE
+  - 6. All sensors with average temperature below 22°C have power use greater than 213.8 kWh.
+  - Explanation: 1 cold sensors violate the rule (power use: 213.8).
+
+Statement 7: TRUE
+  - 7. If a sensor records noise above 70 dB, it is located in either the downtown or park zone.
+  - Explanation: All 2 loud sensors are in downtown or park zones.

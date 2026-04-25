@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. For all urban households with household size 1, monthly income is between $4.4k and $9.2k.
+  - Explanation: All 4 urban households with size 1 have income between $4.4k and $9.2k.
+
+Statement 2: TRUE
+  - 2. All rural households have rent of $2.9k or less.
+  - Explanation: All 5 rural households have rent ≤ $2.9k.
+
+Statement 3: TRUE
+  - 3. All households with zero vehicles have utility cost of at least $84.8.
+  - Explanation: All 4 households with zero vehicles have utility cost ≥ $84.8.
+
+Statement 4: TRUE
+  - 4. All fiber internet households have rent of $2.4k or less.
+  - Explanation: All 6 fiber internet households have rent ≤ $2.4k.
+
+Statement 5: TRUE
+  - 5. Most households have utility cost greater than $100.
+  - Explanation: 11 out of 15 households have utility cost > $100 (more than half).
+
+Statement 6: TRUE
+  - 6. All households with six or more members have rent of $2.4k or less.
+  - Explanation: All 5 households with 6+ members have rent ≤ $2.4k.
+
+Statement 7: TRUE
+  - 7. All satellite internet households have utility cost of at least $99.6.
+  - Explanation: All 3 satellite internet households have utility cost ≥ $99.6.
+
+Statement 8: TRUE
+  - 8. All urban households have at most three vehicles.
+  - Explanation: All 8 urban households have at most 3 vehicles.

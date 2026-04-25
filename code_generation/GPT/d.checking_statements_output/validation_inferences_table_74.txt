@@ -1,0 +1,28 @@
+
+Statement 1: TRUE
+  - 1. For all households in the rural region, the internet type is not satellite.
+  - Explanation: All 4 rural households do not have satellite internet.
+
+Statement 2: TRUE
+  - 2. For all households in the urban region, the internet type is not DSL.
+  - Explanation: All 7 urban households do not have DSL internet.
+
+Statement 3: TRUE
+  - 3. For all households with a rent of $0.8k, the utility cost is at least $143.4k.
+  - Explanation: All 2 households with rent $0.8k have utility cost >= $143.4k.
+
+Statement 4: TRUE
+  - 4. All households with internet type fiber have rent of $2.5k or less.
+  - Explanation: All 4 fiber households have rent <= $2.5k.
+
+Statement 5: TRUE
+  - 5. For all households with a household size of 1, monthly income is at least $6.4k.
+  - Explanation: All 3 single-person households have income >= $6.4k.
+
+Statement 6: TRUE
+  - 6. All households with vehicle count of 0 have rent of at least $1.4k.
+  - Explanation: All 3 households with no vehicles have rent >= $1.4k.
+
+Statement 7: TRUE
+  - 7. For all households with a household size of 5 or more, monthly income does not exceed $10.2k.
+  - Explanation: All 5 large households have income <= $10.2k.

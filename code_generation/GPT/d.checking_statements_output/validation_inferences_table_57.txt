@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All industrial sensors have an average temperature of at most 20.9°C.
+  - Explanation: All 2 industrial sensors have avg temp <= 20.9°C.
+
+Statement 2: TRUE
+  - 2. All park sensors record foot traffic of at least 443 people.
+  - Explanation: All 5 park sensors record foot traffic >= 443.
+
+Statement 3: TRUE
+  - 3. All residential sensors record foot traffic of at least 432 people.
+  - Explanation: All 5 residential sensors record foot traffic >= 432.
+
+Statement 4: TRUE
+  - 4. All sensors with an average temperature of 27°C or higher have power use of at least 223.9 kWh.
+  - Explanation: All 3 hot sensors have power use >= 223.9 kWh.
+
+Statement 5: TRUE
+  - 5. All sensors with PM2.5 concentrations of 25 µg/m³ or higher have noise levels of at most 60.1 dB.
+  - Explanation: All 3 high PM2.5 sensors have noise level <= 60.1 dB.
+
+Statement 6: TRUE
+  - 6. All sensors with average humidity above 60% have foot traffic of at least 582 people.
+  - Explanation: All 5 humid sensors have foot traffic >= 582.
+
+Statement 7: TRUE
+  - 7. All sensors with noise levels of 60 dB or higher have an average temperature of at most 25.5°C.
+  - Explanation: All 5 loud sensors have avg temp <= 25.5°C.
+
+Statement 8: TRUE
+  - 8. All downtown sensors have average temperatures between 20.9°C and 25.5°C inclusive.
+  - Explanation: All 3 downtown sensors have avg temp between 20.9°C and 25.5°C.

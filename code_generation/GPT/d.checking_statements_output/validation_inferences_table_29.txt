@@ -1,0 +1,36 @@
+
+Statement 1: TRUE
+  - 1. All finance employees have a monthly salary between $8.6k and $9.4k.
+  - Explanation: All 3 finance employees have salaries between $8.6k and $9.4k.
+
+Statement 2: TRUE
+  - 2. All engineering employees have a performance rating of at least 4.2.
+  - Explanation: All 4 engineering employees have performance ratings of at least 4.2.
+
+Statement 3: TRUE
+  - 3. All marketing employees are involved in at least 2 active projects.
+  - Explanation: All 5 marketing employees are involved in at least 2 active projects.
+
+Statement 4: TRUE
+  - 4. All HR employees work remotely between 5 and 10 days per month.
+  - Explanation: All 2 HR employees work remotely between 5 and 10 days per month.
+
+Statement 5: TRUE
+  - 5. All employees with five or more active projects have a performance rating of at least 4.1.
+  - Explanation: All 4 employees with 5+ projects have performance ratings of at least 4.1.
+
+Statement 6: TRUE
+  - 6. All employees with two or fewer years of experience have a performance rating of at least 4.2.
+  - Explanation: All 4 employees with 2 or fewer years of experience have performance ratings of at least 4.2.
+
+Statement 7: TRUE
+  - 7. All finance employees have a performance rating of at least 3.8.
+  - Explanation: All 3 finance employees have performance ratings of at least 3.8.
+
+Statement 8: TRUE
+  - 8. All employees who work remotely 13 or more days per month have a monthly salary of at most $8.9k.
+  - Explanation: All 4 employees working remotely 13+ days have salaries of at most $8.9k.
+
+Statement 9: TRUE
+  - 9. Most employees have a performance rating of at least 4.0.
+  - Explanation: 11 out of 15 employees have performance ratings of at least 4.0 (more than half).

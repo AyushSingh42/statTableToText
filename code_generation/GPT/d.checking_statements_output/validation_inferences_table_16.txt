@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All guards score at least 13.7 points per game and no more than 25.3 points per game.
+  - Explanation: All 5 guards score between 13.7 and 25.3 points per game.
+
+Statement 2: TRUE
+  - 2. All centers have rebounds per game no greater than 10.0.
+  - Explanation: All 2 centers have rebounds per game ≤ 10.0.
+
+Statement 3: TRUE
+  - 3. All forwards who are 20 years old score at least 16.1 points per game.
+  - Explanation: All 2 forwards aged 20 score ≥ 16.1 points per game.
+
+Statement 4: TRUE
+  - 4. All players who average more than 34 minutes per game score at least 18.6 points per game.
+  - Explanation: All 2 players averaging >34 minutes score ≥ 18.6 points per game.
+
+Statement 5: TRUE
+  - 5. All players with rebounds per game exceeding 10 have assists per game no greater than 5.4.
+  - Explanation: All 3 players with rebounds >10 have assists ≤ 5.4.
+
+Statement 6: TRUE
+  - 6. Most players average more than 25 minutes per game.
+  - Explanation: 14 out of 15 players average >25 minutes per game.
+
+Statement 7: TRUE
+  - 7. All players with assists per game exceeding 6 score no more than 22.4 points per game.
+  - Explanation: All 5 players with assists >6 score ≤ 22.4 points per game.
+
+Statement 8: TRUE
+  - 8. All forwards average at least 26.4 minutes per game.
+  - Explanation: All 8 forwards average ≥ 26.4 minutes per game.

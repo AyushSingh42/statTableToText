@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. For all 5-star hotels, occupancy_rate is at least 66.1%.
+  - Explanation: All 6 5-star hotels meet occupancy rate requirement.
+
+Statement 2: TRUE
+  - 2. For all hotels in Dallas, avg_nightly_rate is at least $199.5.
+  - Explanation: All 3 Dallas hotels meet average nightly rate requirement.
+
+Statement 3: TRUE
+  - 3. For all Denver hotels, avg_nightly_rate does not exceed $160.5.
+  - Explanation: All 3 Denver hotels meet maximum average nightly rate requirement.
+
+Statement 4: TRUE
+  - 4. For all 3-star hotels, cancellation_rate is at most 15.3%.
+  - Explanation: All 7 3-star hotels meet cancellation rate requirement.
+
+Statement 5: TRUE
+  - 5. For all hotels with staff_count of at least 40, avg_nightly_rate is at least $135.6.
+  - Explanation: All 6 hotels with large staff meet average nightly rate requirement.
+
+Statement 6: TRUE
+  - 6. For all hotels with avg_nightly_rate exceeding $200, occupancy_rate is at least 70.4%.
+  - Explanation: All 4 hotels with high rate meet occupancy rate requirement.
+
+Statement 7: TRUE
+  - 7. For all Chicago hotels, bookings_month is at least 815.
+  - Explanation: All 3 Chicago hotels meet booking requirement.
+
+Statement 8: TRUE
+  - 8. Most hotels have occupancy_rate greater than 70%.
+  - Explanation: 13 out of 15 hotels have occupancy rate > 70%.

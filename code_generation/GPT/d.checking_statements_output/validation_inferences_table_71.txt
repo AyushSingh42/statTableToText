@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. For all individuals with migraine, cholesterol is at least 172 mg/dL.
+  - Explanation: All 5 migraine patients have cholesterol >= 172 mg/dL.
+
+Statement 2: TRUE
+  - 2. For all individuals with BMI greater than 30, the diagnosis is either hypertension or arthritis.
+  - Explanation: All 5 patients with BMI > 30 have diagnosis of hypertension or arthritis.
+
+Statement 3: TRUE
+  - 3. For all smokers, systolic blood pressure is at least 113 mmHg.
+  - Explanation: All 10 smokers have systolic BP >= 113 mmHg.
+
+Statement 4: TRUE
+  - 4. For all non-smokers, diastolic blood pressure is at most 91 mmHg.
+  - Explanation: All 5 non-smokers have diastolic BP <= 91 mmHg.
+
+Statement 5: TRUE
+  - 5. For all patients older than 60 years, systolic blood pressure is at least 143 mmHg.
+  - Explanation: All 5 patients over 60 have systolic BP >= 143 mmHg.
+
+Statement 6: TRUE
+  - 6. For all patients with hypertension, diastolic blood pressure is at least 91 mmHg.
+  - Explanation: All 3 hypertensive patients have diastolic BP >= 91 mmHg.
+
+Statement 7: TRUE
+  - 7. All patients have a body-mass index between 22 and 35.
+  - Explanation: All 15 patients have BMI between 22 and 35.
+
+Statement 8: TRUE
+  - 8. For the sole patient with diabetes, the BMI is less than 23.
+  - Explanation: Patient with diabetes has BMI 22.6 which is less than 23.

@@ -1,0 +1,36 @@
+
+Statement 1: TRUE
+  - 1. All 5-star hotels have an occupancy rate of at least 67.2%.
+  - Explanation: All 7 5-star hotels meet the occupancy requirement.
+
+Statement 2: TRUE
+  - 2. All hotels with a cancellation rate above 14% have an average nightly rate of no more than $214.5.
+  - Explanation: All 6 hotels with high cancellation rates meet the rate limit.
+
+Statement 3: TRUE
+  - 3. All Seattle hotels have an average nightly rate of $126.0 or less.
+  - Explanation: All 3 Seattle hotels meet the rate limit.
+
+Statement 4: TRUE
+  - 4. All hotels with at least 45 staff members have an occupancy rate of at least 72.2%.
+  - Explanation: All 3 hotels with sufficient staff meet the occupancy requirement.
+
+Statement 5: TRUE
+  - 5. All 3-star hotels have an average nightly rate of no more than $141.4.
+  - Explanation: All 2 3-star hotels meet the rate limit.
+
+Statement 6: TRUE
+  - 6. All hotels with more than 900 bookings per month have an occupancy rate of at least 84.3%.
+  - Explanation: All 3 hotels with high bookings meet the occupancy requirement.
+
+Statement 7: TRUE
+  - 7. All hotels with an average nightly rate of $200 or more have a star level of at least 4.
+  - Explanation: All 3 hotels with high rates meet the star level requirement.
+
+Statement 8: TRUE
+  - 8. Most hotels have a cancellation rate greater than 10%.
+  - Explanation: 11 out of 15 hotels have cancellation rate > 10%, which is more than half.
+
+Statement 9: TRUE
+  - 9. All Chicago hotels have at least 38 staff members.
+  - Explanation: All 2 Chicago hotels meet the staff requirement.

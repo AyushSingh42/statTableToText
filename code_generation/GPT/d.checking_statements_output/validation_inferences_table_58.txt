@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. For all organic farms, the soil quality index is at least 72.4.
+  - Explanation: All 7 organic farms have soil quality index >= 72.4.
+
+Statement 2: TRUE
+  - 2. For all corn farms, the soil quality index is at least 72.3.
+  - Explanation: All 5 corn farms have soil quality index >= 72.3.
+
+Statement 3: TRUE
+  - 3. For all wheat farms, irrigation hours per week are at least 12.6.
+  - Explanation: All 3 wheat farms have irrigation hours >= 12.6.
+
+Statement 4: TRUE
+  - 4. For all rice farms, irrigation hours per week do not exceed 18.3.
+  - Explanation: All 2 rice farms have irrigation hours <= 18.3.
+
+Statement 5: TRUE
+  - 5. For all farms irrigating at least 15 hours per week, the yield is at least 260.7 tons.
+  - Explanation: All 5 high-irrigation farms have yield >= 260.7 tons.
+
+Statement 6: TRUE
+  - 6. For all farms that use more than 1000 kg of fertilizer, the yield is at least 304.7 tons.
+  - Explanation: All 2 high-fertilizer farms have yield >= 304.7 tons.
+
+Statement 7: TRUE
+  - 7. The soybean farm with 78 acres has the highest yield per acre (about 5.9 tons per acre) among all farms.
+  - Explanation: Soybean farm with 78 acres has yield per acre (5.9) which matches maximum yield per acre (5.9).
+
+Statement 8: TRUE
+  - 8. For all soybean farms, yield per acre exceeds 2.8 tons.
+  - Explanation: All 5 soybean farms have yield per acre > 2.8 tons.

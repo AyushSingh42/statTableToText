@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All vans have an average speed of at least 49.1 kph.
+  - Explanation: All 6 vans have average speed >= 49.1 kph.
+
+Statement 2: TRUE
+  - 2. All trucks have a delay of at least 20 minutes.
+  - Explanation: All 3 trucks have delay >= 20 minutes.
+
+Statement 3: TRUE
+  - 3. All buses have a delay of at most 22 minutes.
+  - Explanation: All 6 buses have delay <= 22 minutes.
+
+Statement 4: TRUE
+  - 4. All routes longer than 220 km have an average speed of at least 47.8 kph.
+  - Explanation: All 5 long routes have average speed >= 47.8 kph.
+
+Statement 5: TRUE
+  - 5. All vans use no more than 39.0 L of fuel.
+  - Explanation: All 6 vans use fuel <= 39.0 L.
+
+Statement 6: TRUE
+  - 6. All rainy routes have an average speed of at most 65.6 kph.
+  - Explanation: All 3 rainy routes have average speed <= 65.6 kph.
+
+Statement 7: TRUE
+  - 7. All routes with a delay of at least 25 minutes involve either a van or a truck (no bus).
+  - Explanation: All 3 delayed routes involve van or truck (no bus).
+
+Statement 8: TRUE
+  - 8. There exists a bus route (R083010) whose fuel consumption per kilometer is about 0.48 L/km, the highest among all routes.
+  - Explanation: Bus route R083010 has fuel consumption of 0.48 L/km which is the highest among all routes.

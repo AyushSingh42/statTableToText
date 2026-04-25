@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All south stores have monthly sales of at least $118.8k.
+  - Explanation: All 3 south stores meet the minimum sales requirement.
+
+Statement 2: TRUE
+  - 2. All north stores have monthly sales between $82.5k and $146.7k.
+  - Explanation: All 6 north stores meet the sales range requirement.
+
+Statement 3: TRUE
+  - 3. All east stores have an average basket size of at least 49.2.
+  - Explanation: All 3 east stores meet the minimum basket size requirement.
+
+Statement 4: TRUE
+  - 4. All west stores have a staff count of at least 16.
+  - Explanation: All 3 west stores meet the minimum staff count requirement.
+
+Statement 5: TRUE
+  - 5. Most stores have a customer satisfaction rating of at least 4.1.
+  - Explanation: 11 out of 15 stores satisfy the requirement (>50% satisfied).
+
+Statement 6: TRUE
+  - 6. All stores with monthly sales greater than $138.5k have more than 1500 transactions.
+  - Explanation: All 4 high-sales stores meet the transaction threshold.
+
+Statement 7: TRUE
+  - 7. If a store has a staff count of at least 25, then its average basket size is at least 49.2.
+  - Explanation: All 2 high-staff stores meet the basket size requirement.
+
+Statement 8: TRUE
+  - 8. All stores with a customer satisfaction rating of 4.6 have an average basket size of at least 49.2.
+  - Explanation: All 3 high-satisfaction stores meet the basket size requirement.

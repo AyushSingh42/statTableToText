@@ -1,0 +1,59 @@
+
+Statement 1: TRUE
+  - 1. All households with three vehicles have a monthly income of at least $8.3 k.
+  - Explanation: All 2 households with three vehicles meet the income requirement.
+
+Statement 2: TRUE
+  - 2. Every household that uses fiber internet has a utility cost no greater than $183.2.
+  - Explanation: All 7 fiber households meet the utility cost limit.
+
+Statement 3: TRUE
+  - 3. Every rural household has a monthly income of at least $3.2 k.
+  - Explanation: All 3 rural households meet the income requirement.
+
+Statement 4: TRUE
+  - 4. All suburban households have at most two vehicles.
+  - Explanation: All 7 suburban households have at most two vehicles.
+
+Statement 5: TRUE
+  - 5. Every urban household pays rent of at least $0.8 k.
+  - Explanation: All 5 urban households meet the rent requirement.
+
+Statement 6: TRUE
+  - 6. All one-person households have a monthly income between $5.4 k and $6.9 k.
+  - Explanation: All 3 one-person households meet the income range.
+
+Statement 7: TRUE
+  - 7. Every household with no vehicles pays rent of at most $2.4 k.
+  - Explanation: All 6 zero-vehicle households meet the rent limit.
+
+Statement 8: TRUE
+  - 8. All DSL households have a monthly income of at least $9.7 k.
+  - Explanation: All 3 DSL households meet the income requirement.
+
+[ERROR] Script exited with code 1
+/home/ayushs13/code_generation/GPT/c.checking_statements/python_code_table_84.py:99: FutureWarning: Logical ops (and, or, xor) between Pandas objects and dtype-less sequences (e.g. list, tuple) are deprecated and will raise in a future version. Wrap the object in a Series, Index, or np.array before operating instead.
+  condition = (df[df["utility_cost"] > 200]["rent_k"] >= 2.8) | (df[df["utility_cost"] <= 200].index.tolist())
+Traceback (most recent call last):
+  File [35m"/home/ayushs13/code_generation/GPT/c.checking_statements/python_code_table_84.py"[0m, line [35m135[0m, in [35m<module>[0m
+    [31mmain[0m[1;31m()[0m
+    [31m~~~~[0m[1;31m^^[0m
+  File [35m"/home/ayushs13/code_generation/GPT/c.checking_statements/python_code_table_84.py"[0m, line [35m131[0m, in [35mmain[0m
+    truth, explanation = [31mfunc[0m[1;31m(df)[0m
+                         [31m~~~~[0m[1;31m^^^^[0m
+  File [35m"/home/ayushs13/code_generation/GPT/c.checking_statements/python_code_table_84.py"[0m, line [35m99[0m, in [35mstmt_9[0m
+    condition = [31m(df[df["utility_cost"] > 200]["rent_k"] >= 2.8) [0m[1;31m|[0m[31m (df[df["utility_cost"] <= 200].index.tolist())[0m
+                [31m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m[1;31m^[0m[31m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/ops/common.py"[0m, line [35m76[0m, in [35mnew_method[0m
+    return method(self, other)
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/arraylike.py"[0m, line [35m78[0m, in [35m__or__[0m
+    return [31mself._logical_method[0m[1;31m(other, operator.or_)[0m
+           [31m~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/series.py"[0m, line [35m6149[0m, in [35m_logical_method[0m
+    res_values = ops.logical_op(lvalues, rvalues, op)
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/ops/array_ops.py"[0m, line [35m454[0m, in [35mlogical_op[0m
+    res_values = na_logical_op(lvalues, rvalues, op)
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/ops/array_ops.py"[0m, line [35m390[0m, in [35mna_logical_op[0m
+    return [31mresult.reshape[0m[1;31m(x.shape)[0m
+           [31m~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^[0m
+[1;35mValueError[0m: [35mcannot reshape array of size 14 into shape (1,)[0m

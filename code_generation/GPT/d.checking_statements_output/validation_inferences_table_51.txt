@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All individuals diagnosed with asthma are smokers.
+  - Explanation: All 4 asthma patients are smokers.
+
+Statement 2: TRUE
+  - 2. All diabetes patients have cholesterol between 191 and 244 mg/dL.
+  - Explanation: All 5 diabetes patients have cholesterol in range.
+
+Statement 3: TRUE
+  - 3. All migraine patients have BMI ≥ 26.9.
+  - Explanation: All 2 migraine patients have BMI ≥ 26.9.
+
+Statement 4: TRUE
+  - 4. All hypertension patients have systolic ≥ 127 mmHg.
+  - Explanation: All 3 hypertension patients have systolic ≥ 127.
+
+Statement 5: TRUE
+  - 5. If a patient is younger than 30, then they have diabetes.
+  - Explanation: All 2 patients under 30 have diabetes.
+
+Statement 6: TRUE
+  - 6. All smokers have systolic blood pressure ≤ 156 mmHg.
+  - Explanation: All 9 smokers have systolic ≤ 156.
+
+Statement 7: TRUE
+  - 7. All hypertension patients have diastolic ≤ 87 mmHg.
+  - Explanation: All 3 hypertension patients have diastolic ≤ 87.
+
+Statement 8: TRUE
+  - 8. Most patients have cholesterol above 200 mg/dL.
+  - Explanation: 11 out of 15 patients have cholesterol > 200.

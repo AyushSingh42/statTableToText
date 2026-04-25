@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All students with attendance rate above 95% study at least 7.9 hours per week.
+  - Explanation: All students with attendance >95% study >=7.9 hours/week (3 out of 3)
+
+Statement 2: TRUE
+  - 2. All 11th graders have test scores of at least 76.
+  - Explanation: All 11th graders have test score >=76 (3 out of 3)
+
+Statement 3: TRUE
+  - 3. All 10th graders have attendance rates of at least 87.2%.
+  - Explanation: All 10th graders have attendance >=87.2% (4 out of 4)
+
+Statement 4: TRUE
+  - 4. All students who study 2.5 hours or less per week have test scores of at least 76.
+  - Explanation: All students studying <=2.5 hours/week have test score >=76 (3 out of 3)
+
+Statement 5: TRUE
+  - 5. All students with test scores of 90 or higher have attendance rates of at least 87.4%.
+  - Explanation: All students with test score >=90 have attendance >=87.4% (4 out of 4)
+
+Statement 6: TRUE
+  - 6. Most students study more than 5 hours per week.
+  - Explanation: 12 out of 15 students study >5 hours/week. Yes.
+
+Statement 7: TRUE
+  - 7. All 9th-grade students who are club members have test scores of at least 76.
+  - Explanation: All 4 9th-grade club members have test score >=76.
+
+Statement 8: TRUE
+  - 8. All 9th-grade students who study 2.5 hours or less per week have attendance rates of at least 87.4%.
+  - Explanation: All 3 9th-grade students studying <=2.5 hours/week have attendance >=87.4%.

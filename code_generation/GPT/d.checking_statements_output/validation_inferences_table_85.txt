@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All 5-star hotels have an occupancy rate of at least 71.6%.
+  - Explanation: All 4 5-star hotels meet the occupancy rate requirement.
+
+Statement 2: TRUE
+  - 2. All 5-star hotels have a staff count of no more than 40.
+  - Explanation: All 4 5-star hotels meet the staff count limit.
+
+Statement 3: TRUE
+  - 3. All 3-star hotels have an average nightly rate of at least $115.6.
+  - Explanation: All 6 3-star hotels meet the minimum nightly rate.
+
+Statement 4: TRUE
+  - 4. All Phoenix hotels have an occupancy rate of at least 71.6%.
+  - Explanation: All 4 Phoenix hotels meet the occupancy rate requirement.
+
+Statement 5: TRUE
+  - 5. All Miami hotels have a cancellation rate of no more than 12.4%.
+  - Explanation: All 2 Miami hotels meet the cancellation rate limit.
+
+Statement 6: TRUE
+  - 6. There exists at least one 5-star hotel with an average nightly rate below $140.
+  - Explanation: At least one 5-star hotel (2) has an average nightly rate below $140.
+
+Statement 7: TRUE
+  - 7. Most hotels have a cancellation rate greater than 9%.
+  - Explanation: 13 out of 15 hotels have a cancellation rate over 9% (more than half).
+
+Statement 8: TRUE
+  - 8. All hotels with an average nightly rate of $140 or less are either 3-star or 5-star.
+  - Explanation: All 3 hotels with rate ≤ $140 are 3-star or 5-star.

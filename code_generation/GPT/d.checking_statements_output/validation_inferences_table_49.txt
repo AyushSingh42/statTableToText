@@ -1,0 +1,36 @@
+
+Statement 1: TRUE
+  - 1. All HR employees work remotely at least 4 days per month.
+  - Explanation: All 5 HR employees work remotely at least 4 days/month.
+
+Statement 2: TRUE
+  - 2. All employees with a performance rating of 4.5 or higher earn a monthly salary of at least $6.2k.
+  - Explanation: All 4 high-performing employees earn at least $6.2k/month.
+
+Statement 3: TRUE
+  - 3. Every employee with more than 9 years of experience has a performance rating of at least 4.0.
+  - Explanation: All 2 employees with >9 years experience have performance rating ≥ 4.0.
+
+Statement 4: TRUE
+  - 4. All employees handling six active projects have a performance rating of at least 3.9.
+  - Explanation: All 3 employees with 6 active projects have performance rating ≥ 3.9.
+
+Statement 5: TRUE
+  - 5. All finance department employees earn no more than $8.5k per month.
+  - Explanation: All 3 finance employees earn ≤ $8.5k/month.
+
+Statement 6: TRUE
+  - 6. All employees earning more than $10k per month have 8.5 years of experience or less.
+  - Explanation: All 3 employees earning >$10k/month have ≤8.5 years experience.
+
+Statement 7: TRUE
+  - 7. Every employee with a performance rating of 4.6 or higher receives a monthly salary of at least $6.4k.
+  - Explanation: All 3 top-performing employees receive ≥$6.4k/month.
+
+Statement 8: TRUE
+  - 8. If an operations employee has at least 8 years of experience, their performance rating is at least 4.6.
+  - Explanation: All 1 operations employees with ≥8 years experience have performance rating ≥ 4.6.
+
+Statement 9: TRUE
+  - 9. Most employees have a performance rating of at least 4.0.
+  - Explanation: 12 out of 15 employees have performance rating ≥ 4.0 (more than half).

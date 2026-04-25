@@ -1,0 +1,36 @@
+
+Statement 1: FALSE
+  - 1. For all households with rent ≤ 1.0 k, utility cost is at least 180 k.
+  - Explanation: 13 households violate the rule (rent, utility_cost): [(1.9, 120.3), (1.8, 110.9), (1.9, 117.4), (2.0, 85.5), (2.5, 173.0), (2.1, 103.6), (1.4, 150.8), (1.9, 191.6), (1.5, 214.3), (2.4, 172.2), (2.2, 178.8), (2.1, 115.8), (1.9, 109.2)].
+
+Statement 2: FALSE
+  - 2. For all households with no vehicles, utility cost is at least 172.2 k.
+  - Explanation: 12 households violate the rule (vehicle_count, utility_cost): [(3, 120.3), (3, 110.9), (2, 117.4), (3, 180.1), (2, 85.5), (3, 173.0), (2, 103.6), (2, 150.8), (3, 191.6), (2, 178.8), (3, 115.8), (3, 109.2)].
+
+Statement 3: FALSE
+  - 3. For all households with size ≥ 6, rent is at most 1.9 k.
+  - Explanation: 12 households violate the rule (size, rent): [(5, 1.9), (2, 1.8), (5, 1.9), (2, 2.0), (5, 2.5), (2, 1.0), (1, 2.1), (5, 1.9), (1, 2.4), (1, 2.2), (3, 2.1), (4, 1.9)].
+
+Statement 4: TRUE
+  - 4. All urban households have internet type either fiber or satellite.
+  - Explanation: All urban households have internet type fiber or satellite.
+
+Statement 5: TRUE
+  - 5. All rural households have rent of at least 1.5 k.
+  - Explanation: All rural households have rent ≥ 1.5 k.
+
+Statement 6: FALSE
+  - 6. All households with monthly income > 10 k have utility cost greater than 115 k.
+  - Explanation: 12 households violate the rule (income, utility_cost): [(9.3, 120.3), (9.4, 110.9), (5.6, 85.5), (9.9, 173.0), (8.8, 188.4), (4.9, 103.6), (9.8, 150.8), (4.6, 191.6), (8.6, 214.3), (5.3, 172.2), (3.4, 178.8), (10.3, 109.2)].
+
+Statement 7: TRUE
+  - 7. All cable-connected households have at least 2 vehicles.
+  - Explanation: All cable-connected households have at least 2 vehicles.
+
+Statement 8: TRUE
+  - 8. All households with size 1 have monthly income ≤ 5.3 k.
+  - Explanation: All households with size 1 have income ≤ 5.3 k.
+
+Statement 9: TRUE
+  - 9. Most households have utility cost greater than 100 k.
+  - Explanation: More than half (14/15) of households have utility cost > 100 k.

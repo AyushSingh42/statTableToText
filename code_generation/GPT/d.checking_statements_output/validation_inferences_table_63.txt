@@ -1,0 +1,40 @@
+
+Statement 1: TRUE
+  - 1. All trucks have an average speed of at most 64.6 kph.
+  - Explanation: All 5 trucks have average speed <= 64.6 kph.
+
+Statement 2: TRUE
+  - 2. All vans use at least 24.9 liters of fuel on their routes.
+  - Explanation: All 6 vans use >= 24.9 liters of fuel.
+
+Statement 3: TRUE
+  - 3. All buses experience a delay of at least 20 minutes.
+  - Explanation: All 4 buses have delay >= 20 minutes.
+
+Statement 4: TRUE
+  - 4. All routes recorded in rain have an average speed of at most 61.0 kph.
+  - Explanation: All 3 rainy routes have average speed <= 61.0 kph.
+
+Statement 5: TRUE
+  - 5. All windy routes have an average speed of at least 51.9 kph.
+  - Explanation: All 7 windy routes have average speed >= 51.9 kph.
+
+Statement 6: TRUE
+  - 6. All vans travel a distance of at least 74.9 km.
+  - Explanation: All 6 vans travel >= 74.9 km.
+
+Statement 7: TRUE
+  - 7. All trucks use no more than 27.2 liters of fuel.
+  - Explanation: All 5 trucks use <= 27.2 liters of fuel.
+
+Statement 8: TRUE
+  - 8. All routes longer than 200 km involve either a van or a truck.
+  - Explanation: All 2 long routes involve a van or truck.
+
+Statement 9: TRUE
+  - 9. Any route with an average speed of 62 kph or higher uses a van or a truck.
+  - Explanation: All 3 fast routes involve a van or truck.
+
+Statement 10: TRUE
+  - 10. All routes that used more than 40 liters of fuel were vans.
+  - Explanation: All 2 high-fuel routes are vans.

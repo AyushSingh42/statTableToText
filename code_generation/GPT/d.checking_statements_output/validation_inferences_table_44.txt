@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All households with monthly income greater than $8 k have at least one vehicle.
+  - Explanation: No households with income >$8k lack a vehicle.
+
+Statement 2: TRUE
+  - 2. All urban households have rent of at least $1.2 k.
+  - Explanation: All urban households have rent >= $1.2k.
+
+Statement 3: TRUE
+  - 3. All households with a household size of 6 have rent of at least $2.0 k.
+  - Explanation: All households with size 6 have rent >= $2.0k.
+
+Statement 4: TRUE
+  - 4. All households with utility cost above $200 k have rent of at most $2.0 k.
+  - Explanation: All households with utility cost >$200k have rent <= $2.0k.
+
+Statement 5: TRUE
+  - 5. All satellite‑internet households have utility cost of at least $134.7 k.
+  - Explanation: All satellite-internet households have utility cost >= $134.7k.
+
+Statement 6: TRUE
+  - 6. All households with vehicle count of 3 have rent of at least $1.2 k.
+  - Explanation: All households with 3 vehicles have rent >= $1.2k.
+
+Statement 7: TRUE
+  - 7. All households with rent of $2.5 k or more have utility cost of at most $150.9 k.
+  - Explanation: All households with rent >= $2.5k have utility cost <= $150.9k.
+
+Statement 8: TRUE
+  - 8. There exists a rural household with zero vehicles that uses fiber internet.
+  - Explanation: There is 1 rural household with 0 vehicles using fiber internet.

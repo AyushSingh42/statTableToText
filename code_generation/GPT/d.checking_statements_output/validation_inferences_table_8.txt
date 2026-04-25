@@ -1,0 +1,40 @@
+
+Statement 1: TRUE
+  - 1. All organic farms have irrigation hours per week of at least 13.2.
+  - Explanation: All 6 organic farms have >= 13.2 irrigation hours/week.
+
+Statement 2: TRUE
+  - 2. All wheat farms have irrigation hours per week no more than 17.3.
+  - Explanation: All 5 wheat farms have <= 17.3 irrigation hours/week.
+
+Statement 3: TRUE
+  - 3. All farms with a soil quality index of at least 80 have a yield of at least 334.8 tons.
+  - Explanation: All 3 farms with soil quality >= 80 have >= 334.8 yield.
+
+Statement 4: TRUE
+  - 4. All farms with an acreage under 80 acres grow wheat.
+  - Explanation: All 2 farms with acreage < 80 grow wheat.
+
+Statement 5: FALSE
+  - 5. All soybean farms have a soil quality index between 74.9 and 75.3 inclusive.
+  - Explanation: 0 soybean farms violate the rule (soil quality: ).
+
+Statement 6: TRUE
+  - 6. All non-organic farms have a soil quality index of at most 81.6.
+  - Explanation: All 9 non-organic farms have soil quality <= 81.6.
+
+Statement 7: TRUE
+  - 7. All rice farms have irrigation hours per week of at most 20.4.
+  - Explanation: All 7 rice farms have <= 20.4 irrigation hours/week.
+
+Statement 8: TRUE
+  - 8. All farms that use at least 1000 kg of fertilizer grow either rice or wheat.
+  - Explanation: All 2 farms with >= 1000 kg fertilizer grow rice or wheat.
+
+Statement 9: TRUE
+  - 9. All farms with irrigation greater than 18 hours per week are either rice or soybean.
+  - Explanation: All 3 farms with > 18 irrigation hours are rice or soybean.
+
+Statement 10: TRUE
+  - 10. All organic farms use at least 898 kg of fertilizer.
+  - Explanation: All 6 organic farms use >= 898 kg fertilizer.

@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All south region stores have customer satisfaction of at least 4.7.
+  - Explanation: All 3 south region stores meet the satisfaction threshold.
+
+Statement 2: TRUE
+  - 2. All west region stores have a staff count of at least 11.
+  - Explanation: All 4 west region stores meet the staff count threshold.
+
+Statement 3: TRUE
+  - 3. All east region stores have monthly sales between $94.9k and $131.4k.
+  - Explanation: All 7 east region stores meet the monthly sales range.
+
+Statement 4: TRUE
+  - 4. All stores with a staff count of 20 or more have an average basket size of at most 65.7.
+  - Explanation: All 4 high-staff stores meet the average basket size limit.
+
+Statement 5: TRUE
+  - 5. All stores with a customer satisfaction rating of 4.8 have monthly sales of at least $108.2k.
+  - Explanation: All 3 highly satisfied stores meet the monthly sales threshold.
+
+Statement 6: TRUE
+  - 6. All stores with more than 2500 transactions have an average basket size of at most 66.4.
+  - Explanation: All 3 high-transaction stores meet the average basket size limit.
+
+Statement 7: TRUE
+  - 7. Most stores have a customer satisfaction rating of at least 4.0.
+  - Explanation: 10 out of 15 stores satisfy the minimum satisfaction level (>50%).
+
+Statement 8: TRUE
+  - 8. West region stores' average basket size ranges from 48.8 to 67.3.
+  - Explanation: West region stores' average basket size ranges from 48.8 to 67.3, within the specified bounds.

@@ -1,0 +1,36 @@
+
+Statement 1: TRUE
+  - 1. For all students who study at least 10 hours per week, the test score is at least 87.
+  - Explanation: All 3 students who study at least 10 hours per week scored at least 87.
+
+Statement 2: TRUE
+  - 2. All club members have an attendance rate of at least 85%.
+  - Explanation: All 5 club members have attendance rate of at least 85%.
+
+Statement 3: TRUE
+  - 3. Every 12th-grade student scored 89 or lower on the test.
+  - Explanation: All 5 12th-grade students scored 89 or lower.
+
+Statement 4: TRUE
+  - 4. Most students (11 out of 15) have an attendance rate of at least 90%.
+  - Explanation: 11 out of 15 students have attendance rate of at least 90%.
+
+Statement 5: TRUE
+  - 5. Students who study three hours or less per week scored at least 88 on the test.
+  - Explanation: All 2 students who study three hours or less per week scored at least 88.
+
+Statement 6: FALSE
+  - 6. Any student with an attendance rate of 95% or higher is not a club member.
+  - Explanation: 2 students with attendance rate of 95% or higher are club members.
+
+Statement 7: TRUE
+  - 7. Every 9th-grade student scored at least 84 on the test.
+  - Explanation: All 4 9th-grade students scored at least 84.
+
+Statement 8: TRUE
+  - 8. All 10th-grade students have an attendance rate of at least 85%.
+  - Explanation: All 3 10th-grade students have attendance rate of at least 85%.
+
+Statement 9: TRUE
+  - 9. All students who study at least 8 hours per week scored at least 75 on the test.
+  - Explanation: All 9 students who study at least 8 hours per week scored at least 75.

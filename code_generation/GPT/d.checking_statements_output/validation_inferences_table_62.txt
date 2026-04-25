@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All east region stores have customer satisfaction of at least 3.7.
+  - Explanation: All 3 east region stores satisfy the condition.
+
+Statement 2: TRUE
+  - 2. All stores with staff count of at least 20 have average basket size of at most 63.4.
+  - Explanation: All 6 high staff count stores satisfy the condition.
+
+Statement 3: TRUE
+  - 3. All stores with monthly sales exceeding $150k have customer satisfaction of at least 4.0.
+  - Explanation: All 5 high sales stores satisfy the condition.
+
+Statement 4: TRUE
+  - 4. All stores with average basket size greater than 60 have monthly sales of at least $78.1k.
+  - Explanation: All 8 high basket size stores satisfy the condition.
+
+Statement 5: TRUE
+  - 5. All stores with customer satisfaction of at least 4.5 are located in the north region.
+  - Explanation: All 2 high satisfaction stores are in north region.
+
+Statement 6: TRUE
+  - 6. All north region stores have staff count of at most 20.
+  - Explanation: All 5 north region stores satisfy the condition.
+
+Statement 7: TRUE
+  - 7. All south region stores have monthly sales of at least $107.4k.
+  - Explanation: All 3 south region stores satisfy the condition.
+
+Statement 8: TRUE
+  - 8. All stores with more than 2000 transactions have average basket size of at least 55.0.
+  - Explanation: All 7 high transaction stores satisfy the condition.

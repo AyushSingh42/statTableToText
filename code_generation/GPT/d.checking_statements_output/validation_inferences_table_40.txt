@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. If a student's attendance rate is at least 96.1%, their test score is at least 81.
+  - Explanation: No student with attendance >= 96.1% has test score < 81.
+
+Statement 2: TRUE
+  - 2. All club members have an attendance rate of at least 89.6%.
+  - Explanation: All 6 club members have attendance >= 89.6%.
+
+Statement 3: TRUE
+  - 3. All 10th-grade students have an attendance rate of at least 90.9%.
+  - Explanation: All 3 10th-grade students have attendance >= 90.9%.
+
+Statement 4: TRUE
+  - 4. All 12th-grade students have test scores no higher than 92.
+  - Explanation: All 4 12th-grade students have test score <= 92.
+
+Statement 5: TRUE
+  - 5. All students who study more than 9 hours per week have an attendance rate of at least 89%.
+  - Explanation: All 4 students studying > 9 hours/week have attendance >= 89%.
+
+Statement 6: TRUE
+  - 6. All students who study at least 10 hours per week have test scores of at most 69.
+  - Explanation: All 2 students studying >= 10 hours/week have test score <= 69.
+
+Statement 7: TRUE
+  - 7. All students scoring below 70 are in grade 9 or grade 12.
+  - Explanation: All 4 students scoring below 70 are in grade 9 or 12.
+
+Statement 8: TRUE
+  - 8. Most club members have test scores above 80.
+  - Explanation: 4 out of 6 club members have test score > 80.

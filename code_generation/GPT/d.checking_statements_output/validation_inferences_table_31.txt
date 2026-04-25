@@ -1,0 +1,40 @@
+
+Statement 1: TRUE
+  - 1. All patients aged 65 or older have asthma.
+  - Explanation: All 2 patients aged 65 or older have asthma.
+
+Statement 2: TRUE
+  - 2. All hypertension patients have systolic blood pressure at least 148 mmHg.
+  - Explanation: All 2 hypertension patients have systolic BP >= 148.
+
+Statement 3: TRUE
+  - 3. All hypertension patients have diastolic blood pressure at most 83 mmHg.
+  - Explanation: All 2 hypertension patients have diastolic BP <= 83.
+
+Statement 4: TRUE
+  - 4. All diabetes patients are 35 years old or younger.
+  - Explanation: All 3 diabetes patients are 35 or younger.
+
+Statement 5: TRUE
+  - 5. All arthritis patients have diastolic blood pressure at least 74 mmHg.
+  - Explanation: All 3 arthritis patients have diastolic BP >= 74.
+
+Statement 6: TRUE
+  - 6. All asthma patients have systolic blood pressure between 116 and 154 mmHg inclusive.
+  - Explanation: All 5 asthma patients have systolic BP between 116 and 154.
+
+Statement 7: TRUE
+  - 7. All smokers have cholesterol level at least 176 mg/dL.
+  - Explanation: All 12 smokers have cholesterol >= 176.
+
+Statement 8: FALSE
+  - 8. All non-smokers have cholesterol level at most 193 mg/dL.
+  - Explanation: 1 non-smokers have cholesterol > 193.
+
+Statement 9: TRUE
+  - 9. Most patients in the table are smokers.
+  - Explanation: 12 out of 15 patients are smokers (>50%).
+
+Statement 10: TRUE
+  - 10. All patients with BMI of 30 or higher have cholesterol of at least 190 mg/dL.
+  - Explanation: All 3 patients with BMI >= 30 have cholesterol >= 190.
