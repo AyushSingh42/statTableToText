@@ -1,0 +1,6 @@
+
+[ERROR] Script exited with code 1
+  File [35m"/home/ayushs13/code_generation/LLAMA/c.checking_statements/python_code_table_96.py"[0m, line [35m645[0m
+    [1;31m"[0m""55. If a
+    [1;31m^[0m
+[1;35mSyntaxError[0m: [35munterminated triple-quoted string literal (detected at line 645)[0m

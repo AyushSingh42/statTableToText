@@ -1,0 +1,76 @@
+
+Statement 1: TRUE
+  - 1. All hotels in Atlanta have an average nightly rate greater than $110.
+  - Explanation: All 3 Atlanta hotels have rates > $110.
+
+Statement 2: TRUE
+  - 2. If a hotel is in Seattle, then its occupancy rate is greater than 78%.
+  - Explanation: All 3 Seattle hotels have occupancy > 78%.
+
+Statement 3: FALSE
+  - 3. All hotels with a star level of 5 have an occupancy rate greater than 72%.
+  - Explanation: 2 5-star hotels violate the rule (occupancy: 67.2, 68.8).
+
+Statement 4: TRUE
+  - 4. There exists at least one hotel in Dallas with an occupancy rate less than 85%.
+  - Explanation: At least one Dallas hotel (1 out of 2) has occupancy < 85%.
+
+Statement 5: FALSE
+  - 5. If a hotel has a staff count greater than 40, then its occupancy rate is greater than 83%.
+  - Explanation: 2 hotels with staff > 40 violate the rule (occupancy: 72.2, 78.9).
+
+Statement 6: FALSE
+  - 6. All hotels with a cancellation rate greater than 14% have a star level less than 5.
+  - Explanation: 3 hotels with cancellation rate > 14% violate the rule (star levels: 5, 5, 5).
+
+Statement 7: FALSE
+  - 7. If a hotel is in Portland, then its average nightly rate is less than $225.
+  - Explanation: 1 Portland hotels violate the rule (rates: 225.0).
+
+Statement 8: TRUE
+  - 8. Most hotels in the dataset have an occupancy rate greater than 70%.
+  - Explanation: 12 out of 15 hotels have occupancy > 70%. Most.
+
+Statement 9: FALSE
+  - 9. All hotels with a bookings month greater than 800 have an occupancy rate greater than 75%.
+  - Explanation: 3 hotels with bookings_month > 800 violate the rule (occupancy: 72.2, 71.1, 66.3).
+
+Statement 10: TRUE
+  - 10. If a hotel has a star level of 4, then its average nightly rate is less than $215.
+  - Explanation: All 6 4-star hotels have rates < $215.
+
+Statement 11: TRUE
+  - 11. There exists at least one hotel in Chicago with a staff count greater than 45.
+  - Explanation: At least one Chicago hotel (1 out of 2) has staff > 45.
+
+Statement 12: FALSE
+  - 12. All hotels with an occupancy rate greater than 85% have a star level greater than 3.
+  - Explanation: 2 hotels with occupancy > 85% violate the rule (star levels: 3, 3).
+
+Statement 13: TRUE
+  - 13. If a hotel is in Miami, then its occupancy rate is greater than 80%.
+  - Explanation: All 1 Miami hotels have occupancy > 80%.
+
+Statement 14: TRUE
+  - 14. All hotels with a cancellation rate less than 10% have a staff count less than 30.
+  - Explanation: All 3 hotels with cancellation rate < 10% have staff < 30.
+
+Statement 15: TRUE
+  - 15. Most hotels in the dataset have a staff count less than 40.
+  - Explanation: 12 out of 15 hotels have staff < 40. Most.
+
+Statement 16: TRUE
+  - 16. If a hotel has an average nightly rate greater than $200, then its star level is greater than 3.
+  - Explanation: All 3 hotels with rate > $200 have star level > 3.
+
+Statement 17: TRUE
+  - 17. There exists at least one hotel in Boston with an occupancy rate greater than 80%.
+  - Explanation: At least one Boston hotel (1 out of 1) has occupancy > 80%.
+
+Statement 18: FALSE
+  - 18. All hotels with a bookings month less than 700 have a star level less than 5.
+  - Explanation: 3 hotels with bookings_month < 700 violate the rule (star levels: 5, 5, 5).
+
+Statement 19: TRUE
+  - 19. If a hotel has a staff count less than 25, then its occupancy rate is less than 85%.
+  - Explanation: All 2 hotels with staff < 25 have occupancy < 85%.

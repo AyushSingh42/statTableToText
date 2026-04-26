@@ -1,0 +1,76 @@
+
+Statement 1: TRUE
+  - 1. All hotels in Phoenix have an occupancy rate greater than 70%.
+  - Explanation: All 4 Phoenix hotels have occupancy > 70%.
+
+Statement 2: TRUE
+  - 2. If a hotel is in Phoenix, then its cancellation rate is less than 15%.
+  - Explanation: All 4 Phoenix hotels have cancellation rate < 15%.
+
+Statement 3: TRUE
+  - 3. There exists at least one hotel in Miami with a star level of 3.
+  - Explanation: Found 1 Miami hotel(s) with star level 3.
+
+Statement 4: TRUE
+  - 4. All hotels with an average nightly rate greater than $200 have a staff count greater than 30.
+  - Explanation: All 4 high-rate hotels have staff count > 30.
+
+Statement 5: TRUE
+  - 5. If a hotel is in Austin, then its occupancy rate is greater than 65%.
+  - Explanation: All 2 Austin hotels have occupancy > 65%.
+
+Statement 6: TRUE
+  - 6. Most hotels have an occupancy rate greater than 70%.
+  - Explanation: 11 out of 15 hotels have occupancy > 70%. Proportion: 73.33%.
+
+Statement 7: FALSE
+  - 7. All hotels with a star level of 5 have an occupancy rate greater than 80%.
+  - Explanation: 2 5-star hotels violate the rule (occupancy rates: 78.6, 71.6).
+
+Statement 8: TRUE
+  - 8. If a hotel is in Chicago, then its average nightly rate is less than $150.
+  - Explanation: All 1 Chicago hotels have avg nightly rate < $150.
+
+Statement 9: TRUE
+  - 9. There exists at least one hotel in Portland with a staff count greater than 35.
+  - Explanation: Found 1 Portland hotel(s) with staff count > 35.
+
+Statement 10: FALSE
+  - 10. All hotels with a cancellation rate less than 10% have an occupancy rate greater than 75%.
+  - Explanation: 2 low-cancellation hotels violate the rule (occupancy rates: 68.6, 72.5).
+
+Statement 11: TRUE
+  - 11. If a hotel is in Seattle, then its staff count is less than 30.
+  - Explanation: All 1 Seattle hotels have staff count < 30.
+
+Statement 12: TRUE
+  - 12. All hotels with an average nightly rate less than $120 have a star level of 3.
+  - Explanation: All 1 low-rate hotels have star level 3.
+
+Statement 13: TRUE
+  - 13. Most hotels in Phoenix have a staff count greater than 30.
+  - Explanation: 4 out of 4 Phoenix hotels have staff count > 30. Proportion: 100.00%.
+
+Statement 14: FALSE
+  - 14. If a hotel is in Atlanta, then its occupancy rate is less than 70%.
+  - Explanation: 1 Atlanta hotels violate the rule (occupancy rates: 86.0).
+
+Statement 15: TRUE
+  - 15. There exists at least one hotel in Austin with a star level of 5.
+  - Explanation: Found 1 Austin hotel(s) with star level 5.
+
+Statement 16: FALSE
+  - 16. All hotels with a staff count greater than 40 have an occupancy rate greater than 80%.
+  - Explanation: 2 high-staff hotels violate the rule (occupancy rates: 71.3, 66.9).
+
+Statement 17: TRUE
+  - 17. If a hotel is in Denver, then its average nightly rate is greater than $180.
+  - Explanation: All 1 Denver hotels have avg nightly rate > $180.
+
+Statement 18: FALSE
+  - 18. All hotels with a cancellation rate greater than 12% have a staff count greater than 25.
+  - Explanation: 1 high-cancellation hotels violate the rule (staff counts: 25).
+
+Statement 19: TRUE
+  - 19. Most hotels have a staff count greater than 25.
+  - Explanation: 13 out of 15 hotels have staff count > 25. Proportion: 86.67%.

@@ -1,0 +1,6 @@
+
+[ERROR] Script exited with code 1
+  File [35m"/home/ayushs13/code_generation/LLAMA/c.checking_statements/python_code_table_76.py"[0m, line [35m668[0m
+    expl = f"{len(viol)} players with more than 20 rebounds per game violate the rule (points: {', '.join(map(str, viol[[1;31m'[0mpoints
+                                                                                                                        [1;31m^[0m
+[1;35mSyntaxError[0m: [35munterminated string literal (detected at line 668)[0m

@@ -1,0 +1,52 @@
+
+Statement 1: FALSE
+  - 1. All students with a test score greater than or equal to 90 have a study time greater than or equal to 9 hours per week.
+  - Explanation: 1 students violate the rule (test scores: 93).
+
+Statement 2: TRUE
+  - 2. If a student is a club member, then their test score is less than or equal to 97.
+  - Explanation: All club members have test scores <= 97 (5 such students).
+
+Statement 3: TRUE
+  - 3. There exists at least one student in the 9th grade with a test score greater than 90.
+  - Explanation: Found 1 9th grade student(s) with test score > 90.
+
+Statement 4: FALSE
+  - 4. All students with an attendance rate greater than 94 have a test score greater than or equal to 84.
+  - Explanation: 2 students violate the rule (attendance rates: 98.2, 97.5).
+
+Statement 5: TRUE
+  - 5. If a student is in the 12th grade, then their study time is less than or equal to 8.4 hours per week.
+  - Explanation: All 12th graders have study time <= 8.4 hours/week (5 such students).
+
+Statement 6: TRUE
+  - 6. Most students have an attendance rate greater than 90.
+  - Explanation: More than half of students (11/15) have attendance rate > 90.
+
+Statement 7: FALSE
+  - 7. All students with a test score less than 80 have a study time less than 8 hours per week.
+  - Explanation: 2 students violate the rule (test scores: 75, 75).
+
+Statement 8: TRUE
+  - 8. If a student is in the 11th grade, then their test score is greater than or equal to 81.
+  - Explanation: All 11th graders have test score >= 81 (3 such students).
+
+Statement 9: FALSE
+  - 9. There exists at least one student with a study time less than 4 hours per week who is a club member.
+  - Explanation: No student with study time < 4 hours/week is a club member.
+
+Statement 10: TRUE
+  - 10. All students with a test score greater than or equal to 97 have a grade level less than or equal to 10.
+  - Explanation: All students with test score >= 97 have grade level <= 10 (1 such students).
+
+Statement 11: FALSE
+  - 11. If a student has a study time greater than 10 hours per week, then they are not a club member.
+  - Explanation: 1 students violate the rule (study times: 10.5).
+
+Statement 12: TRUE
+  - 12. Most students have a study time less than 10 hours per week.
+  - Explanation: More than half of students (12/15) have study time < 10 hours/week.
+
+Statement 13: FALSE
+  - 13. All students with an attendance rate greater than 96 have a test score greater than or equal to 84.
+  - Explanation: 2 students violate the rule (attendance rates: 98.2, 97.5).

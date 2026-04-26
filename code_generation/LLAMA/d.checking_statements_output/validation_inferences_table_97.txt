@@ -1,0 +1,72 @@
+
+Statement 1: TRUE
+  - 1. All sensors in the downtown zone have an average temperature greater than 21°C.
+  - Explanation: All 5 downtown sensors have avg temp > 21°C.
+
+Statement 2: TRUE
+  - 2. All sensors in the industrial zone have an average humidity greater than 65%.
+  - Explanation: All 2 industrial sensors have avg humidity > 65%.
+
+Statement 3: TRUE
+  - 3. If a sensor is in the residential zone, then its average noise level is greater than 64 dB.
+  - Explanation: All 4 residential sensors have avg noise > 64 dB.
+
+Statement 4: TRUE
+  - 4. There exists at least one sensor in the park zone with an average PM2.5 level less than 20.
+  - Explanation: At least one park sensor has PM2.5 < 20 (SN097009, 14.6).
+
+Statement 5: FALSE
+  - 5. All sensors with an average temperature less than 24°C have a foot traffic greater than 1000.
+  - Explanation: 4 low-temp sensors violate (foot traffic: 865, 827, 680, 526).
+
+Statement 6: TRUE
+  - 6. If a sensor's average humidity is greater than 60%, then its power use is greater than 200 kWh.
+  - Explanation: All 6 high-humidity sensors have power use > 200 kWh.
+
+Statement 7: TRUE
+  - 7. Most sensors in the downtown zone have an average noise level less than 50 dB.
+  - Explanation: Most (3/5) downtown sensors have noise < 50 dB.
+
+Statement 8: TRUE
+  - 8. All sensors with an average PM2.5 level greater than 30 have a foot traffic less than 700.
+  - Explanation: All 3 high-PM2.5 sensors have foot traffic < 700.
+
+Statement 9: TRUE
+  - 9. If a sensor is in the park zone, then its average temperature is less than 28°C.
+  - Explanation: All 4 park sensors have avg temp < 28°C.
+
+Statement 10: TRUE
+  - 10. There exists at least one sensor in the residential zone with an average noise level greater than 67 dB.
+  - Explanation: At least one residential sensor has noise > 67 dB (SN097004, 67.6 dB).
+
+Statement 11: TRUE
+  - 11. All sensors with a foot traffic greater than 1200 have an average humidity greater than 50%.
+  - Explanation: All 3 high-foot sensors have avg humidity > 50%.
+
+Statement 12: FALSE
+  - 12. If a sensor's power use is less than 250 kWh, then its average temperature is greater than 22°C.
+  - Explanation: 2 low-power sensors violate (temp: 20.6, 21.5).
+
+Statement 13: TRUE
+  - 13. Most sensors in the industrial zone have an average PM2.5 level less than 25.
+  - Explanation: Most (2/2) industrial sensors have PM2.5 < 25.
+
+Statement 14: FALSE
+  - 14. All sensors with an average noise level greater than 70 dB have a foot traffic less than 1300.
+  - Explanation: 1 high-noise sensors violate (foot traffic: 1319).
+
+Statement 15: FALSE
+  - 15. If a sensor is in the downtown zone, then its average humidity is greater than 55%.
+  - Explanation: 1 downtown sensors violate (humidity: 52.8).
+
+Statement 16: TRUE
+  - 16. There exists at least one sensor in the park zone with an average temperature less than 22°C.
+  - Explanation: At least one park sensor has temp < 22°C (SN097009, 20.6°C).
+
+Statement 17: TRUE
+  - 17. All sensors with an average humidity less than 55% have a foot traffic greater than 600.
+  - Explanation: All 5 low-humidity sensors have foot traffic > 600.
+
+Statement 18: FALSE
+  - 18. If a sensor's average PM2.5 level is less than 20, then its power use is greater than 300 kWh.
+  - Explanation: 3 low-PM2.5 sensors violate (power use: 232.5, 213.8, 167.0).

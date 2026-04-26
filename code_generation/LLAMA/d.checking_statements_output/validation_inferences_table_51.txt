@@ -1,0 +1,68 @@
+
+Statement 1: TRUE
+  - 1. All patients with asthma have a BMI greater than or equal to 20.6.
+  - Explanation: All 4 asthma patients have BMI >= 20.6.
+
+Statement 2: TRUE
+  - 2. All patients with diabetes have a cholesterol level greater than or equal to 191 mg/dl.
+  - Explanation: All 5 diabetic patients have cholesterol >= 191 mg/dl.
+
+Statement 3: FALSE
+  - 3. If a patient is a smoker, then their BMI is greater than or equal to 22.7.
+  - Explanation: 1 smokers have BMI < 22.7 (BMIs: 20.6).
+
+Statement 4: TRUE
+  - 4. There exists at least one patient with arthritis whose systolic blood pressure is greater than 150 mmHg.
+  - Explanation: At least one arthritis patient (ID: PT051007) has systolic BP > 150 mmHg.
+
+Statement 5: TRUE
+  - 5. All patients with hypertension have a diastolic blood pressure greater than or equal to 74 mmHg.
+  - Explanation: All 3 hypertensive patients have diastolic BP >= 74 mmHg.
+
+Statement 6: TRUE
+  - 6. If a patient's age is greater than 50, then their systolic blood pressure is less than or equal to 156 mmHg.
+  - Explanation: All 7 patients over age 50 have systolic BP <= 156 mmHg.
+
+Statement 7: TRUE
+  - 7. Most patients have a cholesterol level greater than 200 mg/dl.
+  - Explanation: 11 out of 15 patients have cholesterol > 200 mg/dl (73.33% of total).
+
+Statement 8: TRUE
+  - 8. All patients with migraine have a BMI greater than or equal to 26.9.
+  - Explanation: All 2 migraine patients have BMI >= 26.9.
+
+Statement 9: FALSE
+  - 9. If a patient's BMI is greater than 30, then they are a smoker.
+  - Explanation: 2 patients with BMI > 30 are not smokers (IDs: PT051010, PT051011).
+
+Statement 10: TRUE
+  - 10. There exists at least one patient with diabetes whose age is less than 30.
+  - Explanation: At least one diabetic patient (ID: PT051005) is under 30 years old.
+
+Statement 11: TRUE
+  - 11. All patients with asthma have a systolic blood pressure greater than or equal to 119 mmHg.
+  - Explanation: All 4 asthma patients have systolic BP >= 119 mmHg.
+
+Statement 12: TRUE
+  - 12. If a patient is a non-smoker, then their BMI is less than or equal to 31.8.
+  - Explanation: All 6 non-smokers have BMI <= 31.8.
+
+Statement 13: TRUE
+  - 13. All patients with hypertension have an age greater than or equal to 43.
+  - Explanation: All 3 hypertensive patients are aged >= 43.
+
+Statement 14: TRUE
+  - 14. Most patients are smokers.
+  - Explanation: 9 out of 15 patients are smokers (60.00% of total).
+
+Statement 15: TRUE
+  - 15. If a patient's cholesterol level is greater than 230 mg/dl, then they are a smoker.
+  - Explanation: All 4 patients with cholesterol > 230 mg/dl are smokers.
+
+Statement 16: TRUE
+  - 16. All patients with arthritis have a systolic blood pressure greater than or equal to 156 mmHg.
+  - Explanation: All 1 arthritis patients have systolic BP >= 156 mmHg.
+
+Statement 17: TRUE
+  - 17. There exists at least one patient with migraine whose diastolic blood pressure is less than 90 mmHg.
+  - Explanation: At least one migraine patient (ID: PT051010) has diastolic BP < 90 mmHg.

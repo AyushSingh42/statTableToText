@@ -1,0 +1,6 @@
+
+[ERROR] Script exited with code 1
+  File [35m"/home/ayushs13/code_generation/LLAMA/c.checking_statements/python_code_table_66.py"[0m, line [35m618[0m
+    expl = [1;31mf[0m"All {len(high_games)}
+           [1;31m^[0m
+[1;35mSyntaxError[0m: [35munterminated f-string literal (detected at line 618)[0m

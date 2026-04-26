@@ -1,0 +1,72 @@
+
+Statement 1: TRUE
+  - 1. All sensors in the park zone have an average temperature between 21.6 and 24.2 degrees Celsius.
+  - Explanation: All 6 park zone sensors have avg temp between 21.6 and 24.2°C.
+
+Statement 2: TRUE
+  - 2. All sensors in the residential zone have an average humidity between 52.9 and 67.3 percent.
+  - Explanation: All 4 residential zone sensors have avg humidity between 52.9 and 67.3%.
+
+Statement 3: TRUE
+  - 3. If a sensor is in the industrial zone, then its average noise level is between 47.7 and 59.9 decibels.
+  - Explanation: All 2 industrial zone sensors have avg noise between 47.7 and 59.9 dB.
+
+Statement 4: TRUE
+  - 4. There exists at least one sensor in the downtown zone with an average PM2.5 level greater than 25.
+  - Explanation: At least one downtown sensor has PM2.5 > 25 (e.g., SN027011 with 25.1).
+
+Statement 5: FALSE
+  - 5. All sensors with an average temperature greater than 25 degrees Celsius have a power usage greater than 263.6 kWh.
+  - Explanation: 1 sensors with temp > 25°C violate the rule (power uses: 263.6).
+
+Statement 6: TRUE
+  - 6. If a sensor is in the park zone, then its foot traffic is between 470 and 1433.
+  - Explanation: All 6 park zone sensors have foot traffic between 470 and 1433.
+
+Statement 7: FALSE
+  - 7. Most sensors in the residential zone have an average step count greater than 872.
+  - Explanation: Column'step_count' not found in dataset.
+
+Statement 8: TRUE
+  - 8. All sensors with an average humidity less than 55 percent have a power usage greater than 276.1 kWh.
+  - Explanation: All 4 sensors with humidity < 55% have power use > 276.1 kWh.
+
+Statement 9: TRUE
+  - 9. If a sensor is in the industrial zone, then its average temperature is between 24.1 and 27.9 degrees Celsius.
+  - Explanation: All 2 industrial zone sensors have avg temp between 24.1 and 27.9°C.
+
+Statement 10: TRUE
+  - 10. There exists at least one sensor in the downtown zone with an average noise level greater than 69 decibels.
+  - Explanation: At least one downtown sensor has noise > 69 dB (e.g., SN027011 with 69.3).
+
+Statement 11: FALSE
+  - 11. All sensors with an average PM2.5 level greater than 30 have a foot traffic greater than 1122.
+  - Explanation: 1 sensors with PM2.5 > 30 violate the rule (foot traffic: 1122).
+
+Statement 12: TRUE
+  - 12. If a sensor is in the park zone, then its average humidity is between 51.6 and 64.5 percent.
+  - Explanation: All 6 park zone sensors have avg humidity between 51.6 and 64.5%.
+
+Statement 13: FALSE
+  - 13. All sensors with a power usage greater than 357.5 kWh have an average temperature greater than 23.8 degrees Celsius.
+  - Explanation: 2 sensors with power use > 357.5 kWh violate the rule (temps: 23.3, 22.8).
+
+Statement 14: TRUE
+  - 14. Most sensors in the downtown zone have an average PM2.5 level greater than 14.3.
+  - Explanation: More than half (2/3) of downtown sensors have PM2.5 > 14.3.
+
+Statement 15: FALSE
+  - 15. There exists at least one sensor in the residential zone with an average noise level greater than 73.9 decibels.
+  - Explanation: No residential sensors have noise > 73.9 dB.
+
+Statement 16: FALSE
+  - 16. All sensors with an average temperature less than 25 degrees Celsius have a power usage less than 424.4 kWh.
+  - Explanation: 2 sensors with temp < 25°C violate the rule (power uses: 424.4, 435.6).
+
+Statement 17: TRUE
+  - 17. If a sensor is in the industrial zone, then its foot traffic is between 990 and 1097.
+  - Explanation: All 2 industrial zone sensors have foot traffic between 990 and 1097.
+
+Statement 18: FALSE
+  - 18. All sensors with an average humidity greater than 64 percent have a power usage less than 357.5 kWh.
+  - Explanation: 1 sensors with humidity > 64% violate the rule (power uses: 424.4).

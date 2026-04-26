@@ -1,0 +1,52 @@
+
+Statement 1: TRUE
+  - 1. All employees in the operations department have a monthly salary less than or equal to $7.6k.
+  - Explanation: All 3 operations employees have salary <= 7.6k.
+
+Statement 2: TRUE
+  - 2. If an employee is in the engineering department, then their years of experience are less than or equal to 10 years.
+  - Explanation: All 3 engineering employees have <= 10 years experience.
+
+Statement 3: TRUE
+  - 3. There exists at least one employee in the hr department whose performance rating is less than 4.0.
+  - Explanation: At least one HR employee (1) has performance rating < 4.0.
+
+Statement 4: FALSE
+  - 4. All employees with more than 5 years of experience have a monthly salary greater than or equal to $6.2k.
+  - Explanation: 2 employees with > 5 years experience violate the rule (salaries: 5.6, 5.6).
+
+Statement 5: FALSE
+  - 5. If an employee has more than 3 projects active, then their monthly salary is greater than or equal to $6.4k.
+  - Explanation: 2 employees with > 3 projects active violate the rule (salaries: 6.2, 5.6).
+
+Statement 6: TRUE
+  - 6. Most employees in the hr department have a monthly salary less than or equal to $8.6k.
+  - Explanation: Most (4/5) HR employees have salary <= 8.6k.
+
+Statement 7: TRUE
+  - 7. All employees with a performance rating greater than 4.5 have more than 2 projects active.
+  - Explanation: All 3 employees with performance rating > 4.5 have > 2 projects active.
+
+Statement 8: TRUE
+  - 8. If an employee is in the finance department, then their years of experience are greater than or equal to 5 years.
+  - Explanation: All 3 finance employees have >= 5 years experience.
+
+Statement 9: TRUE
+  - 9. There exists at least one employee in the operations department whose remote days per month are less than or equal to 5.
+  - Explanation: At least one operations employee (2) has remote days <= 5.
+
+Statement 10: FALSE
+  - 10. All employees with a monthly salary greater than $10k have more than 4 projects active.
+  - Explanation: 2 employees with salary > 10k violate the rule (projects: 2, 4).
+
+Statement 11: FALSE
+  - 11. If an employee has more than 8 years of experience, then their monthly salary is greater than or equal to $7.5k.
+  - Explanation: 3 employees with > 8 years experience violate the rule (salaries: 6.4, 5.6, 6.8).
+
+Statement 12: TRUE
+  - 12. Most employees in the engineering department have a monthly salary greater than or equal to $6.2k.
+  - Explanation: Most (3/3) engineering employees have salary >= 6.2k.
+
+Statement 13: FALSE
+  - 13. All employees with a performance rating less than 4.0 have less than or equal to 3 projects active.
+  - Explanation: 1 employees with performance rating < 4.0 violate the rule (projects: 6).

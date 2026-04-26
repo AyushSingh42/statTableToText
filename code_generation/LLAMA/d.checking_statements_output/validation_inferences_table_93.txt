@@ -1,0 +1,80 @@
+
+Statement 1: TRUE
+  - 1. All vehicles that traveled in the rain had a delay of 10 minutes or more, except for one bus that had a delay of 6 minutes.
+  - Explanation: All rain vehicles except one bus (with 6 min delay) had delay >= 10.
+
+Statement 2: TRUE
+  - 2. All buses that traveled in the wind had an average speed of 55 kph or more.
+  - Explanation: All 0 wind buses had avg speed >= 55 kph.
+
+Statement 3: FALSE
+  - 3. If a vehicle traveled in the clear weather, then its fuel used was 12.5 liters or less.
+  - Explanation: 1 clear weather vehicles used > 12.5L fuel (amounts: 37.1).
+
+Statement 4: TRUE
+  - 4. There exists at least one truck that traveled in the rain and had a delay of 11 minutes.
+  - Explanation: Found 1 truck(s) in rain with 11 min delay.
+
+Statement 5: FALSE
+  - 5. All vans had a distance traveled of 200 km or less.
+  - Explanation: 1 vans traveled > 200 km (distances: 236.9).
+
+Statement 6: FALSE
+  - 6. If a vehicle had a delay of 15 minutes or more, then it was a bus.
+  - Explanation: 4 non-buses had delay >= 15 (types: truck, van, van, truck).
+
+Statement 7: TRUE
+  - 7. Most vehicles that traveled in the rain had a fuel used of 30 liters or more.
+  - Explanation: More than half (5/7) of rain vehicles used >= 30L fuel.
+
+Statement 8: FALSE
+  - 8. All buses that had a distance traveled of 180 km or more had an average speed of 56 kph or more.
+  - Explanation: 1 long-distance buses had speed < 56 kph (speeds: 51.5).
+
+Statement 9: TRUE
+  - 9. If a vehicle had an average speed of 60 kph or more, then it was a van.
+  - Explanation: All 1 fast vehicles were vans.
+
+Statement 10: FALSE
+  - 10. There exists at least one bus that traveled in the wind and had a fuel used of 12.2 liters.
+  - Explanation: No wind bus found with 12.2L fuel.
+
+Statement 11: FALSE
+  - 11. All trucks that traveled in the clear weather had a distance traveled of 200 km or less.
+  - Explanation: 1 clear weather trucks traveled > 200 km (distances: 200.6).
+
+Statement 12: FALSE
+  - 12. If a vehicle had a delay of 10 minutes or less, then it was a bus.
+  - Explanation: 1 non-buses had delay <= 10 (types: van).
+
+Statement 13: TRUE
+  - 13. All vehicles that had a fuel used of 40 liters or more had a distance traveled of 200 km or less.
+  - Explanation: All 4 high-fuel vehicles traveled <= 200 km.
+
+Statement 14: FALSE
+  - 14. Most vehicles that traveled in the wind had a delay of 15 minutes or less.
+  - Explanation: Less than half (0/0) of wind vehicles had delay <= 15.
+
+Statement 15: FALSE
+  - 15. If a vehicle had a distance traveled of 150 km or less, then it was a van.
+  - Explanation: 3 non-vans traveled <= 150 km (types: bus, truck, bus).
+
+Statement 16: TRUE
+  - 16. There exists at least one truck that traveled in the rain and had a fuel used of 24.6 liters.
+  - Explanation: Found 1 rain truck(s) with 24.6L fuel.
+
+Statement 17: FALSE
+  - 17. All buses that had a delay of 10 minutes or less had a distance traveled of 200 km or more.
+  - Explanation: 3 low-delay buses traveled < 200 km (distances: 111.4, 197.6, 184.5).
+
+Statement 18: TRUE
+  - 18. If a vehicle had an average speed of 50 kph or less, then it was a truck.
+  - Explanation: All 1 slow vehicles were trucks.
+
+Statement 19: TRUE
+  - 19. All vehicles that traveled in the rain had a fuel used of 10 liters or more.
+  - Explanation: All 7 rain vehicles used >= 10L fuel.
+
+Statement 20: TRUE
+  - 20. Most vehicles that had a distance traveled of 200 km or more had an average speed of 55 kph or more.
+  - Explanation: More than half (4/5) of long-distance vehicles had speed >= 55 kph.

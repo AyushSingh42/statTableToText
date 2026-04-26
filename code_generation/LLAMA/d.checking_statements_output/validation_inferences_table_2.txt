@@ -1,0 +1,76 @@
+
+Statement 1: FALSE
+  - 1. All stores in the north region have a customer satisfaction rating of 4.2 or higher.
+  - Explanation: 1 stores in the north region violate the rule (ratings: 3.7).
+
+Statement 2: FALSE
+  - 2. If a store is in the west region, then its average basket size is less than 60.
+  - Explanation: 1 stores in the west region violate the rule (avg basket sizes: 61.5).
+
+Statement 3: TRUE
+  - 3. There exists at least one store in the south region with a staff count greater than 20.
+  - Explanation: At least one store in the south region has a staff count greater than 20.
+
+Statement 4: FALSE
+  - 4. For all stores with monthly sales greater than 150k, their transactions are greater than 1800.
+  - Explanation: 2 stores with monthly sales greater than 150k violate the rule (transactions: 1673, 1567).
+
+Statement 5: FALSE
+  - 5. All stores with a staff count greater than 20 have a customer satisfaction rating of 4.0 or higher.
+  - Explanation: 2 stores with staff count greater than 20 violate the rule (ratings: 3.9, 3.9).
+
+Statement 6: FALSE
+  - 6. If a store is in the east region, then its average basket size is greater than 55.
+  - Explanation: 1 stores in the east region violate the rule (avg basket sizes: 53.0).
+
+Statement 7: TRUE
+  - 7. Most stores in the data have a monthly sales figure less than 170k.
+  - Explanation: Most stores (14/15) have a monthly sales figure less than 170k.
+
+Statement 8: FALSE
+  - 8. For all stores with transactions greater than 2200, their average basket size is less than 60.
+  - Explanation: 1 stores with transactions greater than 2200 violate the rule (avg basket sizes: 64.7).
+
+Statement 9: TRUE
+  - 9. There exists at least one store in the north region with a monthly sales figure less than 100k.
+  - Explanation: At least one store in the north region has a monthly sales figure less than 100k.
+
+Statement 10: FALSE
+  - 10. If a store is in the south region, then its customer satisfaction rating is 4.1 or higher.
+  - Explanation: 2 stores in the south region violate the rule (ratings: 3.9, 3.7).
+
+Statement 11: TRUE
+  - 11. All stores with a customer satisfaction rating of 4.7 have a staff count of 12 or greater.
+  - Explanation: All 2 stores with customer satisfaction rating of 4.7 have a staff count of 12 or greater.
+
+Statement 12: TRUE
+  - 12. For all stores with an average basket size greater than 65, their monthly sales are less than 140k.
+  - Explanation: All 1 stores with average basket size greater than 65 have monthly sales less than 140k.
+
+Statement 13: FALSE
+  - 13. If a store has a staff count of 25 or greater, then its customer satisfaction rating is 4.2 or higher.
+  - Explanation: 1 stores with staff count of 25 or greater violate the rule (ratings: 3.9).
+
+Statement 14: TRUE
+  - 14. Most stores in the data have a staff count less than 20.
+  - Explanation: Most stores (10/15) have a staff count less than 20.
+
+Statement 15: TRUE
+  - 15. There exists at least one store in the west region with a monthly sales figure greater than 160k.
+  - Explanation: At least one store in the west region has a monthly sales figure greater than 160k.
+
+Statement 16: FALSE
+  - 16. For all stores with transactions less than 2000, their average basket size is greater than 55.
+  - Explanation: 3 stores with transactions less than 2000 violate the rule (avg basket sizes: 49.9, 53.0, 49.0).
+
+Statement 17: TRUE
+  - 17. All stores with a customer satisfaction rating of 3.7 have a staff count of 17 or less.
+  - Explanation: All 4 stores with customer satisfaction rating of 3.7 have a staff count of 17 or less.
+
+Statement 18: TRUE
+  - 18. If a store is in the east region, then its transactions are greater than 1600.
+  - Explanation: All 2 stores in the east region have transactions greater than 1600.
+
+Statement 19: FALSE
+  - 19. For all stores with a monthly sales figure greater than 120k, their staff count is greater than 10.
+  - Explanation: 1 stores with monthly sales greater than 120k violate the rule (staff counts: 10).

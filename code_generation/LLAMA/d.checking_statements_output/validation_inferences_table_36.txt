@@ -1,0 +1,84 @@
+
+Statement 1: TRUE
+  - 1. All players who are guards have an average of less than 25 points per game.
+  - Explanation: All 5 guards have less than 25 points per game.
+
+Statement 2: TRUE
+  - 2. If a player is a forward, then their age is between 26 and 34 years.
+  - Explanation: All 7 forwards are aged 26-34.
+
+Statement 3: FALSE
+  - 3. All players who are centers have an average of more than 4 rebounds per game.
+  - Explanation: 1 centers violate the rule (rebounds: 3.4).
+
+Statement 4: TRUE
+  - 4. There exists at least one player who is a guard and has an average of more than 20 points per game.
+  - Explanation: At least one guard (3) has more than 20 points per game.
+
+Statement 5: FALSE
+  - 5. If a player is a forward aged over 30, then their average minutes per game is more than 33.
+  - Explanation: 2 forwards over 30 violate the rule (minutes: 30.2, 27.4).
+
+Statement 6: FALSE
+  - 6. All players who have an average of more than 6 assists per game are forwards.
+  - Explanation: 1 players with more than 6 assists are not forwards (positions: guard).
+
+Statement 7: TRUE
+  - 7. Most players have an average of more than 5 rebounds per game.
+  - Explanation: More than half (14/15) of players have more than 5 rebounds per game.
+
+Statement 8: FALSE
+  - 8. If a player is a center aged below 30, then their average points per game is more than 15.
+  - Explanation: 1 centers under 30 violate the rule (points: 14.6).
+
+Statement 9: FALSE
+  - 9. All players who have an average of more than 8 rebounds per game are forwards or centers.
+  - Explanation: 3 players with more than 8 rebounds are neither forwards nor centers (positions: guard, guard, guard).
+
+Statement 10: TRUE
+  - 10. There exists at least one player who is a guard and has an average of less than 30 minutes per game.
+  - Explanation: At least one guard (3) plays less than 30 minutes per game.
+
+Statement 11: TRUE
+  - 11. If a player is a forward aged below 30, then their average points per game is more than 12.
+  - Explanation: All 1 forwards under 30 score more than 12 points per game.
+
+Statement 12: TRUE
+  - 12. All players who have an average of more than 7 assists per game are forwards aged over 30.
+  - Explanation: All 1 players with more than 7 assists are forwards over 30.
+
+Statement 13: FALSE
+  - 13. Most players who are guards have an average of less than 11 points per game.
+  - Explanation: Less than half (1/5) of guards score less than 11 points per game.
+
+Statement 14: FALSE
+  - 14. If a player is a center aged over 25, then their average rebounds per game is more than 6.
+  - Explanation: 1 centers over 25 violate the rule (rebounds: 3.4).
+
+Statement 15: TRUE
+  - 15. All players who have an average of more than 9 rebounds per game are forwards or guards.
+  - Explanation: All 3 players with more than 9 rebounds are forwards or guards.
+
+Statement 16: TRUE
+  - 16. There exists at least one player who is a center and has an average of more than 5 assists per game.
+  - Explanation: At least one center (1) has more than 5 assists per game.
+
+Statement 17: FALSE
+  - 17. If a player is a forward aged over 25, then their average minutes per game is more than 30.
+  - Explanation: 1 forwards over 25 violate the rule (minutes: 27.4).
+
+Statement 18: FALSE
+  - 18. All players who have an average of more than 8 points per game are forwards or guards.
+  - Explanation: 3 players with more than 8 points are neither forwards nor guards (positions: center, center, center).
+
+Statement 19: FALSE
+  - 19. Most players who are forwards have an average of more than 5 assists per game.
+  - Explanation: Less than half (3/7) of forwards have more than 5 assists per game.
+
+Statement 20: TRUE
+  - 20. If a player is a guard aged below 30, then their average points per game is more than 20.
+  - Explanation: All 2 guards under 30 score more than 20 points per game.
+
+Statement 21: FALSE
+  - 21. All players who have an average of more than 7 rebounds per game are forwards or centers aged over 25.
+  - Explanation: 3 players with more than 7 rebounds are not forwards or centers over 25 (positions/ages: guard(23), guard(32), guard(33)).

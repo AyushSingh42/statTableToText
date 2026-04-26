@@ -1,0 +1,64 @@
+
+Statement 1: TRUE
+  - 1. All vehicles with an average speed greater than 62 kph have a fuel usage less than 25 liters.
+  - Explanation: No vehicle with avg speed > 62 kph has fuel usage >= 25 liters.
+
+Statement 2: TRUE
+  - 2. If a vehicle is a truck, then its average speed is greater than 52 kph.
+  - Explanation: All 4 trucks have avg speed > 52 kph.
+
+Statement 3: TRUE
+  - 3. All buses with a distance greater than 200 km have an average speed greater than 53 kph.
+  - Explanation: All 3 buses with distance > 200 km have avg speed > 53 kph.
+
+Statement 4: TRUE
+  - 4. There exists at least one van with a fuel usage greater than 32 liters.
+  - Explanation: Found 2 van(s) with fuel usage > 32 liters.
+
+Statement 5: FALSE
+  - 5. If a vehicle is a bus, then its delay is less than 27 minutes.
+  - Explanation: 1 bus(es) violate the rule: [{'route_id': 'R013004', 'delay_minutes': 27}]
+
+Statement 6: FALSE
+  - 6. All vehicles with a distance less than 150 km have a fuel usage greater than 30 liters.
+  - Explanation: 2 vehicle(s) violate the rule: [{'route_id': 'R013011', 'distance_km': 141.3, 'fuel_used_l': 25.9}, {'route_id': 'R013013', 'distance_km': 104.7, 'fuel_used_l': 9.9}]
+
+Statement 7: TRUE
+  - 7. Most vehicles have a delay less than 10 minutes.
+  - Explanation: Less than half (4/15) of vehicles have delay >= 10 minutes.
+
+Statement 8: TRUE
+  - 8. If a vehicle is a truck, then its distance is greater than 90 km.
+  - Explanation: All 4 trucks have distance > 90 km.
+
+Statement 9: TRUE
+  - 9. All vehicles with an average speed greater than 60 kph have a fuel usage less than 40 liters.
+  - Explanation: All vehicles with avg speed > 60 kph have fuel usage < 40 liters.
+
+Statement 10: TRUE
+  - 10. There exists at least one bus with an average speed greater than 64 kph.
+  - Explanation: Found 1 bus(es) with avg speed > 64 kph.
+
+Statement 11: TRUE
+  - 11. If a vehicle is a van, then its average speed is greater than 48 kph.
+  - Explanation: All 3 vans have avg speed > 48 kph.
+
+Statement 12: TRUE
+  - 12. All vehicles with a fuel usage less than 20 liters have an average speed greater than 60 kph.
+  - Explanation: All vehicles with fuel usage < 20 liters have avg speed > 60 kph.
+
+Statement 13: TRUE
+  - 13. Most vehicles have an average speed greater than 50 kph.
+  - Explanation: Less than half (3/15) of vehicles have avg speed <= 50 kph.
+
+Statement 14: TRUE
+  - 14. If a vehicle is a bus, then its distance is greater than 100 km.
+  - Explanation: All 8 buses have distance > 100 km.
+
+Statement 15: FALSE
+  - 15. All vehicles with a delay greater than 20 minutes have a weather condition of rain.
+  - Explanation: 1 vehicle(s) violate the rule: [{'route_id': 'R013004', 'delay_minutes': 27, 'weather': 'clear'}]
+
+Statement 16: TRUE
+  - 16. There exists at least one truck with a fuel usage less than 10 liters.
+  - Explanation: Found 1 truck(s) with fuel usage < 10 liters.

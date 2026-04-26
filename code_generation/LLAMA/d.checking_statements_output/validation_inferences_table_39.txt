@@ -1,0 +1,64 @@
+
+Statement 1: TRUE
+  - 1. All employees in the finance department have a monthly salary less than or equal to $10.2k.
+  - Explanation: All 5 finance employees have salary <= $10.2k.
+
+Statement 2: TRUE
+  - 2. All employees with more than 10 years of experience have a performance rating greater than or equal to 4.0.
+  - Explanation: All 5 employees with >10 years experience have rating >= 4.0.
+
+Statement 3: TRUE
+  - 3. If an employee is in the marketing department, then their monthly salary is greater than or equal to $9.0k.
+  - Explanation: All 3 marketing employees have salary >= $9.0k.
+
+Statement 4: TRUE
+  - 4. There exists at least one employee in the engineering department whose monthly salary is greater than $9.0k.
+  - Explanation: At least one engineering employee has salary > $9.0k.
+
+Statement 5: FALSE
+  - 5. All employees with a performance rating greater than 4.5 have more than 5 years of experience.
+  - Explanation: 1 employees with rating > 4.5 violate the rule (experience: 2.3).
+
+Statement 6: TRUE
+  - 6. If an employee has more than 5 projects active, then their performance rating is less than or equal to 4.7.
+  - Explanation: All 4 employees with >5 projects have rating <= 4.7.
+
+Statement 7: TRUE
+  - 7. Most employees in the finance department have a monthly salary less than $8.0k.
+  - Explanation: More than half (4/5) of finance employees have salary < $8.0k.
+
+Statement 8: FALSE
+  - 8. All employees with a monthly salary greater than $9.5k have more than 4 years of experience.
+  - Explanation: 2 employees with salary > $9.5k violate the rule (experience: 3.6, 2.7).
+
+Statement 9: TRUE
+  - 9. If an employee is in the operations department, then their monthly salary is less than or equal to $10.5k.
+  - Explanation: All 2 operations employees have salary <= $10.5k.
+
+Statement 10: TRUE
+  - 10. There exists at least one employee in the hr department whose monthly salary is greater than $9.0k.
+  - Explanation: At least one HR employee has salary > $9.0k.
+
+Statement 11: TRUE
+  - 11. All employees with more than 10 years of experience have a monthly salary greater than or equal to $5.5k.
+  - Explanation: All 5 employees with >10 years experience have salary >= $5.5k.
+
+Statement 12: FALSE
+  - 12. If an employee has a performance rating greater than 4.0, then their monthly salary is greater than or equal to $5.5k.
+  - Explanation: 1 employees with rating > 4.0 violate the rule (salaries: 4.9).
+
+Statement 13: TRUE
+  - 13. Most employees have a monthly salary greater than $5.0k.
+  - Explanation: More than half (14/15) of employees have salary > $5.0k.
+
+Statement 14: TRUE
+  - 14. All employees with a monthly salary less than $6.0k have a performance rating less than or equal to 4.7.
+  - Explanation: All 4 employees with salary < $6.0k have rating <= 4.7.
+
+Statement 15: TRUE
+  - 15. If an employee is in the engineering department, then their monthly salary is greater than or equal to $8.0k.
+  - Explanation: All 3 engineering employees have salary >= $8.0k.
+
+Statement 16: TRUE
+  - 16. There exists at least one employee in the marketing department whose monthly salary is greater than $10.0k.
+  - Explanation: At least one marketing employee has salary > $10.0k.

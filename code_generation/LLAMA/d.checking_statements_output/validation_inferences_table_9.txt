@@ -1,0 +1,68 @@
+
+Statement 1: TRUE
+  - 1. All employees in the operations department have a monthly salary less than or equal to $8.7k.
+  - Explanation: All 3 operations employees have salary <= 8.7k.
+
+Statement 2: FALSE
+  - 2. All employees with more than 10 years of experience have a monthly salary greater than or equal to $7.2k.
+  - Explanation: 1 employees with >10 years experience have salary < 7.2k.
+
+Statement 3: TRUE
+  - 3. If an employee is in the engineering department, then their monthly salary is greater than or equal to $5.7k.
+  - Explanation: All 3 engineering employees have salary >= 5.7k.
+
+Statement 4: TRUE
+  - 4. There exists at least one employee in the marketing department whose performance rating is less than 4.0.
+  - Explanation: At least one marketing employee has performance rating < 4.0.
+
+Statement 5: FALSE
+  - 5. All employees with a performance rating greater than or equal to 4.7 have more than 3 projects active.
+  - Explanation: 2 employees with performance rating >= 4.7 have <=3 projects.
+
+Statement 6: FALSE
+  - 6. If an employee has more than 5 years of experience, then their monthly salary is greater than or equal to $6.2k.
+  - Explanation: 2 employees with >5 years experience have salary < 6.2k.
+
+Statement 7: TRUE
+  - 7. Most employees in the hr department have a monthly salary greater than or equal to $8.4k.
+  - Explanation: More than half (4/4) of HR employees have salary >= 8.4k.
+
+Statement 8: TRUE
+  - 8. All employees who work remotely for more than 8 days a month have a monthly salary less than or equal to $9.5k.
+  - Explanation: All 6 employees working remotely >8 days/month have salary <= 9.5k.
+
+Statement 9: TRUE
+  - 9. If an employee is in the finance department, then their years of experience are greater than or equal to 8.2.
+  - Explanation: All 2 finance employees have experience >= 8.2 years.
+
+Statement 10: TRUE
+  - 10. There exists at least one employee in the operations department whose monthly salary is greater than $8k.
+  - Explanation: At least one operations employee has salary > 8k.
+
+Statement 11: FALSE
+  - 11. All employees with a performance rating less than 4.2 have more than 4 projects active.
+  - Explanation: 1 employees with performance rating < 4.2 have <=4 projects.
+
+Statement 12: TRUE
+  - 12. If an employee has a monthly salary greater than or equal to $9k, then their years of experience are greater than or equal to 4.9.
+  - Explanation: All 3 employees with salary >= 9k have experience >= 4.9 years.
+
+Statement 13: TRUE
+  - 13. Most employees have a monthly salary less than or equal to $8.7k.
+  - Explanation: More than half (12/15) of employees have salary <= 8.7k.
+
+Statement 14: TRUE
+  - 14. All employees with more than 6 projects active have a monthly salary less than or equal to $7.6k.
+  - Explanation: No employees with >6 projects.
+
+Statement 15: TRUE
+  - 15. If an employee is in the marketing department, then their monthly salary is less than or equal to $8.7k.
+  - Explanation: All 3 marketing employees have salary <= 8.7k.
+
+Statement 16: TRUE
+  - 16. There exists at least one employee in the engineering department whose years of experience are greater than 10.
+  - Explanation: At least one engineering employee has experience > 10 years.
+
+Statement 17: FALSE
+  - 17. All employees who work remotely for less than or equal to 8 days a month have a monthly salary greater than or equal to $7.4k.
+  - Explanation: 2 employees working remotely <=8 days/month have salary < 7.4k.

@@ -1,0 +1,44 @@
+
+Statement 1: TRUE
+  - 1. All employees in the engineering department with more than 10 years of experience have a monthly salary less than or equal to $6.9k.
+  - Explanation: All 2 engineering employees with >10 years experience have salary <= $6.9k.
+
+Statement 2: TRUE
+  - 2. All employees in the finance department have a monthly salary greater than or equal to $7.0k.
+  - Explanation: All 3 finance employees have salary >= $7.0k.
+
+Statement 3: TRUE
+  - 3. If an employee is in the operations department, then their years of experience are greater than 8.
+  - Explanation: All 2 operations employees have >8 years experience.
+
+Statement 4: FALSE
+  - 4. All employees with a performance rating greater than 4.5 have a monthly salary less than or equal to $7.8k.
+  - Explanation: 2 employees with performance rating > 4.5 have salary > $7.8k.
+
+Statement 5: FALSE
+  - 5. There exists at least one employee in the marketing department with a monthly salary greater than $9.0k.
+  - Explanation: No marketing employees have salary > $9.0k.
+
+Statement 6: TRUE
+  - 6. All employees with more than 10 years of experience have a performance rating less than or equal to 4.8.
+  - Explanation: All 3 employees with >10 years experience have performance rating <= 4.8.
+
+Statement 7: TRUE
+  - 7. If an employee is in the hr department, then their monthly salary is less than or equal to $5.4k.
+  - Explanation: All 2 HR employees have salary <= $5.4k.
+
+Statement 8: FALSE
+  - 8. All employees with a monthly salary greater than $9.0k have less than or equal to 3 projects active.
+  - Explanation: 2 employees with salary > $9.0k have > 3 projects.
+
+Statement 9: TRUE
+  - 9. Most employees have a remote days per month greater than or equal to 5.
+  - Explanation: Most (15/15) employees have remote days >= 5.
+
+Statement 10: TRUE
+  - 10. All employees with a performance rating greater than 4.0 have a monthly salary greater than or equal to $5.1k.
+  - Explanation: All 10 employees with performance rating > 4.0 have salary >= $5.1k.
+
+Statement 11: TRUE
+  - 11. If an employee is in the engineering department, then their years of experience are greater than or equal to 2.
+  - Explanation: All 6 engineering employees have >= 2 years experience.

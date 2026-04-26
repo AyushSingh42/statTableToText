@@ -1,0 +1,6 @@
+
+[ERROR] Script exited with code 1
+  File [35m"/home/ayushs13/code_generation/LLAMA/c.checking_statements/python_code_table_29.py"[0m, line [35m645[0m
+    def stmt_57[1;31m([0mdf: pd.DataFrame
+               [1;31m^[0m
+[1;35mSyntaxError[0m: [35m'(' was never closed[0m

@@ -1,0 +1,72 @@
+
+Statement 1: TRUE
+  - 1. All students with a grade level of 12 have a test score greater than or equal to 68.
+  - Explanation: All students in 12th grade have test scores >= 68.
+
+Statement 2: TRUE
+  - 2. If a student is a club member, then their attendance rate is greater than or equal to 90.
+  - Explanation: All club members have attendance rate >= 90.
+
+Statement 3: FALSE
+  - 3. All students with a study time of less than 6 hours per week have a test score less than 70.
+  - Explanation: 4 students with <6 study hours have test scores >= 70.
+
+Statement 4: TRUE
+  - 4. There exists at least one student in the 9th grade with a test score greater than 85.
+  - Explanation: At least one 9th grader has test score > 85.
+
+Statement 5: TRUE
+  - 5. If a student is in the 11th grade, then their study time is less than 10 hours per week.
+  - Explanation: All 11th graders have study time < 10 hours/week.
+
+Statement 6: TRUE
+  - 6. All students with an attendance rate greater than 95 have a test score greater than 60.
+  - Explanation: All students with attendance > 95 have test score > 60.
+
+Statement 7: TRUE
+  - 7. Most students have an attendance rate greater than 90.
+  - Explanation: More than half (12/15) of students have attendance > 90.
+
+Statement 8: FALSE
+  - 8. If a student is not a club member, then their test score is greater than 70.
+  - Explanation: 2 non-club members have test score <= 70.
+
+Statement 9: FALSE
+  - 9. All students with a study time of greater than 9 hours per week have a grade level of 9 or 11.
+  - Explanation: 1 students with >9 study hours do not have grade level 9 or 11.
+
+Statement 10: TRUE
+  - 10. There exists at least one student in the 12th grade with a study time of less than 7 hours per week.
+  - Explanation: At least one 12th grader has study time < 7 hours/week.
+
+Statement 11: FALSE
+  - 11. All students with a test score greater than 85 have a grade level of 9 or 12.
+  - Explanation: 3 students with test score > 85 do not have grade level 9 or 12.
+
+Statement 12: FALSE
+  - 12. If a student has a study time of less than 5 hours per week, then they are not a club member.
+  - Explanation: 2 students with <5 study hours are club members.
+
+Statement 13: TRUE
+  - 13. Most students who are club members have a test score greater than 65.
+  - Explanation: More than half (5/7) of club members have test score > 65.
+
+Statement 14: TRUE
+  - 14. All students with an attendance rate greater than 96 have a study time of greater than 3 hours per week.
+  - Explanation: All students with attendance > 96 have study time > 3 hours/week.
+
+Statement 15: TRUE
+  - 15. If a student is in the 10th grade, then their test score is greater than 70.
+  - Explanation: All 10th graders have test score > 70.
+
+Statement 16: TRUE
+  - 16. There exists at least one student in the 11th grade with a test score greater than 90.
+  - Explanation: At least one 11th grader has test score > 90.
+
+Statement 17: FALSE
+  - 17. All students with a study time of greater than 10 hours per week have a grade level of 9.
+  - Explanation: 1 students with >10 study hours do not have grade level 9.
+
+Statement 18: FALSE
+  - 18. If a student has a test score of less than 70, then they are not in the 12th grade.
+  - Explanation: 2 students with test score < 70 are in 12th grade.

@@ -1,0 +1,52 @@
+
+Statement 1: TRUE
+  - 1. All employees in the operations department have a monthly salary less than or equal to $10.3k.
+  - Explanation: All 4 operations employees have salary <= 10.3k.
+
+Statement 2: TRUE
+  - 2. If an employee is in the marketing department, then their years of experience are either less than 2 or greater than 10.
+  - Explanation: All 2 marketing employees satisfy the experience condition.
+
+Statement 3: TRUE
+  - 3. There exists at least one employee in the engineering department whose performance rating is less than 4.
+  - Explanation: 1 engineering employee(s) have performance rating < 4.
+
+Statement 4: FALSE
+  - 4. All employees with more than 5 years of experience have a monthly salary greater than or equal to $7.7k.
+  - Explanation: 3 employees with >5 years experience have salary < 7.7k.
+
+Statement 5: TRUE
+  - 5. If an employee is in the hr department, then their monthly salary is less than or equal to $7.7k.
+  - Explanation: All 5 hr employees have salary <= 7.7k.
+
+Statement 6: TRUE
+  - 6. Most employees have a performance rating greater than 4.
+  - Explanation: 9/15 employees have performance rating > 4.
+
+Statement 7: FALSE
+  - 7. All employees with a monthly salary greater than $10k have a performance rating greater than 3.8.
+  - Explanation: 1 employees with salary > 10k have performance rating <= 3.8.
+
+Statement 8: FALSE
+  - 8. If an employee has more than 5 projects active, then their performance rating is less than 4.8.
+  - Explanation: 1 employees with >5 projects have performance rating >= 4.8.
+
+Statement 9: TRUE
+  - 9. There exists at least one employee in the finance department whose years of experience are greater than 7.
+  - Explanation: 2 finance employee(s) have years of experience > 7.
+
+Statement 10: FALSE
+  - 10. All employees with a monthly salary less than or equal to $6.7k are in the hr department.
+  - Explanation: 2 employees with salary <= 6.7k are not in hr department.
+
+Statement 11: FALSE
+  - 11. If an employee is in the operations department, then their remote days per month are either 5 or 14.
+  - Explanation: 1 operations employees do not have remote days = 5 or 14.
+
+Statement 12: FALSE
+  - 12. All employees with a performance rating greater than 4.6 have a monthly salary greater than or equal to $6.7k.
+  - Explanation: 1 employees with performance rating > 4.6 have salary < 6.7k.
+
+Statement 13: TRUE
+  - 13. Most employees in the hr department have a performance rating greater than 4.
+  - Explanation: 3/5 hr employees have performance rating > 4.

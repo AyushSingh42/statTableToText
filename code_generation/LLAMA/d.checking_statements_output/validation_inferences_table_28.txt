@@ -1,0 +1,72 @@
+
+Statement 1: TRUE
+  - 1. All farms with organic crops have a soil quality index greater than 68.
+  - Explanation: All 4 organic farms have soil quality index > 68.
+
+Statement 2: TRUE
+  - 2. If a farm grows rice, then its yield is less than 450 tons.
+  - Explanation: All 4 rice farms have yield < 450 tons.
+
+Statement 3: FALSE
+  - 3. For all farms with irrigation hours per week greater than 15, their fertilizer usage is greater than 700 kg.
+  - Explanation: 2 farms with irrigation > 15 hrs/week violate the rule (fertilizer usages: 697, 612).
+
+Statement 4: TRUE
+  - 4. There exists at least one farm that grows corn with a yield greater than 400 tons.
+  - Explanation: There are 1 corn farms with yield > 400 tons.
+
+Statement 5: FALSE
+  - 5. All farms with acreage greater than 120 have a yield greater than 350 tons.
+  - Explanation: 1 farms with acreage > 120 violate the rule (yields: 275.6).
+
+Statement 6: FALSE
+  - 6. If a farm grows soybean, then its fertilizer usage is greater than 900 kg.
+  - Explanation: 2 soybean farms violate the rule (fertilizer usages: 779, 855).
+
+Statement 7: FALSE
+  - 7. For all farms with soil quality index greater than 79, their yield is greater than 350 tons.
+  - Explanation: 1 farms with soil quality index > 79 violate the rule (yields: 275.6).
+
+Statement 8: TRUE
+  - 8. Most farms have an irrigation hours per week less than 18.
+  - Explanation: 12 out of 15 farms have irrigation < 18 hrs/week (>50% of total).
+
+Statement 9: TRUE
+  - 9. If a farm grows wheat, then its yield is greater than 300 tons.
+  - Explanation: All 3 wheat farms have yield > 300 tons.
+
+Statement 10: TRUE
+  - 10. All farms with organic crops have an acreage greater than 70.
+  - Explanation: All 4 organic farms have acreage > 70.
+
+Statement 11: FALSE
+  - 11. For all farms with fertilizer usage greater than 1000 kg, their yield is greater than 400 tons.
+  - Explanation: 1 farms with fertilizer > 1000 kg violate the rule (yields: 358.4).
+
+Statement 12: TRUE
+  - 12. There exists at least one farm that grows corn with a soil quality index greater than 80.
+  - Explanation: There are 1 corn farms with soil quality index > 80.
+
+Statement 13: TRUE
+  - 13. All farms with yield greater than 400 tons have an irrigation hours per week greater than 12.
+  - Explanation: All 5 farms with yield > 400 tons have irrigation > 12 hrs/week.
+
+Statement 14: TRUE
+  - 14. If a farm grows rice, then its soil quality index is greater than 68.
+  - Explanation: All 4 rice farms have soil quality index > 68.
+
+Statement 15: FALSE
+  - 15. For all farms with acreage less than 100, their fertilizer usage is less than 850 kg.
+  - Explanation: 3 farms with acreage < 100 violate the rule (fertilizer usages: 978, 1030, 984).
+
+Statement 16: TRUE
+  - 16. Most farms have a soil quality index greater than 70.
+  - Explanation: 10 out of 15 farms have soil quality index > 70 (>50% of total).
+
+Statement 17: TRUE
+  - 17. If a farm grows soybean, then its yield is greater than 300 tons.
+  - Explanation: All 4 soybean farms have yield > 300 tons.
+
+Statement 18: FALSE
+  - 18. All farms with irrigation hours per week less than 14 have a yield less than 400 tons.
+  - Explanation: 1 farms with irrigation < 14 hrs/week violate the rule (yields: 427.2).

@@ -1,0 +1,56 @@
+
+Statement 1: TRUE
+  - 1. All employees in the HR department have a monthly salary between 5.5k and 8.0k.
+  - Explanation: All 5 HR employees have salaries between 5.5k and 8.0k.
+
+Statement 2: TRUE
+  - 2. If an employee is in the marketing department, then their years of experience are less than 12.
+  - Explanation: All 3 marketing employees have less than 12 years of experience.
+
+Statement 3: FALSE
+  - 3. There exists at least one employee in the operations department with a performance rating greater than 4.0.
+  - Explanation: No operation employee has performance rating > 4.0.
+
+Statement 4: FALSE
+  - 4. All employees with more than 10 years of experience have a monthly salary greater than 6.0k.
+  - Explanation: 1 employees with >10 years experience violate the rule (salaries: 6.0).
+
+Statement 5: FALSE
+  - 5. If an employee has a performance rating greater than 4.5, then they have more than 5 projects active.
+  - Explanation: 2 employees with performance >4.5 violate the rule (projects: 2, 4).
+
+Statement 6: TRUE
+  - 6. Most employees in the HR department have a remote workday count between 6 and 10 days per month.
+  - Explanation: Most (5/5) HR employees have remote days between 6-10.
+
+Statement 7: TRUE
+  - 7. All employees in the finance department have a monthly salary greater than 7.0k.
+  - Explanation: All 3 finance employees have salary >7.0k.
+
+Statement 8: TRUE
+  - 8. If an employee is in the engineering department, then their monthly salary is less than 10.6k.
+  - Explanation: All 2 engineering employees have salary <10.6k.
+
+Statement 9: TRUE
+  - 9. There exists at least one employee in the marketing department with a monthly salary greater than 10.0k.
+  - Explanation: At least one marketing employee has salary >10.0k.
+
+Statement 10: TRUE
+  - 10. All employees with a performance rating less than 4.0 have more than 5 years of experience.
+  - Explanation: All 5 employees with performance <4.0 have >5 years experience.
+
+Statement 11: TRUE
+  - 11. If an employee has more than 5 projects active, then their performance rating is greater than 3.8.
+  - Explanation: All 4 employees with >5 projects have performance >3.8.
+
+Statement 12: TRUE
+  - 12. Most employees in the operations department have a monthly salary greater than 7.0k.
+  - Explanation: Most (2/2) operations employees have salary >7.0k.
+
+Statement 13: FALSE
+  - 13. All employees with a monthly salary greater than 9.0k have more than 3 projects active.
+  - Explanation: 1 employees with salary >9.0k violate the rule (projects: 2).
+
+Statement 14: TRUE
+  - 14. If an employee is in the finance department, then their years of experience are greater than 8.
+  - Explanation: All 3 finance employees have >8 years experience.

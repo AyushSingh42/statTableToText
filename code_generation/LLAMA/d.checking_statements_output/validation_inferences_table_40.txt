@@ -1,0 +1,52 @@
+
+Statement 1: TRUE
+  - 1. All students with a test score greater than or equal to 93 have an attendance rate greater than or equal to 90.
+  - Explanation: All 3 students with test score >= 93 have attendance rate >= 90.
+
+Statement 2: FALSE
+  - 2. If a student is a club member, then their test score is greater than or equal to 69.
+  - Explanation: 1 club members violate the rule (test scores: 65).
+
+Statement 3: TRUE
+  - 3. There exists at least one student in grade level 9 who has a study hours per week greater than or equal to 9.5.
+  - Explanation: There is at least one student in grade 9 with study hours >= 9.5 (S040002).
+
+Statement 4: TRUE
+  - 4. All students in grade level 12 have a study hours per week less than or equal to 11.5.
+  - Explanation: All 4 students in grade 12 have study hours <= 11.5.
+
+Statement 5: FALSE
+  - 5. If a student has a study hours per week less than 3, then their test score is greater than or equal to 97.
+  - Explanation: 2 students with study hours < 3 violate the rule (test scores: 70, 69).
+
+Statement 6: TRUE
+  - 6. Most students in the table have an attendance rate greater than 90.
+  - Explanation: 11 out of 15 students have attendance rate > 90. Most students meet this criteria.
+
+Statement 7: FALSE
+  - 7. All students with a test score less than 70 have a grade level of 9.
+  - Explanation: 2 students with test score < 70 are not in grade 9 (grade levels: 12, 12).
+
+Statement 8: TRUE
+  - 8. If a student is in grade level 10, then their test score is greater than or equal to 83.
+  - Explanation: All 3 students in grade 10 have test score >= 83.
+
+Statement 9: TRUE
+  - 9. There exists at least one student in grade level 9 who has a test score greater than or equal to 97.
+  - Explanation: There is at least one student in grade 9 with test score >= 97 (S040006).
+
+Statement 10: FALSE
+  - 10. All students who are club members have a test score greater than or equal to 69.
+  - Explanation: 1 club members violate the rule (test scores: 65).
+
+Statement 11: TRUE
+  - 11. If a student has a study hours per week greater than or equal to 9, then their attendance rate is greater than or equal to 89.
+  - Explanation: All 4 students with study hours >= 9 have attendance rate >= 89.
+
+Statement 12: TRUE
+  - 12. All students in grade level 12 have a test score less than or equal to 92.
+  - Explanation: All 4 students in grade 12 have test score <= 92.
+
+Statement 13: TRUE
+  - 13. Most students in the table have a study hours per week less than or equal to 7.
+  - Explanation: 9 out of 15 students have study hours <= 7. Most students meet this criteria.

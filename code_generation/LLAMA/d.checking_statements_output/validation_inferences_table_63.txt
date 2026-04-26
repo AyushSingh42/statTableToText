@@ -1,0 +1,80 @@
+
+Statement 1: TRUE
+  - 1. All vehicles with a distance greater than 200 km have an average speed less than 65 kph.
+  - Explanation: No vehicles with distance > 200 km have avg speed >= 65 kph.
+
+Statement 2: TRUE
+  - 2. If a vehicle is a truck, then its fuel used is less than 30 liters.
+  - Explanation: All 5 trucks have fuel used < 30 liters.
+
+Statement 3: TRUE
+  - 3. There exists at least one van with a delay of less than 5 minutes.
+  - Explanation: At least one van has delay < 5 minutes.
+
+Statement 4: TRUE
+  - 4. All buses have a distance less than 150 km.
+  - Explanation: All 4 buses have distance < 150 km.
+
+Statement 5: FALSE
+  - 5. If a vehicle is a van, then its average speed is less than 60 kph.
+  - Explanation: 3 vans violate the rule (avg speed >= 60 kph).
+
+Statement 6: TRUE
+  - 6. Most vehicles have a delay greater than 15 minutes.
+  - Explanation: More than half (11/15) of vehicles have delay > 15 minutes.
+
+Statement 7: FALSE
+  - 7. All vehicles with a distance less than 100 km have a fuel used greater than 10 liters.
+  - Explanation: 1 vehicles violate the rule (distance < 100 km and fuel used <= 10 liters).
+
+Statement 8: FALSE
+  - 8. If a vehicle is a truck, then its average speed is less than 55 kph.
+  - Explanation: 3 trucks violate the rule (avg speed >= 55 kph).
+
+Statement 9: TRUE
+  - 9. There exists at least one bus with a fuel used less than 10 liters.
+  - Explanation: At least one bus has fuel used < 10 liters.
+
+Statement 10: FALSE
+  - 10. All vehicles with a distance greater than 150 km have a delay greater than 10 minutes.
+  - Explanation: 1 vehicles violate the rule (distance > 150 km and delay <= 10 minutes).
+
+Statement 11: TRUE
+  - 11. If a vehicle is a van, then its distance is less than 250 km.
+  - Explanation: All 6 vans have distance < 250 km.
+
+Statement 12: TRUE
+  - 12. Most trucks have a distance greater than 150 km.
+  - Explanation: More than half (4/5) of trucks have distance > 150 km.
+
+Statement 13: TRUE
+  - 13. All vehicles with an average speed greater than 60 kph have a fuel used greater than 20 liters.
+  - Explanation: All vehicles with avg speed > 60 kph have fuel used > 20 liters.
+
+Statement 14: TRUE
+  - 14. If a vehicle is a bus, then its delay is greater than 15 minutes.
+  - Explanation: All 4 buses have delay > 15 minutes.
+
+Statement 15: TRUE
+  - 15. There exists at least one truck with a delay less than 15 minutes.
+  - Explanation: At least one truck has delay < 15 minutes.
+
+Statement 16: FALSE
+  - 16. All vehicles with a distance less than 200 km have an average speed less than 65 kph.
+  - Explanation: 1 vehicles violate the rule (distance < 200 km and avg speed >= 65 kph).
+
+Statement 17: TRUE
+  - 17. If a vehicle is a van, then its fuel used is greater than 20 liters.
+  - Explanation: All 6 vans have fuel used > 20 liters.
+
+Statement 18: TRUE
+  - 18. Most vehicles have an average speed less than 60 kph.
+  - Explanation: More than half (10/15) of vehicles have avg speed < 60 kph.
+
+Statement 19: TRUE
+  - 19. All buses have a fuel used less than 40 liters.
+  - Explanation: All 4 buses have fuel used < 40 liters.
+
+Statement 20: FALSE
+  - 20. If a vehicle is a truck, then its distance is greater than 100 km.
+  - Explanation: 1 trucks violate the rule (distance <= 100 km).

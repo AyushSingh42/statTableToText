@@ -1,0 +1,72 @@
+
+Statement 1: TRUE
+  - 1. All students with a grade level of 12 have a test score greater than or equal to 75.
+  - Explanation: All students with grade level 12 have test scores >= 75 (4 total).
+
+Statement 2: FALSE
+  - 2. If a student is a club member, then their attendance rate is greater than or equal to 90.
+  - Explanation: 1 club members have attendance rate < 90.
+
+Statement 3: TRUE
+  - 3. There exists at least one student with a study hours per week greater than 11 who is not a club member.
+  - Explanation: There is at least one student with study hours > 11 and not a club member.
+
+Statement 4: TRUE
+  - 4. All students with a study hours per week less than 4 have a test score less than 90.
+  - Explanation: All students with study hours < 4 have test scores < 90 (2 total).
+
+Statement 5: FALSE
+  - 5. If a student has a grade level of 10, then their test score is less than 95.
+  - Explanation: 1 students with grade level 10 have test scores >= 95.
+
+Statement 6: TRUE
+  - 6. Most students have an attendance rate greater than 90.
+  - Explanation: More than half of students (13/15) have attendance rate > 90.
+
+Statement 7: FALSE
+  - 7. All students with a test score greater than 90 have a grade level greater than or equal to 11.
+  - Explanation: 2 students with test score > 90 have grade level < 11.
+
+Statement 8: FALSE
+  - 8. If a student is not a club member, then their test score is less than 96.
+  - Explanation: 1 non-club members have test scores >= 96.
+
+Statement 9: TRUE
+  - 9. There exists at least one student with a study hours per week greater than 7 who has a test score less than 80.
+  - Explanation: There is at least one student with study hours > 7 and test score < 80.
+
+Statement 10: TRUE
+  - 10. All students with a grade level of 9 have a test score less than 90.
+  - Explanation: All students with grade level 9 have test scores < 90 (2 total).
+
+Statement 11: FALSE
+  - 11. If a student has a study hours per week greater than 8, then they are not a club member.
+  - Explanation: 3 students with study hours > 8 are club members.
+
+Statement 12: TRUE
+  - 12. Most students who are club members have a test score less than 90.
+  - Explanation: More than half of club members (6/8) have test scores < 90.
+
+Statement 13: FALSE
+  - 13. All students with a test score greater than 95 have a study hours per week less than 8.
+  - Explanation: 1 students with test score > 95 have study hours >= 8.
+
+Statement 14: TRUE
+  - 14. If a student has a grade level of 11, then their study hours per week is greater than 8.
+  - Explanation: All students with grade level 11 have study hours > 8 (4 total).
+
+Statement 15: TRUE
+  - 15. There exists at least one student with a study hours per week less than 4 who is a club member.
+  - Explanation: There is at least one student with study hours < 4 and is a club member.
+
+Statement 16: FALSE
+  - 16. All students with a test score less than 80 have a grade level less than or equal to 10.
+  - Explanation: 4 students with test score < 80 have grade level > 10.
+
+Statement 17: TRUE
+  - 17. If a student is a club member, then their grade level is less than or equal to 12.
+  - Explanation: All club members have grade level <= 12 (8 total).
+
+Statement 18: TRUE
+  - 18. Most students who have a study hours per week greater than 7 do not have a test score greater than 90.
+  - Explanation: More than half of students with study hours > 7 (5/8) do not have test score > 90.

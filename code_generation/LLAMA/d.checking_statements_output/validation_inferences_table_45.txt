@@ -1,0 +1,76 @@
+
+Statement 1: TRUE
+  - 1. All hotels in Austin have an average nightly rate greater than $120.
+  - Explanation: All 4 Austin hotels have rates > $120.
+
+Statement 2: TRUE
+  - 2. If a hotel is in Boston, then its occupancy rate is greater than 69%.
+  - Explanation: All 2 Boston hotels have occupancy > 69%.
+
+Statement 3: TRUE
+  - 3. There exists at least one hotel in Phoenix with a cancellation rate less than 9%.
+  - Explanation: At least one Phoenix hotel has cancellation rate < 9%.
+
+Statement 4: FALSE
+  - 4. All hotels with a staff count greater than 35 have a star level of 5.
+  - Explanation: 3 hotels with staff > 35 do not have star level 5 (star levels: 4, 3, 4).
+
+Statement 5: TRUE
+  - 5. If a hotel is in Dallas, then its average nightly rate is less than $210.
+  - Explanation: All 2 Dallas hotels have rates < $210.
+
+Statement 6: TRUE
+  - 6. Most hotels have an occupancy rate greater than 70%.
+  - Explanation: More than half (12/15) of hotels have occupancy > 70%.
+
+Statement 7: TRUE
+  - 7. All hotels with a star level of 3 have an average nightly rate less than $185.
+  - Explanation: All 4 star level 3 hotels have rates < $185.
+
+Statement 8: FALSE
+  - 8. If a hotel has a bookings month greater than 800, then its cancellation rate is less than 12%.
+  - Explanation: 4 hotels with bookings > 800 violate the rule (cancellation rates: 12.3, 12.5, 15.2, 12.5).
+
+Statement 9: TRUE
+  - 9. There exists at least one hotel in Seattle with a staff count less than 25.
+  - Explanation: At least one Seattle hotel has staff count < 25.
+
+Statement 10: TRUE
+  - 10. All hotels with an occupancy rate greater than 85% have a star level of 4 or 5.
+  - Explanation: All 2 hotels with occupancy > 85% have star level 4 or 5.
+
+Statement 11: TRUE
+  - 11. If a hotel is in Atlanta, then its average nightly rate is less than $185.
+  - Explanation: All 2 Atlanta hotels have rates < $185.
+
+Statement 12: TRUE
+  - 12. Most hotels have a bookings month greater than 700.
+  - Explanation: More than half (12/15) of hotels have bookings > 700.
+
+Statement 13: FALSE
+  - 13. All hotels with a star level of 5 have an average nightly rate greater than $138.
+  - Explanation: 3 star level 5 hotels violate the rule (rates: 124.3, 129.9, 120.7).
+
+Statement 14: FALSE
+  - 14. If a hotel has a cancellation rate less than 10%, then its staff count is less than 38.
+  - Explanation: 2 hotels with cancellation rate < 10% violate the rule (staff counts: 38, 40).
+
+Statement 15: TRUE
+  - 15. There exists at least one hotel in Austin with an occupancy rate greater than 85%.
+  - Explanation: At least one Austin hotel has occupancy > 85%.
+
+Statement 16: FALSE
+  - 16. All hotels with a staff count greater than 40 have an occupancy rate greater than 78%.
+  - Explanation: 1 hotels with staff > 40 violate the rule (occupancy: 68.2).
+
+Statement 17: TRUE
+  - 17. If a hotel is in Chicago, then its average nightly rate is greater than $200.
+  - Explanation: All 1 Chicago hotels have rates > $200.
+
+Statement 18: TRUE
+  - 18. Most hotels have an average nightly rate greater than $140.
+  - Explanation: More than half (10/15) of hotels have rates > $140.
+
+Statement 19: FALSE
+  - 19. All hotels with a bookings month greater than 850 have a cancellation rate less than 11%.
+  - Explanation: 3 hotels with bookings > 850 violate the rule (cancellation rates: 12.3, 15.2, 12.5).

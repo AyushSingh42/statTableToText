@@ -1,0 +1,48 @@
+
+Statement 1: FALSE
+  - 1. All players who are centers have an average of at least 7 rebounds per game.
+  - Explanation: 1 centers violate the rule (rebounds: 3.5).
+
+Statement 2: TRUE
+  - 2. If a player is a forward, then their age is between 21 and 31 years.
+  - Explanation: All 4 forwards are aged 21-31.
+
+Statement 3: TRUE
+  - 3. For all players with an average of more than 30 minutes per game, their points per game are less than or equal to 24.4.
+  - Explanation: All 8 players with >30 minutes/game have <=24.4 points/game.
+
+Statement 4: TRUE
+  - 4. There exists at least one guard whose assists per game are greater than 6.
+  - Explanation: At least one guard (2) has >6 assists/game.
+
+Statement 5: TRUE
+  - 5. All players who are 28 years old or younger have an average of more than 10 points per game.
+  - Explanation: All 8 players aged 28 or younger have >10 points/game.
+
+Statement 6: FALSE
+  - 6. If a player is a center aged over 30, then their rebounds per game are less than 11.
+  - Explanation: 1 centers aged over 30 violate the rule (rebounds: 11.0).
+
+Statement 7: FALSE
+  - 7. For all players with an average of more than 7 assists per game, their position is either center or forward.
+  - Explanation: 1 players with >7 assists/game are not center or forward (positions: guard).
+
+Statement 8: FALSE
+  - 8. Most players in the table have an average of more than 20 points per game.
+  - Explanation: 6 out of 15 players have >20 points/game (not more than half).
+
+Statement 9: FALSE
+  - 9. If a player is a forward aged below 28, then their height is not provided in the data, but their average points per game are greater than 19.
+  - Explanation: 1 forwards aged below 28 violate the rule (points: 13.2).
+
+Statement 10: TRUE
+  - 10. Every player with an average of more than 10 rebounds per game has a position of either center or forward.
+  - Explanation: All 3 players with >10 rebounds/game are center or forward.
+
+Statement 11: TRUE
+  - 11. For all players with an average of more than 70 games played, their minutes per game are less than or equal to 35.6.
+  - Explanation: All 6 players with >70 games played have <=35.6 minutes/game.
+
+Statement 12: TRUE
+  - 12. If a player is a guard aged over 26, then their assists per game are less than 7.
+  - Explanation: All 2 guards aged over 26 have <7 assists/game.

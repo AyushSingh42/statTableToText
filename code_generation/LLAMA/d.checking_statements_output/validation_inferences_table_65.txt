@@ -1,0 +1,76 @@
+
+Statement 1: TRUE
+  - 1. All hotels in Denver have an occupancy rate greater than 70%.
+  - Explanation: All 2 Denver hotels have occupancy > 70%.
+
+Statement 2: TRUE
+  - 2. If a hotel is in Seattle, then its staff count is less than 35.
+  - Explanation: All 2 Seattle hotels have staff < 35.
+
+Statement 3: FALSE
+  - 3. All hotels with an average nightly rate greater than $200 have a star level of 4.
+  - Explanation: 1 high-rate hotels violate the rule (star levels: 3).
+
+Statement 4: TRUE
+  - 4. There exists at least one hotel in Austin with a star level of 5.
+  - Explanation: At least one Austin hotel has star level 5.
+
+Statement 5: TRUE
+  - 5. If a hotel is in Chicago, then its occupancy rate is greater than 68%.
+  - Explanation: All 2 Chicago hotels have occupancy > 68%.
+
+Statement 6: FALSE
+  - 6. All hotels with a cancellation rate less than 10% have a staff count greater than 35.
+  - Explanation: 1 low-cancellation hotels violate the rule (staff counts: 35).
+
+Statement 7: TRUE
+  - 7. Most hotels have an occupancy rate greater than 65%.
+  - Explanation: 14 out of 15 hotels have occupancy > 65%.
+
+Statement 8: TRUE
+  - 8. If a hotel is in Portland, then its average nightly rate is less than $200.
+  - Explanation: All 2 Portland hotels have avg nightly rate < $200.
+
+Statement 9: FALSE
+  - 9. All hotels with a bookings month greater than 850 have a star level of 4.
+  - Explanation: 2 high-bookings hotels violate the rule (star levels: 3, 3).
+
+Statement 10: TRUE
+  - 10. There exists at least one hotel in Dallas with an occupancy rate greater than 85%.
+  - Explanation: At least one Dallas hotel has occupancy > 85%.
+
+Statement 11: TRUE
+  - 11. If a hotel is in Miami, then its staff count is less than 30.
+  - Explanation: All 1 Miami hotels have staff < 30.
+
+Statement 12: TRUE
+  - 12. All hotels with a star level of 3 have an average nightly rate less than $220.
+  - Explanation: All 7 3-star hotels have avg nightly rate < $220.
+
+Statement 13: TRUE
+  - 13. Most hotels have a staff count less than 40.
+  - Explanation: 12 out of 15 hotels have staff < 40.
+
+Statement 14: FALSE
+  - 14. If a hotel is in Austin, then its occupancy rate is greater than 65%.
+  - Explanation: 1 Austin hotels violate the rule (occupancy rates: 65.0).
+
+Statement 15: TRUE
+  - 15. All hotels with an occupancy rate greater than 80% have a star level of 4 or 5.
+  - Explanation: All 3 high-occupancy hotels have star level 4 or 5.
+
+Statement 16: TRUE
+  - 16. There exists at least one hotel in Phoenix with an occupancy rate greater than 85%.
+  - Explanation: At least one Phoenix hotel has occupancy > 85%.
+
+Statement 17: TRUE
+  - 17. If a hotel is in Boston, then its staff count is greater than 35.
+  - Explanation: All 1 Boston hotels have staff > 35.
+
+Statement 18: FALSE
+  - 18. All hotels with a bookings month less than 700 have a star level of 3.
+  - Explanation: 3 low-bookings hotels violate the rule (star levels: 4, 4, 4).
+
+Statement 19: TRUE
+  - 19. Most hotels have an average nightly rate less than $250.
+  - Explanation: 15 out of 15 hotels have avg nightly rate < $250.

@@ -1,0 +1,88 @@
+
+Statement 1: TRUE
+  - 1. All patients with a diagnosis of arthritis have a BMI less than 33.
+  - Explanation: All 4 arthritis patients have BMI < 33.
+
+Statement 2: FALSE
+  - 2. If a patient is a smoker, then their age is less than 65.
+  - Explanation: 1 smokers violate the rule (ages: 73).
+
+Statement 3: TRUE
+  - 3. There exists at least one patient with a diagnosis of diabetes whose cholesterol level is less than 200 mg/dl.
+  - Explanation: One diabetes patient (ID: PT081004) has cholesterol < 200 mg/dl.
+
+Statement 4: FALSE
+  - 4. All patients with a systolic blood pressure greater than 140 have a diastolic blood pressure greater than 70.
+  - Explanation: 1 high systolic BP patients violate the rule (diastolic: 70).
+
+Statement 5: FALSE
+  - 5. If a patient has a BMI greater than 30, then they are a smoker.
+  - Explanation: 2 high BMI patients are not smokers (IDs: PT081009, PT081013).
+
+Statement 6: TRUE
+  - 6. Most patients have a cholesterol level greater than 180 mg/dl.
+  - Explanation: 10 out of 15 patients have cholesterol > 180 mg/dl.
+
+Statement 7: TRUE
+  - 7. All patients with a diagnosis of asthma have a BMI greater than 28.
+  - Explanation: All 2 asthma patients have BMI > 28.
+
+Statement 8: FALSE
+  - 8. If a patient is older than 50, then their systolic blood pressure is greater than 120.
+  - Explanation: 3 patients over 50 violate the rule (systolic BPs: 117, 119, 114).
+
+Statement 9: TRUE
+  - 9. There exists at least one patient with a diagnosis of migraine whose BMI is less than 22.
+  - Explanation: One migraine patient (ID: PT081007) has BMI < 22.
+
+Statement 10: FALSE
+  - 10. All patients with a diastolic blood pressure less than 90 have a systolic blood pressure less than 130.
+  - Explanation: 9 low diastolic BP patients violate the rule (systolic: 130, 143, 142, 150, 140, 137, 146, 149, 145).
+
+Statement 11: FALSE
+  - 11. If a patient has a cholesterol level greater than 220 mg/dl, then they are a smoker.
+  - Explanation: 1 high cholesterol patients are not smokers (IDs: PT081008).
+
+Statement 12: TRUE
+  - 12. Most patients have a BMI less than 30.
+  - Explanation: 11 out of 15 patients have BMI < 30.
+
+Statement 13: TRUE
+  - 13. All patients with a diagnosis of hypertension have a systolic blood pressure greater than 140.
+  - Explanation: All 2 hypertension patients have systolic BP > 140.
+
+Statement 14: FALSE
+  - 14. If a patient is younger than 40, then their diastolic blood pressure is greater than 80.
+  - Explanation: 2 patients under 40 violate the rule (diastolic BPs: 80, 80).
+
+Statement 15: TRUE
+  - 15. There exists at least one patient with a diagnosis of arthritis whose cholesterol level is greater than 230 mg/dl.
+  - Explanation: One arthritis patient (ID: PT081010) has cholesterol > 230 mg/dl.
+
+Statement 16: TRUE
+  - 16. All patients with a BMI greater than 25 have a systolic blood pressure greater than 110.
+  - Explanation: All 9 high BMI patients have systolic BP > 110.
+
+Statement 17: FALSE
+  - 17. If a patient has a cholesterol level less than 190 mg/dl, then they are not a smoker.
+  - Explanation: 4 low cholesterol patients are smokers (IDs: PT081002, PT081004, PT081012, PT081014).
+
+Statement 18: TRUE
+  - 18. Most patients have a systolic blood pressure greater than 120.
+  - Explanation: 10 out of 15 patients have systolic BP > 120.
+
+Statement 19: TRUE
+  - 19. All patients with a diagnosis of diabetes have a BMI greater than 25.
+  - Explanation: All 2 diabetes patients have BMI > 25.
+
+Statement 20: FALSE
+  - 20. If a patient is older than 60, then their BMI is less than 29.
+  - Explanation: 2 patients over 60 violate the rule (BMIs: 30.4, 31.8).
+
+Statement 21: TRUE
+  - 21. There exists at least one patient with a diagnosis of migraine whose systolic blood pressure is greater than 145.
+  - Explanation: One migraine patient (ID: PT081006) has systolic BP > 145.
+
+Statement 22: FALSE
+  - 22. All patients with a diastolic blood pressure greater than 95 have a systolic blood pressure greater than 125.
+  - Explanation: 2 high diastolic BP patients violate the rule (systolic: 115, 117).

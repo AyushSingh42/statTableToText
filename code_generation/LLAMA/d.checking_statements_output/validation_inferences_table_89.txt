@@ -1,0 +1,68 @@
+
+Statement 1: FALSE
+  - 1. All employees in the marketing department with more than 5 years of experience have a monthly salary greater than $6.1k.
+  - Explanation: 1 marketing employees with >5 years experience have salary <=$6.1k.
+
+Statement 2: TRUE
+  - 2. If an employee is in the finance department, then their monthly salary is greater than or equal to $5.9k.
+  - Explanation: All 3 finance employees have salary >=$5.9k.
+
+Statement 3: TRUE
+  - 3. There exists at least one employee in the engineering department with a performance rating greater than 4.4.
+  - Explanation: There is at least one engineering employee with performance rating >4.4 (1 such employees).
+
+Statement 4: FALSE
+  - 4. All employees with more than 8 years of experience have a monthly salary greater than $6.6k.
+  - Explanation: 2 employees with >8 years experience have salary <=$6.6k.
+
+Statement 5: TRUE
+  - 5. If an employee is in the HR department, then their years of experience are less than 9 years.
+  - Explanation: No HR employees to check.
+
+Statement 6: TRUE
+  - 6. Most employees in the marketing department have a monthly salary greater than $6.0k.
+  - Explanation: Most (4/6) marketing employees have salary >$6.0k.
+
+Statement 7: FALSE
+  - 7. All employees with a performance rating greater than 4.5 have more than 3 projects active.
+  - Explanation: 3 employees with performance rating >4.5 have <=3 projects.
+
+Statement 8: FALSE
+  - 8. If an employee has more than 10 remote days per month, then their monthly salary is greater than $6.0k.
+  - Explanation: 1 employees with >10 remote days/month have salary <=$6.0k.
+
+Statement 9: FALSE
+  - 9. There exists at least one employee in the finance department with a monthly salary greater than $7.8k.
+  - Explanation: No finance employees with salary >$7.8k.
+
+Statement 10: FALSE
+  - 10. All employees with more than 4 years of experience in the marketing department have a performance rating greater than 3.7.
+  - Explanation: 1 marketing employees with >4 years experience have performance rating <=3.7.
+
+Statement 11: TRUE
+  - 11. If an employee is in the engineering department, then their monthly salary is greater than or equal to $6.0k.
+  - Explanation: All 3 engineering employees have salary >=$6.0k.
+
+Statement 12: FALSE
+  - 12. Most employees with more than 5 years of experience have a monthly salary greater than $6.2k.
+  - Explanation: Only 4/8 employees with >5 years experience have salary >$6.2k.
+
+Statement 13: FALSE
+  - 13. All employees with a monthly salary greater than $7.0k have more than 2 projects active.
+  - Explanation: 2 employees with salary >$7.0k have <=2 projects.
+
+Statement 14: TRUE
+  - 14. If an employee has more than 5 years of experience in the HR department, then their monthly salary is less than $6.2k.
+  - Explanation: No HR employees with >5 years experience to check.
+
+Statement 15: TRUE
+  - 15. There exists at least one employee in the marketing department with a monthly salary greater than $8.6k.
+  - Explanation: There is at least one marketing employee with salary >$8.6k (1 such employees).
+
+Statement 16: TRUE
+  - 16. All employees with a performance rating greater than 4.8 have more than 2 projects active.
+  - Explanation: All 2 employees with performance rating >4.8 have >2 projects.
+
+Statement 17: FALSE
+  - 17. If an employee is in the finance department with more than 8 years of experience, then their monthly salary is greater than $7.0k.
+  - Explanation: 1 finance employees with >8 years experience have salary <=$7.0k.

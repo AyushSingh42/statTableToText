@@ -1,0 +1,72 @@
+
+Statement 1: FALSE
+  - 1. All employees in the operations department with more than 5 years of experience have a monthly salary greater than $6.2k.
+  - Explanation: 2 operations employees with >5 years experience have salary <=$6.2k.
+
+Statement 2: FALSE
+  - 2. If an employee is in the engineering department, then their monthly salary is greater than $6.4k.
+  - Explanation: 1 engineering employees have salary <=$6.4k.
+
+Statement 3: FALSE
+  - 3. There exists at least one employee in the operations department with a performance rating greater than 4.7.
+  - Explanation: No operations employees have performance rating >4.7.
+
+Statement 4: TRUE
+  - 4. All employees with more than 10 years of experience have a monthly salary less than or equal to $10.7k.
+  - Explanation: All 1 employees with >10 years experience have salary <=$10.7k.
+
+Statement 5: TRUE
+  - 5. If an employee is in the finance department, then their years of experience are less than 8 years.
+  - Explanation: All 3 finance employees have <8 years experience.
+
+Statement 6: FALSE
+  - 6. All employees with a monthly salary greater than $10k have a performance rating greater than 4.0.
+  - Explanation: 1 employees with salary >$10k have performance rating <=4.0.
+
+Statement 7: TRUE
+  - 7. Most employees in the operations department have a monthly salary less than $10k.
+  - Explanation: More than half (5/6) of operations employees have salary <$10k.
+
+Statement 8: TRUE
+  - 8. If an employee has more than 5 projects active, then their monthly salary is less than $10.2k.
+  - Explanation: All 3 employees with >5 projects have salary <$10.2k.
+
+Statement 9: TRUE
+  - 9. There exists at least one employee in the engineering department with a monthly salary less than $8.2k.
+  - Explanation: There are 2 engineering employees with salary <$8.2k.
+
+Statement 10: FALSE
+  - 10. All employees with a performance rating greater than 4.6 have a monthly salary greater than $6.7k.
+  - Explanation: 1 employees with performance rating >4.6 have salary <=$6.7k.
+
+Statement 11: FALSE
+  - 11. If an employee is in the hr department, then their monthly salary is greater than $6.7k.
+  - Explanation: 1 hr employees have salary <=$6.7k.
+
+Statement 12: FALSE
+  - 12. All employees with more than 4 remote days per month have a monthly salary less than $10.7k.
+  - Explanation: 2 employees with >4 remote days have salary >=$10.7k.
+
+Statement 13: FALSE
+  - 13. Most employees in the engineering department have a monthly salary greater than $7.5k.
+  - Explanation: Less than half (2/4) of engineering employees have salary >$7.5k.
+
+Statement 14: FALSE
+  - 14. If an employee has more than 3 years of experience, then their monthly salary is greater than $5.9k.
+  - Explanation: 2 employees with >3 years experience have salary <=$5.9k.
+
+Statement 15: TRUE
+  - 15. There exists at least one employee in the finance department with a monthly salary greater than $10.1k.
+  - Explanation: There are 1 finance employees with salary >$10.1k.
+
+Statement 16: FALSE
+  - 16. All employees with a monthly salary less than $6k have a performance rating less than 4.7.
+  - Explanation: 1 employees with salary <$6k have performance rating >=4.7.
+
+Statement 17: TRUE
+  - 17. If an employee is in the operations department, then their years of experience are less than 12 years.
+  - Explanation: All 6 operations employees have <12 years experience.
+
+Statement 18: FALSE
+  - 18. All employees with a performance rating greater than 4.4 have a monthly salary greater than $5.5k.
+  - Explanation: 1 employees with performance rating >4.4 have salary <=$5.5k.

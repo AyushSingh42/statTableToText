@@ -1,0 +1,60 @@
+
+Statement 1: TRUE
+  - 1. All stores in the north region have a customer satisfaction rating greater than or equal to 3.6.
+  - Explanation: All 6 stores in the north region satisfy the condition.
+
+Statement 2: TRUE
+  - 2. If a store is in the west region, then its average basket size is less than or equal to 68.
+  - Explanation: All 7 stores in the west region satisfy the condition.
+
+Statement 3: TRUE
+  - 3. There exists at least one store in the north region with a monthly sales value greater than $150k.
+  - Explanation: At least one store in the north region exceeds $150k in monthly sales.
+
+Statement 4: FALSE
+  - 4. All stores with a staff count greater than 20 have a customer satisfaction rating greater than or equal to 4.5.
+  - Explanation: 1 stores with staff count > 20 violate the rule (satisfactions: 3.8).
+
+Statement 5: TRUE
+  - 5. If a store is in the west region and has a staff count greater than 15, then its average basket size is greater than 48.
+  - Explanation: All 6 stores in the west region with staff count > 15 satisfy the condition.
+
+Statement 6: TRUE
+  - 6. Most stores in the dataset have a monthly sales value less than $150k.
+  - Explanation: More than half (11/15) of stores have monthly sales < $150k.
+
+Statement 7: FALSE
+  - 7. All stores with a customer satisfaction rating greater than 4.5 have a staff count greater than 20.
+  - Explanation: 3 stores with satisfaction > 4.5 violate the rule (staff counts: 17, 20, 14).
+
+Statement 8: TRUE
+  - 8. If a store is in the north region, then its transactions are greater than 1500.
+  - Explanation: All 6 stores in the north region satisfy the condition.
+
+Statement 9: TRUE
+  - 9. There exists at least one store in the west region with a monthly sales value greater than $120k and an average basket size greater than 50.
+  - Explanation: At least one store in the west region satisfies both conditions.
+
+Statement 10: FALSE
+  - 10. All stores with a staff count less than 15 have a customer satisfaction rating less than 4.0.
+  - Explanation: 2 stores with staff count < 15 violate the rule (satisfactions: 4.3, 4.6).
+
+Statement 11: TRUE
+  - 11. If a store is in the east region, then its monthly sales value is greater than $150k.
+  - Explanation: All 1 stores in the east region satisfy the condition.
+
+Statement 12: TRUE
+  - 12. Most stores in the west region have a staff count greater than 15.
+  - Explanation: More than half (6/7) of stores in the west region have staff count > 15.
+
+Statement 13: FALSE
+  - 13. All stores with a customer satisfaction rating less than 4.0 have a staff count less than 18.
+  - Explanation: 2 stores with satisfaction < 4.0 violate the rule (staff counts: 20, 24).
+
+Statement 14: TRUE
+  - 14. If a store has a monthly sales value greater than $120k, then its transactions are greater than 1500.
+  - Explanation: All 10 stores with monthly sales > $120k satisfy the condition.
+
+Statement 15: TRUE
+  - 15. There exists at least one store in the north region with a customer satisfaction rating greater than 4.5 and a staff count greater than 20.
+  - Explanation: At least one store in the north region satisfies both conditions.
