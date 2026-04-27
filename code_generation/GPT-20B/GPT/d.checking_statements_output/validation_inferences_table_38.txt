@@ -1,0 +1,36 @@
+
+Statement 1: TRUE
+  - 1. For all organic farms, soil_quality_index is at least 68.5.
+  - Explanation: All 8 organic farms satisfy the condition.
+
+Statement 2: TRUE
+  - 2. For all non‑organic farms, soil_quality_index is at least 69.2.
+  - Explanation: All 7 non‑organic farms satisfy the condition.
+
+Statement 3: TRUE
+  - 3. If soil_quality_index is at least 81.2, then the crop type is soybean.
+  - Explanation: All 2 farms with soil_quality_index ≥ 81.2 are soybean.
+
+Statement 4: TRUE
+  - 4. For all corn farms, fertilizer_kg is at least 611.
+  - Explanation: All 4 corn farms satisfy the condition.
+
+Statement 5: TRUE
+  - 5. For all wheat farms, yield_tons is at least 294.4.
+  - Explanation: All 6 wheat farms satisfy the condition.
+
+Statement 6: TRUE
+  - 6. Most farms have soil_quality_index greater than 70.
+  - Explanation: 13 out of 15 farms have soil_quality_index > 70.
+
+Statement 7: TRUE
+  - 7. For all organic farms, irrigation_hours_week is at least 10.9.
+  - Explanation: All 8 organic farms satisfy the condition.
+
+Statement 8: TRUE
+  - 8. For all non‑organic farms, irrigation_hours_week is at most 18.6.
+  - Explanation: All 7 non‑organic farms satisfy the condition.
+
+Statement 9: TRUE
+  - 9. If fertilizer_kg exceeds 1000 kg, the crop type is soybean.
+  - Explanation: All 2 farms with fertilizer_kg > 1000 are soybean.

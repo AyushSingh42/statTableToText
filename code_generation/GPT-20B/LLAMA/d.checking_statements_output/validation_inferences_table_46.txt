@@ -1,0 +1,84 @@
+
+Statement 1: FALSE
+  - 1. All players who are guards have an average of less than 6 assists per game.
+  - Explanation: 1 guard(s) violate the rule (assists: 7.0).
+
+Statement 2: FALSE
+  - 2. If a player is a forward, then their average points per game is greater than 14.
+  - Explanation: 1 forward(s) violate the rule (points: 13.2).
+
+Statement 3: FALSE
+  - 3. All players who are centers have an average of more than 9 rebounds per game.
+  - Explanation: 1 center(s) violate the rule (rebounds: 7.9).
+
+Statement 4: TRUE
+  - 4. There exists at least one player who is a guard and has an average of more than 20 points per game.
+  - Explanation: Found 1 guard(s) with points > 20 (points: 21.0).
+
+Statement 5: TRUE
+  - 5. If a player is a forward aged 28 or older, then their average minutes per game is greater than 29.
+  - Explanation: All 5 forwards aged ≥28 have minutes > 29.
+
+Statement 6: FALSE
+  - 6. All players who have played more than 70 games have an average of more than 5 assists per game.
+  - Explanation: 2 player(s) with >70 games violate the rule (assists: 2.4, 4.9).
+
+Statement 7: TRUE
+  - 7. Most players have an average of more than 15 points per game.
+  - Explanation: 66.7% of players have points > 15.
+
+Statement 8: FALSE
+  - 8. If a player is a center aged 26 or older, then their average rebounds per game is greater than 9.
+  - Explanation: 1 center(s) aged ≥26 violate the rule (rebounds: 7.9).
+
+Statement 9: TRUE
+  - 9. There exists at least one player who is a forward and has an average of more than 22 points per game.
+  - Explanation: Found 1 forward(s) with points > 22 (points: 22.8).
+
+Statement 10: FALSE
+  - 10. All players who have an average of more than 30 minutes per game have an average of more than 14 points per game.
+  - Explanation: 1 player(s) with >30 minutes violate the rule (points: 13.2).
+
+Statement 11: TRUE
+  - 11. If a player is a guard aged 24 or younger, then their average assists per game is less than 6.
+  - Explanation: All 2 guards aged ≤24 have assists < 6.
+
+Statement 12: TRUE
+  - 12. Most players who are forwards have an average of more than 16 points per game.
+  - Explanation: 85.7% of forwards have points > 16.
+
+Statement 13: FALSE
+  - 13. All players who have an average of more than 9 rebounds per game have an average of more than 14 points per game.
+  - Explanation: 1 player(s) with rebounds > 9 violate the rule (points: 10.6).
+
+Statement 14: TRUE
+  - 14. If a player is a center aged 29 or older, then their average points per game is greater than 14.
+  - Explanation: All 1 centers aged ≥29 have points > 14.
+
+Statement 15: TRUE
+  - 15. There exists at least one player who is a guard and has an average of more than 9 rebounds per game.
+  - Explanation: Found 3 guard(s) with rebounds > 9 (rebounds: 9.3, 9.4, 9.2).
+
+Statement 16: FALSE
+  - 16. All players who have played more than 60 games have an average of more than 5 rebounds per game.
+  - Explanation: 2 player(s) with >60 games violate the rule (rebounds: 4.9, 3.5).
+
+Statement 17: FALSE
+  - 17. If a player is a forward aged 26 or older, then their average points per game is greater than 16.
+  - Explanation: 1 forward(s) aged ≥26 violate the rule (points: 13.2).
+
+Statement 18: TRUE
+  - 18. Most players who are guards have an average of less than 7 assists per game.
+  - Explanation: 80.0% of guards have assists < 7.
+
+Statement 19: FALSE
+  - 19. All players who have an average of more than 25 minutes per game have an average of more than 13 points per game.
+  - Explanation: 2 player(s) with >25 minutes violate the rule (points: 10.6, 11.7).
+
+Statement 20: FALSE
+  - 20. If a player is a center aged 28 or older, then their average rebounds per game is greater than 10.
+  - Explanation: 1 center(s) aged ≥28 violate the rule (rebounds: 7.9).
+
+Statement 21: TRUE
+  - 21. There exists at least one player who is a forward and has an average of more than 10 rebounds per game.
+  - Explanation: Found 1 forward(s) with rebounds > 10 (rebounds: 10.8).

@@ -1,0 +1,6 @@
+
+[ERROR] Script exited with code 1
+  File [35m"/home/ayushs13/code_generation/GPT-20B/LLAMA/c.checking_statements/python_code_table_79.py"[0m, line [35m3[0m
+    Maybe we can cheat: Since dataset only has 3 rows, many statements will be trivially true or false. But we need to compute each. We could write code that manually implements each statement logic. That[1;31m'[0ms 512 functions. Too many.
+                                                                                                                                                                                                            [1;31m^[0m
+[1;35mSyntaxError[0m: [35munterminated string literal (detected at line 3)[0m

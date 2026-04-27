@@ -1,0 +1,88 @@
+
+Statement 1: TRUE
+  - 1. All sensors in the park zone have an average temperature between 20.7 and 27.5 degrees Celsius.
+  - Explanation: All 8 park sensors have avg_temp_c in [20.7, 27.5].
+
+Statement 2: TRUE
+  - 2. All sensors in the downtown zone have an average temperature between 21.3 and 22.0 degrees Celsius.
+  - Explanation: All 3 downtown sensors have avg_temp_c in [21.3, 22.0].
+
+Statement 3: TRUE
+  - 3. All sensors in the residential zone have an average temperature between 23.2 and 27.5 degrees Celsius.
+  - Explanation: All 3 residential sensors have avg_temp_c in [23.2, 27.5].
+
+Statement 4: TRUE
+  - 4. All sensors in the industrial zone have an average temperature of 25.7 degrees Celsius.
+  - Explanation: All 1 industrial sensors have avg_temp_c exactly 25.7.
+
+Statement 5: TRUE
+  - 5. If a sensor is in the park zone, then its average humidity is between 49.9 and 64.2 percent.
+  - Explanation: All 8 park sensors have avg_humidity in [49.9, 64.2].
+
+Statement 6: TRUE
+  - 6. If a sensor is in the downtown zone, then its average humidity is between 61.6 and 65.1 percent.
+  - Explanation: All 3 downtown sensors have avg_humidity in [61.6, 65.1].
+
+Statement 7: TRUE
+  - 7. If a sensor is in the residential zone, then its average humidity is between 51.0 and 67.3 percent.
+  - Explanation: All 3 residential sensors have avg_humidity in [51.0, 67.3].
+
+Statement 8: TRUE
+  - 8. All sensors in the park zone have a PM2.5 level between 9.7 and 27.8.
+  - Explanation: All 8 park sensors have pm25 in [9.7, 27.8].
+
+Statement 9: TRUE
+  - 9. All sensors in the downtown zone have a PM2.5 level between 12.6 and 27.3.
+  - Explanation: All 3 downtown sensors have pm25 in [12.6, 27.3].
+
+Statement 10: TRUE
+  - 10. All sensors in the residential zone have a PM2.5 level between 22.7 and 30.6.
+  - Explanation: All 3 residential sensors have pm25 in [22.7, 30.6].
+
+Statement 11: TRUE
+  - 11. If a sensor is in the park zone, then its noise level is between 41.6 and 75.4 decibels.
+  - Explanation: All 8 park sensors have noise_db in [41.6, 75.4].
+
+Statement 12: TRUE
+  - 12. If a sensor is in the downtown zone, then its noise level is between 46.6 and 55.0 decibels.
+  - Explanation: All 3 downtown sensors have noise_db in [46.6, 55.0].
+
+Statement 13: TRUE
+  - 13. If a sensor is in the residential zone, then its noise level is between 40.2 and 69.0 decibels.
+  - Explanation: All 3 residential sensors have noise_db in [40.2, 69.0].
+
+Statement 14: TRUE
+  - 14. All sensors in the park zone have foot traffic between 591 and 1416.
+  - Explanation: All 8 park sensors have foot_traffic in [591, 1416].
+
+Statement 15: TRUE
+  - 15. All sensors in the downtown zone have foot traffic between 474 and 1435.
+  - Explanation: All 3 downtown sensors have foot_traffic in [474, 1435].
+
+Statement 16: TRUE
+  - 16. All sensors in the residential zone have foot traffic between 580 and 658.
+  - Explanation: All 3 residential sensors have foot_traffic in [580, 658].
+
+Statement 17: FALSE
+  - 17. If a sensor is in the park zone, then its power usage is between 210.8 and 439.7 kilowatt-hours.
+  - Explanation: 1 park sensors violate the rule (ids: SN077014).
+
+Statement 18: TRUE
+  - 18. If a sensor is in the downtown zone, then its power usage is between 127.4 and 362.6 kilowatt-hours.
+  - Explanation: All 3 downtown sensors have power_use_kwh in [127.4, 362.6].
+
+Statement 19: TRUE
+  - 19. If a sensor is in the residential zone, then its power usage is between 116.5 and 366.0 kilowatt-hours.
+  - Explanation: All 3 residential sensors have power_use_kwh in [116.5, 366.0].
+
+Statement 20: FALSE
+  - 20. Most sensors in the park zone have an average temperature greater than 22 degrees Celsius.
+  - Explanation: 4 of 8 park sensors have avg_temp_c > 22 (not a majority).
+
+Statement 21: TRUE
+  - 21. Most sensors in the downtown zone have an average temperature less than 22 degrees Celsius.
+  - Explanation: 2 of 3 downtown sensors have avg_temp_c < 22.
+
+Statement 22: TRUE
+  - 22. Most sensors in the residential zone have an average temperature greater than 25 degrees Celsius.
+  - Explanation: 2 of 3 residential sensors have avg_temp_c > 25.

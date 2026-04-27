@@ -1,0 +1,60 @@
+
+Statement 1: TRUE
+  - 1. All stores in the north region have a customer satisfaction rating greater than or equal to 3.6.
+  - Explanation: All 6 north region stores satisfy the rating requirement.
+
+Statement 2: TRUE
+  - 2. If a store is in the west region, then its average basket size is less than or equal to 68.
+  - Explanation: All 7 west region stores have avg basket size <= 68.
+
+Statement 3: TRUE
+  - 3. There exists at least one store in the north region with a monthly sales value greater than $150k.
+  - Explanation: Found 2 north region store(s) with sales > 150k (IDs: B092010, B092014).
+
+Statement 4: FALSE
+  - 4. All stores with a staff count greater than 20 have a customer satisfaction rating greater than or equal to 4.5.
+  - Explanation: 1 stores with staff > 20 violate the rating requirement (IDs: B092015).
+
+Statement 5: TRUE
+  - 5. If a store is in the west region and has a staff count greater than 15, then its average basket size is greater than 48.
+  - Explanation: All 6 west region stores with staff > 15 have avg basket size > 48.
+
+Statement 6: TRUE
+  - 6. Most stores in the dataset have a monthly sales value less than $150k.
+  - Explanation: 11 out of 15 stores have sales < 150k, which is >50%.
+
+Statement 7: FALSE
+  - 7. All stores with a customer satisfaction rating greater than 4.5 have a staff count greater than 20.
+  - Explanation: 3 stores with CS > 4.5 violate the staff count requirement (IDs: B092007, B092008, B092014).
+
+Statement 8: TRUE
+  - 8. If a store is in the north region, then its transactions are greater than 1500.
+  - Explanation: All 6 north region stores have transactions > 1500.
+
+Statement 9: TRUE
+  - 9. There exists at least one store in the west region with a monthly sales value greater than $120k and an average basket size greater than 50.
+  - Explanation: Found 3 west region store(s) with sales > 120k and basket size > 50 (IDs: B092002, B092006, B092013).
+
+Statement 10: FALSE
+  - 10. All stores with a staff count less than 15 have a customer satisfaction rating less than 4.0.
+  - Explanation: 2 stores with staff < 15 violate the CS requirement (IDs: B092003, B092014).
+
+Statement 11: TRUE
+  - 11. If a store is in the east region, then its monthly sales value is greater than $150k.
+  - Explanation: All 1 east region stores have sales > 150k.
+
+Statement 12: TRUE
+  - 12. Most stores in the west region have a staff count greater than 15.
+  - Explanation: 6 out of 7 west region stores have staff > 15, which is >50%.
+
+Statement 13: FALSE
+  - 13. All stores with a customer satisfaction rating less than 4.0 have a staff count less than 18.
+  - Explanation: 2 stores with CS < 4.0 violate the staff count requirement (IDs: B092011, B092015).
+
+Statement 14: TRUE
+  - 14. If a store has a monthly sales value greater than $120k, then its transactions are greater than 1500.
+  - Explanation: All 10 stores with sales > 120k have transactions > 1500.
+
+Statement 15: TRUE
+  - 15. There exists at least one store in the north region with a customer satisfaction rating greater than 4.5 and a staff count greater than 20.
+  - Explanation: Found 1 north region store(s) with CS > 4.5 and staff > 20 (IDs: B092005).

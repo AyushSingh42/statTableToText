@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All 5-star hotels have an average nightly rate of at least $135.5.
+  - Explanation: All 6 5-star hotels meet the rate requirement.
+
+Statement 2: TRUE
+  - 2. All hotels with a cancellation rate below 9% have an occupancy rate of at least 74.5%.
+  - Explanation: All 4 hotels with cancellation rate < 9% have occupancy >= 74.5%.
+
+Statement 3: TRUE
+  - 3. All hotels with staff counts of 35 or more have a cancellation rate of 15.5% or lower.
+  - Explanation: All 5 hotels with staff >= 35 have cancellation rate <= 15.5%.
+
+Statement 4: TRUE
+  - 4. The two Boston hotels both have average nightly rates of $159.0 or higher.
+  - Explanation: Both Boston hotels meet the rate requirement.
+
+Statement 5: TRUE
+  - 5. In Phoenix, hotel occupancy rates range from 68.6% to 74.5%.
+  - Explanation: Phoenix hotels occupancy rates range from 68.6% to 74.5%.
+
+Statement 6: FALSE
+  - 6. The only hotels with occupancy rates below 70% are located in Portland, Austin, and Miami.
+  - Explanation: Hotels with occupancy < 70% in disallowed cities: IDs HT075015 (cities: phoenix).
+
+Statement 7: TRUE
+  - 7. Hotels with average nightly rates above $200 have cancellation rates of at least 11%.
+  - Explanation: All 3 hotels with rate > $200 have cancellation rate >= 11%.
+
+Statement 8: TRUE
+  - 8. All 3-star hotels have staff counts between 26 and 39.
+  - Explanation: All 7 3-star hotels have staff counts between 26 and 39.

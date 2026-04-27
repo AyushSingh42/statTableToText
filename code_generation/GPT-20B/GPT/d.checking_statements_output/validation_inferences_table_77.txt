@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. For all sensors in the park zone, average temperature is between 20.7°C and 27.5°C.
+  - Explanation: All 8 park sensors have avg_temp_c between 20.7 and 27.5.
+
+Statement 2: TRUE
+  - 2. For all residential sensors, average humidity is between 51.0% and 67.3%.
+  - Explanation: All 3 residential sensors have avg_humidity between 51.0% and 67.3%.
+
+Statement 3: TRUE
+  - 3. For all downtown sensors, foot traffic is at least 474.
+  - Explanation: All 3 downtown sensors have foot_traffic >= 474.
+
+Statement 4: TRUE
+  - 4. There exists a residential sensor (SN077007) with the highest PM2.5 value of 30.6 µg/m³ among all sensors.
+  - Explanation: Sensor SN077007 is residential and has the highest PM2.5 of 30.6 µg/m³.
+
+Statement 5: FALSE
+  - 5. Most sensors (8 out of 15) record noise levels above 50 dB.
+  - Explanation: 9 sensors have noise >50 dB, not 8.
+
+Statement 6: TRUE
+  - 6. For all sensors with foot traffic exceeding 1300, power use is at least 215.0 kWh.
+  - Explanation: All sensors with foot traffic >1300 have power use >= 215.0 kWh.
+
+Statement 7: TRUE
+  - 7. If average temperature is at least 27.0°C, then PM2.5 is at least 22.7 µg/m³.
+  - Explanation: All sensors with avg_temp_c >=27.0 have pm25 >=22.7 µg/m³.
+
+Statement 8: TRUE
+  - 8. If average humidity is 52% or lower, then noise level does not exceed 41.6 dB.
+  - Explanation: All sensors with avg_humidity <=52 have noise_db <=41.6 dB.

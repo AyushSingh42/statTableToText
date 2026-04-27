@@ -1,0 +1,33 @@
+
+Statement 1: FALSE
+  - 1. All vehicles that traveled in the rain had a delay of 10 minutes or more, except for one bus that had a delay of 6 minutes.
+  - Explanation: 0 rain vehicles violate the rule (ids: ).
+
+Statement 2: TRUE
+  - 2. All buses that traveled in the wind had an average speed of 55 kph or more.
+  - Explanation: All 0 wind buses have avg speed ≥55.
+
+Statement 3: TRUE
+  - 3. If a vehicle traveled in the clear weather, then its fuel used was 12.5 liters or less.
+  - Explanation: All 0 clear vehicles use ≤12.5 L.
+
+Statement 4: FALSE
+  - 4. There exists at least one truck that traveled in the rain and had a delay of 11 minutes.
+  - Explanation: No truck satisfies the criteria.
+
+Statement 5: TRUE
+  - 5. All vans had a distance traveled of 200 km or less.
+  - Explanation: All 0 vans travel ≤200 km.
+
+[ERROR] Script exited with code 1
+Traceback (most recent call last):
+  File [35m"/home/ayushs13/code_generation/GPT-20B/LLAMA/c.checking_statements/python_code_table_93.py"[0m, line [35m264[0m, in [35m<module>[0m
+    [31mmain[0m[1;31m()[0m
+    [31m~~~~[0m[1;31m^^[0m
+  File [35m"/home/ayushs13/code_generation/GPT-20B/LLAMA/c.checking_statements/python_code_table_93.py"[0m, line [35m260[0m, in [35mmain[0m
+    truth, explanation = [31mfunc[0m[1;31m(df)[0m
+                         [31m~~~~[0m[1;31m^^^^[0m
+  File [35m"/home/ayushs13/code_generation/GPT-20B/LLAMA/c.checking_statements/python_code_table_93.py"[0m, line [35m73[0m, in [35mstmt_6[0m
+    expl = f"{len(viol)} vehicles with delay ≥15 are not buses (ids: {[31m', '.join[0m[1;31m(viol['route_id'])[0m})."
+                                                                      [31m~~~~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^[0m
+[1;35mTypeError[0m: [35msequence item 0: expected str instance, float found[0m

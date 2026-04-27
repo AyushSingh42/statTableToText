@@ -1,0 +1,36 @@
+
+Statement 1: TRUE
+  - 1. For all organic farms, soil quality index is at least 69.6.
+  - Explanation: All 9 organic farms have soil quality index >= 69.6.
+
+Statement 2: TRUE
+  - 2. For all non-organic farms, soil quality index does not exceed 81.0.
+  - Explanation: All 6 non-organic farms have soil quality index <= 81.0.
+
+Statement 3: TRUE
+  - 3. All corn farms use between 626 and 817 kg of fertilizer.
+  - Explanation: All 4 corn farms use fertilizer between 626 and 817 kg.
+
+Statement 4: TRUE
+  - 4. All wheat farms have soil quality index of at least 71.5.
+  - Explanation: All 3 wheat farms have soil quality index >= 71.5.
+
+Statement 5: TRUE
+  - 5. All wheat farms yield at most 458.9 tons.
+  - Explanation: All 3 wheat farms have yield <= 458.9 tons.
+
+Statement 6: TRUE
+  - 6. All rice farms have acreage of at least 101 acres.
+  - Explanation: All 2 rice farms have acreage >= 101 acres.
+
+Statement 7: TRUE
+  - 7. All farms irrigating more than 18 hours per week yield at least 382.4 tons.
+  - Explanation: All 2 farms with >18 irrigation hours have yield >= 382.4 tons.
+
+Statement 8: TRUE
+  - 8. Most soybean farms irrigate less than 16 hours per week.
+  - Explanation: 66.7% of soybean farms irrigate <16 hours.
+
+Statement 9: TRUE
+  - 9. Most farms have soil quality index greater than 70.
+  - Explanation: 93.3% of farms have soil quality index > 70.

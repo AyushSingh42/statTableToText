@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All north stores have an average basket size of at least 61.2.
+  - Explanation: All 3 north stores have avg basket size >= 61.2.
+
+Statement 2: TRUE
+  - 2. All stores with monthly sales over 160 k have customer satisfaction of at most 4.2.
+  - Explanation: All 3 stores with monthly sales > 160k have customer satisfaction <= 4.2.
+
+Statement 3: TRUE
+  - 3. All stores with an average basket size of at least 65 have monthly sales of at least 148.2 k.
+  - Explanation: All 3 stores with avg basket size >= 65 have monthly sales >= 148.2k.
+
+Statement 4: TRUE
+  - 4. All east‑region stores have monthly sales of no more than 148.2 k.
+  - Explanation: All 4 east-region stores have monthly sales <= 148.2k.
+
+Statement 5: TRUE
+  - 5. All west‑region stores have monthly sales of at least 129.0 k.
+  - Explanation: All 3 west-region stores have monthly sales >= 129.0k.
+
+Statement 6: TRUE
+  - 6. All stores with more than 2 500 transactions have customer satisfaction of at least 4.0.
+  - Explanation: All 4 stores with >2500 transactions have customer satisfaction >= 4.0.
+
+Statement 7: TRUE
+  - 7. All stores with a staff count of 12 or fewer have an average basket size of at most 61.2.
+  - Explanation: All 3 stores with staff_count <= 12 have avg basket size <= 61.2.
+
+Statement 8: TRUE
+  - 8. There exists at least one south‑region store whose customer satisfaction is 4.5 or higher.
+  - Explanation: At least one south-region store satisfies the rule (store_id: B052012).

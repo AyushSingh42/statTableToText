@@ -1,0 +1,36 @@
+
+Statement 1: TRUE
+  - 1. All 5-star hotels have a staff count of at least 25.
+  - Explanation: All 8 5-star hotels have staff count >= 25.
+
+Statement 2: TRUE
+  - 2. All hotels with occupancy rate above 85% have an average nightly rate of at least $193.2.
+  - Explanation: All 2 hotels with occupancy >85% have avg nightly rate >= $193.2.
+
+Statement 3: TRUE
+  - 3. All Boston hotels are 5-star.
+  - Explanation: All 2 Boston hotels are 5-star.
+
+Statement 4: TRUE
+  - 4. All hotels with staff count greater than 40 have an occupancy rate below 69%.
+  - Explanation: All 1 hotels with staff >40 have occupancy <69%.
+
+Statement 5: TRUE
+  - 5. All 3-star hotels have a cancellation rate of at most 12.5%.
+  - Explanation: All 4 3-star hotels have cancellation rate <= 12.5%.
+
+Statement 6: TRUE
+  - 6. All Phoenix hotels have an average nightly rate of at least $146.6.
+  - Explanation: All 2 Phoenix hotels have avg nightly rate >= $146.6.
+
+Statement 7: TRUE
+  - 7. Most hotels have an occupancy rate above 70%.
+  - Explanation: 80.0% of hotels have occupancy >70%.
+
+Statement 8: TRUE
+  - 8. All 4-star hotels have a staff count of at most 38.
+  - Explanation: All 3 4-star hotels have staff count <= 38.
+
+Statement 9: TRUE
+  - 9. All Dallas hotels have an occupancy rate of at least 78.8%.
+  - Explanation: All 2 Dallas hotels have occupancy >= 78.8%.

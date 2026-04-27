@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All finance employees have monthly salary ≤ $8.9k.
+  - Explanation: All 5 finance employees have salary ≤ 8.9k.
+
+Statement 2: TRUE
+  - 2. All employees with performance rating at least 4.7 work remotely at least 6 days per month.
+  - Explanation: All 3 high‑rating employees work remotely ≥ 6 days.
+
+Statement 3: TRUE
+  - 3. All employees with more than 10 years of experience have monthly salary at least $5.5k.
+  - Explanation: All 5 employees with >10 years experience have salary ≥ 5.5k.
+
+Statement 4: TRUE
+  - 4. All engineering employees are assigned to at least 4 active projects.
+  - Explanation: All 3 engineering employees have ≥ 4 active projects.
+
+Statement 5: TRUE
+  - 5. All employees earning more than $10k per month have performance rating of at least 4.0.
+  - Explanation: All 2 employees earning >10k have rating ≥ 4.0.
+
+Statement 6: TRUE
+  - 6. Most employees work remotely at least 5 days per month.
+  - Explanation: 93.3% of employees work remotely ≥ 5 days.
+
+Statement 7: TRUE
+  - 7. All HR employees have performance rating of at least 3.8.
+  - Explanation: No HR employees present; statement vacuously true.
+
+Statement 8: TRUE
+  - 8. All marketing employees work remotely no more than 6 days per month.
+  - Explanation: All 3 marketing employees work remotely ≤ 6 days.

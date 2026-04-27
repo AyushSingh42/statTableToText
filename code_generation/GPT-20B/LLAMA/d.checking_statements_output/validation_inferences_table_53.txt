@@ -1,0 +1,72 @@
+
+Statement 1: TRUE
+  - 1. All vehicles that traveled in clear weather had an average speed greater than 45 kph.
+  - Explanation: No vehicles traveled in clear weather, statement vacuously true.
+
+Statement 2: TRUE
+  - 2. If a vehicle is a van, then its fuel used is less than 20 liters.
+  - Explanation: No vans in dataset, statement vacuously true.
+
+Statement 3: FALSE
+  - 3. There exists at least one bus that traveled a distance greater than 180 km.
+  - Explanation: No bus with distance > 180 km found.
+
+Statement 4: TRUE
+  - 4. All trucks that traveled in windy weather had a delay of less than 17 minutes.
+  - Explanation: No trucks in windy weather, statement vacuously true.
+
+Statement 5: TRUE
+  - 5. If a vehicle is a bus, then its average speed is greater than 51 kph.
+  - Explanation: No buses in dataset, statement vacuously true.
+
+Statement 6: TRUE
+  - 6. Most vehicles that traveled in rain had a delay of less than 22 minutes.
+  - Explanation: No vehicles in rain, statement vacuously true.
+
+Statement 7: FALSE
+  - 7. All vehicles with a distance traveled greater than 200 km had an average speed greater than 50 kph.
+  - Explanation: 1 vehicle(s) violate the rule (avg speeds: 49.8).
+
+Statement 8: TRUE
+  - 8. If a vehicle is a truck, then its fuel used is greater than 13 liters.
+  - Explanation: No trucks in dataset, statement vacuously true.
+
+Statement 9: FALSE
+  - 9. There exists at least one van that traveled a distance less than 70 km.
+  - Explanation: No van with distance < 70 km found.
+
+Statement 10: TRUE
+  - 10. All buses that traveled in clear weather had a fuel used greater than 20 liters.
+  - Explanation: No buses in clear weather, statement vacuously true.
+
+Statement 11: FALSE
+  - 11. If a vehicle's average speed is greater than 60 kph, then its delay is less than 15 minutes.
+  - Explanation: 2 vehicle(s) violate the rule (delays: 17, 21).
+
+Statement 12: TRUE
+  - 12. Most vehicles that traveled in clear weather had an average speed greater than 50 kph.
+  - Explanation: No vehicles in clear weather, statement vacuously true.
+
+Statement 13: TRUE
+  - 13. All vehicles with a delay of less than 10 minutes had an average speed greater than 45 kph.
+  - Explanation: All 3 vehicles with delay < 10 minutes have avg speed > 45 kph.
+
+Statement 14: TRUE
+  - 14. If a vehicle is a bus, then its distance traveled is greater than 70 km.
+  - Explanation: No buses in dataset, statement vacuously true.
+
+Statement 15: FALSE
+  - 15. There exists at least one truck that traveled a distance greater than 220 km.
+  - Explanation: No truck with distance > 220 km found.
+
+Statement 16: TRUE
+  - 16. All vans that traveled in rain had a fuel used less than 20 liters.
+  - Explanation: No vans in rain, statement vacuously true.
+
+Statement 17: FALSE
+  - 17. If a vehicle's fuel used is greater than 30 liters, then its distance traveled is greater than 150 km.
+  - Explanation: 1 vehicle(s) violate the rule (distances: 111.1).
+
+Statement 18: TRUE
+  - 18. Most vehicles that traveled in rain had a fuel used greater than 15 liters.
+  - Explanation: No vehicles in rain, statement vacuously true.

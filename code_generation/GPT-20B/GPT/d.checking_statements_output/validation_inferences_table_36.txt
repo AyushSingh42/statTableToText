@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All forwards play at least 27.4 minutes per game.
+  - Explanation: All 7 forwards play at least 27.4 minutes per game.
+
+Statement 2: TRUE
+  - 2. All centers have rebounds per game at most 8.5.
+  - Explanation: All 3 centers have rebounds per game at most 8.5.
+
+Statement 3: TRUE
+  - 3. All guards have rebounds per game of at least 5.5.
+  - Explanation: All 5 guards have rebounds per game of at least 5.5.
+
+Statement 4: TRUE
+  - 4. All players with rebounds per game of 9 or more score at most 22.9 points per game.
+  - Explanation: All 3 players with rebounds >= 9 score at most 22.9 points per game.
+
+Statement 5: TRUE
+  - 5. All guards aged 23 have points per game of at least 22.9.
+  - Explanation: All 2 guards aged 23 have points per game >= 22.9.
+
+Statement 6: TRUE
+  - 6. The highest points per game (24.3) is achieved by a guard.
+  - Explanation: All players with 24.3 points per game are guards.
+
+Statement 7: TRUE
+  - 7. All players older than 30 play at least 27.4 minutes per game.
+  - Explanation: All 9 players older than 30 play at least 27.4 minutes per game.
+
+Statement 8: TRUE
+  - 8. All players with assists per game of at least 6 score at most 22.9 points per game.
+  - Explanation: All 4 players with assists >= 6 score at most 22.9 points per game.

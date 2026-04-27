@@ -1,0 +1,68 @@
+
+Statement 1: TRUE
+  - 1. All players who are centers have an age between 20 and 33 years.
+  - Explanation: All 3 centers are aged 20-33.
+
+Statement 2: TRUE
+  - 2. If a player is a forward, then their age is between 20 and 33 years.
+  - Explanation: All 9 forwards are aged 20-33.
+
+Statement 3: TRUE
+  - 3. All players who are guards have an age between 24 and 29 years.
+  - Explanation: All 3 guards are aged 24-29.
+
+Statement 4: TRUE
+  - 4. For all players with minutes per game greater than 30, their points per game is greater than 13.
+  - Explanation: All 8 players with >30 MPG have >13 PPG.
+
+Statement 5: FALSE
+  - 5. If a player has games played greater than 70, then their assists per game is greater than 4.
+  - Explanation: 3 players violate the rule (APG: 3.4, 2.7, 3.3).
+
+Statement 6: TRUE
+  - 6. All players who have rebounds per game greater than 10 are forwards.
+  - Explanation: All 2 players with >10 RPG are forwards.
+
+Statement 7: FALSE
+  - 7. For all players with age greater than 25, their points per game is greater than 17.
+  - Explanation: 1 players violate the rule (PPG: 13.8).
+
+Statement 8: TRUE
+  - 8. If a player is a center, then their rebounds per game is greater than 3.
+  - Explanation: All 3 centers have >3 RPG.
+
+Statement 9: FALSE
+  - 9. All players who have assists per game greater than 5 are guards or forwards.
+  - Explanation: 1 players violate the rule (positions: center).
+
+Statement 10: TRUE
+  - 10. For all players with minutes per game greater than 35, their rebounds per game is greater than 4.
+  - Explanation: All 4 players with >35 MPG have >4 RPG.
+
+Statement 11: TRUE
+  - 11. Most players in the table have a points per game greater than 15.
+  - Explanation: 11 out of 15 players have >15 PPG.
+
+Statement 12: FALSE
+  - 12. If a player has age less than 25, then their rebounds per game is less than 8.
+  - Explanation: 2 players violate the rule (RPG: 11.6, 9.4).
+
+Statement 13: TRUE
+  - 13. All players who have games played greater than 60 have a minutes per game greater than 24.
+  - Explanation: All 13 players with >60 GP have >24 MPG.
+
+Statement 14: FALSE
+  - 14. For all players with points per game greater than 20, their age is greater than 20.
+  - Explanation: 1 players violate the rule (age: 20).
+
+Statement 15: TRUE
+  - 15. If a player is a forward, then their points per game is greater than 14.
+  - Explanation: All 9 forwards have >14 PPG.
+
+Statement 16: FALSE
+  - 16. All players who have rebounds per game greater than 6 are forwards or centers.
+  - Explanation: 2 players violate the rule (positions: guard, guard).
+
+Statement 17: FALSE
+  - 17. For all players with assists per game greater than 4, their minutes per game is greater than 25.
+  - Explanation: 2 players violate the rule (MPG: 24.3, 24.9).

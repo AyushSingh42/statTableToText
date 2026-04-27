@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All industrial sensors have average temperature between 21.6°C and 26.7°C.
+  - Explanation: All 4 industrial sensors have avg_temp_c in [21.6, 26.7].
+
+Statement 2: TRUE
+  - 2. All park sensors have average noise level no greater than 70.4 dB.
+  - Explanation: All 3 park sensors have noise_db ≤ 70.4.
+
+Statement 3: TRUE
+  - 3. All downtown sensors have foot traffic of at most 1031 persons.
+  - Explanation: All 4 downtown sensors have foot_traffic ≤ 1031.
+
+Statement 4: TRUE
+  - 4. All residential sensors have power consumption of at least 156.0 kWh.
+  - Explanation: All 4 residential sensors have power_use_kwh ≥ 156.0.
+
+Statement 5: TRUE
+  - 5. Any sensor with average temperature above 26°C is located in either the industrial or park zone.
+  - Explanation: All 4 sensors with avg_temp_c > 26 are in industrial or park zones.
+
+Statement 6: FALSE
+  - 6. The only sensor with foot traffic exceeding 1300 is in the industrial zone (sensor SN037013 with 1358 foot traffic).
+  - Explanation: 1 sensors have foot_traffic > 1300; they are in zones: industrial.
+
+Statement 7: TRUE
+  - 7. Most sensors (13 out of 15) have average humidity between 52.8% and 64.3%.
+  - Explanation: 15 sensors total, 13 have avg_humidity in [52.8, 64.3].
+
+Statement 8: TRUE
+  - 8. All sensors with noise ≤44.2 dB are in the residential zone.
+  - Explanation: All 2 sensors with noise_db ≤ 44.2 are in residential zone.

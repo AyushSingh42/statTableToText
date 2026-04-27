@@ -1,0 +1,53 @@
+
+Statement 1: TRUE
+  - 1. For all organic farms, the soil quality index is at least 72.4.
+  - Explanation: All 7 organic farms have soil quality index >= 72.4.
+
+Statement 2: TRUE
+  - 2. For all corn farms, the soil quality index is at least 72.3.
+  - Explanation: All 5 corn farms have soil quality index >= 72.3.
+
+Statement 3: TRUE
+  - 3. For all wheat farms, irrigation hours per week are at least 12.6.
+  - Explanation: All 3 wheat farms have irrigation hours >= 12.6.
+
+Statement 4: TRUE
+  - 4. For all rice farms, irrigation hours per week do not exceed 18.3.
+  - Explanation: All 2 rice farms have irrigation hours <= 18.3.
+
+Statement 5: TRUE
+  - 5. For all farms irrigating at least 15 hours per week, the yield is at least 260.7 tons.
+  - Explanation: All 5 farms with >=15 irrigation hours have yield >= 260.7 tons.
+
+Statement 6: TRUE
+  - 6. For all farms that use more than 1000 kg of fertilizer, the yield is at least 304.7 tons.
+  - Explanation: All 2 farms with >1000 kg fertilizer have yield >= 304.7 tons.
+
+[ERROR] Script exited with code 1
+Traceback (most recent call last):
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/indexes/base.py"[0m, line [35m3812[0m, in [35mget_loc[0m
+    return [31mself._engine.get_loc[0m[1;31m(casted_key)[0m
+           [31m~~~~~~~~~~~~~~~~~~~~[0m[1;31m^^^^^^^^^^^^[0m
+  File [35m"pandas/_libs/index.pyx"[0m, line [35m167[0m, in [35mpandas._libs.index.IndexEngine.get_loc[0m
+  File [35m"pandas/_libs/index.pyx"[0m, line [35m196[0m, in [35mpandas._libs.index.IndexEngine.get_loc[0m
+  File [35m"pandas/_libs/hashtable_class_helper.pxi"[0m, line [35m7088[0m, in [35mpandas._libs.hashtable.PyObjectHashTable.get_item[0m
+  File [35m"pandas/_libs/hashtable_class_helper.pxi"[0m, line [35m7096[0m, in [35mpandas._libs.hashtable.PyObjectHashTable.get_item[0m
+[1;35mKeyError[0m: [35m'yield_per_acre'[0m
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File [35m"/home/ayushs13/code_generation/GPT-20B/GPT/c.checking_statements/python_code_table_58.py"[0m, line [35m148[0m, in [35m<module>[0m
+    [31mmain[0m[1;31m()[0m
+    [31m~~~~[0m[1;31m^^[0m
+  File [35m"/home/ayushs13/code_generation/GPT-20B/GPT/c.checking_statements/python_code_table_58.py"[0m, line [35m144[0m, in [35mmain[0m
+    truth, explanation = [31mfunc[0m[1;31m(df.copy())[0m
+                         [31m~~~~[0m[1;31m^^^^^^^^^^^[0m
+  File [35m"/home/ayushs13/code_generation/GPT-20B/GPT/c.checking_statements/python_code_table_58.py"[0m, line [35m101[0m, in [35mstmt_7[0m
+    target_yield_per_acre = [31msoy_78[0m[1;31m["yield_per_acre"][0m.iloc[0]
+                            [31m~~~~~~[0m[1;31m^^^^^^^^^^^^^^^^^^[0m
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/frame.py"[0m, line [35m4113[0m, in [35m__getitem__[0m
+    indexer = self.columns.get_loc(key)
+  File [35m"/opt/conda/lib/python3.13/site-packages/pandas/core/indexes/base.py"[0m, line [35m3819[0m, in [35mget_loc[0m
+    raise KeyError(key) from err
+[1;35mKeyError[0m: [35m'yield_per_acre'[0m

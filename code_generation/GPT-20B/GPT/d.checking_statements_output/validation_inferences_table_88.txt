@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All organic farms have a soil quality index of at least 68.0.
+  - Explanation: All 12 organic farms meet the soil quality requirement.
+
+Statement 2: TRUE
+  - 2. All corn farms use at least 622 kg of fertilizer.
+  - Explanation: All 3 corn farms use at least 622 kg of fertilizer.
+
+Statement 3: TRUE
+  - 3. For all wheat farms, irrigation hours per week are between 13.2 and 20.1 inclusive.
+  - Explanation: All 4 wheat farms have irrigation hours within the specified range.
+
+Statement 4: TRUE
+  - 4. All rice farms have a total yield of at least 342.7 tons.
+  - Explanation: All 5 rice farms meet the yield requirement.
+
+Statement 5: TRUE
+  - 5. Soybean farms have acreage between 89 and 155 acres.
+  - Explanation: All 3 soybean farms have acreage within the specified range.
+
+Statement 6: TRUE
+  - 6. Most farms (80% of the records) are certified organic.
+  - Explanation: 12/15 farms (80.00%) are organic.
+
+Statement 7: TRUE
+  - 7. All non-organic farms receive at least 16.8 irrigation hours per week.
+  - Explanation: All 3 non-organic farms meet the irrigation requirement.
+
+Statement 8: TRUE
+  - 8. All non-rice farms have a yield per acre of no more than 3.842 tons.
+  - Explanation: All 10 non-rice farms have yield per acre <= 3.842.

@@ -1,0 +1,76 @@
+
+Statement 1: TRUE
+  - 1. All patients with a diagnosis of diabetes have a cholesterol level greater than 190 mg/dl.
+  - Explanation: All 4 diabetes patients have cholesterol >190.
+
+Statement 2: FALSE
+  - 2. If a patient is a smoker, then their age is less than 70 years.
+  - Explanation: 1 smokers are 70 or older (ages: 73).
+
+Statement 3: TRUE
+  - 3. There exists at least one patient with a diagnosis of arthritis whose BMI is less than 28.
+  - Explanation: At least one arthritis patient with BMI <28 exists.
+
+Statement 4: FALSE
+  - 4. All patients with a BMI greater than 33 have a diagnosis of either asthma or arthritis.
+  - Explanation: 1 patients with BMI >33 have diagnosis diabetes.
+
+Statement 5: FALSE
+  - 5. If a patient has a systolic blood pressure greater than 140, then their diagnosis is either diabetes or hypertension.
+  - Explanation: 1 patients with systolic BP >140 have diagnosis arthritis.
+
+Statement 6: TRUE
+  - 6. Most patients with a diagnosis of arthritis have a diastolic blood pressure less than 85.
+  - Explanation: 66.7% of arthritis patients have diastolic BP <85.
+
+Statement 7: FALSE
+  - 7. All patients with a cholesterol level greater than 230 mg/dl have a diagnosis of either diabetes or migraine.
+  - Explanation: 2 patients with cholesterol >230 have diagnosis hypertension, arthritis.
+
+Statement 8: FALSE
+  - 8. If a patient is a non-smoker, then their BMI is less than 34.
+  - Explanation: 1 non-smokers have BMI >=34 (BMI: 34.4).
+
+Statement 9: TRUE
+  - 9. There exists at least one patient with a diagnosis of migraine whose systolic blood pressure is less than 125.
+  - Explanation: At least one migraine patient with systolic BP <125 exists.
+
+Statement 10: FALSE
+  - 10. All patients with a BMI less than 27 have a diagnosis of either arthritis or diabetes.
+  - Explanation: 2 patients with BMI <27 have diagnosis hypertension, asthma.
+
+Statement 11: FALSE
+  - 11. If a patient has a diastolic blood pressure greater than 90, then their age is less than 75 years.
+  - Explanation: 1 patients with diastolic BP >90 are 75 or older (ages: 76).
+
+Statement 12: TRUE
+  - 12. Most patients with a diagnosis of diabetes have a BMI greater than 25.
+  - Explanation: 75.0% of diabetes patients have BMI >25.
+
+Statement 13: FALSE
+  - 13. All patients with a systolic blood pressure less than 130 have a diagnosis of either arthritis or migraine.
+  - Explanation: 3 patients with systolic BP <130 have diagnosis asthma, hypertension, diabetes.
+
+Statement 14: FALSE
+  - 14. If a patient has a cholesterol level less than 200 mg/dl, then their BMI is less than 32.
+  - Explanation: 3 patients with cholesterol <200 have BMI >=32 (BMI: 33.3, 32.7, 33.5).
+
+Statement 15: TRUE
+  - 15. There exists at least one patient with a diagnosis of asthma whose BMI is greater than 33.
+  - Explanation: At least one asthma patient with BMI >33 exists.
+
+Statement 16: FALSE
+  - 16. All patients with a BMI greater than 32 have a diagnosis of either arthritis or diabetes.
+  - Explanation: 2 patients with BMI >32 have diagnosis asthma, migraine.
+
+Statement 17: FALSE
+  - 17. If a patient is a smoker, then their cholesterol level is greater than 220 mg/dl.
+  - Explanation: 2 smokers have cholesterol <=220 (cholesterol: 182, 212).
+
+Statement 18: TRUE
+  - 18. Most patients with a diagnosis of arthritis have a systolic blood pressure less than 140.
+  - Explanation: 83.3% of arthritis patients have systolic BP <140.
+
+Statement 19: FALSE
+  - 19. All patients with a diastolic blood pressure less than 80 have a diagnosis of either hypertension or migraine.
+  - Explanation: 5 patients with diastolic BP <80 have diagnosis asthma, arthritis, diabetes.

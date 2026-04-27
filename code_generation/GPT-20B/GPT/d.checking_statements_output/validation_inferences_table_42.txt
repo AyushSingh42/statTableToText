@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All south region stores have customer satisfaction of at least 4.7.
+  - Explanation: All 3 south stores satisfy the rule.
+
+Statement 2: TRUE
+  - 2. All west region stores have a staff count of at least 11.
+  - Explanation: All 4 west stores satisfy the rule.
+
+Statement 3: TRUE
+  - 3. All east region stores have monthly sales between $94.9k and $131.4k.
+  - Explanation: All 7 east stores satisfy the rule.
+
+Statement 4: TRUE
+  - 4. All stores with a staff count of 20 or more have an average basket size of at most 65.7.
+  - Explanation: All 4 stores with staff >=20 satisfy the rule.
+
+Statement 5: TRUE
+  - 5. All stores with a customer satisfaction rating of 4.8 have monthly sales of at least $108.2k.
+  - Explanation: All 3 stores with CS 4.8 satisfy the rule.
+
+Statement 6: TRUE
+  - 6. All stores with more than 2500 transactions have an average basket size of at most 66.4.
+  - Explanation: All 3 stores with >2500 transactions satisfy the rule.
+
+Statement 7: TRUE
+  - 7. Most stores have a customer satisfaction rating of at least 4.0.
+  - Explanation: 10 out of 15 stores (66.67%) have CS >=4.0.
+
+Statement 8: TRUE
+  - 8. West region stores' average basket size ranges from 48.8 to 67.3.
+  - Explanation: West stores' avg basket size ranges from 48.8 to 67.3.

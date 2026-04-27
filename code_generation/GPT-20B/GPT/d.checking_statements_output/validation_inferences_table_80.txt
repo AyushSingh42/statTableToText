@@ -1,0 +1,28 @@
+
+Statement 1: TRUE
+  - 1. All students who study at least 10 hours per week have test scores of at least 89.
+  - Explanation: All 3 students studying ≥10h have test scores ≥89.
+
+Statement 2: TRUE
+  - 2. All club members study at least 5.5 hours per week.
+  - Explanation: All 6 club members study ≥5.5h.
+
+Statement 3: TRUE
+  - 3. All grade 12 students study at least 7.2 hours per week.
+  - Explanation: All 3 grade 12 students study ≥7.2h.
+
+Statement 4: TRUE
+  - 4. All grade 9 students have test scores no higher than 94.
+  - Explanation: All 4 grade 9 students have test scores ≤94.
+
+Statement 5: TRUE
+  - 5. All grade 9 students have attendance rates of at least 88.0%.
+  - Explanation: All 4 grade 9 students have attendance ≥88.0%.
+
+Statement 6: TRUE
+  - 6. All students with test scores of at least 95 have attendance rates of at least 88.4%.
+  - Explanation: All 3 students with test scores ≥95 have attendance ≥88.4%.
+
+Statement 7: TRUE
+  - 7. Most students have attendance rates above 85%.
+  - Explanation: 13 out of 15 students (86.7%) have attendance >85%.

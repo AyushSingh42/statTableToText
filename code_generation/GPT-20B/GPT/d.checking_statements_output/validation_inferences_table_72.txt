@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All west region stores have monthly sales of at least 111.0 k.
+  - Explanation: All 5 west region stores have monthly sales >= 111.0 k.
+
+Statement 2: TRUE
+  - 2. All east region stores have customer satisfaction of at least 3.8.
+  - Explanation: All 3 east region stores have customer satisfaction >= 3.8.
+
+Statement 3: TRUE
+  - 3. All stores with a staff count of at least 25 have an average basket size no more than 54.7.
+  - Explanation: All 3 stores with staff_count >= 25 have avg_basket_size <= 54.7.
+
+Statement 4: TRUE
+  - 4. All stores with an average basket size greater than 60 have customer satisfaction of at least 3.9.
+  - Explanation: All 3 stores with avg_basket_size > 60 have customer_satisfaction >= 3.9.
+
+Statement 5: FALSE
+  - 5. All stores with monthly sales greater than 150 k have a staff count no more than 18.
+  - Explanation: 1 store(s) with monthly_sales_k > 150 violate the rule (staff_count: 26).
+
+Statement 6: TRUE
+  - 6. All stores with at least 2600 transactions have monthly sales of at least 162.9 k.
+  - Explanation: All 2 stores with transactions >= 2600 have monthly_sales_k >= 162.9 k.
+
+Statement 7: TRUE
+  - 7. All north region stores have monthly sales of at least 110.1 k.
+  - Explanation: All 4 north region stores have monthly_sales_k >= 110.1 k.
+
+Statement 8: TRUE
+  - 8. All south region stores have an average basket size of at least 59.9.
+  - Explanation: All 3 south region stores have avg_basket_size >= 59.9.

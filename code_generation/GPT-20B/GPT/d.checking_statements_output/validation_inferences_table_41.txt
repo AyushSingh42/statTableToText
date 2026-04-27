@@ -1,0 +1,40 @@
+
+Statement 1: TRUE
+  - 1. For all patients with systolic blood pressure ≥150 mmHg, cholesterol is at least 196 mg/dL.
+  - Explanation: All 3 patients with systolic BP ≥150 have cholesterol ≥196.
+
+Statement 2: TRUE
+  - 2. All smokers have a BMI of at least 20.9.
+  - Explanation: All 7 smokers have BMI ≥20.9.
+
+Statement 3: TRUE
+  - 3. All patients diagnosed with migraine are at least 59 years old.
+  - Explanation: All 3 migraine patients are ≥59 years old.
+
+Statement 4: TRUE
+  - 4. All patients with a BMI greater than 33 have cholesterol no higher than 209 mg/dL.
+  - Explanation: All 2 patients with BMI >33 have cholesterol ≤209.
+
+Statement 5: FALSE
+  - 5. All patients with diastolic blood pressure ≤74 mmHg have asthma.
+  - Explanation: 1 patients violate the rule (diagnoses: diabetes).
+
+Statement 6: TRUE
+  - 6. Most patients have cholesterol above 200 mg/dL.
+  - Explanation: 10/15 patients (66.67%) have cholesterol >200.
+
+Statement 7: TRUE
+  - 7. All patients aged 70 or older have either arthritis or migraine.
+  - Explanation: All 4 patients aged ≥70 have arthritis or migraine.
+
+Statement 8: TRUE
+  - 8. All asthma patients have a diastolic blood pressure of 74 mmHg.
+  - Explanation: All 2 asthma patients have diastolic BP of 74.
+
+Statement 9: TRUE
+  - 9. All diabetes patients have cholesterol between 206 and 210 mg/dL.
+  - Explanation: All 3 diabetes patients have cholesterol between 206 and 210.
+
+Statement 10: FALSE
+  - 10. All patients with a BMI between 20 and 25 have migraine.
+  - Explanation: 1 patients violate the rule (diagnoses: arthritis).

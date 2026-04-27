@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All park zone sensors have average temperature between 20.6 °C and 28.1 °C.
+  - Explanation: All 5 park sensors have avg_temp_c between 20.6 and 28.1.
+
+Statement 2: TRUE
+  - 2. All industrial zone sensors have average humidity between 53.6 % and 67.3 %.
+  - Explanation: All 4 industrial sensors have avg_humidity between 53.6 and 67.3.
+
+Statement 3: TRUE
+  - 3. All residential zone sensors have power usage of at least 200.8 kWh.
+  - Explanation: All 5 residential sensors have power_use_kwh >= 200.8.
+
+Statement 4: TRUE
+  - 4. All sensors with noise level of at least 70 dB are located in the park zone.
+  - Explanation: All 2 sensors with noise_db >= 70 are in the park zone.
+
+Statement 5: TRUE
+  - 5. All sensors with PM2.5 concentration below 10 µg/m³ are in the park zone.
+  - Explanation: All 2 sensors with pm25 < 10 are in the park zone.
+
+Statement 6: TRUE
+  - 6. Most sensors (12 out of 15) have foot traffic exceeding 600 per day.
+  - Explanation: 12 out of 15 sensors have foot_traffic > 600.
+
+Statement 7: TRUE
+  - 7. All residential sensors have average temperature no higher than 27.5 °C.
+  - Explanation: All 5 residential sensors have avg_temp_c <= 27.5.
+
+Statement 8: TRUE
+  - 8. All industrial sensors have noise levels no greater than 64.6 dB.
+  - Explanation: All 4 industrial sensors have noise_db <= 64.6.

@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All rural households have rent_k ≤ 2.8.
+  - Explanation: All 7 rural households satisfy rent_k ≤ 2.8.
+
+Statement 2: TRUE
+  - 2. All urban households have utility_cost ≥ 131.4.
+  - Explanation: All 5 urban households satisfy utility_cost ≥ 131.4.
+
+Statement 3: TRUE
+  - 3. All households with monthly_income_k ≥ 10 have rent_k ≥ 2.1.
+  - Explanation: All 2 households with monthly_income_k ≥ 10 satisfy rent_k ≥ 2.1.
+
+Statement 4: TRUE
+  - 4. All suburban households have utility_cost ≤ 178.3.
+  - Explanation: All 3 suburban households satisfy utility_cost ≤ 178.3.
+
+Statement 5: TRUE
+  - 5. All households with satellite internet have rent_k ≤ 2.4.
+  - Explanation: All 6 satellite-internet households satisfy rent_k ≤ 2.4.
+
+Statement 6: TRUE
+  - 6. All households with zero vehicles have monthly_income_k ≥ 4.5.
+  - Explanation: All 5 zero-vehicle households satisfy monthly_income_k ≥ 4.5.
+
+Statement 7: TRUE
+  - 7. All households with household_size ≥ 5 have utility_cost ≥ 108.4.
+  - Explanation: All 6 households with household_size ≥ 5 satisfy utility_cost ≥ 108.4.
+
+Statement 8: TRUE
+  - 8. Most households have vehicle_count ≤ 2.
+  - Explanation: 66.7% of households have vehicle_count ≤ 2.

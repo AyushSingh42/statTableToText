@@ -1,0 +1,68 @@
+
+Statement 1: TRUE
+  - 1. All farms with crop type 'wheat' have an acreage greater than 90.
+  - Explanation: All 4 wheat farms have acreage > 90.
+
+Statement 2: TRUE
+  - 2. If a farm has crop type 'rice', then its soil quality index is less than 82.
+  - Explanation: All 6 rice farms have soil quality index < 82.
+
+Statement 3: TRUE
+  - 3. There exists at least one farm with crop type'soybean' that has an organic status of 'yes'.
+  - Explanation: Found 4 soybean farm(s) with organic yes.
+
+Statement 4: FALSE
+  - 4. For all farms with irrigation hours per week greater than 15, their yield tons are greater than 300.
+  - Explanation: 2 farms violate the rule (yield: 291.3, 283.9).
+
+Statement 5: FALSE
+  - 5. All farms with fertilizer kg greater than 900 have a crop type of'soybean' or 'wheat'.
+  - Explanation: 1 farms violate the rule (crop type: rice).
+
+Statement 6: TRUE
+  - 6. If a farm has an organic status of 'yes', then its soil quality index is greater than 68.
+  - Explanation: All 9 organic farms have soil quality index > 68.
+
+Statement 7: TRUE
+  - 7. Most farms have an acreage greater than 90.
+  - Explanation: 13 out of 15 farms have acreage > 90 (86.7%).
+
+Statement 8: FALSE
+  - 8. For all farms with crop type 'rice', if their irrigation hours per week are greater than 15, then their yield tons are greater than 300.
+  - Explanation: 2 rice farms violate the rule (yield: 291.3, 283.9).
+
+Statement 9: TRUE
+  - 9. There exists at least one farm with crop type 'wheat' that has an organic status of 'no'.
+  - Explanation: Found 4 wheat farm(s) with organic no.
+
+Statement 10: FALSE
+  - 10. All farms with soil quality index greater than 78 have a crop type of'soybean'.
+  - Explanation: 2 farms violate the rule (crop type: wheat, rice).
+
+Statement 11: TRUE
+  - 11. If a farm has a crop type of'soybean', then its yield tons are less than 400.
+  - Explanation: All 4 soybean farms have yield < 400.
+
+Statement 12: TRUE
+  - 12. For all farms with fertilizer kg greater than 700, their yield tons are greater than 250.
+  - Explanation: All 13 farms with fertilizer > 700 have yield > 250.
+
+Statement 13: FALSE
+  - 13. All farms with irrigation hours per week less than 12 have a crop type of 'rice' or 'wheat'.
+  - Explanation: 1 farms violate the rule (crop type: soybean).
+
+Statement 14: TRUE
+  - 14. There exists at least one farm with crop type 'rice' that has an acreage less than 100.
+  - Explanation: Found 4 rice farm(s) with acreage < 100.
+
+Statement 15: FALSE
+  - 15. For all farms with crop type 'wheat', if their fertilizer kg are greater than 800, then their yield tons are greater than 400.
+  - Explanation: 1 wheat farms violate the rule (yield: 326.7).
+
+Statement 16: TRUE
+  - 16. Most farms with crop type'soybean' have an organic status of 'yes'.
+  - Explanation: 4 out of 4 soybean farms have organic yes (100.0%).
+
+Statement 17: FALSE
+  - 17. All farms with soil quality index less than 70 have a crop type of'soybean' or 'rice'.
+  - Explanation: 2 farms violate the rule (crop type: wheat, wheat).

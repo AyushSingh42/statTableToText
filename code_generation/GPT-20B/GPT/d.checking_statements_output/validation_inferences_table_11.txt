@@ -1,0 +1,28 @@
+
+Statement 1: TRUE
+  - 1. For all individuals diagnosed with hypertension, systolic blood pressure does not exceed 135 mmHg.
+  - Explanation: All 6 hypertension patients have systolic ≤ 135.
+
+Statement 2: TRUE
+  - 2. Every patient who is a smoker has a cholesterol level of at least 215 mg/dL.
+  - Explanation: All 5 smokers have cholesterol ≥ 215.
+
+Statement 3: TRUE
+  - 3. If a patient’s cholesterol is 240 mg/dL or higher, the diagnosis is hypertension.
+  - Explanation: All patients with cholesterol ≥ 240 are diagnosed with hypertension.
+
+Statement 4: TRUE
+  - 4. All migraine patients have a diastolic blood pressure of at least 71 mmHg.
+  - Explanation: All 3 migraine patients have diastolic ≥ 71.
+
+Statement 5: TRUE
+  - 5. Every asthma patient has a systolic blood pressure of at least 120 mmHg.
+  - Explanation: All 3 asthma patients have systolic ≥ 120.
+
+Statement 6: TRUE
+  - 6. If a patient’s systolic blood pressure is 150 mmHg or higher, the diagnosis is not hypertension.
+  - Explanation: All patients with systolic ≥ 150 are not diagnosed with hypertension.
+
+Statement 7: TRUE
+  - 7. Patients with a BMI greater than 33 kg/m² are never diagnosed with migraine or diabetes.
+  - Explanation: All patients with BMI > 33 are not diagnosed with migraine or diabetes.

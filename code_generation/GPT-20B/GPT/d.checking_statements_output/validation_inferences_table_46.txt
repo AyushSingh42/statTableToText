@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. For all forwards, minutes per game are at least 25.3.
+  - Explanation: All 7 forwards meet the requirement.
+
+Statement 2: TRUE
+  - 2. For all centers, assists per game are at least 5.7.
+  - Explanation: All 3 centers meet the requirement.
+
+Statement 3: TRUE
+  - 3. For all guards, rebounds per game are at most 9.4.
+  - Explanation: All 5 guards meet the requirement.
+
+Statement 4: TRUE
+  - 4. For all players with minutes per game at least 33, points per game are at least 16.2.
+  - Explanation: All 5 players with minutes >= 33 meet the requirement.
+
+Statement 5: TRUE
+  - 5. For all players with rebounds per game at least 10, points per game are at most 16.5.
+  - Explanation: All 2 players with rebounds >= 10 meet the requirement.
+
+Statement 6: TRUE
+  - 6. For all players with assists per game at least 7, points per game are at most 20.4.
+  - Explanation: All 3 players with assists >= 7 meet the requirement.
+
+Statement 7: TRUE
+  - 7. For all players aged between 21 and 23 inclusive, minutes per game are at least 26.7.
+  - Explanation: All 2 players aged 21-23 meet the requirement.
+
+Statement 8: TRUE
+  - 8. For all players who have played at least 75 games, points per game are at least 14.6.
+  - Explanation: All 4 players with games played >= 75 meet the requirement.

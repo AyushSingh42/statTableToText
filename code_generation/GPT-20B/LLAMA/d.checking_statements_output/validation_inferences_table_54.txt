@@ -1,0 +1,60 @@
+
+Statement 1: TRUE
+  - 1. All households with a monthly income greater than 10k have a household size greater than or equal to 2.
+  - Explanation: All 4 households with income >10k have size >=2.
+
+Statement 2: TRUE
+  - 2. If a household is in a rural region, then their monthly income is less than or equal to 11.5k.
+  - Explanation: All 6 rural households have income <=11.5k.
+
+Statement 3: TRUE
+  - 3. There exists at least one household in a suburban region with a monthly income less than 6k.
+  - Explanation: Found 1 suburban households with income <6k.
+
+Statement 4: TRUE
+  - 4. All households with a household size greater than or equal to 6 have a monthly income greater than or equal to 8.6k.
+  - Explanation: All 3 households with size >=6 have income >=8.6k.
+
+Statement 5: FALSE
+  - 5. If a household has a vehicle count greater than or equal to 3, then their monthly income is greater than or equal to 9.3k.
+  - Explanation: 1 households violate the rule (incomes: 4.6).
+
+Statement 6: TRUE
+  - 6. Most households in the data have a utility cost greater than 100.
+  - Explanation: 14/15 households have utility cost >100.
+
+Statement 7: FALSE
+  - 7. All households with a monthly income less than 6k have a household size less than or equal to 3.
+  - Explanation: 1 households violate the rule (sizes: 5).
+
+Statement 8: TRUE
+  - 8. If a household is in an urban region, then their household size is less than or equal to 3.
+  - Explanation: All 3 urban households have size <=3.
+
+Statement 9: TRUE
+  - 9. There exists at least one household in a rural region with a monthly income less than 5k.
+  - Explanation: Found 3 rural households with income <5k.
+
+Statement 10: FALSE
+  - 10. All households with a rent greater than 2k have a monthly income greater than or equal to 8.8k.
+  - Explanation: 3 households violate the rule (incomes: 4.9, 5.3, 3.4).
+
+Statement 11: FALSE
+  - 11. If a household has a household size greater than or equal to 5, then their vehicle count is greater than or equal to 2.
+  - Explanation: 1 households violate the rule (vehicle_counts: 0).
+
+Statement 12: TRUE
+  - 12. Most households in the data have a household size greater than or equal to 2.
+  - Explanation: 12/15 households have size >=2.
+
+Statement 13: FALSE
+  - 13. All households with a utility cost greater than 150 have a household size greater than or equal to 4.
+  - Explanation: 3 households violate the rule (sizes: 2, 1, 1).
+
+Statement 14: FALSE
+  - 14. If a household has a monthly income greater than 10k, then their internet type is not satellite.
+  - Explanation: 1 households violate the rule (internet_types: satellite).
+
+Statement 15: TRUE
+  - 15. There exists at least one household in a suburban region with a monthly income greater than 9k and a household size greater than or equal to 5.
+  - Explanation: Found 4 suburban households with income >9k and size >=5.

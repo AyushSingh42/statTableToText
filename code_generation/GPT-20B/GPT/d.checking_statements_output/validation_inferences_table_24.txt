@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All rural households use satellite internet.
+  - Explanation: All 2 rural households use satellite internet.
+
+Statement 2: TRUE
+  - 2. All households with rent less than or equal to $0.8k have fiber internet.
+  - Explanation: All 2 households with rent <= 0.8k have fiber internet.
+
+Statement 3: TRUE
+  - 3. All single-person households have an internet type other than fiber.
+  - Explanation: All 4 single-person households have non-fiber internet.
+
+Statement 4: TRUE
+  - 4. All urban households have a utility cost of at least $84.4.
+  - Explanation: All 5 urban households have utility cost >= 84.4.
+
+Statement 5: TRUE
+  - 5. All households with a monthly income of $9k or more have rent of at least $2.0k.
+  - Explanation: All 3 households with income >= 9k have rent >= 2.0k.
+
+Statement 6: TRUE
+  - 6. All households with a size of six persons have rent of $1.8k or less.
+  - Explanation: All 3 households of size 6 have rent <= 1.8k.
+
+Statement 7: TRUE
+  - 7. All households with satellite internet are not located in urban areas.
+  - Explanation: All 3 satellite households are not in urban areas.
+
+Statement 8: TRUE
+  - 8. All households with a size of five or more persons have at most two vehicles.
+  - Explanation: All 6 households with size >= 5 have <= 2 vehicles.

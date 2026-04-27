@@ -1,0 +1,36 @@
+
+Statement 1: TRUE
+  - 1. All households with three vehicles have a monthly income of at least $8.3 k.
+  - Explanation: All 2 households with 3 vehicles have income ≥ 8.3 k.
+
+Statement 2: TRUE
+  - 2. Every household that uses fiber internet has a utility cost no greater than $183.2.
+  - Explanation: All 7 fiber households have utility cost ≤ 183.2.
+
+Statement 3: TRUE
+  - 3. Every rural household has a monthly income of at least $3.2 k.
+  - Explanation: All 3 rural households have income ≥ 3.2 k.
+
+Statement 4: TRUE
+  - 4. All suburban households have at most two vehicles.
+  - Explanation: All 7 suburban households have ≤ 2 vehicles.
+
+Statement 5: TRUE
+  - 5. Every urban household pays rent of at least $0.8 k.
+  - Explanation: All 5 urban households have rent ≥ 0.8 k.
+
+Statement 6: TRUE
+  - 6. All one‑person households have a monthly income between $5.4 k and $6.9 k.
+  - Explanation: All 3 one‑person households have income between 5.4 k and 6.9 k.
+
+Statement 7: TRUE
+  - 7. Every household with no vehicles pays rent of at most $2.4 k.
+  - Explanation: All 6 vehicle‑free households have rent ≤ 2.4 k.
+
+Statement 8: TRUE
+  - 8. All DSL households have a monthly income of at least $9.7 k.
+  - Explanation: All 3 DSL households have income ≥ 9.7 k.
+
+Statement 9: TRUE
+  - 9. Any household with a utility cost exceeding $200 k pays rent of at least $2.8 k.
+  - Explanation: All 1 households with utility cost > 200 have rent ≥ 2.8 k.

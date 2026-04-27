@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All residential zones have avg_temp_c of at least 23.8 °C.
+  - Explanation: All 4 residential sensors meet the temperature requirement.
+
+Statement 2: TRUE
+  - 2. All park zones have pm25 of at least 12.8 µg/m³.
+  - Explanation: All 6 park sensors meet the PM2.5 requirement.
+
+Statement 3: TRUE
+  - 3. All industrial zones have power_use_kwh of at least 302.3 kWh.
+  - Explanation: All 2 industrial sensors meet the power usage requirement.
+
+Statement 4: TRUE
+  - 4. All downtown zones have foot_traffic between 823 and 1184 per day.
+  - Explanation: All 3 downtown sensors have foot traffic in the required range.
+
+Statement 5: TRUE
+  - 5. Most sensors record noise below 65 dB.
+  - Explanation: 13 out of 15 sensors (>7.5) record noise below 65 dB.
+
+Statement 6: TRUE
+  - 6. All sensors with foot_traffic exceeding 1300 record noise of at least 57.1 dB.
+  - Explanation: All 3 high foot-traffic sensors meet the noise requirement.
+
+Statement 7: TRUE
+  - 7. All sensors with power consumption exceeding 350 kWh have foot_traffic of at least 990.
+  - Explanation: All 4 high power sensors meet the foot-traffic requirement.
+
+Statement 8: TRUE
+  - 8. Sensors with average temperature at most 22.5 °C are located in park zones.
+  - Explanation: All 2 low-temperature sensors are in park zones.

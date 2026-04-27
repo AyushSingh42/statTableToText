@@ -1,0 +1,72 @@
+
+Statement 1: TRUE
+  - 1. All patients with a diagnosis of diabetes have a cholesterol level greater than 200 mg/dl.
+  - Explanation: All 2 patients with diabetes have cholesterol > 200 mg/dl.
+
+Statement 2: FALSE
+  - 2. If a patient is a smoker, then their age is less than 40 years.
+  - Explanation: 2 smoker(s) are 40 or older (ages: 45, 68).
+
+Statement 3: FALSE
+  - 3. All patients with a BMI greater than 30 have a systolic blood pressure greater than 140 mmHg.
+  - Explanation: 3 patient(s) with BMI > 30 have systolic BP ≤ 140 mmHg (values: 135, 127, 123).
+
+Statement 4: TRUE
+  - 4. There exists at least one patient with a diagnosis of arthritis whose BMI is less than 25.
+  - Explanation: Found 1 arthritis patient(s) with BMI < 25.
+
+Statement 5: FALSE
+  - 5. If a patient has a diagnosis of hypertension, then their diastolic blood pressure is greater than 80 mmHg.
+  - Explanation: 1 hypertension patient(s) have diastolic BP ≤ 80 mmHg (values: 75).
+
+Statement 6: FALSE
+  - 6. All patients with a cholesterol level greater than 220 mg/dl have a BMI greater than 25.
+  - Explanation: 2 patient(s) with cholesterol > 220 mg/dl have BMI ≤ 25 (values: 21.5, 21.0).
+
+Statement 7: TRUE
+  - 7. Most patients in the table have a systolic blood pressure greater than 130 mmHg.
+  - Explanation: 10 out of 15 patients have systolic BP > 130 mmHg (66.7%).
+
+Statement 8: FALSE
+  - 8. If a patient is a non-smoker, then their BMI is less than 30.
+  - Explanation: 4 non-smoker(s) have BMI ≥ 30 (values: 33.5, 31.2, 30.3, 31.9).
+
+Statement 9: TRUE
+  - 9. All patients with a diagnosis of migraine have a systolic blood pressure less than 150 mmHg.
+  - Explanation: All 4 migraine patients have systolic BP < 150 mmHg.
+
+Statement 10: TRUE
+  - 10. There exists at least one patient with a diagnosis of asthma whose BMI is less than 22.
+  - Explanation: Found 1 asthma patient(s) with BMI < 22.
+
+Statement 11: FALSE
+  - 11. If a patient has a BMI between 25 and 30, then their age is greater than 30 years.
+  - Explanation: 2 patient(s) with BMI 25-30 have age ≤ 30 (ages: 28, 21).
+
+Statement 12: TRUE
+  - 12. All patients with a diastolic blood pressure greater than 90 mmHg have a cholesterol level greater than 200 mg/dl.
+  - Explanation: All 2 patients with diastolic BP > 90 mmHg have cholesterol > 200 mg/dl.
+
+Statement 13: TRUE
+  - 13. Most patients in the table have a BMI greater than 25.
+  - Explanation: 10 out of 15 patients have BMI > 25 (66.7%).
+
+Statement 14: FALSE
+  - 14. If a patient is a smoker, then their cholesterol level is greater than 200 mg/dl.
+  - Explanation: 1 smoker(s) have cholesterol ≤ 200 mg/dl (values: 188).
+
+Statement 15: TRUE
+  - 15. All patients with a diagnosis of diabetes have a BMI greater than 20.
+  - Explanation: All 2 patients with diabetes have BMI > 20.
+
+Statement 16: TRUE
+  - 16. There exists at least one patient with a diagnosis of arthritis whose age is greater than 60 years.
+  - Explanation: Found 1 arthritis patient(s) older than 60.
+
+Statement 17: FALSE
+  - 17. If a patient has a systolic blood pressure greater than 150 mmHg, then their age is greater than 50 years.
+  - Explanation: 1 patient(s) with systolic BP > 150 mmHg are 50 or younger (ages: 27).
+
+Statement 18: TRUE
+  - 18. All patients with a cholesterol level greater than 240 mg/dl have a BMI greater than 30.
+  - Explanation: No patients with cholesterol > 240 mg/dl, so statement vacuously true.

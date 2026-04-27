@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All residential sensors have avg_temp_c between 20.6°C and 25.1°C.
+  - Explanation: All 4 residential sensors have avg_temp_c in the range 20.6–25.1°C.
+
+Statement 2: TRUE
+  - 2. If a sensor is in the park zone, then its avg_temp_c is at least 22.7°C.
+  - Explanation: All 4 park sensors have avg_temp_c ≥ 22.7°C.
+
+Statement 3: TRUE
+  - 3. All downtown sensors have avg_temp_c no higher than 25.0°C.
+  - Explanation: All 5 downtown sensors have avg_temp_c ≤ 25.0°C.
+
+Statement 4: TRUE
+  - 4. All sensors with pm25 ≥ 30 have power_use_kwh ≥ 341.5 kWh.
+  - Explanation: All 3 sensors with pm25 ≥ 30 have power_use_kwh ≥ 341.5 kWh.
+
+Statement 5: TRUE
+  - 5. All industrial sensors have avg_humidity of at least 58.8%.
+  - Explanation: All 2 industrial sensors have avg_humidity ≥ 58.8%.
+
+Statement 6: TRUE
+  - 6. All park sensors have foot_traffic of at least 537.
+  - Explanation: All 4 park sensors have foot_traffic ≥ 537.
+
+Statement 7: TRUE
+  - 7. Most sensors (14 out of 15) have avg_temp_c ≤ 25.1°C.
+  - Explanation: 14 out of 15 sensors have avg_temp_c ≤ 25.1°C.
+
+Statement 8: TRUE
+  - 8. All residential sensors have noise_db no greater than 68.2 dB.
+  - Explanation: All 4 residential sensors have noise_db ≤ 68.2 dB.

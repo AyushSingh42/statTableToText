@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All stores with 12 or fewer staff members have an average basket size of at least 52.4.
+  - Explanation: All 5 stores with <=12 staff have avg basket size >= 52.4.
+
+Statement 2: TRUE
+  - 2. All stores with a customer satisfaction rating of 4.7 have at least 2,444 transactions.
+  - Explanation: All 2 stores with rating 4.7 have >= 2444 transactions.
+
+Statement 3: TRUE
+  - 3. All stores with an average basket size greater than 60 have monthly sales of no more than $124.8k.
+  - Explanation: All 3 stores with avg basket size > 60 have monthly sales <= 124.8k.
+
+Statement 4: TRUE
+  - 4. All stores with monthly sales under $100k have staff counts of 22 or fewer.
+  - Explanation: All 5 stores with monthly sales < 100k have staff <= 22.
+
+Statement 5: TRUE
+  - 5. All stores with 25 staff members have a customer satisfaction rating of at least 3.9.
+  - Explanation: All 2 stores with 25 staff have rating >= 3.9.
+
+Statement 6: FALSE
+  - 6. All stores with an average basket size under 50 have monthly sales exceeding $156k.
+  - Explanation: 1 store(s) violate the rule (monthly sales: 78.4).
+
+Statement 7: TRUE
+  - 7. All east region stores have average basket sizes between 53.0 and 58.8.
+  - Explanation: All 2 east region stores have avg basket size between 53.0 and 58.8.
+
+Statement 8: TRUE
+  - 8. There exists at least one west region store with a customer satisfaction rating of 4.3.
+  - Explanation: Found 1 west region store(s) with rating 4.3.

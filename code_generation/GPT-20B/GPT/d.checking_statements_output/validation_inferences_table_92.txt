@@ -1,0 +1,28 @@
+
+Statement 1: TRUE
+  - 1. All stores have an average basket size of at least 48.1 items.
+  - Explanation: All 15 stores have avg basket size >= 48.1.
+
+Statement 2: TRUE
+  - 2. Every north‑region store has a customer‑satisfaction rating of at least 3.6.
+  - Explanation: All 6 north‑region stores have customer satisfaction >= 3.6.
+
+Statement 3: TRUE
+  - 3. For all stores with monthly sales greater than $150 k, the average basket size is at least 55.0 items.
+  - Explanation: All 4 stores with monthly sales > 150k have avg basket size >= 55.0.
+
+Statement 4: TRUE
+  - 4. All stores with a staff count of 25 or more have a customer‑satisfaction rating of at least 4.5.
+  - Explanation: All 3 stores with staff count >= 25 have customer satisfaction >= 4.5.
+
+Statement 5: TRUE
+  - 5. Any store whose average basket size exceeds 65 items records monthly sales of at least $110 k.
+  - Explanation: All 4 stores with avg basket size > 65 have monthly sales >= 110k.
+
+Statement 6: TRUE
+  - 6. All stores with more than 2,200 transactions have a customer‑satisfaction rating of no more than 3.7.
+  - Explanation: All 2 stores with > 2200 transactions have customer satisfaction <= 3.7.
+
+Statement 7: TRUE
+  - 7. Every store with a customer‑satisfaction rating of 4.6 or higher achieves monthly sales of at least $110 k.
+  - Explanation: All 5 stores with customer satisfaction >= 4.6 have monthly sales >= 110k.

@@ -1,0 +1,6 @@
+
+[ERROR] Script exited with code 1
+  File [35m"/home/ayushs13/code_generation/GPT-20B/LLAMA/c.checking_statements/python_code_table_16.py"[0m, line [35m1[0m
+    analysisWe need to write code that checks all 492 statements. That[1;31m'[0ms huge. But maybe we can programmatically parse statements? But they are many. We could write a generic parser? But statements are varied: "All players who are guards have an average points per game of less than 25." etc. We could write functions for each. But 492 is too many to manually code.
+                                                                      [1;31m^[0m
+[1;35mSyntaxError[0m: [35munterminated string literal (detected at line 1)[0m

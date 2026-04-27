@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All Austin hotels have an average nightly rate of at least $149.2.
+  - Explanation: All 6 Austin hotels meet the rate requirement.
+
+Statement 2: TRUE
+  - 2. All Dallas hotels have an occupancy rate of at least 70.7%.
+  - Explanation: All 3 Dallas hotels meet the occupancy requirement.
+
+Statement 3: TRUE
+  - 3. All Seattle hotels have an average nightly rate of at least $154.0.
+  - Explanation: All 2 Seattle hotels meet the rate requirement.
+
+Statement 4: TRUE
+  - 4. All 5-star hotels have a cancellation rate of no more than 15.1%.
+  - Explanation: All 6 5-star hotels meet the cancellation rate requirement.
+
+Statement 5: TRUE
+  - 5. All 4-star hotels have an average nightly rate between $149.2 and $211.0.
+  - Explanation: All 4 4-star hotels meet the rate range requirement.
+
+Statement 6: TRUE
+  - 6. All hotels with bookings between 690 and 700 have occupancy rates between 72.5% and 77.5%.
+  - Explanation: All 3 hotels with 690-700 bookings meet the occupancy range requirement.
+
+Statement 7: TRUE
+  - 7. All 3-star hotels have an average nightly rate of at most $214.4.
+  - Explanation: All 5 3-star hotels meet the rate upper bound.
+
+Statement 8: TRUE
+  - 8. There exists a hotel with an occupancy rate below 70%, and it is located in Miami.
+  - Explanation: Found 2 Miami hotel(s) with low occupancy: HT055009, HT055014 (rates: 65.7%, 68.6%).

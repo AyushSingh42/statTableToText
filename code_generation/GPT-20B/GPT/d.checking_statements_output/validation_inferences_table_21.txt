@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All patients younger than 30 years have a diagnosis of diabetes.
+  - Explanation: All 3 patients younger than 30 have diabetes.
+
+Statement 2: TRUE
+  - 2. All patients diagnosed with diabetes have cholesterol levels of at least 207 mg/dL.
+  - Explanation: All 5 diabetic patients have cholesterol ≥ 207 mg/dL.
+
+Statement 3: TRUE
+  - 3. All smokers have a body‑mass index of at least 25.
+  - Explanation: All 7 smokers have BMI ≥ 25.
+
+Statement 4: TRUE
+  - 4. All patients with hypertension have a systolic blood pressure of at least 148 mmHg.
+  - Explanation: All 2 hypertensive patients have systolic BP ≥ 148 mmHg.
+
+Statement 5: TRUE
+  - 5. All asthma patients have a diastolic blood pressure no greater than 93 mmHg.
+  - Explanation: All 5 asthma patients have diastolic BP ≤ 93 mmHg.
+
+Statement 6: TRUE
+  - 6. All arthritis patients have cholesterol of at most 180 mg/dL.
+  - Explanation: All 2 arthritis patients have cholesterol ≤ 180 mg/dL.
+
+Statement 7: TRUE
+  - 7. If a patient’s systolic blood pressure is at least 150 mmHg, then their diastolic pressure is at least 73 mmHg.
+  - Explanation: All 3 patients with systolic BP ≥ 150 mmHg have diastolic BP ≥ 73 mmHg.
+
+Statement 8: TRUE
+  - 8. Most patients have cholesterol levels above 200 mg/dL.
+  - Explanation: 80.0% of patients have cholesterol > 200 mg/dL.

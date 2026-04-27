@@ -1,0 +1,72 @@
+
+Statement 1: FALSE
+  - 1. All farms with organic crops have a soil quality index greater than 70.
+  - Explanation: 1 organic farms violate the rule (farm_ids: F078010).
+
+Statement 2: TRUE
+  - 2. If a farm grows soybean, then its yield is less than 450 tons.
+  - Explanation: All 6 soybean farms have yield <450 tons.
+
+Statement 3: TRUE
+  - 3. There exists at least one farm that grows rice with an acreage greater than 120.
+  - Explanation: Found 2 rice farm(s) with acreage >120 (farm_ids: F078003, F078006).
+
+Statement 4: FALSE
+  - 4. For all farms with irrigation hours per week greater than 15, their fertilizer usage is greater than 800 kg.
+  - Explanation: 3 farms violate the rule (farm_ids: F078005, F078007, F078014).
+
+Statement 5: TRUE
+  - 5. All farms with wheat crops have an acreage greater than 70.
+  - Explanation: All 4 wheat farms have acreage >70.
+
+Statement 6: TRUE
+  - 6. If a farm grows corn, then its yield is less than 370 tons.
+  - Explanation: All 3 corn farms have yield <370 tons.
+
+Statement 7: FALSE
+  - 7. For all farms with organic crops, their soil quality index is greater than 72.
+  - Explanation: 2 organic farms violate the rule (farm_ids: F078010, F078012).
+
+Statement 8: TRUE
+  - 8. There exists at least one farm that grows soybean with an acreage less than 100 and yield greater than 280 tons.
+  - Explanation: Found 2 soybean farm(s) with acreage <100 and yield >280 (farm_ids: F078001, F078010).
+
+Statement 9: FALSE
+  - 9. All farms with rice crops have a fertilizer usage greater than 890 kg.
+  - Explanation: 1 rice farms violate the rule (farm_ids: F078003).
+
+Statement 10: FALSE
+  - 10. If a farm has an acreage greater than 140, then its crop type is either soybean or wheat.
+  - Explanation: 1 farms violate the rule (farm_ids: F078007).
+
+Statement 11: FALSE
+  - 11. For all farms with irrigation hours per week less than 12, their yield is less than 300 tons.
+  - Explanation: 1 farms violate the rule (farm_ids: F078004).
+
+Statement 12: TRUE
+  - 12. Most farms have a soil quality index between 70 and 80.
+  - Explanation: 12 out of 15 farms (80.0%) have soil quality between 70 and 80.
+
+Statement 13: FALSE
+  - 13. If a farm grows wheat, then its yield is greater than 350 tons.
+  - Explanation: 1 wheat farms violate the rule (farm_ids: F078004).
+
+Statement 14: TRUE
+  - 14. There exists at least one farm that grows corn with an acreage greater than 140 and yield less than 300 tons.
+  - Explanation: Found 1 corn farm(s) with acreage >140 and yield <300 (farm_ids: F078007).
+
+Statement 15: FALSE
+  - 15. All farms with organic crops have an irrigation hours per week greater than 14.
+  - Explanation: 1 organic farms violate the rule (farm_ids: F078004).
+
+Statement 16: FALSE
+  - 16. For all farms with fertilizer usage greater than 900 kg, their crop type is either rice or corn.
+  - Explanation: 1 farms violate the rule (farm_ids: F078015).
+
+Statement 17: TRUE
+  - 17. If a farm has a soil quality index greater than 80, then its crop type is wheat.
+  - Explanation: All 1 farms with soil quality >80 have crop type wheat.
+
+Statement 18: FALSE
+  - 18. There exists at least one farm that grows soybean with a yield greater than 420 tons and acreage less than 120.
+  - Explanation: No soybean farms with yield >420 and acreage <120 found.

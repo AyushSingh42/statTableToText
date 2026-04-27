@@ -1,0 +1,40 @@
+
+Statement 1: FALSE
+  - 1. All players who are guards have an average points per game of 15 or more, except for one player who is 32 years old and has an average points per game of 12.
+  - Explanation: Not evaluated due to complexity.
+
+Statement 2: FALSE
+  - 2. If a player is a forward, then their average minutes per game is greater than 30.
+  - Explanation: Not evaluated due to complexity.
+
+Statement 3: FALSE
+  - 3. There exists at least one player who is a center and has an average rebounds per game of 7 or more.
+  - Explanation: Not evaluated due to complexity.
+
+Statement 4: FALSE
+  - 4. All players who are 25 years old or younger have an average assists per game of 4 or more.
+  - Explanation: Not evaluated due to complexity.
+
+Statement 5: FALSE
+  - 5. If a player is a guard and has an average points per game of 20 or more, then their average minutes per game is greater than 30.
+  - Explanation: Not evaluated due to complexity.
+
+Statement 6: FALSE
+  - 6. Most players in the table have an average games played of 70 or more.
+  - Explanation: Not evaluated due to complexity.
+
+Statement 7: FALSE
+  - 7. All players who are forwards have an average height that is not provided in the data, but if we consider the position, we can say that all forwards have an average age of 25 or more, except for one player who is 23 years old.
+  - Explanation: Not evaluated due to complexity.
+
+Statement 8: FALSE
+  - 8. There exists at least one player who is a guard and has an average rebounds per game of 11 or more.
+  - Explanation: Not evaluated due to complexity.
+
+Statement 9: FALSE
+  - 9. If a player is a center, then their average points per game is less than 22.
+  - Explanation: Not evaluated due to complexity.
+
+Statement 10: FALSE
+  - 10. All players who have an average minutes per game of 35 or more have an average points per game of 20 or more, except for one player who is 32 years old and has an average points per game of 12.
+  - Explanation: Not evaluated due to complexity.

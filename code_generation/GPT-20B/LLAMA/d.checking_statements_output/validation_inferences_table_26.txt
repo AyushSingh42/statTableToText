@@ -1,0 +1,72 @@
+
+Statement 1: TRUE
+  - 1. All players who are centers have an age greater than or equal to 23 years.
+  - Explanation: All 6 centers have age >= 23.
+
+Statement 2: TRUE
+  - 2. If a player is a forward, then their age is less than or equal to 32 years.
+  - Explanation: All 5 forwards have age <= 32.
+
+Statement 3: TRUE
+  - 3. There exists at least one guard whose assists per game are less than 2.
+  - Explanation: Found 1 guard(s) with assists per game less than 2.
+
+Statement 4: TRUE
+  - 4. For all players with minutes per game greater than 30, their points per game are greater than or equal to 12.
+  - Explanation: All players with minutes per game > 30 have points per game >= 12.
+
+Statement 5: TRUE
+  - 5. All players who are centers have a rebounds per game greater than or equal to 3.
+  - Explanation: All 6 centers have rebounds per game >= 3.
+
+Statement 6: TRUE
+  - 6. If a player is a forward aged 25 or less, then their points per game are greater than or equal to 14.
+  - Explanation: All forwards aged <= 25 have points per game >= 14.
+
+Statement 7: TRUE
+  - 7. Most players in the table have a games played greater than or equal to 70.
+  - Explanation: 11 out of 15 players have games played >= 70 (73.3%).
+
+Statement 8: TRUE
+  - 8. For all players with age greater than 30, their assists per game are greater than or equal to 2.
+  - Explanation: All players with age > 30 have assists per game >= 2.
+
+Statement 9: TRUE
+  - 9. There exists at least one center whose points per game are greater than 25.
+  - Explanation: Found 1 center(s) with points per game > 25.
+
+Statement 10: TRUE
+  - 10. If a player is a guard, then their rebounds per game are greater than or equal to 6.
+  - Explanation: All guards have rebounds per game >= 6.
+
+Statement 11: FALSE
+  - 11. All players who are forwards have a height that is not provided in the data, but based on the position, it can be inferred that their height is likely greater than 180 cm.
+  - Explanation: Height data not available; cannot verify inference.
+
+Statement 12: FALSE
+  - 12. For all players with points per game greater than 20, their minutes per game are greater than or equal to 25.
+  - Explanation: 2 player(s) violate the rule (points: 25.4, 25.3, minutes: 24.9, 24.5).
+
+Statement 13: TRUE
+  - 13. Most players in the table have an assists per game less than 5.
+  - Explanation: 12 out of 15 players have assists per game < 5 (80.0%).
+
+Statement 14: FALSE
+  - 14. If a player is a center aged 30 or more, then their rebounds per game are greater than or equal to 10.
+  - Explanation: 1 center(s) violate the rule (ages: 34, rebounds: 4.5).
+
+Statement 15: TRUE
+  - 15. There exists at least one forward whose rebounds per game are greater than 6.
+  - Explanation: Found 2 forward(s) with rebounds per game > 6.
+
+Statement 16: FALSE
+  - 16. For all players with rebounds per game greater than 9, their position is guard.
+  - Explanation: 2 player(s) violate the rule (positions: center, center, rebounds: 10.6, 11.1).
+
+Statement 17: TRUE
+  - 17. All players who are guards have a points per game greater than or equal to 20.
+  - Explanation: All guards have points per game >= 20.
+
+Statement 18: FALSE
+  - 18. If a player is a forward aged 25 or more, then their points per game are greater than or equal to 15.
+  - Explanation: 1 forward(s) violate the rule (ages: 26, points: 11.7).

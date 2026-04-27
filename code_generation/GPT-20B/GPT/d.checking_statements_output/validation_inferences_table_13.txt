@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. For all bus routes, average speed is between 46.5 and 64.4 kph.
+  - Explanation: All 8 bus routes have avg_speed between 46.5 and 64.4 kph.
+
+Statement 2: TRUE
+  - 2. For all truck routes, average speed is between 52.4 and 65.7 kph.
+  - Explanation: All 4 truck routes have avg_speed between 52.4 and 65.7 kph.
+
+Statement 3: TRUE
+  - 3. For all van routes, average speed is between 48.7 and 61.3 kph.
+  - Explanation: All 3 van routes have avg_speed between 48.7 and 61.3 kph.
+
+Statement 4: TRUE
+  - 4. All routes with delay greater than 20 minutes are either bus or van, and none are trucks.
+  - Explanation: All 2 delayed routes are bus or van.
+
+Statement 5: TRUE
+  - 5. For all routes with clear weather, average speed is between 46.5 and 61.3 kph.
+  - Explanation: All 5 clear-weather routes have avg_speed between 46.5 and 61.3 kph.
+
+Statement 6: TRUE
+  - 6. For all routes with rainy weather, average speed is between 48.7 and 64.4 kph.
+  - Explanation: All 0 rainy-weather routes have avg_speed between 48.7 and 64.4 kph.
+
+Statement 7: TRUE
+  - 7. For all routes with cloudy weather, average speed is between 50.9 and 65.7 kph.
+  - Explanation: All 6 cloudy-weather routes have avg_speed between 50.9 and 65.7 kph.
+
+Statement 8: TRUE
+  - 8. The route with the highest fuel consumption per kilometer is the truck route R013010 (37.5 L over 93.3 km, about 0.40 L/km).
+  - Explanation: Route R013010 has the highest consumption of 0.402 L/km.

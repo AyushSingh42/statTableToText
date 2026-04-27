@@ -1,0 +1,28 @@
+
+Statement 1: TRUE
+  - 1. All 9th‑grade students scored at least 93 on the test.
+  - Explanation: All 3 9th‑grade students scored at least 93.
+
+Statement 2: TRUE
+  - 2. All 11th‑grade students scored at least 79 on the test.
+  - Explanation: All 3 11th‑grade students scored at least 79.
+
+Statement 3: TRUE
+  - 3. All 10th‑grade students have an attendance rate of at least 86.8 %.
+  - Explanation: All 5 10th‑grade students have attendance ≥ 86.8%.
+
+Statement 4: TRUE
+  - 4. For every student whose attendance rate is at least 96 %, the test score is at least 86.
+  - Explanation: All 2 students with attendance ≥ 96% scored at least 86.
+
+Statement 5: TRUE
+  - 5. All students who studied at least 10 hours per week scored at least 70 on the test.
+  - Explanation: All 2 students who studied ≥ 10 hours/week scored at least 70.
+
+Statement 6: TRUE
+  - 6. All students who studied less than 4 hours per week scored at least 86 on the test.
+  - Explanation: All 2 students who studied < 4 hours/week scored at least 86.
+
+Statement 7: TRUE
+  - 7. All club members have an attendance rate of at least 84.5 %.
+  - Explanation: All 7 club members have attendance ≥ 84.5%.

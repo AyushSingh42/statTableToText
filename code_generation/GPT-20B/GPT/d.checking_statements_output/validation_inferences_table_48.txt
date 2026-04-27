@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All wheat farms are non-organic.
+  - Explanation: All 4 wheat farms are non-organic.
+
+Statement 2: TRUE
+  - 2. All rice farms receive at least 10.9 irrigation hours per week.
+  - Explanation: All 6 rice farms receive at least 10.9 hours.
+
+Statement 3: TRUE
+  - 3. All soybean farms produce at least 284.6 tons of yield.
+  - Explanation: All 4 soybean farms produce at least 284.6 tons.
+
+Statement 4: TRUE
+  - 4. All farms with soil_quality_index of at least 80 are either wheat or rice.
+  - Explanation: All 2 farms with SQI ≥ 80 grow wheat or rice.
+
+Statement 5: TRUE
+  - 5. All farms irrigated more than 18 hours per week grow either rice or soybean.
+  - Explanation: All 3 farms with >18 hrs/week irrigation grow rice or soybean.
+
+Statement 6: TRUE
+  - 6. All farms using more than 1000 kg of fertilizer cultivate wheat or rice.
+  - Explanation: All 2 farms using >1000 kg fertilizer grow wheat or rice.
+
+Statement 7: TRUE
+  - 7. All farms larger than 130 acres cultivate wheat or corn.
+  - Explanation: All 3 farms >130 acres grow wheat or corn.
+
+Statement 8: FALSE
+  - 8. All rice farms have a yield per acre between 2.35 and 4.96 tons.
+  - Explanation: 2 rice farms violate the yield per acre range (IDs: F048002, F048007).

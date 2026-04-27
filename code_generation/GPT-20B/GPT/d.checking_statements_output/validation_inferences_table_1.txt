@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. For all individuals with asthma, systolic blood pressure is between 129 and 130 mmHg.
+  - Explanation: All 2 asthma patients have systolic BP between 129 and 130 mmHg.
+
+Statement 2: TRUE
+  - 2. For all individuals with diabetes, diastolic blood pressure is at least 76 mmHg.
+  - Explanation: All 4 diabetes patients have diastolic BP >= 76 mmHg.
+
+Statement 3: TRUE
+  - 3. All smokers have cholesterol at least 182 mg/dL.
+  - Explanation: All 5 smokers have cholesterol >= 182 mg/dL.
+
+Statement 4: TRUE
+  - 4. For all individuals with BMI greater than 33, systolic blood pressure does not exceed 143 mmHg.
+  - Explanation: All 4 individuals with BMI > 33 have systolic BP <= 143 mmHg.
+
+Statement 5: TRUE
+  - 5. All individuals older than 70 have cholesterol at least 179 mg/dL.
+  - Explanation: All 3 individuals older than 70 have cholesterol >= 179 mg/dL.
+
+Statement 6: TRUE
+  - 6. If a person's systolic blood pressure is greater than 150 mmHg, then their diagnosis is diabetes.
+  - Explanation: All 1 patients with systolic BP > 150 mmHg are diagnosed with diabetes.
+
+Statement 7: TRUE
+  - 7. All migraine patients are older than 55 years.
+  - Explanation: All 2 migraine patients are older than 55 years.
+
+Statement 8: TRUE
+  - 8. All individuals with asthma are non-smokers.
+  - Explanation: All 2 asthma patients are non-smokers.

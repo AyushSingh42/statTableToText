@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All south stores have monthly sales of at least $118.8k.
+  - Explanation: All 3 south stores have sales ≥ 118.8k.
+
+Statement 2: TRUE
+  - 2. All north stores have monthly sales between $82.5k and $146.7k.
+  - Explanation: All 6 north stores have sales between 82.5k and 146.7k.
+
+Statement 3: TRUE
+  - 3. All east stores have an average basket size of at least 49.2.
+  - Explanation: All 3 east stores have avg basket size ≥ 49.2.
+
+Statement 4: TRUE
+  - 4. All west stores have a staff count of at least 16.
+  - Explanation: All 3 west stores have staff count ≥ 16.
+
+Statement 5: TRUE
+  - 5. Most stores have a customer satisfaction rating of at least 4.1.
+  - Explanation: 11/15 stores (>73.3%) have satisfaction ≥ 4.1.
+
+Statement 6: TRUE
+  - 6. All stores with monthly sales greater than $138.5k have more than 1500 transactions.
+  - Explanation: All 4 high‑sales stores have >1500 transactions.
+
+Statement 7: TRUE
+  - 7. If a store has a staff count of at least 25, then its average basket size is at least 49.2.
+  - Explanation: All 2 stores with staff ≥25 have avg basket size ≥49.2.
+
+Statement 8: TRUE
+  - 8. All stores with a customer satisfaction rating of 4.6 have an average basket size of at least 49.2.
+  - Explanation: All 3 stores with satisfaction 4.6 have avg basket size ≥49.2.

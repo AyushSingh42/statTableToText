@@ -1,0 +1,72 @@
+
+Statement 1: TRUE
+  - 1. All stores in the west region have monthly sales greater than $100k, except for store B062001.
+  - Explanation: All 3 west stores (excluding B062001) have sales > 100k.
+
+Statement 2: FALSE
+  - 2. All stores with staff count greater than 20 have customer satisfaction greater than 3.9.
+  - Explanation: 1 store(s) violate the rule: ['B062004'].
+
+Statement 3: TRUE
+  - 3. If a store is in the east region, then its average basket size is greater than 60.
+  - Explanation: All 3 east stores have avg basket size > 60.
+
+Statement 4: TRUE
+  - 4. There exists at least one store in the south region with transactions greater than 2500.
+  - Explanation: Store(s) ['B062008'] satisfy the condition.
+
+Statement 5: FALSE
+  - 5. All stores with monthly sales greater than $150k have staff count greater than 15.
+  - Explanation: 1 store(s) violate the rule: ['B062012'].
+
+Statement 6: TRUE
+  - 6. If a store is in the north region, then its average basket size is less than 60, except for store B062014.
+  - Explanation: All 4 north stores (excluding B062014) have avg basket size < 60.
+
+Statement 7: TRUE
+  - 7. Most stores in the west region have customer satisfaction less than 4.1.
+  - Explanation: 3/4 west stores have CS < 4.1 (majority).
+
+Statement 8: TRUE
+  - 8. All stores with monthly sales less than $100k have staff count less than 20.
+  - Explanation: All 3 stores with sales < 100k have staff < 20.
+
+Statement 9: FALSE
+  - 9. If a store has transactions greater than 2000, then its average basket size is greater than 55.
+  - Explanation: 1 store(s) violate the rule: ['B062010'].
+
+Statement 10: TRUE
+  - 10. There exists at least one store in the east region with customer satisfaction greater than 4.1.
+  - Explanation: Store(s) ['B062007'] satisfy the condition.
+
+Statement 11: TRUE
+  - 11. All stores with monthly sales less than $100k have staff count less than 20.
+  - Explanation: All 3 stores with sales < 100k have staff < 20.
+
+Statement 12: TRUE
+  - 12. If a store is in the south region, then its monthly sales are greater than $100k, except for store B062009.
+  - Explanation: All 2 south stores (excluding B062009) have sales > 100k.
+
+Statement 13: TRUE
+  - 13. Most stores in the east region have monthly sales greater than $150k.
+  - Explanation: 2/3 east stores have sales > 150k (majority).
+
+Statement 14: TRUE
+  - 14. All stores with average basket size greater than 65 have customer satisfaction less than 4.0.
+  - Explanation: All 1 stores with basket size > 65 have CS < 4.0.
+
+Statement 15: TRUE
+  - 15. If a store has staff count greater than 20, then its monthly sales are greater than $120k.
+  - Explanation: All 4 stores with staff > 20 have sales > 120k.
+
+Statement 16: TRUE
+  - 16. There exists at least one store in the north region with customer satisfaction greater than 4.7.
+  - Explanation: Store(s) ['B062015'] satisfy the condition.
+
+Statement 17: FALSE
+  - 17. All stores with transactions less than 2000 have monthly sales less than $120k.
+  - Explanation: 4 store(s) violate the rule: ['B062004', 'B062007', 'B062012', 'B062013'].
+
+Statement 18: TRUE
+  - 18. If a store is in the west region, then its staff count is greater than 10, except for store B062005.
+  - Explanation: All 3 west stores (excluding B062005) have staff > 10.

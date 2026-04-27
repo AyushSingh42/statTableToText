@@ -1,0 +1,36 @@
+
+Statement 1: TRUE
+  - 1. All hypertension patients have diastolic blood pressure of at least 85 mmHg.
+  - Explanation: All 4 hypertension patients have diastolic BP ≥ 85.
+
+Statement 2: TRUE
+  - 2. All hypertension patients have systolic blood pressure between 119 and 148 mmHg.
+  - Explanation: All 4 hypertension patients have systolic BP between 119 and 148.
+
+Statement 3: TRUE
+  - 3. All patients aged 20 to 30 have cholesterol at most 212 mg/dL.
+  - Explanation: All 4 patients aged 20-30 have cholesterol ≤ 212.
+
+Statement 4: TRUE
+  - 4. All asthma patients have cholesterol levels between 184 and 241 mg/dL.
+  - Explanation: All 3 asthma patients have cholesterol between 184 and 241.
+
+Statement 5: TRUE
+  - 5. Most patients have diastolic blood pressure of at least 85 mmHg.
+  - Explanation: 9 out of 15 patients have diastolic BP ≥ 85 (60.0%).
+
+Statement 6: TRUE
+  - 6. Most patients are non-smokers.
+  - Explanation: 10 out of 15 patients are non-smokers (66.7%).
+
+Statement 7: FALSE
+  - 7. All patients with cholesterol at most 200 mg/dL have a BMI of at most 27.3.
+  - Explanation: 3 patients with cholesterol ≤ 200 violate the rule (BMI: 28.5, 33.2, 32.2).
+
+Statement 8: TRUE
+  - 8. If a patient is 30 years old or younger, then their systolic blood pressure does not exceed 148 mmHg.
+  - Explanation: All 4 patients aged ≤ 30 have systolic BP ≤ 148.
+
+Statement 9: TRUE
+  - 9. All patients with a BMI of 33 or higher have a diagnosis of diabetes, arthritis, or hypertension.
+  - Explanation: All 3 patients with BMI ≥ 33 have one of the allowed diagnoses.

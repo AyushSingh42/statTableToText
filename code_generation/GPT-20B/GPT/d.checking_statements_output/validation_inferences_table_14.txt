@@ -1,0 +1,28 @@
+
+Statement 1: TRUE
+  - 1. All rural households have utility costs of at least $88.0k.
+  - Explanation: All 5 rural households have utility costs >= 88.0k.
+
+Statement 2: TRUE
+  - 2. All urban households using satellite internet have utility costs of at least $166.1k.
+  - Explanation: All 3 urban satellite households have utility costs >= 166.1k.
+
+Statement 3: TRUE
+  - 3. All households with no vehicles have monthly income of at least $4.5k.
+  - Explanation: All 5 households with no vehicles have monthly income >= 4.5k.
+
+Statement 4: TRUE
+  - 4. All households with six members have monthly income of at most $10.3k.
+  - Explanation: All 3 six-member households have monthly income <= 10.3k.
+
+Statement 5: TRUE
+  - 5. All suburban households with DSL internet have monthly income of at least $3.4k.
+  - Explanation: All 3 suburban DSL households have monthly income >= 3.4k.
+
+Statement 6: TRUE
+  - 6. All urban households pay at least $1.2k in rent.
+  - Explanation: All 5 urban households pay rent >= 1.2k.
+
+Statement 7: TRUE
+  - 7. All households with monthly income of at least $11k have utility costs of at most $88.0k.
+  - Explanation: All 1 households with income >= 11k have utility costs <= 88.0k.

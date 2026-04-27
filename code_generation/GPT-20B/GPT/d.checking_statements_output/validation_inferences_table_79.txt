@@ -1,0 +1,40 @@
+
+Statement 1: TRUE
+  - 1. For all engineering employees with more than 8 years of experience, performance rating is at most 3.8.
+  - Explanation: No engineering employees with >8 years of experience to evaluate.
+
+Statement 2: TRUE
+  - 2. For all HR employees, monthly salary is between $6.0k and $10.1k.
+  - Explanation: No HR employees to evaluate.
+
+Statement 3: TRUE
+  - 3. For all finance employees, performance rating is at least 4.2.
+  - Explanation: No finance employees to evaluate.
+
+Statement 4: TRUE
+  - 4. For all employees who work remotely 12 or more days per month, the number of active projects does not exceed 6.
+  - Explanation: All 7 remote employees have <= 6 active projects.
+
+Statement 5: TRUE
+  - 5. For all employees with monthly salary greater than $9k, performance rating is at least 4.0.
+  - Explanation: All 4 employees with salary > 9k have performance rating >= 4.0.
+
+Statement 6: TRUE
+  - 6. Most employees have at least four active projects.
+  - Explanation: 10 out of 15 employees (>7.5) have >= 4 active projects.
+
+Statement 7: FALSE
+  - 7. There exists at least one marketing employee with a performance rating above 4.5.
+  - Explanation: No marketing employee with rating > 4.5 found.
+
+Statement 8: TRUE
+  - 8. For all employees with less than 2 years of experience, performance rating is at least 4.3.
+  - Explanation: All 2 employees with < 2 years have rating >= 4.3.
+
+Statement 9: TRUE
+  - 9. For all employees with six active projects, monthly salary does not exceed $8.6k.
+  - Explanation: All 4 employees with 6 projects have salary <= 8.6k.
+
+Statement 10: TRUE
+  - 10. For all employees with a performance rating of at least 4.6, monthly salary is at least $7.3k.
+  - Explanation: All 5 employees with rating >= 4.6 have salary >= 7.3k.

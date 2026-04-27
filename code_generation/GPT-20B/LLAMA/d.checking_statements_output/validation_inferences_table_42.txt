@@ -1,0 +1,68 @@
+
+Statement 1: FALSE
+  - 1. All stores in the east region have a customer satisfaction rating of 4.0 or higher.
+  - Explanation: 3 east store(s) violate the rule (satisfaction: 3.8, 3.7, 3.6).
+
+Statement 2: FALSE
+  - 2. If a store is in the south region, then its average basket size is greater than 60.
+  - Explanation: 1 south store(s) violate the rule (avg basket size: 53.9).
+
+Statement 3: TRUE
+  - 3. There exists at least one store in the west region with a staff count of 20 or more.
+  - Explanation: Found 2 west store(s) with staff count >= 20.
+
+Statement 4: FALSE
+  - 4. All stores with a monthly sales value of $150k or more have a transaction count of 1800 or less.
+  - Explanation: 1 high‑sales store(s) violate the rule (transactions: 1846).
+
+Statement 5: FALSE
+  - 5. If a store has a staff count of 15 or less, then its customer satisfaction rating is 4.5 or higher.
+  - Explanation: 4 low‑staff store(s) violate the rule (satisfaction: 3.6, 4.1, 3.7, 4.0).
+
+Statement 6: FALSE
+  - 6. Most stores in the east region have a monthly sales value of $120k or less.
+  - Explanation: 42.9% of east stores have monthly sales <= 120k.
+
+Statement 7: FALSE
+  - 7. All stores with an average basket size of 65 or more have a customer satisfaction rating of 4.0 or higher.
+  - Explanation: 1 large‑basket store(s) violate the rule (satisfaction: 3.6).
+
+Statement 8: FALSE
+  - 8. If a store is in the west region, then its staff count is 18 or more.
+  - Explanation: 1 west store(s) violate the rule (staff count: 11).
+
+Statement 9: TRUE
+  - 9. There exists at least one store in the east region with a transaction count of 2700 or more.
+  - Explanation: Found 2 east store(s) with transactions >= 2700.
+
+Statement 10: FALSE
+  - 10. All stores with a customer satisfaction rating of 4.8 or higher have an average basket size of 60 or more.
+  - Explanation: 1 high‑sat store(s) violate the rule (avg basket size: 53.9).
+
+Statement 11: FALSE
+  - 11. If a store has a monthly sales value of $100k or less, then its staff count is 15 or more.
+  - Explanation: 2 low‑sales store(s) violate the rule (staff count: 13, 10).
+
+Statement 12: TRUE
+  - 12. Most stores in the south region have a customer satisfaction rating of 4.7 or higher.
+  - Explanation: 100.0% of south stores have satisfaction >= 4.7.
+
+Statement 13: FALSE
+  - 13. All stores with a staff count of 20 or more have a monthly sales value of $150k or less.
+  - Explanation: 1 high‑staff store(s) violate the rule (monthly sales: 152.2).
+
+Statement 14: TRUE
+  - 14. If a store is in the east region, then its average basket size is 55 or more.
+  - Explanation: All 7 east stores have avg basket size >= 55.
+
+Statement 15: TRUE
+  - 15. There exists at least one store in the west region with a customer satisfaction rating of 3.6 or less.
+  - Explanation: Found 2 west store(s) with satisfaction <= 3.6.
+
+Statement 16: FALSE
+  - 16. All stores with a transaction count of 2000 or more have a staff count of 11 or more.
+  - Explanation: 1 high‑transaction store(s) violate the rule (staff count: 10).
+
+Statement 17: TRUE
+  - 17. If a store has an average basket size of 50 or less, then its staff count is 20 or more.
+  - Explanation: All 1 small‑basket stores have staff count >= 20.

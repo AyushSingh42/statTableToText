@@ -1,0 +1,36 @@
+
+Statement 1: TRUE
+  - 1. For all stores in the west region, customer satisfaction is at least 3.6.
+  - Explanation: All 10 west stores have customer satisfaction ≥ 3.6.
+
+Statement 2: TRUE
+  - 2. If a store's average basket size is at least 63, its monthly sales are at least $163.5k.
+  - Explanation: All 2 stores with avg basket size ≥ 63 have monthly sales ≥ $163.5k.
+
+Statement 3: TRUE
+  - 3. For all stores with more than 2500 transactions, the average basket size is at least 50.2.
+  - Explanation: All 3 stores with >2500 transactions have avg basket size ≥ 50.2.
+
+Statement 4: TRUE
+  - 4. Every north region store has customer satisfaction of at least 4.6.
+  - Explanation: All 2 north stores have customer satisfaction ≥ 4.6.
+
+Statement 5: TRUE
+  - 5. If a store's customer satisfaction is at least 4.6, its monthly sales are no more than $162.8k.
+  - Explanation: All 4 stores with satisfaction ≥ 4.6 have monthly sales ≤ $162.8k.
+
+Statement 6: TRUE
+  - 6. Most stores have an average basket size greater than 50.
+  - Explanation: 13 out of 15 stores have avg basket size > 50 (86.7%).
+
+Statement 7: TRUE
+  - 7. Every west region store records monthly sales of at least $77.7k.
+  - Explanation: All 10 west stores have monthly sales ≥ $77.7k.
+
+Statement 8: TRUE
+  - 8. If a store's average basket size is at least 60, its customer satisfaction is at most 4.4.
+  - Explanation: All 3 stores with avg basket size ≥ 60 have satisfaction ≤ 4.4.
+
+Statement 9: TRUE
+  - 9. All south region stores have an average basket size between 50.2 and 55.4.
+  - Explanation: All 2 south stores have avg basket size between 50.2 and 55.4.

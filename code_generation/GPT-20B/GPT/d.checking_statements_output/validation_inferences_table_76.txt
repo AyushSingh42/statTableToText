@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All centers have at least 4.6 rebounds per game.
+  - Explanation: All 7 centers have at least 4.6 rebounds per game.
+
+Statement 2: TRUE
+  - 2. All guards play at least 24.3 minutes per game.
+  - Explanation: All 4 guards play at least 24.3 minutes per game.
+
+Statement 3: TRUE
+  - 3. All forwards score at most 21.1 points per game.
+  - Explanation: All 4 forwards score at most 21.1 points per game.
+
+Statement 4: TRUE
+  - 4. Most players average more than 25 minutes per game.
+  - Explanation: 14 of 15 players (>7.5) average more than 25 minutes per game.
+
+Statement 5: TRUE
+  - 5. Most players score more than 12 points per game.
+  - Explanation: 13 of 15 players (>7.5) score more than 12 points per game.
+
+Statement 6: TRUE
+  - 6. If a guard scores at least 24 points per game, then they have at least 7.5 rebounds per game.
+  - Explanation: All guards who score at least 24 points also have at least 7.5 rebounds.
+
+Statement 7: TRUE
+  - 7. There exists at least one guard who averages at least 9.6 rebounds per game.
+  - Explanation: Guard PL076008 averages 9.6 rebounds per game.
+
+Statement 8: TRUE
+  - 8. There exists at least one center with assists per game greater than 6.
+  - Explanation: Center PL076002 has 6.9 assists per game.

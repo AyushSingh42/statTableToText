@@ -1,0 +1,36 @@
+
+Statement 1: TRUE
+  - 1. For all households with rent ≤ 1.0 k, utility cost is at least 180 k.
+  - Explanation: All 2 households with rent ≤ 1.0 k have utility cost ≥ 180 k.
+
+Statement 2: TRUE
+  - 2. For all households with no vehicles, utility cost is at least 172.2 k.
+  - Explanation: All 3 households with no vehicles have utility cost ≥ 172.2 k.
+
+Statement 3: TRUE
+  - 3. For all households with size ≥ 6, rent is at most 1.9 k.
+  - Explanation: All 3 households with size ≥ 6 have rent ≤ 1.9 k.
+
+Statement 4: TRUE
+  - 4. All urban households have internet type either fiber or satellite.
+  - Explanation: All 3 urban households use fiber or satellite internet.
+
+Statement 5: TRUE
+  - 5. All rural households have rent of at least 1.5 k.
+  - Explanation: All 6 rural households have rent ≥ 1.5 k.
+
+Statement 6: FALSE
+  - 6. All households with monthly income > 10 k have utility cost greater than 115 k.
+  - Explanation: 1 households violate the rule (utility costs: 109.2).
+
+Statement 7: TRUE
+  - 7. All cable‑connected households have at least 2 vehicles.
+  - Explanation: All 4 cable‑connected households have at least 2 vehicles.
+
+Statement 8: TRUE
+  - 8. All households with size 1 have monthly income ≤ 5.3 k.
+  - Explanation: All 3 households with size 1 have monthly income ≤ 5.3 k.
+
+Statement 9: TRUE
+  - 9. Most households have utility cost greater than 100 k.
+  - Explanation: 14/15 households (93.33%) have utility cost > 100 k.

@@ -1,0 +1,28 @@
+
+Statement 1: TRUE
+  - 1. All trucks have an average speed between 46.4 and 62.4 kph.
+  - Explanation: All 0 trucks have avg_speed_kph between 46.4 and 62.4.
+
+Statement 2: TRUE
+  - 2. All buses have a delay between 12 and 25 minutes.
+  - Explanation: All 0 buses have delay_minutes between 12 and 25.
+
+Statement 3: TRUE
+  - 3. All vans have a delay between 3 and 20 minutes.
+  - Explanation: All 0 vans have delay_minutes between 3 and 20.
+
+Statement 4: TRUE
+  - 4. If a truck travels in clear weather, its delay does not exceed 17 minutes.
+  - Explanation: All 0 clear-weather trucks have delay_minutes <= 17.
+
+Statement 5: TRUE
+  - 5. If a bus travels in rain, its delay is at least 12 minutes.
+  - Explanation: All 0 rain-traveling buses have delay_minutes >= 12.
+
+Statement 6: FALSE
+  - 6. There exists a van that used less than 22 liters of fuel.
+  - Explanation: No van found with fuel_used_l < 22.
+
+Statement 7: FALSE
+  - 7. Most routes (13 out of 15) have a delay greater than 10 minutes.
+  - Explanation: Total routes: 0, routes with delay >10: 0.

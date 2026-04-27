@@ -1,0 +1,72 @@
+
+Statement 1: TRUE
+  - 1. All households with a monthly income greater than $10k have a household size greater than 2.
+  - Explanation: All 3 households with income >10k have size >2.
+
+Statement 2: TRUE
+  - 2. If a household is located in an urban region, then their monthly income is greater than $2k.
+  - Explanation: All 6 urban households have income >2k.
+
+Statement 3: TRUE
+  - 3. There exists at least one household in a rural region with a monthly income greater than $9k.
+  - Explanation: 3 rural household(s) have income >9k.
+
+Statement 4: FALSE
+  - 4. All households with a household size greater than 5 have a monthly income greater than $8k.
+  - Explanation: 2 households violate the rule (incomes: 2.8, 3.4).
+
+Statement 5: FALSE
+  - 5. If a household has a vehicle count greater than 1, then their monthly income is greater than $4k.
+  - Explanation: 3 households violate the rule (incomes: 4.0, 3.7, 3.6).
+
+Statement 6: TRUE
+  - 6. Most households have a utility cost greater than $150.
+  - Explanation: 60.0% of households have utility cost >150.
+
+Statement 7: FALSE
+  - 7. All households with a monthly income less than $4k have a household size less than 4.
+  - Explanation: 2 households violate the rule (sizes: 6, 6).
+
+Statement 8: FALSE
+  - 8. If a household is located in a suburban region, then their internet type is not fiber.
+  - Explanation: 1 suburban households violate the rule (internet types: fiber).
+
+Statement 9: TRUE
+  - 9. There exists at least one household in an urban region with a rent less than $1.5k.
+  - Explanation: 3 urban household(s) have rent <1.5k.
+
+Statement 10: TRUE
+  - 10. All households with a household size less than 3 have a monthly income greater than $3k.
+  - Explanation: All 3 households with size <3 have income >3k.
+
+Statement 11: FALSE
+  - 11. If a household has a monthly income greater than $9k, then their household size is greater than 2.
+  - Explanation: 1 households violate the rule (sizes: 1).
+
+Statement 12: TRUE
+  - 12. Most households have a monthly income less than $12k.
+  - Explanation: 100.0% of households have income <12k.
+
+Statement 13: FALSE
+  - 13. All households with a utility cost less than $200 have a household size less than 5.
+  - Explanation: 6 households violate the rule (sizes: 5, 6, 6, 6, 5, 5).
+
+Statement 14: TRUE
+  - 14. If a household is located in a rural region, then their vehicle count is less than 3.
+  - Explanation: All 4 rural households have vehicle count <3.
+
+Statement 15: TRUE
+  - 15. There exists at least one household in a suburban region with a monthly income greater than $9k.
+  - Explanation: 2 suburban household(s) have income >9k.
+
+Statement 16: FALSE
+  - 16. All households with a rent greater than $2k have a household size greater than 3.
+  - Explanation: 1 households violate the rule (sizes: 3).
+
+Statement 17: FALSE
+  - 17. If a household has a monthly income less than $3k, then their household size is less than 4.
+  - Explanation: 1 households violate the rule (sizes: 6).
+
+Statement 18: TRUE
+  - 18. Most households have a household size less than 6.
+  - Explanation: 73.3% of households have size <6.

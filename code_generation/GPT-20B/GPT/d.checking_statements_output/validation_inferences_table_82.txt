@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All north region stores have staff counts of at most 18.
+  - Explanation: All 0 north stores have staff counts ≤ 18.
+
+Statement 2: TRUE
+  - 2. All west region stores have staff counts of no more than 24.
+  - Explanation: All 0 west stores have staff counts ≤ 24.
+
+Statement 3: TRUE
+  - 3. All stores with monthly sales greater than $170k have average basket sizes of at most 60.2.
+  - Explanation: All 4 high‑sales stores have avg basket size ≤ 60.2.
+
+Statement 4: TRUE
+  - 4. All stores with staff counts of at least 24 have monthly sales of at least $157k.
+  - Explanation: All 3 stores with ≥24 staff have monthly sales ≥ 157k.
+
+Statement 5: TRUE
+  - 5. All stores with an average basket size of at least 62 have monthly sales of at least $102.9k.
+  - Explanation: All 3 stores with avg basket ≥ 62 have monthly sales ≥ 102.9k.
+
+Statement 6: TRUE
+  - 6. All east region stores have customer satisfaction scores of at least 4.0.
+  - Explanation: All 0 east stores have customer satisfaction ≥ 4.0.
+
+Statement 7: TRUE
+  - 7. All stores with monthly sales exceeding $150k have at least 13 staff members.
+  - Explanation: All 6 stores with monthly sales > 150k have ≥ 13 staff.
+
+Statement 8: TRUE
+  - 8. All stores with at least 2500 transactions have monthly sales of at least $99.8k.
+  - Explanation: All 4 stores with ≥ 2500 transactions have monthly sales ≥ 99.8k.

@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All trips have an average speed between 45.7 kph and 65.7 kph.
+  - Explanation: All 15 trips have avg speed between 45.7 and 65.7 kph.
+
+Statement 2: TRUE
+  - 2. For every van, the distance traveled is at least 65 km and the fuel used is between 17.1 L and 20.2 L.
+  - Explanation: All 4 vans satisfy distance >=65 km and fuel used between 17.1 and 20.2 L.
+
+Statement 3: TRUE
+  - 3. All trucks have an average speed below 62 kph.
+  - Explanation: All 5 trucks have avg speed below 62 kph.
+
+Statement 4: TRUE
+  - 4. All rainy trips experience a delay of at least 3 minutes.
+  - Explanation: All 5 rainy trips have delay >=3 minutes.
+
+Statement 5: TRUE
+  - 5. If a trip is longer than 200 km, its average speed lies between 49.8 kph and 64.4 kph.
+  - Explanation: All 6 trips longer than 200 km have avg speed between 49.8 and 64.4 kph.
+
+Statement 6: TRUE
+  - 6. Every trip shorter than 70 km is made by a van.
+  - Explanation: All 2 trips shorter than 70 km are made by vans.
+
+Statement 7: TRUE
+  - 7. All trucks consume less than 0.30 L of fuel per kilometre.
+  - Explanation: All 5 trucks consume less than 0.30 L/km.
+
+Statement 8: TRUE
+  - 8. There exists at least one van whose delay is under 10 minutes.
+  - Explanation: At least one van has delay under 10 minutes (found 1 vans).

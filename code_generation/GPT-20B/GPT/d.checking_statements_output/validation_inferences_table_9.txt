@@ -1,0 +1,40 @@
+
+Statement 1: TRUE
+  - 1. For all engineering employees, monthly salary is at most $7.6k.
+  - Explanation: No engineering employees; statement holds vacuously.
+
+Statement 2: TRUE
+  - 2. All HR employees have a performance rating of at least 4.2.
+  - Explanation: No HR employees; statement holds vacuously.
+
+Statement 3: TRUE
+  - 3. All finance employees are involved in at least two active projects.
+  - Explanation: No finance employees; statement holds vacuously.
+
+Statement 4: TRUE
+  - 4. All employees with six active projects have monthly salary at most $7.4k.
+  - Explanation: All 3 employees with 6 projects have salary <= 7.4k.
+
+Statement 5: TRUE
+  - 5. All employees who work remotely fourteen or more days per month have a performance rating of at least 4.2.
+  - Explanation: All 2 employees remote >= 14 days have rating >= 4.2.
+
+Statement 6: TRUE
+  - 6. All operations employees work remotely no more than nine days per month.
+  - Explanation: No operations employees; statement holds vacuously.
+
+Statement 7: TRUE
+  - 7. Most employees have a performance rating of at least 4.0.
+  - Explanation: 14 out of 15 employees have rating >= 4.0 (93.33%).
+
+Statement 8: TRUE
+  - 8. All employees earning more than $9k per month work remotely no more than eight days per month.
+  - Explanation: All 3 employees earning > 9k remote <= 8 days.
+
+Statement 9: TRUE
+  - 9. All marketing employees are involved in at least three active projects.
+  - Explanation: No marketing employees; statement holds vacuously.
+
+Statement 10: TRUE
+  - 10. All employees with at least twelve years of experience have a performance rating of at least 4.0.
+  - Explanation: All 2 employees with >= 12 years have rating >= 4.0.

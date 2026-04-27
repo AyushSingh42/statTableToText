@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. All hotels with a cancellation rate of 14% or higher are located in Austin.
+  - Explanation: All 3 hotels with cancellation_rate >= 14 are in Austin.
+
+Statement 2: TRUE
+  - 2. Every hotel with an occupancy rate above 85% is a 5-star hotel.
+  - Explanation: All 3 hotels with occupancy_rate > 85 are 5-star.
+
+Statement 3: TRUE
+  - 3. Hotels that have 25 or fewer staff members are all 5-star hotels.
+  - Explanation: All 2 hotels with staff_count <= 25 are 5-star.
+
+Statement 4: TRUE
+  - 4. In Miami, the 5-star hotel has a lower average nightly rate ($120.0) than the 4-star hotel ($179.8).
+  - Explanation: Both required hotels exist in Miami and 120.0 < 179.8.
+
+Statement 5: TRUE
+  - 5. The hotel with the highest average nightly rate ($222.0) is a 3-star hotel in Denver.
+  - Explanation: Hotel HT025007 has $222.0, 3-star, in Denver.
+
+Statement 6: TRUE
+  - 6. Every 4-star hotel has an average nightly rate between $145.1 and $213.4.
+  - Explanation: All 3 4-star hotels have rates within the range.
+
+Statement 7: TRUE
+  - 7. All Austin hotels have cancellation rates of at least 11.7%.
+  - Explanation: All 4 Austin hotels have cancellation_rate >= 11.7%.
+
+Statement 8: TRUE
+  - 8. Every hotel with an average nightly rate of $130 or less is a 5-star hotel.
+  - Explanation: All 2 hotels with avg_nightly_rate <= 130 are 5-star.

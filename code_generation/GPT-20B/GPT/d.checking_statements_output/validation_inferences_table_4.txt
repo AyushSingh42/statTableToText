@@ -1,0 +1,36 @@
+
+Statement 1: TRUE
+  - 1. For all households in the rural region, the internet type is either satellite or cable (no DSL or fiber).
+  - Explanation: All 6 rural households have internet type satellite or cable.
+
+Statement 2: TRUE
+  - 2. Every urban household has exactly one vehicle.
+  - Explanation: All 3 urban households have exactly one vehicle.
+
+Statement 3: TRUE
+  - 3. All households with a household size of 6 have rent of at least $2.2k.
+  - Explanation: All 3 households of size 6 have rent ≥ 2.2k.
+
+Statement 4: TRUE
+  - 4. All households with zero vehicles have a utility cost no greater than $173k.
+  - Explanation: All 3 zero‑vehicle households have utility cost ≤ 173k.
+
+Statement 5: TRUE
+  - 5. Every suburban household has a monthly income of at least $5.2k.
+  - Explanation: All 6 suburban households have monthly income ≥ 5.2k.
+
+Statement 6: TRUE
+  - 6. All rural households have a monthly income of at most $8.6k.
+  - Explanation: All 6 rural households have monthly income ≤ 8.6k.
+
+Statement 7: TRUE
+  - 7. For the single household with fiber internet, the vehicle count is exactly one.
+  - Explanation: The single fiber household has exactly one vehicle.
+
+Statement 8: TRUE
+  - 8. All households with monthly income exceeding $10k have a utility cost of at least $173k.
+  - Explanation: All 3 households with income > 10k have utility cost ≥ 173k.
+
+Statement 9: TRUE
+  - 9. All households with two vehicles have a utility cost of at least $132.5k.
+  - Explanation: All 5 two‑vehicle households have utility cost ≥ 132.5k.

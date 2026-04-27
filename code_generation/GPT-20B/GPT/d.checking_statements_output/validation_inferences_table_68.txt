@@ -1,0 +1,36 @@
+
+Statement 1: TRUE
+  - 1. All organic farms have soil_quality_index >= 68.9.
+  - Explanation: All 6 organic farms satisfy the condition.
+
+Statement 2: TRUE
+  - 2. All non-organic farms have soil_quality_index <= 79.6.
+  - Explanation: All 9 non-organic farms satisfy the condition.
+
+Statement 3: TRUE
+  - 3. All corn farms have irrigation_hours_week >= 13.9.
+  - Explanation: All 3 corn farms satisfy the condition.
+
+Statement 4: TRUE
+  - 4. All wheat farms have yield_tons <= 405.1.
+  - Explanation: All 3 wheat farms satisfy the condition.
+
+Statement 5: TRUE
+  - 5. All rice farms have acreage between 78 and 117 acres.
+  - Explanation: All 5 rice farms satisfy the condition.
+
+Statement 6: TRUE
+  - 6. All soybean farms use fertilizer_kg <= 801.
+  - Explanation: All 4 soybean farms satisfy the condition.
+
+Statement 7: TRUE
+  - 7. All farms with irrigation_hours_week > 18 have yield_tons >= 311.7.
+  - Explanation: All 4 farms with irrigation_hours_week > 18 satisfy the condition.
+
+Statement 8: TRUE
+  - 8. All farms with soil_quality_index >= 80 are organic.
+  - Explanation: All 2 farms with soil_quality_index >= 80 are organic.
+
+Statement 9: TRUE
+  - 9. Most farms have soil_quality_index >= 70.
+  - Explanation: 11 out of 15 farms have soil_quality_index >= 70 (73.3%).

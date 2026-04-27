@@ -1,0 +1,28 @@
+
+Statement 1: TRUE
+  - 1. For all households with utility cost greater than 200, vehicle count is at least 1.
+  - Explanation: All 4 households with utility cost > 200 have vehicle count >= 1.
+
+Statement 2: TRUE
+  - 2. Every rural household uses either cable or satellite internet.
+  - Explanation: All 4 rural households use cable or satellite internet.
+
+Statement 3: TRUE
+  - 3. No urban household uses satellite internet.
+  - Explanation: All 6 urban households do not use satellite internet.
+
+Statement 4: TRUE
+  - 4. For all households with monthly income of at least $10 k, rent is at least $2.2 k.
+  - Explanation: All 3 households with income >= 10k have rent >= 2.2k.
+
+Statement 5: TRUE
+  - 5. Every satellite‑internet household pays rent of at least $2.2 k.
+  - Explanation: All 3 satellite‑internet households have rent >= 2.2k.
+
+Statement 6: TRUE
+  - 6. For all households with six members, rent does not exceed $2.7 k.
+  - Explanation: All 4 households with 6 members have rent <= 2.7k.
+
+Statement 7: TRUE
+  - 7. All cable‑internet households have utility cost no greater than $217.6.
+  - Explanation: All 6 cable‑internet households have utility cost <= 217.6.

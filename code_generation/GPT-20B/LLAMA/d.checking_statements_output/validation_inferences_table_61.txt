@@ -1,0 +1,68 @@
+
+Statement 1: TRUE
+  - 1. All patients with a diagnosis of arthritis have a BMI less than or equal to 33.9.
+  - Explanation: All 5 arthritis patients have BMI <= 33.9.
+
+Statement 2: FALSE
+  - 2. If a patient is a smoker, then their age is less than 70 years.
+  - Explanation: 1 smokers violate the rule (ages: 77).
+
+Statement 3: FALSE
+  - 3. All patients with a diagnosis of hypertension have a systolic blood pressure greater than or equal to 142 mmHg.
+  - Explanation: 1 hypertension patients violate the rule (systolic BP: 119).
+
+Statement 4: TRUE
+  - 4. There exists at least one patient with a diagnosis of asthma whose cholesterol level is greater than 240 mg/dL.
+  - Explanation: Found 1 asthma patient(s) with cholesterol > 240 mg/dL.
+
+Statement 5: TRUE
+  - 5. If a patient's BMI is greater than 30, then their age is less than 70 years.
+  - Explanation: All 5 patients with BMI > 30 are under 70 years old.
+
+Statement 6: TRUE
+  - 6. All patients with a diagnosis of migraine have a diastolic blood pressure less than 80 mmHg.
+  - Explanation: All 2 migraine patients have diastolic BP < 80 mmHg.
+
+Statement 7: TRUE
+  - 7. Most patients in the table have a systolic blood pressure greater than 120 mmHg.
+  - Explanation: 73.3% of patients have systolic BP > 120 mmHg.
+
+Statement 8: FALSE
+  - 8. If a patient's age is greater than 60 years, then their cholesterol level is less than 220 mg/dL.
+  - Explanation: 2 patients over 60 violate the rule (cholesterol: 243, 223).
+
+Statement 9: FALSE
+  - 9. All patients with a diagnosis of arthritis have a cholesterol level greater than 190 mg/dL.
+  - Explanation: 1 arthritis patients violate the rule (cholesterol: 175).
+
+Statement 10: TRUE
+  - 10. There exists at least one patient with a diagnosis of hypertension whose BMI is less than 28.
+  - Explanation: Found 2 hypertension patient(s) with BMI < 28.
+
+Statement 11: FALSE
+  - 11. If a patient is a non-smoker, then their BMI is less than 33.
+  - Explanation: 2 non-smokers violate the rule (BMI: 33.5, 33.9).
+
+Statement 12: FALSE
+  - 12. All patients with a cholesterol level greater than 230 mg/dL have a systolic blood pressure greater than 120 mmHg.
+  - Explanation: 1 patients with cholesterol > 230 mg/dL violate the rule (systolic BP: 114).
+
+Statement 13: TRUE
+  - 13. Most patients in the table have a BMI greater than 20.
+  - Explanation: 100.0% of patients have BMI > 20.
+
+Statement 14: FALSE
+  - 14. If a patient's age is less than 40 years, then their cholesterol level is less than 220 mg/dL.
+  - Explanation: 1 patients under 40 violate the rule (cholesterol: 241).
+
+Statement 15: TRUE
+  - 15. All patients with a diagnosis of asthma have a diastolic blood pressure greater than 85 mmHg.
+  - Explanation: All 3 asthma patients have diastolic BP > 85 mmHg.
+
+Statement 16: TRUE
+  - 16. There exists at least one patient with a diagnosis of migraine whose BMI is less than 28.
+  - Explanation: Found 1 migraine patient(s) with BMI < 28.
+
+Statement 17: TRUE
+  - 17. If a patient's systolic blood pressure is greater than 140 mmHg, then their age is less than 80 years.
+  - Explanation: All 6 patients with systolic BP > 140 are under 80 years old.

@@ -1,0 +1,68 @@
+
+Statement 1: TRUE
+  - 1. All vehicles with a distance greater than 200 km have an average speed less than 60 kph.
+  - Explanation: All 2 vehicles with distance >200 km have avg_speed <60 kph.
+
+Statement 2: FALSE
+  - 2. If a vehicle is a truck, then its fuel used is greater than 30 liters.
+  - Explanation: 2 trucks violate the rule (fuel_used: 17.9, 9.8).
+
+Statement 3: TRUE
+  - 3. There exists at least one bus with a delay of less than 15 minutes.
+  - Explanation: Found 2 bus(es) with delay <15 minutes.
+
+Statement 4: TRUE
+  - 4. All vans have a distance greater than 100 km.
+  - Explanation: All 3 vans have distance >100 km.
+
+Statement 5: FALSE
+  - 5. If a vehicle is a bus, then its average speed is greater than 50 kph.
+  - Explanation: 1 bus(es) violate the rule (avg_speed: 49.3).
+
+Statement 6: TRUE
+  - 6. Most vehicles have a delay of less than 20 minutes.
+  - Explanation: 60.0% of vehicles have delay <20 minutes.
+
+Statement 7: FALSE
+  - 7. All vehicles with a distance less than 150 km have an average speed greater than 50 kph.
+  - Explanation: 2 vehicles violate the rule (avg_speed: 46.4, 49.3).
+
+Statement 8: TRUE
+  - 8. If a vehicle is a truck, then its distance is less than 250 km.
+  - Explanation: All 6 trucks have distance <250 km.
+
+Statement 9: TRUE
+  - 9. There exists at least one vehicle with a fuel used of less than 10 liters.
+  - Explanation: Found 2 vehicle(s) with fuel_used <10 liters.
+
+Statement 10: TRUE
+  - 10. All vehicles with an average speed greater than 60 kph have a distance less than 200 km.
+  - Explanation: All 4 vehicles with avg_speed >60 kph have distance <200 km.
+
+Statement 11: TRUE
+  - 11. If a vehicle is a van, then its fuel used is greater than 20 liters.
+  - Explanation: All 3 vans have fuel_used >20 liters.
+
+Statement 12: TRUE
+  - 12. Most vehicles have an average speed less than 60 kph.
+  - Explanation: 73.3% of vehicles have avg_speed <60 kph.
+
+Statement 13: TRUE
+  - 13. All buses have a distance greater than 120 km.
+  - Explanation: All 6 buses have distance >120 km.
+
+Statement 14: FALSE
+  - 14. If a vehicle is a truck, then its delay is greater than 10 minutes.
+  - Explanation: 1 truck(s) violate the rule (delay: 9).
+
+Statement 15: TRUE
+  - 15. There exists at least one vehicle with a delay of less than 5 minutes.
+  - Explanation: Found 1 vehicle(s) with delay <5 minutes.
+
+Statement 16: FALSE
+  - 16. All vehicles with a distance greater than 150 km have a fuel used greater than 15 liters.
+  - Explanation: 2 vehicle(s) violate the rule (fuel_used: 9.6, 9.8).
+
+Statement 17: TRUE
+  - 17. If a vehicle is a bus, then its fuel used is less than 50 liters.
+  - Explanation: All 6 buses have fuel_used <50 liters.

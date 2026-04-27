@@ -1,0 +1,28 @@
+
+Statement 1: TRUE
+  - 1. If a hotel's occupancy rate exceeds 80%, then its star level is at least 4.
+  - Explanation: All 3 hotels with >80% occupancy have star level >=4.
+
+Statement 2: TRUE
+  - 2. All hotels with a cancellation rate below 10% have an average nightly rate above $160.
+  - Explanation: All 4 hotels with cancellation rate <10% have avg nightly rate >$160.
+
+Statement 3: TRUE
+  - 3. In each city that has hotels with different star levels (Denver and Austin), the higher‑star hotel has a higher average nightly rate than the lower‑star hotel.
+  - Explanation: All 3 cities with multiple star levels satisfy the rule.
+
+Statement 4: TRUE
+  - 4. All hotels with bookings_month greater than 900 have occupancy rates above 75%.
+  - Explanation: All 2 hotels with bookings_month >900 have occupancy >75%.
+
+Statement 5: FALSE
+  - 5. The 4‑star hotel in Denver has both a higher average nightly rate ($164.7) and a higher occupancy rate (75.8%) than the 3‑star Denver hotel ($119.5, 72.2%).
+  - Explanation: Required Denver hotels not found: 4-star present=False, 3-star present=False.
+
+Statement 6: FALSE
+  - 6. Among 3‑star hotels, the highest occupancy rate is 78.8% (Portland) and the lowest is 68.0% (Seattle).
+  - Explanation: Computed max 78.8% in portland, min 68.0% in seattle.
+
+Statement 7: FALSE
+  - 7. The range of occupancy rates for 4‑star hotels spans from 65.0% (Austin) to 86.6% (Dallas).
+  - Explanation: Computed min 65.0% in austin, max 86.6% in dallas.

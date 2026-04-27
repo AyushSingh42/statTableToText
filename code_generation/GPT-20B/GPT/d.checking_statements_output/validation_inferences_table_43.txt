@@ -1,0 +1,32 @@
+
+Statement 1: TRUE
+  - 1. For all buses, the route distance is at least 66.1 km.
+  - Explanation: All 10 buses have distance >= 66.1 km.
+
+Statement 2: TRUE
+  - 2. For all buses, the average speed is between 46.5 and 62.3 kph.
+  - Explanation: All 10 buses have avg_speed between 46.5 and 62.3 kph.
+
+Statement 3: TRUE
+  - 3. For all vans, the average speed is between 49.6 and 54.1 kph.
+  - Explanation: All 2 vans have avg_speed between 49.6 and 54.1 kph.
+
+Statement 4: TRUE
+  - 4. For all trucks, the average speed is at least 50.3 kph.
+  - Explanation: All 3 trucks have avg_speed >= 50.3 kph.
+
+Statement 5: TRUE
+  - 5. For all trucks, fuel consumption does not exceed 30.3 liters.
+  - Explanation: All 3 trucks have fuel_used <= 30.3 liters.
+
+Statement 6: TRUE
+  - 6. For all routes experiencing rain, the average speed does not exceed 58.6 kph.
+  - Explanation: All 2 rainy routes have avg_speed <= 58.6 kph.
+
+Statement 7: TRUE
+  - 7. For all cloudy routes, the delay is at least 12 minutes.
+  - Explanation: All 5 cloudy routes have delay >= 12 minutes.
+
+Statement 8: TRUE
+  - 8. There exists at least one bus that used more than 40 liters of fuel.
+  - Explanation: At least one bus used more than 40 liters of fuel (bus(es): R043005, R043011).

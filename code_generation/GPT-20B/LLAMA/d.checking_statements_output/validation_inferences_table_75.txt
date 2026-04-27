@@ -1,0 +1,6 @@
+
+[ERROR] Script exited with code 1
+  File [35m"/home/ayushs13/code_generation/GPT-20B/LLAMA/c.checking_statements/python_code_table_75.py"[0m, line [35m1[0m
+    analysisWe need to write code that checks each of the 471 statements? Actually there are 471 statements. That[1;31m'[0ms huge. But many are duplicates. We could programmatically parse statements? But easier: we can write code that loops over statements list and evaluate. But writing 471 functions manually is impossible. We need a generic evaluator that parses each statement string and checks against dataframe. But statements are natural language with conditions. Hard to parse all.
+                                                                                                                 [1;31m^[0m
+[1;35mSyntaxError[0m: [35munterminated string literal (detected at line 1)[0m

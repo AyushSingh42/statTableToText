@@ -1,0 +1,40 @@
+
+Statement 1: TRUE
+  - 1. For all engineering employees with more than 11 years of experience, monthly salary is at most $6.0k.
+  - Explanation: All 2 engineering employees with >11 years of experience have monthly salary <= 6.0k.
+
+Statement 2: TRUE
+  - 2. All finance employees have a performance rating of at least 4.0.
+  - Explanation: All 3 finance employees have performance rating >= 4.0.
+
+Statement 3: TRUE
+  - 3. All operations employees work remotely exactly 5 days per month.
+  - Explanation: All 2 operations employees work remotely exactly 5 days per month.
+
+Statement 4: TRUE
+  - 4. Every employee with a performance rating of 4.8 or higher earns a monthly salary of at least $5.3k.
+  - Explanation: All 4 employees with performance rating >= 4.8 have monthly salary >= 5.3k.
+
+Statement 5: TRUE
+  - 5. All marketing employees have a performance rating of no more than 4.1.
+  - Explanation: All 2 marketing employees have performance rating <= 4.1.
+
+Statement 6: TRUE
+  - 6. All HR employees receive a monthly salary of no more than $5.4k.
+  - Explanation: All 2 HR employees have monthly salary <= 5.4k.
+
+Statement 7: FALSE
+  - 7. All employees with less than 3 years of experience earn a monthly salary of at least $8.3k.
+  - Explanation: 2 employees violate the rule (IDs: E069010, E069014).
+
+Statement 8: TRUE
+  - 8. All employees with more than 10 years of experience have a performance rating of at most 4.5.
+  - Explanation: All 3 employees with >10 years of experience have performance rating <= 4.5.
+
+Statement 9: TRUE
+  - 9. All engineering employees are assigned to no more than 4 active projects.
+  - Explanation: All 6 engineering employees have <= 4 active projects.
+
+Statement 10: TRUE
+  - 10. All employees with exactly 2 active projects earn a monthly salary of at least $7.3k.
+  - Explanation: All 2 employees with 2 active projects have monthly salary >= 7.3k.
