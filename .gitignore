@@ -8,6 +8,16 @@
 .local/
 .lesshst
 .bash_history
+spar/
+_RWelcome.rmd
+_Welcome.ipynb
+.config/
+.ipython/
+.jupyter/
+.local/
+.nv/
+.triton/
+.deep_gemm/
 
 # Python bytecode and caches
 __pycache__/
