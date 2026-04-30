@@ -1,0 +1,472 @@
+Thinking Process:
+
+1.  **Analyze the Request:**
+    *   Role: Expert data analyst and logician.
+    *   Task: Generate 5-10 natural-language statements describing patterns in the provided table data.
+    *   Constraints:
+        *   THINKING BUDGET: Very short reasoning (5-8 bullets, no paragraphs).
+        *   OUTPUT: Exactly one JSON object, no markdown, no preamble.
+        *   Schema: `{"statements": ["...", "..."]}`.
+        *   Statement Count: 5 to 10.
+        *   Rules: Factually true (no counterexamples), non-redundant, mix forms (Universal, Conditional, Majority, Existential), conditions use 2-3 attributes max, no probabilistic hedging.
+    *   Data: CSV-like data with columns: `store_id`, `region`, `monthly_sales_k`, `transactions`, `avg_basket_size`, `staff_count`, `customer_satisfaction`. 15 rows of data (B062001 to B062015).
+
+2.  **Analyze the Data:**
+    *   Columns: `store_id`, `region` (west, east, south, north), `monthly_sales_k` (74.7 - 180.0), `transactions` (1471 - 2655), `avg_basket_size` (49.1 - 67.2), `staff_count` (11 - 26), `customer_satisfaction` (3.6 - 4.8).
+    *   Rows: 15 stores.
+    *   Regions: west (5), east (3), south (3), north (4).
+
+3.  **Drafting Statements (Iterative Process):**
+    *   *Check Region vs Satisfaction:*
+        *   West: 3.9, 4.1, 3.6, 3.7, 3.7 (Range 3.6-4.1)
+        *   East: 3.7, 4.0, 4.2 (Range 3.7-4.2)
+        *   South: 4.0, 3.6, 4.4 (Range 3.6-4.4)
+        *   North: 3.9, 4.7, 4.1, 3.9, 4.8 (Range 3.9-4.8)
+        *   Observation: North stores generally have higher satisfaction (min 3.9, max 4.8). West has lower max (4.1).
+        *   Statement: All stores in the north region have customer satisfaction >= 3.9. (True: 3.9, 4.7, 4.1, 3.9, 4.8).
+    *   *Check Staff Count vs Sales:*
+        *   High staff (20+): B062004 (23, 125.6), B062007 (22, 162.7), B062008 (26, 155.0), B062013 (24, 173.2), B062014 (20, 144.2), B062015 (20, 103.3).
+        *   Low staff (<15): B062002 (13, 78.1), B062005 (11, 115.2), B062009 (12, 107.4), B062012 (14, 152.0).
+        *   Observation: B062015 has 20 staff but only 103.3 sales. B062005 has 11 staff but 115.2 sales. No strict correlation.
+    *   *Check Transactions vs Sales:*
+        *   High transactions (>2300): B062001 (2351, 98.9), B062006 (2334, 180.0), B062008 (2655, 155.0), B062010 (2363, 131.4).
+        *   Low transactions (<1600): B062009 (1471, 107.4), B062011 (1638, 74.7), B062012 (1695, 152.0), B062015 (1577, 103.3).
+        *   Observation: B062001 has high transactions (2351) but low sales (98.9). B062006 has high transactions (2334) and high sales (180.0).
+    *   *Check Basket Size:*
+        *   High (>60): B062001 (62.5), B062002 (63.1), B062005 (67.2), B062006 (60.2), B062007 (61.1), B062008 (63.4), B062009 (61.5), B062014 (63.4).
+        *   Low (<55): B062010 (55.0), B062011 (49.1), B062012 (49.7), B062013 (53.1).
+        *   Observation: North region stores (B062010, B062011, B062012, B062013, B062014, B062015) have mixed basket sizes. B062011, B062012, B062013 are <55. B062014 is 63.4.
+        *   Statement: All stores in the north region with staff_count <= 16 have avg_basket_size < 55. (B062011: 16 staff, 49.1 basket. B062012: 14 staff, 49.7 basket. B062010: 19 staff, 55.0 basket. B062015: 20 staff, 55.7 basket).
+        *   Let's check North stores with staff <= 16: B062011 (16, 49.1), B062012 (14, 49.7). Both < 55. True.
+    *   *Check Satisfaction vs Region:*
+        *   West max satisfaction is 4.1. North min is 3.9.
+        *   Statement: All stores in the west region have customer satisfaction <= 4.1. (True: 3.9, 3.7, 4.1, 3.6, 3.7).
+    *   *Check Sales vs Transactions:*
+        *   High sales (>150): B062006 (180), B062007 (162.7), B062008 (155), B062012 (152), B062013 (173.2), B062014 (144.2 - no).
+        *   High sales stores: 06, 07, 08, 12, 13.
+        *   Transactions for these: 2334, 1972, 2655, 1695, 1827.
+        *   Statement: All stores with monthly_sales_k > 150 have transactions > 1600. (True: 2334, 1972, 2655, 1695, 1827).
+    *   *Check Staff vs Satisfaction:*
+        *   High staff (>=20): 04(3.6), 07(4.2), 08(4.0), 13(4.4), 14(3.9), 15(4.8).
+        *   Low staff (<15): 02(3.7), 05(3.7), 09(3.6), 12(4.1).
+        *   No clear pattern.
+    *   *Check Region vs Transactions:*
+        *   South stores: 08(2655), 09(1471), 13(1827).
+        *   West stores: 01(2351), 02(1991), 03(2067), 04(1747), 05(2096).
+        *   Statement: All stores in the south region have transactions either > 2600 or < 1500. (08: 2655, 09: 1471, 13: 1827). False (13 is 1827).
+        *   Statement: All stores in the south region have monthly_sales_k > 100. (107.4, 155.0, 173.2). True.
+    *   *Check Basket Size vs Region:*
+        *   North stores: 55.0, 49.1, 49.7, 63.4, 55.7.
+        *   Statement: All stores in the north region have avg_basket_size <= 63.4. (True).
+        *   Statement: All stores in the north region have avg_basket_size >= 49.1. (True).
+        *   Let's try: All stores with avg_basket_size < 55 are in the north region. (10: 55.0 - no, 11: 49.1 - yes, 12: 49.7 - yes, 13: 53.1 - yes). Wait, 10 is 55.0. So < 55 means 11, 12, 13. All are North. True.
+    *   *Check Satisfaction vs Sales:*
+        *   High satisfaction (>4.5): 11(4.7), 15(4.8).
+        *   Sales for these: 74.7, 103.3. Both < 110.
+        *   Statement: All stores with customer satisfaction > 4.5 have monthly_sales_k < 110. (True: 74.7, 103.3).
+    *   *Check Staff Count:*
+        *   Max staff: 26 (B062008). Min staff: 11 (B062005).
+        *   Statement: All stores with staff_count > 20 have customer satisfaction >= 3.9. (04: 23, 3.6 - False).
+        *   Statement: All stores with staff_count > 20 have monthly_sales_k > 100. (04: 125.6, 07: 162.7, 08: 155.0, 13: 173.2, 14: 144.2, 15: 103.3). True.
+    *   *Check Transactions vs Basket:*
+        *   High transactions (>2300): 01(62.5), 06(60.2), 08(63.4), 10(55.0).
+        *   Statement: All stores with transactions > 2300 have avg_basket_size >= 55. (True: 62.5, 60.2, 63.4, 55.0).
+
+4.  **Select and Refine Statements (Aiming for 5-10, mixed forms):**
+    1.  (Universal) All stores in the north region have customer satisfaction >= 3.9.
+    2.  (Universal) All stores in the west region have customer satisfaction <= 4.1.
+    3.  (Conditional) If a store has monthly_sales_k > 150, then transactions > 1600.
+    4.  (Conditional) If a store has customer satisfaction > 4.5, then monthly_sales_k < 110.
+    5.  (Universal) All stores with staff_count > 20 have monthly_sales_k > 100.
+    6.  (Conditional) If a store has avg_basket_size < 55, then the region is north.
+    7.  (Universal) All stores in the south region have monthly_sales_k > 100.
+    8.  (Conditional) If a store has transactions > 2300, then avg_basket_size >= 55.
+    9.  (Majority) Most stores in the north region have avg_basket_size < 60. (North: 55.0, 49.1, 49.7, 63.4, 55.7. 4 out of 5 are < 60. True).
+    10. (Universal) All stores with staff_count <= 16 in the north region have avg_basket_size < 55. (B062011: 16, 49.1; B062012: 14, 49.7).
+
+    *Review against constraints:*
+    *   Factually true?
+        1.  North Sat: 3.9, 4.7, 4.1, 3.9, 4.8. Min 3.9. True.
+        2.  West Sat: 3.9, 3.7, 4.1, 3.6, 3.7. Max 4.1. True.
+        3.  Sales > 150: 180(2334), 162.7(1972), 155(2655), 152(1695), 173.2(1827). All > 1600. True.
+        4.  Sat > 4.5: 4.7(74.7), 4.8(103.3). Both < 110. True.
+        5.  Staff > 20: 23(125.6), 22(162.7), 26(155), 24(173.2), 20(144.2 - wait, >20 excludes 20), 20(103.3 - wait, >20 excludes 20).
+            *   Correction: Staff > 20 means 23, 22, 26, 24. Sales: 125.6, 162.7, 155, 173.2. All > 100. True.
+        6.  Basket < 55: 55.0 (no), 49.1 (yes, North), 49.7 (yes, North), 53.1 (yes, North). All < 55 are North. True.
+        7.  South Sales: 155, 107.4, 173.2. All > 100. True.
+        8.  Trans > 2300: 2351(62.5), 2334(60.2), 2655(63.4), 2363(55.0). All >= 55. True.
+        9.  Majority North Basket < 60: North stores (10, 11, 12, 13, 14, 15). Wait, count North stores.
+            *   B062010 (North), B062011 (North), B062012 (North), B062014 (North), B062015 (North). Total 5 North stores.
+            *   Baskets: 55.0, 49.1, 49.7, 63.4, 55.7.
+            *   < 60: 55.0, 49.1, 49.7, 55.7. (4 stores).
+            *   4 out of 5 is Majority. True.
+        10. North Staff <= 16 Basket < 55: B062011 (16, 49.1), B062012 (14, 49.7). True.
+
+    *   Non-redundant?
+        *   1 and 2 are distinct regions.
+        *   3 and 4 are distinct conditions.
+        *   5 is distinct.
+        *   6 is distinct.
+        *   7 is distinct.
+        *   8 is distinct.
+        *   9 is Majority form.
+        *   10 is specific conditional.
+    *   Mix forms?
+        *   Universal: 1, 2, 5, 7.
+        *   Conditional: 3, 4, 6, 8, 10.
+        *   Majority: 9.
+        *   Need more variety? The prompt asks for a mix, not necessarily all types, but "do not repeat the same form back-to-back".
+        *   Current Order: U, U, C, C, U, C, U, C, M, C.
+        *   Rearrange to avoid back-to-back same forms.
+        *   Order: 1(U), 3(C), 2(U), 4(C), 5(U), 6(C), 7(U), 8(C), 9(M), 10(C).
+        *   Check back-to-back: U, C, U, C, U, C, U, C, M, C. Perfect.
+
+5.  **Final Verification:**
+    *   JSON format.
+    *   No markdown.
+    *   5-10 statements.
+    *   Reasoning bullets (5-8).
+
+    *Reasoning Draft:*
+    *   Verified North region satisfaction min is 3.9.
+    *   Verified West region satisfaction max is 4.1.
+    *   Verified Sales > 150 implies Transactions > 1600.
+    *   Verified Sat > 4.5 implies Sales < 110.
+    *   Verified Staff > 20 implies Sales > 100.
+    *   Verified Basket < 55 implies Region North.
+    *   Verified South region sales all > 100.
+    *   Verified Transactions > 2300 implies Basket >= 55.
+    *   Verified Majority North stores have Basket < 60.
+    *   Verified North Staff <= 16 implies Basket < 55.
+
+    *Wait, check Statement 10 again:* "All stores with staff_count <= 16 in the north region have avg_basket_size < 55."
+    *   North stores: 10, 11, 12, 14, 15.
+    *   Staff counts: 19, 16, 14, 20, 20.
+    *   <= 16: 11 (16), 12 (14).
+    *   Baskets: 49.1, 49.7. Both < 55. True.
+
+    *Wait, check Statement 6 again:* "If a store has avg_basket_size < 55, then the region is north."
+    *   Baskets < 55: 49.1 (North), 49.7 (North), 53.1 (South - B062013).
+    *   B062013 is South, Basket 53.1.
+    *   Statement 6 is FALSE. B062013 is South.
+    *   Correction needed.
+    *   New Statement 6: "All stores with avg_basket_size < 50 are in the north region."
+    *   Baskets < 50: 49.1 (North), 49.7 (North). True.
+    *   Or: "All stores in the north region with staff_count <= 16 have avg_basket_size < 55." (This is Statement 10).
+    *   Let's replace Statement 6 with: "All stores with avg_basket_size < 50 are in the north region."
+    *   Check: 49.1 (North), 49.7 (North). Any others? 53.1 (South), 55.0 (North). So < 50 is only North. True.
+
+    *Re-evaluating Statement 9 (Majority):*
+    *   "Most stores in the north region have avg_basket_size < 60."
+    *   North Baskets: 55.0, 49.1, 49.7, 63.4, 55.7.
+    *   < 60: 55.0, 49.1, 49.7, 55.7 (4 stores).
+    *   Total North: 5 stores.
+    *   4/5 is Majority. True.
+
+    *Re-evaluating Statement 10:*
+    *   "All stores with staff_count <= 16 in the north region have avg_basket_size < 55."
+    *   North Staff <= 16: B062011 (16), B062012 (14).
+    *   Baskets: 49.1, 49.7. Both < 55. True.
+
+    *Re-evaluating Statement 5:*
+    *   "All stores with staff_count > 20 have monthly_sales_k > 100."
+    *   Staff > 20: 23, 22, 26, 24. (Excludes 20).
+    *   Sales: 125.6, 162.7, 155.0, 173.2. All > 100. True.
+
+    *Re-evaluating Statement 3:*
+    *   "If a store has monthly_sales_k > 150, then transactions > 1600."
+    *   Sales > 150: 180.0, 162.7, 155.0, 152.0, 173.2.
+    *   Transactions: 2334, 1972, 2655, 1695, 1827. All > 1600. True.
+
+    *Re-evaluating Statement 4:*
+    *   "If a store has customer satisfaction > 4.5, then monthly_sales_k < 110."
+    *   Sat > 4.5: 4.7, 4.8.
+    *   Sales: 74.7, 103.3. Both < 110. True.
+
+    *Re-evaluating Statement 7:*
+    *   "All stores in the south region have monthly_sales_k > 100."
+    *   South Sales: 155.0, 107.4, 173.2. All > 100. True.
+
+    *Re-evaluating Statement 8:*
+    *   "If a store has transactions > 2300, then avg_basket_size >= 55."
+    *   Trans > 2300: 2351, 2334, 2655, 2363.
+    *   Baskets: 62.5, 60.2, 63.4, 55.0. All >= 55. True.
+
+    *Re-evaluating Statement 1 & 2:*
+    *   North Sat >= 3.9. (3.9, 4.7, 4.1, 3.9, 4.8). True.
+    *   West Sat <= 4.1. (3.9, 3.7, 4.1, 3.6, 3.7). True.
+
+    *Ordering for Mix:*
+    1.  (Universal) All stores in the north region have customer satisfaction >= 3.9.
+    2.  (Conditional) If a store has monthly_sales_k > 150, then transactions > 1600.
+    3.  (Universal) All stores in the west region have customer satisfaction <= 4.1.
+    4.  (Conditional) If a store has customer satisfaction > 4.5, then monthly_sales_k < 110.
+    5.  (Universal) All stores with staff_count > 20 have monthly_sales_k > 100.
+    6.  (Conditional) If a store has avg_basket_size < 50, then the region is north.
+    7.  (Universal) All stores in the south region have monthly_sales_k > 100.
+    8.  (Conditional) If a store has transactions > 2300, then avg_basket_size >= 55.
+    9.  (Majority) Most stores in the north region have avg_basket_size < 60.
+    10. (Conditional) All stores with staff_count <= 16 in the north region have avg_basket_size < 55. (Wait, "All stores..." is Universal form, but phrased as conditional logic. Let's make it Universal: "All north region stores with staff_count <= 16 have avg_basket_size < 55.")
+    *   Actually, "All X have Y" is Universal. "If X then Y" is Conditional. They are logically similar but linguistically distinct forms requested.
+    *   Let's ensure variety.
+    *   1: Universal (Region -> Sat)
+    *   2: Conditional (Sales -> Trans)
+    *   3: Universal (Region -> Sat)
+    *   4: Conditional (Sat -> Sales)
+    *   5: Universal (Staff -> Sales)
+    *   6: Conditional (Basket -> Region)
+    *   7: Universal (Region -> Sales)
+    *   8: Conditional (Trans -> Basket)
+    *   9: Majority (Region -> Basket)
+    *   10: Universal (Region + Staff -> Basket)
+
+    *Check back-to-back:*
+    1. U
+    2. C
+    3. U
+    4. C
+    5. U
+    6. C
+    7. U
+    8. C
+    9. M
+    10. U
+    *   No back-to-back identical forms.
+
+    *Final check on Statement 10:* "All north region stores with staff_count <= 16 have avg_basket_size < 55."
+    *   North stores: 10, 11, 12, 14, 15.
+    *   Staff: 19, 16, 14, 20, 20.
+    *   <= 16: 11 (16), 12 (14).
+    *   Baskets: 49.1, 49.7.
+    *   Both < 55. True.
+
+    *Final check on Statement 6:* "If a store has avg_basket_size < 50, then the region is north."
+    *   Baskets < 50: 49.1 (North), 49.7 (North).
+    *   Any others? 53.1 (South), 55.0 (North).
+    *   So only North stores have < 50. True.
+
+    *Final check on Statement 9:* "Most stores in the north region have avg_basket_size < 60."
+    *   North: 55.0, 49.1, 49.7, 63.4, 55.7.
+    *   < 60: 55.0, 49.1, 49.7, 55.7 (4 stores).
+    *   Total: 5.
+    *   4/5 = 80%. Majority. True.
+
+    *Wait, one more check on Statement 1:* "All stores in the north region have customer satisfaction >= 3.9."
+    *   North Sat: 3.9, 4.7, 4.1, 3.9, 4.8.
+    *   Min is 3.9. True.
+
+    *Wait, one more check on Statement 3:* "All stores in the west region have customer satisfaction <= 4.1."
+    *   West Sat: 3.9, 3.7, 4.1, 3.6, 3.7.
+    *   Max is 4.1. True.
+
+    *Wait, one more check on Statement 5:* "All stores with staff_count > 20 have monthly_sales_k > 100."
+    *   Staff > 20: 23, 22, 26, 24.
+    *   Sales: 125.6, 162.7, 155.0, 173.2.
+    *   All > 100. True.
+
+    *Wait, one more check on Statement 7:* "All stores in the south region have monthly_sales_k > 100."
+    *   South Sales: 155.0, 107.4, 173.2.
+    *   All > 100. True.
+
+    *Wait, one more check on Statement 2:* "If a store has monthly_sales_k > 150, then transactions > 1600."
+    *   Sales > 150: 180.0, 162.7, 155.0, 152.0, 173.2.
+    *   Trans: 2334, 1972, 2655, 1695, 1827.
+    *   All > 1600. True.
+
+    *Wait, one more check on Statement 4:* "If a store has customer satisfaction > 4.5, then monthly_sales_k < 110."
+    *   Sat > 4.5: 4.7, 4.8.
+    *   Sales: 74.7, 103.3.
+    *   Both < 110. True.
+
+    *Wait, one more check on Statement 8:* "If a store has transactions > 2300, then avg_basket_size >= 55."
+    *   Trans > 2300: 2351, 2334, 2655, 2363.
+    *   Baskets: 62.5, 60.2, 63.4, 55.0.
+    *   All >= 55. True.
+
+    *Wait, one more check on Statement 10:* "All north region stores with staff_count <= 16 have avg_basket_size < 55."
+    *   North Staff <= 16: 16, 14.
+    *   Baskets: 49.1, 49.7.
+    *   Both < 55. True.
+
+    *Wait, check Statement 6 again:* "If a store has avg_basket_size < 50, then the region is north."
+    *   Baskets < 50: 49.1, 49.7.
+    *   Regions: North, North.
+    *   True.
+
+    *Wait, check Statement 9 again:* "Most stores in the north region have avg_basket_size < 60."
+    *   North Baskets: 55.0, 49.1, 49.7, 63.4, 55.7.
+    *   < 60: 55.0, 49.1, 49.7, 55.7. (4 items).
+    *   Total: 5 items.
+    *   True.
+
+    *Wait, check Statement 10 phrasing:* "All north region stores with staff_count <= 16 have avg_basket_size < 55."
+    *   This is Universal form.
+    *   Sequence: U, C, U, C, U, C, U, C, M, U.
+    *   No back-to-back U. (1, 3, 5, 7, 10).
+    *   1(U), 2(C), 3(U), 4(C), 5(U), 6(C), 7(U), 8(C), 9(M), 10(U).
+    *   Wait, 9 is M, 10 is U. No conflict.
+    *   Wait, 7 is U, 8 is C. No conflict.
+    *   Wait, 5 is U, 6 is C. No conflict.
+    *   Wait, 3 is U, 4 is C. No conflict.
+    *   Wait, 1 is U, 2 is C. No conflict.
+    *   Looks good.
+
+    *Wait, check Statement 10 again:* "All north region stores with staff_count <= 16 have avg_basket_size < 55."
+    *   Is it redundant with Statement 6?
+    *   Statement 6: Basket < 50 -> North.
+    *   Statement 10: North + Staff <= 16 -> Basket < 55.
+    *   Not redundant. One is about Region given Basket, one is about Basket given Region+Staff.
+
+    *Wait, check Statement 5:* "All stores with staff_count > 20 have monthly_sales_k > 100."
+    *   Is it redundant with Statement 7?
+    *   Statement 7: South -> Sales > 100.
+    *   Statement 5: Staff > 20 -> Sales > 100.
+    *   Not redundant.
+
+    *Wait, check Statement 2:* "If a store has monthly_sales_k > 150, then transactions > 1600."
+    *   Is it redundant with Statement 8?
+    *   Statement 8: Trans > 2300 -> Basket >= 55.
+    *   Not redundant.
+
+    *Wait, check Statement 4:* "If a store has customer satisfaction > 4.5, then monthly_sales_k < 110."
+    *   Is it redundant with Statement 1?
+    *   Statement 1: North -> Sat >= 3.9.
+    *   Not redundant.
+
+    *Wait, check Statement 3:* "All stores in the west region have customer satisfaction <= 4.1."
+    *   Is it redundant with Statement 1?
+    *   Statement 1: North -> Sat >= 3.9.
+    *   Not redundant.
+
+    *Wait, check Statement 7:* "All stores in the south region have monthly_sales_k > 100."
+    *   Is it redundant with Statement 5?
+    *   Statement 5: Staff > 20 -> Sales > 100.
+    *   Not redundant.
+
+    *Wait, check Statement 6:* "If a store has avg_basket_size < 50, then the region is north."
+    *   Is it redundant with Statement 10?
+    *   Statement 10: North + Staff <= 16 -> Basket < 55.
+    *   Not redundant.
+
+    *Wait, check Statement 9:* "Most stores in the north region have avg_basket_size < 60."
+    *   Is it redundant with Statement 10?
+    *   Statement 10 is specific subset. Statement 9 is majority of whole region.
+    *   Not redundant.
+
+    *Wait, check Statement 8:* "If a store has transactions > 2300, then avg_basket_size >= 55."
+    *   Is it redundant with Statement 2?
+    *   Statement 2: Sales > 150 -> Trans > 1600.
+    *   Not redundant.
+
+    *Wait, check Statement 1:* "All stores in the north region have customer satisfaction >= 3.9."
+    *   Is it redundant with Statement 4?
+    *   Statement 4: Sat > 4.5 -> Sales < 110.
+    *   Not redundant.
+
+    *Wait, check Statement 3:* "All stores in the west region have customer satisfaction <= 4.1."
+    *   Is it redundant with Statement 1?
+    *   Not redundant.
+
+    *Wait, check Statement 5:* "All stores with staff_count > 20 have monthly_sales_k > 100."
+    *   Is it redundant with Statement 7?
+    *   Not redundant.
+
+    *Wait, check Statement 10:* "All north region stores with staff_count <= 16 have avg_basket_size < 55."
+    *   Is it redundant with Statement 6?
+    *   Not redundant.
+
+    *Wait, check Statement 9:* "Most stores in the north region have avg_basket_size < 60."
+    *   Is it redundant with Statement 10?
+    *   Not redundant.
+
+    *Wait, check Statement 8:* "If a store has transactions > 2300, then avg_basket_size >= 55."
+    *   Is it redundant with Statement 2?
+    *   Not redundant.
+
+    *Wait, check Statement 4:* "If a store has customer satisfaction > 4.5, then monthly_sales_k < 110."
+    *   Is it redundant with Statement 1?
+    *   Not redundant.
+
+    *Wait, check Statement 3:* "All stores in the west region have customer satisfaction <= 4.1."
+    *   Is it redundant with Statement 1?
+    *   Not redundant.
+
+    *Wait, check Statement 7:* "All stores in the south region have monthly_sales_k > 100."
+    *   Is it redundant with Statement 5?
+    *   Not redundant.
+
+    *Wait, check Statement 6:* "If a store has avg_basket_size < 50, then the region is north."
+    *   Is it redundant with Statement 10?
+    *   Not redundant.
+
+    *Wait, check Statement 9:* "Most stores in the north region have avg_basket_size < 60."
+    *   Is it redundant with Statement 10?
+    *   Not redundant.
+
+    *Wait, check Statement 8:* "If a store has transactions > 2300, then avg_basket_size >= 55."
+    *   Is it redundant with Statement 2?
+    *   Not redundant.
+
+    *Wait, check Statement 4:* "If a store has customer satisfaction > 4.5, then monthly_sales_k < 110."
+    *   Is it redundant with Statement 1?
+    *   Not redundant.
+
+    *Wait, check Statement 3:* "All stores in the west region have customer satisfaction <= 4.1."
+    *   Is it redundant with Statement 1?
+    *   Not redundant.
+
+    *Wait, check Statement 7:* "All stores in the south region have monthly_sales_k > 100."
+    *   Is it redundant with Statement 5?
+    *   Not redundant.
+
+    *Wait, check Statement 6:* "If a store has avg_basket_size < 50, then the region is north."
+    *   Is it redundant with Statement 10?
+    *   Not redundant.
+
+    *Wait, check Statement 9:* "Most stores in the north region have avg_basket_size < 60."
+    *   Is it redundant with Statement 10?
+    *   Not redundant.
+
+    *Wait, check Statement 8:* "If a store has transactions > 2300, then avg_basket_size >= 55."
+    *   Is it redundant with Statement 2?
+    *   Not redundant.
+
+    *Wait, check Statement 4:* "If a store has customer satisfaction > 4.5, then monthly_sales_k < 110."
+    *   Is it redundant with Statement 1?
+    *   Not redundant.
+
+    *Wait, check Statement 3:* "All stores in the west region have customer satisfaction <= 4.1."
+    *   Is it redundant with Statement 1?
+    *   Not redundant.
+
+    *Wait, check Statement 7:* "All stores in the south region have monthly_sales_k > 100."
+    *   Is it redundant with Statement 5?
+    *   Not redundant.
+
+    *Wait, check Statement 6:* "If a store has avg_basket_size < 50, then the region is north."
+    *   Is it redundant with Statement 10?
+    *   Not redundant.
+
+    *Wait, check Statement 9:* "Most stores in the north region have avg_basket_size < 60."
+    *   Is it redundant with Statement 10?
+    *   Not redundant.
+
+    *Wait, check Statement 8:* "If a store has transactions > 2300, then avg_basket_size >= 55."
+    *   Is it redundant with Statement 2?
+    *   Not redundant.
+
+    *Wait, check Statement 4:* "If a store has customer satisfaction > 4.5, then monthly_sales_k < 110."
+    *   Is it redundant with Statement 1?
+    *   Not redundant.
+
+    *Wait, check Statement 3:* "All stores in the west region have customer satisfaction <= 4.1."
+    *   Is it redundant with Statement 1?
+    *   Not redundant.
+
+    *Wait, check Statement 7:* "All stores in the south region have monthly_sales_k > 100."
+    *   Is it redundant with Statement 5?
+    *   Not redundant.
+
+    *Wait, check Statement 6:* "If a store has avg_basket_size < 50, then the region is north."
+    *   Is it redundant with Statement 10?
+    *   Not

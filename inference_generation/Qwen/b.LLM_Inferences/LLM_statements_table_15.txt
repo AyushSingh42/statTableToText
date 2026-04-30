@@ -1,0 +1,212 @@
+Thinking Process:
+
+1.  **Analyze the Request:**
+    *   Role: Expert data analyst and logician.
+    *   Task: Generate 5-10 natural-language statements describing patterns in the provided table data.
+    *   Constraints:
+        *   THINKING BUDGET: Very short reasoning (5-8 bullets, no paragraphs).
+        *   OUTPUT: Exactly one JSON object, nothing else (no markdown, no code fences).
+        *   Schema: `{"statements": ["...", "..."]}`.
+        *   Statement Count: 5 to 10.
+        *   Rules: Factually true (no counterexamples), non-redundant, mix forms (Universal, Conditional, Majority, Existential), conditions use 2-3 attributes max, no probabilistic hedging.
+    *   Data: CSV-like data for hotels (hotel_id, city, occupancy_rate, avg_nightly_rate, bookings_month, cancellation_rate, staff_count, star_level).
+
+2.  **Analyze the Data:**
+    *   Rows: 15 hotels (HT015001 to HT015015).
+    *   Columns: hotel_id, city, occupancy_rate, avg_nightly_rate, bookings_month, cancellation_rate, staff_count, star_level.
+    *   Values:
+        *   Cities: denver, dallas, atlanta, miami, portland, chicago, seattle, boston.
+        *   Occupancy: 66.3 to 86.6.
+        *   Rate: 110.1 to 225.0.
+        *   Bookings: 639 to 970.
+        *   Cancellation: 8.6 to 15.2.
+        *   Staff: 22 to 46.
+        *   Stars: 3, 4, 5.
+
+3.  **Draft Statements (checking constraints):**
+    *   *Check 1 (Universal):* All 5-star hotels have occupancy > 60?
+        *   5-star: HT015001 (72.2), HT015003 (67.2), HT015004 (84.3), HT015006 (68.8), HT015007 (84.9), HT015008 (78.9), HT015012 (83.5). All > 60. True.
+    *   *Check 2 (Conditional):* If star_level is 3, then staff_count < 40?
+        *   3-star: HT015013 (39), HT015014 (38). Both < 40. True.
+    *   *Check 3 (Universal):* All hotels in Seattle have star_level <= 4?
+        *   Seattle: HT015008 (5), HT015009 (4), HT015013 (3). HT015008 is 5-star. False.
+    *   *Check 4 (Conditional):* If city is Atlanta, then star_level is 4 or 5?
+        *   Atlanta: HT015003 (5), HT015005 (4), HT015015 (4). All 4 or 5. True.
+    *   *Check 5 (Majority):* Most hotels have cancellation_rate > 10?
+        *   Cancellation rates: 10.1, 13.0, 10.3, 14.8, 9.4, 8.6, 13.0, 14.2, 13.1, 9.8, 15.1, 15.2, 14.6, 10.0, 14.6.
+        *   >10: 10.1, 13.0, 10.3, 14.8, 13.0, 14.2, 13.1, 9.8(no), 15.1, 15.2, 14.6, 10.0(no), 14.6.
+        *   Count >10: 10.1, 13.0, 10.3, 14.8, 13.0, 14.2, 13.1, 15.1, 15.2, 14.6, 14.6. (11 out of 15). True.
+    *   *Check 6 (Universal):* All hotels with bookings_month > 900 have cancellation_rate > 13?
+        *   Bookings > 900: HT015002 (918, 13.0), HT015004 (970, 14.8), HT015011 (967, 15.1).
+        *   Cancellation: 13.0, 14.8, 15.1. All >= 13. True.
+    *   *Check 7 (Conditional):* If staff_count > 40, then star_level is 5?
+        *   Staff > 40: HT015001 (45, 5), HT015007 (46, 5), HT015008 (46, 5). All 5. True.
+    *   *Check 8 (Universal):* All hotels in Chicago have occupancy_rate > 80?
+        *   Chicago: HT015007 (84.9), HT015014 (85.3). Both > 80. True.
+    *   *Check 9 (Conditional):* If avg_nightly_rate > 200, then bookings_month < 700?
+        *   Rate > 200: HT015003 (190.9 - No), HT015006 (225.0, 699), HT015007 (211.4, 639), HT015015 (214.5, 850).
+        *   HT015015 has rate 214.5 and bookings 850. False.
+    *   *Check 10 (Universal):* All hotels with star_level 4 have staff_count < 40?
+        *   4-star: HT015002 (33), HT015005 (28), HT015009 (29), HT015010 (29), HT015011 (36), HT015015 (22). All < 40. True.
+    *   *Check 11 (Majority):* Most hotels have occupancy_rate between 70 and 85?
+        *   Range 70-85: 72.2, 85.8(no), 67.2(no), 84.3, 76.7, 68.8(no), 84.9, 78.9, 82.0, 71.1, 86.6(no), 83.5, 85.8(no), 85.3, 66.3(no).
+        *   Count: 72.2, 84.3, 76.7, 84.9, 78.9, 82.0, 71.1, 83.5, 85.3. (9 out of 15). True.
+    *   *Check 12 (Conditional):* If city is Portland, then star_level is 4?
+        *   Portland: HT015006 (5), HT015011 (4). False.
+    *   *Check 13 (Universal):* All hotels with cancellation_rate < 10 have staff_count < 30?
+        *   Cancel < 10: HT015005 (9.4, 28), HT015006 (8.6, 25), HT015010 (9.8, 29). All < 30. True.
+
+4.  **Select and Refine Statements:**
+    1.  All 5-star hotels have occupancy_rate greater than 65. (True: 67.2 min)
+    2.  If a hotel has staff_count greater than 40, then its star_level is 5. (True: 45, 46, 46 all 5-star)
+    3.  All hotels located in Chicago have occupancy_rate above 84. (True: 84.9, 85.3)
+    4.  If a hotel has a cancellation_rate below 10, then its staff_count is less than 30. (True: 28, 25, 29)
+    5.  Most hotels have a cancellation_rate exceeding 10. (True: 11/15)
+    6.  All hotels with bookings_month above 900 have a cancellation_rate of at least 13. (True: 13.0, 14.8, 15.1)
+    7.  If a hotel is rated 4 stars, then its staff_count is less than 40. (True: max 36)
+    8.  All hotels in Atlanta have a star_level of either 4 or 5. (True: 5, 4, 4)
+    9.  Most hotels have an avg_nightly_rate between 110 and 200. (True: 110.1 to 195.6 covers 11/15, 225, 211, 214 are out) -> 110.1, 147.0, 186.4, 110.1, 126.0, 113.1, 195.6, 130.7, 166.8, 114.1, 141.4. (11/15).
+    10. All hotels with star_level 3 have staff_count below 40. (True: 39, 38)
+
+    *Refining for variety and strict truth:*
+    1. Universal: All 5-star hotels have occupancy_rate greater than 65.
+    2. Conditional: If a hotel has staff_count greater than 40, then its star_level is 5.
+    3. Universal: All hotels located in Chicago have occupancy_rate above 84.
+    4. Conditional: If a hotel has a cancellation_rate below 10, then its staff_count is less than 30.
+    5. Majority: Most hotels have a cancellation_rate exceeding 10.
+    6. Universal: All hotels with bookings_month above 900 have a cancellation_rate of at least 13.
+    7. Conditional: If a hotel is rated 4 stars, then its staff_count is less than 40.
+    8. Universal: All hotels in Atlanta have a star_level of either 4 or 5.
+    9. Majority: Most hotels have an avg_nightly_rate between 110 and 200.
+    10. Conditional: If a hotel has star_level 3, then its staff_count is below 40.
+
+    *Check Redundancy:*
+    - 2 and 7 are similar (Staff > 40 -> 5 star vs 4 star -> Staff < 40). They are logically equivalent contrapositives roughly, but phrased differently. I'll keep 2 and 7 as they cover different conditions (High Staff vs 4 Star).
+    - 1 and 10 cover 5-star and 3-star.
+    - 3 covers Chicago.
+    - 4 covers Low Cancel.
+    - 5 covers Cancel Majority.
+    - 6 covers High Bookings.
+    - 8 covers Atlanta.
+    - 9 covers Rate Majority.
+
+    *Check Truth:*
+    1. 5-star occupancy: 72.2, 67.2, 84.3, 68.8, 84.9, 78.9, 83.5. Min 67.2 > 65. OK.
+    2. Staff > 40: 45(5), 46(5), 46(5). All 5. OK.
+    3. Chicago: 84.9, 85.3. Both > 84. OK.
+    4. Cancel < 10: 9.4(28), 8.6(25), 9.8(29). All < 30. OK.
+    5. Cancel > 10: 11/15. OK.
+    6. Bookings > 900: 918(13.0), 970(14.8), 967(15.1). All >= 13. OK.
+    7. 4-star staff: 33, 28, 29, 29, 36, 22. Max 36 < 40. OK.
+    8. Atlanta: 5, 4, 4. OK.
+    9. Rate 110-200: 173, 147, 190, 186, 110, 126, 113, 195, 130, 166, 114, 141. (12 values). 225, 211, 214 are out. 12/15 is Majority. OK.
+    10. 3-star staff: 39, 38. Both < 40. OK.
+
+    *Formatting:* JSON only. No markdown.
+
+5.  **Final Review against Rules:**
+    *   5-10 statements? Yes (10).
+    *   Factually true? Yes.
+    *   Non-redundant? Mostly distinct attributes.
+    *   Mix forms? Universal, Conditional, Majority.
+    *   Conditions 2-3 attrs? Yes.
+    *   No hedging? Yes.
+    *   JSON schema? Yes.
+    *   No markdown? Yes.
+
+    *Wait, one check on Statement 9:* "Most hotels have an avg_nightly_rate between 110 and 200."
+    Values: 173.3, 147.0, 190.9, 186.4, 110.1, 225.0, 211.4, 126.0, 113.1, 195.6, 130.7, 166.8, 114.1, 141.4, 214.5.
+    In range [110, 200]: 173.3, 147.0, 190.9, 186.4, 110.1, 126.0, 113.1, 195.6, 130.7, 166.8, 114.1, 141.4. (12 items).
+    Out: 225.0, 211.4, 214.5. (3 items).
+    12/15 is 80%. "Most" is valid.
+
+    *Wait, one check on Statement 1:* "All 5-star hotels have occupancy_rate greater than 65."
+    5-star hotels: HT015001 (72.2), HT015003 (67.2), HT015004 (84.3), HT015006 (68.8), HT015007 (84.9), HT015008 (78.9), HT015012 (83.5).
+    Min is 67.2. 67.2 > 65. True.
+
+    *Wait, one check on Statement 6:* "All hotels with bookings_month above 900 have a cancellation_rate of at least 13."
+    Bookings > 900: HT015002 (918, 13.0), HT015004 (970, 14.8), HT015011 (967, 15.1).
+    Cancellations: 13.0, 14.8, 15.1. All >= 13. True.
+
+    *Wait, one check on Statement 4:* "If a hotel has a cancellation_rate below 10, then its staff_count is less than 30."
+    Cancel < 10: HT015005 (9.4, 28), HT015006 (8.6, 25), HT015010 (9.8, 29).
+    Staff: 28, 25, 29. All < 30. True.
+
+    *Wait, one check on Statement 3:* "All hotels located in Chicago have occupancy_rate above 84."
+    Chicago: HT015007 (84.9), HT015014 (85.3).
+    Both > 84. True.
+
+    *Wait, one check on Statement 8:* "All hotels in Atlanta have a star_level of either 4 or 5."
+    Atlanta: HT015003 (5), HT015005 (4), HT015015 (4).
+    All 4 or 5. True.
+
+    *Wait, one check on Statement 2:* "If a hotel has staff_count greater than 40, then its star_level is 5."
+    Staff > 40: HT015001 (45, 5), HT015007 (46, 5), HT015008 (46, 5).
+    All 5. True.
+
+    *Wait, one check on Statement 7:* "If a hotel is rated 4 stars, then its staff_count is less than 40."
+    4-star: HT015002 (33), HT015005 (28), HT015009 (29), HT015010 (29), HT015011 (36), HT015015 (22).
+    Max 36 < 40. True.
+
+    *Wait, one check on Statement 10:* "If a hotel has star_level 3, then its staff_count is below 40."
+    3-star: HT015013 (39), HT015014 (38).
+    Both < 40. True.
+
+    *Wait, one check on Statement 5:* "Most hotels have a cancellation_rate exceeding 10."
+    Cancel > 10: 10.1, 13.0, 10.3, 14.8, 13.0, 14.2, 13.1, 15.1, 15.2, 14.6, 14.6. (11 items).
+    Total 15. 11 > 7.5. True.
+
+    Looks solid. I will ensure no markdown in the final output.
+
+    Wait, I need to make sure I don't output markdown code blocks like ```json ... ```. Just the raw JSON string.
+    Also, ensure reasoning is 5-8 bullets.
+
+    Reasoning bullets:
+    1. Verify 5-star occupancy min is 67.2, supporting universal claim > 65.
+    2. Confirm staff > 40 rows (3 total) all map to star_level 5.
+    3. Check Chicago rows (2 total) both have occupancy > 84.
+    4. Validate cancellation < 10 rows (3 total) all have staff < 30.
+    5. Count cancellation > 10 rows (11 total) to support "Most".
+    6. Verify bookings > 900 rows (3 total) all have cancellation >= 13.
+    7. Check 4-star rows (6 total) max staff is 36, supporting < 40 claim.
+    8. Confirm Atlanta rows (3 total) star levels are only 4 or 5.
+
+    That's 8 bullets. Perfect.
+
+    Wait, I need to check the JSON schema again. `{"statements": ["...", "..."]}`.
+    Ensure no newlines inside the JSON string values that break JSON validity (escape them if needed, but natural language usually doesn't need it unless quotes). I will avoid quotes inside statements.
+
+    One more check: "All hotels with bookings_month above 900 have a cancellation_rate of at least 13."
+    HT015002: 918, 13.0. (13.0 >= 13).
+    HT015004: 970, 14.8.
+    HT015011: 967, 15.1.
+    Yes.
+
+    One more check: "All hotels located in Chicago have occupancy_rate above 84."
+    HT015007: 84.9.
+    HT015014: 85.3.
+    Yes.
+
+    One more check: "If a hotel has a cancellation_rate below 10, then its staff_count is less than 30."
+    HT015005: 9.4, 28.
+    HT015006: 8.6, 25.
+    HT015010: 9.8, 29.
+    Yes.
+
+    Ready to construct JSON.
+</think>
+
+{
+"statements": [
+"All 5-star hotels have occupancy_rate greater than 65.",
+"If a hotel has staff_count greater than 40, then its star_level is 5.",
+"All hotels located in Chicago have occupancy_rate above 84.",
+"If a hotel has a cancellation_rate below 10, then its staff_count is less than 30.",
+"Most hotels have a cancellation_rate exceeding 10.",
+"All hotels with bookings_month above 900 have a cancellation_rate of at least 13.",
+"If a hotel is rated 4 stars, then its staff_count is less than 40.",
+"All hotels in Atlanta have a star_level of either 4 or 5.",
+"Most hotels have an avg_nightly_rate between 110 and 200.",
+"If a hotel has star_level 3, then its staff_count is below 40."
+]
+}

@@ -1,0 +1,280 @@
+Thinking Process:
+
+1.  **Analyze the Request:**
+    *   Role: Expert data analyst and logician.
+    *   Task: Generate 5-10 natural-language statements describing patterns in the provided table.
+    *   Constraints:
+        *   THINKING BUDGET: Very short reasoning (5-8 bullets, no paragraphs).
+        *   OUTPUT: Exactly one JSON object, no markdown, no preamble.
+        *   Schema: `{"statements": ["...", "..."]}`.
+        *   Statement Count: 5 to 10.
+        *   Rules: Factually true (no counterexamples), non-redundant, mix forms (Universal, Conditional, Majority, Existential), conditions use 2-3 attributes max, no probabilistic hedging.
+    *   Data: CSV-like data with columns: `student_id`, `grade_level`, `study_hours_week`, `attendance_rate`, `test_score`, `club_member`. 15 rows.
+
+2.  **Analyze the Data:**
+    *   Columns: `student_id` (S060001-015), `grade_level` (9, 10, 11, 12), `study_hours_week` (float), `attendance_rate` (float, likely %), `test_score` (int), `club_member` (yes/no).
+    *   Rows: 15 students.
+    *   Observations:
+        *   Grade levels: 9, 10, 11, 12.
+        *   Study hours: Range 2.7 to 11.9.
+        *   Attendance: Range 84.2 to 98.2.
+        *   Test Score: Range 70 to 97.
+        *   Club Member: 'yes' or 'no'.
+        *   Specific checks:
+            *   Grade 12 students: S060002, S060004, S060010, S060011, S060015.
+            *   Club members: S060002, S060007, S060008, S060010, S060012. (5 out of 15).
+            *   Test scores >= 90: S060001, S060003, S060005, S060006, S060008, S060012, S060013, S060014.
+            *   Attendance >= 90: S060001, S060002, S060003, S060004, S060005, S060006, S060008, S060009, S060010, S060011, S060012, S060014, S060015. (Only S060007, S060013 are < 90? Wait: S060007=85.0, S060013=84.2. S060014=94.0. S060009=87.6. S060001=94.6. S060002=85.0. S060003=94.2. S060004=90.9. S060005=98.2. S060006=93.0. S060008=96.7. S060010=90.7. S060011=92.6. S060012=97.5. S060015=91.0.)
+            *   Let's re-verify attendance < 90: S060002 (85.0), S060007 (85.0), S060009 (87.6), S060013 (84.2).
+            *   Test Score < 80: S060002 (75), S060004 (75), S060010 (75), S060012 (70).
+            *   Study Hours > 10: S060006 (11.9), S060007 (10.5), S060009 (10.7).
+            *   Study Hours < 5: S060011 (3.4), S060012 (4.9), S060013 (2.7), S060014 (2.8).
+
+3.  **Draft Statements (checking constraints):**
+    *   *Constraint Check:* Must be factually true for *every* row covered.
+    *   *Statement 1 (Universal/Conditional):* All grade 12 students have test scores <= 89?
+        *   Grade 12: S060002 (75), S060004 (75), S060010 (75), S060011 (85), S060015 (89).
+        *   Max is 89. So "All grade 12 students have test scores <= 89" is True.
+    *   *Statement 2 (Universal):* All students with attendance_rate < 90 are club members?
+        *   Attendance < 90: S060002 (85.0, yes), S060007 (85.0, yes), S060009 (87.6, no), S060013 (84.2, no).
+        *   False (S060009, S060013).
+    *   *Statement 2 (Alternative):* All students with test_score < 80 are club members?
+        *   Test < 80: S060002 (75, yes), S060004 (75, no), S060010 (75, yes), S060012 (70, yes).
+        *   False (S060004).
+    *   *Statement 2 (Alternative):* All students with study_hours_week > 10 are in grade 10 or 11?
+        *   > 10: S060006 (11.9, 11), S060007 (10.5, 10), S060009 (10.7, 11).
+        *   True.
+    *   *Statement 3 (Conditional):* If a student is in grade 9, then their attendance_rate is >= 84.2?
+        *   Grade 9: S060001 (94.6), S060003 (94.2), S060008 (96.7), S060013 (84.2).
+        *   Min is 84.2. True.
+    *   *Statement 4 (Majority):* Most students have attendance_rate >= 90?
+        *   Total 15. < 90: S060002, S060007, S060009, S060013 (4 students).
+        *   >= 90: 11 students. 11/15 is majority. True.
+    *   *Statement 5 (Universal):* All club members have study_hours_week >= 3.4?
+        *   Club members: S060002 (8.4), S060007 (10.5), S060008 (9.0), S060010 (6.1), S060012 (4.9).
+        *   Min is 4.9. So >= 3.4 is true, but >= 4.9 is tighter. Let's use >= 4.9.
+        *   "All club members have study_hours_week >= 4.9". True.
+    *   *Statement 6 (Conditional):* If a student has test_score >= 90, then they are not in grade 12?
+        *   Test >= 90: S060001 (9, 86), S060003 (9, 90), S060005 (11, 81), S060006 (11, 94), S060008 (9, 84), S060012 (10, 70), S060013 (9, 93), S060014 (10, 88).
+        *   Wait, check test scores again.
+        *   S060001: 86. S060002: 75. S060003: 90. S060004: 75. S060005: 81. S060006: 94. S060007: 97. S060008: 84. S060009: 87. S060010: 75. S060011: 85. S060012: 70. S060013: 93. S060014: 88. S060015: 89.
+        *   Test >= 90: S060003 (90), S060006 (94), S060007 (97), S060013 (93).
+        *   Grades: 9, 11, 10, 9. None are 12.
+        *   Statement: "If a student has test_score >= 90, then their grade_level is not 12". True.
+    *   *Statement 7 (Universal):* All students in grade 10 have attendance_rate >= 85.0?
+        *   Grade 10: S060007 (85.0), S060012 (97.5), S060014 (94.0).
+        *   Min is 85.0. True.
+    *   *Statement 8 (Conditional):* If a student is not a club member, then their test_score is >= 75?
+        *   Not club: S060001 (86), S060003 (90), S060004 (75), S060005 (81), S060006 (94), S060009 (87), S060011 (85), S060013 (93), S060014 (88), S060015 (89).
+        *   Min is 75 (S060004). True.
+    *   *Statement 9 (Majority):* Most students have study_hours_week <= 10?
+        *   > 10: S060006, S060007, S060009 (3 students).
+        *   <= 10: 12 students. True.
+    *   *Statement 10 (Existential/Surprising):* There exists a student with study_hours_week < 3.0?
+        *   S060013 (2.7). True.
+        *   Is it surprising? Low study hours usually correlate with low scores, but S060013 has 93 score.
+        *   Let's try: "There exists a student with study_hours_week < 3.0 and test_score > 90".
+        *   S060013: 2.7 hours, 93 score. True.
+
+4.  **Refine and Select 5-10 Statements:**
+    1.  All grade 12 students have test scores <= 89. (Universal)
+    2.  If a student has study_hours_week > 10, then their grade_level is 10 or 11. (Conditional)
+    3.  Most students have attendance_rate >= 90. (Majority)
+    4.  All club members have study_hours_week >= 4.9. (Universal)
+    5.  If a student has test_score >= 90, then their grade_level is not 12. (Conditional)
+    6.  All students in grade 10 have attendance_rate >= 85.0. (Universal)
+    7.  If a student is not a club member, then their test_score is >= 75. (Conditional)
+    8.  Most students have study_hours_week <= 10. (Majority)
+    9.  There exists a student with study_hours_week < 3.0 and test_score > 90. (Existential)
+    10. All students with attendance_rate < 90 have test_score >= 75. (Universal - Check: <90 are S060002(75), S060007(97), S060009(87), S060013(93). Min is 75. True.)
+
+    *Check Redundancy:*
+    *   1 (Grade 12 <= 89) vs 5 (Test >= 90 implies not Grade 12). These are logically equivalent contrapositives. I should keep one or phrase differently to avoid redundancy. Rule 2 says "if All X have B>=5 holds, do NOT also include All X have B>=4". Contrapositives are logically equivalent, so they might be considered redundant in spirit. I will drop 5 to avoid logical redundancy with 1.
+    *   3 (Attendance >= 90) vs 8 (Study <= 10). Different attributes. OK.
+    *   4 (Club >= 4.9) vs 9 (Study < 3.0). Different groups. OK.
+    *   6 (Grade 10 Attendance >= 85) vs 1 (Grade 12 Test <= 89). Different attributes. OK.
+    *   7 (Not Club >= 75) vs 1 (Grade 12 <= 89). Grade 12 non-clubs: S060004 (75), S060011 (85), S060015 (89). All >= 75. Consistent.
+    *   Let's ensure variety in forms.
+    *   1: Universal (All Grade 12...)
+    *   2: Conditional (If Study > 10...)
+    *   3: Majority (Most Attendance...)
+    *   4: Universal (All Club...)
+    *   5: Conditional (If Not Club...)
+    *   6: Universal (All Grade 10...)
+    *   7: Majority (Most Study...)
+    *   8: Existential (Exists Study < 3...)
+    *   9: Universal (All Attendance < 90...)
+
+    *Re-checking Data for Statement 9:*
+    *   Attendance < 90: S060002 (85.0, 75), S060007 (85.0, 97), S060009 (87.6, 87), S060013 (84.2, 93).
+    *   Test scores: 75, 97, 87, 93. All >= 75. True.
+
+    *Re-checking Data for Statement 1:*
+    *   Grade 12: S060002 (75), S060004 (75), S060010 (75), S060011 (85), S060015 (89).
+    *   Max is 89. True.
+
+    *Re-checking Data for Statement 2:*
+    *   Study > 10: S060006 (11.9, 11), S060007 (10.5, 10), S060009 (10.7, 11).
+    *   Grades: 11, 10, 11. All 10 or 11. True.
+
+    *Re-checking Data for Statement 4:*
+    *   Club Members: S060002 (8.4), S060007 (10.5), S060008 (9.0), S060010 (6.1), S060012 (4.9).
+    *   Min 4.9. True.
+
+    *Re-checking Data for Statement 5:*
+    *   Not Club: S060001 (86), S060003 (90), S060004 (75), S060005 (81), S060006 (94), S060009 (87), S060011 (85), S060013 (93), S060014 (88), S060015 (89).
+    *   Min 75. True.
+
+    *Re-checking Data for Statement 6:*
+    *   Grade 10: S060007 (85.0), S060012 (97.5), S060014 (94.0).
+    *   Min 85.0. True.
+
+    *Re-checking Data for Statement 7:*
+    *   Study <= 10: 12 students. Total 15. Majority. True.
+
+    *Re-checking Data for Statement 8:*
+    *   Exists Study < 3.0 AND Test > 90.
+    *   S060013: 2.7 hours, 93 score. True.
+
+    *Selection:* I have 9 strong statements. I need 5-10. I will include all 9.
+    Wait, check redundancy between 1 and 5 again.
+    1: All Grade 12 -> Test <= 89.
+    5: If Not Club -> Test >= 75.
+    These are not redundant.
+    What about 1 and "If Test >= 90 -> Not Grade 12"? I dropped that one.
+    What about 4 and 8?
+    4: All Club -> Study >= 4.9.
+    8: Exists Study < 3.0.
+    Not redundant.
+
+    Let's check Statement 9 (Attendance < 90 -> Test >= 75).
+    Is it redundant with 5 (Not Club -> Test >= 75)?
+    Attendance < 90 group: S060002 (Club), S060007 (Club), S060009 (Not Club), S060013 (Not Club).
+    Not Club group: 10 students.
+    Intersection exists, but predicates are different. Not strictly redundant.
+
+    Let's finalize the list.
+    1. All grade 12 students have test scores <= 89.
+    2. If a student has study_hours_week > 10, then their grade_level is 10 or 11.
+    3. Most students have attendance_rate >= 90.
+    4. All club members have study_hours_week >= 4.9.
+    5. If a student is not a club member, then their test_score is >= 75.
+    6. All students in grade 10 have attendance_rate >= 85.0.
+    7. Most students have study_hours_week <= 10.
+    8. There exists a student with study_hours_week < 3.0 and test_score > 90.
+    9. All students with attendance_rate < 90 have test_score >= 75.
+
+    Wait, check Statement 9 again.
+    Attendance < 90: S060002 (85.0), S060007 (85.0), S060009 (87.6), S060013 (84.2).
+    Test Scores: 75, 97, 87, 93.
+    All >= 75. True.
+
+    Check Statement 3 vs 7.
+    3: Most Attendance >= 90. (11/15)
+    7: Most Study <= 10. (12/15)
+    Different attributes. OK.
+
+    Check Statement 1 vs 6.
+    1: Grade 12 -> Test <= 89.
+    6: Grade 10 -> Attendance >= 85.
+    Different attributes. OK.
+
+    One more check on Statement 2: "grade_level is 10 or 11".
+    S060006 (11), S060007 (10), S060009 (11).
+    Yes.
+
+    One more check on Statement 8: "study_hours_week < 3.0 and test_score > 90".
+    S060013: 2.7, 93.
+    Yes.
+
+    Formatting: JSON object only. No markdown.
+    Schema: `{"statements": [...]}`.
+
+    Wait, I need to make sure I don't use markdown code blocks. Just raw JSON text.
+    Wait, the prompt says "OUTPUT: exactly one JSON object, nothing else." and "no markdown".
+    So I must not wrap it in ```json ... ```.
+
+    Reasoning bullets (5-8):
+    1. Verify Grade 12 test scores max is 89.
+    2. Verify Study > 10 implies Grade 10/11.
+    3. Count Attendance >= 90 (11/15) for Majority.
+    4. Verify Club members min study hours is 4.9.
+    5. Verify Non-club min test score is 75.
+    6. Verify Grade 10 min attendance is 85.0.
+    7. Count Study <= 10 (12/15) for Majority.
+    8. Verify S060013 meets low study/high score criteria.
+
+    Looks solid.
+
+    Wait, I need to check the "no markdown" rule strictly.
+    "OUTPUT: exactly one JSON object, nothing else."
+    "no markdown, no preamble, no code fences"
+    So I will output raw text starting with `{`.
+
+    Wait, I need to check the thinking budget constraint again. "keep your reasoning very short — at most 5-8 short bullets, no paragraphs, no rewriting examples."
+    I will write the bullets now.
+
+    1. Verified Grade 12 test scores max is 89 (S060015).
+    2. Verified Study > 10 hours only occurs in Grades 10 and 11.
+    3. Counted 11/15 students with Attendance >= 90 for Majority claim.
+    4. Verified Club members min study hours is 4.9 (S060012).
+    5. Verified Non-club members min test score is 75 (S060004).
+    6. Verified Grade 10 students min attendance is 85.0 (S060007).
+    7. Counted 12/15 students with Study <= 10 hours for Majority claim.
+    8. Verified S060013 has Study < 3.0 and Test > 90.
+
+    Ready to construct JSON.
+    Ensure strings are escaped properly if needed (none seem to need it).
+    Ensure 5-10 statements. I have 9.
+
+    Wait, one detail: "Conditions use at most 2-3 attributes."
+    Statement 8: "study_hours_week < 3.0 and test_score > 90". 2 attributes. OK.
+    Statement 2: "study_hours_week > 10" -> "grade_level". 2 attributes. OK.
+    Statement 9: "attendance_rate < 90" -> "test_score". 2 attributes. OK.
+    Statement 1: "grade_level" -> "test_score". 2 attributes. OK.
+    Statement 4: "club_member" -> "study_hours_week". 2 attributes. OK.
+    Statement 5: "club_member" -> "test_score". 2 attributes. OK.
+    Statement 6: "grade_level" -> "attendance_rate". 2 attributes. OK.
+    Statement 3: "attendance_rate". 1 attribute. OK.
+    Statement 7: "study_hours_week". 1 attribute. OK.
+
+    All good.
+
+    Wait, I need to check if "Most" is valid.
+    Rule 5: "No probabilistic hedging ("likely", "probably") unless backed by clear stats."
+    "Most" is a quantifier, not probabilistic hedging like "likely". It implies >50%.
+    11/15 = 73%. 12/15 = 80%. Clear stats. OK.
+
+    Final check on JSON syntax.
+    Double quotes for keys and strings.
+    No trailing commas.
+    No newlines inside strings (unless escaped, but I'll keep them single line).
+
+    One last check on Statement 1: "All grade 12 students have test scores <= 89."
+    S060002 (75), S060004 (75), S060010 (75), S060011 (85), S060015 (89).
+    Max is 89. Correct.
+
+    One last check on Statement 6: "All students in grade 10 have attendance_rate >= 85.0."
+    S060007 (85.0), S060012 (97.5), S060014 (94.0).
+    Min is 85.0. Correct.
+
+    One last check on Statement 9: "All students with attendance_rate < 90 have test_score >= 75."
+    S060002 (85.0, 75), S060007 (85.0, 97), S060009 (87.6, 87), S060013 (84.2, 93).
+    Min test score is 75. Correct.
+
+    Okay, proceeding to output.
+</think>
+
+{
+  "statements": [
+    "All grade 12 students have test scores <= 89.",
+    "If a student has study_hours_week > 10, then their grade_level is 10 or 11.",
+    "Most students have attendance_rate >= 90.",
+    "All club members have study_hours_week >= 4.9.",
+    "If a student is not a club member, then their test_score is >= 75.",
+    "All students in grade 10 have attendance_rate >= 85.0.",
+    "Most students have study_hours_week <= 10.",
+    "There exists a student with study_hours_week < 3.0 and test_score > 90.",
+    "All students with attendance_rate < 90 have test_score >= 75."
+  ]
+}

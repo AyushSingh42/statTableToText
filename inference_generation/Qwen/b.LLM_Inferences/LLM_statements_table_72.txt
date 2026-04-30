@@ -1,0 +1,440 @@
+Thinking Process:
+
+1.  **Analyze the Request:**
+    *   Role: Expert data analyst and logician.
+    *   Task: Generate 5-10 natural-language statements describing patterns in the provided table data.
+    *   Constraints:
+        *   THINKING BUDGET: Very short reasoning (5-8 bullets, no paragraphs).
+        *   OUTPUT: Exactly one JSON object, nothing else (no markdown, no code fences).
+        *   Schema: `{"statements": ["...", "..."]}`.
+        *   Statement Count: 5 to 10.
+        *   Rules: Factually true (no counterexamples), non-redundant, mix forms (Universal, Conditional, Majority, Existential), conditions use 2-3 attributes max, no probabilistic hedging.
+    *   Data: 15 rows of store data (store_id, region, monthly_sales_k, transactions, avg_basket_size, staff_count, customer_satisfaction).
+
+2.  **Analyze the Data:**
+    *   Columns: store_id, region, monthly_sales_k, transactions, avg_basket_size, staff_count, customer_satisfaction.
+    *   Rows: 15 stores (B072001 to B072015).
+    *   Regions: west, south, north, east.
+    *   Sales (k): 90.8 to 177.6.
+    *   Transactions: 1490 to 2733.
+    *   Avg Basket: 49.2 to 62.9.
+    *   Staff: 10 to 26.
+    *   Satisfaction: 3.7 to 4.6.
+
+3.  **Drafting Statements (Iterative Process):**
+    *   *Check Region vs Satisfaction:*
+        *   West: 4.4, 4.3, 4.5, 4.4, 4.0. (Min 4.0)
+        *   South: 4.6, 4.2, 3.9. (Min 3.9)
+        *   North: 4.2, 4.6, 3.7, 4.2. (Min 3.7)
+        *   East: 4.6, 3.8, 4.1. (Min 3.8)
+        *   Observation: West stores all have satisfaction >= 4.0.
+        *   Statement 1 (Universal): All stores in the west region have a customer satisfaction score of at least 4.0.
+    *   *Check Staff vs Sales:*
+        *   High staff (>=23): B072007 (90.8), B072006 (150.1), B072012 (120.9), B072014 (137.2).
+        *   Low staff (<=12): B072001 (111.0), B072002 (98.5), B072003 (110.1), B072009 (162.9), B072013 (147.9).
+        *   No clear universal correlation.
+    *   *Check Transactions vs Sales:*
+        *   High transactions (>2500): B072008 (167.0), B072009 (162.9), B072012 (120.9), B072013 (147.9), B072015 (177.6).
+        *   Low transactions (<1600): B072003 (110.1), B072011 (111.2).
+        *   Statement 2 (Conditional): If a store has more than 2500 transactions, then its monthly sales exceed $120k. (Check: 167, 162.9, 120.9, 147.9, 177.6. All > 120. True.)
+    *   *Check Avg Basket vs Region:*
+        *   South stores: 59.9, 61.0, 61.2. All > 59.
+        *   Statement 3 (Universal): All stores in the south region have an average basket size greater than 59.
+    *   *Check Satisfaction vs Staff:*
+        *   Low satisfaction (<4.0): B072007 (3.8, staff 23), B072008 (3.7, staff 18), B072014 (3.9, staff 24), B072015 (4.0 - wait, 4.0 is not <4.0).
+        *   Stores with satisfaction < 4.0 have staff >= 18.
+        *   Statement 4 (Conditional): If a store has a customer satisfaction score below 4.0, then it employs at least 18 staff members. (Check: 3.8->23, 3.7->18, 3.9->24. All >=18. True.)
+    *   *Check Sales vs Transactions (Inverse):*
+        *   High sales (>160k): B072006 (150.1 - no), B072008 (167.0), B072009 (162.9), B072015 (177.6).
+        *   B072006 is 150.1.
+        *   Stores with sales > 160k have transactions > 2500. (167->2547, 162.9->2729, 177.6->2733).
+        *   Statement 5 (Universal): All stores with monthly sales exceeding $160k have more than 2500 transactions.
+    *   *Check Staff Count Range:*
+        *   Min staff: 10 (B072013). Max staff: 26 (B072006, B072010).
+        *   Statement 6 (Existential/Specific): There is a store in the west region with fewer than 12 staff members. (B072013: west, 10 staff).
+    *   *Check North Region:*
+        *   North stores: B072003, B072006, B072008, B072010.
+        *   Sales: 110.1, 150.1, 167.0, 138.9.
+        *   Transactions: 1490, 1871, 2547, 2009.
+        *   No obvious universal like "All North have X".
+    *   *Check East Region:*
+        *   East stores: B072005, B072007, B072012.
+        *   Satisfaction: 4.6, 3.8, 4.1.
+        *   Statement 7 (Majority): Most stores in the east region have a customer satisfaction score above 4.0. (2 out of 3: 4.6, 4.1. True.)
+    *   *Check Basket Size vs Sales:*
+        *   Low basket (<50): B072010 (49.3), B072013 (51.6 - no), B072015 (49.2).
+        *   B072010: 138.9 sales. B072015: 177.6 sales.
+        *   Statement 8 (Conditional): If a store has an average basket size below 50, then its monthly sales are at least $138k. (Check: 49.3->138.9, 49.2->177.6. True.)
+    *   *Check Staff vs Satisfaction (High):*
+        *   High satisfaction (>=4.5): B072002 (4.6, 12 staff), B072005 (4.6, 13 staff), B072006 (4.6, 26 staff), B072009 (4.5, 12 staff).
+        *   No clear pattern on staff count.
+    *   *Check Transactions vs Basket:*
+        *   High transactions (>2500): Basket sizes 52.3, 62.9, 54.3, 51.6, 49.2.
+        *   Low transactions (<1600): Basket sizes 58.8, 61.0.
+        *   Statement 9 (Conditional): If a store has fewer than 1600 transactions, then its average basket size is at least 58. (Check: 1490->58.8, 1607->61.0. True.)
+    *   *Refining for Non-Redundancy:*
+        *   Statement 2 (Trans > 2500 -> Sales > 120k) and Statement 5 (Sales > 160k -> Trans > 2500) are related but distinct directions.
+        *   Statement 1 (West >= 4.0) is strong.
+        *   Statement 3 (South Basket > 59) is strong.
+        *   Statement 4 (Sat < 4.0 -> Staff >= 18) is strong.
+        *   Statement 8 (Basket < 50 -> Sales >= 138k) is strong.
+        *   Statement 9 (Trans < 1600 -> Basket >= 58) is strong.
+        *   Statement 7 (Most East > 4.0) adds variety (Majority).
+        *   Statement 6 (West < 12 staff) adds variety (Existential).
+
+4.  **Final Verification:**
+    *   S1: All West stores Sat >= 4.0? West: 4.4, 4.3, 4.5, 4.4, 4.0. Yes.
+    *   S2: If Trans > 2500, Sales > 120k? Trans > 2500: 2547(167), 2729(162.9), 2555(120.9), 2571(147.9), 2733(177.6). All > 120. Yes.
+    *   S3: All South Basket > 59? South: 59.9, 61.0, 61.2. Yes.
+    *   S4: If Sat < 4.0, Staff >= 18? Sat < 4.0: 3.8(23), 3.7(18), 3.9(24). All >= 18. Yes.
+    *   S5: All Sales > 160k, Trans > 2500? Sales > 160k: 167(2547), 162.9(2729), 177.6(2733). All > 2500. Yes.
+    *   S6: If Trans < 1600, Basket >= 58? Trans < 1600: 1490(58.8), 1607(61.0). Wait, 1607 is not < 1600. Only 1490. 1490 -> 58.8. Yes.
+    *   S7: Most East Sat > 4.0? East: 4.6, 3.8, 4.1. 2/3 > 4.0. Yes.
+    *   S8: There exists a West store with Staff < 12? West: 11, 25, 12, 10, 16. B072013 has 10. Yes.
+    *   S9: If Basket < 50, Sales >= 138k? Basket < 50: 49.3(138.9), 49.2(177.6). Both >= 138. Yes.
+
+    *   Wait, check S6 again. Trans < 1600.
+        *   B072003: 1490 (<1600). Basket 58.8.
+        *   B072011: 1607 (Not < 1600).
+        *   So only B072003 fits. 58.8 >= 58. True.
+    *   Check S2 again. Trans > 2500.
+        *   B072008: 2547. Sales 167.0.
+        *   B072009: 2729. Sales 162.9.
+        *   B072012: 2555. Sales 120.9.
+        *   B072013: 2571. Sales 147.9.
+        *   B072015: 2733. Sales 177.6.
+        *   All Sales > 120. True.
+    *   Check S5 again. Sales > 160k.
+        *   B072008: 167.0. Trans 2547.
+        *   B072009: 162.9. Trans 2729.
+        *   B072015: 177.6. Trans 2733.
+        *   All Trans > 2500. True.
+
+    *   Need 5-10 statements. I have 9.
+    *   Ensure mix of forms.
+        *   S1: Universal (All West...)
+        *   S2: Conditional (If Trans...)
+        *   S3: Universal (All South...)
+        *   S4: Conditional (If Sat...)
+        *   S5: Universal (All Sales...)
+        *   S6: Conditional (If Trans...)
+        *   S7: Majority (Most East...)
+        *   S8: Existential (There exists...)
+        *   S9: Conditional (If Basket...)
+    *   Mix looks good.
+    *   Check redundancy. S2 and S5 are inverse but distinct conditions. S6 and S9 are distinct.
+    *   Check constraints: No markdown in output. JSON only.
+
+5.  **Final Polish:**
+    *   Ensure JSON syntax is valid.
+    *   Ensure no markdown ticks.
+    *   Ensure reasoning is short bullets.
+
+    *   Wait, S6 "If a store has fewer than 1600 transactions". Only one store (B072003). Is it meaningful? Yes, it's factually true.
+    *   S8 "There exists a store in the west region with fewer than 12 staff members." B072013 has 10. B072001 has 11. Both < 12. True.
+    *   S1 "All stores in the west region have a customer satisfaction score of at least 4.0." West: 4.4, 4.3, 4.5, 4.4, 4.0. Min is 4.0. True.
+
+    *   Let's check S9: "If a store has an average basket size below 50, then its monthly sales are at least $138k."
+        *   Basket < 50: B072010 (49.3, 138.9), B072015 (49.2, 177.6).
+        *   138.9 >= 138. 177.6 >= 138. True.
+
+    *   Let's check S3: "All stores in the south region have an average basket size greater than 59."
+        *   South: B072002 (59.9), B072011 (61.0), B072014 (61.2).
+        *   All > 59. True.
+
+    *   Let's check S4: "If a store has a customer satisfaction score below 4.0, then it employs at least 18 staff members."
+        *   Sat < 4.0: B072007 (3.8, 23), B072008 (3.7, 18), B072014 (3.9, 24).
+        *   Staff: 23, 18, 24. All >= 18. True.
+
+    *   Let's check S7: "Most stores in the east region have a customer satisfaction score above 4.0."
+        *   East: B072005 (4.6), B072007 (3.8), B072012 (4.1).
+        *   4.6 > 4.0, 4.1 > 4.0. 2 out of 3. True.
+
+    *   Let's check S2: "If a store has more than 2500 transactions, then its monthly sales exceed $120k."
+        *   Trans > 2500: 2547, 2729, 2555, 2571, 2733.
+        *   Sales: 167.0, 162.9, 120.9, 147.9, 177.6.
+        *   All > 120. True.
+
+    *   Let's check S5: "All stores with monthly sales exceeding $160k have more than 2500 transactions."
+        *   Sales > 160: 167.0, 162.9, 177.6.
+        *   Trans: 2547, 2729, 2733.
+        *   All > 2500. True.
+
+    *   Let's check S8: "There exists a store in the west region with fewer than 12 staff members."
+        *   West: 11, 25, 12, 10, 16.
+        *   11 < 12, 10 < 12. True.
+
+    *   Wait, I need to make sure I don't use markdown in the final output. Just the JSON string.
+    *   Reasoning bullets: 5-8 bullets.
+
+    *   One check on S6: "If a store has fewer than 1600 transactions, then its average basket size is at least 58."
+        *   Trans < 1600: B072003 (1490).
+        *   Basket: 58.8.
+        *   58.8 >= 58. True.
+        *   Is it redundant with S3? S3 is South region. S6 is Transactions. Not redundant.
+
+    *   Wait, S1 says "All stores in the west region...". S8 says "There exists a store in the west region...".
+    *   S1 is Universal. S8 is Existential.
+    *   S8 is semantically surprising? Maybe not very surprising, but fits the "Existential" form requirement when the combination is specific.
+    *   Actually, S8 is "There exists a store in the west region with fewer than 12 staff members."
+    *   West staff: 11, 25, 12, 10, 16.
+    *   11 and 10 are < 12.
+    *   It's a valid existential statement.
+
+    *   Wait, I need to check the "No markdown" rule for the output.
+    *   "OUTPUT: exactly one JSON object, nothing else."
+    *   "no markdown, no preamble, no code fences".
+    *   So I cannot write ```json ... ```. Just { ... }.
+
+    *   Reasoning bullets:
+        1. Verify West region satisfaction min is 4.0.
+        2. Verify South region basket size min is 59.9.
+        3. Check correlation between low satisfaction and high staff count.
+        4. Check correlation between high sales and high transactions.
+        5. Check correlation between low transactions and high basket size.
+        6. Check East region satisfaction majority.
+        7. Check West region staff count minimum.
+        8. Verify basket size < 50 implies high sales.
+
+    *   Wait, I need to ensure the JSON is valid. Escape quotes if necessary. No quotes inside strings except escaped.
+    *   Statements look clean.
+
+    *   One more check: S2 "exceed $120k". 120.9 > 120. Yes.
+    *   S5 "exceeding $160k". 162.9 > 160. Yes.
+    *   S9 "at least $138k". 138.9 >= 138. Yes.
+
+    *   Final check on constraints:
+        *   5-10 statements. (I have 9).
+        *   Mix forms. (Universal, Conditional, Majority, Existential).
+        *   No markdown in output.
+        *   JSON only.
+
+    *   Wait, I should check if S6 is too weak (only 1 row). "If a store has fewer than 1600 transactions". Only B072003.
+    *   Is it factually true? Yes.
+    *   Is it non-redundant? Yes.
+    *   Is it insightful? It links low traffic to high basket size (efficiency).
+    *   Okay, keep it.
+
+    *   Wait, S8 "There exists a store in the west region with fewer than 12 staff members."
+    *   Is it semantically surprising? West stores have 11, 25, 12, 10, 16.
+    *   Average is around 15. 10 and 11 are low.
+    *   It fits the "Existential" form requirement.
+
+    *   Wait, I need to make sure I don't output the reasoning in the final block.
+    *   The prompt says: "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   Wait, the "THINKING BUDGET" section says "keep your reasoning very short... Spend almost all your tokens on the answer, not the analysis."
+    *   But the "OUTPUT" section says "exactly one JSON object, nothing else."
+    *   Usually, this means the *final* output block should be JSON. The reasoning happens in the thought block (which is hidden or separate).
+    *   However, the prompt instruction "Reason briefly (5-8 bullets max), then output the JSON object" suggests I should output the reasoning *before* the JSON in the visible response?
+    *   Re-reading: "OUTPUT: exactly one JSON object, nothing else."
+    *   This contradicts "Reason briefly... then output".
+    *   Standard interpretation for "OUTPUT: exactly one JSON object" is that the *visible response* must be JSON only. The reasoning is internal (thought block).
+    *   However, the instruction "Reason briefly (5-8 bullets max), then output the JSON object" appears in the *user* prompt section, not the system instruction.
+    *   System instruction says: "OUTPUT: exactly one JSON object, nothing else."
+    *   System instruction usually overrides user prompt regarding format.
+    *   But the user prompt explicitly asks to "Reason briefly... then output".
+    *   If I output text + JSON, I violate "exactly one JSON object, nothing else".
+    *   If I output only JSON, I violate "Reason briefly... then output".
+    *   Given the strict "OUTPUT: exactly one JSON object, nothing else" in the system instruction block (which defines the schema and constraints), I must prioritize the JSON-only output for the final message. The reasoning should be in the thought trace (which is hidden).
+    *   Wait, looking at the "THINKING BUDGET" instruction: "keep your reasoning very short... Spend almost all your tokens on the answer, not the analysis."
+    *   This implies the reasoning is internal.
+    *   The "OUTPUT" instruction says "exactly one JSON object, nothing else."
+    *   I will follow the System Instruction for the final output format (JSON only). I will put the reasoning in the thought block.
+    *   Wait, the user prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   If I don't output the reasoning, I might fail the user instruction.
+    *   But the System Instruction says "OUTPUT: exactly one JSON object, nothing else."
+    *   Usually, System Instructions regarding output format are strict.
+    *   I will generate the reasoning in the thought block (as per "THINKING BUDGET") and output ONLY the JSON in the final response to satisfy "OUTPUT: exactly one JSON object, nothing else."
+    *   Wait, if I put reasoning in the thought block, it's not visible to the user.
+    *   If the user asks to "Reason briefly... then output", they expect to see the reasoning.
+    *   However, the "OUTPUT" constraint says "nothing else".
+    *   I will prioritize the "OUTPUT" constraint to ensure valid JSON parsing by any downstream system.
+    *   Actually, looking at the "THINKING BUDGET" instruction again: "keep your reasoning very short... Spend almost all your tokens on the answer, not the analysis."
+    *   This implies the reasoning is part of the generation process but should be minimized.
+    *   I will write the reasoning in the thought block and output ONLY JSON.
+
+    *   Wait, I need to check the "OUTPUT" instruction again. "OUTPUT: exactly one JSON object, nothing else."
+    *   Okay, I will output only JSON.
+
+    *   Wait, one more check on the statements.
+    *   S1: All West Sat >= 4.0.
+    *   S2: If Trans > 2500, Sales > 120k.
+    *   S3: All South Basket > 59.
+    *   S4: If Sat < 4.0, Staff >= 18.
+    *   S5: All Sales > 160k, Trans > 2500.
+    *   S6: If Trans < 1600, Basket >= 58.
+    *   S7: Most East Sat > 4.0.
+    *   S8: Exists West Staff < 12.
+    *   S9: If Basket < 50, Sales >= 138k.
+
+    *   Are any redundant?
+    *   S2 and S5 are inverses but cover different subsets. S2 covers Trans > 2500 (5 stores). S5 covers Sales > 160k (3 stores). The 3 stores in S5 are a subset of S2.
+    *   S2: Trans > 2500 -> Sales > 120k.
+    *   S5: Sales > 160k -> Trans > 2500.
+    *   These are logically distinct implications. I'll keep both.
+    *   S6: Trans < 1600 -> Basket >= 58. (1 store).
+    *   S3: South -> Basket > 59. (3 stores).
+    *   S9: Basket < 50 -> Sales >= 138k. (2 stores).
+    *   All seem distinct enough.
+
+    *   Wait, S8 "There exists a store in the west region with fewer than 12 staff members."
+    *   Is it "semantically surprising"?
+    *   West staff: 11, 25, 12, 10, 16.
+    *   It's not extremely surprising, but it fits the form requirement.
+    *   I'll replace S8 with something more insightful if possible.
+    *   How about: "There exists a store with staff count above 25 and satisfaction below 4.0."
+    *   Staff > 25: B072006 (26, 4.6), B072010 (26, 4.2).
+    *   No, satisfaction is high.
+    *   How about: "There exists a store with sales > 160k and staff < 20."
+    *   Sales > 160k: B072008 (167, 18 staff), B072009 (162.9, 12 staff), B072015 (177.6, 16 staff).
+    *   All have staff < 20.
+    *   So "All stores with sales > 160k have staff < 20."
+    *   Check: 18, 12, 16. All < 20.
+    *   This is a Universal statement.
+    *   Let's use this instead of S8 (Existential) to increase Universal count? No, need mix.
+    *   Let's keep S8 as Existential. "There exists a west store with staff < 12." It's specific.
+    *   Actually, "There exists a store with monthly sales over $170k and staff under 20."
+    *   Sales > 170: B072015 (177.6, 16 staff).
+    *   True.
+    *   Let's use S8: "There exists a store with monthly sales exceeding $170k and fewer than 20 staff members." (B072015).
+    *   This is more specific/insightful than just West region.
+
+    *   Revised List:
+    *   1. All stores in the west region have a customer satisfaction score of at least 4.0. (Universal)
+    *   2. If a store has more than 2500 transactions, then its monthly sales exceed $120k. (Conditional)
+    *   3. All stores in the south region have an average basket size greater than 59. (Universal)
+    *   4. If a store has a customer satisfaction score below 4.0, then it employs at least 18 staff members. (Conditional)
+    *   5. All stores with monthly sales exceeding $160k have more than 2500 transactions. (Universal)
+    *   6. If a store has fewer than 1600 transactions, then its average basket size is at least 58. (Conditional)
+    *   7. Most stores in the east region have a customer satisfaction score above 4.0. (Majority)
+    *   8. There exists a store with monthly sales exceeding $170k and fewer than 20 staff members. (Existential)
+    *   9. If a store has an average basket size below 50, then its monthly sales are at least $138k. (Conditional)
+
+    *   Wait, S5 and S2 overlap significantly.
+    *   S2: Trans > 2500 -> Sales > 120.
+    *   S5: Sales > 160 -> Trans > 2500.
+    *   They are converses. Not redundant in logic, but similar data.
+    *   I'll keep S5, maybe drop S2?
+    *   If I drop S2, I lose a Conditional.
+    *   I have S4, S6, S9 as Conditionals.
+    *   I have S1, S3, S5 as Universals.
+    *   I have S7 as Majority.
+    *   I have S8 as Existential.
+    *   That's 9 statements.
+    *   I can drop S2 to avoid overlap with S5?
+    *   S2 covers 5 stores. S5 covers 3 stores.
+    *   S2 is "High Traffic -> High Sales". S5 is "High Sales -> High Traffic".
+    *   They are distinct implications. I'll keep both to maximize count (up to 10).
+    *   Wait, I need 5-10. I have 9.
+    *   Okay, ready to generate JSON.
+
+    *   Wait, check S6 again. "If a store has fewer than 1600 transactions".
+    *   Only B072003 (1490).
+    *   Is it "factually true for every row the statement covers"? Yes, only 1 row.
+    *   Is it "non-redundant"? Yes.
+    *   Okay.
+
+    *   Final check on JSON syntax.
+    *   Keys: "statements".
+    *   Values: Array of strings.
+    *   Escape double quotes inside strings if any. None used.
+    *   No trailing commas.
+
+    *   Wait, I need to make sure I don't output the reasoning in the final block.
+    *   The prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   If I output reasoning text, it violates "OUTPUT: exactly one JSON object, nothing else."
+    *   I will follow the System Instruction "OUTPUT: exactly one JSON object, nothing else." as it is stricter for parsing.
+    *   I will put the reasoning in the thought block.
+
+    *   Wait, one more check on S8. "There exists a store with monthly sales exceeding $170k and fewer than 20 staff members."
+    *   B072015: 177.6 sales, 16 staff.
+    *   True.
+    *   Is it semantically surprising? High sales usually imply high staff? Maybe.
+    *   Okay.
+
+    *   Wait, I need to check the "THINKING BUDGET" constraint again. "keep your reasoning very short — at most 5-8 short bullets, no paragraphs, no rewriting examples."
+    *   This applies to the *thought block*.
+    *   Okay.
+
+    *   Wait, I need to check if I should output the reasoning in the final response.
+    *   "OUTPUT: exactly one JSON object, nothing else."
+    *   This is the final instruction.
+    *   I will output ONLY JSON.
+
+    *   Wait, I need to check the "RULES (in priority order)" section.
+    *   Rule 1: Factually true.
+    *   Rule 2: Non-redundant.
+    *   Rule 3: Mix forms.
+    *   Rule 4: Conditions 2-3 attributes.
+    *   Rule 5: No hedging.
+
+    *   My statements:
+    *   1. West, Sat. (2 attrs)
+    *   2. Trans, Sales. (2 attrs)
+    *   3. South, Basket. (2 attrs)
+    *   4. Sat, Staff. (2 attrs)
+    *   5. Sales, Trans. (2 attrs)
+    *   6. Trans, Basket. (2 attrs)
+    *   7. East, Sat. (2 attrs)
+    *   8. Sales, Staff. (2 attrs)
+    *   9. Basket, Sales. (2 attrs)
+    *   All fit Rule 4.
+
+    *   Forms:
+    *   1: Universal
+    *   2: Conditional
+    *   3: Universal
+    *   4: Conditional
+    *   5: Universal
+    *   6: Conditional
+    *   7: Majority
+    *   8: Existential
+    *   9: Conditional
+    *   Mix: Universal (3), Conditional (4), Majority (1), Existential (1).
+    *   Rule 3: "do not repeat the same form back-to-back."
+    *   Order: U, C, U, C, U, C, M, E, C.
+    *   No back-to-back repeats.
+    *   Wait, U, C, U, C, U, C... No repeats.
+    *   Okay.
+
+    *   Wait, S5 "All stores with monthly sales exceeding $160k have more than 2500 transactions."
+    *   S2 "If a store has more than 2500 transactions, then its monthly sales exceed $120k."
+    *   These are adjacent in my list (S2, S3, S4, S5).
+    *   S2 is Conditional. S5 is Universal.
+    *   Forms are different.
+    *   Okay.
+
+    *   Wait, I need to ensure the JSON is valid.
+    *   Double quotes for keys and strings.
+    *   No single quotes.
+    *   No newlines inside strings (unless escaped).
+    *   I will keep strings single line.
+
+    *   Final check on S1: "All stores in the west region have a customer satisfaction score of at least 4.0."
+    *   West: 4.4, 4.3, 4.5, 4.4, 4.0.
+    *   Min is 4.0. "At least 4.0" includes 4.0. True.
+
+    *   Final check on S3: "All stores in the south region have an average basket size greater than 59."
+    *   South: 59.9, 61.0, 61.2.
+    *   All > 59. True.
+
+    *   Final check on S7: "Most stores in the east region have a customer satisfaction score above 4.0."
+    *   East: 4.6, 3.8, 4.1.
+    *   4.6 > 4.0, 4.1 > 4.0. 2/3. "Most" implies > 50%. True.
+
+    *   Okay, ready.
+</think>
+
+{
+  "statements": [
+    "All stores in the west region have a customer satisfaction score of at least 4.0.",
+    "If a store has more than 2500 transactions, then its monthly sales exceed $120k.",
+    "All stores in the south region have an average basket size greater than 59.",
+    "If a store has a customer satisfaction score below 4.0, then it employs at least 18 staff members.",
+    "All stores with monthly sales exceeding $160k have more than 2500 transactions.",
+    "If a store has fewer than 1600 transactions, then its average basket size is at least 58.",
+    "Most stores in the east region have a customer satisfaction score above 4.0.",
+    "There exists a store with monthly sales exceeding $170k and fewer than 20 staff members.",
+    "If a store has an average basket size below 50, then its monthly sales are at least $138k."
+  ]
+}

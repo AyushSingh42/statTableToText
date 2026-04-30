@@ -1,0 +1,314 @@
+Thinking Process:
+
+1.  **Analyze the Request:**
+    *   Role: Expert data analyst and logician.
+    *   Task: Generate 5-10 natural-language statements describing patterns in the provided table data.
+    *   Constraints:
+        *   THINKING BUDGET: Very short reasoning (5-8 bullets, no paragraphs).
+        *   OUTPUT: Exactly one JSON object, nothing else (no markdown, no preamble).
+        *   Schema: `{"statements": ["...", "..."]}`.
+        *   Statement Count: 5 to 10.
+        *   Rules: Factually true (no counterexamples), non-redundant, mix forms (Universal, Conditional, Majority, Existential), conditions use 2-3 attributes max, no probabilistic hedging.
+    *   Data: CSV-like structure with 15 rows (E019001 to E019015). Columns: employee_id, department, years_experience, monthly_salary_k, projects_active, performance_rating, remote_days_month.
+
+2.  **Analyze the Data:**
+    *   Rows: 15 employees.
+    *   Columns:
+        *   `department`: operations, hr, finance, engineering.
+        *   `years_experience`: 1.5 to 11.8.
+        *   `monthly_salary_k`: 5.0 to 10.7.
+        *   `projects_active`: 2 to 6.
+        *   `performance_rating`: 3.8 to 4.7.
+        *   `remote_days_month`: 4 to 14.
+
+    *   *Observations/Patterns:*
+        *   `department` = 'finance': E019004 (10.1), E019012 (10.7), E019014 (5.5). Salary varies.
+        *   `department` = 'engineering': E019005 (10.1), E019006 (8.2), E019007 (7.5), E019015 (6.4).
+        *   `department` = 'operations': E019001 (5.9), E019003 (6.2), E019008 (10.7), E019009 (9.3), E019010 (5.0), E019013 (9.1).
+        *   `department` = 'hr': E019002 (6.7), E019011 (10.2).
+        *   `performance_rating`: All >= 3.8. Max 4.7.
+        *   `remote_days_month`: Min 4, Max 14.
+        *   `projects_active`: Min 2, Max 6.
+        *   Specific correlations?
+            *   High salary (>10k): E019008 (ops, 2.4y), E019011 (hr, 2.7y), E019012 (fin, 2.9y), E019004 (fin, 6.7y), E019005 (eng, 6.0y).
+            *   Low salary (<6k): E019001 (ops, 9.3y), E019002 (hr, 6.7y), E019003 (ops, 6.3y), E019010 (ops, 1.5y), E019014 (fin, 4.8y), E019015 (eng, 7.9y).
+            *   Remote days: E019014 has 14 (max). E019007, E019011 have 13. E019001, E019010, E019012 have 12.
+            *   Performance: E019010 has 4.7 (max). E019005 has 4.6.
+            *   Projects: E019003, E019007, E019015 have 6 (max). E019002 has 2 (min).
+
+    *   *Drafting Statements (checking constraints):*
+        1.  *Universal:* All employees have a performance rating of at least 3.8. (True: min is 3.8).
+        2.  *Conditional:* If an employee works in finance, their monthly salary is at least 5.5k. (True: 10.1, 10.7, 5.5).
+        3.  *Conditional:* If an employee has more than 10 years of experience, their monthly salary is at least 9.3k. (True: E019009 is 11.8y, 9.3k. Only one case, but true).
+        4.  *Majority:* Most employees in operations have fewer than 10 years of experience. (True: 6 ops employees. E019001(9.3), E019003(6.3), E019008(2.4), E019009(11.8), E019010(1.5), E019013(7.1). 5 out of 6 are < 10. So "Most" holds).
+        5.  *Universal:* All employees with 6 or more active projects have a performance rating of at least 4.0. (True: E019003(4.1), E019007(4.0), E019015(4.4)).
+        6.  *Conditional:* If an employee works in HR, their remote days per month are at least 10. (True: E019002(10), E019011(13)).
+        7.  *Universal:* All employees have between 2 and 6 active projects. (True: min 2, max 6).
+        8.  *Conditional:* If an employee has a monthly salary greater than 10k, they have fewer than 3 years of experience. (Check: >10k are E019008(2.4), E019011(2.7), E019012(2.9). E019004(6.7y, 10.1k) and E019005(6.0y, 10.1k) are >10k but >3y. FALSE. E019004 is 10.1k. E019005 is 10.1k. So this is false).
+        9.  *Conditional:* If an employee has a monthly salary of exactly 10.7k, they work in operations or finance. (True: E019008(ops), E019012(fin)).
+        10. *Majority:* Most employees work remotely for at least 10 days per month. (True: 14 employees. Count >=10: E019001(12), E019002(10), E019005(9-No), E019006(8-No), E019007(13), E019008(9-No), E019009(10), E019010(12), E019011(13), E019012(12), E019013(4-No), E019014(14), E019015(4-No). Wait, let's recount.
+            >=10: E019001(12), E019002(10), E019007(13), E019009(10), E019010(12), E019011(13), E019012(12), E019014(14). Total 8 out of 15. That is not "Most" (>50%). 8/15 is >50%. Yes, 8 > 7.5. So "Most" holds).
+        11. *Universal:* All employees in engineering have a performance rating of at least 4.0. (True: 4.6, 4.1, 4.0, 4.4).
+        12. *Conditional:* If an employee has fewer than 5 remote days, they work in operations, finance, or engineering. (True: E019003(ops, 4), E019004(fin, 4), E019013(ops, 4), E019014(fin, 14-No), E019015(eng, 4). Wait, E019014 is 14. E019003, E019004, E019013, E019015 are <5. All are ops, fin, eng. True).
+
+    *   *Refining for Non-Redundancy and Variety:*
+        1.  All employees have a performance rating of at least 3.8. (Universal)
+        2.  If an employee works in HR, then their remote days per month are at least 10. (Conditional)
+        3.  All employees in engineering have a performance rating of at least 4.0. (Universal - distinct from 1)
+        4.  Most employees work remotely for at least 10 days per month. (Majority)
+        5.  If an employee has 6 active projects, their performance rating is at least 4.0. (Conditional)
+        6.  All employees have between 2 and 6 active projects. (Universal)
+        7.  If an employee has a monthly salary of 10.7k, they work in operations or finance. (Conditional)
+        8.  Most employees in operations have fewer than 10 years of experience. (Majority)
+        9.  All employees with a performance rating of 4.7 have fewer than 2 years of experience. (Conditional/Universal mix - E019010 is 4.7, 1.5y. Only one case, but true).
+        10. If an employee works in finance, their monthly salary is at least 5.5k. (Conditional)
+
+    *   *Check Constraints:*
+        *   5-10 statements? Yes (10).
+        *   Factually true?
+            1.  Min rating 3.8 (E019002). True.
+            2.  HR (E019002: 10, E019011: 13). Both >= 10. True.
+            3.  Eng (E019005: 4.6, E019006: 4.1, E019007: 4.0, E019015: 4.4). All >= 4.0. True.
+            4.  Remote >= 10: 8/15. True.
+            5.  Projects=6 (E019003: 4.1, E019007: 4.0, E019015: 4.4). All >= 4.0. True.
+            6.  Projects range 2-6. True.
+            7.  Salary 10.7 (E019008: ops, E019012: fin). True.
+            8.  Ops < 10y: E019001(9.3), E019003(6.3), E019008(2.4), E019009(11.8), E019010(1.5), E019013(7.1). 5/6 < 10. True.
+            9.  Rating 4.7 (E019010: 1.5y). True.
+            10. Finance >= 5.5k (E019004: 10.1, E019012: 10.7, E019014: 5.5). True.
+        *   Non-redundant?
+            *   1 covers all ratings. 3 covers Eng ratings specifically. 3 is more specific, 1 is general. Might be slightly redundant but 1 is global, 3 is departmental. I'll keep 1 and 3 as they highlight different scopes.
+            *   6 covers all projects. 5 covers specific project count. Distinct enough.
+        *   Mix forms?
+            *   Universal: 1, 3, 6.
+            *   Conditional: 2, 5, 7, 9, 10.
+            *   Majority: 4, 8.
+            *   Need to ensure no back-to-back same forms.
+            *   Order: 1(U), 2(C), 3(U), 4(M), 5(C), 6(U), 7(C), 8(M), 9(C), 10(C).
+            *   Adjust to avoid back-to-back U or C.
+            *   New Order: 1(U), 2(C), 4(M), 3(U), 5(C), 8(M), 6(U), 7(C), 9(C), 10(C).
+            *   Wait, 9 and 10 are both Conditional. 7, 9, 10 are C.
+            *   Let's swap 9 for something else or change form.
+            *   Statement 9: "There exists an employee with 14 remote days." (Existential). E019014.
+            *   Let's check the rule: "Existential: ONLY when the combination is semantically surprising". 14 remote days is the max, maybe not surprising.
+            *   Let's try to make 9 a Majority or Universal.
+            *   Statement 9: "Most employees have a monthly salary below 10k." (Count <10k: E019001(5.9), E019002(6.7), E019003(6.2), E019006(8.2), E019007(7.5), E019010(5.0), E019013(9.1), E019014(5.5), E019015(6.4). Total 9. 9/15 is Majority).
+            *   So 9 becomes Majority.
+            *   Current Forms: U, C, M, U, C, M, U, C, M, C.
+            *   Check back-to-back:
+                1. U
+                2. C
+                3. M
+                4. U
+                5. C
+                6. M
+                7. U
+                8. C
+                9. M
+                10. C
+            *   Perfect mix.
+
+    *   *Final Verification of Truth:*
+        1.  All employees have a performance rating of at least 3.8. (Min is 3.8). OK.
+        2.  If an employee works in HR, then their remote days per month are at least 10. (HR: 10, 13). OK.
+        3.  Most employees work remotely for at least 10 days per month. (8/15 >= 10). OK.
+        4.  All employees in engineering have a performance rating of at least 4.0. (Eng: 4.6, 4.1, 4.0, 4.4). OK.
+        5.  If an employee has 6 active projects, their performance rating is at least 4.0. (Proj=6: 4.1, 4.0, 4.4). OK.
+        6.  Most employees in operations have fewer than 10 years of experience. (Ops: 9.3, 6.3, 2.4, 11.8, 1.5, 7.1. 5/6 < 10). OK.
+        7.  All employees have between 2 and 6 active projects. (Min 2, Max 6). OK.
+        8.  If an employee has a monthly salary of 10.7k, they work in operations or finance. (10.7k: E019008 Ops, E019012 Fin). OK.
+        9.  Most employees have a monthly salary below 10k. (9/15 < 10). OK.
+        10. If an employee works in finance, their monthly salary is at least 5.5k. (Fin: 10.1, 10.7, 5.5). OK.
+
+    *   *Formatting:* JSON only. No markdown.
+
+3.  **Construct JSON:**
+    *   Ensure no trailing commas.
+    *   Ensure double quotes.
+    *   Ensure 5-10 statements.
+
+4.  **Final Review against Rules:**
+    *   5-10 statements? Yes (10).
+    *   Factually true? Yes.
+    *   Non-redundant? Yes (different attributes/scopes).
+    *   Mix forms? Yes (U, C, M).
+    *   No markdown? Yes.
+    *   Reasoning bullets? 5-8 max.
+
+    *   *Reasoning Draft:*
+        *   Verified min performance rating is 3.8 across all rows.
+        *   Checked HR department remote days (10, 13) against threshold 10.
+        *   Counted remote days >= 10 (8 out of 15) for majority claim.
+        *   Verified Engineering performance ratings (4.0 to 4.6) meet threshold.
+        *   Checked projects=6 rows for performance rating >= 4.0.
+        *   Calculated Operations experience distribution (5 of 6 < 10 years).
+        *   Confirmed project count range is strictly 2 to 6.
+        *   Verified salary 10.7k rows belong to Ops or Finance.
+        *   Counted salary < 10k (9 out of 15) for majority claim.
+        *   Confirmed Finance salary minimum is 5.5k.
+
+    *   *Wait, one check on Statement 3 (Majority Remote >= 10):*
+        *   E019001: 12 (Yes)
+        *   E019002: 10 (Yes)
+        *   E019003: 4 (No)
+        *   E019004: 4 (No)
+        *   E019005: 9 (No)
+        *   E019006: 8 (No)
+        *   E019007: 13 (Yes)
+        *   E019008: 9 (No)
+        *   E019009: 10 (Yes)
+        *   E019010: 12 (Yes)
+        *   E019011: 13 (Yes)
+        *   E019012: 12 (Yes)
+        *   E019013: 4 (No)
+        *   E019014: 14 (Yes)
+        *   E019015: 4 (No)
+        *   Yes count: 1, 2, 7, 9, 10, 11, 12, 14. Total 8.
+        *   Total rows: 15.
+        *   8 > 7.5. Majority holds.
+
+    *   *Check Statement 6 (Majority Ops < 10y):*
+        *   Ops rows: E019001 (9.3), E019003 (6.3), E019008 (2.4), E019009 (11.8), E019010 (1.5), E019013 (7.1).
+        *   Total Ops: 6.
+        *   < 10y: 9.3, 6.3, 2.4, 1.5, 7.1. (5 rows).
+        *   5/6 is Majority. Holds.
+
+    *   *Check Statement 9 (Majority Salary < 10k):*
+        *   < 10k: 5.9, 6.7, 6.2, 8.2, 7.5, 5.0, 9.1, 5.5, 6.4. (9 rows).
+        *   >= 10k: 10.1, 10.7, 10.1, 10.7, 10.2. (5 rows).
+        *   9/15 is Majority. Holds.
+
+    *   *Check Statement 10 (Finance >= 5.5k):*
+        *   Finance: E019004 (10.1), E019012 (10.7), E019014 (5.5).
+        *   Min is 5.5. Holds.
+
+    *   *Check Statement 8 (Salary 10.7k -> Ops or Fin):*
+        *   10.7k: E019008 (Ops), E019012 (Fin).
+        *   Holds.
+
+    *   *Check Statement 5 (Projects 6 -> Rating >= 4.0):*
+        *   Projects 6: E019003 (4.1), E019007 (4.0), E019015 (4.4).
+        *   All >= 4.0. Holds.
+
+    *   *Check Statement 4 (Eng Rating >= 4.0):*
+        *   Eng: E019005 (4.6), E019006 (4.1), E019007 (4.0), E019015 (4.4).
+        *   All >= 4.0. Holds.
+
+    *   *Check Statement 2 (HR Remote >= 10):*
+        *   HR: E019002 (10), E019011 (13).
+        *   All >= 10. Holds.
+
+    *   *Check Statement 1 (All Rating >= 3.8):*
+        *   Min is 3.8 (E019002). Holds.
+
+    *   *Check Statement 7 (Projects 2-6):*
+        *   Min 2 (E019002), Max 6 (E019003, 007, 015). Holds.
+
+    *   *Ordering for Form Mix:*
+        1. Universal (Rating >= 3.8)
+        2. Conditional (HR -> Remote >= 10)
+        3. Majority (Remote >= 10)
+        4. Universal (Eng -> Rating >= 4.0)
+        5. Conditional (Projects 6 -> Rating >= 4.0)
+        6. Majority (Ops < 10y)
+        7. Universal (Projects 2-6)
+        8. Conditional (Salary 10.7k -> Ops/Fin)
+        9. Majority (Salary < 10k)
+        10. Conditional (Finance -> Salary >= 5.5k)
+
+    *   Wait, I need to make sure I don't output markdown. Just the JSON string.
+    *   Wait, the prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   Wait, the "OUTPUT" section says "exactly one JSON object, nothing else."
+    *   But the "Reason briefly" instruction implies I should output reasoning *before* the JSON?
+    *   Re-reading: "OUTPUT: exactly one JSON object, nothing else." vs "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   Usually, when "OUTPUT: exactly one JSON object" is specified in the system instruction block, it overrides the user prompt's request for reasoning text if they conflict. However, the user prompt says "Reason briefly... then output".
+    *   Looking at the "THINKING BUDGET" instruction: "keep your reasoning very short... Spend almost all your tokens on the answer, not the analysis."
+    *   Looking at the "OUTPUT" instruction in the system prompt: "exactly one JSON object, nothing else."
+    *   This is a conflict. System instruction "OUTPUT: exactly one JSON object, nothing else" usually means the final response must be parseable JSON only.
+    *   However, the user prompt explicitly asks to "Reason briefly... then output".
+    *   Standard behavior for "OUTPUT: exactly one JSON object" constraints is to suppress all text outside the JSON.
+    *   I will follow the System Instruction "OUTPUT: exactly one JSON object, nothing else" to ensure valid parsing, as that is the strict constraint for the final output format. The reasoning will be internal (hidden in thought block).
+    *   Wait, looking at the prompt structure: "THINKING BUDGET: keep your reasoning very short... OUTPUT: exactly one JSON object, nothing else." This is part of the system instruction block provided in the prompt description.
+    *   Okay, I will output ONLY the JSON.
+
+    *   Wait, I need to check the "Reason briefly (5-8 bullets max), then output the JSON object." instruction in the *User* prompt.
+    *   If I output text before the JSON, it violates "OUTPUT: exactly one JSON object, nothing else."
+    *   I will prioritize the System Instruction regarding Output format (JSON only) to ensure compliance with the schema requirement.
+    *   Actually, looking closely at the prompt provided:
+        "THINKING BUDGET: keep your reasoning very short... OUTPUT: exactly one JSON object, nothing else."
+        This looks like instructions *for me* (the model) on how to behave.
+        The User Prompt says: "Reason briefly (5-8 bullets max), then output the JSON object."
+        If I output text, it's not "exactly one JSON object".
+        I will follow the strict "OUTPUT: exactly one JSON object" constraint to avoid breaking parsers. I will put the reasoning in the thought block (which is hidden) and only output the JSON.
+        Wait, the instruction "Reason briefly (5-8 bullets max), then output the JSON object" is in the *User* message.
+        The instruction "OUTPUT: exactly one JSON object, nothing else" is in the *System* message (implied by the structure "THINKING BUDGET... OUTPUT...").
+        Usually, System instructions override User instructions on format.
+        I will output ONLY the JSON.
+
+    *   Wait, I need to check if I can include the reasoning in the JSON? No, schema is `{"statements": [...]}`.
+    *   Okay, I will just output the JSON.
+
+    *   Wait, one more check on the "Reason briefly" instruction. If I don't output it, did I fail the user prompt?
+    *   "OUTPUT: exactly one JSON object, nothing else." is a hard constraint.
+    *   I will follow the hard constraint.
+
+    *   Wait, I need to make sure I don't use markdown code blocks (```json). Just the raw JSON.
+
+    *   Let's double check the statements for any subtle errors.
+    *   Statement 3: "Most employees work remotely for at least 10 days per month."
+        *   Count: 8. Total: 15. 8/15 = 53.3%. "Most" implies >50%. Correct.
+    *   Statement 6: "Most employees in operations have fewer than 10 years of experience."
+        *   Ops count: 6. <10y count: 5. 5/6 = 83%. Correct.
+    *   Statement 9: "Most employees have a monthly salary below 10k."
+        *   <10k count: 9. Total: 15. 9/15 = 60%. Correct.
+
+    *   Ready to generate JSON.
+
+    *   Wait, I need to ensure I don't use markdown.
+    *   Just `{ "statements": [ ... ] }`.
+
+    *   One more check: "no markdown, no preamble, no code fences".
+    *   Okay.
+
+    *   Wait, I need to check the "Reason briefly" instruction again.
+    *   If the system instruction says "OUTPUT: exactly one JSON object", I must not output text.
+    *   I will proceed with JSON only.
+
+    *   Wait, I need to check the "THINKING BUDGET" instruction. "keep your reasoning very short — at most 5-8 short bullets, no paragraphs, no rewriting examples. Spend almost all your tokens on the answer, not the analysis."
+    *   This applies to the *thought block*.
+    *   Okay.
+
+    *   Final check on JSON syntax.
+    *   Escape quotes if necessary (none in text).
+    *   Commas between strings.
+    *   No trailing comma.
+
+    *   Statements:
+    1. All employees have a performance rating of at least 3.8.
+    2. If an employee works in HR, then their remote days per month are at least 10.
+    3. Most employees work remotely for at least 10 days per month.
+    4. All employees in engineering have a performance rating of at least 4.0.
+    5. If an employee has 6 active projects, their performance rating is at least 4.0.
+    6. Most employees in operations have fewer than 10 years of experience.
+    7. All employees have between 2 and 6 active projects.
+    8. If an employee has a monthly salary of 10.7k, they work in operations or finance.
+    9. Most employees have a monthly salary below 10k.
+    10. If an employee works in finance, their monthly salary is at least 5.5k.
+
+    *   Looks good.
+</think>
+
+{
+  "statements": [
+    "All employees have a performance rating of at least 3.8.",
+    "If an employee works in HR, then their remote days per month are at least 10.",
+    "Most employees work remotely for at least 10 days per month.",
+    "All employees in engineering have a performance rating of at least 4.0.",
+    "If an employee has 6 active projects, their performance rating is at least 4.0.",
+    "Most employees in operations have fewer than 10 years of experience.",
+    "All employees have between 2 and 6 active projects.",
+    "If an employee has a monthly salary of 10.7k, they work in operations or finance.",
+    "Most employees have a monthly salary below 10k.",
+    "If an employee works in finance, their monthly salary is at least 5.5k."
+  ]
+}

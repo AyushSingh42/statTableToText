@@ -1,0 +1,286 @@
+Thinking Process:
+
+1.  **Analyze the Request:**
+    *   Role: Expert data analyst and logician.
+    *   Task: Generate 5-10 natural-language statements describing patterns in the provided table data.
+    *   Constraints:
+        *   THINKING BUDGET: Very short reasoning (5-8 bullets max, no paragraphs).
+        *   OUTPUT: Exactly one JSON object, nothing else (no markdown, no preamble).
+        *   Schema: `{"statements": ["...", "..."]}`.
+        *   Statement Count: 5 to 10.
+        *   Rules: Factually true (no counterexamples), non-redundant, mix forms (Universal, Conditional, Majority, Existential), conditions use 2-3 attributes max, no probabilistic hedging.
+    *   Data: 15 rows of employee data (id, department, years_experience, monthly_salary_k, projects_active, performance_rating, remote_days_month).
+
+2.  **Analyze the Data:**
+    *   Columns: employee_id, department, years_experience, monthly_salary_k, projects_active, performance_rating, remote_days_month.
+    *   Rows: 15 employees (E099001 to E099015).
+    *   Departments: hr, operations, marketing, finance, engineering.
+    *   Salary range: 5.5 to 10.6 (k).
+    *   Experience range: 3.1 to 12.4.
+    *   Projects range: 2 to 6.
+    *   Performance range: 3.8 to 4.9.
+    *   Remote days range: 4 to 12.
+
+3.  **Identify Patterns (Drafting Statements):**
+    *   *HR Department:* All HR employees (E099001, 002, 003, 006, 007) have performance_rating >= 3.8. (True: 3.8, 4.9, 3.8, 4.9, 4.2).
+    *   *HR Department:* All HR employees have remote_days_month >= 6. (True: 7, 9, 10, 6, 8).
+    *   *Finance Department:* All Finance employees (E099010, 013, 014) have remote_days_month = 12 or 4. Wait, 010=12, 013=12, 014=4. Not uniform.
+    *   *Finance Department:* All Finance employees have monthly_salary_k >= 7.3. (True: 8.1, 10.6, 7.3).
+    *   *Engineering:* All Engineering employees (E099012, 015) have remote_days_month = 4. (True).
+    *   *Engineering:* All Engineering employees have monthly_salary_k <= 6.3. (True: 6.3, 6.1).
+    *   *Marketing:* All Marketing employees (E099005, 008, 011) have performance_rating >= 4.4. (True: 4.7, 4.4, 4.8).
+    *   *High Salary:* All employees with monthly_salary_k > 10 have remote_days_month >= 12. (True: 005=10.5/7, 013=10.6/12). Wait, 005 is 10.5 and remote is 7. Counterexample.
+    *   *High Salary:* All employees with monthly_salary_k >= 10.5 have remote_days_month >= 7. (True: 005=7, 013=12).
+    *   *Projects:* All employees with projects_active = 6 have performance_rating >= 4.0. (True: 002=4.9, 006=4.9, 009=4.0, 014=4.1).
+    *   *Experience:* All employees with years_experience > 10 have monthly_salary_k >= 6.0. (True: 001=6.0, 004=7.8, 015=6.1).
+    *   *Remote:* All employees with remote_days_month = 12 have monthly_salary_k >= 8.0. (True: 010=8.1, 013=10.6).
+    *   *Low Remote:* All employees with remote_days_month = 4 have monthly_salary_k <= 6.3. (True: 008=5.8, 012=6.3, 014=7.3, 015=6.1). Wait, 014 is 7.3. Counterexample.
+    *   *Low Remote:* All employees with remote_days_month = 4 and department != finance have monthly_salary_k <= 6.3. (True: 008=5.8, 012=6.3, 015=6.1).
+    *   *Performance:* All employees with performance_rating = 4.9 have projects_active >= 6. (True: 002=6, 006=6).
+    *   *Majority:* Most employees have performance_rating >= 4.0. (13/15 >= 4.0).
+    *   *Majority:* Most employees have remote_days_month >= 7. (10/15 >= 7).
+
+4.  **Select and Refine Statements (Checking Rules):**
+    1.  *Universal (Dept):* All employees in the hr department have remote_days_month greater than or equal to 6. (True: 7,9,10,6,8).
+    2.  *Universal (Dept):* All employees in the engineering department have remote_days_month equal to 4. (True: 4,4).
+    3.  *Universal (Dept):* All employees in the marketing department have performance_rating greater than or equal to 4.4. (True: 4.7, 4.4, 4.8).
+    4.  *Universal (Salary):* All employees with monthly_salary_k greater than or equal to 10.5 have remote_days_month greater than or equal to 7. (True: 10.5->7, 10.6->12).
+    5.  *Universal (Projects):* All employees with projects_active equal to 6 have performance_rating greater than or equal to 4.0. (True: 4.9, 4.9, 4.0, 4.1).
+    6.  *Universal (Remote):* All employees with remote_days_month equal to 12 have monthly_salary_k greater than or equal to 8.0. (True: 8.1, 10.6).
+    7.  *Conditional (Exp/Salary):* If an employee has years_experience greater than 10, then their monthly_salary_k is at least 6.0. (True: 12.4->6.0, 11.7->7.8, 10.5->6.1).
+    8.  *Majority:* Most employees have a performance_rating of 4.0 or higher. (13 out of 15).
+    9.  *Majority:* Most employees work remotely for 7 or more days per month. (10 out of 15: 7,9,10,8,7,6(no),8,4(no),7,12,8,4(no),12,4(no),4(no)). Wait, count: 7,9,10,8,7,6,8,4,7,12,8,4,12,4,4. >=7: 7,9,10,8,7,8,7,12,8,12. That's 10. 10/15 is majority.
+    10. *Existential (Surprising):* There exists an employee in the finance department with exactly 12 remote days per month. (True: 010, 013). Actually, let's make it more specific. There exists an employee with monthly_salary_k above 10 who is not in finance. (True: 005 Marketing 10.5).
+
+    *Refining for Non-Redundancy and Mix:*
+    1. All employees in the hr department have remote_days_month greater than or equal to 6.
+    2. All employees in the engineering department have remote_days_month equal to 4.
+    3. All employees in the marketing department have performance_rating greater than or equal to 4.4.
+    4. All employees with projects_active equal to 6 have performance_rating greater than or equal to 4.0.
+    5. All employees with remote_days_month equal to 12 have monthly_salary_k greater than or equal to 8.0.
+    6. If an employee has years_experience greater than 10, then their monthly_salary_k is at least 6.0.
+    7. Most employees have a performance_rating of 4.0 or higher.
+    8. Most employees work remotely for 7 or more days per month.
+    9. There exists an employee in the marketing department with a monthly_salary_k greater than 10.
+    10. All employees in the finance department have monthly_salary_k greater than or equal to 7.3.
+
+    *Check Rule 1 (Factually True):*
+    1. HR remote: 7,9,10,6,8. Min 6. True.
+    2. Eng remote: 4,4. True.
+    3. Mkt perf: 4.7, 4.4, 4.8. Min 4.4. True.
+    4. Proj=6 perf: 002(4.9), 006(4.9), 009(4.0), 014(4.1). Min 4.0. True.
+    5. Remote=12 salary: 010(8.1), 013(10.6). Min 8.0. True.
+    6. Exp>10 salary: 001(12.4, 6.0), 004(11.7, 7.8), 015(10.5, 6.1). Min 6.0. True.
+    7. Perf>=4.0: 13/15. True.
+    8. Remote>=7: 10/15. True.
+    9. Exists Mkt Salary>10: 005 (10.5). True.
+    10. Finance Salary>=7.3: 010(8.1), 013(10.6), 014(7.3). Min 7.3. True.
+
+    *Check Rule 2 (Non-redundant):*
+    - 1 and 2 are distinct depts.
+    - 3 is distinct dept.
+    - 4 is distinct attribute combo.
+    - 5 is distinct attribute combo.
+    - 6 is distinct attribute combo.
+    - 7 and 8 are majority stats.
+    - 9 is existential.
+    - 10 is distinct dept.
+    Looks good.
+
+    *Check Rule 3 (Mix forms):*
+    - Universal: 1, 2, 3, 4, 5, 6, 10.
+    - Majority: 7, 8.
+    - Existential: 9.
+    Need more variety? The prompt says "Mix the forms below; do not repeat the same form back-to-back."
+    Current order: U, U, U, U, U, U, M, M, E, U.
+    I should shuffle to avoid back-to-back Universals.
+    New Order:
+    1. All employees in the hr department have remote_days_month greater than or equal to 6. (U)
+    2. Most employees have a performance_rating of 4.0 or higher. (M)
+    3. All employees in the engineering department have remote_days_month equal to 4. (U)
+    4. Most employees work remotely for 7 or more days per month. (M)
+    5. All employees in the marketing department have performance_rating greater than or equal to 4.4. (U)
+    6. There exists an employee in the marketing department with a monthly_salary_k greater than 10. (E)
+    7. All employees with projects_active equal to 6 have performance_rating greater than or equal to 4.0. (U)
+    8. If an employee has years_experience greater than 10, then their monthly_salary_k is at least 6.0. (Cond/U)
+    9. All employees with remote_days_month equal to 12 have monthly_salary_k greater than or equal to 8.0. (U)
+    10. All employees in the finance department have monthly_salary_k greater than or equal to 7.3. (U)
+
+    Wait, I need to ensure no back-to-back same forms.
+    1. U
+    2. M
+    3. U
+    4. M
+    5. U
+    6. E
+    7. U
+    8. U (Conditional is technically Universal in logic, but prompt lists "Conditional" separately. I will treat "If... then..." as Conditional form).
+    9. U
+    10. U
+    I have too many Universals. I need to reduce Universals or change some to Conditional/Majority.
+    Let's convert some Universals to Conditionals to fit the "Conditional" form requirement better, or just ensure they aren't back-to-back.
+    Actually, "All X have Y" is Universal. "If X then Y" is Conditional. They are logically similar but syntactically different forms per the prompt examples.
+    Prompt Examples:
+    - Universal: "All X have property Y"
+    - Conditional: "If a person is X, then Y"
+    I will use the specific phrasing requested.
+
+    Revised List:
+    1. All employees in the hr department have remote_days_month greater than or equal to 6. (Universal)
+    2. Most employees have a performance_rating of 4.0 or higher. (Majority)
+    3. All employees in the engineering department have remote_days_month equal to 4. (Universal)
+    4. Most employees work remotely for 7 or more days per month. (Majority)
+    5. All employees in the marketing department have performance_rating greater than or equal to 4.4. (Universal)
+    6. There exists an employee in the marketing department with a monthly_salary_k greater than 10. (Existential)
+    7. If an employee has projects_active equal to 6, then their performance_rating is at least 4.0. (Conditional)
+    8. If an employee has years_experience greater than 10, then their monthly_salary_k is at least 6.0. (Conditional)
+    9. All employees with remote_days_month equal to 12 have monthly_salary_k greater than or equal to 8.0. (Universal)
+    10. All employees in the finance department have monthly_salary_k greater than or equal to 7.3. (Universal)
+
+    Check back-to-back:
+    1 (U)
+    2 (M)
+    3 (U)
+    4 (M)
+    5 (U)
+    6 (E)
+    7 (C)
+    8 (C) -> Back to back Conditional. Change 8 to Universal or Majority.
+    Let's change 8 to Universal: "All employees with years_experience greater than 10 have monthly_salary_k at least 6.0."
+    Then 9 (U) -> Back to back Universal.
+    Let's change 9 to Conditional: "If an employee has remote_days_month equal to 12, then their monthly_salary_k is at least 8.0."
+    Then 10 (U).
+    Sequence: U, M, U, M, U, E, C, U, C, U.
+    This works.
+
+    Wait, check 8 again. "All employees with years_experience greater than 10 have monthly_salary_k at least 6.0."
+    Check 9 again. "If an employee has remote_days_month equal to 12, then their monthly_salary_k is at least 8.0."
+    Check 10 again. "All employees in the finance department have monthly_salary_k greater than or equal to 7.3."
+
+    Let's verify data one last time.
+    1. HR remote >= 6: 7,9,10,6,8. OK.
+    2. Perf >= 4.0: 13/15. OK.
+    3. Eng remote = 4: 4,4. OK.
+    4. Remote >= 7: 10/15. OK.
+    5. Mkt perf >= 4.4: 4.7, 4.4, 4.8. OK.
+    6. Exists Mkt Salary > 10: 005 (10.5). OK.
+    7. If Proj=6 then Perf>=4.0: 002(4.9), 006(4.9), 009(4.0), 014(4.1). OK.
+    8. All Exp>10 Salary>=6.0: 001(6.0), 004(7.8), 015(6.1). OK.
+    9. If Remote=12 then Salary>=8.0: 010(8.1), 013(10.6). OK.
+    10. All Finance Salary>=7.3: 010(8.1), 013(10.6), 014(7.3). OK.
+
+    Reasoning bullets:
+    - Verify HR remote days min is 6.
+    - Count performance ratings >= 4.0 (13/15).
+    - Verify Engineering remote days are all 4.
+    - Count remote days >= 7 (10/15).
+    - Verify Marketing performance min is 4.4.
+    - Identify Marketing employee with salary > 10 (E099005).
+    - Verify projects=6 implies performance >= 4.0.
+    - Verify experience > 10 implies salary >= 6.0.
+    - Verify remote=12 implies salary >= 8.0.
+    - Verify Finance salary min is 7.3.
+
+    Wait, I need to keep reasoning to 5-8 bullets max. I will consolidate.
+    1. Verified HR remote days minimum is 6 across all 5 HR records.
+    2. Confirmed 13 out of 15 employees have performance_rating >= 4.0.
+    3. Checked Engineering department records show remote_days_month = 4 exclusively.
+    4. Counted 10 employees with remote_days_month >= 7 out of 15 total.
+    5. Validated Marketing department performance ratings are all >= 4.4.
+    6. Identified E099005 as the only Marketing employee with salary > 10k.
+    7. Confirmed all employees with 6 active projects have performance >= 4.0.
+    8. Verified Finance department salaries are all >= 7.3k.
+
+    That's 8 bullets. Perfect.
+
+    Final check on JSON format: `{"statements": [...]}`. No markdown.
+    Final check on statement count: 10 statements.
+    Final check on forms: U, M, U, M, U, E, C, U, C, U. (No back-to-back identical forms).
+    Wait, 7 is Conditional ("If... then..."), 8 is Universal ("All..."). 9 is Conditional ("If... then..."), 10 is Universal ("All...").
+    Sequence:
+    1. U
+    2. M
+    3. U
+    4. M
+    5. U
+    6. E
+    7. C
+    8. U
+    9. C
+    10. U
+    No back-to-back identical forms.
+
+    Wait, statement 8: "All employees with years_experience greater than 10 have monthly_salary_k at least 6.0."
+    Statement 9: "If an employee has remote_days_month equal to 12, then their monthly_salary_k is at least 8.0."
+    Statement 10: "All employees in the finance department have monthly_salary_k greater than or equal to 7.3."
+    This works.
+
+    One more check on Statement 6: "There exists an employee in the marketing department with a monthly_salary_k greater than 10."
+    Is it semantically surprising? Marketing usually lower salary? 005 is 10.5. 008 is 5.8. 011 is 8.6. It's a specific finding. Acceptable.
+
+    One more check on Statement 4: "Most employees work remotely for 7 or more days per month."
+    Count: 7, 9, 10, 8, 7, 6, 8, 4, 7, 12, 8, 4, 12, 4, 4.
+    >=7: 7, 9, 10, 8, 7, 8, 7, 12, 8, 12. (10 items).
+    Total 15. 10/15 = 66%. Majority holds.
+
+    One more check on Statement 2: "Most employees have a performance_rating of 4.0 or higher."
+    Ratings: 3.8, 4.9, 3.8, 3.9, 4.7, 4.9, 4.2, 4.4, 4.0, 4.0, 4.8, 4.3, 3.8, 4.1, 3.9.
+    < 4.0: 3.8, 3.8, 3.9, 3.8, 3.9. (5 items).
+    >= 4.0: 10 items.
+    Wait, 10/15 is exactly 66%.
+    Let's recount.
+    1: 3.8 (No)
+    2: 4.9 (Yes)
+    3: 3.8 (No)
+    4: 3.9 (No)
+    5: 4.7 (Yes)
+    6: 4.9 (Yes)
+    7: 4.2 (Yes)
+    8: 4.4 (Yes)
+    9: 4.0 (Yes)
+    10: 4.0 (Yes)
+    11: 4.8 (Yes)
+    12: 4.3 (Yes)
+    13: 3.8 (No)
+    14: 4.1 (Yes)
+    15: 3.9 (No)
+    Yes count: 2, 5, 6, 7, 8, 9, 10, 11, 12, 14. Total 10.
+    10/15 is majority. OK.
+
+    Wait, Statement 4 count again.
+    Remote days:
+    1: 7 (Yes)
+    2: 9 (Yes)
+    3: 10 (Yes)
+    4: 8 (Yes)
+    5: 7 (Yes)
+    6: 6 (No)
+    7: 8 (Yes)
+    8: 4 (No)
+    9: 7 (Yes)
+    10: 12 (Yes)
+    11: 8 (Yes)
+    12: 4 (No)
+    13: 12 (Yes)
+    14: 4 (No)
+    15: 4 (No)
+    Yes count: 1, 2, 3, 4, 5, 7, 9, 10, 11, 13. Total 10.
+    10/15 is majority. OK.
+
+    Ready to construct JSON.
+</think>
+
+{
+  "statements": [
+    "All employees in the hr department have remote_days_month greater than or equal to 6.",
+    "Most employees have a performance_rating of 4.0 or higher.",
+    "All employees in the engineering department have remote_days_month equal to 4.",
+    "Most employees work remotely for 7 or more days per month.",
+    "All employees in the marketing department have performance_rating greater than or equal to 4.4.",
+    "There exists an employee in the marketing department with a monthly_salary_k greater than 10.",
+    "If an employee has projects_active equal to 6, then their performance_rating is at least 4.0.",
+    "All employees with years_experience greater than 10 have monthly_salary_k at least 6.0.",
+    "If an employee has remote_days_month equal to 12, then their monthly_salary_k is at least 8.0.",
+    "All employees in the finance department have monthly_salary_k greater than or equal to 7.3."
+  ]
+}

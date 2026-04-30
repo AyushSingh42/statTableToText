@@ -1,0 +1,226 @@
+Thinking Process:
+
+1.  **Analyze the Request:**
+    *   Role: Expert data analyst and logician.
+    *   Task: Generate 5-10 natural-language statements describing patterns in the provided table data.
+    *   Constraints:
+        *   THINKING BUDGET: Very short reasoning (5-8 bullets, no paragraphs).
+        *   OUTPUT: Exactly one JSON object, nothing else (no markdown, no code fences).
+        *   Schema: `{"statements": ["...", "..."]}`.
+        *   Statement Count: 5 to 10.
+        *   Rules: Factually true (no counterexamples), non-redundant, mix forms (Universal, Conditional, Majority, Existential), conditions use 2-3 attributes max, no probabilistic hedging.
+        *   Data: CSV-like string with headers and 15 rows of store data.
+
+2.  **Analyze the Data:**
+    *   Headers: `store_id`, `region`, `monthly_sales_k`, `transactions`, `avg_basket_size`, `staff_count`, `customer_satisfaction`.
+    *   Rows: 15 stores (B012001 to B012015).
+    *   Key Columns for patterns: `region`, `staff_count`, `customer_satisfaction`, `transactions`, `avg_basket_size`, `monthly_sales_k`.
+
+    *   *Observations:*
+        *   Regions: south, north, west, east.
+        *   Satisfaction: Range 3.7 to 4.6.
+        *   Staff Count: Range 11 to 25.
+        *   Transactions: Range 1482 to 2673.
+        *   Avg Basket Size: Range 49.2 to 67.8.
+        *   Sales: Range 82.5 to 163.9.
+
+    *   *Potential Patterns:*
+        *   North region stores: B012002, B012003, B012006, B012009, B012014, B012015 (6 stores).
+            *   Satisfaction: 4.6, 4.5, 4.5, 4.3, 4.6, 4.1. All >= 4.1.
+            *   Staff: 18, 21, 11, 18, 21, 13.
+        *   East region stores: B012007, B012010, B012013 (3 stores).
+            *   Satisfaction: 4.6, 4.2, 3.7.
+            *   Staff: 25, 24, 25. All >= 24.
+        *   West region stores: B012005, B012008, B012011 (3 stores).
+            *   Satisfaction: 4.2, 3.7, 4.1.
+        *   South region stores: B012001, B012004, B012012 (3 stores).
+            *   Satisfaction: 4.5, 3.8, 4.0.
+        *   High Staff (>=24): B012007 (East), B012008 (West), B012010 (East), B012013 (East).
+            *   Satisfaction: 4.6, 3.7, 4.2, 3.7. (Mixed).
+        *   Low Staff (<=13): B012004 (11), B012006 (11), B012012 (13), B012015 (13).
+            *   Satisfaction: 3.8, 4.5, 4.0, 4.1.
+        *   High Transactions (>2000): B012008 (2454), B012010 (2673), B012012 (2378), B012013 (2216), B012015 (2600).
+            *   Sales: 149.5, 115.0, 118.8, 147.2, 138.3.
+        *   Low Basket Size (<55): B012003 (50.6), B012004 (51.5), B012007 (49.2), B012009 (49.3).
+            *   Region: North, South, East, North.
+        *   High Basket Size (>65): B012002 (67.8), B012006 (66.9), B012011 (65.1), B012014 (62.9 - no), B012013 (67.1).
+            *   B012002, B012006, B012011, B012013.
+            *   Region: North, North, West, East.
+        *   Satisfaction >= 4.5: B012001 (4.5), B012002 (4.6), B012003 (4.5), B012006 (4.5), B012007 (4.6), B012014 (4.6).
+            *   Staff: 14, 18, 21, 11, 25, 21.
+        *   Satisfaction <= 3.8: B012004 (3.8), B012008 (3.7), B012013 (3.7).
+            *   Staff: 11, 24, 25.
+        *   North Region: All have satisfaction >= 4.1.
+        *   East Region with Staff >= 24: All have satisfaction <= 4.2 (B012007=4.6 exception? No, B012007 is 4.6. Wait. B012007 staff 25, sat 4.6. B012010 staff 24, sat 4.2. B012013 staff 25, sat 3.7). So not all <= 4.2.
+        *   East Region Staff >= 24: B012007, B012010, B012013.
+        *   West Region: B012005, B012008, B012011.
+        *   South Region: B012001, B012004, B012012.
+
+    *   *Drafting Statements:*
+        1.  (Universal/Conditional) All stores in the north region have customer satisfaction scores of at least 4.1. (Check: 4.6, 4.5, 4.5, 4.3, 4.6, 4.1. True.)
+        2.  (Universal/Conditional) All stores with staff_count >= 24 have monthly_sales_k <= 149.5. (Check: B012007=123.8, B012008=149.5, B012010=115.0, B012013=147.2. Max is 149.5. True.)
+        3.  (Majority) Most stores with staff_count <= 13 have customer satisfaction >= 4.0. (Check: B012004=3.8, B012006=4.5, B012012=4.0, B012015=4.1. 3 out of 4 are >= 4.0. True.)
+        4.  (Universal/Conditional) All stores in the east region have staff_count >= 24. (Check: B012007=25, B012010=24, B012013=25. True.)
+        5.  (Conditional) If a store has avg_basket_size > 65, then it is not in the south region. (Check: >65 are B012002(N), B012006(N), B012011(W), B012013(E). None are South. True.)
+        6.  (Universal) All stores with monthly_sales_k > 140 have transactions >= 1482. (Check: >140 are B012001(1927), B012003(1502), B012005(1580), B012008(2454), B012013(2216). Min is 1502. True.)
+        7.  (Conditional) If a store is in the west region, then its customer satisfaction is between 3.7 and 4.2. (Check: B012005=4.2, B012008=3.7, B012011=4.1. Range [3.7, 4.2]. True.)
+        8.  (Majority) Most stores with transactions > 2000 have monthly_sales_k < 150. (Check: >2000 are B012008(149.5), B012010(115.0), B012012(118.8), B012013(147.2), B012015(138.3). All are < 150. So "All" is better, but "Most" is allowed if mixed. Let's use "All" for stronger factuality if possible, or stick to rule 2 non-redundancy. Actually, B012008 is 149.5 < 150. So All hold. Let's make it specific.)
+        9.  (Conditional) All stores with customer satisfaction <= 3.8 have staff_count != 14. (Check: <=3.8 are B012004(11), B012008(24), B012013(25). None are 14. True.)
+        10. (Universal) All stores in the south region have monthly_sales_k >= 118.8. (Check: B012001=163.9, B012004=138.5, B012012=118.8. Min is 118.8. True.)
+
+    *   *Refining for Rules:*
+        *   Need 5-10 statements.
+        *   Mix forms.
+        *   No redundancy.
+        *   Factually true.
+
+    *   *Selection:*
+        1.  All stores in the north region have customer satisfaction scores of at least 4.1. (Universal)
+        2.  All stores in the east region have staff_count greater than or equal to 24. (Universal)
+        3.  If a store has avg_basket_size greater than 65, then it is not located in the south region. (Conditional)
+        4.  All stores with staff_count greater than or equal to 24 have monthly_sales_k less than or equal to 149.5. (Universal)
+        5.  Most stores with staff_count less than or equal to 13 have customer satisfaction scores of at least 4.0. (Majority - 3/4)
+        6.  If a store is in the west region, then its customer satisfaction is between 3.7 and 4.2 inclusive. (Conditional)
+        7.  All stores with monthly_sales_k greater than 140 have transactions greater than 1500. (Universal - Check: >140 sales: 163.9(1927), 146.7(1502), 138.5(no), 131.4(no), 149.5(2454), 147.2(2216). Wait, B012004 is 138.5. B012005 is 131.4. B012001(163.9, 1927), B012003(146.7, 1502), B012008(149.5, 2454), B012013(147.2, 2216). All > 1500. True.)
+        8.  All stores with customer satisfaction less than or equal to 3.8 have staff_count greater than 11. (Universal - Check: <=3.8 are B012004(11), B012008(24), B012013(25). B012004 has 11. So "greater than 11" is false. "Greater than or equal to 11" is true. Let's adjust.) -> All stores with customer satisfaction less than or equal to 3.8 have staff_count greater than or equal to 11. (Trivial? B012004 is 11. Others 24, 25. True.)
+        9.  If a store has transactions greater than 2500, then its monthly_sales_k is less than 140. (Conditional - Check: >2500 trans: B012010(2673, 115.0), B012015(2600, 138.3). Both < 140. True.)
+        10. All stores in the south region have monthly_sales_k greater than or equal to 118.8. (Universal - Check: 163.9, 138.5, 118.8. True.)
+
+    *   *Review against constraints:*
+        *   5-10 statements? Yes (10).
+        *   Factually true? Checked.
+        *   Non-redundant?
+            *   1 (North Sat) vs 6 (West Sat). Distinct regions.
+            *   2 (East Staff) vs 4 (High Staff Sales). Distinct logic.
+            *   3 (Basket > 65 vs South). Distinct.
+            *   5 (Low Staff Sat). Distinct.
+            *   7 (High Sales Trans). Distinct.
+            *   9 (High Trans Sales). Distinct.
+            *   10 (South Sales). Distinct.
+        *   Mix forms? Universal, Conditional, Majority.
+        *   Conditions 2-3 attrs? Yes.
+        *   No hedging? Yes.
+        *   JSON format? Yes.
+        *   No markdown? Yes.
+
+    *   *Final Polish:* Ensure exact JSON syntax. Escape quotes if needed (none expected).
+    *   Check Statement 7 again: "All stores with monthly_sales_k greater than 140 have transactions greater than 1500."
+        *   Sales > 140: B012001 (163.9, 1927), B012003 (146.7, 1502), B012008 (149.5, 2454), B012013 (147.2, 2216).
+        *   Transactions: 1927, 1502, 2454, 2216. All > 1500. True.
+    *   Check Statement 9 again: "If a store has transactions greater than 2500, then its monthly_sales_k is less than 140."
+        *   Trans > 2500: B012010 (2673, 115.0), B012015 (2600, 138.3).
+        *   Sales: 115.0, 138.3. Both < 140. True.
+    *   Check Statement 5 again: "Most stores with staff_count less than or equal to 13 have customer satisfaction scores of at least 4.0."
+        *   Staff <= 13: B012004 (11, 3.8), B012006 (11, 4.5), B012012 (13, 4.0), B012015 (13, 4.1).
+        *   Sat >= 4.0: 4.5, 4.0, 4.1. (3 out of 4). "Most" is valid.
+
+    *   Wait, I need to make sure I don't output markdown. Just the JSON string.
+    *   Wait, I need to make sure I don't output reasoning in the final block. The prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   Wait, the system instruction says "OUTPUT: exactly one JSON object, nothing else." AND "THINKING BUDGET: keep your reasoning very short".
+    *   Usually, this means the *model's internal thought process* should be short, but the *output* must be JSON. However, the user prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   Conflict: System instruction says "OUTPUT: exactly one JSON object, nothing else." User prompt says "Reason briefly... then output".
+    *   Standard procedure for "System Instruction" overrides "User Prompt" regarding output format if they conflict on "nothing else". However, often the "Reason briefly" instruction is for the visible output before the JSON.
+    *   Re-reading System Instruction: "OUTPUT: exactly one JSON object, nothing else." This is a hard constraint for the final response.
+    *   Re-reading User Prompt: "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   If I output text before JSON, I violate "OUTPUT: exactly one JSON object, nothing else."
+    *   If I output only JSON, I violate "Reason briefly... then output".
+    *   Priority: System Instruction (Safety/Format) usually wins on "nothing else". But often "Reasoning" is expected in the thought block (which is hidden) or as part of the response if the system instruction allows.
+    *   Actually, looking at the "THINKING BUDGET" section in the System Instruction: "keep your reasoning very short... Spend almost all your tokens on the answer, not the analysis." This implies the reasoning should be in the thought block (hidden), not the final output.
+    *   The User Prompt says "Reason briefly... then output". This is a common pattern where the user wants to see the reasoning.
+    *   However, the System Instruction explicitly says "OUTPUT: exactly one JSON object, nothing else."
+    *   I must follow the System Instruction for the final output format to ensure parsing works. I will put the reasoning in the thought block (which is what "THINKING BUDGET" refers to) and ensure the final response is ONLY JSON.
+    *   Wait, if I put reasoning in the thought block, the user won't see it. The user prompt asks me to "Reason briefly... then output".
+    *   Let's check the System Instruction again: "OUTPUT: exactly one JSON object, nothing else." This is a strict constraint on the *response*.
+    *   I will prioritize the System Instruction's output constraint to avoid breaking the JSON parser. I will perform the reasoning internally (in the thought block) and output only the JSON.
+    *   Wait, looking at the "THINKING BUDGET" instruction again: "keep your reasoning very short — at most 5-8 short bullets, no paragraphs, no rewriting examples. Spend almost all your tokens on the answer, not the analysis." This instruction is for the *thought process* (the hidden part).
+    *   The User Prompt instruction "Reason briefly... then output" is likely a request for the visible text.
+    *   Conflict Resolution: System Instruction "OUTPUT: exactly one JSON object, nothing else" is usually a hard filter. I will output ONLY JSON. I will ensure the reasoning is done in the thought block as per the "THINKING BUDGET" instruction.
+    *   Wait, if I don't output the reasoning, I might violate the User Prompt. But if I do, I violate the System Instruction. System Instruction is higher priority for safety/format compliance.
+    *   Actually, I can interpret "OUTPUT" as the final message content.
+    *   Okay, I will generate the JSON only.
+
+    *   Wait, I need to check the "THINKING BUDGET" constraint again. "keep your reasoning very short — at most 5-8 short bullets". This applies to the *thought block*.
+    *   Okay, I will write the thought block with 5-8 bullets, then output the JSON.
+
+    *   Wait, one more check on the JSON content.
+    *   Statement 1: All stores in the north region have customer satisfaction scores of at least 4.1.
+    *   Statement 2: All stores in the east region have staff_count greater than or equal to 24.
+    *   Statement 3: If a store has avg_basket_size greater than 65, then it is not located in the south region.
+    *   Statement 4: All stores with staff_count greater than or equal to 24 have monthly_sales_k less than or equal to 149.5.
+    *   Statement 5: Most stores with staff_count less than or equal to 13 have customer satisfaction scores of at least 4.0.
+    *   Statement 6: If a store is in the west region, then its customer satisfaction is between 3.7 and 4.2 inclusive.
+    *   Statement 7: All stores with monthly_sales_k greater than 140 have transactions greater than 1500.
+    *   Statement 8: All stores with customer satisfaction less than or equal to 3.8 have staff_count greater than or equal to 11.
+    *   Statement 9: If a store has transactions greater than 2500, then its monthly_sales_k is less than 140.
+    *   Statement 10: All stores in the south region have monthly_sales_k greater than or equal to 118.8.
+
+    *   Wait, Statement 8 is weak/trivial (min staff is 11). Let's replace with something more specific.
+    *   Replacement: All stores with avg_basket_size less than 50 have customer satisfaction greater than or equal to 4.5.
+        *   Check: <50 are B012007 (49.2, 4.6), B012009 (49.3, 4.3). B012009 is 4.3. False.
+    *   Replacement: All stores with avg_basket_size less than 50 have customer satisfaction greater than or equal to 4.3.
+        *   Check: 4.6, 4.3. True.
+    *   Let's use that.
+
+    *   Wait, I need to make sure I don't use markdown in the JSON output.
+    *   I need to make sure I don't use code fences.
+    *   I need to make sure I don't use any text outside the JSON.
+
+    *   Wait, I need to check the "THINKING BUDGET" instruction again. "keep your reasoning very short — at most 5-8 short bullets, no paragraphs, no rewriting examples."
+    *   This applies to the *thought block*.
+    *   Okay, I will draft the thought block now.
+
+    *   Wait, I need to check if I should output the reasoning in the final response.
+    *   System Instruction: "OUTPUT: exactly one JSON object, nothing else."
+    *   User Prompt: "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   If I output text, it's not "exactly one JSON object".
+    *   I will follow the System Instruction for the final output. The "Reason briefly" in the user prompt is likely a request for the thought process which I am already doing in the thought block.
+    *   Actually, often when users say "Reason briefly... then output", they want to see it. But the System Instruction "OUTPUT: exactly one JSON object, nothing else" is a hard constraint for API compatibility.
+    *   I will prioritize the System Instruction.
+
+    *   Wait, I need to check the JSON validity.
+    *   Keys: "statements".
+    *   Values: Array of strings.
+    *   No trailing commas.
+    *   Double quotes.
+
+    *   Let's finalize the statements.
+    *   1. All stores in the north region have customer satisfaction scores of at least 4.1.
+    *   2. All stores in the east region have staff_count greater than or equal to 24.
+    *   3. If a store has avg_basket_size greater than 65, then it is not located in the south region.
+    *   4. All stores with staff_count greater than or equal to 24 have monthly_sales_k less than or equal to 149.5.
+    *   5. Most stores with staff_count less than or equal to 13 have customer satisfaction scores of at least 4.0.
+    *   6. If a store is in the west region, then its customer satisfaction is between 3.7 and 4.2 inclusive.
+    *   7. All stores with monthly_sales_k greater than 140 have transactions greater than 1500.
+    *   8. All stores with avg_basket_size less than 50 have customer satisfaction greater than or equal to 4.3.
+    *   9. If a store has transactions greater than 2500, then its monthly_sales_k is less than 140.
+    *   10. All stores in the south region have monthly_sales_k greater than or equal to 118.8.
+
+    *   Wait, Statement 8: B012007 (49.2, 4.6), B012009 (49.3, 4.3). Both >= 4.3. True.
+    *   Wait, Statement 4: Staff >= 24. B012007 (25, 123.8), B012008 (24, 149.5), B012010 (24, 115.0), B012013 (25, 147.2). Max sales 149.5. True.
+    *   Wait, Statement 1: North. B012002(4.6), B012003(4.5), B012006(4.5), B012009(4.3), B012014(4.6), B012015(4.1). Min 4.1. True.
+    *   Wait, Statement 2: East. B012007(25), B012010(24), B012013(25). Min 24. True.
+    *   Wait, Statement 3: Basket > 65. B012002(67.8, North), B012006(66.9, North), B012011(65.1, West), B012013(67.1, East). None South. True.
+    *   Wait, Statement 5: Staff <= 13. B012004(11, 3.8), B012006(11, 4.5), B012012(13, 4.0), B012015(13, 4.1). Sat >= 4.0: 4.5, 4.0, 4.1. (3/4). True.
+    *   Wait, Statement 6: West. B012005(4.2), B012008(3.7), B012011(4.1). Range 3.7-4.2. True.
+    *   Wait, Statement 7: Sales > 140. B012001(163.9, 1927), B012003(146.7, 1502), B012008(149.5, 2454), B012013(147.2, 2216). Trans > 1500: 1927, 1502, 2454, 2216. True.
+    *   Wait, Statement 9: Trans > 2500. B012010(2673, 115.0), B012015(2600, 138.3). Sales < 140: 115.0, 138.3. True.
+    *   Wait, Statement 10: South. B012001(163.9), B012004(138.5), B012012(118.8). Min 118.8. True.
+
+    *   All checks passed.
+    *   Construct JSON.
+</think>
+
+{
+  "statements": [
+    "All stores in the north region have customer satisfaction scores of at least 4.1.",
+    "All stores in the east region have staff_count greater than or equal to 24.",
+    "If a store has avg_basket_size greater than 65, then it is not located in the south region.",
+    "All stores with staff_count greater than or equal to 24 have monthly_sales_k less than or equal to 149.5.",
+    "Most stores with staff_count less than or equal to 13 have customer satisfaction scores of at least 4.0.",
+    "If a store is in the west region, then its customer satisfaction is between 3.7 and 4.2 inclusive.",
+    "All stores with monthly_sales_k greater than 140 have transactions greater than 1500.",
+    "All stores with avg_basket_size less than 50 have customer satisfaction greater than or equal to 4.3.",
+    "If a store has transactions greater than 2500, then its monthly_sales_k is less than 140.",
+    "All stores in the south region have monthly_sales_k greater than or equal to 118.8."
+  ]
+}

@@ -1,0 +1,420 @@
+Thinking Process:
+
+1.  **Analyze the Request:**
+    *   Role: Expert data analyst and logician.
+    *   Task: Generate 5-10 natural-language statements describing patterns in the provided table.
+    *   Constraints:
+        *   THINKING BUDGET: Very short reasoning (5-8 bullets, no paragraphs).
+        *   OUTPUT: Exactly one JSON object, nothing else (no markdown, no code fences).
+        *   Schema: `{"statements": ["...", "..."]}`.
+        *   Statement Count: 5 to 10.
+        *   Rules: Factually true (no counterexamples), non-redundant, mix forms (Universal, Conditional, Majority, Existential), conditions use 2-3 attributes max, no probabilistic hedging.
+    *   Data: CSV-like data about farms (farm_id, crop_type, acreage, yield_tons, irrigation_hours_week, fertilizer_kg, soil_quality_index, organic).
+
+2.  **Analyze the Data:**
+    *   Rows: 15 farms (F038001 to F038015).
+    *   Columns: farm_id, crop_type, acreage, yield_tons, irrigation_hours_week, fertilizer_kg, soil_quality_index, organic.
+    *   Crop Types: rice (1), corn (4), wheat (6), soybean (4).
+    *   Organic: yes (8), no (7).
+    *   Key Observations/Patterns to verify:
+        *   Rice: Only 1 row (F038001). Organic=yes.
+        *   Corn: 4 rows. Organic: yes (2), no (2).
+        *   Wheat: 6 rows. Organic: yes (3), no (3).
+        *   Soybean: 4 rows. Organic: no (4). *Wait, check F038005, F038006, F038014, F038015.*
+            *   F038005: soybean, yes
+            *   F038006: soybean, no
+            *   F038014: soybean, no
+            *   F038015: soybean, no
+            *   Correction: Soybean has 1 yes, 3 no.
+        *   Soil Quality Index: Range 68.5 to 81.3.
+        *   Irrigation: Range 10.0 to 20.8.
+        *   Fertilizer: Range 611 to 1024.
+        *   Yield: Range 245.6 to 463.8.
+        *   Acreage: Range 70 to 151.
+
+    *   Potential Statements:
+        1.  All soybean farms with organic=no have soil_quality_index >= 69.2. (Check: F038006=81.3, F038014=81.2, F038015=69.2. True.)
+        2.  All wheat farms have acreage >= 70. (Check: 99, 116, 146, 123, 83. Min is 83. True.)
+        3.  If a farm uses organic=yes, then fertilizer_kg <= 1024. (Check: Max organic fertilizer is 1024? F038002=947, F038005=828, F038007=668, F038008=752, F038009=894, F038010=689, F038013=958, F038001=804. Max is 958. Wait, F038006 and F038014/15 are no. F038002 is yes. Max organic fertilizer is 958. So <= 1024 is true but weak. Let's find tighter bounds.)
+        4.  All farms with soil_quality_index > 80 have organic=no or organic=yes?
+            *   >80: F038002 (80.0 - no), F038003 (80.7 - no), F038006 (81.3 - no), F038008 (80.6 - no), F038014 (81.2 - no).
+            *   Wait, F038002 is 80.0. F038003 is 80.7 (no). F038006 is 81.3 (no). F038008 is 80.6 (no). F038014 is 81.2 (no).
+            *   Are there any organic=yes with soil > 80?
+            *   F038001 (73.2), F038002 (80.0 - yes), F038004 (68.5), F038005 (72.6), F038007 (78.5), F038009 (80.0), F038010 (74.6), F038013 (71.4).
+            *   F038002 is 80.0 (yes). F038009 is 80.0 (yes).
+            *   So if soil > 80, then organic=no. (80.7, 81.3, 80.6, 81.2 are all no).
+            *   Statement: All farms with soil_quality_index > 80.0 are non-organic.
+        5.  All corn farms have yield_tons <= 454.0. (Check: 454.0, 329.4, 247.0, 427.7. Max is 454.0. True.)
+        6.  Majority of wheat farms have irrigation_hours_week > 15. (Check: 12.4, 20.8, 18.6, 17.1, 10.9, 16.5. >15: 20.8, 18.6, 17.1, 16.5. That's 4 out of 6. True.)
+        7.  All farms with fertilizer_kg > 900 have soil_quality_index >= 71.4. (Check: >900: F038002(947, 80.0), F038003(915, 80.7), F038006(1024, 81.3), F038009(894-no), F038012(928, 76.8), F038013(958, 71.4), F038014(814-no), F038015(1024, 69.2).
+            *   Wait, F038015 has 1024 fertilizer and soil 69.2. So >900 implies >=69.2.
+            *   Let's check F038015: fertilizer 1024, soil 69.2.
+            *   Let's check F038006: fertilizer 1024, soil 81.3.
+            *   Let's check F038014: fertilizer 814.
+            *   So if fertilizer > 900, soil >= 69.2. (True, min is 69.2).
+        8.  All rice farms have acreage < 160. (Only 1 row, 151. True.)
+        9.  If a farm is organic=yes, then irrigation_hours_week <= 20.8. (Max organic irrigation: F038007=20.8. True.)
+        10. All farms with yield_tons > 400 have acreage >= 116. (Check: >400: F038002(454, 117), F038008(401.4, 116), F038009(463.8, 146). Min acreage is 116. True.)
+
+    *   Refining for Non-Redundancy and Variety:
+        1.  Universal: All farms with soil_quality_index > 80.0 are non-organic. (Verified: 80.7, 81.3, 80.6, 81.2 are all 'no'. 80.0 is 'yes' but condition is >80).
+        2.  Conditional: If a farm grows wheat, then its acreage is at least 83. (Verified: Min wheat acreage is 83).
+        3.  Majority: Most wheat farms use more than 15 hours of irrigation per week. (Verified: 4 out of 6 wheat farms: 20.8, 18.6, 17.1, 16.5).
+        4.  Universal: All corn farms produce at least 247 tons of yield. (Verified: Min corn yield is 247.0).
+        5.  Conditional: If a farm uses 1024 kg of fertilizer, then its soil quality index is at least 69.2. (Verified: F038006=81.3, F038015=69.2).
+        6.  Universal: All organic farms have irrigation hours less than or equal to 20.8. (Verified: Max organic irrigation is 20.8).
+        7.  Conditional: If a farm has a yield greater than 400 tons, then its acreage is at least 116. (Verified: 454->117, 401.4->116, 463.8->146).
+        8.  Universal: All soybean farms with organic=no have soil quality index above 69. (Verified: 81.3, 81.2, 69.2. Wait, 69.2 is not > 69. It is >= 69.2. Let's say >= 69).
+        9.  Existential (Surprising): There is a farm with soybean crop type that is organic. (F038005).
+        10. Universal: All farms with fertilizer usage above 900 kg have soil quality index at least 69.2. (Verified: Min soil for >900 fertilizer is 69.2 from F038015).
+
+    *   Check Constraints:
+        *   5-10 statements.
+        *   Mix forms.
+        *   No markdown in output.
+        *   JSON only.
+        *   Reasoning bullets max 8.
+
+    *   Selection:
+        1.  All farms with soil_quality_index > 80.0 are non-organic. (Universal)
+        2.  If a farm grows wheat, then its acreage is at least 83. (Conditional)
+        3.  Most wheat farms use more than 15 hours of irrigation per week. (Majority)
+        4.  All corn farms produce at least 247 tons of yield. (Universal)
+        5.  If a farm uses 1024 kg of fertilizer, then its soil quality index is at least 69.2. (Conditional)
+        6.  All organic farms have irrigation hours less than or equal to 20.8. (Universal)
+        7.  If a farm has a yield greater than 400 tons, then its acreage is at least 116. (Conditional)
+        8.  There exists a soybean farm that is certified organic. (Existential - F038005)
+        9.  All farms with fertilizer usage above 900 kg have soil quality index at least 69.2. (Universal)
+        10. All rice farms have an acreage between 150 and 152. (Universal - F038001 is 151).
+
+    *   Wait, check Statement 9 vs 5. 5 is specific to 1024. 9 is >900. 9 covers 5. 9 is stronger/more general. I'll keep 9.
+    *   Check Statement 1 vs others. Soil > 80 implies non-organic.
+    *   Check Statement 8. "There exists a soybean farm that is certified organic." Is this surprising? Most soybeans are no (3 vs 1). It's a valid existential.
+    *   Check Statement 10. Rice is only 1 row. 151 acreage. "Between 150 and 152" is true.
+    *   Check Statement 3. "Most wheat farms". 4/6 is majority.
+    *   Check Statement 4. Corn yield min 247.0.
+    *   Check Statement 6. Organic max irrigation 20.8.
+    *   Check Statement 7. Yield > 400 implies acreage >= 116. (454->117, 401.4->116, 463.8->146). True.
+
+    *   Final check on JSON format. No markdown.
+    *   Reasoning bullets: Keep it tight.
+
+3.  **Drafting Reasoning:**
+    *   Scan data for min/max values per crop and attribute.
+    *   Verify soil > 80 implies organic=no (4 rows match, all 'no').
+    *   Verify wheat acreage min is 83 (F038013).
+    *   Count wheat irrigation > 15 (4 out of 6).
+    *   Verify corn yield min is 247.0 (F038011).
+    *   Verify fertilizer > 900 implies soil >= 69.2 (F038015 is 1024/69.2).
+    *   Verify organic irrigation max is 20.8 (F038007).
+    *   Verify yield > 400 implies acreage >= 116 (F038008 is 401.4/116).
+    *   Note soybean organic exception (F038005).
+    *   Ensure no markdown in final output.
+    *   Ensure JSON schema compliance.
+
+4.  **Final Review of Statements:**
+    1.  All farms with soil_quality_index > 80.0 are non-organic.
+    2.  If a farm grows wheat, then its acreage is at least 83.
+    3.  Most wheat farms use more than 15 hours of irrigation per week.
+    4.  All corn farms produce at least 247 tons of yield.
+    5.  All farms with fertilizer usage above 900 kg have soil quality index at least 69.2.
+    6.  All organic farms have irrigation hours less than or equal to 20.8.
+    7.  If a farm has a yield greater than 400 tons, then its acreage is at least 116.
+    8.  There exists a soybean farm that is certified organic.
+    9.  All rice farms have an acreage between 150 and 152.
+    10. All farms with irrigation hours below 11 have fertilizer usage at least 689. (Check: <11: F038010(10.9, 689), F038012(10.7, 928), F038014(10.0, 814). Min fertilizer is 689. True.)
+
+    I will select 8 statements to be safe and concise.
+    1. Soil > 80 -> Non-organic.
+    2. Wheat -> Acreage >= 83.
+    3. Most Wheat -> Irrigation > 15.
+    4. Corn -> Yield >= 247.
+    5. Fertilizer > 900 -> Soil >= 69.2.
+    6. Organic -> Irrigation <= 20.8.
+    7. Yield > 400 -> Acreage >= 116.
+    8. Exists Soybean Organic.
+
+    Wait, check Statement 5 again. F038015: Fertilizer 1024, Soil 69.2. F038006: 1024, 81.3. F038002: 947, 80.0. F038003: 915, 80.7. F038012: 928, 76.8. F038013: 958, 71.4.
+    Min soil for >900 is 69.2. Correct.
+
+    Check Statement 1 again. Soil > 80.0.
+    Rows: F038003 (80.7, no), F038006 (81.3, no), F038008 (80.6, no), F038014 (81.2, no).
+    All are 'no'. Correct.
+
+    Check Statement 7 again. Yield > 400.
+    Rows: F038002 (454.0, 117), F038008 (401.4, 116), F038009 (463.8, 146).
+    Min acreage 116. Correct.
+
+    Check Statement 3 again. Wheat Irrigation > 15.
+    Wheat rows: F038003 (12.4), F038007 (20.8), F038008 (18.6), F038009 (17.1), F038010 (10.9), F038013 (16.5).
+    >15: 20.8, 18.6, 17.1, 16.5. Count = 4. Total = 6. 4/6 is majority. Correct.
+
+    Check Statement 8. Exists Soybean Organic.
+    F038005 is soybean, yes. Correct.
+
+    Ready to construct JSON.
+
+    Wait, I need to make sure I don't use markdown in the final output. Just the JSON string.
+    And reasoning bullets must be 5-8.
+
+    Reasoning Plan:
+    1. Identify soil > 80 implies organic=no.
+    2. Identify wheat acreage min is 83.
+    3. Count wheat irrigation > 15 (4/6).
+    4. Identify corn yield min is 247.
+    5. Identify fertilizer > 900 soil min is 69.2.
+    6. Identify organic irrigation max is 20.8.
+    7. Identify yield > 400 acreage min is 116.
+    8. Note soybean organic exception exists.
+
+    This fits 8 bullets.
+
+    Wait, one more check on Statement 6: "All organic farms have irrigation hours less than or equal to 20.8."
+    Organic rows: F038001(14.4), F038002(19.8), F038004(16.3), F038005(15.5), F038007(20.8), F038009(17.1), F038010(10.9), F038013(16.5).
+    Max is 20.8. Correct.
+
+    One more check on Statement 2: "If a farm grows wheat, then its acreage is at least 83."
+    Wheat acreage: 70 (F038003), 99, 116, 146, 123, 83.
+    Wait, F038003 is wheat, acreage 70.
+    My previous check said min was 83. I misread F038003.
+    F038003: wheat, 70, 382.9...
+    So Statement 2 is FALSE. F038003 is wheat with 70 acreage.
+    Correction: "If a farm grows wheat, then its acreage is at least 70." (Trivial).
+    Better: "All wheat farms have yield between 294 and 464." (294.4 to 463.8).
+    Or: "All wheat farms have soil quality index between 71.4 and 80.7." (Min 71.4, Max 80.7).
+    Let's use Soil Quality for Wheat.
+    Wheat Soil: 80.7, 78.5, 80.6, 80.0, 74.6, 71.4.
+    Range: 71.4 to 80.7.
+    Statement: All wheat farms have soil quality index between 71.4 and 80.7.
+
+    Let's re-verify Statement 1: Soil > 80.0 -> Non-organic.
+    Rows with Soil > 80.0:
+    F038003 (80.7, no)
+    F038006 (81.3, no)
+    F038008 (80.6, no)
+    F038014 (81.2, no)
+    All are 'no'. True.
+
+    Let's re-verify Statement 5: Fertilizer > 900 -> Soil >= 69.2.
+    Rows with Fertilizer > 900:
+    F038002 (947, 80.0)
+    F038003 (915, 80.7)
+    F038006 (1024, 81.3)
+    F038012 (928, 76.8)
+    F038013 (958, 71.4)
+    F038015 (1024, 69.2)
+    Min Soil is 69.2. True.
+
+    Let's re-verify Statement 7: Yield > 400 -> Acreage >= 116.
+    Rows with Yield > 400:
+    F038002 (454.0, 117)
+    F038008 (401.4, 116)
+    F038009 (463.8, 146)
+    Min Acreage 116. True.
+
+    Let's re-verify Statement 4: Corn Yield >= 247.
+    Corn Rows:
+    F038002 (454.0)
+    F038004 (329.4)
+    F038011 (247.0)
+    F038012 (427.7)
+    Min is 247.0. True.
+
+    Let's re-verify Statement 3: Most Wheat Irrigation > 15.
+    Wheat Irrigation: 12.4, 20.8, 18.6, 17.1, 10.9, 16.5.
+    >15: 20.8, 18.6, 17.1, 16.5 (4 rows).
+    Total 6. 4/6 is majority. True.
+
+    Let's re-verify Statement 6: Organic Irrigation <= 20.8.
+    Organic Rows:
+    F038001 (14.4)
+    F038002 (19.8)
+    F038004 (16.3)
+    F038005 (15.5)
+    F038007 (20.8)
+    F038009 (17.1)
+    F038010 (10.9)
+    F038013 (16.5)
+    Max is 20.8. True.
+
+    Let's re-verify Statement 8: Exists Soybean Organic.
+    F038005 is soybean, yes. True.
+
+    Let's add one more to reach 5-10.
+    Statement 9: All farms with irrigation hours below 11 have fertilizer usage at least 689.
+    Irrigation < 11:
+    F038010 (10.9, 689)
+    F038012 (10.7, 928)
+    F038014 (10.0, 814)
+    Min Fertilizer 689. True.
+
+    Okay, I have 9 statements.
+    1. Soil > 80 -> Non-organic.
+    2. Wheat Soil 71.4-80.7.
+    3. Most Wheat Irrigation > 15.
+    4. Corn Yield >= 247.
+    5. Fertilizer > 900 -> Soil >= 69.2.
+    6. Organic Irrigation <= 20.8.
+    7. Yield > 400 -> Acreage >= 116.
+    8. Exists Soybean Organic.
+    9. Irrigation < 11 -> Fertilizer >= 689.
+
+    Wait, check Statement 2 again. "All wheat farms have soil quality index between 71.4 and 80.7."
+    Wheat Soil: 80.7, 78.5, 80.6, 80.0, 74.6, 71.4.
+    Min 71.4, Max 80.7. True.
+
+    Wait, check Statement 9 again. "All farms with irrigation hours below 11 have fertilizer usage at least 689."
+    Rows < 11: F038010 (10.9), F038012 (10.7), F038014 (10.0).
+    Fertilizer: 689, 928, 814.
+    Min 689. True.
+
+    Okay, ready to write.
+    Reasoning bullets:
+    1. Verified soil > 80.0 rows are all non-organic.
+    2. Verified wheat soil index range is 71.4 to 80.7.
+    3. Counted wheat irrigation > 15 hours (4 out of 6).
+    4. Verified corn yield minimum is 247.0 tons.
+    5. Verified fertilizer > 900 kg rows have soil >= 69.2.
+    6. Verified organic irrigation maximum is 20.8 hours.
+    7. Verified yield > 400 tons rows have acreage >= 116.
+    8. Confirmed existence of organic soybean farm (F038005).
+    9. Verified irrigation < 11 hours rows have fertilizer >= 689 kg.
+
+    Wait, I need to output JSON only. No markdown.
+    I will write the reasoning first as requested ("Reason briefly... then output the JSON object").
+    Wait, the prompt says "OUTPUT: exactly one JSON object, nothing else."
+    But it also says "Reason briefly (5-8 bullets max), then output the JSON object."
+    Usually, this means the thought block is hidden, and the visible output should be JSON.
+    However, the instruction "OUTPUT: exactly one JSON object, nothing else" usually overrides the "Reason briefly" instruction if it implies visible text.
+    But looking at the system instruction: "THINKING BUDGET: keep your reasoning very short... Spend almost all your tokens on the answer, not the analysis."
+    And "OUTPUT: exactly one JSON object, nothing else."
+    This implies the reasoning should be in the thought block (which is hidden from the user in some interfaces, but here I am the model generating the response).
+    Wait, if I output text before the JSON, it violates "exactly one JSON object, nothing else".
+    I must put the reasoning in the thought block (which is what I am doing now) and the final response must be ONLY the JSON.
+    Wait, the prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    If I put reasoning in the final output, it's not "exactly one JSON object".
+    Standard interpretation for "OUTPUT: exactly one JSON object" is that the final message content must be valid JSON.
+    I will follow the "OUTPUT" constraint strictly for the final message. The reasoning happens in the thought trace.
+    Wait, the prompt says "Reason briefly (5-8 bullets max), then output the JSON object." inside the user prompt.
+    But the system instruction says "OUTPUT: exactly one JSON object, nothing else."
+    I will prioritize the System Instruction for the final output format. I will include the reasoning in the thought block.
+    Wait, looking at the "THINKING BUDGET" instruction: "keep your reasoning very short... Spend almost all your tokens on the answer, not the analysis."
+    This implies the reasoning should be visible? No, "THINKING BUDGET" usually refers to the internal thought process.
+    However, the user prompt explicitly asks to "Reason briefly... then output".
+    If I output text, I violate "exactly one JSON object".
+    I will assume the "Reason briefly" instruction is for the thought block content, and the final output must be JSON.
+    Actually, often when users say "Reason briefly... then output", they expect the reasoning in the response.
+    But "OUTPUT: exactly one JSON object, nothing else" is a hard constraint on the final string.
+    I will follow the hard constraint: Final output = JSON only.
+    I will ensure the reasoning is done in the thought block.
+    Wait, I need to check if I can put reasoning in the JSON? No, schema is `{"statements": [...]}`.
+    Okay, I will produce the JSON only. I will ensure the reasoning is concise in the thought block.
+
+    Wait, re-reading: "OUTPUT: exactly one JSON object, nothing else."
+    This is a system instruction.
+    The user prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    If I output text, I fail the system instruction.
+    I will output ONLY JSON.
+
+    Wait, I need to make sure I don't violate the "5-10 statements" rule.
+    I have 9 statements planned.
+    I will double check the JSON syntax.
+    Escape quotes if necessary.
+    No markdown ticks.
+
+    One more check on Statement 1: "All farms with soil_quality_index > 80.0 are non-organic."
+    Rows: F038003 (80.7, no), F038006 (81.3, no), F038008 (80.6, no), F038014 (81.2, no).
+    All 'no'. Correct.
+
+    One more check on Statement 2: "All wheat farms have soil quality index between 71.4 and 80.7."
+    Wheat: F038003(80.7), F038007(78.5), F038008(80.6), F038009(80.0), F038010(74.6), F038013(71.4).
+    Min 71.4, Max 80.7. Correct.
+
+    One more check on Statement 3: "Most wheat farms use more than 15 hours of irrigation per week."
+    Wheat Irr: 12.4, 20.8, 18.6, 17.1, 10.9, 16.5.
+    >15: 20.8, 18.6, 17.1, 16.5. (4 rows).
+    Total 6. 4 > 3. Correct.
+
+    One more check on Statement 4: "All corn farms produce at least 247 tons of yield."
+    Corn: 454.0, 329.4, 247.0, 427.7.
+    Min 247.0. Correct.
+
+    One more check on Statement 5: "All farms with fertilizer usage above 900 kg have soil quality index at least 69.2."
+    Fertilizer > 900: 947, 915, 1024, 928, 958, 1024.
+    Soils: 80.0, 80.7, 81.3, 76.8, 71.4, 69.2.
+    Min 69.2. Correct.
+
+    One more check on Statement 6: "All organic farms have irrigation hours less than or equal to 20.8."
+    Organic Irr: 14.4, 19.8, 16.3, 15.5, 20.8, 17.1, 10.9, 16.5.
+    Max 20.8. Correct.
+
+    One more check on Statement 7: "If a farm has a yield greater than 400 tons, then its acreage is at least 116."
+    Yield > 400: 454.0 (117), 401.4 (116), 463.8 (146).
+    Min Acreage 116. Correct.
+
+    One more check on Statement 8: "There exists a soybean farm that is certified organic."
+    F038005: soybean, yes. Correct.
+
+    One more check on Statement 9: "All farms with irrigation hours below 11 have fertilizer usage at least 689."
+    Irr < 11: 10.9 (689), 10.7 (928), 10.0 (814).
+    Min Fertilizer 689. Correct.
+
+    I will remove Statement 9 to keep it to 8 statements if needed, but 9 is within 5-10. I'll keep 9.
+    Actually, I'll stick to 8 to be concise and safe. I'll drop Statement 9.
+    Wait, 5-10 is the range. 9 is fine.
+    I'll include 9 statements.
+
+    Wait, I need to ensure no markdown.
+    So no ```json ... ```.
+    Just { ... }.
+
+    Final check on constraints:
+    - 5-10 statements.
+    - No markdown.
+    - JSON only.
+    - Reasoning in thought block (5-8 bullets).
+
+    Let's finalize the statements list for the JSON.
+    1. All farms with soil_quality_index > 80.0 are non-organic.
+    2. All wheat farms have soil quality index between 71.4 and 80.7.
+    3. Most wheat farms use more than 15 hours of irrigation per week.
+    4. All corn farms produce at least 247 tons of yield.
+    5. All farms with fertilizer usage above 900 kg have soil quality index at least 69.2.
+    6. All organic farms have irrigation hours less than or equal to 20.8.
+    7. If a farm has a yield greater than 400 tons, then its acreage is at least 116.
+    8. There exists a soybean farm that is certified organic.
+    9. All farms with irrigation hours below 11 have fertilizer usage at least 689.
+
+    Wait, Statement 9 is redundant with Statement 5?
+    Statement 5: Fertilizer > 900 -> Soil >= 69.2.
+    Statement 9: Irrigation < 11 -> Fertilizer >= 689.
+    Different conditions. Not redundant.
+    Okay.
+
+    Wait, I need to check if "non-organic" is the right term. The column is 'organic' with values 'yes'/'no'.
+    So "organic=no" or "non-organic". "non-organic" is natural language.
+    "certified organic" for 'yes'.
+    Okay.
+
+    One detail: "All wheat farms have soil quality index between 71.4 and 80.7."
+    Is 71.4 inclusive? Yes.
+    Is 80.7 inclusive? Yes.
+    Values: 80.7, 78.5, 80.6, 80.0, 74.6, 71.4.
+    All within [71.4, 80.7]. True.
+
+    Okay, ready.
+</think>
+
+{
+  "statements": [
+    "All farms with soil_quality_index > 80.0 are non-organic.",
+    "All wheat farms have soil quality index between 71.4 and 80.7.",
+    "Most wheat farms use more than 15 hours of irrigation per week.",
+    "All corn farms produce at least 247 tons of yield.",
+    "All farms with fertilizer usage above 900 kg have soil quality index at least 69.2.",
+    "All organic farms have irrigation hours less than or equal to 20.8.",
+    "If a farm has a yield greater than 400 tons, then its acreage is at least 116.",
+    "There exists a soybean farm that is certified organic.",
+    "All farms with irrigation hours below 11 have fertilizer usage at least 689."
+  ]
+}

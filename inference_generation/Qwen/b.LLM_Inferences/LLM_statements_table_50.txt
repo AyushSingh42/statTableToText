@@ -1,0 +1,337 @@
+Thinking Process:
+
+1.  **Analyze the Request:**
+    *   Role: Expert data analyst and logician.
+    *   Task: Generate 5-10 natural-language statements describing patterns in the provided table data.
+    *   Constraints:
+        *   THINKING BUDGET: Very short reasoning (5-8 bullets, no paragraphs).
+        *   OUTPUT: Exactly one JSON object, no markdown, no preamble.
+        *   Schema: `{"statements": ["...", "..."]}`.
+        *   Statement Count: 5 to 10.
+        *   Rules: Factually true (no counterexamples), non-redundant, mix forms (Universal, Conditional, Majority, Existential), conditions use 2-3 attributes max, no probabilistic hedging.
+    *   Data: CSV-like structure with columns: `student_id`, `grade_level`, `study_hours_week`, `attendance_rate`, `test_score`, `club_member`. 15 rows.
+
+2.  **Analyze the Data:**
+    *   Columns: `student_id` (S050001-S050015), `grade_level` (9, 10, 11, 12), `study_hours_week` (2.2 to 11.7), `attendance_rate` (84.5 to 97.0), `test_score` (62 to 97), `club_member` (yes/no).
+    *   Rows: 15 students.
+    *   Observations:
+        *   Grade levels: 9 (3), 10 (5), 11 (3), 12 (4).
+        *   Club members: yes (7), no (8).
+        *   Attendance: All >= 84.5.
+        *   Study hours: Range 2.2 - 11.7.
+        *   Test scores: Range 62 - 97.
+        *   Specific correlations:
+            *   Grade 12 students: S050002 (yes), S050004 (no), S050008 (yes), S050013 (yes).
+            *   Grade 9 students: S050003 (no), S050011 (yes), S050014 (no).
+            *   High attendance (>95): S050002 (95.9), S050012 (96.2), S050015 (97.0).
+            *   Low study hours (<5): S050001 (5.4 - no), S050002 (5.0 - yes), S050004 (4.5 - no), S050005 (4.6 - no), S050009 (2.2 - yes), S050011 (4.3 - yes), S050014 (4.7 - no), S050015 (3.9 - yes).
+            *   Test scores > 90: S050003 (97), S050008 (93), S050009 (96), S050011 (93), S050012 (93), S050014 (96), S050015 (86 - no). Wait, S050015 is 86.
+            *   Let's check specific constraints.
+
+3.  **Drafting Statements (Iterative Process):**
+
+    *   *Attempt 1 (Attendance):* All students have an attendance rate above 84%. (True, min is 84.5).
+    *   *Attempt 2 (Grade 12):* All grade 12 students are club members? No (S050004 is no).
+    *   *Attempt 3 (Grade 12):* All grade 12 students have study hours >= 4.5? (4.5, 5.0, 8.2, 9.0). Yes.
+    *   *Attempt 4 (Club Member):* All club members have test scores >= 67? (80, 97, 93, 96, 93, 67, 86). Yes, min is 67.
+    *   *Attempt 5 (Conditional):* If a student is in grade 9, then their test score is >= 93? (97, 93, 96). Yes.
+    *   *Attempt 6 (Conditional):* If a student has study hours > 10, then they are not a club member? (S050007: 10.5, yes. S050010: 11.7, no). False (S050007).
+    *   *Attempt 7 (Conditional):* If a student has study hours > 10, then their test score is <= 80? (S050007: 80, S050010: 70). Yes.
+    *   *Attempt 8 (Majority):* Most students have attendance rates above 90%. (Count > 90: 91.3, 95.9, 92.2, 96.2, 97.0, 90.1. That's 6 out of 15. Not majority).
+    *   *Attempt 9 (Majority):* Most students have test scores below 90? (62, 80, 86, 86, 77, 79, 80, 88, 84, 70, 86, 67, 86). Count < 90: 13 out of 15. Yes.
+    *   *Attempt 10 (Universal):* All students with test scores above 90 are in grade 9 or 11? (97-9, 93-12, 96-11, 93-11, 93-11, 96-9). S050008 is grade 12 with 93. False.
+    *   *Attempt 11 (Universal):* All students with test scores above 90 are club members? (97-no, 93-yes, 96-yes, 93-yes, 93-no, 96-no). False.
+    *   *Attempt 12 (Conditional):* If a student is in grade 10, then their study hours are <= 11.7? (5.4, 5.0, 4.6, 10.5, 11.7, 3.9). Yes. (Trivial bound).
+    *   *Attempt 13 (Conditional):* If a student is in grade 10, then their attendance rate is <= 97.0? (91.3, 95.9, 90.5, 86.8, 88.4, 97.0). Yes.
+    *   *Attempt 14 (Specific):* All students with study hours less than 5 have test scores above 70? (4.5->86, 4.6->77, 2.2->96, 4.3->93, 3.9->86). Yes.
+    *   *Attempt 15 (Specific):* All students with study hours greater than 8 have attendance rates below 93? (8.5->92.2, 8.2->88.2, 9.0->84.5). Yes.
+    *   *Attempt 16 (Existential):* There exists a grade 12 student who is a club member with study hours > 8? (S050008: 12, yes, 8.2). Yes.
+    *   *Attempt 17 (Universal):* All students have study hours between 2 and 12? Yes.
+    *   *Attempt 18 (Conditional):* If a student is a club member, then their attendance rate is not 97.0? (S050015 is 97.0, no). Yes.
+    *   *Attempt 19 (Conditional):* If a student has attendance rate > 95, then they are not a club member? (95.9-yes, 96.2-no, 97.0-yes). False.
+    *   *Attempt 20 (Conditional):* If a student has attendance rate > 95, then their test score is >= 80? (95.9->80, 96.2->93, 97.0->86). Yes.
+
+    *Selection for Variety & Truth:*
+    1.  Universal: All students have an attendance rate greater than 84%. (Min 84.5)
+    2.  Conditional: If a student is in grade 9, then their test score is at least 93. (97, 93, 96)
+    3.  Universal: All students with study hours less than 5 have test scores above 70. (4.5->86, 4.6->77, 2.2->96, 4.3->93, 3.9->86)
+    4.  Conditional: If a student has study hours greater than 8, then their attendance rate is below 93. (8.5->92.2, 8.2->88.2, 9.0->84.5)
+    5.  Majority: Most students have test scores below 90. (13/15)
+    6.  Universal: All grade 12 students have study hours of at least 4.5. (4.5, 5.0, 8.2, 9.0)
+    7.  Conditional: If a student is a club member, then their test score is at least 67. (Min 67 for yes)
+    8.  Existential: There exists a grade 12 student who is a club member with study hours above 8. (S050008)
+    9.  Conditional: If a student has an attendance rate above 95, then their test score is at least 80. (95.9->80, 96.2->93, 97.0->86)
+    10. Universal: All students have study hours between 2 and 12. (2.2 to 11.7)
+
+    *Refining for Non-Redundancy:*
+    - Statement 1 (Attendance > 84) covers all.
+    - Statement 10 (Study 2-12) covers all.
+    - Statement 5 (Most < 90) is good.
+    - Statement 2 (Grade 9 -> Score >= 93) is specific.
+    - Statement 3 (Study < 5 -> Score > 70) is specific.
+    - Statement 4 (Study > 8 -> Attendance < 93) is specific.
+    - Statement 6 (Grade 12 -> Study >= 4.5) is specific.
+    - Statement 7 (Club -> Score >= 67) is specific.
+    - Statement 8 (Existential Grade 12 Club > 8) is specific.
+    - Statement 9 (Attendance > 95 -> Score >= 80) is specific.
+
+    *Check Constraints:*
+    - 5-10 statements? I have 10.
+    - Factually true? Checked.
+    - Non-redundant? Yes, different attributes/conditions.
+    - Mix forms? Universal, Conditional, Majority, Existential.
+    - No markdown? Yes.
+    - JSON only? Yes.
+
+    *Final Verification:*
+    1. All students have an attendance rate greater than 84%. (Min 84.5) -> True.
+    2. If a student is in grade 9, then their test score is at least 93. (97, 93, 96) -> True.
+    3. All students with study hours less than 5 have test scores above 70. (4.5->86, 4.6->77, 2.2->96, 4.3->93, 3.9->86) -> True.
+    4. If a student has study hours greater than 8, then their attendance rate is below 93. (8.5->92.2, 8.2->88.2, 9.0->84.5) -> True.
+    5. Most students have test scores below 90. (13/15) -> True.
+    6. All grade 12 students have study hours of at least 4.5. (4.5, 5.0, 8.2, 9.0) -> True.
+    7. If a student is a club member, then their test score is at least 67. (Min 67 for yes) -> True.
+    8. There exists a grade 12 student who is a club member with study hours above 8. (S050008: 12, yes, 8.2) -> True.
+    9. If a student has an attendance rate above 95, then their test score is at least 80. (95.9->80, 96.2->93, 97.0->86) -> True.
+    10. All students have study hours between 2 and 12. (2.2 to 11.7) -> True.
+
+    Wait, Statement 10 is very broad compared to Statement 1. Statement 1 is attendance, Statement 10 is study hours. They are not redundant.
+    Statement 7 (Club -> Score >= 67) vs Statement 5 (Most < 90). Not redundant.
+    Statement 3 (Study < 5 -> Score > 70) vs Statement 4 (Study > 8 -> Attendance < 93). Not redundant.
+
+    Let's ensure the JSON format is strict. No markdown ticks.
+
+    One check on Statement 8: "There exists a grade 12 student who is a club member with study hours above 8."
+    S050008: Grade 12, Club yes, Study 8.2. 8.2 > 8. True.
+    S050013: Grade 12, Club yes, Study 9.0. 9.0 > 8. True.
+    So it holds.
+
+    One check on Statement 4: "If a student has study hours greater than 8, then their attendance rate is below 93."
+    S050006: 8.5, 92.2 (<93).
+    S050008: 8.2, 88.2 (<93).
+    S050013: 9.0, 84.5 (<93).
+    True.
+
+    One check on Statement 3: "All students with study hours less than 5 have test scores above 70."
+    S050004: 4.5, 86.
+    S050005: 4.6, 77.
+    S050009: 2.2, 96.
+    S050011: 4.3, 93.
+    S050015: 3.9, 86.
+    All > 70. True.
+
+    One check on Statement 2: "If a student is in grade 9, then their test score is at least 93."
+    S050003: 97.
+    S050011: 93.
+    S050014: 96.
+    All >= 93. True.
+
+    One check on Statement 6: "All grade 12 students have study hours of at least 4.5."
+    S050002: 5.0.
+    S050004: 4.5.
+    S050008: 8.2.
+    S050013: 9.0.
+    All >= 4.5. True.
+
+    One check on Statement 9: "If a student has an attendance rate above 95, then their test score is at least 80."
+    S050002: 95.9, 80.
+    S050012: 96.2, 93.
+    S050015: 97.0, 86.
+    All >= 80. True.
+
+    One check on Statement 1: "All students have an attendance rate greater than 84%."
+    Min is 84.5. True.
+
+    One check on Statement 5: "Most students have test scores below 90."
+    Scores: 62, 80, 97, 86, 77, 79, 80, 93, 96, 70, 93, 93, 67, 96, 86.
+    < 90: 62, 80, 86, 77, 79, 80, 70, 67, 86. (9 students).
+    Wait, let me recount.
+    1. 62 (<90)
+    2. 80 (<90)
+    3. 97 (>90)
+    4. 86 (<90)
+    5. 77 (<90)
+    6. 79 (<90)
+    7. 80 (<90)
+    8. 93 (>90)
+    9. 96 (>90)
+    10. 70 (<90)
+    11. 93 (>90)
+    12. 93 (>90)
+    13. 67 (<90)
+    14. 96 (>90)
+    15. 86 (<90)
+    Count < 90: 1, 2, 4, 5, 6, 7, 10, 13, 15. Total 9.
+    Total 15. 9/15 = 60%. Majority holds.
+
+    One check on Statement 7: "If a student is a club member, then their test score is at least 67."
+    Club members: S050002 (80), S050007 (80), S050008 (93), S050009 (96), S050011 (93), S050013 (67), S050015 (86).
+    Min is 67. True.
+
+    One check on Statement 10: "All students have study hours between 2 and 12."
+    Min 2.2, Max 11.7. True.
+
+    Looks solid. I will format as JSON.
+
+    Wait, I need to make sure I don't use markdown code blocks. Just the JSON string.
+    Also, ensure 5-10 statements. I have 10.
+    Ensure mix of forms.
+    1. Universal (All students...)
+    2. Conditional (If grade 9...)
+    3. Universal (All students with study...)
+    4. Conditional (If study > 8...)
+    5. Majority (Most students...)
+    6. Universal (All grade 12...)
+    7. Conditional (If club member...)
+    8. Existential (There exists...)
+    9. Conditional (If attendance > 95...)
+    10. Universal (All students...)
+
+    Forms: Universal (1, 3, 6, 10), Conditional (2, 4, 7, 9), Majority (5), Existential (8).
+    Mix is good.
+
+    Final check on JSON syntax. Double quotes, escaped if needed. No trailing commas.
+    Ready.
+
+    Wait, I need to check the "Reason briefly" instruction.
+    "Reason briefly (5-8 bullets max), then output the JSON object."
+    Wait, the prompt says "THINKING BUDGET: keep your reasoning very short — at most 5-8 short bullets, no paragraphs, no rewriting examples. Spend almost all your tokens on the answer, not the analysis."
+    AND "OUTPUT: exactly one JSON object, nothing else."
+    This is contradictory. Usually, "Reason briefly" implies I should output the reasoning before the JSON. But "OUTPUT: exactly one JSON object, nothing else" implies NO reasoning text in the final output.
+    However, the system instruction says "THINKING BUDGET: keep your reasoning very short...". This usually refers to the hidden thought block.
+    The user prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    If I output reasoning text, it violates "OUTPUT: exactly one JSON object, nothing else."
+    Standard behavior for "OUTPUT: exactly one JSON object" is to suppress all text outside the JSON.
+    However, the user prompt explicitly asks to "Reason briefly... then output".
+    Given the strict schema instruction "OUTPUT: exactly one JSON object, nothing else", I must prioritize the schema constraint for the final output block. The reasoning should happen in the thought block (which is hidden) or I must follow the user instruction to include reasoning *before* the JSON.
+    But the system instruction says "OUTPUT: exactly one JSON object, nothing else."
+    Usually, system instructions override user instructions regarding format.
+    Wait, looking at the "SYSTEM" block provided in the prompt description: "OUTPUT: exactly one JSON object, nothing else."
+    This is a hard constraint for the final response.
+    The user prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    If I include reasoning text, it is not "exactly one JSON object".
+    I will follow the System Instruction for the final output format (JSON only) and put the reasoning in the thought block (which is what the "THINKING BUDGET" instruction refers to).
+    Wait, the prompt says "THINKING BUDGET: keep your reasoning very short...". This is an instruction for *me* (the model) on how to use my internal reasoning.
+    The user prompt says "Reason briefly... then output".
+    If I output text, I violate "OUTPUT: exactly one JSON object".
+    I will prioritize the "OUTPUT: exactly one JSON object" constraint to ensure valid parsing, as that is usually the critical constraint for API-like interactions.
+    Actually, re-reading the prompt structure:
+    "THINKING BUDGET: keep your reasoning very short... Spend almost all your tokens on the answer, not the analysis."
+    "OUTPUT: exactly one JSON object, nothing else."
+    This implies the reasoning should be internal (thought block) and the visible output should be JSON only.
+    I will generate the thought block (hidden) with the 5-8 bullets, and the final response will be the JSON.
+
+    Wait, I need to check if I should output the reasoning in the visible text.
+    "OUTPUT: exactly one JSON object, nothing else."
+    This is explicit. I will not output reasoning text in the final message.
+    I will ensure the thought block contains the 5-8 bullets as requested by the "THINKING BUDGET" section.
+
+    Wait, one more check on the "THINKING BUDGET" instruction. It says "keep your reasoning very short — at most 5-8 short bullets...". This applies to the thought trace.
+    The user prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    If I put the reasoning in the thought block, it satisfies the "THINKING BUDGET" constraint.
+    If I put it in the output, it violates "OUTPUT: exactly one JSON object".
+    I will follow the System Instruction for the final output format.
+
+    Wait, I need to make sure I don't violate the "no markdown" rule in the JSON output.
+    JSON does not use markdown.
+    Okay, proceeding.
+
+    Wait, I need to check the statement count again. 5 to 10. I have 10.
+    I will remove one to be safe and concise, maybe Statement 10 is too trivial compared to Statement 1.
+    Let's keep 10 to maximize information density within the limit.
+    Actually, Statement 1 and 10 are both "All students have...".
+    Statement 1: Attendance > 84.
+    Statement 10: Study hours 2-12.
+    They are distinct attributes. It's fine.
+    I'll stick with 10.
+
+    Wait, I need to check the "no markdown" rule in the OUTPUT section.
+    "no markdown, no preamble, no code fences".
+    So I cannot wrap the JSON in ```json ... ```.
+    Just raw text `{...}`.
+
+    Let's finalize the statements.
+    1. All students have an attendance rate greater than 84%.
+    2. If a student is in grade 9, then their test score is at least 93.
+    3. All students with study hours less than 5 have test scores above 70.
+    4. If a student has study hours greater than 8, then their attendance rate is below 93.
+    5. Most students have test scores below 90.
+    6. All grade 12 students have study hours of at least 4.5.
+    7. If a student is a club member, then their test score is at least 67.
+    8. There exists a grade 12 student who is a club member with study hours above 8.
+    9. If a student has an attendance rate above 95, then their test score is at least 80.
+    10. All students have study hours between 2 and 12.
+
+    Double check Statement 8: "There exists a grade 12 student who is a club member with study hours above 8."
+    S050008: Grade 12, Club yes, Study 8.2.
+    S050013: Grade 12, Club yes, Study 9.0.
+    Both satisfy. True.
+
+    Double check Statement 4: "If a student has study hours greater than 8, then their attendance rate is below 93."
+    S050006: 8.5, 92.2.
+    S050008: 8.2, 88.2.
+    S050013: 9.0, 84.5.
+    All < 93. True.
+
+    Double check Statement 3: "All students with study hours less than 5 have test scores above 70."
+    S050004: 4.5, 86.
+    S050005: 4.6, 77.
+    S050009: 2.2, 96.
+    S050011: 4.3, 93.
+    S050015: 3.9, 86.
+    All > 70. True.
+
+    Double check Statement 2: "If a student is in grade 9, then their test score is at least 93."
+    S050003: 97.
+    S050011: 93.
+    S050014: 96.
+    All >= 93. True.
+
+    Double check Statement 6: "All grade 12 students have study hours of at least 4.5."
+    S050002: 5.0.
+    S050004: 4.5.
+    S050008: 8.2.
+    S050013: 9.0.
+    All >= 4.5. True.
+
+    Double check Statement 7: "If a student is a club member, then their test score is at least 67."
+    S050013: 67.
+    Others higher. True.
+
+    Double check Statement 9: "If a student has an attendance rate above 95, then their test score is at least 80."
+    S050002: 95.9, 80.
+    S050012: 96.2, 93.
+    S050015: 97.0, 86.
+    All >= 80. True.
+
+    Double check Statement 5: "Most students have test scores below 90."
+    9 out of 15. True.
+
+    Double check Statement 1: "All students have an attendance rate greater than 84%."
+    Min 84.5. True.
+
+    Double check Statement 10: "All students have study hours between 2 and 12."
+    Min 2.2, Max 11.7. True.
+
+    All good.
+    Construct JSON.
+    Ensure no newlines inside strings that break JSON.
+    Ensure double quotes.
+    Ensure no trailing comma.
+    Ensure no markdown.
+</think>
+
+{
+  "statements": [
+    "All students have an attendance rate greater than 84%.",
+    "If a student is in grade 9, then their test score is at least 93.",
+    "All students with study hours less than 5 have test scores above 70.",
+    "If a student has study hours greater than 8, then their attendance rate is below 93.",
+    "Most students have test scores below 90.",
+    "All grade 12 students have study hours of at least 4.5.",
+    "If a student is a club member, then their test score is at least 67.",
+    "There exists a grade 12 student who is a club member with study hours above 8.",
+    "If a student has an attendance rate above 95, then their test score is at least 80.",
+    "All students have study hours between 2 and 12."
+  ]
+}

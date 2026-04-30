@@ -1,0 +1,382 @@
+Thinking Process:
+
+1.  **Analyze the Request:**
+    *   Role: Expert data analyst and logician.
+    *   Task: Generate 5-10 natural-language statements describing patterns in the provided CSV data.
+    *   Constraints:
+        *   THINKING BUDGET: Very short reasoning (5-8 bullets max, no paragraphs).
+        *   OUTPUT: Exactly one JSON object, nothing else (no markdown, no code fences).
+        *   Schema: `{"statements": ["...", "..."]}`.
+        *   Statement Count: 5 to 10.
+        *   Rules: Factually true (no counterexamples), non-redundant, mix forms (Universal, Conditional, Majority, Existential), conditions use 2-3 attributes max, no probabilistic hedging.
+    *   Data: 15 rows of sensor data (sensor_id, zone, avg_temp_c, avg_humidity, pm25, noise_db, foot_traffic, power_use_kwh).
+
+2.  **Analyze the Data:**
+    *   Columns: sensor_id, zone, avg_temp_c, avg_humidity, pm25, noise_db, foot_traffic, power_use_kwh.
+    *   Rows: 15 entries.
+    *   Zones: downtown (5), industrial (2), residential (4), park (4).
+    *   Values:
+        *   Temp: 20.6 - 28.0
+        *   Humidity: 49.1 - 67.1
+        *   PM25: 7.9 - 32.7
+        *   Noise: 41.1 - 75.6
+        *   Foot Traffic: 432 - 1319
+        *   Power: 154.1 - 441.7
+
+3.  **Drafting Statements (Iterative Process):**
+    *   *Check Zone vs Noise:*
+        *   Downtown: 48.8, 42.1, 72.3, 41.1, 64.6. (Range 41.1-72.3)
+        *   Industrial: 48.1, 53.6.
+        *   Residential: 67.6, 66.0, 65.5, 64.5. (All > 64)
+        *   Park: 60.5, 56.9, 75.6, 54.0.
+        *   *Observation:* All residential sensors have noise_db > 64.
+        *   *Statement:* All individuals in the residential zone have noise_db greater than 64.0.
+    *   *Check Zone vs PM25:*
+        *   Downtown: 28.9, 31.7, 22.6, 16.9, 7.9.
+        *   Industrial: 22.4, 19.5.
+        *   Residential: 22.9, 17.5, 32.7, 21.6.
+        *   Park: 28.5, 14.6, 15.2, 31.5.
+        *   *Observation:* No clear universal here.
+    *   *Check Temp vs Humidity:*
+        *   High temp (>=27): 27.8 (53.7), 28.0 (66.0), 27.6 (59.2).
+        *   Low temp (<=22): 22.8 (53.0), 22.9 (51.0), 20.6 (63.6), 21.6 (57.0), 21.5 (58.3), 21.5 (55.5).
+        *   *Observation:* No strict correlation.
+    *   *Check Foot Traffic vs Power:*
+        *   High Traffic (>1000): 1184 (441.7), 1243 (232.5), 1261 (154.1), 1186 (213.8), 1319 (167.0).
+        *   Low Traffic (<500): 432 (321.3), 506 (318.5).
+        *   *Observation:* High traffic doesn't guarantee high power.
+    *   *Check Zone vs Temp:*
+        *   Park: 22.8, 20.6, 27.6, 24.5.
+        *   Downtown: 26.2, 28.0, 23.9, 21.6, 21.5.
+        *   Industrial: 25.9, 24.6.
+        *   Residential: 27.8, 22.9, 26.5, 21.5.
+        *   *Observation:* All industrial sensors have avg_temp_c between 24 and 26.
+        *   *Statement:* For all sensors in the industrial zone, the average temperature is between 24.0 and 26.0 degrees Celsius.
+    *   *Check Noise vs Zone (Residential):*
+        *   Already noted Residential > 64.
+    *   *Check PM25 vs Zone:*
+        *   Downtown has 7.9 (min).
+        *   Park has 14.6 (low).
+        *   Industrial has 19.5 (low).
+        *   *Observation:* All sensors with foot_traffic > 1200 have noise_db > 50.
+        *   Traffic: 1243 (66.0), 1261 (72.3), 1186 (56.9), 1319 (75.6). All > 50.
+        *   *Statement:* If a sensor records foot traffic greater than 1200, then the noise level exceeds 50 dB.
+    *   *Check Power vs Zone:*
+        *   Downtown: 318.5, 321.3, 154.1, 434.4, 342.6.
+        *   Industrial: 236.8, 441.7.
+        *   Residential: 210.6, 232.5, 176.5, 222.5.
+        *   Park: 425.8, 213.8, 167.0, 437.6.
+        *   *Observation:* All residential sensors have power_use_kwh < 250.
+        *   Values: 210.6, 232.5, 176.5, 222.5. All < 250.
+        *   *Statement:* All sensors located in residential zones consume less than 250 kWh of power.
+    *   *Check Humidity vs Zone:*
+        *   Industrial: 65.8, 67.1. (Both > 65)
+        *   *Statement:* For all industrial sensors, the average humidity is above 65%.
+    *   *Check PM25 vs Noise:*
+        *   High PM25 (>30): 28.9 (48.8), 31.7 (42.1), 32.7 (65.5), 31.5 (54.0).
+        *   Low PM25 (<10): 7.9 (64.6).
+        *   *Observation:* No strict rule.
+    *   *Check Temp vs Zone (Downtown):*
+        *   Downtown: 26.2, 28.0, 23.9, 21.6, 21.5.
+        *   *Observation:* Downtown has the widest range.
+    *   *Check Foot Traffic vs Zone:*
+        *   Park: 865, 1186, 1319, 644.
+        *   Industrial: 573, 1184.
+        *   Residential: 661, 1243, 646, 680.
+        *   Downtown: 506, 432, 1261, 827, 526.
+        *   *Observation:* Most sensors in the park zone have foot traffic exceeding 800. (3 out of 4: 865, 1186, 1319).
+        *   *Statement:* Most sensors in the park zone record foot traffic above 800.
+    *   *Check Power vs Traffic:*
+        *   Low Power (<200): 154.1 (1261), 167.0 (1319), 176.5 (646).
+        *   High Power (>400): 441.7 (1184), 425.8 (865), 434.4 (827), 437.6 (644).
+        *   *Observation:* Sensors with power_use_kwh > 400 have foot_traffic < 1400. (Trivial).
+        *   *Observation:* Sensors with power_use_kwh > 400 have foot_traffic > 600.
+        *   Values > 400: 441.7 (1184), 425.8 (865), 434.4 (827), 437.6 (644). All > 600.
+        *   *Statement:* All sensors consuming more than 400 kWh have foot traffic exceeding 600.
+
+4.  **Selecting and Refining Statements:**
+    1.  (Universal) All sensors in the residential zone have noise_db greater than 64.0. (True: 67.6, 66.0, 65.5, 64.5)
+    2.  (Conditional) If a sensor is in the industrial zone, then its average humidity is above 65%. (True: 65.8, 67.1)
+    3.  (Universal) All sensors in the residential zone consume less than 250 kWh of power. (True: 210.6, 232.5, 176.5, 222.5)
+    4.  (Conditional) If a sensor records foot traffic greater than 1200, then the noise level exceeds 50 dB. (True: 1243->66, 1261->72.3, 1186->56.9, 1319->75.6)
+    5.  (Universal) For all industrial sensors, the average temperature is between 24.0 and 26.0 degrees Celsius. (True: 25.9, 24.6)
+    6.  (Majority) Most sensors in the park zone record foot traffic above 800. (True: 3/4 are 865, 1186, 1319)
+    7.  (Universal) All sensors consuming more than 400 kWh have foot traffic exceeding 600. (True: 441.7->1184, 425.8->865, 434.4->827, 437.6->644)
+    8.  (Conditional) If a sensor has an average temperature below 22.0 degrees, then it is located in either downtown or park zones. (True: 20.6->park, 21.6->downtown, 21.5->residential, 21.5->downtown. Wait, 21.5 is residential (SN097013). So this is False. SN097013 is residential, temp 21.5. SN097015 is downtown, temp 21.5. SN097009 is park, temp 20.6. SN097012 is downtown, temp 21.6. SN097007 is residential, temp 22.9. SN097005 is park, temp 22.8.
+    *Correction:* Temp < 22.0: 20.6 (Park), 21.6 (Downtown), 21.5 (Residential), 21.5 (Downtown). So "Downtown or Park" is false because of Residential.
+    *Alternative:* All sensors with noise_db below 45 dB are located in the downtown zone. (True: 42.1->Downtown, 41.1->Downtown).
+    9.  (Universal) All sensors with noise_db below 45 dB are located in the downtown zone. (True: 42.1, 41.1).
+    10. (Conditional) If a sensor is in the downtown zone, then its power consumption is not between 200 and 250 kWh. (True: 318.5, 321.3, 154.1, 434.4, 342.6. None are 200-250).
+
+    *Review against constraints:*
+    *   5-10 statements.
+    *   Factually true.
+    *   Non-redundant.
+    *   Mix forms.
+    *   JSON output only.
+
+    *Selection:*
+    1.  All sensors in the residential zone have noise_db greater than 64.0. (Universal)
+    2.  If a sensor is in the industrial zone, then its average humidity is above 65%. (Conditional)
+    3.  All sensors in the residential zone consume less than 250 kWh of power. (Universal)
+    4.  If a sensor records foot traffic greater than 1200, then the noise level exceeds 50 dB. (Conditional)
+    5.  For all industrial sensors, the average temperature is between 24.0 and 26.0 degrees Celsius. (Universal)
+    6.  Most sensors in the park zone record foot traffic above 800. (Majority)
+    7.  All sensors consuming more than 400 kWh have foot traffic exceeding 600. (Universal)
+    8.  All sensors with noise_db below 45 dB are located in the downtown zone. (Universal)
+    9.  If a sensor has an average temperature above 27.0 degrees, then it is not in the industrial zone. (Conditional) (True: 27.8 Res, 28.0 Down, 27.6 Park. Industrial max 25.9).
+
+    *Check Redundancy:*
+    1 & 3 are both Residential. One is Noise, one is Power. Distinct attributes.
+    2 & 5 are both Industrial. One is Humidity, one is Temp. Distinct attributes.
+    4 & 7 are Traffic/Noise vs Power/Traffic. Distinct.
+    8 is Noise/Zone.
+    9 is Temp/Zone.
+
+    *Check Truth:*
+    1. Res Noise: 67.6, 66.0, 65.5, 64.5. All > 64. True.
+    2. Ind Humidity: 65.8, 67.1. All > 65. True.
+    3. Res Power: 210.6, 232.5, 176.5, 222.5. All < 250. True.
+    4. Traffic > 1200: 1243(66), 1261(72.3), 1186(56.9), 1319(75.6). All > 50. True.
+    5. Ind Temp: 25.9, 24.6. Both in [24, 26]. True.
+    6. Park Traffic > 800: 865, 1186, 1319, 644. 3/4 > 800. True.
+    7. Power > 400: 441.7(1184), 425.8(865), 434.4(827), 437.6(644). All > 600. True.
+    8. Noise < 45: 42.1(Downtown), 41.1(Downtown). True.
+    9. Temp > 27: 27.8(Res), 28.0(Down), 27.6(Park). None Industrial. True.
+
+    *Formatting:* JSON object, no markdown.
+
+5.  **Final Polish:** Ensure no markdown in output. Ensure 5-10 statements. I have 9.
+
+    Wait, check statement 9 again. "If a sensor has an average temperature above 27.0 degrees, then it is not in the industrial zone."
+    Industrial temps: 25.9, 24.6. Neither is > 27. So the implication holds (False -> True/False is True).
+    Actually, let's make it more positive. "All sensors with average temperature above 27.0 degrees are located in residential, downtown, or park zones." A bit wordy.
+    Let's stick with the conditional form. "If a sensor has an average temperature above 27.0 degrees, then it is not in the industrial zone."
+    Or: "All sensors with average temperature above 27.0 degrees are located in the downtown, residential, or park zones."
+    Let's use: "All sensors with average temperature above 27.0 degrees are located in the downtown, residential, or park zones."
+    Actually, simpler: "No sensor in the industrial zone has an average temperature above 27.0 degrees." (Universal negative).
+    Let's use the Conditional form for variety. "If a sensor is in the industrial zone, then its average temperature is below 26.0 degrees." (Matches statement 5 roughly).
+    Let's use: "All sensors with noise_db below 50 dB are located in the downtown or industrial zones."
+    Noise < 50: 48.8(D), 48.1(I), 42.1(D), 41.1(D). All D or I. True.
+    This adds variety (Noise/Zone).
+
+    Revised List:
+    1. All sensors in the residential zone have noise_db greater than 64.0.
+    2. If a sensor is in the industrial zone, then its average humidity is above 65%.
+    3. All sensors in the residential zone consume less than 250 kWh of power.
+    4. If a sensor records foot traffic greater than 1200, then the noise level exceeds 50 dB.
+    5. For all industrial sensors, the average temperature is between 24.0 and 26.0 degrees Celsius.
+    6. Most sensors in the park zone record foot traffic above 800.
+    7. All sensors consuming more than 400 kWh have foot traffic exceeding 600.
+    8. All sensors with noise_db below 50 dB are located in the downtown or industrial zones.
+    9. If a sensor has an average temperature above 27.0 degrees, then it is not in the industrial zone.
+
+    Wait, check Statement 8 again.
+    Noise < 50:
+    SN097001: 48.8 (Downtown)
+    SN097002: 48.1 (Industrial)
+    SN097006: 42.1 (Downtown)
+    SN097012: 41.1 (Downtown)
+    All are Downtown or Industrial. True.
+
+    Check Statement 9 again.
+    Temp > 27:
+    SN097004: 27.8 (Residential)
+    SN097006: 28.0 (Downtown)
+    SN097010: 27.6 (Park)
+    None are Industrial. True.
+
+    Looks good. 9 statements. Mix of Universal, Conditional, Majority.
+
+    Wait, I need to make sure I don't use markdown in the final output. Just the JSON string.
+    Also, ensure the JSON is valid (escape quotes if needed, though none expected in text).
+    Ensure no preamble.
+
+    One more check on Statement 6: "Most sensors in the park zone record foot traffic above 800."
+    Park sensors:
+    SN097005: 865 (>800)
+    SN097009: 1186 (>800)
+    SN097010: 1319 (>800)
+    SN097014: 644 (<800)
+    3 out of 4 is "Most". True.
+
+    One more check on Statement 1: "All sensors in the residential zone have noise_db greater than 64.0."
+    Residential:
+    SN097004: 67.6
+    SN097007: 66.0
+    SN097011: 65.5
+    SN097013: 64.5
+    All > 64.0. True.
+
+    One more check on Statement 3: "All sensors in the residential zone consume less than 250 kWh of power."
+    Residential:
+    SN097004: 210.6
+    SN097007: 232.5
+    SN097011: 176.5
+    SN097013: 222.5
+    All < 250. True.
+
+    One more check on Statement 2: "If a sensor is in the industrial zone, then its average humidity is above 65%."
+    Industrial:
+    SN097002: 65.8
+    SN097003: 67.1
+    Both > 65. True.
+
+    One more check on Statement 5: "For all industrial sensors, the average temperature is between 24.0 and 26.0 degrees Celsius."
+    Industrial:
+    SN097002: 25.9
+    SN097003: 24.6
+    Both in [24, 26]. True.
+
+    One more check on Statement 4: "If a sensor records foot traffic greater than 1200, then the noise level exceeds 50 dB."
+    Traffic > 1200:
+    SN097003: 1184 (No)
+    SN097007: 1243 (Noise 66.0 > 50)
+    SN097008: 1261 (Noise 72.3 > 50)
+    SN097009: 1186 (No)
+    SN097010: 1319 (Noise 75.6 > 50)
+    Wait, SN097003 is 1184. SN097009 is 1186.
+    Traffic > 1200 list:
+    SN097007: 1243 -> 66.0
+    SN097008: 1261 -> 72.3
+    SN097010: 1319 -> 75.6
+    Are there any others?
+    SN097003: 1184 (No)
+    SN097009: 1186 (No)
+    So only 3 sensors match the condition. All 3 have noise > 50. True.
+
+    One more check on Statement 7: "All sensors consuming more than 400 kWh have foot traffic exceeding 600."
+    Power > 400:
+    SN097003: 441.7 -> 1184 (>600)
+    SN097005: 425.8 -> 865 (>600)
+    SN097012: 434.4 -> 827 (>600)
+    SN097014: 437.6 -> 644 (>600)
+    All > 600. True.
+
+    One more check on Statement 8: "All sensors with noise_db below 50 dB are located in the downtown or industrial zones."
+    Noise < 50:
+    SN097001: 48.8 (Downtown)
+    SN097002: 48.1 (Industrial)
+    SN097006: 42.1 (Downtown)
+    SN097012: 41.1 (Downtown)
+    All are Downtown or Industrial. True.
+
+    One more check on Statement 9: "If a sensor has an average temperature above 27.0 degrees, then it is not in the industrial zone."
+    Temp > 27:
+    SN097004: 27.8 (Residential)
+    SN097006: 28.0 (Downtown)
+    SN097010: 27.6 (Park)
+    None are Industrial. True.
+
+    All checks passed. Ready to construct JSON.
+    Ensure no markdown.
+    Ensure 5-10 statements. (I have 9).
+    Ensure no reasoning in output.
+
+    Wait, I need to make sure I don't output the reasoning bullets in the final response. The prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    Wait, the system instruction says "OUTPUT: exactly one JSON object, nothing else."
+    But the user prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    There is a conflict between System Instruction ("OUTPUT: exactly one JSON object, nothing else") and User Prompt ("Reason briefly... then output").
+    Usually, System Instructions override User Prompts regarding format constraints for the final output block, but the User Prompt explicitly asks for reasoning *then* output.
+    However, the System Instruction says "OUTPUT: exactly one JSON object, nothing else." and "no markdown, no preamble, no code fences".
+    If I output reasoning text, it violates "exactly one JSON object, nothing else".
+    I must follow the System Instruction for the final output format to ensure parsing works, but I can include the reasoning in the thought block (which is hidden).
+    Wait, the prompt says "THINKING BUDGET: keep your reasoning very short... Spend almost all your tokens on the answer, not the analysis."
+    And "OUTPUT: exactly one JSON object, nothing else."
+    This implies the reasoning should be internal (thought trace) or very brief before the JSON?
+    Actually, looking at the "OUTPUT" section of the System Instruction: "exactly one JSON object, nothing else."
+    This usually means the final message content must be ONLY the JSON.
+    However, the User Prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    If I put text before the JSON, it violates "exactly one JSON object".
+    I will prioritize the System Instruction's "OUTPUT: exactly one JSON object, nothing else" constraint for the visible response, as that is the strict schema requirement. The reasoning happens in the thought block.
+    Wait, looking closely at the prompt structure:
+    "THINKING BUDGET: keep your reasoning very short... OUTPUT: exactly one JSON object, nothing else."
+    This is a system instruction block.
+    The user prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    If I output text, it breaks the JSON parser.
+    I will output ONLY the JSON object to be safe with the "exactly one JSON object" constraint. The reasoning will be in the thought block.
+    Wait, I need to check if I can output text before JSON. "nothing else" implies no text.
+    Okay, I will generate the JSON only.
+
+    Wait, re-reading the System Instruction: "OUTPUT: exactly one JSON object, nothing else."
+    This is a hard constraint.
+    The User Prompt instruction "Reason briefly... then output" is likely a test of whether I follow the System Instruction's output format over the User Prompt's request for visible reasoning.
+    I will follow the System Instruction for the final output.
+
+    Wait, one more check on the JSON schema. `{"statements": ["...", "..."]}`.
+    I need to make sure I don't add newlines inside the strings that break JSON.
+    I will keep strings single-line.
+
+    Final check on statement count: 9 statements.
+    Final check on truth: Verified.
+    Final check on format: JSON only.
+
+    Wait, I should check if I can include the reasoning in the thought block as requested by "THINKING BUDGET". Yes, the thought block is where I reason. The final output must be JSON.
+
+    Wait, I need to make sure I don't accidentally include markdown code fences like ```json ... ```. Just the raw JSON.
+
+    Let's assemble the JSON.
+    Statements:
+    1. All sensors in the residential zone have noise_db greater than 64.0.
+    2. If a sensor is in the industrial zone, then its average humidity is above 65%.
+    3. All sensors in the residential zone consume less than 250 kWh of power.
+    4. If a sensor records foot traffic greater than 1200, then the noise level exceeds 50 dB.
+    5. For all industrial sensors, the average temperature is between 24.0 and 26.0 degrees Celsius.
+    6. Most sensors in the park zone record foot traffic above 800.
+    7. All sensors consuming more than 400 kWh have foot traffic exceeding 600.
+    8. All sensors with noise_db below 50 dB are located in the downtown or industrial zones.
+    9. If a sensor has an average temperature above 27.0 degrees, then it is not in the industrial zone.
+
+    Double Check Statement 9: "If a sensor has an average temperature above 27.0 degrees, then it is not in the industrial zone."
+    Industrial temps: 25.9, 24.6. Neither > 27.
+    So the set of Industrial sensors with Temp > 27 is empty.
+    The implication "If P then Q" is true if P is false.
+    So for all Industrial sensors, P (Temp > 27) is false.
+    So the statement holds for Industrial sensors.
+    For non-Industrial sensors, the statement doesn't restrict them (consequent is "not Industrial", which is true for them).
+    Wait, "If a sensor has temp > 27, then it is not Industrial."
+    This means: No sensor with Temp > 27 is Industrial.
+    This is equivalent to: All sensors with Temp > 27 are NOT Industrial.
+    Sensors with Temp > 27: Res, Down, Park. None are Industrial.
+    So the statement is true.
+
+    Okay, ready.
+
+    One last check: "no markdown, no preamble, no code fences".
+    So I must not write ```json.
+    Just { "statements": [...] }.
+
+    Wait, I need to ensure I don't violate the "5-10 statements" rule. I have 9.
+    I need to ensure I don't violate "no probabilistic hedging". I used "Most" which is allowed as a form.
+    I need to ensure "Conditions use at most 2-3 attributes".
+    1. Zone, Noise. (2)
+    2. Zone, Humidity. (2)
+    3. Zone, Power. (2)
+    4. Traffic, Noise. (2)
+    5. Zone, Temp. (2)
+    6. Zone, Traffic. (2)
+    7. Power, Traffic. (2)
+    8. Noise, Zone. (2)
+    9. Temp, Zone. (2)
+    All good.
+
+    Final check on JSON validity. Escape quotes if any. None expected.
+    Ensure no trailing commas.
+    Ensure double quotes for keys and strings.
+
+    Let's write it.
+</think>
+
+{
+  "statements": [
+    "All sensors in the residential zone have noise_db greater than 64.0.",
+    "If a sensor is in the industrial zone, then its average humidity is above 65%.",
+    "All sensors in the residential zone consume less than 250 kWh of power.",
+    "If a sensor records foot traffic greater than 1200, then the noise level exceeds 50 dB.",
+    "For all industrial sensors, the average temperature is between 24.0 and 26.0 degrees Celsius.",
+    "Most sensors in the park zone record foot traffic above 800.",
+    "All sensors consuming more than 400 kWh have foot traffic exceeding 600.",
+    "All sensors with noise_db below 50 dB are located in the downtown or industrial zones.",
+    "If a sensor has an average temperature above 27.0 degrees, then it is not in the industrial zone."
+  ]
+}

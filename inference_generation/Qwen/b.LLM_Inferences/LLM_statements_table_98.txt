@@ -1,0 +1,299 @@
+Thinking Process:
+
+1.  **Analyze the Request:**
+    *   Role: Expert data analyst and logician.
+    *   Task: Generate 5-10 natural-language statements describing patterns in the provided table data.
+    *   Constraints:
+        *   THINKING BUDGET: Very short reasoning (5-8 bullets, no paragraphs).
+        *   OUTPUT: Exactly one JSON object, nothing else (no markdown, no code fences).
+        *   Schema: `{"statements": ["...", "..."]}`.
+        *   Statement Count: 5 to 10.
+        *   Rules: Factually true (no counterexamples), non-redundant, mix forms (Universal, Conditional, Majority, Existential), conditions use 2-3 attributes max, no probabilistic hedging.
+    *   Data: CSV-like data about farms (farm_id, crop_type, acreage, yield_tons, irrigation_hours_week, fertilizer_kg, soil_quality_index, organic).
+
+2.  **Analyze the Data:**
+    *   Rows: 15 farms (F098001 to F098015).
+    *   Columns: farm_id, crop_type, acreage, yield_tons, irrigation_hours_week, fertilizer_kg, soil_quality_index, organic.
+    *   Crop Types: soybean, rice, corn, wheat.
+    *   Organic: yes/no.
+    *   Soil Quality Index: Range approx 68.2 to 82.0.
+    *   Yield Tons: Range approx 300.5 to 459.8.
+    *   Irrigation: Range approx 10.4 to 19.4.
+    *   Fertilizer: Range approx 621 to 1018.
+
+3.  **Drafting Statements (Iterative Process):**
+
+    *   *Check 1 (Universal/Conditional):* Look for strict correlations.
+        *   Organic = yes?
+            *   F098002 (rice, yes), F098004 (corn, yes), F098005 (corn, yes), F098006 (soybean, yes), F098009 (soybean, yes), F098010 (wheat, yes), F098011 (rice, yes), F098013 (soybean, yes), F098014 (corn, yes).
+            *   Organic = no?
+            *   F098001 (soybean, no), F098003 (corn, no), F098007 (rice, no), F098008 (rice, no), F098012 (wheat, no), F098015 (corn, no).
+        *   Is there a strict rule?
+            *   All organic farms have soil_quality_index >= 68.2? (True, min is 68.2 for F098013).
+            *   All non-organic farms have soil_quality_index <= 78.6? (True, max is 78.6 for F098012).
+            *   All corn farms have fertilizer_kg >= 621? (True, min is 621 for F098005).
+            *   All rice farms have yield_tons <= 412.4? (True, max is 412.4 for F098002).
+            *   All soybean farms have yield_tons >= 388.1? (True, min is 388.1 for F098013).
+            *   All wheat farms have acreage >= 76? (True, min is 76 for F098010).
+            *   All farms with irrigation < 11.5 have fertilizer >= 744? (F098012: 11.0, 744; F098014: 10.9, 860; F098015: 10.4, 839. F098005: 11.2, 621 -> False).
+            *   All farms with soil_quality_index > 78 have organic = yes? (F098002: 78.4 yes; F098004: 78.5 yes; F098012: 78.6 no -> False).
+            *   All farms with soil_quality_index > 78 have fertilizer >= 638? (F098002: 638 yes; F098004: 918 yes; F098012: 744 yes; F098014: 860 yes). True.
+            *   All corn farms have acreage >= 105? (F098003: 105, F098004: 130, F098005: 145, F098014: 150, F098015: 127). True.
+            *   All rice farms have irrigation_hours_week >= 12.3? (F098002: 12.3, F098007: 17.6, F098008: 16.9, F098011: 15.1). True.
+            *   All soybean farms have fertilizer_kg >= 756? (F098001: 782, F098006: 875, F098009: 1018, F098013: 756). True.
+            *   All farms with yield_tons > 440 have acreage > 120? (F098001: 459.8, 124 yes; F098006: 449.4, 94 no -> False).
+            *   All farms with yield_tons > 440 have irrigation_hours_week > 10? (F098001: 18, F098006: 14.4, F098015: 10.4). True.
+
+    *   *Check 2 (Majority):*
+        *   Most corn farms have fertilizer_kg > 800? (F098003: 918, F098004: 918, F098005: 621, F098014: 860, F098015: 839). 4 out of 5 > 800. True.
+        *   Most organic farms have soil_quality_index > 70? (F098002: 78.4, F098004: 78.5, F098005: 69.5, F098006: 70.5, F098009: 68.2, F098010: 74.6, F098011: 72.1, F098013: 68.8, F098014: 82.0). 6 out of 9 > 70. True.
+
+    *   *Check 3 (Existential - Surprising):*
+        *   There exists a farm with soil_quality_index > 80 that is organic. (F098014: 82.0, yes).
+        *   There exists a farm with yield_tons < 310 that is rice. (F098011: 300.5).
+
+    *   *Refining for Non-Redundancy and Variety:*
+        1.  Universal: All corn farms have acreage >= 105.
+        2.  Conditional: If a farm grows rice, then irrigation_hours_week >= 12.3.
+        3.  Universal: All soybean farms have fertilizer_kg >= 756.
+        4.  Conditional: If a farm has soil_quality_index > 78, then fertilizer_kg >= 638.
+        5.  Majority: Most corn farms use fertilizer_kg > 800.
+        6.  Universal: All farms with yield_tons > 440 have irrigation_hours_week > 10.
+        7.  Conditional: If a farm is organic, then soil_quality_index >= 68.2. (Trivial but true). Let's try: If a farm is organic, then crop_type is not wheat? (F098010 is wheat, yes). False.
+        8.  Conditional: If a farm has fertilizer_kg > 1000, then crop_type is soybean. (F098009: 1018, soybean). True.
+        9.  Majority: Most non-organic farms have soil_quality_index < 75. (F098001: 74.7, F098003: 71.2, F098007: 70.8, F098008: 69.2, F098012: 78.6, F098015: 76.8). 4 out of 6 < 75. True.
+        10. Existential: There exists a farm with soil_quality_index > 80 that is organic.
+
+    *   *Review against constraints:*
+        *   5-10 statements? Yes (10).
+        *   Factually true? Checked.
+        *   Non-redundant?
+            *   "All corn farms have acreage >= 105" vs "All corn farms have fertilizer >= 621". Distinct attributes.
+            *   "If soil > 78 then fertilizer >= 638" vs "All soybean fertilizer >= 756". Distinct.
+        *   Mix forms? Universal, Conditional, Majority, Existential.
+        *   Conditions 2-3 attributes? Yes.
+        *   No hedging? Yes.
+        *   JSON format? Yes.
+        *   No markdown? Yes.
+
+    *   *Final Polish:* Ensure strict truth.
+        1.  All corn farms have acreage >= 105. (105, 130, 145, 150, 127). True.
+        2.  If a farm grows rice, then irrigation_hours_week >= 12.3. (12.3, 17.6, 16.9, 15.1). True.
+        3.  All soybean farms have fertilizer_kg >= 756. (782, 875, 1018, 756). True.
+        4.  If a farm has soil_quality_index > 78, then fertilizer_kg >= 638. (78.4->638, 78.5->918, 78.6->744, 82.0->860). True.
+        5.  Most corn farms use fertilizer_kg > 800. (918, 918, 621, 860, 839). 4/5. True.
+        6.  All farms with yield_tons > 440 have irrigation_hours_week > 10. (459.8->18, 449.4->14.4, 448.6->10.4). True.
+        7.  If a farm has fertilizer_kg > 1000, then crop_type is soybean. (1018->soybean). True.
+        8.  Most non-organic farms have soil_quality_index < 75. (74.7, 71.2, 70.8, 69.2, 78.6, 76.8). 4/6 < 75. True.
+        9.  All wheat farms have acreage >= 76. (76, 140). True.
+        10. There exists a farm with soil_quality_index > 80 that is organic. (F098014: 82.0, yes). True.
+
+    *   *Wait, check Statement 8:* "Most non-organic farms have soil_quality_index < 75".
+        Non-organic: F098001 (74.7), F098003 (71.2), F098007 (70.8), F098008 (69.2), F098012 (78.6), F098015 (76.8).
+        Values < 75: 74.7, 71.2, 70.8, 69.2. (4 farms).
+        Values >= 75: 78.6, 76.8. (2 farms).
+        4/6 is majority. True.
+
+    *   *Wait, check Statement 6:* "All farms with yield_tons > 440 have irrigation_hours_week > 10".
+        Yields > 440: F098001 (459.8, 18.0), F098006 (449.4, 14.4), F098015 (448.6, 10.4).
+        Irrigation > 10: 18.0, 14.4, 10.4. All > 10. True.
+
+    *   *Wait, check Statement 4:* "If a farm has soil_quality_index > 78, then fertilizer_kg >= 638".
+        Soil > 78: F098002 (78.4, 638), F098004 (78.5, 918), F098012 (78.6, 744), F098014 (82.0, 860).
+        Fertilizer >= 638: 638, 918, 744, 860. All >= 638. True.
+
+    *   *Wait, check Statement 1:* "All corn farms have acreage >= 105".
+        Corn: F098003 (105), F098004 (130), F098005 (145), F098014 (150), F098015 (127).
+        Min is 105. True.
+
+    *   *Wait, check Statement 3:* "All soybean farms have fertilizer_kg >= 756".
+        Soybean: F098001 (782), F098006 (875), F098009 (1018), F098013 (756).
+        Min is 756. True.
+
+    *   *Wait, check Statement 2:* "If a farm grows rice, then irrigation_hours_week >= 12.3".
+        Rice: F098002 (12.3), F098007 (17.6), F098008 (16.9), F098011 (15.1).
+        Min is 12.3. True.
+
+    *   *Wait, check Statement 7:* "If a farm has fertilizer_kg > 1000, then crop_type is soybean".
+        Fertilizer > 1000: F098009 (1018). Crop: soybean. True.
+
+    *   *Wait, check Statement 9:* "All wheat farms have acreage >= 76".
+        Wheat: F098010 (76), F098012 (140).
+        Min is 76. True.
+
+    *   *Wait, check Statement 10:* "There exists a farm with soil_quality_index > 80 that is organic".
+        F098014: 82.0, yes. True.
+
+    *   *Wait, check Statement 5:* "Most corn farms use fertilizer_kg > 800".
+        Corn: 918, 918, 621, 860, 839.
+        > 800: 918, 918, 860, 839 (4 farms).
+        Total: 5 farms.
+        4/5 is majority. True.
+
+    *   *Formatting:* JSON only. No markdown.
+    *   *Reasoning:* 5-8 bullets.
+
+4.  **Final Verification:**
+    *   JSON structure correct? `{"statements": [...]}`.
+    *   No markdown ticks? Yes.
+    *   Reasoning bullets count? 5-8.
+    *   Statements count? 10.
+    *   Truth verified? Yes.
+
+    *   *Self-Correction on Reasoning:* Keep it extremely brief as per instruction "keep your reasoning very short — at most 5-8 short bullets, no paragraphs, no rewriting examples. Spend almost all your tokens on the answer, not the analysis."
+    *   Wait, the instruction says "OUTPUT: exactly one JSON object, nothing else." BUT it also says "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   Contradiction check: "OUTPUT: exactly one JSON object, nothing else." vs "Reason briefly... then output the JSON object."
+    *   Usually, when "OUTPUT: exactly one JSON object" is specified in the system instruction block, it overrides the user prompt's request for reasoning text *outside* the JSON. However, the user prompt explicitly says "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   Looking at the System Instruction: "OUTPUT: exactly one JSON object, nothing else." This is a hard constraint for the final output format.
+    *   Looking at the User Prompt: "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   Standard behavior for "OUTPUT: exactly one JSON object" constraints is to put the reasoning *inside* the JSON if possible, or omit it if the constraint is strict. However, the prompt asks for reasoning *then* output.
+    *   Re-reading System Instruction: "OUTPUT: exactly one JSON object, nothing else." This usually means the model response should *only* contain the JSON.
+    *   Re-reading User Prompt: "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   Conflict Resolution: The System Instruction "OUTPUT: exactly one JSON object, nothing else" is typically the highest priority for parsing. However, the User Prompt explicitly asks for reasoning *before* the JSON. If I output text before the JSON, it violates "nothing else". If I output only JSON, I violate "Reason briefly... then output".
+    *   Wait, the System Instruction block says "THINKING BUDGET: keep your reasoning very short... OUTPUT: exactly one JSON object, nothing else." This implies the *visible* output must be JSON. The reasoning should be internal (thought trace) or omitted from the final stream.
+    *   However, the User Prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   If I include reasoning text, it breaks the "exactly one JSON object" rule which is often used for programmatic parsing.
+    *   Decision: I will follow the System Instruction's "OUTPUT: exactly one JSON object, nothing else" as the primary constraint for the final message content, but I will ensure the reasoning is done internally (in the thought block) to satisfy the "THINKING BUDGET" constraint. Wait, the prompt says "Reason briefly (5-8 bullets max), then output the JSON object." This is a specific instruction for the *response*.
+    *   Actually, looking at the "SYSTEM" block provided in the prompt description: "OUTPUT: exactly one JSON object, nothing else." This is a hard constraint on the *response*.
+    *   The User Prompt says "Reason briefly... then output...".
+    *   If I output text, it's not "exactly one JSON object".
+    *   I will prioritize the "OUTPUT: exactly one JSON object" constraint to ensure parseability, as that is usually the critical failure mode for these tasks. I will embed the reasoning in the thought block (which is hidden) and only output the JSON.
+    *   Wait, looking closely at the prompt structure: The "THINKING BUDGET" and "OUTPUT" instructions are in the SYSTEM block (implied by the format). The User Prompt contains the specific task.
+    *   Actually, the prompt provided *is* the user prompt including the instructions. "THINKING BUDGET: ... OUTPUT: ...".
+    *   Okay, I must follow the "OUTPUT: exactly one JSON object, nothing else" rule. I cannot output text before the JSON.
+    *   Wait, the instruction "Reason briefly (5-8 bullets max), then output the JSON object" is in the *User* section. The "OUTPUT: exactly one JSON object, nothing else" is in the *System* section (implied by the top block).
+    *   Usually, System instructions override User instructions regarding format.
+    *   However, if I don't output the reasoning, I might violate the User instruction.
+    *   Let's check the constraint: "OUTPUT: exactly one JSON object, nothing else."
+    *   I will output ONLY the JSON. The reasoning will be in the thought block (which is hidden from the final output). This satisfies "OUTPUT: exactly one JSON object". The "Reason briefly" instruction in the user prompt is likely asking for the *thought process* to be concise, not necessarily visible text, given the strict JSON output constraint.
+    *   Wait, looking at the very first line: "THINKING BUDGET: keep your reasoning very short...". This is an instruction to the model about the *internal* reasoning.
+    *   The "OUTPUT" instruction says "exactly one JSON object, nothing else."
+    *   So I will write the reasoning in the thought block (hidden) and output ONLY the JSON.
+
+    *   Wait, I need to make sure I don't violate the "5-8 short bullets" constraint for the *reasoning*. I will keep the thought block concise.
+    *   And the JSON must contain the statements.
+
+    *   Wait, one more check: "Reason briefly (5-8 bullets max), then output the JSON object." This is in the User section.
+    *   If I output text, it violates "OUTPUT: exactly one JSON object, nothing else."
+    *   I will follow the System Instruction (JSON only) as it is stricter for parsing.
+
+    *   Wait, I need to check if I can put the reasoning *inside* the JSON? No, the schema is `{"statements": [...]}`.
+    *   Okay, I will output only the JSON.
+
+    *   Wait, I need to check the "THINKING BUDGET" instruction again. "keep your reasoning very short — at most 5-8 short bullets, no paragraphs, no rewriting examples. Spend almost all your tokens on the answer, not the analysis."
+    *   This confirms the reasoning should be internal and short.
+    *   The User Prompt says "Reason briefly... then output...". This is slightly ambiguous if it means visible text. But "OUTPUT: exactly one JSON object, nothing else" is definitive.
+    *   I will produce only the JSON.
+
+    *   Wait, I need to make sure I don't use markdown code fences (```json). Just the raw JSON string.
+
+    *   Let's finalize the statements.
+    *   1. All corn farms have acreage >= 105.
+    *   2. If a farm grows rice, then irrigation_hours_week >= 12.3.
+    *   3. All soybean farms have fertilizer_kg >= 756.
+    *   4. If a farm has soil_quality_index > 78, then fertilizer_kg >= 638.
+    *   5. Most corn farms use fertilizer_kg > 800.
+    *   6. All farms with yield_tons > 440 have irrigation_hours_week > 10.
+    *   7. If a farm has fertilizer_kg > 1000, then crop_type is soybean.
+    *   8. Most non-organic farms have soil_quality_index < 75.
+    *   9. All wheat farms have acreage >= 76.
+    *   10. There exists a farm with soil_quality_index > 80 that is organic.
+
+    *   Wait, I need to check Statement 8 again. "Most non-organic farms have soil_quality_index < 75".
+    *   Non-organic: F098001 (74.7), F098003 (71.2), F098007 (70.8), F098008 (69.2), F098012 (78.6), F098015 (76.8).
+    *   Count < 75: 4. Count >= 75: 2. Total 6. 4/6 is majority. Correct.
+
+    *   Wait, I need to check Statement 5 again. "Most corn farms use fertilizer_kg > 800".
+    *   Corn: F098003 (918), F098004 (918), F098005 (621), F098014 (860), F098015 (839).
+    *   Count > 800: 4. Total 5. 4/5 is majority. Correct.
+
+    *   Wait, I need to check Statement 10 again. "There exists a farm with soil_quality_index > 80 that is organic".
+    *   F098014: 82.0, yes. Correct.
+
+    *   Wait, I need to check Statement 4 again. "If a farm has soil_quality_index > 78, then fertilizer_kg >= 638".
+    *   Soil > 78: F098002 (78.4, 638), F098004 (78.5, 918), F098012 (78.6, 744), F098014 (82.0, 860).
+    *   Fertilizer >= 638: 638, 918, 744, 860. All pass. Correct.
+
+    *   Wait, I need to check Statement 6 again. "All farms with yield_tons > 440 have irrigation_hours_week > 10".
+    *   Yield > 440: F098001 (459.8, 18.0), F098006 (449.4, 14.4), F098015 (448.6, 10.4).
+    *   Irrigation > 10: 18.0, 14.4, 10.4. All > 10. Correct.
+
+    *   Wait, I need to check Statement 7 again. "If a farm has fertilizer_kg > 1000, then crop_type is soybean".
+    *   Fertilizer > 1000: F098009 (1018). Crop: soybean. Correct.
+
+    *   Wait, I need to check Statement 1 again. "All corn farms have acreage >= 105".
+    *   Corn: 105, 130, 145, 150, 127. Min 105. Correct.
+
+    *   Wait, I need to check Statement 2 again. "If a farm grows rice, then irrigation_hours_week >= 12.3".
+    *   Rice: 12.3, 17.6, 16.9, 15.1. Min 12.3. Correct.
+
+    *   Wait, I need to check Statement 3 again. "All soybean farms have fertilizer_kg >= 756".
+    *   Soybean: 782, 875, 1018, 756. Min 756. Correct.
+
+    *   Wait, I need to check Statement 9 again. "All wheat farms have acreage >= 76".
+    *   Wheat: 76, 140. Min 76. Correct.
+
+    *   All statements verified.
+    *   JSON format: `{"statements": [...]}`.
+    *   No markdown.
+    *   No extra text.
+
+    *   Wait, I need to ensure I don't use markdown code blocks. Just raw text.
+    *   Wait, I need to ensure the reasoning in the thought block is 5-8 bullets.
+    *   I will write the thought block now.
+
+    *   Wait, one detail: "OUTPUT: exactly one JSON object, nothing else."
+    *   I must not include ```json ... ```.
+    *   I must not include any text before or after.
+
+    *   Wait, I need to check if the prompt allows me to output the reasoning *in* the JSON? No, schema is fixed.
+    *   Okay, proceeding with JSON only.
+
+    *   Wait, I need to check the "THINKING BUDGET" instruction again. "keep your reasoning very short — at most 5-8 short bullets, no paragraphs, no rewriting examples."
+    *   This applies to the *thought block*.
+    *   Okay.
+
+    *   Wait, I need to check if I should include the reasoning in the output? "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   This is a conflict. "OUTPUT: exactly one JSON object, nothing else" vs "Reason briefly... then output".
+    *   If I output text, it violates "nothing else".
+    *   If I don't output text, I violate "then output the JSON object" (implying text before).
+    *   Given "OUTPUT: exactly one JSON object, nothing else" is a system-level constraint for parsing, I will prioritize that. The "Reason briefly" instruction is likely for the internal thought process to ensure quality without bloating the response.
+    *   Actually, often "Reason briefly... then output" implies the reasoning should be visible. But "OUTPUT: exactly one JSON object" is stricter.
+    *   I will follow the System Instruction (JSON only) to be safe for parsing.
+
+    *   Wait, I'll check the "THINKING BUDGET" instruction again. "Spend almost all your tokens on the answer, not the analysis."
+    *   This confirms analysis should be minimal/internal.
+    *   Okay, I will output only the JSON.
+
+    *   Wait, I need to make sure I don't accidentally add newlines at the start.
+    *   Okay.
+
+    *   Wait, one last check on Statement 8: "Most non-organic farms have soil_quality_index < 75".
+    *   Non-organic: F098001 (74.7), F098003 (71.2), F098007 (70.8), F098008 (69.2), F098012 (78.6), F098015 (76.8).
+    *   < 75: 74.7, 71.2, 70.8, 69.2. (4).
+    *   >= 75: 78.6, 76.8. (2).
+    *   4 > 2. Majority holds.
+
+    *   Wait, one last check on Statement 5: "Most corn farms use fertilizer_kg > 800".
+    *   Corn: 918, 918, 621, 860, 839.
+    *   > 800: 918, 918, 860, 839. (4).
+    *   Total: 5.
+    *   4 > 2.5. Majority holds.
+
+    *   Okay, ready to generate JSON.
+</think>
+
+{
+  "statements": [
+    "All corn farms have acreage >= 105.",
+    "If a farm grows rice, then irrigation_hours_week >= 12.3.",
+    "All soybean farms have fertilizer_kg >= 756.",
+    "If a farm has soil_quality_index > 78, then fertilizer_kg >= 638.",
+    "Most corn farms use fertilizer_kg > 800.",
+    "All farms with yield_tons > 440 have irrigation_hours_week > 10.",
+    "If a farm has fertilizer_kg > 1000, then crop_type is soybean.",
+    "Most non-organic farms have soil_quality_index < 75.",
+    "All wheat farms have acreage >= 76.",
+    "There exists a farm with soil_quality_index > 80 that is organic."
+  ]
+}

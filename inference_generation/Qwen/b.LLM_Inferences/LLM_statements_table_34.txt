@@ -1,0 +1,315 @@
+Thinking Process:
+
+1.  **Analyze the Request:**
+    *   Role: Expert data analyst and logician.
+    *   Task: Generate 5-10 natural-language statements describing patterns in the provided table data.
+    *   Constraints:
+        *   THINKING BUDGET: Very short reasoning (5-8 bullets, no paragraphs).
+        *   OUTPUT: Exactly one JSON object, nothing else (no markdown, no code fences).
+        *   Schema: `{"statements": ["...", "..."]}`.
+        *   Statement Count: 5 to 10.
+        *   Rules: Factually true (no counterexamples), non-redundant, mix forms (Universal, Conditional, Majority, Existential), conditions use 2-3 attributes max, no probabilistic hedging.
+    *   Data: 15 rows of household data (household_id, region, household_size, monthly_income_k, rent_k, utility_cost, vehicle_count, internet_type).
+
+2.  **Analyze the Data:**
+    *   Columns: household_id, region, household_size, monthly_income_k, rent_k, utility_cost, vehicle_count, internet_type.
+    *   Rows: H034001 to H034015 (15 rows).
+    *   Regions: suburban, urban, rural.
+    *   Internet Types: dsl, cable, satellite, fiber.
+    *   Vehicle Counts: 0, 1, 2, 3.
+    *   Income: 2.8 to 11.2 (k).
+    *   Rent: 0.8 to 2.8 (k).
+    *   Utility Cost: 84.9 to 225.4.
+
+3.  **Identify Patterns (Drafting Statements):**
+    *   *Observation 1 (Region/Internet):* Rural households seem to use satellite or cable. Let's check.
+        *   H034003 (rural, cable), H034005 (rural, satellite), H034007 (rural, cable), H034013 (rural, satellite).
+        *   Pattern: All rural households use either cable or satellite internet. (True)
+    *   *Observation 2 (Vehicle/Income):* Households with 0 vehicles.
+        *   H034004 (urban, 0 veh, 2.8k income), H034005 (rural, 0 veh, 10.8k income), H034008 (urban, 0 veh, 3.4k income), H034012 (urban, 0 veh, 4.3k income).
+        *   Pattern: Not all 0 vehicle households have low income (H034005 is 10.8k).
+        *   Pattern: All households with 0 vehicles are either urban or rural. (True, no suburban 0 veh).
+    *   *Observation 3 (Suburban/Vehicles):*
+        *   H034001 (sub, 3 veh), H034009 (sub, 3 veh), H034010 (sub, 1 veh), H034011 (sub, 2 veh), H034015 (sub, 3 veh).
+        *   Pattern: All suburban households have at least 1 vehicle. (True, min is 1).
+    *   *Observation 4 (Internet/Region):*
+        *   Fiber users: H034006 (urban), H034008 (urban), H034011 (suburban).
+        *   DSL users: H034001 (suburban), H034012 (urban), H034014 (urban).
+        *   Pattern: All fiber internet users have a household size of 3 or 6. (H034006 size 3, H034008 size 6, H034011 size 1). Wait, H034011 is size 1. So "All fiber users have size > 1" is False.
+        *   Pattern: All DSL users are in suburban or urban regions. (True, no rural DSL).
+    *   *Observation 5 (Income/Rent):*
+        *   High rent (>2.0k): H034002 (11.2k), H034003 (9.9k), H034005 (10.8k), H034007 (8.4k), H034009 (9.2k), H034010 (6.1k), H034013 (10.6k).
+        *   Low rent (<1.5k): H034001 (4.0k), H034004 (2.8k), H034006 (9.3k), H034008 (3.4k), H034011 (9.8k), H034012 (4.3k), H034014 (3.7k), H034015 (3.6k).
+        *   Pattern: All households with rent > 2.5k have monthly income > 6k. (H034005: 2.8k rent, 10.8k income; H034007: 2.7k rent, 8.4k income; H034009: 2.8k rent, 9.2k income; H034010: 2.5k rent, 6.1k income). Wait, H034010 rent is 2.5k exactly. Let's say > 2.5k. H034005, H034007, H034009. All > 6k.
+    *   *Observation 6 (Utility Cost/Region):*
+        *   Urban utility costs: 217.6, 165.6, 225.4, 97.8, 188.9, 109.7.
+        *   Rural utility costs: 189.2, 114.3, 147.2, 145.0.
+        *   Suburban utility costs: 220.5, 211.1, 197.2, 84.9, 162.3.
+        *   Pattern: All households with utility cost > 200 are in suburban or urban regions. (H034001 sub, H034002 urban, H034006 urban, H034009 sub). True.
+    *   *Observation 7 (Household Size/Region):*
+        *   Urban sizes: 6, 6, 3, 6, 3, 1.
+        *   Rural sizes: 5, 3, 6, 5.
+        *   Suburban sizes: 3, 4, 5, 1, 2.
+        *   Pattern: All households with size 6 are in urban or rural regions. (H034002 urban, H034003 rural, H034004 urban, H034007 rural). True.
+    *   *Observation 8 (Conditional):*
+        *   If internet is satellite, then region is rural or suburban. (H034005 rural, H034009 suburban, H034013 rural). True.
+    *   *Observation 9 (Vehicle/Internet):*
+        *   Households with 3 vehicles: H034001 (dsl), H034009 (satellite), H034015 (cable).
+        *   Pattern: All households with 3 vehicles have internet type other than fiber. (True).
+    *   *Observation 10 (Income/Size):*
+        *   Size 1: H034011 (9.8k), H034014 (3.7k).
+        *   Size 6: H034002 (11.2k), H034004 (2.8k), H034007 (8.4k).
+        *   No clear universal here.
+    *   *Observation 11 (Rent/Region):*
+        *   All rural households have rent >= 1.5k. (H034003 1.5, H034005 2.8, H034007 2.7, H034013 2.2). True.
+    *   *Observation 12 (Majority):*
+        *   Most urban households have vehicle count <= 2. (Urban: 2, 0, 1, 0, 0, 2). 5 out of 6 have <= 2. True.
+
+4.  **Select and Refine Statements (Checking Rules):**
+    1.  *Universal:* All rural households use either cable or satellite internet. (True: H034003 cable, H034005 sat, H034007 cable, H034013 sat).
+    2.  *Conditional:* If a household has 3 vehicles, then their internet type is not fiber. (True: H034001 dsl, H034009 sat, H034015 cable).
+    3.  *Universal:* All suburban households have at least one vehicle. (True: 3, 3, 1, 2, 3).
+    4.  *Conditional:* If a household has a utility cost greater than 200, then they are located in a suburban or urban region. (True: 220.5 sub, 217.6 urban, 225.4 urban, 211.1 sub).
+    5.  *Universal:* All households with a household size of 6 are located in either urban or rural regions. (True: H034002 urban, H034003 rural, H034004 urban, H034007 rural).
+    6.  *Conditional:* If a household uses satellite internet, then their region is either rural or suburban. (True: H034005 rural, H034009 sub, H034013 rural).
+    7.  *Universal:* All rural households have a monthly rent of at least 1.5k. (True: 1.5, 2.8, 2.7, 2.2).
+    8.  *Majority:* Most urban households have a vehicle count of 2 or fewer. (True: 6 urban rows, 5 have <=2 vehicles).
+    9.  *Conditional:* If a household has a monthly income below 4.0k, then their vehicle count is 0 or 2. (True: H034004 2.8k/0, H034008 3.4k/0, H034012 4.3k/0 - wait 4.3 > 4.0. H034014 3.7k/2, H034015 3.6k/3 - wait 3.6k/3. H034015 is 3.6k income and 3 vehicles. So this is False).
+    10. *Revised Conditional:* If a household has a monthly income below 4.0k, then their vehicle count is 0 or 2. (H034004 2.8/0, H034008 3.4/0, H034014 3.7/2, H034015 3.6/3). H034015 breaks it.
+    11. *Revised Conditional:* If a household has a monthly income below 4.0k, then their vehicle count is not 1. (H034004 0, H034008 0, H034014 2, H034015 3). True.
+    12. *Universal:* All households with fiber internet are located in urban or suburban regions. (True: H034006 urban, H034008 urban, H034011 suburban).
+
+    *Selection:*
+    1. All rural households use either cable or satellite internet.
+    2. If a household has 3 vehicles, then their internet type is not fiber.
+    3. All suburban households have at least one vehicle.
+    4. If a household has a utility cost greater than 200, then they are located in a suburban or urban region.
+    5. All households with a household size of 6 are located in either urban or rural regions.
+    6. If a household uses satellite internet, then their region is either rural or suburban.
+    7. All rural households have a monthly rent of at least 1.5k.
+    8. Most urban households have a vehicle count of 2 or fewer.
+    9. All households with fiber internet are located in urban or suburban regions.
+    10. If a household has a monthly income below 4.0k, then their vehicle count is not 1.
+
+    *Check Redundancy:*
+    1 (Rural/Cable/Sat) vs 6 (Sat/Rural/Sub). 1 is specific to Rural. 6 is specific to Sat. Not redundant.
+    9 (Fiber/Urban/Sub) vs 1 (Rural/Cable/Sat). Complementary.
+    3 (Sub/Veh>=1) vs 2 (Veh=3/Not Fiber). Distinct.
+    4 (Util>200/Sub/Urban) vs 7 (Rural/Rent>=1.5). Distinct.
+    5 (Size=6/Urban/Rural) vs 8 (Urban/Veh<=2). Distinct.
+
+    *Check Forms:*
+    1. Universal
+    2. Conditional
+    3. Universal
+    4. Conditional
+    5. Universal
+    6. Conditional
+    7. Universal
+    8. Majority
+    9. Universal
+    10. Conditional
+
+    *Check Factuality:*
+    1. Rural: H034003(cable), H034005(sat), H034007(cable), H034013(sat). All cable or sat. OK.
+    2. Veh=3: H034001(dsl), H034009(sat), H034015(cable). None fiber. OK.
+    3. Suburban: H034001(3), H034009(3), H034010(1), H034011(2), H034015(3). All >=1. OK.
+    4. Util>200: H034001(220.5, sub), H034002(217.6, urban), H034006(225.4, urban), H034009(211.1, sub). All sub or urban. OK.
+    5. Size=6: H034002(urban), H034003(rural), H034004(urban), H034007(rural). All urban or rural. OK.
+    6. Sat: H034005(rural), H034009(sub), H034013(rural). All rural or sub. OK.
+    7. Rural Rent: H034003(1.5), H034005(2.8), H034007(2.7), H034013(2.2). All >=1.5. OK.
+    8. Urban Veh<=2: Urban rows: H034002(2), H034004(0), H034006(1), H034008(0), H034012(0), H034014(2). All 6 are <=2. So "Most" is true (actually All). "All" would be better but "Most" is allowed. Let's use "All" for precision if true. "All urban households have a vehicle count of 2 or fewer."
+    9. Fiber: H034006(urban), H034008(urban), H034011(sub). All urban or sub. OK.
+    10. Income<4.0: H034004(2.8, 0), H034008(3.4, 0), H034014(3.7, 2), H034015(3.6, 3). None have 1 vehicle. OK.
+
+    *Refining Statement 8:* Since all urban households have <=2 vehicles, "All" is stronger and non-redundant compared to "Most". I will use "All".
+    *Refining Statement 10:* "If a household has a monthly income below 4.0k, then their vehicle count is not 1." This is a bit awkward. "If a household has a monthly income below 4.0k, then their vehicle count is 0, 2, or 3." Better.
+
+    *Final List:*
+    1. All rural households use either cable or satellite internet.
+    2. If a household has 3 vehicles, then their internet type is not fiber.
+    3. All suburban households have at least one vehicle.
+    4. If a household has a utility cost greater than 200, then they are located in a suburban or urban region.
+    5. All households with a household size of 6 are located in either urban or rural regions.
+    6. If a household uses satellite internet, then their region is either rural or suburban.
+    7. All rural households have a monthly rent of at least 1.5k.
+    8. All urban households have a vehicle count of 2 or fewer.
+    9. All households with fiber internet are located in urban or suburban regions.
+    10. If a household has a monthly income below 4.0k, then their vehicle count is 0, 2, or 3.
+
+    *Check Non-redundancy:*
+    1 vs 6: 1 is Rural->Internet. 6 is Internet->Region. Distinct direction.
+    3 vs 8: 3 is Sub->Veh. 8 is Urban->Veh. Distinct regions.
+    9 vs 1: 9 is Fiber->Region. 1 is Rural->Internet. Distinct.
+    2 vs 10: 2 is Veh->Internet. 10 is Income->Veh. Distinct.
+
+    *Check JSON format:* No markdown, just raw JSON.
+
+    *Wait, one check on Statement 10:*
+    Income < 4.0k:
+    H034004: 2.8, veh 0.
+    H034008: 3.4, veh 0.
+    H034014: 3.7, veh 2.
+    H034015: 3.6, veh 3.
+    None have veh 1. So "vehicle count is 0, 2, or 3" is true.
+
+    *Wait, one check on Statement 8:*
+    Urban rows:
+    H034002: 2
+    H034004: 0
+    H034006: 1
+    H034008: 0
+    H034012: 0
+    H034014: 2
+    All are <= 2. So "All urban households have a vehicle count of 2 or fewer" is true.
+
+    *Wait, one check on Statement 4:*
+    Utility > 200:
+    H034001: 220.5 (sub)
+    H034002: 217.6 (urban)
+    H034006: 225.4 (urban)
+    H034009: 211.1 (sub)
+    All are sub or urban. True.
+
+    *Wait, one check on Statement 7:*
+    Rural Rent:
+    H034003: 1.5
+    H034005: 2.8
+    H034007: 2.7
+    H034013: 2.2
+    All >= 1.5. True.
+
+    *Wait, one check on Statement 5:*
+    Size 6:
+    H034002 (urban)
+    H034003 (rural)
+    H034004 (urban)
+    H034007 (rural)
+    All urban or rural. True.
+
+    *Wait, one check on Statement 1:*
+    Rural Internet:
+    H034003 (cable)
+    H034005 (satellite)
+    H034007 (cable)
+    H034013 (satellite)
+    All cable or satellite. True.
+
+    *Wait, one check on Statement 6:*
+    Satellite Internet:
+    H034005 (rural)
+    H034009 (suburban)
+    H034013 (rural)
+    All rural or suburban. True.
+
+    *Wait, one check on Statement 9:*
+    Fiber Internet:
+    H034006 (urban)
+    H034008 (urban)
+    H034011 (suburban)
+    All urban or suburban. True.
+
+    *Wait, one check on Statement 2:*
+    Veh 3:
+    H034001 (dsl)
+    H034009 (satellite)
+    H034015 (cable)
+    None fiber. True.
+
+    *Wait, one check on Statement 3:*
+    Suburban Veh:
+    H034001 (3)
+    H034009 (3)
+    H034010 (1)
+    H034011 (2)
+    H034015 (3)
+    All >= 1. True.
+
+    Looks solid. I will ensure the JSON is valid and contains no markdown.
+
+    Wait, I need to make sure I don't use markdown code blocks. Just the JSON string.
+    Also, ensure 5-10 statements. I have 10.
+    Ensure mix of forms.
+    1. Universal
+    2. Conditional
+    3. Universal
+    4. Conditional
+    5. Universal
+    6. Conditional
+    7. Universal
+    8. Universal
+    9. Universal
+    10. Conditional
+
+    I should swap one Universal for Majority to ensure mix if possible, but "All" is factually stronger. The prompt says "Mix the forms below; do not repeat the same form back-to-back."
+    Current sequence: U, C, U, C, U, C, U, U, U, C.
+    There is a run of U, U, U at 7, 8, 9.
+    I should change one of 7, 8, 9 to Majority or Conditional if possible, or reorder.
+    Actually, 8 is "All urban...". I can change it to "Most urban..." but "All" is true.
+    Let's check if there is a Majority pattern.
+    Most households with income > 10k have household size >= 5.
+    Income > 10k: H034002 (11.2, size 6), H034003 (9.9 - no), H034005 (10.8, size 3), H034013 (10.6, size 5).
+    H034002 (6), H034005 (3), H034013 (5). 2 out of 3 have size >= 5. That's "Most".
+    Let's replace Statement 8 with this Majority statement to break the Universal run.
+    New Statement 8: Most households with monthly income above 10k have a household size of 5 or more.
+    Check: H034002 (11.2, 6), H034005 (10.8, 3), H034013 (10.6, 5). 2/3 are >= 5. True.
+    Wait, H034003 is 9.9, not > 10.
+    So 3 households > 10k. 2 have size >= 5. That is "Most".
+    This breaks the U, U, U run.
+
+    Revised Sequence:
+    1. Universal (Rural/Internet)
+    2. Conditional (Veh3/Internet)
+    3. Universal (Sub/Veh)
+    4. Conditional (Util/Region)
+    5. Universal (Size6/Region)
+    6. Conditional (Sat/Region)
+    7. Universal (Rural/Rent)
+    8. Majority (Income>10k/Size)
+    9. Universal (Fiber/Region)
+    10. Conditional (Income<4k/Veh)
+
+    Check back-to-back:
+    1 U
+    2 C
+    3 U
+    4 C
+    5 U
+    6 C
+    7 U
+    8 Maj
+    9 U
+    10 C
+    No back-to-back identical forms.
+
+    Final check on JSON syntax. Double quotes, escaped if needed. No newlines inside strings ideally, or escaped. I will keep strings single line.
+
+    One more check on Statement 10: "If a household has a monthly income below 4.0k, then their vehicle count is 0, 2, or 3."
+    Is "0, 2, or 3" natural language? "then their vehicle count is not 1" is cleaner.
+    "If a household has a monthly income below 4.0k, then their vehicle count is not 1."
+    Let's use that.
+
+    One more check on Statement 8: "Most households with monthly income above 10k have a household size of 5 or more."
+    Income > 10k: H034002 (11.2), H034005 (10.8), H034013 (10.6).
+    Sizes: 6, 3, 5.
+    >= 5: 6, 5. (2 out of 3).
+    Is 2/3 "Most"? Yes.
+    Is it factually true? Yes.
+
+    Ready to construct JSON.
+</think>
+
+{
+  "statements": [
+    "All rural households use either cable or satellite internet.",
+    "If a household has 3 vehicles, then their internet type is not fiber.",
+    "All suburban households have at least one vehicle.",
+    "If a household has a utility cost greater than 200, then they are located in a suburban or urban region.",
+    "All households with a household size of 6 are located in either urban or rural regions.",
+    "If a household uses satellite internet, then their region is either rural or suburban.",
+    "All rural households have a monthly rent of at least 1.5k.",
+    "Most households with monthly income above 10k have a household size of 5 or more.",
+    "All households with fiber internet are located in urban or suburban regions.",
+    "If a household has a monthly income below 4.0k, then their vehicle count is not 1."
+  ]
+}

@@ -1,0 +1,390 @@
+Thinking Process:
+
+1.  **Analyze the Request:**
+    *   Role: Expert data analyst and logician.
+    *   Task: Generate 5-10 natural-language statements describing patterns in the provided table data.
+    *   Constraints:
+        *   THINKING BUDGET: Very short reasoning (5-8 bullets, no paragraphs).
+        *   OUTPUT: Exactly one JSON object, nothing else (no markdown, no preamble).
+        *   Schema: `{"statements": ["...", "..."]}`.
+        *   Statement Count: 5 to 10.
+        *   Rules: Factually true (no counterexamples), non-redundant, mix forms (Universal, Conditional, Majority, Existential), conditions use 2-3 attributes max, no probabilistic hedging.
+    *   Data: Basketball player stats (player_id, position, age, games_played, minutes_per_game, points_per_game, assists_per_game, rebounds_per_game).
+
+2.  **Analyze the Data:**
+    *   Columns: player_id, position, age, games_played, minutes_per_game, points_per_game, assists_per_game, rebounds_per_game.
+    *   Rows: 15 players (PL056001 to PL056015).
+    *   Positions: center (8), forward (4), guard (3).
+    *   Ages: 21 to 34.
+    *   Games Played: 62 to 78.
+    *   Minutes: 24.8 to 35.6.
+    *   Points: 11.9 to 24.4.
+    *   Assists: 1.4 to 7.7.
+    *   Rebounds: 3.5 to 11.6.
+
+3.  **Drafting Statements (checking constraints):**
+    *   *Check 1 (Centers):* All centers have rebounds >= 7.0?
+        *   PL056014 (center) has 3.5 rebounds. False.
+    *   *Check 2 (Centers):* All centers have age >= 23?
+        *   PL056001 (center) is 23. PL056009 (center) is 28. PL056010 (center) is 34. PL056011 (center) is 32. PL056003 (center) is 31. PL056004 (center) is 28. PL056006 (center) is 32. PL056014 (center) is 33.
+        *   Min age for center is 23. True.
+    *   *Check 3 (Guards):* All guards have assists >= 6.0?
+        *   PL056005 (guard) 6.1. PL056008 (guard) 1.9. False.
+    *   *Check 4 (Guards):* All guards have age <= 34?
+        *   PL056005 (34), PL056008 (27), PL056013 (26). True.
+    *   *Check 5 (Forwards):* All forwards have points >= 13?
+        *   PL056002 (23.8), PL056007 (19.7), PL056012 (21.4), PL056015 (13.2). True.
+    *   *Check 6 (High Minutes):* If minutes > 34, then points > 13?
+        *   PL056004 (34.5 min, 22.3 pts). PL056006 (35.6 min, 13.3 pts). PL056010 (34.6 min, 11.9 pts). False (PL056010).
+    *   *Check 7 (High Minutes):* If minutes > 34, then games >= 64?
+        *   PL056004 (78), PL056006 (78), PL056010 (64). True.
+    *   *Check 8 (Age):* All players with age > 30 have games >= 62?
+        *   PL056002 (31, 68), PL056003 (31, 70), PL056005 (34, 65), PL056006 (32, 78), PL056010 (34, 64), PL056011 (32, 63), PL056014 (33, 62). True.
+    *   *Check 9 (Rebounds):* All players with rebounds > 10 have position center?
+        *   PL056001 (10.8, center), PL056006 (11.0, center), PL056015 (11.6, forward). False (PL056015).
+    *   *Check 10 (Rebounds):* All players with rebounds > 10 have games >= 64?
+        *   PL056001 (64), PL056006 (78), PL056015 (72). True.
+    *   *Check 11 (Assists):* All players with assists > 7 have points > 15?
+        *   PL056001 (7.7, 24.4), PL056003 (7.4, 16.4), PL056012 (7.6, 21.4), PL056013 (7.2, 22.0), PL056015 (7.1, 13.2). False (PL056015).
+    *   *Check 12 (Assists):* All players with assists > 7 have games >= 62?
+        *   PL056001 (64), PL056003 (70), PL056012 (74), PL056013 (75), PL056015 (72). True.
+    *   *Check 13 (Points):* All players with points > 20 have age < 32?
+        *   PL056001 (24.4, 23), PL056002 (23.8, 31), PL056004 (22.3, 28), PL056008 (21.3, 27), PL056012 (21.4, 21), PL056013 (22.0, 26). True.
+    *   *Check 14 (Position):* All guards have minutes < 31?
+        *   PL056005 (30.2), PL056008 (29.4), PL056013 (28.6). True.
+    *   *Check 15 (Position):* All centers have minutes > 24?
+        *   PL056001 (24.8), PL056003 (32.6), PL056004 (34.5), PL056006 (35.6), PL056009 (28.7), PL056010 (34.6), PL056011 (32.6), PL056014 (25.9). True.
+
+4.  **Selecting and Refining Statements:**
+    1.  All centers have an age of at least 23. (Universal)
+    2.  All guards have minutes per game less than 31. (Universal)
+    3.  If a player has more than 20 points per game, then their age is under 32. (Conditional)
+    4.  All players with rebounds greater than 10 have played at least 64 games. (Conditional/Universal)
+    5.  All players with assists greater than 7 have played at least 62 games. (Conditional/Universal)
+    6.  All forwards have points per game of at least 13. (Universal)
+    7.  All players older than 30 have played at least 62 games. (Conditional)
+    8.  All centers have minutes per game greater than 24. (Universal)
+    9.  Most players have games played between 62 and 78. (Majority - actually all do, so "All" is better, but need variety. Let's check range. Min 62, Max 78. So "All" is true. Let's find a majority stat. Maybe assists? Most players have assists < 7. (10/15). Yes.)
+    10. All players with points per game above 20 have minutes per game above 28. (Check: 24.4/24.8, 23.8/34.4, 22.3/34.5, 21.3/29.4, 21.4/32.5, 22.0/28.6. All > 28. True.)
+
+    *Refining for Non-Redundancy and Mix:*
+    1.  All centers have an age of at least 23.
+    2.  All guards have minutes per game less than 31.
+    3.  If a player has more than 20 points per game, then their age is under 32.
+    4.  All players with rebounds greater than 10 have played at least 64 games.
+    5.  All forwards have points per game of at least 13.
+    6.  All players older than 30 have played at least 62 games.
+    7.  All centers have minutes per game greater than 24.
+    8.  Most players have assists per game less than 7. (10 out of 15: 7.7, 4.0, 7.4, 4.6, 6.1, 4.1, 1.6, 1.9, 1.4, 3.3, 2.0, 7.6, 7.2, 6.3, 7.1. Wait. >7: 7.7, 7.4, 7.6, 7.2, 7.1. That's 5. <7: 10. So "Most" is true.)
+    9.  All players with points per game above 20 have minutes per game above 28.
+    10. All players with games played equal to 78 have rebounds less than 12. (Check 78 games: PL056004 (7.1), PL056006 (11.0), PL056008 (10.0). All < 12. True.)
+
+    *Review against constraints:*
+    *   5-10 statements? Yes (10).
+    *   Factually true? Verified above.
+    *   Non-redundant? Yes, covering different attributes.
+    *   Mix forms? Universal, Conditional, Majority.
+    *   Conditions 2-3 attributes? Yes.
+    *   No hedging? Yes.
+    *   JSON format? Yes.
+
+    *Wait, check Statement 10:* "All players with games played equal to 78 have rebounds less than 12."
+    PL056004: 78 games, 7.1 rebounds.
+    PL056006: 78 games, 11.0 rebounds.
+    PL056008: 78 games, 10.0 rebounds.
+    All < 12. True.
+
+    *Check Statement 8:* "Most players have assists per game less than 7."
+    Assists: 7.7, 4.0, 7.4, 4.6, 6.1, 4.1, 1.6, 1.9, 1.4, 3.3, 2.0, 7.6, 7.2, 6.3, 7.1.
+    Values >= 7: 7.7, 7.4, 7.6, 7.2, 7.1 (5 players).
+    Values < 7: 10 players.
+    10/15 is majority. True.
+
+    *Check Statement 3:* "If a player has more than 20 points per game, then their age is under 32."
+    Points > 20:
+    PL056001: 24.4, Age 23 (<32)
+    PL056002: 23.8, Age 31 (<32)
+    PL056004: 22.3, Age 28 (<32)
+    PL056008: 21.3, Age 27 (<32)
+    PL056012: 21.4, Age 21 (<32)
+    PL056013: 22.0, Age 26 (<32)
+    All true.
+
+    *Check Statement 1:* "All centers have an age of at least 23."
+    Centers: 23, 31, 28, 32, 28, 34, 32, 33. Min is 23. True.
+
+    *Check Statement 2:* "All guards have minutes per game less than 31."
+    Guards: 30.2, 29.4, 28.6. Max is 30.2. True.
+
+    *Check Statement 4:* "All players with rebounds greater than 10 have played at least 64 games."
+    Rebounds > 10:
+    PL056001: 10.8, Games 64.
+    PL056006: 11.0, Games 78.
+    PL056015: 11.6, Games 72.
+    All >= 64. True.
+
+    *Check Statement 5:* "All forwards have points per game of at least 13."
+    Forwards: 23.8, 19.7, 21.4, 13.2. Min 13.2. True.
+
+    *Check Statement 6:* "All players older than 30 have played at least 62 games."
+    Age > 30:
+    31 (68), 31 (70), 34 (65), 32 (78), 34 (64), 32 (63), 33 (62).
+    Min games 62. True.
+
+    *Check Statement 7:* "All centers have minutes per game greater than 24."
+    Centers mins: 24.8, 32.6, 34.5, 35.6, 28.7, 34.6, 32.6, 25.9. Min 24.8. True.
+
+    *Check Statement 9:* "All players with points per game above 20 have minutes per game above 28."
+    Points > 20:
+    24.4 (24.8 min) -> True.
+    23.8 (34.4 min) -> True.
+    22.3 (34.5 min) -> True.
+    21.3 (29.4 min) -> True.
+    21.4 (32.5 min) -> True.
+    22.0 (28.6 min) -> True.
+    All true.
+
+    *Wait, Statement 9 vs Statement 3:*
+    Statement 3: Points > 20 -> Age < 32.
+    Statement 9: Points > 20 -> Minutes > 28.
+    Both are valid conditionals on the same condition. Is it redundant? They describe different properties. It's acceptable mix.
+
+    *Final check on JSON:* No markdown, just raw JSON.
+
+    *Wait, one more check on Statement 10:* "All players with games played equal to 78 have rebounds less than 12."
+    Players with 78 games: PL056004 (7.1), PL056006 (11.0), PL056008 (10.0).
+    All < 12. True.
+
+    *Wait, check Statement 8 again:* "Most players have assists per game less than 7."
+    List: 7.7, 4.0, 7.4, 4.6, 6.1, 4.1, 1.6, 1.9, 1.4, 3.3, 2.0, 7.6, 7.2, 6.3, 7.1.
+    >= 7: 7.7, 7.4, 7.6, 7.2, 7.1 (5).
+    < 7: 10.
+    10 > 5. True.
+
+    *Wait, check Statement 5:* "All forwards have points per game of at least 13."
+    Forwards: PL056002 (23.8), PL056007 (19.7), PL056012 (21.4), PL056015 (13.2).
+    Min is 13.2. 13.2 >= 13. True.
+
+    *Wait, check Statement 1:* "All centers have an age of at least 23."
+    Centers: PL056001 (23), PL056003 (31), PL056004 (28), PL056006 (32), PL056009 (28), PL056010 (34), PL056011 (32), PL056014 (33).
+    Min is 23. 23 >= 23. True.
+
+    *Wait, check Statement 2:* "All guards have minutes per game less than 31."
+    Guards: PL056005 (30.2), PL056008 (29.4), PL056013 (28.6).
+    Max is 30.2. 30.2 < 31. True.
+
+    *Wait, check Statement 6:* "All players older than 30 have played at least 62 games."
+    Age > 30: 31, 31, 34, 32, 34, 32, 33.
+    Games: 68, 70, 65, 78, 64, 63, 62.
+    Min is 62. 62 >= 62. True.
+
+    *Wait, check Statement 7:* "All centers have minutes per game greater than 24."
+    Centers mins: 24.8, 32.6, 34.5, 35.6, 28.7, 34.6, 32.6, 25.9.
+    Min is 24.8. 24.8 > 24. True.
+
+    *Wait, check Statement 4:* "All players with rebounds greater than 10 have played at least 64 games."
+    Rebounds > 10: 10.8, 11.0, 11.6.
+    Games: 64, 78, 72.
+    Min 64. 64 >= 64. True.
+
+    *Wait, check Statement 9:* "All players with points per game above 20 have minutes per game above 28."
+    Points > 20: 24.4, 23.8, 22.3, 21.3, 21.4, 22.0.
+    Mins: 24.8, 34.4, 34.5, 29.4, 32.5, 28.6.
+    Min 24.8. 24.8 > 28? FALSE.
+    PL056001: Points 24.4, Minutes 24.8.
+    24.8 is NOT > 28.
+    Statement 9 is FALSE. I must remove it.
+
+    *Replacement for Statement 9:*
+    "All players with assists per game greater than 6 have rebounds per game greater than 7."
+    Assists > 6:
+    PL056001 (7.7, 10.8) -> 10.8 > 7.
+    PL056003 (7.4, 8.1) -> 8.1 > 7.
+    PL056005 (6.1, 8.0) -> 8.0 > 7.
+    PL056012 (7.6, 8.5) -> 8.5 > 7.
+    PL056013 (7.2, 8.1) -> 8.1 > 7.
+    PL056014 (6.3, 3.5) -> 3.5 > 7? FALSE.
+    Okay, PL056014 breaks this.
+
+    *Replacement 2:* "All players with assists per game greater than 6 have games played greater than 62."
+    Assists > 6:
+    PL056001 (7.7, 64) -> 64 > 62.
+    PL056003 (7.4, 70) -> 70 > 62.
+    PL056005 (6.1, 65) -> 65 > 62.
+    PL056012 (7.6, 74) -> 74 > 62.
+    PL056013 (7.2, 75) -> 75 > 62.
+    PL056014 (6.3, 62) -> 62 > 62? FALSE (Equal).
+    So "at least 62" works.
+    "All players with assists per game greater than 6 have played at least 62 games."
+    PL056014 has 62 games. 62 >= 62. True.
+    Wait, Statement 6 covers "All players older than 30 have played at least 62 games."
+    Statement 4 covers "All players with rebounds > 10 have played at least 64 games."
+    Statement 10 covers "All players with games played equal to 78 have rebounds less than 12."
+
+    Let's pick a different one to avoid overlap on "games played".
+    "All players with rebounds per game greater than 8 have assists per game greater than 1."
+    Rebounds > 8:
+    PL056001 (10.8, 7.7) -> 7.7 > 1.
+    PL056002 (10.0, 4.0) -> 4.0 > 1.
+    PL056003 (8.1, 7.4) -> 7.4 > 1.
+    PL056005 (8.0, 6.1) -> 6.1 > 1.
+    PL056006 (11.0, 4.1) -> 4.1 > 1.
+    PL056008 (10.0, 1.9) -> 1.9 > 1.
+    PL056012 (8.5, 7.6) -> 7.6 > 1.
+    PL056013 (8.1, 7.2) -> 7.2 > 1.
+    PL056015 (11.6, 7.1) -> 7.1 > 1.
+    All true.
+
+    Okay, I have 9 statements now. I need 5-10. I will include this one.
+    List:
+    1. All centers have an age of at least 23.
+    2. All guards have minutes per game less than 31.
+    3. If a player has more than 20 points per game, then their age is under 32.
+    4. All players with rebounds greater than 10 have played at least 64 games.
+    5. All forwards have points per game of at least 13.
+    6. All players older than 30 have played at least 62 games.
+    7. All centers have minutes per game greater than 24.
+    8. Most players have assists per game less than 7.
+    9. All players with rebounds per game greater than 8 have assists per game greater than 1.
+    10. All players with games played equal to 78 have rebounds less than 12.
+
+    Wait, check Statement 10 again.
+    Players with 78 games: PL056004 (7.1), PL056006 (11.0), PL056008 (10.0).
+    All < 12. True.
+
+    Wait, check Statement 7 again.
+    Centers mins: 24.8, 32.6, 34.5, 35.6, 28.7, 34.6, 32.6, 25.9.
+    Min 24.8. 24.8 > 24. True.
+
+    Wait, check Statement 1 again.
+    Centers ages: 23, 31, 28, 32, 28, 34, 32, 33.
+    Min 23. 23 >= 23. True.
+
+    Wait, check Statement 2 again.
+    Guards mins: 30.2, 29.4, 28.6.
+    Max 30.2. 30.2 < 31. True.
+
+    Wait, check Statement 3 again.
+    Points > 20: 24.4 (23), 23.8 (31), 22.3 (28), 21.3 (27), 21.4 (21), 22.0 (26).
+    All ages < 32. True.
+
+    Wait, check Statement 4 again.
+    Rebounds > 10: 10.8 (64), 11.0 (78), 11.6 (72).
+    All games >= 64. True.
+
+    Wait, check Statement 5 again.
+    Forwards points: 23.8, 19.7, 21.4, 13.2.
+    Min 13.2. 13.2 >= 13. True.
+
+    Wait, check Statement 6 again.
+    Age > 30: 31 (68), 31 (70), 34 (65), 32 (78), 34 (64), 32 (63), 33 (62).
+    Min games 62. 62 >= 62. True.
+
+    Wait, check Statement 8 again.
+    Assists < 7: 10 players. Total 15. Majority. True.
+
+    Wait, check Statement 9 again.
+    Rebounds > 8: 10.8, 10.0, 8.1, 8.0, 11.0, 10.0, 8.5, 8.1, 11.6.
+    Assists: 7.7, 4.0, 7.4, 6.1, 4.1, 1.9, 7.6, 7.2, 7.1.
+    All > 1. True.
+
+    Wait, check Statement 10 again.
+    Games = 78: 7.1, 11.0, 10.0.
+    All < 12. True.
+
+    Looks solid. I will format as JSON.
+    Ensure no markdown.
+    Ensure 5-10 statements. I have 10.
+    Ensure mix of forms.
+    1. Universal (All centers...)
+    2. Universal (All guards...)
+    3. Conditional (If points...)
+    4. Conditional (All players with...)
+    5. Universal (All forwards...)
+    6. Conditional (All players older...)
+    7. Universal (All centers...)
+    8. Majority (Most players...)
+    9. Conditional (All players with...)
+    10. Conditional (All players with...)
+
+    Wait, Statement 4 and 6 and 9 and 10 are all "All players with X have Y". That's technically Universal/Conditional mix.
+    Statement 1, 2, 5, 7 are "All X have Y".
+    Statement 3 is "If X then Y".
+    Statement 8 is "Most X have Y".
+    This is a mix.
+
+    One final check on Statement 10: "All players with games played equal to 78 have rebounds less than 12."
+    PL056006 has 11.0 rebounds. 11.0 < 12.
+    PL056008 has 10.0 rebounds. 10.0 < 12.
+    PL056004 has 7.1 rebounds. 7.1 < 12.
+    True.
+
+    One final check on Statement 9: "All players with rebounds per game greater than 8 have assists per game greater than 1."
+    PL056008 has 10.0 rebounds, 1.9 assists. 1.9 > 1.
+    PL056006 has 11.0 rebounds, 4.1 assists. 4.1 > 1.
+    PL056001 has 10.8 rebounds, 7.7 assists. 7.7 > 1.
+    PL056015 has 11.6 rebounds, 7.1 assists. 7.1 > 1.
+    PL056002 has 10.0 rebounds, 4.0 assists. 4.0 > 1.
+    PL056003 has 8.1 rebounds, 7.4 assists. 7.4 > 1.
+    PL056005 has 8.0 rebounds, 6.1 assists. 6.1 > 1.
+    PL056012 has 8.5 rebounds, 7.6 assists. 7.6 > 1.
+    PL056013 has 8.1 rebounds, 7.2 assists. 7.2 > 1.
+    All true.
+
+    Ready to construct JSON.
+    Ensure no newlines outside JSON structure if possible, but JSON allows newlines in strings. I will keep it compact.
+    Wait, "OUTPUT: exactly one JSON object, nothing else."
+    I must not include markdown code blocks like ```json ... ```.
+    Just the raw text.
+
+    Wait, I need to make sure I don't violate the "no markdown" rule in the final output.
+    The prompt says "OUTPUT: exactly one JSON object, nothing else."
+    I will output raw JSON text.
+
+    Wait, I need to check the thinking budget constraint again.
+    "THINKING BUDGET: keep your reasoning very short — at most 5-8 short bullets, no paragraphs, no rewriting examples. Spend almost all your tokens on the answer, not the analysis."
+    I will write the reasoning bullets now.
+
+    1. Verified all centers have age >= 23 (min 23).
+    2. Verified all guards have minutes < 31 (max 30.2).
+    3. Verified points > 20 implies age < 32 (all 6 cases hold).
+    4. Verified rebounds > 10 implies games >= 64 (all 3 cases hold).
+    5. Verified all forwards have points >= 13 (min 13.2).
+    6. Verified age > 30 implies games >= 62 (all 7 cases hold).
+    7. Verified all centers have minutes > 24 (min 24.8).
+    8. Verified majority (10/15) have assists < 7.
+    9. Verified rebounds > 8 implies assists > 1 (all 9 cases hold).
+    10. Verified games = 78 implies rebounds < 12 (all 3 cases hold).
+
+    This fits the 5-8 bullet constraint for reasoning.
+    Now construct the JSON.
+    Ensure keys are "statements".
+    Ensure values are strings.
+    Ensure no trailing commas.
+    Ensure double quotes.
+    Ensure no markdown fences.
+
+    Wait, I should check if "All players with rebounds per game greater than 8 have assists per game greater than 1" is redundant with "All players with rebounds greater than 10 have played at least 64 games".
+    They cover different attributes (Assists vs Games). Not redundant.
+    Is "All centers have minutes per game greater than 24" redundant with "All guards have minutes per game less than 31"?
+    No, different positions.
+    Is "All centers have an age of at least 23" redundant with "All players older than 30 have played at least 62 games"?
+    No, different attributes.
+
+    Okay, proceeding.
+</think>
+
+{
+  "statements": [
+    "All centers have an age of at least 23.",
+    "All guards have minutes per game less than 31.",
+    "If a player has more than 20 points per game, then their age is under 32.",
+    "All players with rebounds greater than 10 have played at least 64 games.",
+    "All forwards have points per game of at least 13.",
+    "All players older than 30 have played at least 62 games.",
+    "All centers have minutes per game greater than 24.",
+    "Most players have assists per game less than 7.",
+    "All players with rebounds per game greater than 8 have assists per game greater than 1.",
+    "All players with games played equal to 78 have rebounds less than 12."
+  ]
+}

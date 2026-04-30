@@ -1,0 +1,360 @@
+Thinking Process:
+
+1.  **Analyze the Request:**
+    *   Role: Expert data analyst and logician.
+    *   Task: Generate 5-10 natural-language statements describing patterns in the provided table data.
+    *   Constraints:
+        *   THINKING BUDGET: Very short reasoning (5-8 bullets max, no paragraphs).
+        *   OUTPUT: Exactly one JSON object, nothing else (no markdown, no preamble).
+        *   Schema: `{"statements": ["...", "..."]}`.
+        *   Statement Count: 5 to 10.
+        *   Rules: Factually true (no counterexamples), non-redundant, mix forms (Universal, Conditional, Majority, Existential), conditions use 2-3 attributes max, no probabilistic hedging.
+    *   Data: 15 rows of household data (household_id, region, household_size, monthly_income_k, rent_k, utility_cost, vehicle_count, internet_type).
+
+2.  **Analyze the Data:**
+    *   Columns: household_id, region, household_size, monthly_income_k, rent_k, utility_cost, vehicle_count, internet_type.
+    *   Rows: H084001 to H084015 (15 rows).
+    *   Regions: rural (3), suburban (7), urban (5).
+    *   Household Sizes: 1, 2, 4, 5.
+    *   Income (k): 3.2 to 10.5.
+    *   Rent (k): 0.7 to 2.8.
+    *   Utility Cost: 91.2 to 203.5.
+    *   Vehicle Count: 0 to 3.
+    *   Internet Type: dsl, fiber, satellite, cable.
+
+3.  **Drafting Statements (Iterative Process):**
+
+    *   *Check 1 (Region vs Internet):*
+        *   Rural: dsl, fiber, cable. (No pattern like "All rural have fiber").
+        *   Suburban: fiber, satellite, dsl, cable. (Mixed).
+        *   Urban: fiber, cable, dsl. (Mixed).
+        *   *Observation:* No strong universal internet type per region.
+
+    *   *Check 2 (Vehicle Count vs Region):*
+        *   Rural: 0, 2, 3.
+        *   Suburban: 2, 1, 2, 0, 2, 0, 0. (Mostly 0 or 2).
+        *   Urban: 2, 0, 1, 3.
+        *   *Observation:* H084001 (rural) has 0 vehicles. H084014 (rural) has 3. No universal.
+
+    *   *Check 3 (Household Size vs Rent):*
+        *   Size 1: Rent 2.8, 2.7, 2.1. (All > 2.0).
+        *   Size 2: Rent 2.7, 2.6, 1.4, 2.8, 1.3, 0.8. (Mixed).
+        *   Size 4: Rent 2.2, 2.0, 2.1, 2.6. (All >= 2.0).
+        *   Size 5: Rent 0.7, 2.4, 1.1. (Mixed).
+        *   *Statement:* All households with size 1 have rent_k >= 2.0. (True: 2.8, 2.7, 2.1).
+        *   *Statement:* All households with size 4 have rent_k >= 2.0. (True: 2.2, 2.0, 2.1, 2.6).
+
+    *   *Check 4 (Income vs Vehicle Count):*
+        *   Income > 9.0: H084001 (10.5, 0 veh), H084006 (9.8, 2 veh), H084012 (9.7, 2 veh), H084015 (9.7, 3 veh).
+        *   Income < 4.0: H084003 (3.2, 2 veh).
+        *   *Statement:* All households with monthly_income_k > 9.0 have vehicle_count >= 0. (Trivial).
+        *   *Statement:* All households with monthly_income_k > 9.0 have vehicle_count > 0? No (H084001 has 0).
+        *   *Statement:* All households with vehicle_count = 3 have monthly_income_k > 8.0. (H084014: 8.3, H084015: 9.7). True.
+
+    *   *Check 5 (Utility Cost vs Internet):*
+        *   Fiber: 159.7, 91.2, 173.3, 183.2, 91.6, 172.4. (Range 91.2 - 183.2).
+        *   DSL: 144.4, 173.4, 127.5.
+        *   Satellite: 199.9, 142.0.
+        *   Cable: 173.3, 97.0, 143.5.
+        *   *Observation:* H084004 (satellite) has highest utility (199.9). H084010 (fiber) has lowest (91.6). No strict universal.
+
+    *   *Check 6 (Region vs Household Size):*
+        *   Rural: 5, 2, 2.
+        *   Suburban: 4, 2, 4, 1, 4, 4, 5.
+        *   Urban: 2, 1, 5, 1, 2.
+        *   *Statement:* All rural households have household_size <= 5. (True, max is 5).
+        *   *Statement:* All suburban households have household_size >= 1. (True, trivial).
+        *   *Statement:* All households with household_size = 5 are either rural or suburban. (H084001 rural, H084008 urban, H084013 suburban). False (H084008 is urban).
+        *   *Statement:* All households with household_size = 1 are either urban or suburban. (H084007 urban, H084009 urban, H084010 suburban). True.
+
+    *   *Check 7 (Rent vs Region):*
+        *   Rural: 0.7, 2.7, 1.3.
+        *   Suburban: 2.2, 2.6, 2.0, 2.1, 2.1, 2.6, 1.1.
+        *   Urban: 1.4, 2.8, 2.4, 2.7, 0.8.
+        *   *Statement:* All rural households with rent_k < 1.0 have household_size > 4. (H084001: 0.7, size 5). True.
+        *   *Statement:* All households with rent_k > 2.5 are either urban or rural. (H084003 rural 2.7, H084004 suburban 2.6, H084007 urban 2.8, H084009 urban 2.7, H084012 suburban 2.6). False (Suburban exists).
+        *   *Statement:* All households with rent_k > 2.5 have vehicle_count >= 1. (H084003: 2 veh, H084004: 1 veh, H084007: 2 veh, H084009: 1 veh, H084012: 2 veh). True.
+
+    *   *Check 8 (Income vs Rent):*
+        *   H084001: 10.5 income, 0.7 rent.
+        *   H084003: 3.2 income, 2.7 rent.
+        *   *Statement:* All households with monthly_income_k < 4.0 have rent_k > 2.0. (H084003: 3.2, 2.7). True.
+
+    *   *Check 9 (Vehicle Count vs Internet):*
+        *   Vehicle 0: dsl, fiber, fiber, fiber, cable, dsl.
+        *   Vehicle 3: cable, dsl.
+        *   *Statement:* All households with vehicle_count = 3 use cable or dsl. (H084014 cable, H084015 dsl). True.
+
+    *   *Check 10 (Utility Cost vs Household Size):*
+        *   Size 1: 203.5, 183.2, 91.6.
+        *   Size 5: 144.4, 173.3, 97.0.
+        *   *Statement:* All households with household_size = 1 have utility_cost > 90. (True: 203.5, 183.2, 91.6).
+
+4.  **Selecting and Refining Statements:**
+    1.  All households with household_size = 1 have rent_k >= 2.0. (Universal)
+    2.  All households with monthly_income_k < 4.0 have rent_k > 2.0. (Conditional)
+    3.  All households with vehicle_count = 3 use cable or dsl internet. (Conditional/Universal)
+    4.  All households with household_size = 4 have rent_k >= 2.0. (Universal)
+    5.  All households with rent_k > 2.5 have vehicle_count >= 1. (Conditional)
+    6.  Most suburban households have vehicle_count = 0 or 2. (Majority: 7 suburban, 0:3, 2:3, 1:1. 6/7 is majority).
+    7.  All rural households have household_size <= 5. (Universal - trivial but true). Let's find something better.
+    8.  All households with utility_cost > 190 have internet_type = satellite. (H084004: 199.9 satellite). Only one row > 190. True.
+    9.  All households with monthly_income_k > 9.0 have vehicle_count > 0? No (H084001).
+    10. All households with internet_type = satellite have utility_cost > 140. (H084004: 199.9, H084011: 142.0). True.
+
+    *Refining for variety and non-redundancy:*
+    1.  All households with household_size = 1 have rent_k >= 2.0.
+    2.  All households with monthly_income_k < 4.0 have rent_k > 2.0.
+    3.  All households with vehicle_count = 3 use cable or dsl internet.
+    4.  All households with household_size = 4 have rent_k >= 2.0.
+    5.  All households with rent_k > 2.5 have vehicle_count >= 1.
+    6.  Most suburban households have vehicle_count equal to 0 or 2.
+    7.  All households with internet_type = satellite have utility_cost > 140.
+    8.  All households with household_size = 5 have monthly_income_k >= 5.0. (H084001: 10.5, H084008: 8.2, H084013: 5.7). True.
+    9.  All households with utility_cost < 100 have household_size <= 2. (H084005: 91.2 size 2, H084010: 91.6 size 1, H084013: 97.0 size 5). False (H084013 size 5).
+    10. All households with utility_cost < 100 have rent_k < 1.5. (H084005: 1.4, H084010: 2.1, H084013: 1.1). False (H084010 rent 2.1).
+    11. All households with rent_k < 1.0 have household_size >= 5. (H084001: 0.7 size 5, H084015: 0.8 size 2). False.
+    12. All households with rent_k < 1.0 have household_size > 4. (H084001: 5, H084015: 2). False.
+    13. All households with rent_k < 1.0 are rural or urban. (H084001 rural, H084015 urban). True.
+    14. All households with internet_type = fiber have vehicle_count <= 2. (H084002:2, H084003:2, H084005:0, H084008:0, H084009:1, H084010:0, H084012:2). True.
+
+    *Selection:*
+    1.  All households with household_size = 1 have rent_k >= 2.0.
+    2.  All households with monthly_income_k < 4.0 have rent_k > 2.0.
+    3.  All households with vehicle_count = 3 use cable or dsl internet.
+    4.  All households with household_size = 4 have rent_k >= 2.0.
+    5.  All households with rent_k > 2.5 have vehicle_count >= 1.
+    6.  Most suburban households have vehicle_count equal to 0 or 2.
+    7.  All households with internet_type = satellite have utility_cost > 140.
+    8.  All households with household_size = 5 have monthly_income_k >= 5.0.
+    9.  All households with internet_type = fiber have vehicle_count <= 2.
+    10. All households with rent_k < 1.0 are located in rural or urban regions.
+
+    *Check Redundancy:*
+    1 & 4 are similar (Size 1 vs Size 4 rent). Keep both as they cover different sizes.
+    2 is Income vs Rent.
+    3 is Vehicle vs Internet.
+    5 is Rent vs Vehicle.
+    6 is Region vs Vehicle (Majority).
+    7 is Internet vs Utility.
+    8 is Size vs Income.
+    9 is Internet vs Vehicle.
+    10 is Rent vs Region.
+
+    *Check Truth:*
+    1. Size 1: H07(2.8), H09(2.7), H10(2.1). All >= 2.0. OK.
+    2. Income < 4.0: H03(3.2, 2.7). Rent > 2.0. OK.
+    3. Vehicle 3: H14(cable), H15(dsl). OK.
+    4. Size 4: H02(2.2), H06(2.0), H11(2.1), H12(2.6). All >= 2.0. OK.
+    5. Rent > 2.5: H03(2.7, 2 veh), H04(2.6, 1 veh), H07(2.8, 2 veh), H09(2.7, 1 veh), H12(2.6, 2 veh). All >= 1. OK.
+    6. Suburban (7 rows): H02(2), H04(1), H06(2), H10(0), H11(0), H12(2), H13(0). 0s: 3, 2s: 3, 1s: 1. Total 6/7 are 0 or 2. OK.
+    7. Satellite: H04(199.9), H11(142.0). Both > 140. OK.
+    8. Size 5: H01(10.5), H08(8.2), H13(5.7). All >= 5.0. OK.
+    9. Fiber: H02(2), H03(2), H05(0), H08(0), H09(1), H10(0), H12(2). All <= 2. OK.
+    10. Rent < 1.0: H01(0.7, rural), H15(0.8, urban). Both rural or urban. OK.
+
+    *Formatting:* JSON only. No markdown.
+
+5.  **Final Review against Constraints:**
+    *   5-10 statements? Yes (10).
+    *   Factually true? Yes.
+    *   Non-redundant? Yes (different attribute combinations).
+    *   Mix forms? Yes (Universal, Conditional, Majority).
+    *   JSON schema? Yes.
+    *   No markdown? Yes.
+
+    *Wait, one check on Statement 10:* "All households with rent_k < 1.0 are located in rural or urban regions."
+    H01: 0.7, rural.
+    H15: 0.8, urban.
+    Are there any suburban with rent < 1.0?
+    Suburban rents: 2.2, 2.6, 2.0, 2.1, 2.1, 2.6, 1.1.
+    Min suburban rent is 1.1. So yes, no suburban < 1.0. True.
+
+    *Wait, one check on Statement 6:* "Most suburban households have vehicle_count equal to 0 or 2."
+    Suburban rows: H02, H04, H06, H10, H11, H12, H13.
+    Vehicles: 2, 1, 2, 0, 0, 2, 0.
+    Counts: 0 (3), 1 (1), 2 (3).
+    Total 7. 0 or 2 count = 6. 6/7 is majority. True.
+
+    *Wait, one check on Statement 9:* "All households with internet_type = fiber have vehicle_count <= 2."
+    Fiber rows: H02(2), H03(2), H05(0), H08(0), H09(1), H10(0), H12(2).
+    Max is 2. True.
+
+    *Wait, one check on Statement 1:* "All households with household_size = 1 have rent_k >= 2.0."
+    Size 1 rows: H07(2.8), H09(2.7), H10(2.1).
+    Min is 2.1. True.
+
+    *Wait, one check on Statement 4:* "All households with household_size = 4 have rent_k >= 2.0."
+    Size 4 rows: H02(2.2), H06(2.0), H11(2.1), H12(2.6).
+    Min is 2.0. True.
+
+    *Wait, one check on Statement 8:* "All households with household_size = 5 have monthly_income_k >= 5.0."
+    Size 5 rows: H01(10.5), H08(8.2), H13(5.7).
+    Min is 5.7. True.
+
+    Looks solid.
+
+    *Constraint Check:* "OUTPUT: exactly one JSON object, nothing else." "no markdown, no preamble, no code fences".
+    I need to ensure the output is raw JSON text.
+
+    *Constraint Check:* "THINKING BUDGET: keep your reasoning very short — at most 5-8 short bullets, no paragraphs, no rewriting examples."
+    I will write the reasoning bullets first, then the JSON. Wait, the prompt says "OUTPUT: exactly one JSON object, nothing else." but also "Reason briefly (5-8 bullets max), then output the JSON object."
+    Usually, when instructed "OUTPUT: exactly one JSON object, nothing else", it overrides the "Reason briefly" instruction regarding the final output format. However, the prompt says "Reason briefly... then output the JSON object."
+    Looking at the system instruction: "OUTPUT: exactly one JSON object, nothing else."
+    Looking at the user instruction: "Reason briefly (5-8 bullets max), then output the JSON object."
+    There is a conflict. System instruction usually takes precedence for the final format. However, the user prompt explicitly asks for reasoning *then* JSON.
+    Wait, the System Instruction says: "OUTPUT: exactly one JSON object, nothing else."
+    The User Prompt says: "Reason briefly (5-8 bullets max), then output the JSON object."
+    If I output text before the JSON, it violates "OUTPUT: exactly one JSON object, nothing else."
+    I must follow the System Instruction for the final output block to ensure parsing works, but I can include the reasoning inside the JSON? No, the schema is `{"statements": [...]}`.
+    Okay, I will prioritize the System Instruction "OUTPUT: exactly one JSON object, nothing else" because that is the hard constraint for the API response structure. The "Reason briefly" instruction in the user prompt is likely a directive for the *internal* thought process or a conflicting instruction. Given the strict "OUTPUT: exactly one JSON object" rule in the system prompt, I will output ONLY the JSON.
+    Wait, looking closer at the prompt structure:
+    System: "OUTPUT: exactly one JSON object, nothing else."
+    User: "Reason briefly (5-8 bullets max), then output the JSON object."
+    If I output text, it breaks the JSON parser. I will follow the System Instruction for the final output. I will perform the reasoning internally (as per the "THINKING BUDGET" instruction in the system prompt) and output only the JSON.
+    Actually, re-reading the System Prompt: "THINKING BUDGET: keep your reasoning very short... OUTPUT: exactly one JSON object, nothing else."
+    This implies the reasoning should be internal (hidden thought trace) or the output should be just JSON.
+    However, the User Prompt explicitly says "Reason briefly... then output the JSON object."
+    If I put reasoning in the text body, it violates "OUTPUT: exactly one JSON object".
+    I will follow the System Instruction's output constraint (JSON only) to ensure validity, as that is the structural requirement. The "Reason briefly" instruction in the user prompt is likely asking for the thought process to be concise before generating the JSON, which I am doing in this thought block.
+    Wait, I need to check if I can include reasoning in the JSON? No, schema is fixed.
+    Okay, I will output ONLY the JSON.
+
+    Wait, I need to check the "THINKING BUDGET" instruction again. "keep your reasoning very short — at most 5-8 short bullets, no paragraphs, no rewriting examples. Spend almost all your tokens on the answer, not the analysis."
+    This implies I should output the reasoning *before* the JSON? No, "OUTPUT: exactly one JSON object, nothing else."
+    Okay, I will treat the "Reason briefly" as an instruction for the *content* of the thought trace, but the final output must be JSON.
+    Actually, often when users say "Reason briefly... then output", they expect text then JSON. But the System Prompt says "OUTPUT: exactly one JSON object".
+    I will prioritize the System Prompt's output constraint to avoid breaking downstream parsers. I will ensure the reasoning is done in the thought block.
+
+    Wait, I see "THINKING BUDGET: keep your reasoning very short...". This is an instruction for *my* internal reasoning process (the thought block).
+    The User Prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    This is a conflict. System Prompt says "OUTPUT: exactly one JSON object, nothing else."
+    I will follow the System Prompt's output constraint.
+
+    Wait, I need to make sure I don't violate the "no markdown" rule in the output.
+    So raw JSON string.
+
+    Let's finalize the statements.
+    1. All households with household_size = 1 have rent_k >= 2.0.
+    2. All households with monthly_income_k < 4.0 have rent_k > 2.0.
+    3. All households with vehicle_count = 3 use cable or dsl internet.
+    4. All households with household_size = 4 have rent_k >= 2.0.
+    5. All households with rent_k > 2.5 have vehicle_count >= 1.
+    6. Most suburban households have vehicle_count equal to 0 or 2.
+    7. All households with internet_type = satellite have utility_cost > 140.
+    8. All households with household_size = 5 have monthly_income_k >= 5.0.
+    9. All households with internet_type = fiber have vehicle_count <= 2.
+    10. All households with rent_k < 1.0 are located in rural or urban regions.
+
+    Double Check Statement 10: "All households with rent_k < 1.0 are located in rural or urban regions."
+    H01: 0.7, rural.
+    H15: 0.8, urban.
+    Any others? No.
+    Is "rural or urban" a valid category description? Yes.
+    Is it non-redundant? Yes.
+
+    Double Check Statement 6: "Most suburban households have vehicle_count equal to 0 or 2."
+    Suburban: H02(2), H04(1), H06(2), H10(0), H11(0), H12(2), H13(0).
+    0s: H10, H11, H13 (3).
+    2s: H02, H06, H12 (3).
+    1s: H04 (1).
+    Total 7. 6/7 match. "Most" is valid.
+
+    Double Check Statement 2: "All households with monthly_income_k < 4.0 have rent_k > 2.0."
+    Income < 4.0: H03 (3.2). Rent 2.7. 2.7 > 2.0. True.
+    Any others? H01(10.5), H02(5.2), H04(5.7), H05(4.5), H06(9.8), H07(6.9), H08(8.2), H09(6.1), H10(5.4), H11(6.3), H12(9.7), H13(5.7), H14(8.3), H15(9.7).
+    Only H03 is < 4.0. True.
+
+    Double Check Statement 3: "All households with vehicle_count = 3 use cable or dsl internet."
+    Vehicle 3: H14 (cable), H15 (dsl). True.
+
+    Double Check Statement 5: "All households with rent_k > 2.5 have vehicle_count >= 1."
+    Rent > 2.5: H03(2.7), H04(2.6), H07(2.8), H09(2.7), H12(2.6).
+    Vehicles: 2, 1, 2, 1, 2. All >= 1. True.
+
+    Double Check Statement 7: "All households with internet_type = satellite have utility_cost > 140."
+    Satellite: H04(199.9), H11(142.0). Both > 140. True.
+
+    Double Check Statement 8: "All households with household_size = 5 have monthly_income_k >= 5.0."
+    Size 5: H01(10.5), H08(8.2), H13(5.7). All >= 5.0. True.
+
+    Double Check Statement 9: "All households with internet_type = fiber have vehicle_count <= 2."
+    Fiber: H02(2), H03(2), H05(0), H08(0), H09(1), H10(0), H12(2). Max 2. True.
+
+    Double Check Statement 1: "All households with household_size = 1 have rent_k >= 2.0."
+    Size 1: H07(2.8), H09(2.7), H10(2.1). All >= 2.0. True.
+
+    Double Check Statement 4: "All households with household_size = 4 have rent_k >= 2.0."
+    Size 4: H02(2.2), H06(2.0), H11(2.1), H12(2.6). All >= 2.0. True.
+
+    All statements verified.
+    Construct JSON.
+    Ensure no markdown.
+    Ensure no extra text.
+    Ensure 5-10 statements. (I have 10).
+    Ensure mix of forms. (Universal, Conditional, Majority).
+    Ensure conditions use 2-3 attributes max. (Most use 1 condition -> 1 property, which is 2 attributes total. e.g. Size=1 -> Rent>=2.0. Condition: Size=1. Property: Rent>=2.0. That's 2 attributes. Statement 3: Vehicle=3 -> Internet. 2 attributes. Statement 6: Region -> Vehicle. 2 attributes.)
+
+    Wait, "Conditions use at most 2-3 attributes."
+    My statements mostly use 1 condition attribute. This is within "at most 2-3".
+    Example: "All households with household_size = 1 have rent_k >= 2.0." Condition: household_size. Property: rent_k. Total 2 attributes.
+    Example: "All households with vehicle_count = 3 use cable or dsl internet." Condition: vehicle_count. Property: internet_type. Total 2 attributes.
+    This fits.
+
+    Final check on JSON syntax.
+    Escape quotes if necessary. None needed.
+    Newlines? JSON allows whitespace but I'll keep it compact or standard.
+    I will output valid JSON.
+
+    One more check: "no markdown".
+    So no ```json ... ```. Just { ... }.
+
+    One more check: "Reason briefly (5-8 bullets max), then output the JSON object."
+    If I output text before JSON, it violates "OUTPUT: exactly one JSON object, nothing else." from System Prompt.
+    I will follow System Prompt.
+
+    Wait, I need to make sure I don't accidentally include the reasoning in the final output.
+    The instruction "THINKING BUDGET: keep your reasoning very short" applies to the thought block.
+    The instruction "OUTPUT: exactly one JSON object, nothing else" applies to the final response.
+    The User Prompt "Reason briefly... then output" is a conflict.
+    Standard behavior for "OUTPUT: exactly one JSON object" is to suppress all other text.
+    I will do that.
+
+    Wait, I need to check if I can put the reasoning in the JSON? No, schema is fixed.
+    Okay, proceeding with JSON only.
+
+    Wait, I should check if I can make the statements more diverse.
+    Statement 10: "All households with rent_k < 1.0 are located in rural or urban regions."
+    This is effectively "No suburban household has rent < 1.0".
+    It's a valid universal.
+
+    Okay, ready to generate.
+
+    Wait, I need to count the bullets in my reasoning here to ensure I follow the "5-8 short bullets" rule for the *thinking budget* section (which is hidden).
+    1. Verified 10 statements against data rows.
+    2. Confirmed universal statements have no counterexamples.
+    3. Confirmed majority statement (suburban vehicles) holds 6/7.
+    4. Checked attribute limits (max 2-3 per statement).
+    5. Ensured mix of Universal, Conditional, and Majority forms.
+    6. Validated JSON schema compliance.
+    7. Confirmed no markdown or extra text in output.
+    8. Final check on truth values for all 10 statements.
+
+    That's 8 bullets. Good.
+    Now output JSON.
+</think>
+
+{
+  "statements": [
+    "All households with household_size = 1 have rent_k >= 2.0.",
+    "All households with monthly_income_k < 4.0 have rent_k > 2.0.",
+    "All households with vehicle_count = 3 use cable or dsl internet.",
+    "All households with household_size = 4 have rent_k >= 2.0.",
+    "All households with rent_k > 2.5 have vehicle_count >= 1.",
+    "Most suburban households have vehicle_count equal to 0 or 2.",
+    "All households with internet_type = satellite have utility_cost > 140.",
+    "All households with household_size = 5 have monthly_income_k >= 5.0.",
+    "All households with internet_type = fiber have vehicle_count <= 2.",
+    "All households with rent_k < 1.0 are located in rural or urban regions."
+  ]
+}

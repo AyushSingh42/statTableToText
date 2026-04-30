@@ -1,0 +1,433 @@
+Thinking Process:
+
+1.  **Analyze the Request:**
+    *   Role: Expert data analyst and logician.
+    *   Task: Generate 5-10 natural-language statements describing patterns in the provided table data.
+    *   Constraints:
+        *   THINKING BUDGET: Very short reasoning (5-8 bullets, no paragraphs).
+        *   OUTPUT: Exactly one JSON object, nothing else (no markdown, no preamble).
+        *   Schema: `{"statements": ["...", "..."]}`.
+        *   Statement Count: 5 to 10.
+        *   Rules: Factually true (no counterexamples), non-redundant, mix forms (Universal, Conditional, Majority, Existential), conditions use 2-3 attributes max, no probabilistic hedging.
+    *   Data: 15 rows of patient data (patient_id, diagnosis, age, bp_systolic, bp_diastolic, cholesterol_mg_dl, bmi, smoker).
+
+2.  **Analyze the Data:**
+    *   Rows: 15 patients (PT031001 to PT031015).
+    *   Columns: diagnosis, age, bp_systolic, bp_diastolic, cholesterol_mg_dl, bmi, smoker.
+    *   Scan for patterns:
+        *   Smoker status: All except PT031005 and PT031007 are 'yes'. (13 yes, 2 no).
+        *   Diagnosis distribution: asthma (5), hypertension (2), arthritis (3), diabetes (3), migraine (2).
+        *   Age range: 21 to 70.
+        *   BP Systolic: 115 to 156.
+        *   BP Diastolic: 70 to 98.
+        *   Cholesterol: 174 to 230.
+        *   BMI: 20.5 to 33.4.
+        *   Specific correlations:
+            *   All smokers (13/15) have BMI > 20? Yes (min 20.5).
+            *   All asthma patients have age < 71? Yes (max 70).
+            *   All diabetes patients have age < 36? Yes (23, 35, 21).
+            *   All hypertension patients have age > 50? Yes (52, 56).
+            *   All patients with BMI > 30 are smokers? Yes (PT031004, PT031009, PT031010, PT031011 all 'yes').
+            *   All patients with cholesterol < 180 are asthma? PT031001 (174, asthma), PT031008 (176, asthma). Yes.
+            *   All patients with diastolic BP > 90 are asthma or arthritis? PT031001 (90, asthma), PT031014 (98, arthritis). Wait, PT031001 is 90. PT031014 is 98. Are there others? No.
+            *   All patients with age > 60 have diagnosis asthma or arthritis? PT031001 (66, asthma), PT031003 (64, arthritis), PT031008 (70, asthma). Yes.
+            *   All patients with systolic BP > 150 are smokers? PT031002 (148 no), PT031005 (153 no), PT031008 (131 yes), PT031012 (154 yes), PT031014 (156 yes). PT031005 is 153 and 'no'. So "All > 150 are smokers" is false (PT031005).
+            *   All patients with age < 30 are smokers? PT031004 (23, yes), PT031011 (21, yes), PT031012 (21, yes), PT031015 (27, yes). Yes.
+            *   All patients with cholesterol > 220 are smokers? PT031003 (230, yes), PT031004 (214 no - wait 214 < 220), PT031007 (216 no). Only PT031003 is > 220. It is 'yes'.
+            *   All patients with BMI < 22 are smokers? PT031003 (20.5, yes), PT031006 (22.2 no), PT031007 (21.5 no), PT031013 (21.8 yes), PT031015 (21.5 yes). PT031007 is 21.5 and 'no'. False.
+
+3.  **Draft Statements (checking constraints):**
+    1.  *Universal/Conditional:* All patients with age under 30 are smokers. (True: 23, 21, 21, 27 all 'yes').
+    2.  *Universal/Conditional:* All patients diagnosed with hypertension are over 50 years old. (True: 52, 56).
+    3.  *Universal/Conditional:* All patients with a BMI greater than 30 are smokers. (True: 33.4, 30.9, 30.8, 28.1... wait 28.1 is not > 30. PT031004 (33.4), PT031009 (30.9), PT031010 (30.8). All three are 'yes').
+    4.  *Universal/Conditional:* All patients with cholesterol levels below 180 mg/dL have an asthma diagnosis. (True: 174 asthma, 176 asthma).
+    5.  *Universal/Conditional:* All patients aged 60 or older have either asthma or arthritis. (True: 66 asthma, 64 arthritis, 70 asthma).
+    6.  *Majority:* Most patients in the dataset are smokers. (True: 13 out of 15).
+    7.  *Universal/Conditional:* All patients with a systolic blood pressure above 150 mmHg are smokers. (False: PT031005 is 153 and 'no'). -> Skip.
+    8.  *Universal/Conditional:* All patients with a diastolic blood pressure of 90 mmHg or higher have a diagnosis of asthma or arthritis. (True: 90 asthma, 98 arthritis).
+    9.  *Conditional:* If a patient is diagnosed with diabetes, then their age is under 36. (True: 23, 35, 21).
+    10. *Existential (Surprising):* There exists a patient with a BMI under 21 who is a smoker. (True: PT031003 20.5 yes, PT031015 21.5 no... wait 21.5 is not under 21. PT031003 is 20.5 yes).
+
+    *Refining for Non-Redundancy and Mix:*
+    1.  All patients diagnosed with hypertension are over 50 years old. (Universal)
+    2.  If a patient is under 30 years old, then they are a smoker. (Conditional)
+    3.  All patients with cholesterol levels below 180 mg/dL have an asthma diagnosis. (Universal)
+    4.  Most patients in the dataset are smokers. (Majority)
+    5.  All patients aged 60 or older have either asthma or arthritis. (Universal)
+    6.  If a patient has a BMI greater than 30, then they are a smoker. (Conditional)
+    7.  All patients with a diastolic blood pressure of 90 mmHg or higher have a diagnosis of asthma or arthritis. (Universal)
+    8.  If a patient is diagnosed with diabetes, then their age is under 36. (Conditional)
+    9.  There exists a patient with a BMI under 21 who is a smoker. (Existential - PT031003)
+    10. All patients with a systolic blood pressure of 154 mmHg or higher are smokers. (True: 154 yes, 156 yes. 153 is no).
+
+    *Check Rule 1 (Factually True):*
+    1.  Hypertension (52, 56) > 50. True.
+    2.  Age < 30 (23, 21, 21, 27) -> Smoker (yes, yes, yes, yes). True.
+    3.  Chol < 180 (174, 176) -> Asthma. True.
+    4.  Most smokers (13/15). True.
+    5.  Age >= 60 (66, 64, 70) -> Asthma/Arthritis. True.
+    6.  BMI > 30 (33.4, 30.9, 30.8) -> Smoker. True.
+    7.  Diastolic >= 90 (90, 98) -> Asthma/Arthritis. True.
+    8.  Diabetes (23, 35, 21) -> Age < 36. True.
+    9.  Exists BMI < 21 & Smoker. PT031003 (20.5, yes). True.
+    10. Systolic >= 154 (154, 156) -> Smoker. True.
+
+    *Check Rule 2 (Non-redundant):*
+    - 1 and 5 are distinct diagnoses/ages.
+    - 2 and 6 are distinct conditions (Age vs BMI).
+    - 3 is distinct (Cholesterol).
+    - 4 is general stat.
+    - 7 is distinct (Diastolic).
+    - 8 is distinct (Diabetes).
+    - 9 is existential.
+    - 10 is distinct (Systolic threshold).
+
+    *Check Rule 3 (Mix forms):*
+    - Universal: 1, 3, 5, 7.
+    - Conditional: 2, 6, 8, 10.
+    - Majority: 4.
+    - Existential: 9.
+    - Need to ensure not back-to-back same form.
+    - Order: 1 (Universal), 2 (Conditional), 3 (Universal), 4 (Majority), 5 (Universal), 6 (Conditional), 7 (Universal), 8 (Conditional), 9 (Existential), 10 (Conditional).
+    - Wait, 1, 3, 5, 7 are Universal. 2, 6, 8, 10 are Conditional.
+    - Let's interleave better.
+    - 1 (Universal), 2 (Conditional), 3 (Universal), 4 (Majority), 5 (Conditional), 6 (Universal), 7 (Conditional), 8 (Universal), 9 (Existential), 10 (Conditional).
+    - Actually, the prompt says "Mix the forms below; do not repeat the same form back-to-back."
+    - I will arrange them to avoid AA, BB, CC.
+
+    *Revised Order:*
+    1. All patients diagnosed with hypertension are over 50 years old. (Universal)
+    2. If a patient is under 30 years old, then they are a smoker. (Conditional)
+    3. Most patients in the dataset are smokers. (Majority)
+    4. All patients with cholesterol levels below 180 mg/dL have an asthma diagnosis. (Universal)
+    5. If a patient has a BMI greater than 30, then they are a smoker. (Conditional)
+    6. All patients aged 60 or older have either asthma or arthritis. (Universal)
+    7. If a patient is diagnosed with diabetes, then their age is under 36. (Conditional)
+    8. All patients with a diastolic blood pressure of 90 mmHg or higher have a diagnosis of asthma or arthritis. (Universal)
+    9. There exists a patient with a BMI under 21 who is a smoker. (Existential)
+    10. If a patient has a systolic blood pressure of 154 mmHg or higher, then they are a smoker. (Conditional)
+
+    *Wait, check Rule 2 again:* "if 'All X have B>=5' holds, do NOT also include 'All X have B>=4'".
+    My statements cover different attributes mostly.
+    Statement 1: Hypertension -> Age > 50.
+    Statement 6: Age >= 60 -> Diagnosis.
+    Statement 10: Systolic >= 154 -> Smoker.
+    Statement 2: Age < 30 -> Smoker.
+    These are distinct enough.
+
+    *Final check on data:*
+    PT031001: 66, 148, 90, 174, 27.4, no, asthma
+    PT031002: 52, 148, 75, 212, 22.7, yes, hypertension
+    PT031003: 64, 119, 77, 230, 20.5, yes, arthritis
+    PT031004: 23, 142, 81, 214, 33.4, yes, diabetes
+    PT031005: 56, 153, 83, 193, 25.0, no, hypertension
+    PT031006: 38, 116, 88, 212, 22.2, yes, asthma
+    PT031007: 35, 145, 71, 216, 21.5, no, diabetes
+    PT031008: 70, 131, 80, 176, 28.2, yes, asthma
+    PT031009: 33, 130, 88, 203, 30.9, yes, asthma
+    PT031010: 44, 149, 85, 190, 30.8, yes, migraine
+    PT031011: 21, 138, 70, 194, 28.1, yes, diabetes
+    PT031012: 21, 154, 82, 204, 22.0, yes, asthma
+    PT031013: 52, 115, 74, 200, 21.8, yes, migraine
+    PT031014: 47, 156, 98, 212, 26.9, yes, arthritis
+    PT031015: 27, 144, 74, 215, 21.5, yes, arthritis
+
+    Verification:
+    1. Hypertension (52, 56) > 50. OK.
+    2. Age < 30 (23, 21, 21, 27) -> Smoker (yes, yes, yes, yes). OK.
+    3. Smokers: 13/15. OK.
+    4. Chol < 180 (174, 176) -> Asthma. OK.
+    5. BMI > 30 (33.4, 30.9, 30.8) -> Smoker. OK.
+    6. Age >= 60 (66, 64, 70) -> Asthma/Arthritis. OK.
+    7. Diabetes (23, 35, 21) -> Age < 36. OK.
+    8. Diastolic >= 90 (90, 98) -> Asthma/Arthritis. OK.
+    9. Exists BMI < 21 & Smoker. PT031003 (20.5, yes). OK.
+    10. Systolic >= 154 (154, 156) -> Smoker. OK.
+
+    JSON formatting: No markdown, just raw JSON.
+    Reasoning: 5-8 bullets.
+
+    Wait, I need to make sure I don't output markdown for the JSON. Just the JSON string.
+    Wait, the instruction says "OUTPUT: exactly one JSON object, nothing else." and "no markdown, no preamble, no code fences".
+    So I must output: `{"statements": [...]}` directly.
+
+    Reasoning bullets:
+    1. Verified hypertension ages (52, 56) are both > 50.
+    2. Verified all age < 30 patients (23, 21, 21, 27) are smokers.
+    3. Verified cholesterol < 180 patients (174, 176) are both asthma.
+    4. Verified BMI > 30 patients (33.4, 30.9, 30.8) are all smokers.
+    5. Verified age >= 60 patients (66, 64, 70) have asthma or arthritis.
+    6. Verified diabetes ages (23, 35, 21) are all < 36.
+    7. Verified diastolic >= 90 patients (90, 88? No 90, 98) are asthma/arthritis.
+    8. Verified systolic >= 154 patients (154, 156) are smokers.
+
+    Wait, check Diastolic >= 90 again.
+    PT031001: 90.
+    PT031014: 98.
+    Any others?
+    PT031002: 75
+    PT031003: 77
+    PT031004: 81
+    PT031005: 83
+    PT031006: 88
+    PT031007: 71
+    PT031008: 80
+    PT031009: 88
+    PT031010: 85
+    PT031011: 70
+    PT031012: 82
+    PT031013: 74
+    PT031015: 74
+    Only 90 and 98. Both are Asthma/Arthritis. OK.
+
+    Check Systolic >= 154.
+    PT031012: 154 (yes)
+    PT031014: 156 (yes)
+    PT031005: 153 (no) -> Excluded.
+    PT031002: 148 (no) -> Excluded.
+    So only 154 and 156. Both smokers. OK.
+
+    Check BMI > 30.
+    PT031004: 33.4 (yes)
+    PT031009: 30.9 (yes)
+    PT031010: 30.8 (yes)
+    PT031011: 28.1 (no) -> Excluded.
+    All 3 are smokers. OK.
+
+    Check Age < 30.
+    PT031004: 23 (yes)
+    PT031011: 21 (yes)
+    PT031012: 21 (yes)
+    PT031015: 27 (yes)
+    All smokers. OK.
+
+    Check Chol < 180.
+    PT031001: 174 (asthma)
+    PT031008: 176 (asthma)
+    All asthma. OK.
+
+    Check Age >= 60.
+    PT031001: 66 (asthma)
+    PT031003: 64 (arthritis)
+    PT031008: 70 (asthma)
+    All asthma/arthritis. OK.
+
+    Check Diabetes Age < 36.
+    PT031004: 23
+    PT031007: 35
+    PT031011: 21
+    All < 36. OK.
+
+    Check Hypertension Age > 50.
+    PT031002: 52
+    PT031005: 56
+    All > 50. OK.
+
+    Check Existential BMI < 21 & Smoker.
+    PT031003: 20.5, yes.
+    PT031007: 21.5, no.
+    PT031015: 21.5, yes.
+    PT031003 works. OK.
+
+    Check Majority Smokers.
+    13 yes, 2 no. OK.
+
+    Plan:
+    1. Write reasoning bullets (5-8).
+    2. Construct JSON.
+    3. Ensure no markdown around JSON.
+    4. Ensure 5-10 statements.
+    5. Ensure mix of forms.
+    6. Ensure no back-to-back same form.
+
+    Form Mix Plan:
+    1. Universal (Hypertension)
+    2. Conditional (Age < 30)
+    3. Majority (Smokers)
+    4. Universal (Chol < 180)
+    5. Conditional (BMI > 30)
+    6. Universal (Age >= 60)
+    7. Conditional (Diabetes)
+    8. Universal (Diastolic >= 90)
+    9. Existential (BMI < 21)
+    10. Conditional (Systolic >= 154)
+
+    Wait, 1, 4, 6, 8 are Universal. 2, 5, 7, 10 are Conditional.
+    Sequence: U, C, M, U, C, U, C, U, E, C.
+    No back-to-back U or C.
+    1 (U)
+    2 (C)
+    3 (M)
+    4 (U)
+    5 (C)
+    6 (U)
+    7 (C)
+    8 (U)
+    9 (E)
+    10 (C)
+    This works.
+
+    Wait, I need to check the "no markdown" constraint strictly.
+    "OUTPUT: exactly one JSON object, nothing else."
+    "no markdown, no preamble, no code fences"
+    So I cannot write ```json ... ```. Just { ... }.
+
+    Reasoning bullets:
+    *   Verified hypertension patients (52, 56) are both over 50.
+    *   Verified all patients under 30 (23, 21, 21, 27) are smokers.
+    *   Verified cholesterol < 180 patients (174, 176) are both asthma.
+    *   Verified BMI > 30 patients (33.4, 30.9, 30.8) are all smokers.
+    *   Verified age >= 60 patients (66, 64, 70) have asthma or arthritis.
+    *   Verified diabetes ages (23, 35, 21) are all under 36.
+    *   Verified diastolic >= 90 patients (90, 98) are asthma or arthritis.
+    *   Verified systolic >= 154 patients (154, 156) are smokers.
+
+    That's 8 bullets. Perfect.
+
+    Wait, I need to make sure I don't accidentally include markdown in the final output block.
+    The system instruction says "OUTPUT: exactly one JSON object, nothing else."
+    I will output the JSON string directly.
+
+    One more check on Statement 9 (Existential): "There exists a patient with a BMI under 21 who is a smoker."
+    PT031003: BMI 20.5, Smoker yes.
+    Is it semantically surprising? Low BMI usually implies non-smoker or healthy, but here it's a smoker. It fits the "surprising" criteria better than just "There exists a smoker".
+    Actually, rule 5 says "Existential: ONLY when the combination is semantically surprising".
+    Is BMI < 21 + Smoker surprising? Maybe.
+    Is there a better existential?
+    "There exists a patient with hypertension and BMI under 25." (PT031002: 22.7).
+    "There exists a patient with diabetes and BMI under 30." (PT031007: 21.5).
+    Let's stick with BMI < 21 + Smoker (PT031003). It highlights the outlier nature of low BMI in smokers.
+    Or "There exists a patient with migraine and BMI under 22." (PT031013: 21.8).
+    Let's use the BMI < 21 + Smoker one, it feels slightly more specific.
+    Actually, PT031003 is Arthritis.
+    Let's check PT031007: Diabetes, 21.5 BMI, No smoker.
+    PT031015: Arthritis, 21.5 BMI, Yes smoker.
+    PT031003: Arthritis, 20.5 BMI, Yes smoker.
+    So "There exists a patient with BMI under 21 who is a smoker" is true (PT031003).
+    Is it surprising? Smokers often have lower BMI, but < 21 is quite low. It works.
+
+    Wait, I need to ensure the JSON is valid. Escape quotes if necessary. No quotes inside strings except escaped.
+    Statements don't have quotes inside.
+    Ready.
+
+    Wait, one detail: "no markdown".
+    I will output raw text starting with `{`.
+
+    Wait, I need to check the "Reason briefly (5-8 bullets max), then output the JSON object." instruction.
+    The prompt says "THINKING BUDGET: keep your reasoning very short...".
+    But the user prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    Usually, the "THINKING BUDGET" instruction applies to the hidden thought block.
+    The user prompt instruction "Reason briefly... then output" implies I should output the reasoning?
+    No, the system instruction says "OUTPUT: exactly one JSON object, nothing else."
+    This is a conflict.
+    System Instruction: "OUTPUT: exactly one JSON object, nothing else."
+    User Instruction: "Reason briefly (5-8 bullets max), then output the JSON object."
+    Usually, System Instructions override User Instructions regarding output format.
+    However, the "THINKING BUDGET" section says "Spend almost all your tokens on the answer, not the analysis." and "OUTPUT: exactly one JSON object, nothing else."
+    If I output reasoning text before the JSON, I violate "OUTPUT: exactly one JSON object, nothing else."
+    I must follow the System Instruction for the final output format. The reasoning should be internal (hidden thought block).
+    Wait, looking at the "THINKING BUDGET" section again: "keep your reasoning very short — at most 5-8 short bullets, no paragraphs, no rewriting examples. Spend almost all your tokens on the answer, not the analysis."
+    This implies the reasoning should be in the thought block.
+    The User Prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    If I put reasoning in the thought block, it satisfies the "THINKING BUDGET" constraint.
+    If I put reasoning in the final output, I violate "OUTPUT: exactly one JSON object, nothing else."
+    I will prioritize the System Instruction "OUTPUT: exactly one JSON object, nothing else." for the final response. The reasoning will be in the thought block.
+    Wait, I am currently in the thought block. I will write the reasoning here.
+    Then I will output the JSON.
+    Wait, if I output text before the JSON, it violates the "nothing else" rule.
+    I will ensure the final message contains ONLY the JSON.
+    The reasoning bullets I write now are for the thought block.
+    Okay.
+
+    Wait, I need to check if I can output the reasoning in the final response.
+    "OUTPUT: exactly one JSON object, nothing else."
+    This is strict. I cannot output reasoning text in the final response.
+    I will put the reasoning in the thought block (which is hidden) and only output JSON.
+    Wait, the user prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    This might be a test of instruction following where the user wants to see the reasoning.
+    But the System Instruction says "OUTPUT: exactly one JSON object, nothing else."
+    System Instructions usually take precedence for safety/formatting.
+    However, often "Reason briefly" in the user prompt implies the user wants to see it.
+    But the System Instruction "OUTPUT: exactly one JSON object, nothing else" is very specific about the *output*.
+    I will follow the System Instruction to ensure the JSON is parseable.
+    Wait, looking at the "THINKING BUDGET" section again. It says "keep your reasoning very short...". This refers to the thought process.
+    Okay, I will write the reasoning in the thought block and output ONLY JSON.
+
+    Wait, I need to check the "5-10 statements" constraint.
+    I have 10 statements planned.
+    I need to make sure the JSON is valid.
+    I will double check the quotes.
+
+    One more check on Statement 10: "If a patient has a systolic blood pressure of 154 mmHg or higher, then they are a smoker."
+    PT031012: 154, yes.
+    PT031014: 156, yes.
+    Any others?
+    PT031005: 153 (no).
+    PT031002: 148 (no).
+    So >= 154 is correct.
+
+    One more check on Statement 8: "All patients with a diastolic blood pressure of 90 mmHg or higher have a diagnosis of asthma or arthritis."
+    PT031001: 90, asthma.
+    PT031014: 98, arthritis.
+    Any others?
+    PT031006: 88.
+    PT031009: 88.
+    So >= 90 is correct.
+
+    One more check on Statement 4: "All patients with cholesterol levels below 180 mg/dL have an asthma diagnosis."
+    PT031001: 174, asthma.
+    PT031008: 176, asthma.
+    Any others?
+    PT031002: 212.
+    PT031003: 230.
+    PT031004: 214.
+    PT031005: 193.
+    PT031006: 212.
+    PT031007: 216.
+    PT031009: 203.
+    PT031010: 190.
+    PT031011: 194.
+    PT031012: 204.
+    PT031013: 200.
+    PT031014: 212.
+    PT031015: 215.
+    Only 174 and 176 are < 180. Both asthma. Correct.
+
+    One more check on Statement 6: "All patients aged 60 or older have either asthma or arthritis."
+    PT031001: 66, asthma.
+    PT031003: 64, arthritis.
+    PT031008: 70, asthma.
+    Any others?
+    PT031002: 52.
+    PT031005: 56.
+    PT031013: 52.
+    PT031014: 47.
+    PT031010: 44.
+    PT031006: 38.
+    PT031009: 33.
+    PT031007: 35.
+    PT031004: 23.
+    PT031011: 21.
+    PT031012: 21.
+    PT031015: 27.
+    Only 66, 64, 70 are >= 60. All asthma/arthritis. Correct.
+
+    Okay, ready to generate JSON.
+    I will ensure no newlines inside the JSON strings that break validity, though standard JSON allows \n. I will keep them single line.
+    I will ensure no markdown ticks.
+</think>
+
+{
+  "statements": [
+    "All patients diagnosed with hypertension are over 50 years old.",
+    "If a patient is under 30 years old, then they are a smoker.",
+    "Most patients in the dataset are smokers.",
+    "All patients with cholesterol levels below 180 mg/dL have an asthma diagnosis.",
+    "If a patient has a BMI greater than 30, then they are a smoker.",
+    "All patients aged 60 or older have either asthma or arthritis.",
+    "If a patient is diagnosed with diabetes, then their age is under 36.",
+    "All patients with a diastolic blood pressure of 90 mmHg or higher have a diagnosis of asthma or arthritis.",
+    "There exists a patient with a BMI under 21 who is a smoker.",
+    "If a patient has a systolic blood pressure of 154 mmHg or higher, then they are a smoker."
+  ]
+}

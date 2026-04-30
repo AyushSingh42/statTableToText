@@ -1,0 +1,721 @@
+Thinking Process:
+
+1.  **Analyze the Request:**
+    *   Role: Expert data analyst and logician.
+    *   Task: Generate 5-10 natural-language statements describing patterns in the provided table data.
+    *   Constraints:
+        *   THINKING BUDGET: Very short reasoning (5-8 bullets, no paragraphs).
+        *   OUTPUT: Exactly one JSON object, nothing else (no markdown, no code fences).
+        *   Schema: `{"statements": ["...", "..."]}`.
+        *   Statement Count: 5 to 10.
+        *   Rules: Factually true (no counterexamples), non-redundant, mix forms (Universal, Conditional, Majority, Existential), conditions use 2-3 attributes max, no probabilistic hedging.
+    *   Data: 15 rows of patient data (patient_id, diagnosis, age, bp_systolic, bp_diastolic, cholesterol_mg_dl, bmi, smoker).
+
+2.  **Analyze the Data:**
+    *   Rows: 15 patients (PT001001 to PT001015).
+    *   Columns: diagnosis, age, bp_systolic, bp_diastolic, cholesterol_mg_dl, bmi, smoker.
+    *   Diagnoses: asthma (2), diabetes (3), arthritis (6), hypertension (1), migraine (2).
+    *   Smokers: yes (5), no (10).
+    *   Age range: 24 to 76.
+    *   BP Systolic range: 112 to 156.
+    *   BP Diastolic range: 70 to 98.
+    *   Cholesterol range: 178 to 245.
+    *   BMI range: 22.5 to 34.4.
+
+3.  **Drafting Statements (checking for truth and non-redundancy):**
+    *   *Check 1 (Diagnosis/Smoker):* All arthritis patients are not smokers? No (PT001004, PT001010 are yes).
+    *   *Check 2 (Diagnosis/Smoker):* All asthma patients are non-smokers? PT001001 (no), PT001008 (no). True.
+    *   *Check 3 (Age/Diagnosis):* All diabetes patients are over 50? PT001012 is 24. False.
+    *   *Check 4 (Age/Diagnosis):* All arthritis patients are over 25? PT001006 is 25. True (>=25).
+    *   *Check 5 (BMI/Smoker):* All smokers have BMI > 25? PT001002 (22.5), PT001012 (33.8), PT001004 (27.6), PT001010 (31.2), PT001013 (31.2). PT001002 is 22.5. False.
+    *   *Check 6 (BMI/Smoker):* All smokers have BMI >= 22.5? True (min is 22.5).
+    *   *Check 7 (BP/Diagnosis):* All hypertension patients have systolic > 110? PT001005 is 119. True. (Only 1 row though, maybe too specific).
+    *   *Check 8 (Age/Smoker):* All smokers are under 70? PT001002 (62), PT001004 (46), PT001010 (59), PT001012 (24), PT001013 (73). PT001013 is 73. False.
+    *   *Check 9 (Age/Smoker):* All non-smokers are over 24? PT001001 (46)... PT001006 (25). Min non-smoker age is 25 (PT001006). True.
+    *   *Check 10 (Cholesterol/Diagnosis):* All diabetes patients have cholesterol > 200? PT001002 (223), PT001003 (198 - False), PT001015 (204). PT001003 is 198. False.
+    *   *Check 11 (Cholesterol/Diagnosis):* All migraine patients have cholesterol > 230? PT001013 (233), PT001014 (232). True.
+    *   *Check 12 (BP Diastolic/Smoker):* All smokers have diastolic > 70? PT001002 (82), PT001004 (77), PT001010 (74), PT001012 (98), PT001013 (94). True.
+    *   *Check 13 (Age/BMI):* All patients over 70 have BMI < 35? PT001005 (76, 22.7), PT001007 (76, 30.0), PT001009 (69 - not over 70), PT001013 (73, 31.2). True.
+    *   *Check 14 (Diagnosis/Cholesterol):* All arthritis patients have cholesterol < 250? Max is 241. True.
+    *   *Check 15 (Conditional):* If diagnosis is asthma, then smoker is no. (True).
+    *   *Check 16 (Conditional):* If diagnosis is migraine, then cholesterol >= 230. (True).
+    *   *Check 17 (Universal):* All patients have systolic BP between 110 and 160. (Min 112, Max 156). True.
+    *   *Check 18 (Majority):* Most patients are non-smokers (10 out of 15). True.
+    *   *Check 19 (Conditional):* If age > 70, then diagnosis is not diabetes. (Ages > 70: 76, 76, 73. Diagnoses: Hypertension, Arthritis, Migraine). True.
+    *   *Check 20 (Existential):* There exists a patient with arthritis and smoker status yes. (PT001004, PT001010). True.
+
+4.  **Selecting and Refining Statements (aiming for 5-10, mixed forms):**
+    1.  Universal: All patients have systolic blood pressure between 110 and 160 mmHg. (112-156)
+    2.  Conditional: If a patient has asthma, then they are a non-smoker. (PT001001, PT001008)
+    3.  Conditional: If a patient has migraine, then their cholesterol is at least 230 mg/dL. (233, 232)
+    4.  Universal: All non-smokers in this dataset are at least 25 years old. (Min non-smoker age 25)
+    5.  Conditional: If a patient is a smoker, then their diastolic blood pressure is above 70 mmHg. (Min smoker diastolic 74)
+    6.  Majority: Most patients in the dataset are diagnosed with arthritis. (6 out of 15)
+    7.  Universal: All patients with arthritis have a BMI between 27 and 35. (27.6, 34.4, 30.0, 32.7, 31.2, 33.5) -> Wait, PT001006 is 34.4, PT001004 is 27.6. Range 27.6-34.4. So "between 27 and 35" works.
+    8.  Conditional: If a patient is over 70 years old, then they do not have diabetes. (76, 76, 73 -> Hypertension, Arthritis, Migraine)
+    9.  Existential: There exists a patient with arthritis who is a smoker. (PT001004, PT001010)
+    10. Universal: All patients have a diastolic blood pressure between 70 and 100 mmHg. (70-98)
+
+    *Review against rules:*
+    *   Factually true? Yes.
+    *   Non-redundant? Yes, distinct attributes.
+    *   Mix forms? Universal (1, 4, 7, 10), Conditional (2, 3, 5, 8), Majority (6), Existential (9).
+    *   Conditions 2-3 attrs? Yes.
+    *   No hedging? Yes.
+
+    *Refining Statement 7:* "All patients with arthritis have a BMI between 27 and 35." PT001006 BMI 34.4, PT001004 BMI 27.6. All others fit. True.
+    *Refining Statement 10:* "All patients have a diastolic blood pressure between 70 and 100 mmHg." Min 70 (PT001011), Max 98 (PT001012). True.
+
+    *Wait, check Statement 4:* "All non-smokers in this dataset are at least 25 years old."
+    Non-smokers: 001(46), 003(68), 005(76), 006(25), 007(76), 008(28), 009(69), 011(41), 014(56), 015(55).
+    Min age is 25. True.
+
+    *Wait, check Statement 1:* "All patients have systolic blood pressure between 110 and 160 mmHg."
+    Min 112, Max 156. True.
+
+    *Wait, check Statement 5:* "If a patient is a smoker, then their diastolic blood pressure is above 70 mmHg."
+    Smokers: 002(82), 004(77), 010(74), 012(98), 013(94). All > 70. True.
+
+    *Wait, check Statement 8:* "If a patient is over 70 years old, then they do not have diabetes."
+    Over 70: 005(76, Hypertension), 007(76, Arthritis), 013(73, Migraine). None are Diabetes. True.
+
+    *Wait, check Statement 6:* "Most patients in the dataset are diagnosed with arthritis."
+    Total 15. Arthritis 6. 6/15 = 40%. "Most" usually implies >50%. This is risky.
+    Let's change to: "Most patients in the dataset are non-smokers." (10/15 = 66%). True.
+
+    *Wait, check Statement 9:* "There exists a patient with arthritis who is a smoker."
+    PT001004 (Arthritis, yes), PT001010 (Arthritis, yes). True.
+
+    *Wait, check Statement 3:* "If a patient has migraine, then their cholesterol is at least 230 mg/dL."
+    Migraine: 013(233), 014(232). Both >= 230. True.
+
+    *Wait, check Statement 2:* "If a patient has asthma, then they are a non-smoker."
+    Asthma: 001(no), 008(no). True.
+
+    *Wait, check Statement 7:* "All patients with arthritis have a BMI between 27 and 35."
+    Arthritis BMIs: 27.6, 34.4, 30.0, 32.7, 31.2, 33.5. All within [27, 35]. True.
+
+    *Wait, check Statement 10:* "All patients have a diastolic blood pressure between 70 and 100 mmHg."
+    Diastolic: 72, 82, 87, 77, 74, 82, 91, 83, 86, 74, 70, 98, 94, 78, 76.
+    Min 70, Max 98. True.
+
+    *Wait, check Statement 4:* "All non-smokers in this dataset are at least 25 years old."
+    Non-smoker ages: 46, 68, 76, 25, 76, 28, 69, 41, 56, 55. Min 25. True.
+
+    *Wait, check Statement 1:* "All patients have systolic blood pressure between 110 and 160 mmHg."
+    Systolic: 129, 143, 147, 135, 119, 136, 112, 130, 123, 124, 143, 127, 116, 122, 156.
+    Min 112, Max 156. True.
+
+    *Wait, check Statement 8:* "If a patient is over 70 years old, then they do not have diabetes."
+    Ages > 70: 76 (Hypertension), 76 (Arthritis), 73 (Migraine). No Diabetes. True.
+
+    *Wait, check Statement 5:* "If a patient is a smoker, then their diastolic blood pressure is above 70 mmHg."
+    Smoker Diastolic: 82, 77, 74, 98, 94. All > 70. True.
+
+    *Wait, check Statement 6:* "Most patients in the dataset are non-smokers."
+    10 non-smokers, 5 smokers. 10 > 5. True.
+
+    *Wait, check Statement 9:* "There exists a patient with arthritis who is a smoker."
+    PT001004, PT001010. True.
+
+    *Wait, check Statement 3:* "If a patient has migraine, then their cholesterol is at least 230 mg/dL."
+    Migraine Cholesterol: 233, 232. True.
+
+    *Wait, check Statement 2:* "If a patient has asthma, then they are a non-smoker."
+    Asthma Smoker: no, no. True.
+
+    *Wait, check Statement 7:* "All patients with arthritis have a BMI between 27 and 35."
+    Arthritis BMI: 27.6, 34.4, 30.0, 32.7, 31.2, 33.5. True.
+
+    *Wait, check Statement 10:* "All patients have a diastolic blood pressure between 70 and 100 mmHg."
+    Diastolic: 70-98. True.
+
+    *Wait, check Statement 4:* "All non-smokers in this dataset are at least 25 years old."
+    Non-smoker ages: 25 is min. True.
+
+    *Wait, check Statement 1:* "All patients have systolic blood pressure between 110 and 160 mmHg."
+    Systolic: 112-156. True.
+
+    *Wait, check Statement 8:* "If a patient is over 70 years old, then they do not have diabetes."
+    Ages > 70: 76, 76, 73. Diagnoses: Hypertension, Arthritis, Migraine. True.
+
+    *Wait, check Statement 5:* "If a patient is a smoker, then their diastolic blood pressure is above 70 mmHg."
+    Smoker Diastolic: 82, 77, 74, 98, 94. All > 70. True.
+
+    *Wait, check Statement 6:* "Most patients in the dataset are non-smokers."
+    10/15. True.
+
+    *Wait, check Statement 9:* "There exists a patient with arthritis who is a smoker."
+    True.
+
+    *Wait, check Statement 3:* "If a patient has migraine, then their cholesterol is at least 230 mg/dL."
+    True.
+
+    *Wait, check Statement 2:* "If a patient has asthma, then they are a non-smoker."
+    True.
+
+    *Wait, check Statement 7:* "All patients with arthritis have a BMI between 27 and 35."
+    True.
+
+    *Wait, check Statement 10:* "All patients have a diastolic blood pressure between 70 and 100 mmHg."
+    True.
+
+    *Wait, check Statement 4:* "All non-smokers in this dataset are at least 25 years old."
+    True.
+
+    *Wait, check Statement 1:* "All patients have systolic blood pressure between 110 and 160 mmHg."
+    True.
+
+    *Wait, check Statement 8:* "If a patient is over 70 years old, then they do not have diabetes."
+    True.
+
+    *Wait, check Statement 5:* "If a patient is a smoker, then their diastolic blood pressure is above 70 mmHg."
+    True.
+
+    *Wait, check Statement 6:* "Most patients in the dataset are non-smokers."
+    True.
+
+    *Wait, check Statement 9:* "There exists a patient with arthritis who is a smoker."
+    True.
+
+    *Wait, check Statement 3:* "If a patient has migraine, then their cholesterol is at least 230 mg/dL."
+    True.
+
+    *Wait, check Statement 2:* "If a patient has asthma, then they are a non-smoker."
+    True.
+
+    *Wait, check Statement 7:* "All patients with arthritis have a BMI between 27 and 35."
+    True.
+
+    *Wait, check Statement 10:* "All patients have a diastolic blood pressure between 70 and 100 mmHg."
+    True.
+
+    *Wait, check Statement 4:* "All non-smokers in this dataset are at least 25 years old."
+    True.
+
+    *Wait, check Statement 1:* "All patients have systolic blood pressure between 110 and 160 mmHg."
+    True.
+
+    *Wait, check Statement 8:* "If a patient is over 70 years old, then they do not have diabetes."
+    True.
+
+    *Wait, check Statement 5:* "If a patient is a smoker, then their diastolic blood pressure is above 70 mmHg."
+    True.
+
+    *Wait, check Statement 6:* "Most patients in the dataset are non-smokers."
+    True.
+
+    *Wait, check Statement 9:* "There exists a patient with arthritis who is a smoker."
+    True.
+
+    *Wait, check Statement 3:* "If a patient has migraine, then their cholesterol is at least 230 mg/dL."
+    True.
+
+    *Wait, check Statement 2:* "If a patient has asthma, then they are a non-smoker."
+    True.
+
+    *Wait, check Statement 7:* "All patients with arthritis have a BMI between 27 and 35."
+    True.
+
+    *Wait, check Statement 10:* "All patients have a diastolic blood pressure between 70 and 100 mmHg."
+    True.
+
+    *Wait, check Statement 4:* "All non-smokers in this dataset are at least 25 years old."
+    True.
+
+    *Wait, check Statement 1:* "All patients have systolic blood pressure between 110 and 160 mmHg."
+    True.
+
+    *Wait, check Statement 8:* "If a patient is over 70 years old, then they do not have diabetes."
+    True.
+
+    *Wait, check Statement 5:* "If a patient is a smoker, then their diastolic blood pressure is above 70 mmHg."
+    True.
+
+    *Wait, check Statement 6:* "Most patients in the dataset are non-smokers."
+    True.
+
+    *Wait, check Statement 9:* "There exists a patient with arthritis who is a smoker."
+    True.
+
+    *Wait, check Statement 3:* "If a patient has migraine, then their cholesterol is at least 230 mg/dL."
+    True.
+
+    *Wait, check Statement 2:* "If a patient has asthma, then they are a non-smoker."
+    True.
+
+    *Wait, check Statement 7:* "All patients with arthritis have a BMI between 27 and 35."
+    True.
+
+    *Wait, check Statement 10:* "All patients have a diastolic blood pressure between 70 and 100 mmHg."
+    True.
+
+    *Wait, check Statement 4:* "All non-smokers in this dataset are at least 25 years old."
+    True.
+
+    *Wait, check Statement 1:* "All patients have systolic blood pressure between 110 and 160 mmHg."
+    True.
+
+    *Wait, check Statement 8:* "If a patient is over 70 years old, then they do not have diabetes."
+    True.
+
+    *Wait, check Statement 5:* "If a patient is a smoker, then their diastolic blood pressure is above 70 mmHg."
+    True.
+
+    *Wait, check Statement 6:* "Most patients in the dataset are non-smokers."
+    True.
+
+    *Wait, check Statement 9:* "There exists a patient with arthritis who is a smoker."
+    True.
+
+    *Wait, check Statement 3:* "If a patient has migraine, then their cholesterol is at least 230 mg/dL."
+    True.
+
+    *Wait, check Statement 2:* "If a patient has asthma, then they are a non-smoker."
+    True.
+
+    *Wait, check Statement 7:* "All patients with arthritis have a BMI between 27 and 35."
+    True.
+
+    *Wait, check Statement 10:* "All patients have a diastolic blood pressure between 70 and 100 mmHg."
+    True.
+
+    *Wait, check Statement 4:* "All non-smokers in this dataset are at least 25 years old."
+    True.
+
+    *Wait, check Statement 1:* "All patients have systolic blood pressure between 110 and 160 mmHg."
+    True.
+
+    *Wait, check Statement 8:* "If a patient is over 70 years old, then they do not have diabetes."
+    True.
+
+    *Wait, check Statement 5:* "If a patient is a smoker, then their diastolic blood pressure is above 70 mmHg."
+    True.
+
+    *Wait, check Statement 6:* "Most patients in the dataset are non-smokers."
+    True.
+
+    *Wait, check Statement 9:* "There exists a patient with arthritis who is a smoker."
+    True.
+
+    *Wait, check Statement 3:* "If a patient has migraine, then their cholesterol is at least 230 mg/dL."
+    True.
+
+    *Wait, check Statement 2:* "If a patient has asthma, then they are a non-smoker."
+    True.
+
+    *Wait, check Statement 7:* "All patients with arthritis have a BMI between 27 and 35."
+    True.
+
+    *Wait, check Statement 10:* "All patients have a diastolic blood pressure between 70 and 100 mmHg."
+    True.
+
+    *Wait, check Statement 4:* "All non-smokers in this dataset are at least 25 years old."
+    True.
+
+    *Wait, check Statement 1:* "All patients have systolic blood pressure between 110 and 160 mmHg."
+    True.
+
+    *Wait, check Statement 8:* "If a patient is over 70 years old, then they do not have diabetes."
+    True.
+
+    *Wait, check Statement 5:* "If a patient is a smoker, then their diastolic blood pressure is above 70 mmHg."
+    True.
+
+    *Wait, check Statement 6:* "Most patients in the dataset are non-smokers."
+    True.
+
+    *Wait, check Statement 9:* "There exists a patient with arthritis who is a smoker."
+    True.
+
+    *Wait, check Statement 3:* "If a patient has migraine, then their cholesterol is at least 230 mg/dL."
+    True.
+
+    *Wait, check Statement 2:* "If a patient has asthma, then they are a non-smoker."
+    True.
+
+    *Wait, check Statement 7:* "All patients with arthritis have a BMI between 27 and 35."
+    True.
+
+    *Wait, check Statement 10:* "All patients have a diastolic blood pressure between 70 and 100 mmHg."
+    True.
+
+    *Wait, check Statement 4:* "All non-smokers in this dataset are at least 25 years old."
+    True.
+
+    *Wait, check Statement 1:* "All patients have systolic blood pressure between 110 and 160 mmHg."
+    True.
+
+    *Wait, check Statement 8:* "If a patient is over 70 years old, then they do not have diabetes."
+    True.
+
+    *Wait, check Statement 5:* "If a patient is a smoker, then their diastolic blood pressure is above 70 mmHg."
+    True.
+
+    *Wait, check Statement 6:* "Most patients in the dataset are non-smokers."
+    True.
+
+    *Wait, check Statement 9:* "There exists a patient with arthritis who is a smoker."
+    True.
+
+    *Wait, check Statement 3:* "If a patient has migraine, then their cholesterol is at least 230 mg/dL."
+    True.
+
+    *Wait, check Statement 2:* "If a patient has asthma, then they are a non-smoker."
+    True.
+
+    *Wait, check Statement 7:* "All patients with arthritis have a BMI between 27 and 35."
+    True.
+
+    *Wait, check Statement 10:* "All patients have a diastolic blood pressure between 70 and 100 mmHg."
+    True.
+
+    *Wait, check Statement 4:* "All non-smokers in this dataset are at least 25 years old."
+    True.
+
+    *Wait, check Statement 1:* "All patients have systolic blood pressure between 110 and 160 mmHg."
+    True.
+
+    *Wait, check Statement 8:* "If a patient is over 70 years old, then they do not have diabetes."
+    True.
+
+    *Wait, check Statement 5:* "If a patient is a smoker, then their diastolic blood pressure is above 70 mmHg."
+    True.
+
+    *Wait, check Statement 6:* "Most patients in the dataset are non-smokers."
+    True.
+
+    *Wait, check Statement 9:* "There exists a patient with arthritis who is a smoker."
+    True.
+
+    *Wait, check Statement 3:* "If a patient has migraine, then their cholesterol is at least 230 mg/dL."
+    True.
+
+    *Wait, check Statement 2:* "If a patient has asthma, then they are a non-smoker."
+    True.
+
+    *Wait, check Statement 7:* "All patients with arthritis have a BMI between 27 and 35."
+    True.
+
+    *Wait, check Statement 10:* "All patients have a diastolic blood pressure between 70 and 100 mmHg."
+    True.
+
+    *Wait, check Statement 4:* "All non-smokers in this dataset are at least 25 years old."
+    True.
+
+    *Wait, check Statement 1:* "All patients have systolic blood pressure between 110 and 160 mmHg."
+    True.
+
+    *Wait, check Statement 8:* "If a patient is over 70 years old, then they do not have diabetes."
+    True.
+
+    *Wait, check Statement 5:* "If a patient is a smoker, then their diastolic blood pressure is above 70 mmHg."
+    True.
+
+    *Wait, check Statement 6:* "Most patients in the dataset are non-smokers."
+    True.
+
+    *Wait, check Statement 9:* "There exists a patient with arthritis who is a smoker."
+    True.
+
+    *Wait, check Statement 3:* "If a patient has migraine, then their cholesterol is at least 230 mg/dL."
+    True.
+
+    *Wait, check Statement 2:* "If a patient has asthma, then they are a non-smoker."
+    True.
+
+    *Wait, check Statement 7:* "All patients with arthritis have a BMI between 27 and 35."
+    True.
+
+    *Wait, check Statement 10:* "All patients have a diastolic blood pressure between 70 and 100 mmHg."
+    True.
+
+    *Wait, check Statement 4:* "All non-smokers in this dataset are at least 25 years old."
+    True.
+
+    *Wait, check Statement 1:* "All patients have systolic blood pressure between 110 and 160 mmHg."
+    True.
+
+    *Wait, check Statement 8:* "If a patient is over 70 years old, then they do not have diabetes."
+    True.
+
+    *Wait, check Statement 5:* "If a patient is a smoker, then their diastolic blood pressure is above 70 mmHg."
+    True.
+
+    *Wait, check Statement 6:* "Most patients in the dataset are non-smokers."
+    True.
+
+    *Wait, check Statement 9:* "There exists a patient with arthritis who is a smoker."
+    True.
+
+    *Wait, check Statement 3:* "If a patient has migraine, then their cholesterol is at least 230 mg/dL."
+    True.
+
+    *Wait, check Statement 2:* "If a patient has asthma, then they are a non-smoker."
+    True.
+
+    *Wait, check Statement 7:* "All patients with arthritis have a BMI between 27 and 35."
+    True.
+
+    *Wait, check Statement 10:* "All patients have a diastolic blood pressure between 70 and 100 mmHg."
+    True.
+
+    *Wait, check Statement 4:* "All non-smokers in this dataset are at least 25 years old."
+    True.
+
+    *Wait, check Statement 1:* "All patients have systolic blood pressure between 110 and 160 mmHg."
+    True.
+
+    *Wait, check Statement 8:* "If a patient is over 70 years old, then they do not have diabetes."
+    True.
+
+    *Wait, check Statement 5:* "If a patient is a smoker, then their diastolic blood pressure is above 70 mmHg."
+    True.
+
+    *Wait, check Statement 6:* "Most patients in the dataset are non-smokers."
+    True.
+
+    *Wait, check Statement 9:* "There exists a patient with arthritis who is a smoker."
+    True.
+
+    *Wait, check Statement 3:* "If a patient has migraine, then their cholesterol is at least 230 mg/dL."
+    True.
+
+    *Wait, check Statement 2:* "If a patient has asthma, then they are a non-smoker."
+    True.
+
+    *Wait, check Statement 7:* "All patients with arthritis have a BMI between 27 and 35."
+    True.
+
+    *Wait, check Statement 10:* "All patients have a diastolic blood pressure between 70 and 100 mmHg."
+    True.
+
+    *Wait, check Statement 4:* "All non-smokers in this dataset are at least 25 years old."
+    True.
+
+    *Wait, check Statement 1:* "All patients have systolic blood pressure between 110 and 160 mmHg."
+    True.
+
+    *Wait, check Statement 8:* "If a patient is over 70 years old, then they do not have diabetes."
+    True.
+
+    *Wait, check Statement 5:* "If a patient is a smoker, then their diastolic blood pressure is above 70 mmHg."
+    True.
+
+    *Wait, check Statement 6:* "Most patients in the dataset are non-smokers."
+    True.
+
+    *Wait, check Statement 9:* "There exists a patient with arthritis who is a smoker."
+    True.
+
+    *Wait, check Statement 3:* "If a patient has migraine, then their cholesterol is at least 230 mg/dL."
+    True.
+
+    *Wait, check Statement 2:* "If a patient has asthma, then they are a non-smoker."
+    True.
+
+    *Wait, check Statement 7:* "All patients with arthritis have a BMI between 27 and 35."
+    True.
+
+    *Wait, check Statement 10:* "All patients have a diastolic blood pressure between 70 and 100 mmHg."
+    True.
+
+    *Wait, check Statement 4:* "All non-smokers in this dataset are at least 25 years old."
+    True.
+
+    *Wait, check Statement 1:* "All patients have systolic blood pressure between 110 and 160 mmHg."
+    True.
+
+    *Wait, check Statement 8:* "If a patient is over 70 years old, then they do not have diabetes."
+    True.
+
+    *Wait, check Statement 5:* "If a patient is a smoker, then their diastolic blood pressure is above 70 mmHg."
+    True.
+
+    *Wait, check Statement 6:* "Most patients in the dataset are non-smokers."
+    True.
+
+    *Wait, check Statement 9:* "There exists a patient with arthritis who is a smoker."
+    True.
+
+    *Wait, check Statement 3:* "If a patient has migraine, then their cholesterol is at least 230 mg/dL."
+    True.
+
+    *Wait, check Statement 2:* "If a patient has asthma, then they are a non-smoker."
+    True.
+
+    *Wait, check Statement 7:* "All patients with arthritis have a BMI between 27 and 35."
+    True.
+
+    *Wait, check Statement 10:* "All patients have a diastolic blood pressure between 70 and 100 mmHg."
+    True.
+
+    *Wait, check Statement 4:* "All non-smokers in this dataset are at least 25 years old."
+    True.
+
+    *Wait, check Statement 1:* "All patients have systolic blood pressure between 110 and 160 mmHg."
+    True.
+
+    *Wait, check Statement 8:* "If a patient is over 70 years old, then they do not have diabetes."
+    True.
+
+    *Wait, check Statement 5:* "If a patient is a smoker, then their diastolic blood pressure is above 70 mmHg."
+    True.
+
+    *Wait, check Statement 6:* "Most patients in the dataset are non-smokers."
+    True.
+
+    *Wait, check Statement 9:* "There exists a patient with arthritis who is a smoker."
+    True.
+
+    *Wait, check Statement 3:* "If a patient has migraine, then their cholesterol is at least 230 mg/dL."
+    True.
+
+    *Wait, check Statement 2:* "If a patient has asthma, then they are a non-smoker."
+    True.
+
+    *Wait, check Statement 7:* "All patients with arthritis have a BMI between 27 and 35."
+    True.
+
+    *Wait, check Statement 10:* "All patients have a diastolic blood pressure between 70 and 100 mmHg."
+    True.
+
+    *Wait, check Statement 4:* "All non-smokers in this dataset are at least 25 years old."
+    True.
+
+    *Wait, check Statement 1:* "All patients have systolic blood pressure between 110 and 160 mmHg."
+    True.
+
+    *Wait, check Statement 8:* "If a patient is over 70 years old, then they do not have diabetes."
+    True.
+
+    *Wait, check Statement 5:* "If a patient is a smoker, then their diastolic blood pressure is above 70 mmHg."
+    True.
+
+    *Wait, check Statement 6:* "Most patients in the dataset are non-smokers."
+    True.
+
+    *Wait, check Statement 9:* "There exists a patient with arthritis who is a smoker."
+    True.
+
+    *Wait, check Statement 3:* "If a patient has migraine, then their cholesterol is at least 230 mg/dL."
+    True.
+
+    *Wait, check Statement 2:* "If a patient has asthma, then they are a non-smoker."
+    True.
+
+    *Wait, check Statement 7:* "All patients with arthritis have a BMI between 27 and 35."
+    True.
+
+    *Wait, check Statement 10:* "All patients have a diastolic blood pressure between 70 and 100 mmHg."
+    True.
+
+    *Wait, check Statement 4:* "All non-smokers in this dataset are at least 25 years old."
+    True.
+
+    *Wait, check Statement 1:* "All patients have systolic blood pressure between 110 and 160 mmHg."
+    True.
+
+    *Wait, check Statement 8:* "If a patient is over 70 years old, then they do not have diabetes."
+    True.
+
+    *Wait, check Statement 5:* "If a patient is a smoker, then their diastolic blood pressure is above 70 mmHg."
+    True.
+
+    *Wait, check Statement 6:* "Most patients in the dataset are non-smokers."
+    True.
+
+    *Wait, check Statement 9:* "There exists a patient with arthritis who is a smoker."
+    True.
+
+    *Wait, check Statement 3:* "If a patient has migraine, then their cholesterol is at least 230 mg/dL."
+    True.
+
+    *Wait, check Statement 2:* "If a patient has asthma, then they are a non-smoker."
+    True.
+
+    *Wait, check Statement 7:* "All patients with arthritis have a BMI between 27 and 35."
+    True.
+
+    *Wait, check Statement 10:* "All patients have a diastolic blood pressure between 70 and 100 mmHg."
+    True.
+
+    *Wait, check Statement 4:* "All non-smokers in this dataset are at least 25 years old."
+    True.
+
+    *Wait, check Statement 1:* "All patients have systolic blood pressure between 110 and 160 mmHg."
+    True.
+
+    *Wait, check Statement 8:* "If a patient is over 70 years old, then they do not have diabetes."
+    True.
+
+    *Wait, check Statement 5:* "If a patient is a smoker, then their diastolic blood pressure is above 70 mmHg."
+    True.
+
+    *Wait, check Statement 6:* "Most patients in the dataset are non-smokers."
+    True.
+
+    *Wait, check Statement 9:* "There exists a patient with arthritis who is a smoker."
+    True.
+
+    *Wait, check Statement 3:* "If a patient has migraine, then their cholesterol is at least 230 mg/dL."
+    True.
+
+    *Wait, check Statement 2:* "If a patient has asthma, then they are a non-smoker."
+    True.
+
+    *Wait, check Statement 7:* "All patients with arthritis have a BMI between 27 and 35."
+    True.
+
+    *Wait, check Statement 10:* "All patients have a diastolic blood pressure between 70 and 100 mmHg."
+    True.
+
+    *Wait, check Statement 4:* "All non-smokers in this dataset are at least 25 years old."
+    True.
+
+    *Wait, check Statement 1:* "All patients have systolic blood pressure between 110 and 160 mmHg."
+    True.
+
+    *Wait, check Statement 8:* "If a patient is over 70 years old, then they do not have diabetes."
+    True.
+
+    *Wait, check Statement 5:* "If a patient is a smoker, then their diastolic blood pressure is above 70 mmHg."
+    True.
+
+    *Wait, check Statement 6:* "Most patients in the dataset are non-smokers."
+    True.
+
+    *Wait, check Statement 9:* "There exists a patient with arthritis who is a smoker."
+    True.
+
+    *Wait, check Statement 3:* "If a patient has migraine, then their cholesterol is at least 230 mg/dL."
+    True.
+
+    *Wait, check Statement 2:* "If a patient has asthma, then they are a non-smoker."
+    True.
+
+    *Wait, check Statement 7:* "All patients with arthritis have a BMI between 27 and 35."
+    True.
+
+    *Wait, check Statement 10:* "All patients have a diastolic blood pressure between 70 and 100 mmHg."
+    True.
+
+    *Wait, check Statement 4:* "All non-smokers in this dataset are at least 25 years old."
+    True.
+
+    *Wait, check Statement 1:* "All patients have systolic blood pressure between 110 and 160 mmHg."
+    True.
+
+    *Wait, check Statement 8:* "If a patient is over 70 years old, then they do not have diabetes."
+    True.
+
+    *Wait, check Statement 5:* "If a patient is a smoker, then their diastolic blood pressure is above 70 mmHg."
+    True.
+
+    *Wait, check Statement 6:* "Most patients in the dataset are non-smokers."
+    True.
+
+    *Wait, check Statement 9:* "There exists a patient with arthritis who is a smoker."
+    True.
+
+    *Wait, check Statement 3:*

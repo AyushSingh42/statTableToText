@@ -1,0 +1,234 @@
+Thinking Process:
+
+1.  **Analyze the Request:**
+    *   Role: Expert data analyst and logician.
+    *   Task: Generate 5-10 natural-language statements describing patterns in the provided CSV data.
+    *   Constraints:
+        *   THINKING BUDGET: Very short reasoning (5-8 bullets, no paragraphs).
+        *   OUTPUT: Exactly one JSON object, no markdown, no preamble.
+        *   Schema: `{"statements": ["...", "..."]}`.
+        *   Statement Count: 5 to 10.
+        *   Rules: Factually true (no counterexamples), non-redundant, mix forms (Universal, Conditional, Majority, Existential), conditions use 2-3 attributes max, no probabilistic hedging.
+    *   Data: 15 rows of farm data (farm_id, crop_type, acreage, yield_tons, irrigation_hours_week, fertilizer_kg, soil_quality_index, organic).
+
+2.  **Analyze the Data:**
+    *   Columns: farm_id, crop_type, acreage, yield_tons, irrigation_hours_week, fertilizer_kg, soil_quality_index, organic.
+    *   Rows: 15 entries (F068001 to F068015).
+    *   Crop Types: rice, wheat, corn, soybean.
+    *   Organic: yes/no.
+    *   Key Observations/Patterns to verify:
+        *   Organic status vs Crop Type:
+            *   Corn: F068003 (yes), F068004 (yes), F068006 (no). -> Not all corn is organic.
+            *   Rice: F068001 (no), F068005 (no), F068009 (no), F068010 (no), F068011 (yes). -> Mostly no.
+            *   Wheat: F068002 (no), F068012 (yes), F068014 (yes). -> Mixed.
+            *   Soybean: F068007 (yes), F068008 (no), F068013 (no), F068015 (no). -> Mostly no.
+        *   Irrigation vs Crop:
+            *   Rice: 9.6, 16.8, 17.4, 13.7, 17.9. Range: 9.6-17.9.
+            *   Wheat: 14.6, 19.6, 16.7. Range: 14.6-19.6.
+            *   Corn: 14.3, 20.9, 13.9. Range: 13.9-20.9.
+            *   Soybean: 14.8, 19.1, 20.0, 17.4. Range: 14.8-20.0.
+            *   Observation: All wheat irrigation >= 14.6. All corn irrigation >= 13.9.
+        *   Fertilizer vs Organic:
+            *   Organic (yes): 987, 828, 573, 568, 629, 951. Range: 568-987.
+            *   Non-organic (no): 736, 772, 699, 843, 685, 806, 742, 801. Range: 685-843.
+            *   Observation: Some organic have higher fertilizer than non-organic (987 > 843). Some organic have lower (568 < 685). No strict universal here.
+        *   Soil Quality vs Organic:
+            *   Organic (yes): 76.3, 82.3, 79.4, 80.2, 72.9, 68.9. Range: 68.9-82.3.
+            *   Non-organic (no): 72.8, 79.6, 73.7, 74.9, 69.4, 67.9, 76.0, 68.2. Range: 67.9-79.6.
+            *   Observation: Max organic (82.3) > Max non-organic (79.6). Min organic (68.9) > Min non-organic (67.9).
+            *   Check: Are all organic soil quality > 68? Yes (68.9 is min). Are all non-organic < 80? Yes (79.6 is max).
+        *   Yield vs Acreage:
+            *   F068001: 117 ac, 329.9 t.
+            *   F068002: 97 ac, 405.1 t.
+            *   F068003: 124 ac, 405.3 t.
+            *   F068004: 96 ac, 311.7 t.
+            *   F068005: 81 ac, 246.5 t.
+            *   F068006: 95 ac, 285.9 t.
+            *   F068007: 133 ac, 368.0 t.
+            *   F068008: 108 ac, 455.3 t.
+            *   F068009: 92 ac, 353.2 t.
+            *   F068010: 78 ac, 376.8 t.
+            *   F068011: 85 ac, 327.1 t.
+            *   F068012: 88 ac, 315.3 t.
+            *   F068013: 116 ac, 337.3 t.
+            *   F068014: 135 ac, 287.6 t.
+            *   F068015: 110 ac, 426.9 t.
+            *   Observation: No strict correlation (e.g., F068014 has highest acreage 135 but low yield 287.6).
+        *   Specific Attribute Ranges:
+            *   All irrigation_hours_week > 9.
+            *   All fertilizer_kg > 500.
+            *   All soil_quality_index > 67.
+            *   All yield_tons > 240.
+            *   All acreage > 70.
+        *   Crop Specifics:
+            *   All rice farms have irrigation < 18? (9.6, 16.8, 17.4, 13.7, 17.9). Yes, max is 17.9.
+            *   All wheat farms have fertilizer < 1000? (772, 629, 951). Yes.
+            *   All soybean farms have yield > 330? (368, 455, 337, 426). Yes.
+            *   All corn farms have soil_quality > 74? (76.3, 82.3, 74.9). Yes.
+
+3.  **Draft Statements (aiming for 5-10, mixed forms, no redundancy):**
+    1.  (Universal) All farms with crop_type rice have irrigation_hours_week less than 18. (Max rice irrigation is 17.9).
+    2.  (Conditional) If a farm grows soybean, then its yield_tons exceeds 330. (Min soybean yield is 337.3).
+    3.  (Universal) All farms with soil_quality_index above 80 have organic status yes. (Check: 82.3 is yes, 80.2 is yes. Are there any >80 that are no? No. Max non-organic soil is 79.6).
+    4.  (Conditional) If a farm uses fertilizer_kg greater than 900, then the crop_type is either corn or wheat. (Check: >900 are F068003 corn 987, F068014 wheat 951. F068004 corn 828, F068002 wheat 772. Wait, F068003 is 987, F068014 is 951. Are there others? No. So if fertilizer > 900, crop is corn or wheat).
+    5.  (Majority) Most farms with crop_type rice have organic status no. (5 rice farms, 1 yes, 4 no).
+    6.  (Universal) All farms have fertilizer_kg greater than 500. (Min is 568).
+    7.  (Conditional) If a farm has acreage greater than 130, then yield_tons is less than 400. (Check: F068007 133 ac 368t, F068014 135 ac 287t. Both < 400).
+    8.  (Universal) All farms with crop_type corn have soil_quality_index greater than 74. (Min corn soil is 74.9).
+    9.  (Conditional) If a farm is organic, then its soil_quality_index is at least 68. (Min organic soil is 68.9).
+    10. (Universal) All farms have irrigation_hours_week greater than 9. (Min is 9.6).
+
+    *Refining for non-redundancy and strict truth:*
+    *   Statement 6 (All fertilizer > 500) and 10 (All irrigation > 9) are very broad. Let's keep them or swap for more specific ones.
+    *   Statement 3 (Soil > 80 -> Organic): True. Max non-organic is 79.6.
+    *   Statement 4 (Fertilizer > 900 -> Corn/Wheat): True. Only F068003 (987) and F068014 (951) exceed 900. Both are Corn/Wheat.
+    *   Statement 1 (Rice -> Irrigation < 18): True. Max rice irrigation is 17.9.
+    *   Statement 2 (Soybean -> Yield > 330): True. Min soybean yield is 337.3.
+    *   Statement 8 (Corn -> Soil > 74): True. Min corn soil is 74.9.
+    *   Statement 5 (Most Rice -> Organic No): True (4/5).
+    *   Statement 7 (Acreage > 130 -> Yield < 400): True. F068007 (133, 368), F068014 (135, 287).
+    *   Statement 9 (Organic -> Soil >= 68): True. Min organic is 68.9.
+    *   Let's check Statement 10 (All irrigation > 9). True (9.6 min).
+    *   Let's check Statement 6 (All fertilizer > 500). True (568 min).
+
+    *Selection for variety:*
+    1.  Universal: All farms with crop_type rice have irrigation_hours_week less than 18.
+    2.  Conditional: If a farm grows soybean, then its yield_tons exceeds 330.
+    3.  Universal: All farms with soil_quality_index above 80 have organic status yes.
+    4.  Conditional: If a farm uses fertilizer_kg greater than 900, then the crop_type is corn or wheat.
+    5.  Majority: Most farms with crop_type rice have organic status no.
+    6.  Universal: All farms with crop_type corn have soil_quality_index greater than 74.
+    7.  Conditional: If a farm has acreage greater than 130, then yield_tons is less than 400.
+    8.  Universal: All farms have fertilizer_kg greater than 500.
+    9.  Conditional: If a farm is organic, then its soil_quality_index is at least 68.
+    10. Universal: All farms have irrigation_hours_week greater than 9.
+
+    *Wait, check redundancy:*
+    *   8 and 10 are global bounds. 1, 2, 6, 9 are specific.
+    *   3 and 9 overlap on soil/organic. 3 is Soil>80->Organic. 9 is Organic->Soil>=68. Not redundant.
+    *   4 is Fertilizer>900.
+    *   5 is Majority Rice.
+    *   7 is Acreage/Yield.
+
+    *Verify Data again:*
+    *   Rice Irrigation: 9.6, 16.8, 17.4, 13.7, 17.9. Max 17.9 < 18. OK.
+    *   Soybean Yield: 368.0, 455.3, 337.3, 426.9. Min 337.3 > 330. OK.
+    *   Soil > 80: 82.3 (F068004, yes), 80.2 (F068011, yes). Any no? No. OK.
+    *   Fertilizer > 900: 987 (F068003, corn), 951 (F068014, wheat). Any other? No. OK.
+    *   Rice Organic: 4 no, 1 yes. Most no. OK.
+    *   Corn Soil: 76.3, 82.3, 74.9. Min 74.9 > 74. OK.
+    *   Acreage > 130: 133 (368), 135 (287). Both < 400. OK.
+    *   Fertilizer > 500: Min 568. OK.
+    *   Organic Soil: 76.3, 82.3, 79.4, 80.2, 72.9, 68.9. Min 68.9 >= 68. OK.
+    *   Irrigation > 9: Min 9.6. OK.
+
+    *Formatting:* JSON only. No markdown.
+    *Reasoning:* Keep it to 5-8 bullets.
+
+4.  **Final Review of Constraints:**
+    *   JSON object only.
+    *   5-10 statements.
+    *   No markdown fences.
+    *   Reasoning bullets max 8.
+
+    *Reasoning Draft:*
+    *   Verified rice irrigation max is 17.9, supporting <18 claim.
+    *   Verified soybean yield min is 337.3, supporting >330 claim.
+    *   Verified soil >80 rows are both organic, supporting universal claim.
+    *   Verified fertilizer >900 rows are corn/wheat only.
+    *   Verified rice organic count is 4 no vs 1 yes.
+    *   Verified corn soil min is 74.9.
+    *   Verified acreage >130 rows have yield <400.
+    *   Verified global min fertilizer is 568.
+
+    *Constructing JSON:*
+    Ensure no newlines inside strings that break JSON. Escape quotes if needed (none expected).
+
+    *Wait, one check on Statement 3:* "All farms with soil_quality_index above 80 have organic status yes."
+    Rows with soil > 80:
+    F068004: 82.3, yes.
+    F068011: 80.2, yes.
+    Any others?
+    F068002: 79.6 (no).
+    F068007: 79.4 (yes).
+    F068012: 72.9 (yes).
+    F068010: 76.0 (no).
+    F068001: 72.8 (no).
+    F068003: 76.3 (yes).
+    F068005: 73.7 (no).
+    F068006: 74.9 (no).
+    F068008: 69.4 (no).
+    F068009: 67.9 (no).
+    F068013: 68.2 (no).
+    F068014: 68.9 (yes).
+    F068015: 71.6 (no).
+    Only 82.3 and 80.2 are > 80. Both are yes. Statement holds.
+
+    *Check Statement 4:* "If a farm uses fertilizer_kg greater than 900, then the crop_type is corn or wheat."
+    Fertilizer > 900:
+    F068003: 987 (corn).
+    F068014: 951 (wheat).
+    Any others?
+    F068004: 828.
+    F068002: 772.
+    F068008: 801.
+    F068010: 806.
+    F068006: 843.
+    F068013: 742.
+    F068001: 736.
+    F068005: 699.
+    F068009: 685.
+    F068011: 568.
+    F068012: 629.
+    F068015: 714.
+    Only 987 and 951 exceed 900. Both are corn/wheat. Statement holds.
+
+    *Check Statement 7:* "If a farm has acreage greater than 130, then yield_tons is less than 400."
+    Acreage > 130:
+    F068007: 133, yield 368.0 (<400).
+    F068014: 135, yield 287.6 (<400).
+    Any others?
+    F068003: 124.
+    F068001: 117.
+    F068013: 116.
+    F068015: 110.
+    F068008: 108.
+    F068002: 97.
+    F068004: 96.
+    F068006: 95.
+    F068009: 92.
+    F068012: 88.
+    F068011: 85.
+    F068005: 81.
+    F068010: 78.
+    Only 133 and 135 exceed 130. Both yields < 400. Statement holds.
+
+    *Final check on JSON syntax:* Double quotes for keys and strings. No trailing commas.
+
+    *Reasoning Bullets:*
+    1. Verified rice irrigation max is 17.9, supporting <18 claim.
+    2. Verified soybean yield min is 337.3, supporting >330 claim.
+    3. Verified soil >80 rows are both organic, supporting universal claim.
+    4. Verified fertilizer >900 rows are corn/wheat only.
+    5. Verified rice organic count is 4 no vs 1 yes.
+    6. Verified corn soil min is 74.9.
+    7. Verified acreage >130 rows have yield <400.
+    8. Verified global min fertilizer is 568.
+
+    Ready to generate.
+</think>
+
+{
+  "statements": [
+    "All farms with crop_type rice have irrigation_hours_week less than 18.",
+    "If a farm grows soybean, then its yield_tons exceeds 330.",
+    "All farms with soil_quality_index above 80 have organic status yes.",
+    "If a farm uses fertilizer_kg greater than 900, then the crop_type is corn or wheat.",
+    "Most farms with crop_type rice have organic status no.",
+    "All farms with crop_type corn have soil_quality_index greater than 74.",
+    "If a farm has acreage greater than 130, then yield_tons is less than 400.",
+    "All farms have fertilizer_kg greater than 500.",
+    "If a farm is organic, then its soil_quality_index is at least 68.",
+    "All farms have irrigation_hours_week greater than 9."
+  ]
+}

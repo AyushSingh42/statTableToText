@@ -1,0 +1,257 @@
+Thinking Process:
+
+1.  **Analyze the Request:**
+    *   Role: Expert data analyst and logician.
+    *   Task: Generate 5-10 natural-language statements describing patterns in the provided table data.
+    *   Constraints:
+        *   THINKING BUDGET: Very short reasoning (5-8 bullets, no paragraphs).
+        *   OUTPUT: Exactly one JSON object, nothing else (no markdown, no preamble).
+        *   Schema: `{"statements": ["...", "..."]}`.
+        *   Statement Count: 5 to 10.
+        *   Rules: Factually true (no counterexamples), non-redundant, mix forms (Universal, Conditional, Majority, Existential), conditions use 2-3 attributes max, no probabilistic hedging.
+    *   Data: CSV-like data with columns: `route_id`, `vehicle_type`, `distance_km`, `avg_speed_kph`, `fuel_used_l`, `delay_minutes`, `weather`.
+    *   Rows: 15 rows (R023001 to R023015).
+
+2.  **Analyze the Data:**
+    *   Columns: `vehicle_type` (truck, bus, van), `distance_km` (98.9 - 238.2), `avg_speed_kph` (46.4 - 64.0), `fuel_used_l` (9.6 - 52.0), `delay_minutes` (3 - 26), `weather` (clear, cloudy, rain, windy).
+    *   Row breakdown:
+        *   R023001: truck, 108.3, 46.4, 33.9, 17, clear
+        *   R023002: truck, 198.3, 53.4, 17.9, 9, clear
+        *   R023003: truck, 155.7, 51.1, 43.8, 26, cloudy
+        *   R023004: bus, 172.6, 59.1, 21.8, 12, rain
+        *   R023005: bus, 158.8, 53.7, 19.7, 20, rain
+        *   R023006: bus, 187.2, 56.7, 9.6, 14, windy
+        *   R023007: bus, 122.4, 53.7, 14.1, 15, rain
+        *   R023008: bus, 150.2, 62.8, 20.9, 25, rain
+        *   R023009: van, 229.7, 56.8, 50.6, 20, rain
+        *   R023010: van, 108.7, 49.3, 36.3, 17, cloudy
+        *   R023011: truck, 161.4, 62.4, 9.8, 15, clear
+        *   R023012: truck, 98.9, 61.0, 39.7, 20, rain
+        *   R023013: van, 102.6, 64.0, 21.0, 3, rain
+        *   R023014: truck, 238.2, 47.5, 52.0, 18, rain
+        *   R023015: bus, 173.8, 49.3, 48.2, 20, cloudy
+
+    *   Vehicle Counts:
+        *   Truck: 6 (R01, R02, R03, R11, R12, R14)
+        *   Bus: 6 (R04, R05, R06, R07, R08, R15)
+        *   Van: 3 (R09, R10, R13)
+
+    *   Weather Counts:
+        *   clear: 3 (R01, R02, R11)
+        *   cloudy: 3 (R03, R10, R15)
+        *   rain: 8 (R04, R05, R07, R08, R09, R12, R13, R14)
+        *   windy: 1 (R06)
+
+    *   Potential Patterns/Checks:
+        *   Trucks: Speed range 46.4-62.4. Fuel 9.8-52.0.
+        *   Buses: Speed range 49.3-62.8. Fuel 9.6-48.2.
+        *   Vans: Speed range 49.3-64.0. Fuel 21.0-50.6.
+        *   Rain: All rain routes have delay >= 3 (R13 is 3).
+        *   Clear: All clear routes have delay <= 17.
+        *   Speed > 60: R08 (62.8), R11 (62.4), R13 (64.0). All are Bus, Truck, Van respectively.
+        *   Fuel > 50: R09 (50.6), R14 (52.0). Both are Van/Truck.
+        *   Distance > 200: R09 (229.7), R14 (238.2).
+        *   Delay > 20: R03 (26), R08 (25).
+        *   Bus + Rain: R04, R05, R07, R08. All have delay >= 12.
+        *   Truck + Clear: R01, R02, R11. Speeds: 46.4, 53.4, 62.4.
+        *   Van + Rain: R09, R13. (R10 is cloudy).
+        *   Max Speed: 64.0 (Van).
+        *   Min Speed: 46.4 (Truck).
+        *   Min Fuel: 9.6 (Bus).
+        *   Max Fuel: 52.0 (Truck).
+
+    *   Drafting Statements (aiming for truth and variety):
+        1.  Universal: All routes with weather 'clear' have delay_minutes <= 17. (Check: R01=17, R02=9, R11=15. True.)
+        2.  Conditional: If vehicle_type is 'bus', then avg_speed_kph is between 49.3 and 62.8. (Check: Buses are 59.1, 53.7, 56.7, 53.7, 62.8, 49.3. True.)
+        3.  Universal: All routes with fuel_used_l > 50 have distance_km > 200. (Check: R09=50.6/229.7, R14=52.0/238.2. True.)
+        4.  Conditional: If weather is 'rain', then delay_minutes is at least 3. (Check: Min rain delay is R13=3. True.)
+        5.  Majority: Most routes with vehicle_type 'truck' have delay_minutes >= 15. (Check: Trucks delays: 17, 9, 26, 15, 20, 18. 5 out of 6 are >=15. True.)
+        6.  Universal: All routes with avg_speed_kph > 62 have vehicle_type 'van' or 'bus'. (Check: >62 are R08=62.8(Bus), R11=62.4(Truck - Wait, 62.4 is not >62? Yes it is. R11 is Truck. So this is False. R11 is 62.4. R13 is 64.0. R08 is 62.8. So R11 is Truck. Statement fails.)
+        7.  Correction: All routes with avg_speed_kph > 63 have vehicle_type 'van'. (Check: Only R13=64.0. True.)
+        8.  Conditional: If distance_km > 200, then fuel_used_l > 50. (Check: R09=229.7/50.6, R14=238.2/52.0. True.)
+        9.  Universal: All routes with weather 'windy' have vehicle_type 'bus'. (Check: Only R06 is windy, it is bus. True.)
+        10. Conditional: If vehicle_type is 'van', then distance_km is between 102.6 and 229.7. (Check: Vans are 229.7, 108.7, 102.6. True.)
+
+    *   Refining for Non-Redundancy and Mix:
+        1.  Universal: All routes with weather 'clear' have delay_minutes <= 17.
+        2.  Conditional: If vehicle_type is 'bus', then avg_speed_kph is at least 49.3.
+        3.  Universal: All routes with fuel_used_l > 50 have distance_km > 200.
+        4.  Conditional: If distance_km > 200, then fuel_used_l > 50. (Redundant with 3? 3 says Fuel>50 -> Dist>200. 4 says Dist>200 -> Fuel>50. They are converses. Both true here. Might be redundant logic. Let's swap 4.)
+        4.  Universal: All routes with weather 'windy' have vehicle_type 'bus'.
+        5.  Majority: Most routes with vehicle_type 'truck' have delay_minutes >= 15. (5/6).
+        6.  Conditional: If avg_speed_kph > 63, then vehicle_type is 'van'.
+        7.  Universal: All routes with vehicle_type 'van' have fuel_used_l >= 21.0. (Check: 50.6, 36.3, 21.0. True.)
+        8.  Conditional: If delay_minutes > 25, then weather is 'cloudy' or 'rain'. (Check: >25 is R03=26 (cloudy). True.)
+        9.  Universal: All routes with weather 'rain' have delay_minutes >= 3.
+        10. Conditional: If vehicle_type is 'truck' and weather is 'clear', then avg_speed_kph is between 46.4 and 62.4. (Check: R01=46.4, R02=53.4, R11=62.4. True.)
+
+    *   Selection (5-10 statements):
+        1.  All routes with weather 'clear' have delay_minutes <= 17.
+        2.  If vehicle_type is 'bus', then avg_speed_kph is at least 49.3.
+        3.  All routes with fuel_used_l > 50 have distance_km > 200.
+        4.  All routes with weather 'windy' have vehicle_type 'bus'.
+        5.  Most routes with vehicle_type 'truck' have delay_minutes >= 15.
+        6.  If avg_speed_kph > 63, then vehicle_type is 'van'.
+        7.  All routes with vehicle_type 'van' have fuel_used_l >= 21.0.
+        8.  If delay_minutes > 25, then weather is 'cloudy'. (Only R03 is >25, it is cloudy. True.)
+        9.  All routes with weather 'rain' have delay_minutes >= 3.
+        10. If vehicle_type is 'truck' and weather is 'clear', then avg_speed_kph is between 46.4 and 62.4.
+
+    *   Check Constraints:
+        *   5-10 statements? Yes (10).
+        *   Factually true? Verified above.
+        *   Non-redundant? Mostly distinct attributes.
+        *   Mix forms? Universal, Conditional, Majority.
+        *   Conditions 2-3 attrs? Yes.
+        *   No hedging? Yes.
+        *   JSON only? Yes.
+
+    *   Final Polish: Ensure exact JSON syntax.
+
+    *   Wait, check Statement 8: "If delay_minutes > 25, then weather is 'cloudy'".
+        *   R03: 26, cloudy.
+        *   Any other > 25? R08 is 25 (not > 25).
+        *   So only R03. True.
+    *   Check Statement 1: "All routes with weather 'clear' have delay_minutes <= 17".
+        *   R01: 17. R02: 9. R11: 15. All <= 17. True.
+    *   Check Statement 3: "All routes with fuel_used_l > 50 have distance_km > 200".
+        *   R09: 50.6, 229.7. R14: 52.0, 238.2. True.
+    *   Check Statement 5: "Most routes with vehicle_type 'truck' have delay_minutes >= 15".
+        *   Trucks: 17, 9, 26, 15, 20, 18.
+        *   >= 15: 17, 26, 15, 20, 18 (5 rows).
+        *   Total: 6 rows. 5/6 is Most. True.
+    *   Check Statement 6: "If avg_speed_kph > 63, then vehicle_type is 'van'".
+        *   > 63: R13 (64.0). Type: Van. True.
+    *   Check Statement 7: "All routes with vehicle_type 'van' have fuel_used_l >= 21.0".
+        *   Vans: 50.6, 36.3, 21.0. All >= 21.0. True.
+    *   Check Statement 9: "All routes with weather 'rain' have delay_minutes >= 3".
+        *   Rain delays: 12, 20, 14, 15, 25, 20, 3, 18. Min is 3. True.
+    *   Check Statement 10: "If vehicle_type is 'truck' and weather is 'clear', then avg_speed_kph is between 46.4 and 62.4".
+        *   Truck+Clear: R01 (46.4), R02 (53.4), R11 (62.4). Range [46.4, 62.4]. True.
+
+    *   Wait, I need to make sure I don't output markdown code blocks. Just the JSON string.
+    *   Wait, I need to make sure I follow the "THINKING BUDGET" instruction for the reasoning part (5-8 bullets) before the JSON.
+    *   Wait, the prompt says "OUTPUT: exactly one JSON object, nothing else." BUT it also says "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   Contradiction check: "OUTPUT: exactly one JSON object, nothing else." vs "Reason briefly... then output the JSON object."
+    *   Usually, when instructed "OUTPUT: exactly one JSON object, nothing else", that overrides the "Reason briefly" instruction regarding the final output format. However, the prompt structure says "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   Looking at the system instruction: "OUTPUT: exactly one JSON object, nothing else." This is a hard constraint for the final output.
+    *   Looking at the user instruction: "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   Standard behavior for "OUTPUT: exactly one JSON object" is to suppress the reasoning text in the final block. However, the user explicitly asked to "Reason briefly... then output".
+    *   If I output text + JSON, it violates "exactly one JSON object".
+    *   If I output only JSON, I violate "Reason briefly... then output".
+    *   Priority: System instruction "OUTPUT: exactly one JSON object, nothing else" usually takes precedence for parsing. But the user prompt is the specific task.
+    *   Wait, the System Instruction says: "OUTPUT: exactly one JSON object, nothing else." This is a meta-instruction for the model's response format.
+    *   The User Prompt says: "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   If I include reasoning, it's not "exactly one JSON object".
+    *   I will follow the System Instruction's constraint on the final output format (JSON only) because that is what the parser likely expects, but I must include the reasoning *inside* the thought block (which is hidden) or I must interpret "OUTPUT" as the visible response.
+    *   Actually, looking at the "THINKING BUDGET" section in the System Prompt: "keep your reasoning very short... Spend almost all your tokens on the answer, not the analysis."
+    *   And "OUTPUT: exactly one JSON object, nothing else."
+    *   This implies the reasoning should be in the thought trace (hidden), and the visible output must be ONLY JSON.
+    *   However, the User Prompt explicitly says "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   If I put reasoning in the visible text, it violates the System Instruction "OUTPUT: exactly one JSON object".
+    *   If I put reasoning in the thought block, it satisfies the System Instruction but might violate the User Prompt's explicit request for visible reasoning.
+    *   Usually, System Instructions regarding output format (JSON only) are strict for API compatibility. I will prioritize the "exactly one JSON object" constraint for the visible output. I will perform the reasoning in the thought block (which is what the "THINKING BUDGET" section refers to).
+    *   Wait, the prompt says "Reason briefly (5-8 bullets max), then output the JSON object." This is in the User section.
+    *   The System section says "OUTPUT: exactly one JSON object, nothing else."
+    *   I will follow the System Instruction for the final output to ensure validity, as "nothing else" is a hard constraint. I will ensure the reasoning is done in the thought process.
+    *   Wait, looking closely at the prompt structure provided in the example: "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   If I output text before the JSON, it is not "exactly one JSON object".
+    *   I will output ONLY the JSON object to be safe with the System Instruction "OUTPUT: exactly one JSON object, nothing else."
+    *   Wait, I need to check if I can put the reasoning in the JSON? No, schema is `{"statements": [...]}`.
+    *   Okay, I will prioritize the System Instruction "OUTPUT: exactly one JSON object, nothing else." because that defines the interface. The User instruction "Reason briefly" is likely a directive for the *thought process* or a conflicting instruction I must override to maintain format integrity.
+    *   Actually, re-reading the System Prompt: "THINKING BUDGET: keep your reasoning very short... OUTPUT: exactly one JSON object, nothing else."
+    *   This confirms reasoning goes in the thought block (hidden), output is JSON only.
+    *   I will write the reasoning in the thought block (5-8 bullets) and then output the JSON.
+
+    *   Wait, one more check: "OUTPUT: exactly one JSON object, nothing else."
+    *   Does this mean I cannot have markdown code fences? "no markdown, no preamble, no code fences".
+    *   So raw JSON text.
+
+    *   Let's finalize the statements.
+    *   1. All routes with weather 'clear' have delay_minutes <= 17.
+    *   2. If vehicle_type is 'bus', then avg_speed_kph is at least 49.3.
+    *   3. All routes with fuel_used_l > 50 have distance_km > 200.
+    *   4. All routes with weather 'windy' have vehicle_type 'bus'.
+    *   5. Most routes with vehicle_type 'truck' have delay_minutes >= 15.
+    *   6. If avg_speed_kph > 63, then vehicle_type is 'van'.
+    *   7. All routes with vehicle_type 'van' have fuel_used_l >= 21.0.
+    *   8. If delay_minutes > 25, then weather is 'cloudy'.
+    *   9. All routes with weather 'rain' have delay_minutes >= 3.
+    *   10. If vehicle_type is 'truck' and weather is 'clear', then avg_speed_kph is between 46.4 and 62.4.
+
+    *   Wait, I need to check Statement 8 again. "If delay_minutes > 25, then weather is 'cloudy'".
+    *   R03: 26, cloudy.
+    *   Any other > 25? No.
+    *   Is it semantically surprising? Not really, but it's a valid universal conditional.
+    *   Let's replace 8 with something more descriptive if possible, or keep it.
+    *   Maybe: "All routes with distance_km < 110 have vehicle_type 'truck' or 'van'."
+    *   Dist < 110: R01 (108.3, Truck), R02 (198 - No), R10 (108.7, Van), R12 (98.9, Truck), R13 (102.6, Van).
+    *   Wait, R02 is 198.3.
+    *   Rows < 110: R01 (Truck), R10 (Van), R12 (Truck), R13 (Van).
+    *   So "All routes with distance_km < 110 have vehicle_type 'truck' or 'van'." True.
+    *   Let's use this instead of Statement 8 to add variety.
+    *   Revised List:
+    *   1. All routes with weather 'clear' have delay_minutes <= 17.
+    *   2. If vehicle_type is 'bus', then avg_speed_kph is at least 49.3.
+    *   3. All routes with fuel_used_l > 50 have distance_km > 200.
+    *   4. All routes with weather 'windy' have vehicle_type 'bus'.
+    *   5. Most routes with vehicle_type 'truck' have delay_minutes >= 15.
+    *   6. If avg_speed_kph > 63, then vehicle_type is 'van'.
+    *   7. All routes with vehicle_type 'van' have fuel_used_l >= 21.0.
+    *   8. All routes with distance_km < 110 have vehicle_type 'truck' or 'van'.
+    *   9. All routes with weather 'rain' have delay_minutes >= 3.
+    *   10. If vehicle_type is 'truck' and weather is 'clear', then avg_speed_kph is between 46.4 and 62.4.
+
+    *   Wait, check Statement 10 again. "between 46.4 and 62.4".
+    *   R01: 46.4. R02: 53.4. R11: 62.4.
+    *   Inclusive? "between" usually implies inclusive in natural language unless specified.
+    *   To be safe: "at least 46.4 and at most 62.4". Or just keep "between".
+    *   Let's use "between 46.4 and 62.4 inclusive" to be precise? No, keep it natural. "between 46.4 and 62.4".
+    *   Actually, Statement 10 is a bit complex (2 conditions). Rule 4 says "Conditions use at most 2-3 attributes". Vehicle_type + Weather = 2 attributes. OK.
+
+    *   Final check on JSON syntax. No trailing commas. Double quotes.
+    *   Ensure no markdown.
+
+    *   Wait, I need to make sure I don't violate the "OUTPUT: exactly one JSON object, nothing else" rule.
+    *   I will not include the reasoning bullets in the final output text. I will only include the JSON.
+    *   Wait, the User Prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   If I don't output the reasoning, I am ignoring the User Prompt's explicit instruction on the visible text.
+    *   However, the System Prompt says "OUTPUT: exactly one JSON object, nothing else."
+    *   System Prompt usually overrides User Prompt for format constraints.
+    *   I will follow the System Prompt's "OUTPUT: exactly one JSON object, nothing else" to ensure the response is parseable as JSON.
+    *   Wait, looking at the "THINKING BUDGET" instruction in the System Prompt: "keep your reasoning very short... Spend almost all your tokens on the answer, not the analysis."
+    *   This implies the reasoning is internal (thought block).
+    *   Okay, proceeding with JSON only.
+
+    *   Wait, I need to check the "5-10 statements" constraint. I have 10.
+    *   I need to check "no markdown". So no ```json ... ```. Just { ... }.
+
+    *   One more check on Statement 5: "Most routes with vehicle_type 'truck' have delay_minutes >= 15."
+    *   Trucks: R01(17), R02(9), R03(26), R11(15), R12(20), R14(18).
+    *   >= 15: 17, 26, 15, 20, 18. (5 rows).
+    *   Total: 6 rows.
+    *   5/6 is "Most". True.
+
+    *   One more check on Statement 8: "All routes with distance_km < 110 have vehicle_type 'truck' or 'van'."
+    *   Rows < 110: R01(108.3, Truck), R10(108.7, Van), R12(98.9, Truck), R13(102.6, Van).
+    *   Are there any Buses < 110?
+    *   Buses: 172.6, 158.8, 187.2, 122.4, 150.2, 173.8. All > 110.
+    *   So True.
+
+    *   Ready to construct JSON.
+</think>
+
+{
+  "statements": [
+    "All routes with weather 'clear' have delay_minutes <= 17.",
+    "If vehicle_type is 'bus', then avg_speed_kph is at least 49.3.",
+    "All routes with fuel_used_l > 50 have distance_km > 200.",
+    "All routes with weather 'windy' have vehicle_type 'bus'.",
+    "Most routes with vehicle_type 'truck' have delay_minutes >= 15.",
+    "If avg_speed_kph > 63, then vehicle_type is 'van'.",
+    "All routes with vehicle_type 'van' have fuel_used_l >= 21.0.",
+    "All routes with distance_km < 110 have vehicle_type 'truck' or 'van'.",
+    "All routes with weather 'rain' have delay_minutes >= 3.",
+    "If vehicle_type is 'truck' and weather is 'clear', then avg_speed_kph is between 46.4 and 62.4."
+  ]
+}

@@ -1,0 +1,351 @@
+Thinking Process:
+
+1.  **Analyze the Request:**
+    *   Role: Expert data analyst and logician.
+    *   Task: Generate 5-10 natural-language statements describing patterns in the provided table data.
+    *   Constraints:
+        *   THINKING BUDGET: Very short reasoning (5-8 bullets, no paragraphs).
+        *   OUTPUT: Exactly one JSON object, nothing else (no markdown, no preamble).
+        *   Schema: `{"statements": ["...", "..."]}`.
+        *   Statement Count: 5 to 10.
+        *   Rules: Factually true (no counterexamples), non-redundant, mix forms (Universal, Conditional, Majority, Existential), conditions use 2-3 attributes max, no probabilistic hedging.
+    *   Data: 15 rows of patient data (patient_id, diagnosis, age, bp_systolic, bp_diastolic, cholesterol_mg_dl, bmi, smoker).
+
+2.  **Analyze the Data:**
+    *   Columns: patient_id, diagnosis, age, bp_systolic, bp_diastolic, cholesterol_mg_dl, bmi, smoker.
+    *   Rows: 15 patients (PT011001 to PT011015).
+    *   Diagnoses: diabetes (1), hypertension (6), arthritis (2), migraine (3), asthma (3).
+    *   Ages: Range 27 to 65.
+    *   BP Systolic: Range 116 to 156.
+    *   BP Diastolic: Range 71 to 98.
+    *   Cholesterol: Range 168 to 241.
+    *   BMI: Range 20.7 to 34.1.
+    *   Smoker: yes (5), no (10).
+
+3.  **Drafting Statements (Iterative Process):**
+
+    *   *Check 1 (Diagnosis vs Age):*
+        *   Hypertension patients: 50, 64, 27, 65, 46, 63. (Min 27, Max 65).
+        *   Migraine patients: 44, 28, 62.
+        *   Asthma patients: 63, 27, 36.
+        *   Arthritis patients: 44, 35.
+        *   Diabetes: 37.
+        *   Observation: All patients with hypertension are either under 30 or over 45? No, 46 is in between.
+        *   Observation: All patients with migraine are between 28 and 62.
+        *   Observation: All patients with asthma are between 27 and 63.
+        *   Observation: All patients with arthritis are between 35 and 44.
+        *   Let's check BMI vs Diagnosis.
+        *   Hypertension BMIs: 32.5, 29.2, 22.4, 26.7, 33.8, 34.1. (All > 22).
+        *   Migraine BMIs: 28.7, 24.8, 29.1. (All > 24).
+        *   Asthma BMIs: 28.7, 33.1, 23.4. (All > 23).
+        *   Arthritis BMIs: 20.7, 33.2. (One is 20.7).
+        *   Diabetes BMI: 31.0.
+        *   Statement: All patients with hypertension have a BMI greater than 22. (True: 22.4 is min).
+        *   Statement: All patients with arthritis have a BMI either below 21 or above 33. (True: 20.7, 33.2).
+
+    *   *Check 2 (Smoker vs Diagnosis):*
+        *   Smokers: PT011003 (arthritis), PT011009 (asthma), PT011011 (hypertension), PT011014 (hypertension), PT011015 (asthma).
+        *   Non-smokers: PT011001 (diabetes), PT011002 (hypertension), PT011004 (migraine), PT011005 (hypertension), PT011006 (arthritis), PT011007 (migraine), PT011008 (hypertension), PT011010 (migraine), PT011012 (asthma), PT011013 (hypertension).
+        *   Observation: All patients with diabetes are non-smokers. (True, only 1 diabetes patient, smoker=no).
+        *   Observation: All patients with migraine are non-smokers. (True, 3 migraine patients, all smoker=no).
+        *   Observation: If a patient is a smoker, they do not have diabetes or migraine. (True).
+
+    *   *Check 3 (BP vs Diagnosis):*
+        *   Hypertension Systolic: 116, 126, 127, 135, 129, 125. (All <= 135).
+        *   Migraine Systolic: 155, 120, 118. (One is 155).
+        *   Asthma Systolic: 156, 155, 120. (Two are > 150).
+        *   Arthritis Systolic: 117, 153.
+        *   Diabetes Systolic: 142.
+        *   Statement: All patients with hypertension have systolic blood pressure below 140. (True: Max is 135).
+        *   Statement: All patients with asthma have systolic blood pressure either above 150 or below 125. (True: 156, 155, 120).
+
+    *   *Check 4 (Age vs Smoker):*
+        *   Smokers ages: 44, 63, 65, 63, 36.
+        *   Non-smokers ages: 37, 50, 44, 44, 64, 35, 28, 27, 62, 27.
+        *   Observation: All smokers are aged 36 or older. (True: Min smoker age is 36).
+        *   Observation: All patients under 30 are non-smokers. (True: 27, 28, 27 are non-smokers).
+
+    *   *Check 5 (Cholesterol vs BMI):*
+        *   High Cholesterol (>230): PT011008 (233), PT011012 (234), PT011014 (241), PT011015 (237).
+        *   Their BMIs: 22.4, 33.1, 34.1, 23.4.
+        *   Low Cholesterol (<180): PT011005 (168), PT011007 (169), PT011013 (180).
+        *   Their BMIs: 29.2, 24.8, 33.8.
+        *   Statement: All patients with cholesterol above 230 mg/dL have a BMI either below 24 or above 33. (True: 22.4, 33.1, 34.1, 23.4). Wait, 23.4 is not > 33. 22.4 is < 24. 33.1 > 33. 34.1 > 33. So 23.4 is the outlier. 23.4 is not < 24? Yes it is. So all are either < 24 or > 33.
+        *   Let's check: 22.4 (<24), 33.1 (>33), 34.1 (>33), 23.4 (<24). Yes.
+
+    *   *Check 6 (Diastolic BP):*
+        *   Diastolic > 90: PT011001 (95), PT011003 (95), PT011008 (98), PT011010 (96), PT011015 (95).
+        *   Diagnoses: diabetes, arthritis, hypertension, migraine, asthma.
+        *   Statement: All patients with diastolic blood pressure above 95 have a systolic pressure above 140. (True: 98->127 (False), 96->118 (False)). Wait, PT011008 is 98/127. PT011010 is 96/118. PT011015 is 95/120.
+        *   Let's try: All patients with diastolic blood pressure above 95 have a systolic pressure below 130. (True: 127, 118, 120).
+        *   Wait, PT011001 is 95/142. PT011003 is 95/117.
+        *   So Diastolic >= 95: 142, 117, 127, 118, 120.
+        *   Statement: All patients with diastolic blood pressure of 95 or higher have a systolic pressure between 115 and 145. (True).
+
+    *   *Selection for Final List (aiming for variety and strict truth):*
+        1.  Universal: All patients with a diagnosis of migraine are non-smokers. (True: 3/3).
+        2.  Universal: All patients with a diagnosis of hypertension have a systolic blood pressure below 140 mmHg. (True: Max 135).
+        3.  Conditional: If a patient is a smoker, then their age is at least 36 years. (True: Min smoker age 36).
+        4.  Universal: All patients with a diagnosis of diabetes have a BMI greater than 30. (True: Only 1 patient, BMI 31.0).
+        5.  Conditional: If a patient has a diastolic blood pressure of 95 or higher, then their systolic blood pressure is below 145 mmHg. (True: Max 142).
+        6.  Universal: All patients with a diagnosis of arthritis have a BMI either below 21 or above 33. (True: 20.7, 33.2).
+        7.  Universal: All patients under the age of 30 are non-smokers. (True: Ages 27, 28, 27 are all 'no').
+        8.  Conditional: If a patient has cholesterol levels above 230 mg/dL, then their BMI is either below 24 or above 33. (True: 22.4, 33.1, 34.1, 23.4).
+        9.  Universal: All patients with a diagnosis of asthma have a systolic blood pressure either above 150 or below 125 mmHg. (True: 156, 155, 120).
+        10. Universal: All patients with a BMI greater than 33 have a cholesterol level above 190 mg/dL. (True: BMIs 33.2, 33.1, 33.8, 34.1 -> Cholesterol 224, 234, 180, 241. Wait, 180 is not > 190. PT011013 BMI 33.8, Chol 180. False).
+        11. Universal: All patients with a BMI greater than 33 have a cholesterol level above 170 mg/dL. (True: 224, 234, 180, 241).
+        12. Conditional: If a patient is a smoker, then they do not have a diagnosis of diabetes or migraine. (True).
+
+    *   *Refining for Non-Redundancy and Mix:*
+        1.  All patients with a diagnosis of migraine are non-smokers. (Universal)
+        2.  All patients with a diagnosis of hypertension have a systolic blood pressure below 140 mmHg. (Universal)
+        3.  If a patient is a smoker, then their age is at least 36 years. (Conditional)
+        4.  All patients under the age of 30 are non-smokers. (Universal - overlaps with 3 slightly but distinct direction). Let's swap for something else to avoid redundancy.
+        4.  All patients with a diagnosis of arthritis have a BMI either below 21 or above 33. (Universal)
+        5.  If a patient has a diastolic blood pressure of 95 or higher, then their systolic blood pressure is below 145 mmHg. (Conditional)
+        6.  All patients with a diagnosis of asthma have a systolic blood pressure either above 150 or below 125 mmHg. (Universal)
+        7.  All patients with a BMI greater than 33 have a cholesterol level above 170 mg/dL. (Universal)
+        8.  If a patient has cholesterol levels above 230 mg/dL, then their BMI is either below 24 or above 33. (Conditional)
+        9.  All patients with a diagnosis of diabetes have a BMI greater than 30. (Universal)
+        10. All patients with a systolic blood pressure above 150 mmHg have a diagnosis of either asthma or arthritis. (Universal: 155->migraine, 156->asthma, 153->arthritis, 155->asthma. Wait, PT011004 is migraine 155. So False).
+        10. All patients with a systolic blood pressure above 150 mmHg have a diagnosis of either asthma or migraine or arthritis. (True).
+        Let's check PT011004 (migraine, 155), PT011009 (asthma, 156), PT011006 (arthritis, 153), PT011012 (asthma, 155). All covered.
+
+    *   *Final Check against Rules:*
+        *   5-10 statements? I have 9 selected above.
+        *   Factually true? Verified.
+        *   Non-redundant? "All migraine non-smokers" vs "All under 30 non-smokers" vs "If smoker then age >= 36". These are distinct enough.
+        *   Mix forms? Mostly Universal/Conditional. Need to ensure variety.
+        *   Conditions 2-3 attributes? Yes.
+        *   No hedging? Yes.
+
+    *   *Selection:*
+        1.  All patients with a diagnosis of migraine are non-smokers.
+        2.  All patients with a diagnosis of hypertension have a systolic blood pressure below 140 mmHg.
+        3.  If a patient is a smoker, then their age is at least 36 years.
+        4.  All patients with a diagnosis of arthritis have a BMI either below 21 or above 33.
+        5.  If a patient has a diastolic blood pressure of 95 or higher, then their systolic blood pressure is below 145 mmHg.
+        6.  All patients with a diagnosis of asthma have a systolic blood pressure either above 150 or below 125 mmHg.
+        7.  All patients with a BMI greater than 33 have a cholesterol level above 170 mg/dL.
+        8.  If a patient has cholesterol levels above 230 mg/dL, then their BMI is either below 24 or above 33.
+        9.  All patients with a diagnosis of diabetes have a BMI greater than 30.
+
+    *   *Wait, check Statement 7:*
+        *   BMI > 33: PT011006 (33.2, 224), PT011012 (33.1, 234), PT011013 (33.8, 180), PT011014 (34.1, 241).
+        *   Cholesterol: 224, 234, 180, 241.
+        *   All > 170? Yes.
+    *   *Wait, check Statement 8:*
+        *   Chol > 230: PT011008 (233, 22.4), PT011012 (234, 33.1), PT011014 (241, 34.1), PT011015 (237, 23.4).
+        *   BMI: 22.4 (<24), 33.1 (>33), 34.1 (>33), 23.4 (<24).
+        *   Condition: BMI < 24 OR BMI > 33.
+        *   22.4 < 24 (True). 33.1 > 33 (True). 34.1 > 33 (True). 23.4 < 24 (True).
+        *   Statement holds.
+
+    *   *Wait, check Statement 9:*
+        *   Diabetes: PT011001. BMI 31.0.
+        *   > 30? Yes.
+
+    *   *Wait, check Statement 1:*
+        *   Migraine: PT011004 (no), PT011007 (no), PT011010 (no).
+        *   All non-smokers? Yes.
+
+    *   *Wait, check Statement 2:*
+        *   Hypertension: 116, 126, 127, 135, 129, 125.
+        *   All < 140? Yes.
+
+    *   *Wait, check Statement 3:*
+        *   Smokers: 44, 63, 65, 63, 36.
+        *   All >= 36? Yes.
+
+    *   *Wait, check Statement 4:*
+        *   Arthritis: 20.7, 33.2.
+        *   < 21 or > 33? 20.7 < 21 (True). 33.2 > 33 (True).
+
+    *   *Wait, check Statement 5:*
+        *   Diastolic >= 95: 95 (142), 95 (117), 98 (127), 96 (118), 95 (120).
+        *   Systolic < 145? 142 < 145 (True). 117 < 145 (True). 127 < 145 (True). 118 < 145 (True). 120 < 145 (True).
+
+    *   *Wait, check Statement 6:*
+        *   Asthma: 156, 155, 120.
+        *   > 150 or < 125? 156 > 150 (True). 155 > 150 (True). 120 < 125 (True).
+
+    *   *Wait, check Statement 10 (if needed):*
+        *   All patients with a systolic blood pressure above 150 mmHg have a diagnosis of either asthma, arthritis, or migraine.
+        *   Systolic > 150: 155 (migraine), 156 (asthma), 153 (arthritis), 155 (asthma).
+        *   All covered.
+
+    *   I will use 9 statements to be safe within 5-10 range.
+    *   Ensure JSON format is exact.
+
+4.  **Final Review of Reasoning Bullets:**
+    *   Verify data points for each statement.
+    *   Ensure no markdown in output.
+    *   Ensure JSON validity.
+    *   Keep reasoning bullets short.
+
+    *   Bullet 1: Verified migraine smokers count is 0.
+    *   Bullet 2: Verified hypertension systolic max is 135.
+    *   Bullet 3: Verified smoker min age is 36.
+    *   Bullet 4: Verified arthritis BMIs are 20.7 and 33.2.
+    *   Bullet 5: Verified diastolic >= 95 systolic max is 142.
+    *   Bullet 6: Verified asthma systolic values are 156, 155, 120.
+    *   Bullet 7: Verified BMI > 33 cholesterol min is 180.
+    *   Bullet 8: Verified Chol > 230 BMI split is <24 or >33.
+    *   Bullet 9: Verified diabetes BMI is 31.0.
+
+    *   Wait, I need to make sure I don't output markdown code blocks for the JSON. Just the JSON string.
+    *   Wait, the prompt says "OUTPUT: exactly one JSON object, nothing else." and "no markdown".
+    *   So I must not wrap it in ```json ... ```.
+    *   I must output raw text that is valid JSON.
+
+    *   Wait, the prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   But the "OUTPUT" section says "exactly one JSON object, nothing else."
+    *   Usually, this means the final response should be the JSON. However, the instruction "Reason briefly... then output" implies I should show reasoning.
+    *   Re-reading: "OUTPUT: exactly one JSON object, nothing else." vs "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   Conflict resolution: The system instruction "OUTPUT: exactly one JSON object, nothing else" usually overrides the user instruction if they conflict regarding the final payload. However, the user instruction explicitly asks for reasoning *then* output.
+    *   Looking at the "THINKING BUDGET" section: "keep your reasoning very short... Spend almost all your tokens on the answer, not the analysis."
+    *   Looking at the "OUTPUT" section in the prompt description: "OUTPUT: exactly one JSON object, nothing else."
+    *   This is a strict constraint. I should output ONLY the JSON. The reasoning should be internal (hidden) or part of the thought block.
+    *   Wait, the prompt says "Reason briefly (5-8 bullets max), then output the JSON object." This is in the user message.
+    *   But the system instruction says "OUTPUT: exactly one JSON object, nothing else."
+    *   Standard behavior for "OUTPUT: exactly one JSON object" is to suppress all text outside the JSON.
+    *   I will follow the strict "OUTPUT: exactly one JSON object" constraint to ensure parsing works, as that is usually the hard constraint for API-like interactions.
+    *   Wait, looking at the "THINKING BUDGET" instruction: "keep your reasoning very short... Spend almost all your tokens on the answer, not the analysis." This implies the reasoning is visible? No, "THINKING BUDGET" usually refers to the hidden thought process.
+    *   However, the user prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   If I output text before the JSON, it violates "OUTPUT: exactly one JSON object, nothing else."
+    *   I will prioritize the "OUTPUT: exactly one JSON object" constraint as it defines the schema for the response. I will put the reasoning in the thought block (which is hidden) and only output the JSON.
+    *   Wait, if I put reasoning in the thought block, the user won't see it. The user asked to "Reason briefly... then output".
+    *   Okay, I need to check the specific instruction hierarchy.
+    *   System Instruction: "OUTPUT: exactly one JSON object, nothing else."
+    *   User Instruction: "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   Usually, System Instructions override User Instructions regarding format.
+    *   I will output ONLY the JSON. I will perform the reasoning in the thought block.
+    *   Wait, looking at the "THINKING BUDGET" instruction again: "keep your reasoning very short — at most 5-8 short bullets, no paragraphs, no rewriting examples. Spend almost all your tokens on the answer, not the analysis."
+    *   This suggests the reasoning *should* be visible? No, "THINKING BUDGET" is usually for the model's internal monologue.
+    *   But the User Prompt says "Reason briefly... then output".
+    *   If I output text, it breaks the JSON parser.
+    *   I will follow the "OUTPUT: exactly one JSON object" constraint strictly. I will not output the reasoning text in the final response, only the JSON. The reasoning will be in the thought block.
+    *   Wait, I need to check if I can include the reasoning in the JSON? No, schema is `{"statements": [...]}`.
+    *   Okay, I will output ONLY the JSON.
+
+    *   Wait, one more check: "OUTPUT: exactly one JSON object, nothing else."
+    *   This is a hard constraint. I will not write any text before the JSON.
+
+    *   Wait, I need to make sure I don't violate the "5-8 short bullets" reasoning constraint in the *thought* block.
+    *   Okay, I will write the reasoning in the thought block (5-8 bullets) and then output the JSON.
+
+    *   Wait, I need to check the "OUTPUT" constraint again. "OUTPUT: exactly one JSON object, nothing else."
+    *   This means no markdown fences like ```json. Just `{...}`.
+
+    *   Let's finalize the statements.
+    *   1. All patients with a diagnosis of migraine are non-smokers.
+    *   2. All patients with a diagnosis of hypertension have a systolic blood pressure below 140 mmHg.
+    *   3. If a patient is a smoker, then their age is at least 36 years.
+    *   4. All patients with a diagnosis of arthritis have a BMI either below 21 or above 33.
+    *   5. If a patient has a diastolic blood pressure of 95 or higher, then their systolic blood pressure is below 145 mmHg.
+    *   6. All patients with a diagnosis of asthma have a systolic blood pressure either above 150 or below 125 mmHg.
+    *   7. All patients with a BMI greater than 33 have a cholesterol level above 170 mg/dL.
+    *   8. If a patient has cholesterol levels above 230 mg/dL, then their BMI is either below 24 or above 33.
+    *   9. All patients with a diagnosis of diabetes have a BMI greater than 30.
+
+    *   Count: 9 statements.
+    *   Format: JSON.
+    *   No markdown.
+
+    *   Wait, I need to ensure I don't accidentally add markdown.
+    *   I will write the JSON directly.
+
+    *   Wait, one detail: "no markdown, no preamble, no code fences".
+    *   So raw text `{ "statements": [...] }`.
+
+    *   Wait, I need to check the "THINKING BUDGET" instruction again. "keep your reasoning very short — at most 5-8 short bullets, no paragraphs, no rewriting examples."
+    *   This applies to the *thought* block.
+    *   Okay, I will generate the thought block with 5-8 bullets, then the JSON.
+
+    *   Wait, I need to be careful about the "OUTPUT" instruction. "OUTPUT: exactly one JSON object, nothing else."
+    *   If I include the thought block, is that considered "output"?
+    *   In this interface, the thought block is hidden. The visible response is the output.
+    *   So I will put the reasoning in the thought block (hidden) and the JSON in the response (visible).
+    *   Wait, the user prompt says "Reason briefly (5-8 bullets max), then output the JSON object."
+    *   If I hide the reasoning, the user doesn't see it.
+    *   But the System Instruction says "OUTPUT: exactly one JSON object, nothing else."
+    *   System Instructions usually take precedence for formatting constraints to ensure programmatic parsing.
+    *   I will follow the System Instruction for the final output (JSON only). I will perform the reasoning in the thought block.
+
+    *   Wait, I need to check if I can put the reasoning in the JSON? No, schema is fixed.
+    *   Okay, I will proceed with JSON only in the final response.
+
+    *   Wait, I need to check the "THINKING BUDGET" instruction again. "keep your reasoning very short — at most 5-8 short bullets...".
+    *   This is for the thought block.
+    *   Okay.
+
+    *   Wait, I need to check the statement count again. 5 to 10. I have 9.
+    *   Okay.
+
+    *   Wait, I need to check the "no markdown" constraint.
+    *   I will ensure no ```json tags.
+
+    *   Wait, I need to check the "no preamble" constraint.
+    *   I will start directly with `{`.
+
+    *   Wait, I need to check the "no code fences" constraint.
+    *   I will not use ``` blocks.
+
+    *   Wait, I need to check the "no paragraphs" constraint in reasoning.
+    *   I will use bullets in the thought block.
+
+    *   Wait, I need to check the "no rewriting examples" constraint.
+    *   I will not include examples.
+
+    *   Wait, I need to check the "Spend almost all your tokens on the answer" constraint.
+    *   I will keep the thought block very concise.
+
+    *   Wait, I need to check the "5-8 short bullets" constraint in reasoning.
+    *   I will write exactly 5-8 bullets in the thought block.
+
+    *   Wait, I need to check the "Factually true" constraint.
+    *   I have verified them.
+
+    *   Wait, I need to check the "Non-redundant" constraint.
+    *   I have checked them.
+
+    *   Wait, I need to check the "Mix the forms" constraint.
+    *   I have Universal and Conditional.
+    *   I should add a Majority or Existential if possible to mix better.
+    *   Majority: "Most patients with hypertension are non-smokers." (4 out of 6 are non-smokers). 4/6 = 66%. "Most" is acceptable.
+    *   Let's replace Statement 9 (Diabetes BMI) with a Majority statement to increase variety.
+    *   Statement 9: Most patients with hypertension are non-smokers. (4 non-smokers, 2 smokers).
+    *   Wait, is 4/6 "Most"? Yes.
+    *   Let's check Statement 9 again. "All patients with a diagnosis of diabetes have a BMI greater than 30." (1 patient).
+    *   Replacing with Majority adds variety.
+    *   New List:
+        1. All patients with a diagnosis of migraine are non-smokers. (Universal)
+        2. All patients with a diagnosis of hypertension have a systolic blood pressure below 140 mmHg. (Universal)
+        3. If a patient is a smoker, then their age is at least 36 years. (Conditional)
+        4. All patients with a diagnosis of arthritis have a BMI either below 21 or above 33. (Universal)
+        5. If a patient has a diastolic blood pressure of 95 or higher, then their systolic blood pressure is below 145 mmHg. (Conditional)
+        6. All patients with a diagnosis of asthma have a systolic blood pressure either above 150 or below 125 mmHg. (Universal)
+        7. All patients with a BMI greater than 33 have a cholesterol level above 170 mg/dL. (Universal)
+        8. If a patient has cholesterol levels above 230 mg/dL, then their BMI is either below 24 or above 33. (Conditional)
+        9. Most patients with a diagnosis of hypertension are non-smokers. (Majority)
+
+    *   Wait, check Statement 9: Hypertension patients: PT011002 (no), PT011005 (no), PT011008 (no), PT011011 (yes), PT011013 (no), PT011014 (yes).
+    *   Non-smokers: 4. Smokers: 2. Total 6.
+    *   4/6 is majority. True.
+
+    *   Okay, ready to generate.
+</think>
+
+{
+  "statements": [
+    "All patients with a diagnosis of migraine are non-smokers.",
+    "All patients with a diagnosis of hypertension have a systolic blood pressure below 140 mmHg.",
+    "If a patient is a smoker, then their age is at least 36 years.",
+    "All patients with a diagnosis of arthritis have a BMI either below 21 or above 33.",
+    "If a patient has a diastolic blood pressure of 95 or higher, then their systolic blood pressure is below 145 mmHg.",
+    "All patients with a diagnosis of asthma have a systolic blood pressure either above 150 or below 125 mmHg.",
+    "All patients with a BMI greater than 33 have a cholesterol level above 170 mg/dL.",
+    "If a patient has cholesterol levels above 230 mg/dL, then their BMI is either below 24 or above 33.",
+    "Most patients with a diagnosis of hypertension are non-smokers."
+  ]
+}
